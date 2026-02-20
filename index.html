@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CNC Tool Database Viewer</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; cursor: pointer; }
+        th:hover { background-color: #e0e0e0; }
+        input { margin-bottom: 15px; padding: 8px; width: 350px; font-size: 16px; }
+        .details { display: none; }
+        pre { background: #f8f8f8; padding: 12px; overflow: auto; font-size: 13px; }
+        button { padding: 4px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>CNC Tool Database</h1>
+    <input type="text" id="search" placeholder="Search by any field..." onkeyup="filterTables()">
+
+    <script>
+        // Load external JSON file and render
+        async function loadAndRender() {
+            try {
+                const response = await fetch('tools.json');
+                if (!response.ok) throw new Error('tools.json not found or inaccessible');
+                
+                const data = await response.json();
+                
+                // Group tools by category
+                const groups = {};
+                (data.tools || []).forEach(tool => {
+                    const cat = tool.category || 'Uncategorized';
+                    if (!groups[cat]) groups[cat] = [];
+                    groups[cat].push(tool);
+                });
+                
+                renderTables(groups);
+                
+            } catch (err) {
+                console.error(err);
+                document.body.innerHTML += `
+                    <p style="color: red; font-weight: bold; margin-top: 20px;">
+                        ❌ Could not load <strong>tools.json</strong><br><br>
+                        Make sure the file is in the <strong>same folder</strong> as this HTML file<br>
+                        and you are running this through a local web server (not double-clicking the file).
+                    </p>`;
+            }
+        }
+
+        function renderTables(data) {
+            // Remove any previously rendered tables
+            document.querySelectorAll('div[data-group]').forEach(div => div.remove());
+
+            Object.keys(data).forEach(group => {
+                if (!data[group] || data[group].length === 0) return;
+
+                const div = document.createElement('div');
+                div.dataset.group = group;
+                div.innerHTML = `<h2>${group.charAt(0).toUpperCase() + group.slice(1)}</h2>`;
+
+                const table = document.createElement('table');
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(this, 0)">ID</th>
+                            <th onclick="sortTable(this, 1)">Type</th>
+                            <th onclick="sortTable(this, 2)">Manufacturer</th>
+                            <th>Description</th>
+                            <th onclick="sortTable(this, 4)">Size</th>
+                            <th onclick="sortTable(this, 5)">Price Range</th>
+                            <th>Tags</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                `;
+
+                data[group].forEach(tool => {
+                    const row = table.insertRow();
+                    row.insertCell().textContent = tool.id || '';
+                    row.insertCell().textContent = tool.type || '';
+                    row.insertCell().textContent = tool.manufacturer || '';
+                    row.insertCell().textContent = (tool.description || '').substring(0, 60) + '...';
+                    row.insertCell().textContent = tool.size || '';
+                    row.insertCell().textContent = tool.price_range || '';
+                    row.insertCell().textContent = Array.isArray(tool.tags) ? tool.tags.join(', ') : '';
+
+                    const btnCell = row.insertCell();
+                    btnCell.innerHTML = `<button onclick="toggleDetails(this)">Show</button>`;
+
+                    // Details row
+                    const detailsRow = table.insertRow();
+                    detailsRow.className = 'details';
+                    const detailsCell = detailsRow.insertCell();
+                    detailsCell.colSpan = 8;
+                    detailsCell.innerHTML = `<pre>${JSON.stringify(tool, null, 2)}</pre>`;
+                });
+
+                div.appendChild(table);
+                document.body.appendChild(div);
+            });
+        }
+
+        // Filter function (unchanged logic, works with new structure)
+        function filterTables() {
+            const filter = document.getElementById('search').value.toLowerCase().trim();
+            const tables = document.querySelectorAll('table');
+
+            tables.forEach(table => {
+                const rows = table.rows;
+                for (let i = 1; i < rows.length; i += 2) {  // data row + details row
+                    const dataRow = rows[i];
+                    let match = false;
+
+                    for (let j = 0; j < dataRow.cells.length - 1; j++) {  // skip last "Details" cell
+                        if (dataRow.cells[j].textContent.toLowerCase().includes(filter)) {
+                            match = true;
+                            break;
+                        }
+                    }
+
+                    dataRow.style.display = match ? '' : 'none';
+                    rows[i + 1].style.display = match ? '' : 'none';
+                }
+            });
+        }
+
+        function toggleDetails(button) {
+            const detailsRow = button.closest('tr').nextElementSibling;
+            const isHidden = detailsRow.style.display === 'none' || !detailsRow.style.display;
+            detailsRow.style.display = isHidden ? '' : 'none';
+            button.textContent = isHidden ? 'Hide' : 'Show';
+        }
+
+        function sortTable(th, colIndex) {
+            const table = th.closest('table');
+            const tbody = table.tBodies[0] || table;
+            let rows = Array.from(tbody.rows).slice(1); // skip header
+
+            // Pair data + details rows together
+            const pairedRows = [];
+            for (let i = 0; i < rows.length; i += 2) {
+                pairedRows.push([rows[i], rows[i + 1]]);
+            }
+
+            const isAsc = th.getAttribute('data-sort') !== 'asc';
+            pairedRows.sort((a, b) => {
+                const valA = a[0].cells[colIndex].textContent.trim();
+                const valB = b[0].cells[colIndex].textContent.trim();
+                return isAsc ? valA.localeCompare(valB, undefined, { numeric: true }) 
+                             : valB.localeCompare(valA, undefined, { numeric: true });
+            });
+
+            // Re-append in new order
+            pairedRows.forEach(pair => {
+                tbody.appendChild(pair[0]);
+                tbody.appendChild(pair[1]);
+            });
+
+            // Update sort direction
+            th.setAttribute('data-sort', isAsc ? 'asc' : 'desc');
+        }
+
+        // Start the app
+        window.onload = loadAndRender;
+    </script>
+</body>
+</html>
