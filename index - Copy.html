@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CNC Tool Database Viewer</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; cursor: pointer; }
+        th { background-color: #f2f2f2; }
+        input { margin-bottom: 10px; padding: 5px; width: 300px; }
+        .details { display: none; }
+    </style>
+</head>
+<body>
+    <h1>CNC Tool Database</h1>
+    <input type="text" id="search" placeholder="Search by any field..." onkeyup="filterTables()">
+
+    <!-- Embedded Data (replace with your tools.json content) -->
+    <script>
+        const data = {"holders":[{"id":"DGTR 16B-2D25SH","category":"Holder","subcategory":"Groove/Turn & Parting Off","type":"Parting Off Indexable Holder","manufacturer":"Iscar","description":"Right-hand short head holder for parting and grooving on CNC lathes. Supports narrow widths with modification for 1mm inserts.","specs":{"shank_height":"16 mm","shank_width":"16 mm","overall_length":"120 mm","head_length":"19.5 mm","functional_width":"15.2 mm","body_width":"1.6 mm","cutting_width_min":"1.9 mm","cutting_width_max":"2.5 mm","max_parting_diameter":"25.4 mm","body_material":"Steel","cutting_direction":"Right Hand","measurement_type":"Metric"},"size":"16B","geometry":"Designed for external grooving and parting. Pocket supports DGN/R/L inserts; modifiable for 1mm widths (depth capacity table available).","compatible_machines":["General CNC lathes"],"compatible_holders":["N/A (this is the holder)"],"compatible_inserts":["DGN/R/L 1-2.5mm (e.g., DGN 2002J IC908, DGR 2202, DGL 2002; 1mm in pockets 2/3 with mod)"],"sources":["https://webshop.iscar.in/catalogue/product/1923282#product_specs","https://www.iscar.com/Ecat/e.asp?cat=2301537"],"price_range":"$120 - $150 (estimated from similar models)","tags":["parting","grooving","external","metric"],"condition":"New"},{"id":"KM16SVJBR1120","category":"Holder","subcategory":"Tool Holders & Adapters","type":"SVJB 93° KM Micro Cutting Unit (OD Application)","manufacturer":"Kennametal","description":"S-Clamping cutting unit for external turning and OD applications in the KM Micro quick-change system. Supports positive style inserts for precise machining.","specs":{"system_size_machine_side":"KM16","f_dimension":"10 mm (0.394 in)","cutting_height":"8 mm (0.315 in)","tool_length":"20 mm (0.787 in)","gage_insert":"VB..110304","torque":"10-11 Newton Meters","clamping_type":"S-Clamping (Right Hand)"},"size":"KM16","geometry":"93° approach angle for OD turning. Optimized for positive rake inserts with sintered chipbreaker options.","compatible_machines":["Lathes with KM quick-change tooling"],"compatible_holders":["KM Micro adapters (e.g., CV40KM16TRA, KM16NCMSF1928, KM16NCM1616100)"],"compatible_inserts":["VBGT/VBMT 1103.. series (e.g., VBGT110301LF KC730, VBMT110304LF K313, in grades KC730, K313, K68 for steel/stainless/cast iron/non-ferrous/high-temp/hardened materials)"],"sources":["https://www.kennametal.com/us/en/products/p.svjb-93-km-micro-cutting-units-od-application.1884683.html","https://www.kennametal.com/us/en/products/metalworking-tools/tool-holders-and-adapters/km/km-systems/km-micro.html"],"price_range":"$229 (list price)","tags":["turning","OD","micro","quick-change","S-Clamping","right-hand"],"condition":"New"},{"id":"KM16LSSHPC2010","category":"Holder","subcategory":"Tool Holders & Adapters","type":"LSS HPC KM Micro Cutting Unit (OD Application)","manufacturer":"Kennametal","description":"High-pressure coolant (HPC) cutting unit for OD applications in the KM Micro system. Features left-hand clamping for efficient chip evacuation and cooling.","specs":{"system_size_machine_side":"KM16","f_dimension":"10 mm (0.394 in)","cutting_height":"8 mm (0.315 in)","tool_length":"20 mm (0.787 in)","coolant_type":"High-Pressure Coolant (HPC)","clamping_type":"S-Clamping (Left Hand)","torque":"10-11 Newton Meters"},"size":"KM16","geometry":"Straight shank with HPC channels for optimal coolant delivery. Neutral orientation allows flexible setup for various cutting directions.","compatible_machines":["Lathes with KM quick-change and HPC capability"],"compatible_holders":["KM Micro adapters (e.g., CV40KM16TRA, KM16NCMSF1928)"],"compatible_inserts":["VBGT/VBMT 1103.. series (e.g., VBGT110301LF KC730, VBMT110304LF K313, in grades KC730, K313 for various materials)"],"sources":["https://www.kennametal.com/us/en/products/p.lss-hpc-km-micro-cutting-units-od-application.3180676.html","https://www.kennametal.com/us/en/products/metalworking-tools/tool-holders-and-adapters/km/km-systems/km-micro.html"],"price_range":"$250 - $300 (estimated based on similar KM Micro units)","tags":["turning","OD","micro","quick-change","HPC","left-hand"],"condition":"New"},{"id":"KM16SVJBR1630","category":"Holder","subcategory":"Tool Holders & Adapters","type":"SVJB 93° KM Micro Cutting Unit (OD Application)","manufacturer":"Kennametal","description":"S-Clamping cutting unit for external turning and OD applications in the KM Micro quick-change system. Right-hand version for precise machining with positive inserts.","specs":{"system_size_machine_side":"KM16","f_dimension":"10 mm (0.3937 in)","cutting_height":"8 mm (0.3149 in)","tool_length":"30 mm (1.1811 in)","gage_insert":"VB..160408","torque":"10-11 Newton Meters","clamping_type":"S-Clamping (Right Hand)"},"size":"KM16","geometry":"93° approach angle for OD turning. Optimized for positive rake inserts with options for chipbreaker geometries.","compatible_machines":["Lathes with KM quick-change tooling"],"compatible_holders":["KM Micro adapters (e.g., CV40KM16TRA, KM16NCMSF1928, KM16NCM1616100)"],"compatible_inserts":["VBGT/VBMT 1604.. series (e.g., VBGT160401LF KC730, VBMT160404LF KC730, in grades KC730, K313, K68 for steel/stainless/cast iron/non-ferrous/high-temp/hardened materials)"],"sources":["https://www.kennametal.com/us/en/products/p.svjb-93-km-micro-cutting-units-od-application.1831216.html","https://www.kennametal.com/us/en/products/p.svjb-93-km-micro-schneidkopfe-zur-auenbearbeitung.1898056.html (German variant)"],"price_range":"$229 (list price)","tags":["turning","OD","micro","quick-change","S-Clamping","right-hand"],"condition":"New"},{"id":"KM16SCLCR0920","category":"Holder","subcategory":"Tool Holders & Adapters","type":"SCLC 95° Cutting Unit","manufacturer":"Kennametal","description":"Right-hand unit for OD turning with positive inserts.","specs":{"approach_angle":"95°","length":"20mm","gage_insert":"CC..09","torque":"10-11 Nm","clamping_type":"S-Clamping (Right Hand)"},"size":"KM16","geometry":"95° approach for OD turning, optimized for positive rake.","compatible_machines":["Lathes with KM quick-change"],"compatible_holders":["KM16NCM, KM16 adapters"],"compatible_inserts":["CCGT/CCMT 09 series"],"sources":["https://www.kennametal.com/us/en/products/p.sclc-95-km-micro-cutting-units-od-application.1831206.html"],"price_range":"$220-250","tags":["turning","OD","right-hand","S-Clamping"],"condition":"New"},{"id":"KM16SDJCR1120","category":"Holder","subcategory":"Tool Holders & Adapters","type":"SDJC 93° Cutting Unit","manufacturer":"Kennametal","description":"Versatile right-hand unit for profiling/turning.","specs":{"approach_angle":"93°","length":"20mm","gage_insert":"DC..11","torque":"10-11 Nm","clamping_type":"S-Clamping (Right Hand)"},"size":"KM16","geometry":"93° approach for profiling, positive rake optimized.","compatible_machines":["Lathes with KM quick-change"],"compatible_holders":["KM16NCM, KM16 adapters"],"compatible_inserts":["DCGT/DCMT 11 series"],"sources":["https://www.kennametal.com/us/en/products/p.sdjcr-93-km-micro-cutting-units-od-application.1831209.html"],"price_range":"$220-250","tags":["turning","profiling","right-hand"],"condition":"New"},{"id":"KM16STGCR1620","category":"Holder","subcategory":"Tool Holders & Adapters","type":"STGC 117.5° Cutting Unit","manufacturer":"Kennametal","description":"Right-hand grooving unit for external slots.","specs":{"approach_angle":"117.5°","length":"20mm","gage_insert":"TG..16","torque":"10-11 Nm","clamping_type":"S-Clamping (Right Hand)"},"size":"KM16","geometry":"117.5° for grooving, stable design.","compatible_machines":["Lathes with KM quick-change"],"compatible_holders":["KM16NCM, KM16 adapters"],"compatible_inserts":["TGBT/TBMT 16 series"],"sources":["https://www.kennametal.com/us/en/products/p.stgc-117.5-km-micro-cutting-units-od-application.1831212.html"],"price_range":"$230-260","tags":["grooving","external","right-hand"],"condition":"New"},{"id":"KM16SVGBR1630","category":"Holder","subcategory":"Tool Holders & Adapters","type":"SVGB 93° Cutting Unit","manufacturer":"Kennametal","description":"Right-hand unit for back turning/grooving.","specs":{"approach_angle":"93°","length":"30mm","gage_insert":"VG..16","torque":"10-11 Nm","clamping_type":"S-Clamping (Right Hand)"},"size":"KM16","geometry":"93° for back turning, chip control optimized.","compatible_machines":["Lathes with KM quick-change"],"compatible_holders":["KM16NCM, KM16 adapters"],"compatible_inserts":["VGBT/VBMT 16 series"],"sources":["https://www.kennametal.com/us/en/products/p.svgb-93-km-micro-cutting-units-od-application.1831215.html"],"price_range":"$230-260","tags":["turning","back-turning","right-hand"],"condition":"New"},{"id":"KM16NSR220","category":"Holder","subcategory":"Tool Holders & Adapters","type":"NSR Parting Unit","manufacturer":"Kennametal","description":"Neutral parting unit for narrow grooves.","specs":{"width":"2.2mm","length":"20mm","torque":"10-11 Nm","clamping_type":"Neutral"},"size":"KM16","geometry":"Neutral for parting, efficient chip evacuation.","compatible_machines":["Lathes with KM quick-change"],"compatible_holders":["KM16NCM, KM16 adapters"],"compatible_inserts":["NSR inserts (e.g., 2.2mm width series)"],"sources":["https://www.kennametal.com/us/en/products/p.nsr-km-micro-cutting-units-parting-application.1831203.html"],"price_range":"$200-230","tags":["parting","grooving","neutral"],"condition":"New"}],"inserts":[{"id":"DGN 2202J IC908","category":"Insert","subcategory":"Groove/Turn & Parting Off","type":"Parting Off Indexable Insert","manufacturer":"Iscar","description":"Neutral parting and grooving insert with J-type chipformer. Suitable for soft materials, tubes, small diameters, and thin-walled parts at low-to-medium feeds.","specs":{"cutting_width":"2.2 mm","corner_radius":"0.2 mm","corner_radius_tolerance":"+/- 0.02 mm","overall_length":"19.8 mm","insert_length":"19.8 mm","cutting_depth_max":"18 mm","cutting_width_tolerance":"+/- 0.03 mm","max_grooving_feed":"0.12 mm/rev","min_grooving_feed":"0.04 mm/rev","cutting_edge_material":"Carbide","coating":"TiAlN","grade":"IC908","cutting_direction":"Neutral","measurement_type":"Metric"},"size":"2202J","geometry":"J-type chipformer with positive configuration and reinforced negative frontal edge. Sharp corner (JS variant available). DGNM single-ended design.","compatible_machines":["CNC lathes for external/face grooving, parting, and internal face grooving"],"compatible_holders":["DGTR/L-B-D-SH series (e.g., DGTR 16B-2D25SH)"],"compatible_inserts":["N/A (this is the insert)"],"sources":["https://webshop.iscarusa.com/catalogue/product/1927465","https://www.iscar.com/Ecat/e.asp?cat=6002961"],"price_range":"$10 - $15 per insert (pack of 10)","tags":["parting","grooving","external","face grooving","internal","neutral","metric","carbide"],"condition":"New"},{"id":"VBGT110301LF KC730","category":"Insert","subcategory":"Turning","type":"Turning Insert","manufacturer":"Kennametal","description":"Positive rake insert for finishing in steel/stainless.","specs":{"shape":"V (35°)","radius":"0.1mm","grade":"KC730 (PVD)","coating":"PVD","cutting_edges":4,"rake":"Positive"},"size":"1103","geometry":"Sharp edge for low forces, chipbreaker for finishing.","compatible_machines":["CNC lathes"],"compatible_holders":["KM16SVJBR1120, KM16LSSHPC2010"],"compatible_inserts":["N/A"],"sources":["https://www.kennametal.com/us/en/products/turning/inserts/vbgt-vbmt-series.html"],"price_range":"$12-18","tags":["turning","finishing","positive","PVD"],"condition":"New"},{"id":"VBMT110304LF K313","category":"Insert","subcategory":"Turning","type":"Turning Insert","manufacturer":"Kennametal","description":"Multi-material insert for medium machining.","specs":{"shape":"V (35°)","radius":"0.4mm","grade":"K313 (CVD)","coating":"CVD","cutting_edges":4,"rake":"Positive"},"size":"1103","geometry":"Chipbreaker for medium feeds, versatile grades.","compatible_machines":["CNC lathes"],"compatible_holders":["KM16SVJBR1120, KM16SVJBR1630"],"compatible_inserts":["N/A"],"sources":["https://www.kennametal.com/us/en/products/turning/inserts/vbgt-vbmt-series.html"],"price_range":"$12-18","tags":["turning","medium","multi-material","CVD"],"condition":"New"},{"id":"VBGT160401LF KC730","category":"Insert","subcategory":"Turning","type":"Turning Insert","manufacturer":"Kennametal","description":"Larger insert for light roughing in alloys.","specs":{"shape":"V (35°)","radius":"0.1mm","grade":"KC730 (PVD)","coating":"PVD","cutting_edges":4,"rake":"Positive"},"size":"1604","geometry":"Low-force geometry for alloys, finishing chipbreaker.","compatible_machines":["CNC lathes"],"compatible_holders":["KM16SVJBR1630, KM16LSSHPC2010"],"compatible_inserts":["N/A"],"sources":["https://www.kennametal.com/us/en/products/turning/inserts/vbgt-vbmt-series.html"],"price_range":"$15-20","tags":["turning","roughing","positive","PVD"],"condition":"New"},{"id":"VBMT160404LF KC730","category":"Insert","subcategory":"Turning","type":"Turning Insert","manufacturer":"Kennametal","description":"Versatile insert for steel/cast iron.","specs":{"shape":"V (35°)","radius":"0.4mm","grade":"KC730 (PVD)","coating":"PVD","cutting_edges":4,"rake":"Positive"},"size":"1604","geometry":"Medium chipbreaker for steel/cast iron.","compatible_machines":["CNC lathes"],"compatible_holders":["KM16SVJBR1630, KM16SVJBR1120"],"compatible_inserts":["N/A"],"sources":["https://www.kennametal.com/us/en/products/turning/inserts/vbgt-vbmt-series.html"],"price_range":"$15-20","tags":["turning","versatile","PVD"],"condition":"New"},{"id":"VBGT110302LF K68","category":"Insert","subcategory":"Turning","type":"Turning Insert","manufacturer":"Kennametal","description":"Sharp edge for non-ferrous/high-temp alloys.","specs":{"shape":"V (35°)","radius":"0.2mm","grade":"K68 (Uncoated)","coating":"Uncoated","cutting_edges":4,"rake":"Positive"},"size":"1103","geometry":"Sharp for non-ferrous, high-temp resistance.","compatible_machines":["CNC lathes"],"compatible_holders":["KM16SVJBR1120, KM16LSSHPC2010"],"compatible_inserts":["N/A"],"sources":["https://www.kennametal.com/us/en/products/turning/inserts/vbgt-vbmt-series.html"],"price_range":"$10-15","tags":["turning","sharp","uncoated"],"condition":"New"}],"adapters":[]}; // Paste your full tools.json here
+
+        function renderTables() {
+            Object.keys(data).forEach(group => {
+                if (data[group].length === 0) return;
+                const div = document.createElement('div');
+                div.innerHTML = `<h2>${group.charAt(0).toUpperCase() + group.slice(1)}</h2>`;
+                const table = document.createElement('table');
+                table.innerHTML = `
+                    <tr>
+                        <th onclick="sortTable(this, 0)">ID</th>
+                        <th onclick="sortTable(this, 1)">Type</th>
+                        <th onclick="sortTable(this, 2)">Manufacturer</th>
+                        <th>Description</th>
+                        <th onclick="sortTable(this, 4)">Size</th>
+                        <th onclick="sortTable(this, 5)">Price Range</th>
+                        <th>Tags</th>
+                        <th>Details</th>
+                    </tr>
+                `;
+                data[group].forEach(tool => {
+                    const row = table.insertRow();
+                    row.insertCell().textContent = tool.id;
+                    row.insertCell().textContent = tool.type;
+                    row.insertCell().textContent = tool.manufacturer;
+                    row.insertCell().textContent = tool.description.substring(0, 50) + '...';
+                    row.insertCell().textContent = tool.size;
+                    row.insertCell().textContent = tool.price_range;
+                    row.insertCell().textContent = tool.tags.join(', ');
+                    const detailsCell = row.insertCell();
+                    detailsCell.innerHTML = '<button onclick="toggleDetails(this)">Show</button>';
+                    const detailsRow = table.insertRow();
+                    detailsRow.className = 'details';
+                    const detailsContent = detailsRow.insertCell();
+                    detailsContent.colSpan = 8;
+                    detailsContent.innerHTML = `<pre>${JSON.stringify(tool, null, 2)}</pre>`;
+                });
+                div.appendChild(table);
+                document.body.appendChild(div);
+            });
+        }
+        function filterTables() {
+            const filter = document.getElementById('search').value.toLowerCase();
+            const tables = document.querySelectorAll('table');
+            tables.forEach(table => {
+                const rows = table.rows;
+                for (let i = 1; i < rows.length; i += 2) {
+                    const cells = rows[i].cells;
+                    let match = false;
+                    for (let j = 0; j < cells.length; j++) {
+                        if (cells[j].textContent.toLowerCase().includes(filter)) {
+                            match = true;
+                            break;
+                        }
+                    }
+                    rows[i].style.display = match ? '' : 'none';
+                    rows[i+1].style.display = match ? '' : 'none';
+                }
+            });
+        }
+        function toggleDetails(button) {
+            const row = button.closest('tr').nextElementSibling;
+            row.style.display = row.style.display === 'none' ? '' : 'none';
+            button.textContent = row.style.display === 'none' ? 'Show' : 'Hide';
+        }
+        function sortTable(th, col) {
+            const table = th.closest('table');
+            const rows = Array.from(table.rows).slice(1);
+            const isAsc = th.getAttribute('data-sort') !== 'asc';
+            rows.sort((a, b) => {
+                let valA = a.cells[col].textContent.trim();
+                let valB = b.cells[col].textContent.trim();
+                return isAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+            });
+            rows.forEach(row => table.appendChild(row));
+            th.setAttribute('data-sort', isAsc ? 'asc' : 'desc');
+        }
+        renderTables();
+    </script>
+</body>
+</html>
