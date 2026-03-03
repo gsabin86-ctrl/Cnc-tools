@@ -1,3 +1,8 @@
 catalogs/*/images-*/
 catalogs/**/*.mhtml
 catalogs/**/*_text.txt
+
+# Catalog files in root (moved to catalogs/)
+*.mhtml
+*_text.txt
+
