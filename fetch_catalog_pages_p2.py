@@ -1,0 +1,25 @@
+import urllib.request, os, time
+
+# Part 2 - fetch index pages (1259+) and some early pages to understand structure
+base_url = "https://www.iscar.com/Catalogs/Publication/Catalogs_Mm/english_1/Miniature_Parts/Miniature%20Parts_Catalog_flipview_part2/files/page/{}.jpg?2025-12-24081709"
+out_dir = "C:/Users/gsabi/.openclaw/workspace/cnc-tool-database/catalog_images_part2"
+os.makedirs(out_dir, exist_ok=True)
+
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+
+# Fetch pages 1-10 of part 2, and try to find the index
+for page in range(1, 16):
+    out_path = os.path.join(out_dir, f"page_{page:03d}.jpg")
+    if os.path.exists(out_path):
+        print(f"Page {page}: exists")
+        continue
+    try:
+        req = urllib.request.Request(base_url.format(page), headers=headers)
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = resp.read()
+            with open(out_path, 'wb') as f:
+                f.write(data)
+            print(f"Page {page}: {len(data)} bytes")
+    except Exception as e:
+        print(f"Page {page}: FAILED - {e}")
+    time.sleep(0.3)
