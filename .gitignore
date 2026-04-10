@@ -1,8 +1,46 @@
-catalogs/*/images-*/
+# Node
+node_modules/
+package-lock.json
+package.json
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Large catalog PDFs (keep SCHEMA_MAP.md files)
+catalogs/**/*.pdf
+catalogs/**/*.gz
+catalogs/**/images-*/
 catalogs/**/*.mhtml
 catalogs/**/*_text.txt
+catalogs/split_parts/
 
 # Catalog files in root (moved to catalogs/)
 *.mhtml
 *_text.txt
 
+# Logs
+logs/
+
+# Temp/scratch scripts
+add_batch*.py
+add_*.py
+fetch_*.py
+find_*.py
+parse_catalog*.py
+export_json.py
+inspect.py
+migrate_db.*
+migration.js
+server.js
+start-viewer.bat
+data.json
+index.html
+index.html.txt
+
+# Archive
+archive/
+
+# Agent test
+agent-test/

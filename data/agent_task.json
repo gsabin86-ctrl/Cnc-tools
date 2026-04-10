@@ -1,0 +1,59 @@
+{
+  "task": "parse_iscar_catalog_holders",
+  "source": "Iscar Miniature Parts Catalog Part 1 (Metric)",
+  "table": "inserts",
+  "manufacturer": "Iscar",
+  "compatible_machines": ["Star ECAS20", "Swiss-type CNC lathes", "Swiss automatic lathes"],
+  "notes": "Parse the catalog data below for Iscar Swiss-type turning toolholders. Create one proposal per unique designation. Focus on 8mm, 10mm, and 12mm shank sizes. Source field must reference the catalog page. chipbreaker=N/A for holders. category=Swiss Turning Holder. DO NOT invent specs — use only what is in the catalog text.",
+
+  "catalog_data": [
+
+    {
+      "family": "SCACR/L-S",
+      "catalog_page": 21,
+      "description": "Screw Lock Tools Carrying 80 degree Diamond Inserts with 7 degree Clearance Angle for Swiss-Type Machines. Lead angles 99/91 degrees.",
+      "insert_miid": "CCMT 060204-14 (06 inserts) or CCMT 09T304-14 (09 inserts)",
+      "compatible_inserts": ["CCMT", "CCGT"],
+      "metric_designations": [
+        {"designation": "SCACR/L 0808K-06S", "H": 8.0, "HF": 8.0, "B": 8.0, "LF": 125.0, "LH": 8.0, "WF": 8.20, "OAW": null, "MIID": "CCMT 060204-14"},
+        {"designation": "SCACR 1010K-06S",  "H": 10.0, "HF": 10.0, "B": 10.0, "LF": 150.0, "LH": null, "WF": 10.00, "OAW": null, "MIID": "CCMT 060204-14"},
+        {"designation": "SCACR/L 1010K-09S", "H": 10.0, "HF": 10.0, "B": 10.0, "LF": 125.0, "LH": 15.2, "WF": 10.20, "OAW": null, "MIID": "CCMT 09T304-14"},
+        {"designation": "SCACR 1212K-09S",  "H": 12.0, "HF": 12.0, "B": 12.0, "LF": 125.0, "LH": 14.0, "WF": 12.15, "OAW": 12.50, "MIID": "CCMT 09T304-14"}
+      ],
+      "spare_parts": ["SR 14-548 T-7/5 (06 inserts)", "SR 16-236 T-15/5 (09 inserts)"],
+      "notes": "Shank suffix S = Swiss-type. /L = left-hand available. R = right-hand."
+    },
+
+    {
+      "family": "SDJCR/L-S",
+      "catalog_page": 26,
+      "description": "Screw Lock Tools Carrying 55 degree Diamond Inserts with 7 degree Clearance Angle. 93 degree lead angle. Swiss-type variants marked with (1).",
+      "insert_miid": "DCMT 0702 (07 inserts) or DCMT 11T3 (11 inserts)",
+      "compatible_inserts": ["DCMT", "DCGT"],
+      "metric_designations": [
+        {"designation": "SDJCR/L 0808K-07S", "H": 8.0,  "HF": 8.0,  "B": 8.0,  "LF": 125.0, "LH": 10.6, "WF": 8.15,  "MIID": "DCMT 0702"},
+        {"designation": "SDJCR/L 1010M-07S", "H": 10.0, "HF": 10.0, "B": 10.0, "LF": 150.0, "LH": 10.6, "WF": 10.15, "MIID": "DCMT 0702"},
+        {"designation": "SDJCR/L 1212K-07S", "H": 12.0, "HF": 12.0, "B": 12.0, "LF": 125.0, "LH": 10.6, "WF": 12.15, "MIID": "DCMT 0702"},
+        {"designation": "SDJCR/L 1010K-11S", "H": 10.0, "HF": 10.0, "B": 10.0, "LF": 125.0, "LH": 20.5, "WF": 10.15, "MIID": "DCMT 11T3"},
+        {"designation": "SDJCR/L 1212M-11S", "H": 12.0, "HF": 12.0, "B": 12.0, "LF": 150.0, "LH": 12.5, "WF": 12.15, "MIID": "DCMT 11T3"}
+      ],
+      "spare_parts": ["SR 14-548 T-7/5 (07 inserts)", "SR 16-236 P T-15/5 (11 inserts)"],
+      "notes": "Shank suffix S = Swiss-type. LH dimension = coolant-through overhang length."
+    },
+
+    {
+      "family": "SVJCR/L-S",
+      "catalog_page": 38,
+      "description": "93 degree Lead Angle Screw Lock Tools Carrying 35 degree Diamond Inserts with 7 degree Clearance Angle. Swiss-type variants marked with (1).",
+      "insert_miid": "VCMT 1103",
+      "compatible_inserts": ["VCMT", "VCGT"],
+      "metric_designations": [
+        {"designation": "SVJCR/L 0808K-11S", "H": 8.0,  "HF": 8.0,  "B": 8.0,  "LF": 125.0, "LH": 11.5, "WF": 8.20,  "MIID": "VCMT 1103"},
+        {"designation": "SVJCR/L 1010K-11S", "H": 10.0, "HF": 10.0, "B": 10.0, "LF": 125.0, "LH": 22.0, "WF": 10.20, "MIID": "VCMT 1103"},
+        {"designation": "SVJCR/L 1212K-11S", "H": 12.0, "HF": 12.0, "B": 12.0, "LF": 125.0, "LH": null, "WF": 12.20, "MIID": "VCMT 1103"}
+      ],
+      "spare_parts": ["SR 14-560 T-8/5"],
+      "notes": "Shank suffix S = Swiss-type. 35 degree diamond insert geometry (V-type)."
+    }
+  ]
+}

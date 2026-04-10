@@ -1,0 +1,19 @@
+[
+  {
+    "_instructions": "Copy this template for each new insert. Remove this _instructions block before importing.",
+    "_fields": {
+      "insert": "REQUIRED - Manufacturer part number/ID (e.g. KM16STGCR1620)",
+      "type": "REQUIRED - Insert type (e.g. Turning, Grooving, Threading, Profiling, Parting, Chamfering, etc.)",
+      "material": "REQUIRED - Insert material (e.g. Carbide, CBN, Ceramic)",
+      "compatibility": "REQUIRED - Holder compatibility (e.g. KM16 Series holders)",
+      "application": "REQUIRED - What it is used for",
+      "geometry": "REQUIRED - Insert geometry (e.g. Positive rake, 80-degree diamond, Wiper edge)",
+      "grade": "REQUIRED - Grade designation (e.g. KC5025, KCU25, CVD-coated for steel)",
+      "specs": "REQUIRED - Key specs (e.g. ISO: CNMG 120408, Nose radius: 0.4mm)",
+      "chipbreaker": "OPTIONAL - Chipbreaker designation if applicable",
+      "shape": "OPTIONAL - Insert shape (e.g. C-Diamond 80, T-Triangle 60)",
+      "manufacturer": "REQUIRED - Manufacturer name (e.g. Kennametal, Iscar, PH Horn)",
+      "source": "REQUIRED - URL or catalog reference (e.g. Kennametal Catalog p.42 or https://kennametal.com/...)"
+    }
+  }
+]

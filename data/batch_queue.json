@@ -1,0 +1,8 @@
+{
+  "config": {
+    "batch_size": 15,
+    "model": "qwen2.5-coder-7b-instruct",
+    "auto_apply": false
+  },
+  "queue": []
+}

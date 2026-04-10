@@ -1,0 +1,156 @@
+[
+  {
+    "insert": "KM16NSR220",
+    "type": "Grooving/Cut-Off",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "Narrow grooving or cut-off operations",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u00e2\u201e\u00a2 Cutting Units",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16NSR330",
+    "type": "Grooving/Cut-Off",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "Wider grooving or cut-off operations",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u00e2\u201e\u00a2 Cutting Units",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16SCLCR0920",
+    "type": "Turning",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "General turning with positive rake insert compatibility",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u00e2\u201e\u00a2 Cutting Units, head length likely 20mm",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16SDACR1120",
+    "type": "Turning/Profiling",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "Turning and profiling operations",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u00e2\u201e\u00a2 Cutting Units, head length likely 20mm",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16SCGCR0920",
+    "type": "Turning",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "General turning, possibly with positive rake insert compatibility",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u00e2\u201e\u00a2 Cutting Units, head length likely 20mm",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16SDJCR1120",
+    "type": "Turning/Profiling",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "Turning and profiling operations",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u00e2\u201e\u00a2 Cutting Units, head length likely 20mm",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16STGCR1620",
+    "type": "Turning",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "General turning operations",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u00e2\u201e\u00a2 Cutting Units, head length likely 20mm",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16SVGBR1630",
+    "type": "Turning/Profiling",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "Versatile turning and profiling",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u00e2\u201e\u00a2 Cutting Units, head length likely 30mm",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16RCM1616100HPC",
+    "type": "KM Micro Cutting Unit",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "Not specified (to be verified)",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u2122 Cutting Units",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16STJCR1120",
+    "type": "KM Micro Cutting Unit",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "Not specified (to be verified)",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u2122 Cutting Units",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16STJCR1620",
+    "type": "KM Micro Cutting Unit",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "Not specified (to be verified)",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u2122 Cutting Units",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16TS",
+    "type": "KM Micro Cutting Unit",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "Not specified (to be verified)",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u2122 Cutting Units",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16NA",
+    "type": "KM Micro Cutting Unit",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "Not specified (to be verified)",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u2122 Cutting Units",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  },
+  {
+    "insert": "KM16NAPKG",
+    "type": "KM Micro Cutting Unit",
+    "material": "Not specified (to be verified)",
+    "compatibility": "KM16 Series holders",
+    "application": "Not specified (to be verified)",
+    "geometry": "Not specified (to be verified)",
+    "grade": "Not specified (to be verified)",
+    "specs": "Part of KM Micro\u2122 Cutting Units",
+    "source": "https://www.kennametal.com/us/en/products/p.km-cm-hpc-square-shank-km-micro-clamping-units.3397255.html"
+  }
+]
