@@ -360,11 +360,11 @@
             </div>
         </div>
 
-        <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex flex-col lg:flex-row gap-8 lg:h-[calc(100vh-260px)]">
 
             <!-- Filters Sidebar -->
-            <div class="lg:w-72 flex-shrink-0">
-                <div class="sticky top-24">
+            <div class="lg:w-72 flex-shrink-0 lg:overflow-y-auto lg:pr-2 lg:pb-6">
+                <div>
                     <div class="flex items-center justify-between mb-4 px-1">
                         <div class="uppercase text-xs tracking-[1.5px] text-[#00f9ff] font-semibold">FILTERS</div>
                         <button onclick="clearAllFilters()"
@@ -440,7 +440,7 @@
             </div>
 
             <!-- Results Area -->
-            <div class="flex-1 min-w-0">
+            <div class="flex-1 min-w-0 lg:overflow-y-auto lg:pb-6">
 
                 <!-- Results Count -->
                 <div class="flex items-center justify-between mb-4 px-1">
