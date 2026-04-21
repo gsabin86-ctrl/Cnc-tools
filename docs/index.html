@@ -319,26 +319,6 @@
                             class="px-4 py-1.5 rounded-full transition-all text-[#64748b] hover:text-white">IMPERIAL</button>
                 </div>
 
-                <!-- Fun Action Buttons -->
-                <div class="flex items-center gap-x-2">
-                    <button onclick="randomTool()"
-                            class="neon-button px-4 py-2 rounded-lg text-xs flex items-center gap-x-2 hover:no-underline">
-                        <i class="fa-solid fa-dice"></i>
-                        <span class="hidden sm:inline">RANDOM</span>
-                    </button>
-
-                    <button onclick="exportToCSV()"
-                            class="neon-button px-4 py-2 rounded-lg text-xs flex items-center gap-x-2 hover:no-underline border-[#39ff14] text-[#39ff14]">
-                        <i class="fa-solid fa-download"></i>
-                        <span class="hidden sm:inline">EXPORT</span>
-                    </button>
-                </div>
-
-                <a href="https://github.com/gsabin86-ctrl/Cnc-tools" target="_blank"
-                   class="neon-button px-4 py-2 rounded-lg text-sm flex items-center gap-x-2 hover:no-underline">
-                    <i class="fa-brands fa-github"></i>
-                    <span class="hidden sm:inline">SOURCE</span>
-                </a>
             </div>
         </div>
     </header>
@@ -352,7 +332,7 @@
                     <h1 class="text-5xl font-bold tracking-tighter section-title">CNC TOOL DATABASE</h1>
                     <div class="px-3 py-1 bg-[#ff00aa]/10 border border-[#ff00aa] text-[#ff00aa] text-xs rounded font-mono tracking-widest">LIVE</div>
                 </div>
-                <p class="text-[#94a3b8] max-w-md">Precision tooling from Tungaloy • Kennametal • Sandvik • Mitsubishi • PH Horn • Iscar</p>
+                <p class="text-[#94a3b8] max-w-md" id="makers-tagline">Precision tooling</p>
             </div>
 
             <!-- View Toggle -->
@@ -946,6 +926,15 @@
 
             const statBrands = document.getElementById('stat-brand-count')
             if (statBrands) statBrands.textContent = `${uniqueMakers.size} brands`
+
+            // Dynamic makers tagline
+            const tagline = document.getElementById('makers-tagline')
+            if (tagline) {
+                const sortedMakers = Array.from(uniqueMakers).sort()
+                tagline.textContent = sortedMakers.length
+                    ? `Precision tooling from ${sortedMakers.join(' · ')}`
+                    : 'Precision tooling'
+            }
 
             const countEl = document.getElementById('manufacturer-count')
             if (countEl) countEl.textContent = `${uniqueMakers.size} MANUFACTURERS SYNCED`
