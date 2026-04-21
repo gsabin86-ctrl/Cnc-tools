@@ -1,532 +1,1080 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CNC Tool Database</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; background: #1a1a2e; color: #e0e0e0; min-height: 100vh; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON FORGE // CNC TOOL DATABASE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&display=swap');
 
-    header { background: #16213e; padding: 16px 24px; border-bottom: 2px solid #0f3460; display: flex; align-items: center; gap: 16px; }
-    header h1 { font-size: 20px; color: #e0e0ff; letter-spacing: 1px; }
-    #db-stats { font-size: 13px; color: #888; margin-left: auto; }
+        :root {
+            --neon-cyan: #00f9ff;
+            --neon-pink: #ff00aa;
+            --neon-purple: #7b2cbf;
+            --neon-green: #39ff14;
+        }
 
-    .main { display: flex; height: calc(100vh - 57px); }
+        body {
+            background: #050507;
+            color: #e0e0ff;
+            font-family: 'Share Tech Mono', monospace;
+            background-image:
+                linear-gradient(rgba(0,249,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,249,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-move 25s linear infinite;
+        }
 
-    /* Sidebar filters */
-    .sidebar { width: 240px; min-width: 200px; background: #16213e; border-right: 1px solid #0f3460; padding: 16px 12px; overflow-y: auto; flex-shrink: 0; }
-    .sidebar h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 10px; margin-top: 16px; }
-    .sidebar h2:first-child { margin-top: 0; }
-    .filter-group { margin-bottom: 6px; }
-    .filter-group label { display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer; padding: 3px 4px; border-radius: 3px; }
-    .filter-group label:hover { background: #0f3460; }
-    .filter-group input[type=checkbox] { accent-color: #4a90d9; cursor: pointer; }
-    .filter-group input[type=range] { width: 100%; accent-color: #4a90d9; }
-    .filter-group input[type=text], .filter-group select { width: 100%; padding: 5px 8px; background: #0f3460; border: 1px solid #2a4a7f; border-radius: 4px; color: #e0e0e0; font-size: 13px; }
-    .range-labels { display: flex; justify-content: space-between; font-size: 11px; color: #888; }
-    .clear-btn { width: 100%; margin-top: 12px; padding: 7px; background: #0f3460; border: 1px solid #2a4a7f; border-radius: 4px; color: #aaa; cursor: pointer; font-size: 13px; }
-    .clear-btn:hover { background: #1a3a6f; color: #fff; }
+        @keyframes grid-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
 
-    /* Results area */
-    .results { flex: 1; overflow-y: auto; padding: 16px; }
-    #search-bar { width: 100%; padding: 10px 14px; font-size: 15px; background: #16213e; border: 1px solid #0f3460; border-radius: 6px; color: #e0e0e0; margin-bottom: 12px; }
-    #search-bar:focus { outline: none; border-color: #4a90d9; }
-    #result-count { font-size: 13px; color: #888; margin-bottom: 12px; }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
 
-    table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    thead { position: sticky; top: 0; z-index: 2; }
-    th { background: #0f3460; padding: 9px 10px; text-align: left; cursor: pointer; user-select: none; white-space: nowrap; border-bottom: 2px solid #4a90d9; color: #c0d8ff; }
-    th:hover { background: #1a4a8f; }
-    td { padding: 7px 10px; border-bottom: 1px solid #1e2a4a; vertical-align: top; }
-    tr.data-row:hover td { background: #1e2a4a; }
-    tr.detail-row td { background: #0d1b33; padding: 0; }
+        .cyber-header {
+            background: linear-gradient(90deg, #0a0a0f 0%, #111118 100%);
+            border-bottom: 1px solid #00f9ff;
+            box-shadow: 0 0 20px rgba(0, 249, 255, 0.3);
+        }
 
-    .tag { display: inline-block; background: #1a3a6f; color: #90b8ff; border-radius: 3px; padding: 1px 6px; font-size: 11px; margin: 1px; }
-    .tag.type-insert { background: #1a3a2f; color: #90ffb8; }
-    .tag.type-holder { background: #3a2a1a; color: #ffb890; }
-    .tag.type-module { background: #2a1a3a; color: #d890ff; }
-    .badge { display: inline-block; border-radius: 3px; padding: 2px 7px; font-size: 11px; font-weight: bold; }
-    .badge-insert { background: #1a3a2f; color: #90ffb8; }
-    .badge-holder { background: #3a2a1a; color: #ffb890; }
-    .badge-module { background: #2a1a3a; color: #d890ff; }
-    .badge-shank  { background: #2a2a1a; color: #fff890; }
-    .badge-machine{ background: #1a2a3a; color: #90d8ff; }
-    .badge-spare  { background: #2a1a1a; color: #ff9090; }
+        .neon-text {
+            text-shadow: 0 0 10px #00f9ff,
+                        0 0 20px #00f9ff;
+        }
 
-    .show-btn { padding: 3px 10px; background: #0f3460; border: 1px solid #2a4a7f; border-radius: 3px; color: #90b8ff; cursor: pointer; font-size: 12px; }
-    .show-btn:hover { background: #1a4a8f; }
+        .neon-pink {
+            text-shadow: 0 0 10px #ff00aa,
+                        0 0 20px #ff00aa;
+        }
 
-    pre.detail-pre { background: #0a1020; padding: 16px; font-size: 12px; overflow: auto; max-height: 340px; border-top: 1px solid #0f3460; color: #c0e0ff; line-height: 1.5; }
-    .detail-inner { padding: 12px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
-    .detail-kv { font-size: 12px; }
-    .detail-kv span:first-child { color: #888; margin-right: 6px; }
-    .compat-section { grid-column: 1/-1; margin-top: 8px; }
-    .compat-item { display: inline-block; background: #0f3460; border-radius: 3px; padding: 2px 8px; font-size: 12px; margin: 2px; color: #90b8ff; cursor: pointer; }
-    .compat-item:hover { background: #1a4a8f; text-decoration: underline; }
+        .neon-button {
+            background: transparent;
+            border: 1px solid #00f9ff;
+            color: #00f9ff;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-    .no-results { text-align: center; padding: 60px 20px; color: #555; font-size: 16px; }
+        .neon-button:hover {
+            background: #00f9ff;
+            color: #050507;
+            box-shadow: 0 0 25px #00f9ff;
+            transform: translateY(-1px);
+        }
 
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #1a1a2e; }
-    ::-webkit-scrollbar-thumb { background: #0f3460; border-radius: 3px; }
+        .neon-button.active {
+            background: #00f9ff;
+            color: #050507;
+            box-shadow: 0 0 25px #00f9ff;
+        }
 
-    /* Tab nav */
-    .tab-btn { padding: 5px 16px; background: #0f3460; border: 1px solid #2a4a7f; border-radius: 4px; color: #aaa; cursor: pointer; font-size: 13px; }
-    .tab-btn:hover { background: #1a4a8f; color: #fff; }
-    .tab-btn.active { background: #4a90d9; border-color: #4a90d9; color: #fff; font-weight: bold; }
+        .filter-chip {
+            background: #111118;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            transition: all 0.2s ease;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+        }
 
-    /* Machines panel */
-    #machines-panel { display: none; flex: 1; overflow-y: auto; padding: 24px; }
-    .machine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
-    .machine-card { background: #16213e; border: 1px solid #0f3460; border-radius: 8px; padding: 18px; }
-    .machine-card h3 { font-size: 15px; color: #90d8ff; margin-bottom: 4px; }
-    .machine-card .machine-meta { font-size: 12px; color: #888; margin-bottom: 10px; }
-    .machine-card .machine-spec { font-size: 12px; margin-bottom: 4px; }
-    .machine-card .machine-spec span:first-child { color: #888; margin-right: 6px; }
-    .machine-card .station-block { margin-top: 10px; }
-    .machine-card .station-block h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 6px; }
-    .station-row { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-bottom: 3px; }
-    .station-badge { background: #0f3460; border-radius: 3px; padding: 2px 8px; color: #90b8ff; font-size: 11px; white-space: nowrap; }
-    .machine-card .filter-link { display: inline-block; margin-top: 12px; padding: 5px 12px; background: #0f3460; border: 1px solid #2a4a7f; border-radius: 4px; color: #90b8ff; cursor: pointer; font-size: 12px; }
-    .machine-card .filter-link:hover { background: #1a4a8f; color: #fff; }
-    .machine-card .tbd { color: #555; font-style: italic; font-size: 12px; }
-  </style>
+        .filter-chip:hover {
+            border-color: #00f9ff;
+            color: #00f9ff;
+            box-shadow: 0 0 8px rgba(0, 249, 255, 0.4);
+        }
+
+        .filter-chip.active {
+            background: #00f9ff;
+            color: #050507;
+            border-color: #00f9ff;
+            box-shadow: 0 0 12px #00f9ff;
+            font-weight: 600;
+        }
+
+        .tool-card {
+            background: #0f0f14;
+            border: 1px solid #334155;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card:hover {
+            border-color: #00f9ff;
+            box-shadow: 0 0 30px rgba(0, 249, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent 40%,
+                rgba(0, 249, 255, 0.08) 50%,
+                transparent 60%
+            );
+            transform: rotate(30deg);
+            transition: all 0.4s ease;
+            opacity: 0;
+        }
+
+        .tool-card:hover::before {
+            opacity: 1;
+            transform: rotate(30deg) translate(20%, 20%);
+        }
+
+        .cyber-table {
+            border: 1px solid #334155;
+        }
+
+        .cyber-table th {
+            background: #111118;
+            color: #00f9ff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.75rem;
+        }
+
+        .cyber-table td {
+            border-color: #334155;
+        }
+
+        .scanlines {
+            position: relative;
+        }
+
+        .scanlines::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                transparent 50%,
+                rgba(0, 249, 255, 0.03) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 1;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100px; }
+        }
+
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(0, 249, 255, 0.5);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .data-value {
+            font-family: 'Share Tech Mono', monospace;
+            color: #e0e0ff;
+        }
+
+        .cyber-input {
+            background: #111118;
+            border: 1px solid #334155;
+            color: white;
+            transition: all 0.2s ease;
+        }
+
+        .cyber-input:focus {
+            border-color: #00f9ff;
+            box-shadow: 0 0 15px rgba(0, 249, 255, 0.3);
+            outline: none;
+        }
+
+        .stat-pill {
+            background: #111118;
+            border: 1px solid #334155;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: #050507;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            gap: 20px;
+        }
+        .loading-overlay.hidden { display: none; }
+        .load-bar {
+            width: 260px;
+            height: 3px;
+            background: #111118;
+            border: 1px solid #334155;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .load-bar-fill {
+            height: 100%;
+            background: #00f9ff;
+            box-shadow: 0 0 10px #00f9ff;
+            animation: load-pulse 1.4s ease-in-out infinite;
+        }
+        @keyframes load-pulse {
+            0%   { width: 0%; }
+            50%  { width: 70%; }
+            100% { width: 100%; }
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen">
 
-<header>
-  <h1>🔧 CNC Tool Database</h1>
-  <nav style="display:flex;gap:4px;margin-left:24px">
-    <button class="tab-btn active" onclick="switchTab('tools')" id="tab-tools">Tools</button>
-    <button class="tab-btn" onclick="switchTab('machines')" id="tab-machines">Machines</button>
-  </nav>
-  <span id="db-stats">Loading...</span>
-</header>
-
-<div class="main">
-  <div class="sidebar">
-    <h2>Component Type</h2>
-    <div id="filter-type"></div>
-
-    <h2>Manufacturer</h2>
-    <div id="filter-manufacturer"></div>
-
-    <h2>Insert Shape</h2>
-    <div id="filter-shape"></div>
-
-    <h2>Grade</h2>
-    <div id="filter-grade"></div>
-
-    <h2>Chipbreaker</h2>
-    <div id="filter-chipbreaker"></div>
-
-    <h2>Corner Radius (mm)</h2>
-    <div class="filter-group">
-      <select id="filter-radius">
-        <option value="">Any</option>
-      </select>
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="font-bold text-2xl tracking-[3px] neon-text" style="font-family:'Orbitron',sans-serif">NEON FORGE</div>
+        <div class="text-xs text-[#00f9ff] tracking-[2px]">LOADING DATABASE...</div>
+        <div class="load-bar"><div class="load-bar-fill"></div></div>
+        <div class="text-xs text-[#64748b]" id="load-status">Fetching db.sqlite</div>
     </div>
 
-    <h2>Min Bore / OD (mm)</h2>
-    <div class="filter-group">
-      <select id="filter-bore">
-        <option value="">Any</option>
-      </select>
+    <!-- Header -->
+    <header class="cyber-header sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-4">
+                <!-- Cyberpunk Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-11 h-11 bg-gradient-to-br from-[#00f9ff] via-[#7b2cbf] to-[#ff00aa] flex items-center justify-center rounded-lg relative">
+                        <i class="fa-solid fa-microchip text-[#050507] text-3xl"></i>
+                        <div class="absolute inset-0 bg-white/20 rounded-lg animate-pulse"></div>
+                    </div>
+                    <div class="group">
+                        <div class="font-bold text-3xl tracking-[3px] neon-text group-hover:animate-[glitch_0.4s_infinite] transition-all">NEON FORGE</div>
+                        <div class="text-[10px] text-[#00f9ff] -mt-1 tracking-[2px]">CNC TOOL ARCHIVE v2.4</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-x-4">
+                <!-- Stats -->
+                <div class="hidden md:flex items-center gap-x-2 text-xs">
+                    <div class="stat-pill px-3 py-1 rounded-full flex items-center gap-x-2">
+                        <div class="w-2 h-2 bg-[#39ff14] rounded-full animate-pulse"></div>
+                        <span class="text-[#94a3b8]" id="stat-insert-count">loading...</span>
+                    </div>
+                    <div class="stat-pill px-3 py-1 rounded-full text-[#94a3b8]" id="stat-brand-count">
+                        ...
+                    </div>
+                </div>
+
+                <!-- Unit Toggle -->
+                <div class="flex items-center bg-[#111118] border border-[#334155] rounded-full p-1 text-xs font-semibold">
+                    <button onclick="setUnit('metric')" id="btn-metric"
+                            class="px-4 py-1.5 rounded-full transition-all bg-[#00f9ff] text-[#050507]">METRIC</button>
+                    <button onclick="setUnit('imperial')" id="btn-imperial"
+                            class="px-4 py-1.5 rounded-full transition-all text-[#64748b] hover:text-white">IMPERIAL</button>
+                </div>
+
+                <!-- Fun Action Buttons -->
+                <div class="flex items-center gap-x-2">
+                    <button onclick="randomTool()"
+                            class="neon-button px-4 py-2 rounded-lg text-xs flex items-center gap-x-2 hover:no-underline">
+                        <i class="fa-solid fa-dice"></i>
+                        <span class="hidden sm:inline">RANDOM</span>
+                    </button>
+
+                    <button onclick="exportToCSV()"
+                            class="neon-button px-4 py-2 rounded-lg text-xs flex items-center gap-x-2 hover:no-underline border-[#39ff14] text-[#39ff14]">
+                        <i class="fa-solid fa-download"></i>
+                        <span class="hidden sm:inline">EXPORT</span>
+                    </button>
+                </div>
+
+                <a href="https://github.com/gsabin86-ctrl/Cnc-tools" target="_blank"
+                   class="neon-button px-4 py-2 rounded-lg text-sm flex items-center gap-x-2 hover:no-underline">
+                    <i class="fa-brands fa-github"></i>
+                    <span class="hidden sm:inline">SOURCE</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-6 pt-8 pb-16">
+
+        <!-- Hero / Title -->
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
+            <div>
+                <div class="flex items-center gap-x-3 mb-2">
+                    <h1 class="text-5xl font-bold tracking-tighter section-title">CNC TOOL DATABASE</h1>
+                    <div class="px-3 py-1 bg-[#ff00aa]/10 border border-[#ff00aa] text-[#ff00aa] text-xs rounded font-mono tracking-widest">LIVE</div>
+                </div>
+                <p class="text-[#94a3b8] max-w-md">Precision tooling from Tungaloy • Kennametal • Sandvik • Mitsubishi • PH Horn • Iscar</p>
+            </div>
+
+            <!-- View Toggle -->
+            <div class="flex items-center gap-x-2 mt-6 md:mt-0 bg-[#111118] border border-[#334155] rounded-xl p-1">
+                <button onclick="switchView('cards')" id="btn-cards"
+                        class="neon-button active px-5 py-2 rounded-lg flex items-center gap-x-2 text-sm">
+                    <i class="fa-solid fa-th-large"></i>
+                    <span>CARDS</span>
+                </button>
+                <button onclick="switchView('table')" id="btn-table"
+                        class="neon-button px-5 py-2 rounded-lg flex items-center gap-x-2 text-sm">
+                    <i class="fa-solid fa-table"></i>
+                    <span>TABLE</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Sticky Search Bar -->
+        <div class="sticky top-[78px] z-40 bg-[#050507] pb-4 -mx-6 px-6 border-b border-[#334155]/50 mb-8">
+            <div class="relative max-w-7xl mx-auto">
+                <div class="absolute left-5 top-1/2 -translate-y-1/2 text-[#00f9ff]">
+                    <i class="fa-solid fa-search text-xl"></i>
+                </div>
+                <input type="text" id="search-input"
+                       class="cyber-input w-full pl-14 pr-6 py-4 rounded-2xl text-lg placeholder-[#64748b]"
+                       placeholder="SEARCH PART NUMBER OR DESCRIPTION... (e.g. CCMT, DCMT, VBGT)">
+                <div class="absolute right-5 top-1/2 -translate-y-1/2 text-xs text-[#64748b] hidden md:block">
+                    PRESS <span class="font-mono bg-[#1a1a22] px-1.5 py-0.5 rounded">ESC</span> TO CLEAR
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+
+            <!-- Filters Sidebar -->
+            <div class="lg:w-72 flex-shrink-0">
+                <div class="sticky top-24">
+                    <div class="flex items-center justify-between mb-4 px-1">
+                        <div class="uppercase text-xs tracking-[1.5px] text-[#00f9ff] font-semibold">FILTERS</div>
+                        <button onclick="clearAllFilters()"
+                                class="text-xs text-[#ff00aa] hover:text-[#ff00aa]/80 flex items-center gap-x-1">
+                            <i class="fa-solid fa-times mr-1"></i> CLEAR ALL
+                        </button>
+                    </div>
+
+                    <!-- Filter Groups -->
+                    <div class="space-y-6">
+
+                        <!-- Manufacturer -->
+                        <div>
+                            <div class="text-[#94a3b8] text-xs mb-2 px-1 flex items-center gap-x-2">
+                                <i class="fa-solid fa-industry w-3"></i>
+                                <span>MANUFACTURER</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2" id="filter-manufacturer">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Component Type -->
+                        <div>
+                            <div class="text-[#94a3b8] text-xs mb-2 px-1 flex items-center gap-x-2">
+                                <i class="fa-solid fa-cogs w-3"></i>
+                                <span>COMPONENT TYPE</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2" id="filter-type">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Insert Shape -->
+                        <div>
+                            <div class="text-[#94a3b8] text-xs mb-2 px-1 flex items-center gap-x-2">
+                                <i class="fa-solid fa-shapes w-3"></i>
+                                <span>INSERT SHAPE</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2" id="filter-shape">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Grade -->
+                        <div>
+                            <div class="text-[#94a3b8] text-xs mb-2 px-1 flex items-center gap-x-2">
+                                <i class="fa-solid fa-medal w-3"></i>
+                                <span>GRADE</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2" id="filter-grade">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Chipbreaker -->
+                        <div>
+                            <div class="text-[#94a3b8] text-xs mb-2 px-1 flex items-center gap-x-2">
+                                <i class="fa-solid fa-waveform-lines w-3"></i>
+                                <span>CHIPBREAKER</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2" id="filter-cb">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-[10px] text-[#64748b] px-1">
+                        <i class="fa-solid fa-info-circle mr-1"></i>
+                        Data synced from db.sqlite · Last updated <span id="sidebar-update">today</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Area -->
+            <div class="flex-1 min-w-0">
+
+                <!-- Results Count -->
+                <div class="flex items-center justify-between mb-4 px-1">
+                    <div class="text-sm">
+                        <span id="results-count" class="font-mono text-[#00f9ff] text-lg">0</span>
+                        <span class="text-[#94a3b8]" id="results-label">tools found</span>
+                    </div>
+                    <div class="text-xs text-[#64748b] hidden md:block">Sorted by type · manufacturer · part #</div>
+                </div>
+
+                <!-- CARDS VIEW -->
+                <div id="cards-view" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    <!-- Populated by JS -->
+                </div>
+
+                <!-- TABLE VIEW -->
+                <div id="table-view" class="hidden">
+                    <div class="overflow-x-auto rounded-2xl border border-[#334155] cyber-table scanlines">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr>
+                                    <th class="px-5 py-4 text-left">PART #</th>
+                                    <th class="px-4 py-4 text-left">TYPE</th>
+                                    <th class="px-4 py-4 text-left">MAKER</th>
+                                    <th class="px-5 py-4 text-left">DESCRIPTION</th>
+                                    <th class="px-4 py-4 text-center">SIZE</th>
+                                    <th class="px-4 py-4 text-center">GRADE</th>
+                                    <th class="px-4 py-4 text-center">SHAPE</th>
+                                    <th class="px-4 py-4 text-center">CB</th>
+                                    <th class="px-4 py-4 w-10"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body" class="divide-y divide-[#334155]">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="no-results" class="hidden py-16 text-center">
+                    <i class="fa-solid fa-search text-6xl text-[#334155] mb-6"></i>
+                    <p class="text-xl text-[#64748b]">No tools match your filters</p>
+                    <button onclick="clearAllFilters()" class="mt-6 neon-button px-8 py-3 text-sm">CLEAR FILTERS</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <h2>Insert Seat</h2>
-    <div class="filter-group">
-      <input type="text" id="filter-seat" placeholder="e.g. CCMT, DCMT..." oninput="applyFilters()">
-    </div>
+    <!-- Footer + HUD -->
+    <footer class="border-t border-[#334155] py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Fake HUD Status -->
+            <div class="flex justify-center mb-6">
+                <div class="inline-flex items-center gap-x-3 bg-[#111118] border border-[#334155] px-6 py-2 rounded-full text-xs">
+                    <div class="flex items-center gap-x-2">
+                        <div class="w-2 h-2 bg-[#39ff14] rounded-full animate-pulse"></div>
+                        <span class="text-[#39ff14]">SYSTEM ONLINE</span>
+                    </div>
+                    <div class="text-[#64748b]">•</div>
+                    <div id="manufacturer-count">— MANUFACTURERS SYNCED</div>
+                    <div class="text-[#64748b]">•</div>
+                    <div>LAST UPDATE: <span id="last-update" class="font-mono">—</span></div>
+                </div>
+            </div>
 
-    <h2>Mounts To</h2>
-    <div class="filter-group">
-      <input type="text" id="filter-mounts" placeholder="e.g. KM16NCM10400" oninput="applyFilters()">
-    </div>
+            <div class="text-center text-xs text-[#64748b]">
+                <p>NEON FORGE CNC TOOL DATABASE · Built for precision machinists · Data from official manufacturer catalogs</p>
+                <p class="mt-1">All data sourced from verifiable catalog pages · All rights reserved to original manufacturers</p>
+            </div>
+        </div>
+    </footer>
 
-    <button class="clear-btn" onclick="clearFilters()">Clear All Filters</button>
-  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
+    <script>
+        // ── Global state ──────────────────────────────────────────────────────────
+        let tools = []
 
-  <div class="results">
-    <input type="text" id="search-bar" placeholder="Search everything - part number, description, specs, tags..." oninput="applyFilters()">
-    <div id="result-count"></div>
-    <table id="tool-table">
-      <thead>
-        <tr>
-          <th onclick="sortBy('json_id')">Part # ↕</th>
-          <th onclick="sortBy('component_type')">Type ↕</th>
-          <th onclick="sortBy('manufacturer')">Maker ↕</th>
-          <th>Description</th>
-          <th onclick="sortBy('size')">Size ↕</th>
-          <th onclick="sortBy('grade')">Grade ↕</th>
-          <th onclick="sortBy('shape')">Shape ↕</th>
-          <th onclick="sortBy('chipbreaker')">CB ↕</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody id="tool-tbody"></tbody>
-    </table>
-    <div class="no-results" id="no-results" style="display:none">No tools match your filters.</div>
-  </div>
-</div>
-
-<div id="machines-panel">
-  <div class="machine-grid" id="machine-grid"></div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
-<script>
-let allTools = [];
-let filteredTools = [];
-let sortCol = 'json_id';
-let sortAsc = true;
-let openDetailId = null;
-let allMachines = [];
-
-// ── Tab switching ─────────────────────────────────────────────────────────────
-function switchTab(tab) {
-  const toolsMain  = document.querySelector('.main');
-  const machPanel  = document.getElementById('machines-panel');
-  document.getElementById('tab-tools').classList.toggle('active',    tab==='tools');
-  document.getElementById('tab-machines').classList.toggle('active', tab==='machines');
-  toolsMain.style.display  = tab==='tools'    ? 'flex' : 'none';
-  machPanel.style.display  = tab==='machines' ? 'block' : 'none';
-}
-
-// ── Machines ──────────────────────────────────────────────────────────────────
-function loadMachines(db) {
-  const res = db.exec('SELECT * FROM machines ORDER BY make, model');
-  if (!res.length) return;
-  const { columns, values } = res[0];
-  allMachines = values.map(row => {
-    const obj = {};
-    columns.forEach((c, i) => {
-      let v = row[i];
-      if (v && ['specs','sources','tags'].includes(c)) { try { v = JSON.parse(v); } catch {} }
-      obj[c] = v;
-    });
-    return obj;
-  });
-  renderMachines();
-}
-
-function renderMachines() {
-  const grid = document.getElementById('machine-grid');
-  grid.innerHTML = '';
-  allMachines.forEach(m => {
-    const specs = (m.specs && typeof m.specs === 'object') ? m.specs : {};
-    const stations = specs.gang_block_stations || specs.turret_stations || null;
-    const maxBar   = specs.max_bar_dia_mm ? `Max bar: ${specs.max_bar_dia_mm}mm` : '';
-    const toolSys  = specs.tooling_system  ? `Tooling: ${specs.tooling_system}` : '';
-
-    let stationHtml = '';
-    if (stations) {
-      stationHtml = `<div class="station-block"><h4>Station Layout</h4>`;
-      Object.entries(stations).forEach(([s, info]) => {
-        stationHtml += `<div class="station-row">
-          <span class="station-badge">Sta ${s}</span>
-          <span>${info.shank_type} shank - ${info.shank_size_mm}mm</span>
-        </div>`;
-      });
-      stationHtml += `</div>`;
-    } else {
-      stationHtml = `<div class="station-block"><span class="tbd">Station layout TBD</span></div>`;
-    }
-
-    const card = document.createElement('div');
-    card.className = 'machine-card';
-    card.innerHTML = `
-      <h3>${m.make} ${m.model}</h3>
-      <div class="machine-meta">
-        ${m.owner ? `Owner: <strong>${m.owner}</strong> &nbsp;` : ''}
-        ${m.control ? `Control: ${m.control}` : ''}
-      </div>
-      ${maxBar ? `<div class="machine-spec"><span>Bar capacity:</span><span>${maxBar.replace('Max bar: ','')}</span></div>` : ''}
-      ${toolSys ? `<div class="machine-spec"><span>Tooling:</span><span>${toolSys.replace('Tooling: ','')}</span></div>` : ''}
-      ${m.notes ? `<div class="machine-spec"><span>Notes:</span><span>${m.notes}</span></div>` : ''}
-      ${stationHtml}
-      <span class="filter-link" onclick="filterByMachine('${m.json_id}')">🔧 Show tools for this machine</span>
-    `;
-    grid.appendChild(card);
-  });
-}
-
-function filterByMachine(machineId) {
-  switchTab('tools');
-  clearFilters();
-  // Find the root tool node for this machine (e.g. ECAS20_GANG_BLOCK for STAR_ECAS20)
-  // Look for a tool whose json_id contains the machine model name, or fall back to machineId
-  const machine = allMachines.find(m => m.json_id === machineId);
-  const model = machine ? machine.model.replace(/\s+/g,'').toUpperCase() : '';
-  const rootTool = allTools.find(t =>
-    t.component_type === 'machine' &&
-    (t.json_id.toUpperCase().includes(model) || (t.mounts_to == null && t.json_id.toUpperCase().includes(model)))
-  );
-  const filterVal = rootTool ? rootTool.json_id : machineId;
-  document.getElementById('filter-mounts').value = filterVal;
-  applyFilters();
-}
-
-// ── Load DB ──────────────────────────────────────────────────────────────────
-async function loadDB() {
-  try {
-    const resp = await fetch('db.sqlite');
-    if (!resp.ok) throw new Error('Could not fetch db.sqlite - make sure the file is in the same directory as index.html');
-    const buf = await resp.arrayBuffer();
-    const SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/${f}` });
-    const db = new SQL.Database(new Uint8Array(buf));
-
-    const res = db.exec('SELECT * FROM tools ORDER BY component_type, manufacturer, json_id');
-    if (!res.length) throw new Error('tools table is empty');
-    const { columns, values } = res[0];
-    allTools = values.map(row => {
-      const obj = {};
-      columns.forEach((c, i) => {
-        let v = row[i];
-        if (v && ['specs','compatible_machines','compatible_inserts','sources','tags'].includes(c)) {
-          try { v = JSON.parse(v); } catch {}
+        let activeFilters = {
+            maker:  [],
+            type:   [],
+            shape:  [],
+            grade:  [],
+            cb:     []
         }
-        obj[c] = v;
-      });
-      // Parse useful spec fields to top-level for filtering
-      if (obj.specs && typeof obj.specs === 'object') {
-        obj._re   = parseFloat(obj.specs.corner_radius_RE || obj.specs.RE_mm || obj.specs.corner_radius || obj.specs.corner_radius_mm || obj.specs.nose_radius_mm) || null;
-        obj._bore = parseFloat(obj.specs.min_bore_diameter || obj.specs.minimum_bore_diameter || obj.specs.bore_diameter_min) || null;
-        if (!obj._bore) {
-          // Try to extract from description
-          const m = (obj.description || '').match(/[ØøD][≥>=]\s*([\d.]+)\s*mm/);
-          if (m) obj._bore = parseFloat(m[1]);
+
+        let currentView = 'cards'
+        let currentUnit = 'metric'
+
+        // ── Unit conversion ───────────────────────────────────────────────────────
+        function formatDimension(value, label = '') {
+            if (value == null || value === '') return '—'
+            const num = parseFloat(value)
+            if (isNaN(num)) return '—'
+            if (currentUnit === 'imperial') {
+                return `${(num * 0.0393701).toFixed(3)}"`
+            }
+            return `${num} mm`
         }
-      }
-      return obj;
-    });
-    loadMachines(db);
-    db.close();
-    buildFilters();
-    applyFilters();
 
-    const byType = {};
-    allTools.forEach(t => { byType[t.component_type] = (byType[t.component_type]||0)+1; });
-    document.getElementById('db-stats').textContent =
-      `${allTools.length} tools · ${allMachines.length} machines - ` + Object.entries(byType).map(([k,v])=>`${v} ${k}s`).join(', ');
-  } catch(e) {
-    document.getElementById('db-stats').innerHTML = `<span style="color:#f66">Error: ${e.message}</span>`;
-  }
-}
+        function setUnit(unit) {
+            currentUnit = unit
+            const metricBtn   = document.getElementById('btn-metric')
+            const imperialBtn = document.getElementById('btn-imperial')
+            if (unit === 'metric') {
+                metricBtn.classList.add('bg-[#00f9ff]', 'text-[#050507]')
+                metricBtn.classList.remove('text-[#64748b]')
+                imperialBtn.classList.remove('bg-[#00f9ff]', 'text-[#050507]')
+                imperialBtn.classList.add('text-[#64748b]')
+            } else {
+                imperialBtn.classList.add('bg-[#00f9ff]', 'text-[#050507]')
+                imperialBtn.classList.remove('text-[#64748b]')
+                metricBtn.classList.remove('bg-[#00f9ff]', 'text-[#050507]')
+                metricBtn.classList.add('text-[#64748b]')
+            }
+            applyFilters()
+        }
 
-// ── Build filter UI ───────────────────────────────────────────────────────────
-function buildFilters() {
-  const unique = (key) => [...new Set(allTools.map(t=>t[key]).filter(Boolean))].sort();
+        // ── Filters ───────────────────────────────────────────────────────────────
+        function getUniqueValues(key) {
+            const values = new Set()
+            tools.forEach(tool => { if (tool[key]) values.add(tool[key]) })
+            return Array.from(values).sort()
+        }
 
-  const buildCheckboxes = (containerId, values) => {
-    const el = document.getElementById(containerId);
-    el.innerHTML = values.map(v => `
-      <div class="filter-group"><label>
-        <input type="checkbox" class="filter-cb" data-key="${containerId}" value="${v}" onchange="applyFilters()">
-        ${v}
-      </label></div>`).join('');
-  };
+        function renderFilters() {
+            const filterContainers = {
+                maker:  document.getElementById('filter-manufacturer'),
+                type:   document.getElementById('filter-type'),
+                shape:  document.getElementById('filter-shape'),
+                grade:  document.getElementById('filter-grade'),
+                cb:     document.getElementById('filter-cb')
+            }
 
-  buildCheckboxes('filter-type',        unique('component_type'));
-  buildCheckboxes('filter-manufacturer', unique('manufacturer'));
-  buildCheckboxes('filter-shape',        unique('shape').filter(v=>v));
-  buildCheckboxes('filter-grade',        unique('grade').filter(v=>v));
-  buildCheckboxes('filter-chipbreaker',  unique('chipbreaker').filter(v=>v));
+            Object.keys(filterContainers).forEach(key => {
+                const container = filterContainers[key]
+                container.innerHTML = ''
+                const values = getUniqueValues(key)
+                values.forEach(value => {
+                    const chip = document.createElement('div')
+                    chip.className = 'filter-chip px-3 py-1 rounded-full cursor-pointer text-xs flex items-center gap-x-1'
+                    chip.innerHTML = `<span>${value}</span>`
+                    chip.onclick = () => toggleFilter(key, value, chip)
+                    container.appendChild(chip)
+                })
+            })
+        }
 
-  // Corner radius dropdown
-  const reVals = [...new Set(allTools.map(t=>t._re).filter(v=>v!=null))].sort((a,b)=>a-b);
-  const reSel = document.getElementById('filter-radius');
-  reVals.forEach(v => { const o=document.createElement('option'); o.value=v; o.textContent=v+' mm'; reSel.appendChild(o); });
-  reSel.addEventListener('change', applyFilters);
+        function toggleFilter(key, value, element) {
+            if (!activeFilters[key].includes(value)) {
+                activeFilters[key].push(value)
+                element.classList.add('active')
+            } else {
+                activeFilters[key] = activeFilters[key].filter(v => v !== value)
+                element.classList.remove('active')
+            }
+            applyFilters()
+        }
 
-  // Min bore dropdown
-  const boreVals = [...new Set(allTools.map(t=>t._bore).filter(v=>v!=null))].sort((a,b)=>a-b);
-  const boreSel = document.getElementById('filter-bore');
-  boreVals.forEach(v => { const o=document.createElement('option'); o.value=v; o.textContent='≥ '+v+' mm'; boreSel.appendChild(o); });
-  boreSel.addEventListener('change', applyFilters);
-}
+        function clearAllFilters() {
+            activeFilters = { maker: [], type: [], shape: [], grade: [], cb: [] }
+            document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'))
+            document.getElementById('search-input').value = ''
+            applyFilters()
+        }
 
-// ── Filter logic ──────────────────────────────────────────────────────────────
-function getChecked(containerId) {
-  return [...document.querySelectorAll(`#${containerId} .filter-cb:checked`)].map(c=>c.value);
-}
+        // ── Filter / search logic ─────────────────────────────────────────────────
+        function applyFilters() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim()
 
-function applyFilters() {
-  const q      = document.getElementById('search-bar').value.toLowerCase();
-  const types  = getChecked('filter-type');
-  const makers = getChecked('filter-manufacturer');
-  const shapes = getChecked('filter-shape');
-  const grades = getChecked('filter-grade');
-  const cbs    = getChecked('filter-chipbreaker');
-  const re     = document.getElementById('filter-radius').value;
-  const bore   = document.getElementById('filter-bore').value;
-  const seat   = document.getElementById('filter-seat').value.toLowerCase();
-  const mounts = document.getElementById('filter-mounts').value.toLowerCase();
+            let filtered = tools.filter(tool => {
+                if (searchTerm) {
+                    const searchString = `${tool.part} ${tool.description} ${tool.maker} ${tool.grade} ${tool.shape} ${tool.cb}`.toLowerCase()
+                    if (!searchString.includes(searchTerm)) return false
+                }
+                if (activeFilters.maker.length  > 0 && !activeFilters.maker.includes(tool.maker))   return false
+                if (activeFilters.type.length   > 0 && !activeFilters.type.includes(tool.type))     return false
+                if (activeFilters.shape.length  > 0 && !activeFilters.shape.includes(tool.shape))   return false
+                if (activeFilters.grade.length  > 0 && !activeFilters.grade.includes(tool.grade))   return false
+                if (activeFilters.cb.length     > 0 && !activeFilters.cb.includes(tool.cb))         return false
+                return true
+            })
 
-  filteredTools = allTools.filter(t => {
-    if (types.length  && !types.includes(t.component_type)) return false;
-    if (makers.length && !makers.includes(t.manufacturer))  return false;
-    if (shapes.length && !shapes.includes(t.shape))         return false;
-    if (grades.length && !grades.includes(t.grade))         return false;
-    if (cbs.length    && !cbs.includes(t.chipbreaker))      return false;
-    if (re   && t._re   !== parseFloat(re))   return false;
-    if (bore && (t._bore == null || t._bore > parseFloat(bore)+0.001)) return false;
-    if (seat   && !(t.insert_seat||'').toLowerCase().includes(seat))   return false;
-    if (mounts && !(t.mounts_to||'').toLowerCase().includes(mounts))  return false;
-    if (q) {
-      const hay = [t.json_id,t.description,t.type,t.manufacturer,t.size,t.grade,t.shape,
-                   t.chipbreaker,t.insert_seat,t.mounts_to,
-                   JSON.stringify(t.tags),JSON.stringify(t.specs)].join(' ').toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
-  });
+            document.getElementById('results-count').textContent = filtered.length.toLocaleString()
 
-  sortAndRender();
-}
+            const noResults = document.getElementById('no-results')
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden')
+                document.getElementById('cards-view').classList.add('hidden')
+                document.getElementById('table-view').classList.add('hidden')
+            } else {
+                noResults.classList.add('hidden')
+                if (currentView === 'cards') renderCards(filtered)
+                else renderTable(filtered)
+            }
+        }
 
-// ── Sort ──────────────────────────────────────────────────────────────────────
-function sortBy(col) {
-  if (sortCol === col) sortAsc = !sortAsc;
-  else { sortCol = col; sortAsc = true; }
-  sortAndRender();
-}
+        // ── Card render ───────────────────────────────────────────────────────────
+        function renderCards(filteredTools) {
+            const container = document.getElementById('cards-view')
+            container.innerHTML = ''
+            container.classList.remove('hidden')
+            document.getElementById('table-view').classList.add('hidden')
 
-function sortAndRender() {
-  filteredTools.sort((a,b) => {
-    const va = (a[sortCol]||'').toString();
-    const vb = (b[sortCol]||'').toString();
-    return sortAsc ? va.localeCompare(vb,undefined,{numeric:true}) : vb.localeCompare(va,undefined,{numeric:true});
-  });
-  renderTable();
-}
+            filteredTools.forEach(tool => {
+                const card = document.createElement('div')
+                card.className = 'tool-card rounded-2xl p-5 flex flex-col h-full'
 
-// ── Render ────────────────────────────────────────────────────────────────────
-function renderTable() {
-  const tbody = document.getElementById('tool-tbody');
-  tbody.innerHTML = '';
+                const typeBadgeColor = {
+                    'insert':  'text-[#39ff14] bg-[#39ff14]/10 border-[#39ff14]/30',
+                    'holder':  'text-[#ff9900] bg-[#ff9900]/10 border-[#ff9900]/30',
+                    'module':  'text-[#d890ff] bg-[#7b2cbf]/10 border-[#7b2cbf]/30',
+                    'shank':   'text-[#fff890] bg-[#fff890]/10 border-[#fff890]/30',
+                    'machine': 'text-[#90d8ff] bg-[#90d8ff]/10 border-[#90d8ff]/30',
+                }[tool.type] || 'text-[#94a3b8] bg-[#94a3b8]/10 border-[#94a3b8]/30'
 
-  document.getElementById('result-count').textContent =
-    `${filteredTools.length} of ${allTools.length} tools`;
-  document.getElementById('no-results').style.display = filteredTools.length ? 'none' : 'block';
-  document.getElementById('tool-table').style.display = filteredTools.length ? '' : 'none';
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex-1 min-w-0 mr-2">
+                            <div class="font-mono text-[#00f9ff] text-base tracking-wider truncate">${tool.part}</div>
+                            <div class="text-xs mt-0.5">
+                                <span class="px-1.5 py-0.5 border rounded text-[10px] ${typeBadgeColor}">${tool.type}</span>
+                            </div>
+                        </div>
+                        <div class="text-right flex-shrink-0">
+                            <div class="px-2.5 py-0.5 bg-[#7b2cbf]/20 text-[#7b2cbf] text-xs rounded font-semibold">${tool.maker}</div>
+                        </div>
+                    </div>
 
-  filteredTools.forEach(t => {
-    const id = t.json_id;
-    const typeClass = `badge-${t.component_type||'insert'}`;
-    const tags = (Array.isArray(t.tags)?t.tags:[]).slice(0,4).map(tag=>`<span class="tag">${tag}</span>`).join('');
-    const desc = (t.description||'').substring(0,90) + ((t.description||'').length>90?'...':'');
+                    <div class="flex-1">
+                        <div class="text-sm leading-snug text-[#e0e0ff] line-clamp-3">${tool.description}</div>
+                    </div>
 
-    const tr = document.createElement('tr');
-    tr.className = 'data-row';
-    tr.innerHTML = `
-      <td><code style="font-size:12px">${id}</code></td>
-      <td><span class="badge ${typeClass}">${t.component_type||''}</span></td>
-      <td>${t.manufacturer||''}</td>
-      <td>${desc}</td>
-      <td style="white-space:nowrap;font-size:12px">${t.size||''}</td>
-      <td style="white-space:nowrap">${t.grade||''}</td>
-      <td>${t.shape||''}</td>
-      <td>${t.chipbreaker||''}</td>
-      <td><button class="show-btn" onclick="toggleDetail('${id.replace(/'/g,"\\'")}')">▼</button></td>`;
-    tbody.appendChild(tr);
+                    <div class="mt-5 pt-4 border-t border-[#334155] grid grid-cols-2 gap-y-3 text-xs">
+                        ${tool.size ? `
+                        <div>
+                            <div class="text-[#64748b]">SIZE</div>
+                            <div class="font-mono text-[#e0e0ff]">${tool.size}</div>
+                        </div>` : ''}
+                        ${tool.grade ? `
+                        <div>
+                            <div class="text-[#64748b]">GRADE</div>
+                            <div class="font-mono text-[#39ff14]">${tool.grade}</div>
+                        </div>` : ''}
+                        ${tool.shape ? `
+                        <div>
+                            <div class="text-[#64748b]">SHAPE</div>
+                            <div class="font-mono">${tool.shape}</div>
+                        </div>` : ''}
+                        ${tool.cb ? `
+                        <div>
+                            <div class="text-[#64748b]">CHIPBREAKER</div>
+                            <div class="font-mono">${tool.cb}</div>
+                        </div>` : ''}
+                        ${tool.cornerRadius != null ? `
+                        <div>
+                            <div class="text-[#64748b]">CORNER R</div>
+                            <div class="font-mono">${formatDimension(tool.cornerRadius)}</div>
+                        </div>` : ''}
+                        ${tool.minBore != null ? `
+                        <div>
+                            <div class="text-[#64748b]">MIN BORE</div>
+                            <div class="font-mono">${formatDimension(tool.minBore)}</div>
+                        </div>` : ''}
+                    </div>
 
-    const detail = document.createElement('tr');
-    detail.className = 'detail-row';
-    detail.id = `detail-${id}`;
-    detail.style.display = 'none';
-    detail.innerHTML = `<td colspan="9"></td>`;
-    tbody.appendChild(detail);
-  });
-}
+                    <div class="mt-5 flex gap-2">
+                        <button onclick="showToolDetail(${tool.id})"
+                                class="flex-1 neon-button text-xs py-2 rounded-lg">VIEW SPECS</button>
+                        <button onclick="copyPartNumber('${tool.part}')"
+                                class="px-4 neon-button text-xs py-2 rounded-lg border-[#ff00aa] hover:bg-[#ff00aa] hover:text-white">
+                            <i class="fa-solid fa-copy"></i>
+                        </button>
+                    </div>
+                `
+                container.appendChild(card)
+            })
+        }
 
-// ── Detail panel ─────────────────────────────────────────────────────────────
-function toggleDetail(id) {
-  const row = document.getElementById(`detail-${id}`);
-  if (!row) return;
-  const btn = row.previousElementSibling.querySelector('.show-btn');
-  const isOpen = row.style.display !== 'none';
+        // ── Table render ──────────────────────────────────────────────────────────
+        function renderTable(filteredTools) {
+            const tbody = document.getElementById('table-body')
+            tbody.innerHTML = ''
+            document.getElementById('cards-view').classList.add('hidden')
+            document.getElementById('table-view').classList.remove('hidden')
 
-  // Close previously open
-  if (openDetailId && openDetailId !== id) {
-    const prev = document.getElementById(`detail-${openDetailId}`);
-    if (prev) { prev.style.display='none'; prev.previousElementSibling.querySelector('.show-btn').textContent='▼'; }
-  }
+            filteredTools.forEach(tool => {
+                const row = document.createElement('tr')
+                row.className = 'hover:bg-[#111118] group'
+                row.innerHTML = `
+                    <td class="px-5 py-4 font-mono text-[#00f9ff] text-xs">${tool.part}</td>
+                    <td class="px-4 py-4 text-xs">${tool.type}</td>
+                    <td class="px-4 py-4">
+                        <span class="px-2 py-0.5 text-xs rounded bg-[#7b2cbf]/20 text-[#7b2cbf]">${tool.maker}</span>
+                    </td>
+                    <td class="px-5 py-4 text-xs max-w-[280px] text-[#94a3b8]">${tool.description ? tool.description.substring(0,120) + (tool.description.length>120?'…':'') : '—'}</td>
+                    <td class="px-4 py-4 text-center font-mono text-xs">${tool.size || '—'}</td>
+                    <td class="px-4 py-4 text-center">
+                        <span class="font-mono text-[#39ff14] text-xs">${tool.grade || '—'}</span>
+                    </td>
+                    <td class="px-4 py-4 text-center font-mono text-xs">${tool.shape || '—'}</td>
+                    <td class="px-4 py-4 text-center font-mono text-xs">${tool.cb || '—'}</td>
+                    <td class="px-4 py-4">
+                        <button onclick="showToolDetail(${tool.id})"
+                                class="text-[#00f9ff] opacity-70 group-hover:opacity-100">
+                            <i class="fa-solid fa-info-circle"></i>
+                        </button>
+                    </td>
+                `
+                tbody.appendChild(row)
+            })
+        }
 
-  if (isOpen) {
-    row.style.display = 'none';
-    btn.textContent = '▼';
-    openDetailId = null;
-  } else {
-    row.style.display = '';
-    btn.textContent = '▲';
-    openDetailId = id;
-    if (!row.querySelector('.detail-inner')) buildDetail(id, row);
-  }
-}
+        // ── View switcher ─────────────────────────────────────────────────────────
+        function switchView(view) {
+            currentView = view
+            const cardsBtn = document.getElementById('btn-cards')
+            const tableBtn = document.getElementById('btn-table')
+            if (view === 'cards') {
+                cardsBtn.classList.add('active')
+                tableBtn.classList.remove('active')
+            } else {
+                tableBtn.classList.add('active')
+                cardsBtn.classList.remove('active')
+            }
+            applyFilters()
+        }
 
-function buildDetail(id, row) {
-  const t = allTools.find(x => x.json_id === id);
-  if (!t) return;
-  const td = row.querySelector('td');
+        // ── Detail modal ──────────────────────────────────────────────────────────
+        function showToolDetail(id) {
+            const tool = tools.find(t => t.id === id)
+            if (!tool) return
 
-  const specs = (t.specs && typeof t.specs === 'object') ? t.specs : {};
-  const specRows = Object.entries(specs).map(([k,v]) =>
-    `<div class="detail-kv"><span>${k}:</span><span>${JSON.stringify(v)}</span></div>`).join('');
+            const modal = document.createElement('div')
+            modal.className = 'fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-6'
+            modal.innerHTML = `
+                <div class="max-w-lg w-full bg-[#0f0f14] border border-[#00f9ff] rounded-3xl overflow-hidden">
+                    <div class="px-8 pt-8 pb-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="font-mono text-2xl text-[#00f9ff] break-all">${tool.part}</div>
+                                <div class="text-[#94a3b8] text-sm">${tool.type} · ${tool.maker}</div>
+                            </div>
+                            <button onclick="this.closest('.fixed').remove()" class="text-3xl leading-none text-[#64748b] hover:text-white ml-4">&times;</button>
+                        </div>
 
-  const sources = Array.isArray(t.sources) ? t.sources.join('<br>') : (t.sources||'-');
+                        <div class="my-6 text-sm leading-relaxed text-[#c0c0dd]">${tool.description}</div>
 
-  // Compatible inserts
-  let compatHtml = '';
-  if (t.insert_seat) {
-    compatHtml += `<div class="compat-section"><span style="color:#888;font-size:12px">Insert seat: </span><span style="color:#90ffb8;font-size:13px">${t.insert_seat}</span></div>`;
-  }
-  // Find tools that mount to this one
-  const children = allTools.filter(x => x.mounts_to === id);
-  if (children.length) {
-    compatHtml += `<div class="compat-section" style="margin-top:8px"><span style="color:#888;font-size:12px">Mounts on this: </span>${children.map(c=>`<span class="compat-item" onclick="jumpTo('${c.json_id.replace(/'/g,"\\'")}')">${c.json_id}</span>`).join('')}</div>`;
-  }
-  if (t.mounts_to) {
-    compatHtml += `<div class="compat-section" style="margin-top:4px"><span style="color:#888;font-size:12px">Mounts to: </span><span class="compat-item" onclick="jumpTo('${t.mounts_to.replace(/'/g,"\\'")}')">${t.mounts_to}</span></div>`;
-  }
+                        <div class="grid grid-cols-2 gap-3 text-sm">
+                            ${tool.size ? `
+                            <div class="bg-[#111118] p-4 rounded-2xl">
+                                <div class="text-[#64748b] text-xs mb-1">SIZE</div>
+                                <div class="font-mono text-base">${tool.size}</div>
+                            </div>` : ''}
+                            ${tool.grade ? `
+                            <div class="bg-[#111118] p-4 rounded-2xl">
+                                <div class="text-[#64748b] text-xs mb-1">GRADE</div>
+                                <div class="font-mono text-base text-[#39ff14]">${tool.grade}</div>
+                            </div>` : ''}
+                            ${tool.shape ? `
+                            <div class="bg-[#111118] p-4 rounded-2xl">
+                                <div class="text-[#64748b] text-xs mb-1">SHAPE</div>
+                                <div class="font-mono text-base">${tool.shape}</div>
+                            </div>` : ''}
+                            ${tool.cb ? `
+                            <div class="bg-[#111118] p-4 rounded-2xl">
+                                <div class="text-[#64748b] text-xs mb-1">CHIPBREAKER</div>
+                                <div class="font-mono text-base">${tool.cb}</div>
+                            </div>` : ''}
+                            ${tool.cornerRadius != null ? `
+                            <div class="bg-[#111118] p-4 rounded-2xl">
+                                <div class="text-[#64748b] text-xs mb-1">CORNER RADIUS</div>
+                                <div class="font-mono text-base">${formatDimension(tool.cornerRadius)}</div>
+                            </div>` : ''}
+                            ${tool.minBore != null ? `
+                            <div class="bg-[#111118] p-4 rounded-2xl">
+                                <div class="text-[#64748b] text-xs mb-1">MIN. BORE</div>
+                                <div class="font-mono text-base">${formatDimension(tool.minBore)}</div>
+                            </div>` : ''}
+                        </div>
+                    </div>
 
-  td.innerHTML = `
-    <div class="detail-inner">
-      <div class="detail-kv"><span>Category:</span><span>${t.category||'-'}</span></div>
-      <div class="detail-kv"><span>Condition:</span><span>${t.condition||'-'}</span></div>
-      <div class="detail-kv"><span>Geometry:</span><span>${t.geometry||'-'}</span></div>
-      <div class="detail-kv"><span>Grade:</span><span>${t.grade||'-'}</span></div>
-      <div class="detail-kv"><span>Shape:</span><span>${t.shape||'-'}</span></div>
-      <div class="detail-kv"><span>Chipbreaker:</span><span>${t.chipbreaker||'-'}</span></div>
-      ${specRows}
-      <div class="detail-kv" style="grid-column:1/-1"><span>Sources:</span><span>${sources}</span></div>
-      <div class="detail-kv" style="grid-column:1/-1"><span>Tags:</span><span>${(Array.isArray(t.tags)?t.tags:[]).map(tag=>`<span class="tag">${tag}</span>`).join(' ')}</span></div>
-      ${compatHtml}
-    </div>`;
-}
+                    <div class="bg-[#111118] px-8 py-5 flex items-center justify-between text-xs border-t border-[#334155]">
+                        <div class="text-[#64748b]">Mounts to: <span class="font-mono text-white">${tool.mountsTo || 'Various'}</span></div>
+                        <div class="flex gap-3">
+                            <button onclick="copyPartNumber('${tool.part}'); this.closest('.fixed').remove()"
+                                    class="neon-button px-5 py-2 text-xs">COPY PART #</button>
+                            <button onclick="this.closest('.fixed').remove()"
+                                    class="px-5 py-2 text-xs border border-[#334155] rounded-lg hover:bg-[#1a1a22]">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            `
+            document.body.appendChild(modal)
+        }
 
-function jumpTo(id) {
-  // Clear filters and search for the target
-  clearFilters();
-  document.getElementById('search-bar').value = id;
-  applyFilters();
-  setTimeout(() => {
-    const row = document.getElementById(`detail-${id}`);
-    if (row) { row.previousElementSibling.scrollIntoView({behavior:'smooth',block:'center'}); toggleDetail(id); }
-  }, 100);
-}
+        // ── Copy to clipboard ─────────────────────────────────────────────────────
+        function copyPartNumber(part) {
+            navigator.clipboard.writeText(part).then(() => {
+                const toast = document.createElement('div')
+                toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#00f9ff] text-[#050507] px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-x-2 shadow-xl z-[200]'
+                toast.innerHTML = `<i class="fa-solid fa-check"></i> <span>Copied ${part}</span>`
+                document.body.appendChild(toast)
+                setTimeout(() => {
+                    toast.style.transition = 'all 0.3s ease'
+                    toast.style.opacity = '0'
+                    toast.style.transform = 'translate(-50%, 20px)'
+                    setTimeout(() => toast.remove(), 300)
+                }, 1800)
+            })
+        }
 
-function clearFilters() {
-  document.querySelectorAll('.filter-cb').forEach(c => c.checked = false);
-  document.getElementById('filter-radius').value = '';
-  document.getElementById('filter-bore').value = '';
-  document.getElementById('filter-seat').value = '';
-  document.getElementById('filter-mounts').value = '';
-  document.getElementById('search-bar').value = '';
-  applyFilters();
-}
+        // ── Random tool ───────────────────────────────────────────────────────────
+        function randomTool() {
+            const filtered = getCurrentFilteredTools()
+            if (filtered.length === 0) return
+            const tool = filtered[Math.floor(Math.random() * filtered.length)]
+            const flash = document.createElement('div')
+            flash.className = 'fixed inset-0 bg-[#00f9ff] opacity-20 pointer-events-none z-[200]'
+            document.body.appendChild(flash)
+            setTimeout(() => flash.remove(), 120)
+            showToolDetail(tool.id)
+        }
 
-loadDB();
-</script>
+        // ── Export CSV ────────────────────────────────────────────────────────────
+        function exportToCSV() {
+            const filtered = getCurrentFilteredTools()
+            if (filtered.length === 0) { alert('Nothing to export!'); return }
+
+            const headers = ['Part #', 'Type', 'Maker', 'Description', 'Size', 'Grade', 'Shape', 'Chipbreaker', 'Corner Radius (mm)', 'Min Bore (mm)']
+            let csv = headers.join(',') + '\n'
+            filtered.forEach(tool => {
+                csv += `"${tool.part}","${tool.type}","${tool.maker}","${(tool.description||'').replace(/"/g,"'")}","${tool.size||''}","${tool.grade||''}","${tool.shape||''}","${tool.cb||''}","${tool.cornerRadius||''}","${tool.minBore||''}"\n`
+            })
+
+            const blob = new Blob([csv], { type: 'text/csv' })
+            const url  = URL.createObjectURL(blob)
+            const a    = document.createElement('a')
+            a.href = url
+            a.download = `cnc-tools-export-${new Date().toISOString().slice(0,10)}.csv`
+            a.click()
+            URL.revokeObjectURL(url)
+
+            const toast = document.createElement('div')
+            toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#39ff14] text-[#050507] px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-x-2 shadow-xl z-[200]'
+            toast.innerHTML = `<i class="fa-solid fa-check"></i> <span>Exported ${filtered.length} tools!</span>`
+            document.body.appendChild(toast)
+            setTimeout(() => {
+                toast.style.transition = 'all 0.3s ease'
+                toast.style.opacity = '0'
+                setTimeout(() => toast.remove(), 300)
+            }, 2000)
+        }
+
+        // ── Get currently filtered set (for random/export) ────────────────────────
+        function getCurrentFilteredTools() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim()
+            return tools.filter(tool => {
+                if (searchTerm) {
+                    const s = `${tool.part} ${tool.description} ${tool.maker} ${tool.grade} ${tool.shape} ${tool.cb}`.toLowerCase()
+                    if (!s.includes(searchTerm)) return false
+                }
+                if (activeFilters.maker.length  > 0 && !activeFilters.maker.includes(tool.maker))  return false
+                if (activeFilters.type.length   > 0 && !activeFilters.type.includes(tool.type))    return false
+                if (activeFilters.shape.length  > 0 && !activeFilters.shape.includes(tool.shape))  return false
+                if (activeFilters.grade.length  > 0 && !activeFilters.grade.includes(tool.grade))  return false
+                if (activeFilters.cb.length     > 0 && !activeFilters.cb.includes(tool.cb))        return false
+                return true
+            })
+        }
+
+        // ── HUD / stats ───────────────────────────────────────────────────────────
+        function updateHUD() {
+            const uniqueMakers = new Set(tools.map(t => t.maker).filter(Boolean))
+            const insertCount  = tools.filter(t => t.type === 'insert').length
+
+            const statInserts = document.getElementById('stat-insert-count')
+            if (statInserts) statInserts.textContent = `${insertCount.toLocaleString()} inserts`
+
+            const statBrands = document.getElementById('stat-brand-count')
+            if (statBrands) statBrands.textContent = `${uniqueMakers.size} brands`
+
+            const countEl = document.getElementById('manufacturer-count')
+            if (countEl) countEl.textContent = `${uniqueMakers.size} MANUFACTURERS SYNCED`
+
+            const updateEl = document.getElementById('last-update')
+            if (updateEl) {
+                updateEl.textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase()
+            }
+            const sidebarUpdate = document.getElementById('sidebar-update')
+            if (sidebarUpdate) {
+                sidebarUpdate.textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toUpperCase()
+            }
+        }
+
+        // ── Load database ─────────────────────────────────────────────────────────
+        async function loadDB() {
+            const loadStatus = document.getElementById('load-status')
+            try {
+                if (loadStatus) loadStatus.textContent = 'Fetching db.sqlite...'
+                const resp = await fetch('db.sqlite')
+                if (!resp.ok) throw new Error(`Could not fetch db.sqlite (${resp.status})`)
+
+                if (loadStatus) loadStatus.textContent = 'Parsing database...'
+                const buf = await resp.arrayBuffer()
+                const SQL = await initSqlJs({
+                    locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/${f}`
+                })
+                const db = new SQL.Database(new Uint8Array(buf))
+
+                if (loadStatus) loadStatus.textContent = 'Building tool list...'
+                const res = db.exec('SELECT * FROM tools ORDER BY component_type, manufacturer, json_id')
+                if (!res.length) throw new Error('tools table is empty')
+                const { columns, values } = res[0]
+
+                tools = values.map((row, idx) => {
+                    const obj = {}
+                    columns.forEach((c, i) => {
+                        let v = row[i]
+                        if (v && ['specs','compatible_machines','compatible_inserts','sources','tags'].includes(c)) {
+                            try { v = JSON.parse(v) } catch {}
+                        }
+                        obj[c] = v
+                    })
+
+                    const specs = (obj.specs && typeof obj.specs === 'object') ? obj.specs : {}
+
+                    // Corner radius — check multiple possible keys
+                    const re = parseFloat(
+                        specs.re_mm ?? specs.corner_radius_RE ?? specs.corner_radius_mm ?? specs.corner_radius ?? 0
+                    ) || null
+
+                    // Min bore
+                    const bore = parseFloat(
+                        specs.min_bore_diameter ?? specs.minimum_bore_diameter ?? specs.bore_diameter_min ?? 0
+                    ) || null
+
+                    // Size string — prefer IC+S from specs if available
+                    let sizeStr = obj.size || ''
+                    if (specs.ic_mm != null && specs.s_mm != null) {
+                        sizeStr = `IC ${parseFloat(specs.ic_mm).toFixed(2)}mm · S ${parseFloat(specs.s_mm).toFixed(2)}mm`
+                    } else if (specs.ic_mm != null) {
+                        sizeStr = `IC ${parseFloat(specs.ic_mm).toFixed(2)}mm`
+                    }
+
+                    // mountsTo — first compatible machine or insert if linked
+                    let mountsTo = null
+                    if (Array.isArray(obj.compatible_machines) && obj.compatible_machines.length) {
+                        mountsTo = obj.compatible_machines[0]
+                    } else if (Array.isArray(obj.compatible_inserts) && obj.compatible_inserts.length) {
+                        mountsTo = obj.compatible_inserts[0]
+                    }
+
+                    return {
+                        id:           idx + 1,
+                        part:         obj.json_id          || '',
+                        type:         obj.component_type   || '',
+                        maker:        obj.manufacturer     || '',
+                        description:  obj.description      || '',
+                        size:         sizeStr,
+                        grade:        obj.grade            || '',
+                        shape:        obj.shape            || '',
+                        cb:           obj.chipbreaker      || '',
+                        cornerRadius: re,
+                        minBore:      bore,
+                        mountsTo:     mountsTo
+                    }
+                })
+
+                db.close()
+                initialize()
+
+            } catch (e) {
+                const overlay = document.getElementById('loading-overlay')
+                if (overlay) overlay.classList.add('hidden')
+                document.getElementById('results-count').innerHTML =
+                    `<span style="color:#ff00aa">DB error: ${e.message}</span>`
+                console.error('[NEON FORGE] DB load error:', e)
+            }
+        }
+
+        // ── Initialize ────────────────────────────────────────────────────────────
+        function initialize() {
+            // Hide loading overlay
+            const overlay = document.getElementById('loading-overlay')
+            if (overlay) overlay.classList.add('hidden')
+
+            renderFilters()
+            updateHUD()
+
+            document.getElementById('results-count').textContent = tools.length.toLocaleString()
+            renderCards(tools)
+
+            // Search input
+            document.getElementById('search-input').addEventListener('input', () => applyFilters())
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (document.getElementById('search-input') === document.activeElement) {
+                        document.getElementById('search-input').value = ''
+                    } else {
+                        clearAllFilters()
+                    }
+                    applyFilters()
+                }
+                if (e.key === '/' && document.activeElement.tagName === 'BODY') {
+                    e.preventDefault()
+                    document.getElementById('search-input').focus()
+                }
+            })
+
+            document.getElementById('btn-cards').classList.add('active')
+            setUnit('metric')
+
+            // Easter egg: Konami code
+            let konami = ''
+            document.addEventListener('keydown', function(e) {
+                konami += e.key
+                if (konami.length > 10) konami = konami.slice(-10)
+                if (konami.includes('ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba')) {
+                    document.body.style.animation = 'glitch 0.8s'
+                    setTimeout(() => document.body.style.animation = '', 800)
+                    konami = ''
+                }
+            })
+
+            console.log(`%c[NEON FORGE] ${tools.length} tools loaded`, 'color:#00f9ff')
+        }
+
+        // Boot: load DB first, then initialize
+        window.onload = loadDB
+
+        // Expose for console debugging
+        window.NEON_TOOLS = () => tools
+    </script>
 </body>
 </html>
