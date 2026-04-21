@@ -214,6 +214,31 @@
             border: 1px solid #334155;
         }
 
+        /* Dark-themed scrollbars (sidebar + results + anywhere else) */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #1a1a22 #050507;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1a1a22;
+            border: 1px solid #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f9ff;
+            box-shadow: 0 0 8px rgba(0, 249, 255, 0.5);
+        }
+        ::-webkit-scrollbar-corner {
+            background: #0a0a0f;
+        }
+
         .loading-overlay {
             position: fixed;
             inset: 0;
