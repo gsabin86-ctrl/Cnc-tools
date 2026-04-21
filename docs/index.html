@@ -463,19 +463,20 @@
 
                 <!-- TABLE VIEW -->
                 <div id="table-view" class="hidden">
-                    <div class="overflow-x-auto rounded-2xl border border-[#334155] cyber-table scanlines">
+                    <div class="rounded-2xl border border-[#334155] cyber-table scanlines">
                         <table class="w-full text-sm">
                             <thead>
                                 <tr>
-                                    <th class="px-5 py-4 text-left">PART #</th>
-                                    <th class="px-4 py-4 text-left">TYPE</th>
-                                    <th class="px-4 py-4 text-left">MAKER</th>
-                                    <th class="px-5 py-4 text-left">DESCRIPTION</th>
-                                    <th class="px-4 py-4 text-center">SIZE</th>
-                                    <th class="px-4 py-4 text-center">GRADE</th>
-                                    <th class="px-4 py-4 text-center">SHAPE</th>
-                                    <th class="px-4 py-4 text-center">CB</th>
-                                    <th class="px-4 py-4 w-10"></th>
+                                    <th class="px-5 py-4 text-left sticky top-0 z-10">PART #</th>
+                                    <th class="px-4 py-4 text-left sticky top-0 z-10">TYPE</th>
+                                    <th class="px-4 py-4 text-left sticky top-0 z-10">MAKER</th>
+                                    <th class="px-5 py-4 text-left sticky top-0 z-10">DESCRIPTION</th>
+                                    <th class="px-4 py-4 text-center sticky top-0 z-10">SIZE</th>
+                                    <th class="px-4 py-4 text-center sticky top-0 z-10">GRADE</th>
+                                    <th class="px-4 py-4 text-center sticky top-0 z-10">SHAPE</th>
+                                    <th class="px-4 py-4 text-center sticky top-0 z-10">CB</th>
+                                    <th class="px-4 py-4 text-center sticky top-0 z-10">CORNER R</th>
+                                    <th class="px-4 py-4 w-10 sticky top-0 z-10"></th>
                                 </tr>
                             </thead>
                             <tbody id="table-body" class="divide-y divide-[#334155]">
@@ -758,6 +759,7 @@
                     </td>
                     <td class="px-4 py-4 text-center font-mono text-xs">${tool.shape || '—'}</td>
                     <td class="px-4 py-4 text-center font-mono text-xs">${tool.cb || '—'}</td>
+                    <td class="px-4 py-4 text-center font-mono text-xs">${tool.cornerRadius != null ? formatDimension(tool.cornerRadius) : '—'}</td>
                     <td class="px-4 py-4">
                         <button onclick="showToolDetail(${tool.id})"
                                 class="text-[#00f9ff] opacity-70 group-hover:opacity-100">
