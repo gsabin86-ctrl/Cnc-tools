@@ -545,6 +545,17 @@
             return `${num} mm`
         }
 
+        // Build a size string that respects the current unit
+        function buildSize(tool) {
+            const unit = currentUnit === 'imperial' ? '"' : 'mm'
+            const conv = v => currentUnit === 'imperial' ? (v * 0.0393701).toFixed(3) : v.toFixed(2)
+            if (tool.ic_mm != null && tool.s_mm != null) {
+                return `IC ${conv(tool.ic_mm)}${unit} · S ${conv(tool.s_mm)}${unit}`
+            }
+            if (tool.ic_mm != null) return `IC ${conv(tool.ic_mm)}${unit}`
+            return tool.fallbackSize || ''
+        }
+
         function setUnit(unit) {
             currentUnit = unit
             const metricBtn   = document.getElementById('btn-metric')
@@ -679,10 +690,10 @@
                     </div>
 
                     <div class="mt-5 pt-4 border-t border-[#334155] grid grid-cols-2 gap-y-3 text-xs">
-                        ${tool.size ? `
+                        ${buildSize(tool) ? `
                         <div>
                             <div class="text-[#64748b]">SIZE</div>
-                            <div class="font-mono text-[#e0e0ff]">${tool.size}</div>
+                            <div class="font-mono text-[#e0e0ff]">${buildSize(tool)}</div>
                         </div>` : ''}
                         ${tool.grade ? `
                         <div>
@@ -741,7 +752,7 @@
                         <span class="px-2 py-0.5 text-xs rounded bg-[#7b2cbf]/20 text-[#7b2cbf]">${tool.maker}</span>
                     </td>
                     <td class="px-5 py-4 text-xs max-w-[280px] text-[#94a3b8]">${tool.description ? tool.description.substring(0,120) + (tool.description.length>120?'…':'') : '—'}</td>
-                    <td class="px-4 py-4 text-center font-mono text-xs">${tool.size || '—'}</td>
+                    <td class="px-4 py-4 text-center font-mono text-xs">${buildSize(tool) || '—'}</td>
                     <td class="px-4 py-4 text-center">
                         <span class="font-mono text-[#39ff14] text-xs">${tool.grade || '—'}</span>
                     </td>
@@ -794,10 +805,10 @@
                         <div class="my-6 text-sm leading-relaxed text-[#c0c0dd]">${tool.description}</div>
 
                         <div class="grid grid-cols-2 gap-3 text-sm">
-                            ${tool.size ? `
+                            ${buildSize(tool) ? `
                             <div class="bg-[#111118] p-4 rounded-2xl">
                                 <div class="text-[#64748b] text-xs mb-1">SIZE</div>
-                                <div class="font-mono text-base">${tool.size}</div>
+                                <div class="font-mono text-base">${buildSize(tool)}</div>
                             </div>` : ''}
                             ${tool.grade ? `
                             <div class="bg-[#111118] p-4 rounded-2xl">
@@ -854,65 +865,6 @@
                     toast.style.transform = 'translate(-50%, 20px)'
                     setTimeout(() => toast.remove(), 300)
                 }, 1800)
-            })
-        }
-
-        // ── Random tool ───────────────────────────────────────────────────────────
-        function randomTool() {
-            const filtered = getCurrentFilteredTools()
-            if (filtered.length === 0) return
-            const tool = filtered[Math.floor(Math.random() * filtered.length)]
-            const flash = document.createElement('div')
-            flash.className = 'fixed inset-0 bg-[#00f9ff] opacity-20 pointer-events-none z-[200]'
-            document.body.appendChild(flash)
-            setTimeout(() => flash.remove(), 120)
-            showToolDetail(tool.id)
-        }
-
-        // ── Export CSV ────────────────────────────────────────────────────────────
-        function exportToCSV() {
-            const filtered = getCurrentFilteredTools()
-            if (filtered.length === 0) { alert('Nothing to export!'); return }
-
-            const headers = ['Part #', 'Type', 'Maker', 'Description', 'Size', 'Grade', 'Shape', 'Chipbreaker', 'Corner Radius (mm)', 'Min Bore (mm)']
-            let csv = headers.join(',') + '\n'
-            filtered.forEach(tool => {
-                csv += `"${tool.part}","${tool.type}","${tool.maker}","${(tool.description||'').replace(/"/g,"'")}","${tool.size||''}","${tool.grade||''}","${tool.shape||''}","${tool.cb||''}","${tool.cornerRadius||''}","${tool.minBore||''}"\n`
-            })
-
-            const blob = new Blob([csv], { type: 'text/csv' })
-            const url  = URL.createObjectURL(blob)
-            const a    = document.createElement('a')
-            a.href = url
-            a.download = `cnc-tools-export-${new Date().toISOString().slice(0,10)}.csv`
-            a.click()
-            URL.revokeObjectURL(url)
-
-            const toast = document.createElement('div')
-            toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#39ff14] text-[#050507] px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-x-2 shadow-xl z-[200]'
-            toast.innerHTML = `<i class="fa-solid fa-check"></i> <span>Exported ${filtered.length} tools!</span>`
-            document.body.appendChild(toast)
-            setTimeout(() => {
-                toast.style.transition = 'all 0.3s ease'
-                toast.style.opacity = '0'
-                setTimeout(() => toast.remove(), 300)
-            }, 2000)
-        }
-
-        // ── Get currently filtered set (for random/export) ────────────────────────
-        function getCurrentFilteredTools() {
-            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim()
-            return tools.filter(tool => {
-                if (searchTerm) {
-                    const s = `${tool.part} ${tool.description} ${tool.maker} ${tool.grade} ${tool.shape} ${tool.cb}`.toLowerCase()
-                    if (!s.includes(searchTerm)) return false
-                }
-                if (activeFilters.maker.length  > 0 && !activeFilters.maker.includes(tool.maker))  return false
-                if (activeFilters.type.length   > 0 && !activeFilters.type.includes(tool.type))    return false
-                if (activeFilters.shape.length  > 0 && !activeFilters.shape.includes(tool.shape))  return false
-                if (activeFilters.grade.length  > 0 && !activeFilters.grade.includes(tool.grade))  return false
-                if (activeFilters.cb.length     > 0 && !activeFilters.cb.includes(tool.cb))        return false
-                return true
             })
         }
 
@@ -991,13 +943,10 @@
                         specs.min_bore_diameter ?? specs.minimum_bore_diameter ?? specs.bore_diameter_min ?? 0
                     ) || null
 
-                    // Size string — prefer IC+S from specs if available
-                    let sizeStr = obj.size || ''
-                    if (specs.ic_mm != null && specs.s_mm != null) {
-                        sizeStr = `IC ${parseFloat(specs.ic_mm).toFixed(2)}mm · S ${parseFloat(specs.s_mm).toFixed(2)}mm`
-                    } else if (specs.ic_mm != null) {
-                        sizeStr = `IC ${parseFloat(specs.ic_mm).toFixed(2)}mm`
-                    }
+                    // Raw IC/S in mm so size string can be rebuilt on unit toggle
+                    const ic_mm = (specs.ic_mm != null) ? parseFloat(specs.ic_mm) : null
+                    const s_mm  = (specs.s_mm  != null) ? parseFloat(specs.s_mm)  : null
+                    const fallbackSize = obj.size || ''
 
                     // mountsTo — first compatible machine or insert if linked
                     let mountsTo = null
@@ -1013,7 +962,9 @@
                         type:         obj.component_type   || '',
                         maker:        obj.manufacturer     || '',
                         description:  obj.description      || '',
-                        size:         sizeStr,
+                        ic_mm:        ic_mm,
+                        s_mm:         s_mm,
+                        fallbackSize: fallbackSize,
                         grade:        obj.grade            || '',
                         shape:        obj.shape            || '',
                         cb:           obj.chipbreaker      || '',
