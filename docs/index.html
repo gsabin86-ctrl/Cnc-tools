@@ -14,7 +14,13 @@
             --neon-pink: #ff00aa;
             --neon-purple: #7b2cbf;
             --neon-green: #39ff14;
+            --header-h: 56px;
+            --sidebar-w: 240px;
+            --search-bar-h: 38px;
+            --ui-font-size: 12px;
         }
+
+        * { box-sizing: border-box; }
 
         body {
             background: #050507;
@@ -25,6 +31,10 @@
                 linear-gradient(90deg, rgba(0,249,255,0.03) 1px, transparent 1px);
             background-size: 40px 40px;
             animation: grid-move 25s linear infinite;
+            overflow: hidden;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
         }
 
         @keyframes grid-move {
@@ -33,1015 +43,1075 @@
         }
 
         @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
+            0%   { transform: translate(0); }
+            20%  { transform: translate(-2px, 2px); }
+            40%  { transform: translate(-2px, -2px); }
+            60%  { transform: translate(2px, 2px); }
+            80%  { transform: translate(2px, -2px); }
             100% { transform: translate(0); }
         }
 
-        .cyber-header {
+        /* ── Header ── */
+        #app-header {
+            flex-shrink: 0;
+            height: var(--header-h);
+            min-height: 40px;
+            max-height: 120px;
             background: linear-gradient(90deg, #0a0a0f 0%, #111118 100%);
             border-bottom: 1px solid #00f9ff;
-            box-shadow: 0 0 20px rgba(0, 249, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0,249,255,0.3);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 12px;
+            overflow: hidden;
+            position: relative;
+            z-index: 50;
+            user-select: none;
         }
 
-        .neon-text {
-            text-shadow: 0 0 10px #00f9ff,
-                        0 0 20px #00f9ff;
-        }
-
-        .neon-pink {
-            text-shadow: 0 0 10px #ff00aa,
-                        0 0 20px #ff00aa;
-        }
-
-        .neon-button {
+        #header-resize-handle {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 5px;
+            cursor: ns-resize;
             background: transparent;
-            border: 1px solid #00f9ff;
+            transition: background 0.15s;
+        }
+        #header-resize-handle:hover,
+        #header-resize-handle.dragging { background: rgba(0,249,255,0.35); }
+
+        .header-logo {
+            display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+        }
+        .header-logo-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, #00f9ff, #7b2cbf, #ff00aa);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .header-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: clamp(13px, 2.5vw, 22px);
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #00f9ff, 0 0 20px #00f9ff;
+            white-space: nowrap;
+        }
+        .header-sub {
+            font-size: 10px; color: #00f9ff; letter-spacing: 2px;
+            white-space: nowrap;
+        }
+        .header-stats {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 11px; margin-left: auto; flex-shrink: 0;
+        }
+        .stat-pill {
+            background: #111118;
+            border: 1px solid #334155;
+            border-radius: 999px;
+            padding: 3px 10px;
+            display: flex; align-items: center; gap: 6px;
+            white-space: nowrap;
+        }
+        .unit-toggle {
+            display: flex; align-items: center;
+            background: #111118;
+            border: 1px solid #334155;
+            border-radius: 999px;
+            padding: 3px;
+            font-size: 11px; font-weight: 600;
+        }
+        .unit-toggle button {
+            padding: 3px 10px; border-radius: 999px;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        .unit-toggle button.active {
+            background: #00f9ff; color: #050507;
+        }
+        .unit-toggle button:not(.active) {
+            color: #64748b;
+        }
+        .unit-toggle button:not(.active):hover { color: #fff; }
+
+        /* ── Body area ── */
+        #app-body {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* ── Sidebar ── */
+        #sidebar {
+            width: var(--sidebar-w);
+            min-width: 36px;
+            max-width: 420px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            background: #0a0a0f;
+            border-right: 1px solid #1e2030;
+            position: relative;
+            overflow: hidden;
+            transition: width 0.2s ease;
+        }
+        #sidebar.collapsed { width: 36px !important; }
+
+        #sidebar-resize-handle {
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 5px;
+            cursor: ew-resize;
+            background: transparent;
+            transition: background 0.15s;
+            z-index: 10;
+        }
+        #sidebar-resize-handle:hover,
+        #sidebar-resize-handle.dragging { background: rgba(0,249,255,0.35); }
+
+        #sidebar-toggle {
+            width: 36px; height: 36px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
             color: #00f9ff;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            border-bottom: 1px solid #1e2030;
+            background: #0d0d12;
+            transition: background 0.15s;
+        }
+        #sidebar-toggle:hover { background: #111118; }
+
+        #sidebar-inner {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 12px 10px 16px 10px;
+            min-width: 200px;
         }
 
-        .neon-button:hover {
-            background: #00f9ff;
-            color: #050507;
-            box-shadow: 0 0 25px #00f9ff;
-            transform: translateY(-1px);
-        }
+        #sidebar.collapsed #sidebar-inner { display: none; }
+        #sidebar.collapsed #sidebar-resize-handle { display: none; }
 
-        .neon-button.active {
-            background: #00f9ff;
-            color: #050507;
-            box-shadow: 0 0 25px #00f9ff;
+        .filter-group-title {
+            color: #94a3b8; font-size: 10px; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 6px;
+            margin-bottom: 6px; padding: 0 2px;
         }
 
         .filter-chip {
             background: #111118;
             border: 1px solid #334155;
             color: #94a3b8;
-            transition: all 0.2s ease;
-            font-size: 0.75rem;
-            padding: 4px 12px;
+            transition: all 0.15s;
+            font-size: calc(var(--ui-font-size, 12px) - 1px);
+            padding: 3px 8px;
+            border-radius: 999px;
+            cursor: pointer;
+            white-space: nowrap;
         }
-
         .filter-chip:hover {
-            border-color: #00f9ff;
-            color: #00f9ff;
-            box-shadow: 0 0 8px rgba(0, 249, 255, 0.4);
+            border-color: #00f9ff; color: #00f9ff;
+            box-shadow: 0 0 6px rgba(0,249,255,0.3);
         }
-
         .filter-chip.active {
-            background: #00f9ff;
-            color: #050507;
+            background: #00f9ff; color: #050507;
             border-color: #00f9ff;
-            box-shadow: 0 0 12px #00f9ff;
+            box-shadow: 0 0 10px #00f9ff;
             font-weight: 600;
         }
 
-        .tool-card {
-            background: #0f0f14;
-            border: 1px solid #334155;
-            transition: all 0.3s ease;
-            position: relative;
+        /* ── Main content ── */
+        #main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
+            min-width: 0;
         }
 
-        .tool-card:hover {
-            border-color: #00f9ff;
-            box-shadow: 0 0 30px rgba(0, 249, 255, 0.2);
-            transform: translateY(-4px);
+        /* ── Search bar ── */
+        #search-bar {
+            flex-shrink: 0;
+            padding: 8px 12px;
+            background: #050507;
+            border-bottom: 1px solid #1e2030;
+            display: flex; align-items: center; gap: 8px;
         }
-
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                transparent 40%,
-                rgba(0, 249, 255, 0.08) 50%,
-                transparent 60%
-            );
-            transform: rotate(30deg);
-            transition: all 0.4s ease;
-            opacity: 0;
+        .search-wrap {
+            position: relative; flex: 1;
         }
-
-        .tool-card:hover::before {
-            opacity: 1;
-            transform: rotate(30deg) translate(20%, 20%);
+        .search-wrap i {
+            position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+            color: #00f9ff; font-size: 13px; pointer-events: none;
         }
-
-        .cyber-table {
-            border: 1px solid #334155;
-        }
-
-        .cyber-table th {
+        #search-input {
+            width: 100%;
             background: #111118;
+            border: 1px solid #334155;
+            color: #e0e0ff;
+            padding: 7px 12px 7px 34px;
+            border-radius: 8px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: var(--ui-font-size, 12px);
+            height: var(--search-bar-h, 38px);
+            transition: all 0.15s;
+        }
+        #search-input:focus {
+            border-color: #00f9ff;
+            box-shadow: 0 0 12px rgba(0,249,255,0.25);
+            outline: none;
+        }
+        #search-input::placeholder { color: #334155; }
+
+        .results-count {
+            font-size: 11px; color: #64748b; white-space: nowrap;
+        }
+        .results-count span { color: #00f9ff; font-size: 13px; }
+
+        /* ── Table wrapper ── */
+        #table-wrap {
+            flex: 1;
+            overflow: auto;
+        }
+
+        /* scrollbars */
+        * { scrollbar-width: thin; scrollbar-color: #1a1a22 #050507; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0f; }
+        ::-webkit-scrollbar-thumb { background: #1a1a22; border: 1px solid #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f9ff; box-shadow: 0 0 6px rgba(0,249,255,0.5); }
+
+        /* ── Table ── */
+        #tool-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--ui-font-size, 12px);
+        }
+        #tool-table thead th {
+            background: #0d0d12;
             color: #00f9ff;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-size: 0.75rem;
+            padding: 8px 10px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+            position: sticky; top: 0; z-index: 5;
+            white-space: nowrap;
         }
+        #tool-table thead th.center { text-align: center; }
+        #tool-table tbody tr { border-bottom: 1px solid #1a1a22; transition: background 0.1s; }
+        #tool-table tbody tr:hover { background: #0f0f14; }
+        #tool-table tbody td { padding: 7px 10px; vertical-align: middle; }
+        #tool-table tbody td.center { text-align: center; }
 
-        .cyber-table td {
-            border-color: #334155;
+        .td-part { font-family: 'Share Tech Mono', monospace; color: #00f9ff; white-space: nowrap; }
+        .td-maker span {
+            background: #7b2cbf22; color: #a98ff5;
+            border: 1px solid #7b2cbf44;
+            border-radius: 4px; padding: 1px 6px; font-size: 11px;
         }
+        .td-grade { color: #39ff14; font-family: 'Share Tech Mono', monospace; }
+        .td-desc { color: #94a3b8; max-width: 260px; }
 
-        .scanlines {
-            position: relative;
+        /* type badge */
+        .type-badge {
+            font-size: 10px; border-radius: 4px; padding: 1px 5px;
+            border: 1px solid; white-space: nowrap;
         }
+        .type-insert  { color: #39ff14; background: rgba(57,255,20,.1);  border-color: rgba(57,255,20,.3); }
+        .type-holder  { color: #ff9900; background: rgba(255,153,0,.1);  border-color: rgba(255,153,0,.3); }
+        .type-module  { color: #d890ff; background: rgba(123,44,191,.1); border-color: rgba(123,44,191,.3); }
+        .type-shank   { color: #fff890; background: rgba(255,248,144,.1);border-color: rgba(255,248,144,.3); }
+        .type-machine { color: #90d8ff; background: rgba(144,216,255,.1);border-color: rgba(144,216,255,.3); }
+        .type-default { color: #94a3b8; background: rgba(148,163,184,.1);border-color: rgba(148,163,184,.3); }
 
-        .scanlines::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                transparent 50%,
-                rgba(0, 249, 255, 0.03) 50%
-            );
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 1;
-            animation: scan 4s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 100px; }
-        }
-
-        .neon-glow {
-            box-shadow: 0 0 15px rgba(0, 249, 255, 0.5);
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 2px;
-        }
-
-        .data-value {
+        /* details button */
+        .btn-details {
+            background: transparent;
+            border: 1px solid #334155;
+            color: #64748b;
+            border-radius: 5px;
+            padding: 3px 8px;
             font-family: 'Share Tech Mono', monospace;
-            color: #e0e0ff;
+            font-size: 10px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
         }
-
-        .cyber-input {
-            background: #111118;
-            border: 1px solid #334155;
-            color: white;
-            transition: all 0.2s ease;
+        .btn-details:hover {
+            border-color: #00f9ff; color: #00f9ff;
+            box-shadow: 0 0 8px rgba(0,249,255,0.3);
         }
-
-        .cyber-input:focus {
+        .btn-details.open {
+            background: #00f9ff; color: #050507;
             border-color: #00f9ff;
-            box-shadow: 0 0 15px rgba(0, 249, 255, 0.3);
-            outline: none;
+            box-shadow: 0 0 10px #00f9ff;
         }
 
-        .stat-pill {
-            background: #111118;
-            border: 1px solid #334155;
+        /* expanded detail row */
+        .detail-row td {
+            padding: 0 !important;
+            background: #0d0d14;
+            border-bottom: 1px solid #334155 !important;
+        }
+        .detail-panel {
+            padding: 16px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        @media (min-width: 640px) {
+            .detail-panel { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 900px) {
+            .detail-panel { grid-template-columns: repeat(4, 1fr); }
+        }
+        .detail-panel-wide {
+            grid-column: 1 / -1;
+            background: #111118; border-radius: 8px; padding: 10px 14px;
+            font-size: 12px; color: #c0c0dd; line-height: 1.6;
+        }
+        .detail-cell {
+            background: #111118; border-radius: 8px; padding: 8px 12px;
+        }
+        .detail-cell-label { color: #64748b; font-size: 10px; letter-spacing: 1px; margin-bottom: 3px; }
+        .detail-cell-value { font-family: 'Share Tech Mono', monospace; font-size: 13px; }
+        .detail-actions {
+            grid-column: 1 / -1;
+            display: flex; gap: 8px; align-items: center;
+        }
+        .neon-button {
+            background: transparent;
+            border: 1px solid #00f9ff;
+            color: #00f9ff;
+            padding: 5px 14px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.15s;
+            text-transform: uppercase;
+        }
+        .neon-button:hover {
+            background: #00f9ff; color: #050507;
+            box-shadow: 0 0 16px #00f9ff;
+        }
+        .neon-button.pink {
+            border-color: #ff00aa; color: #ff00aa;
+        }
+        .neon-button.pink:hover {
+            background: #ff00aa; color: #fff;
+            box-shadow: 0 0 16px #ff00aa;
         }
 
-        /* Dark-themed scrollbars (sidebar + results + anywhere else) */
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: #1a1a22 #050507;
+        /* no-results */
+        #no-results {
+            padding: 60px 20px; text-align: center;
         }
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0f;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1a1a22;
-            border: 1px solid #334155;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00f9ff;
-            box-shadow: 0 0 8px rgba(0, 249, 255, 0.5);
-        }
-        ::-webkit-scrollbar-corner {
-            background: #0a0a0f;
-        }
+        #no-results i { font-size: 48px; color: #334155; margin-bottom: 16px; }
+        #no-results p { color: #64748b; }
 
+        /* ── Loading overlay ── */
         .loading-overlay {
-            position: fixed;
-            inset: 0;
+            position: fixed; inset: 0;
             background: #050507;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            gap: 20px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            z-index: 999; gap: 16px;
         }
         .loading-overlay.hidden { display: none; }
-        .load-bar {
-            width: 260px;
-            height: 3px;
-            background: #111118;
-            border: 1px solid #334155;
-            border-radius: 2px;
-            overflow: hidden;
+        .load-bar { width: 220px; height: 3px; background: #111118; border: 1px solid #334155; border-radius: 2px; overflow: hidden; }
+        .load-bar-fill { height: 100%; background: #00f9ff; box-shadow: 0 0 8px #00f9ff; animation: load-pulse 1.4s ease-in-out infinite; }
+        @keyframes load-pulse { 0%{width:0%} 50%{width:70%} 100%{width:100%} }
+
+        /* ── Toast ── */
+        .toast {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            background: #00f9ff; color: #050507;
+            padding: 8px 20px; border-radius: 999px;
+            font-size: 12px; font-weight: 600;
+            display: flex; align-items: center; gap: 8px;
+            box-shadow: 0 0 20px rgba(0,249,255,0.5);
+            z-index: 200;
+            transition: all 0.3s ease;
         }
-        .load-bar-fill {
-            height: 100%;
-            background: #00f9ff;
-            box-shadow: 0 0 10px #00f9ff;
-            animation: load-pulse 1.4s ease-in-out infinite;
-        }
-        @keyframes load-pulse {
-            0%   { width: 0%; }
-            50%  { width: 70%; }
-            100% { width: 100%; }
+
+        /* mobile collapsed sidebar tweak */
+        @media (max-width: 600px) {
+            #sidebar { width: 36px !important; }
+            #sidebar.mobile-open { width: 220px !important; }
         }
     </style>
 </head>
-<body class="min-h-screen">
+<body>
 
     <!-- Loading overlay -->
     <div class="loading-overlay" id="loading-overlay">
-        <div class="font-bold text-2xl tracking-[3px] neon-text" style="font-family:'Orbitron',sans-serif">NEON FORGE</div>
-        <div class="text-xs text-[#00f9ff] tracking-[2px]">LOADING DATABASE...</div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:22px;letter-spacing:3px;text-shadow:0 0 10px #00f9ff,0 0 20px #00f9ff;">NEON FORGE</div>
+        <div style="font-size:11px;color:#00f9ff;letter-spacing:2px;">LOADING DATABASE...</div>
         <div class="load-bar"><div class="load-bar-fill"></div></div>
-        <div class="text-xs text-[#64748b]" id="load-status">Fetching db.sqlite</div>
+        <div style="font-size:10px;color:#64748b;" id="load-status">Fetching db.sqlite</div>
     </div>
 
-    <!-- Header -->
-    <header class="cyber-header sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-            <div class="flex items-center gap-x-4">
-                <!-- Cyberpunk Logo -->
-                <div class="flex items-center gap-x-3">
-                    <div class="w-11 h-11 bg-gradient-to-br from-[#00f9ff] via-[#7b2cbf] to-[#ff00aa] flex items-center justify-center rounded-lg relative">
-                        <i class="fa-solid fa-microchip text-[#050507] text-3xl"></i>
-                        <div class="absolute inset-0 bg-white/20 rounded-lg animate-pulse"></div>
-                    </div>
-                    <div class="group">
-                        <div class="font-bold text-3xl tracking-[3px] neon-text group-hover:animate-[glitch_0.4s_infinite] transition-all">NEON FORGE</div>
-                        <div class="text-[10px] text-[#00f9ff] -mt-1 tracking-[2px]">CNC TOOL ARCHIVE v2.4</div>
-                    </div>
-                </div>
+    <!-- ── HEADER ── -->
+    <header id="app-header">
+        <div class="header-logo">
+            <div class="header-logo-icon">
+                <i class="fa-solid fa-microchip" style="color:#050507;font-size:18px;"></i>
             </div>
-
-            <div class="flex items-center gap-x-4">
-                <!-- Stats -->
-                <div class="hidden md:flex items-center gap-x-2 text-xs">
-                    <div class="stat-pill px-3 py-1 rounded-full flex items-center gap-x-2">
-                        <div class="w-2 h-2 bg-[#39ff14] rounded-full animate-pulse"></div>
-                        <span class="text-[#94a3b8]" id="stat-insert-count">loading...</span>
-                    </div>
-                    <div class="stat-pill px-3 py-1 rounded-full text-[#94a3b8]" id="stat-brand-count">
-                        ...
-                    </div>
-                </div>
-
-                <!-- Unit Toggle -->
-                <div class="flex items-center bg-[#111118] border border-[#334155] rounded-full p-1 text-xs font-semibold">
-                    <button onclick="setUnit('metric')" id="btn-metric"
-                            class="px-4 py-1.5 rounded-full transition-all bg-[#00f9ff] text-[#050507]">METRIC</button>
-                    <button onclick="setUnit('imperial')" id="btn-imperial"
-                            class="px-4 py-1.5 rounded-full transition-all text-[#64748b] hover:text-white">IMPERIAL</button>
-                </div>
-
+            <div>
+                <div class="header-title">NEON FORGE</div>
+                <div class="header-sub">CNC TOOL ARCHIVE v2.4</div>
             </div>
         </div>
+
+        <div class="header-stats">
+            <div class="stat-pill hidden sm:flex">
+                <div style="width:7px;height:7px;background:#39ff14;border-radius:50%;animation:load-pulse 2s infinite;"></div>
+                <span style="color:#94a3b8;" id="stat-insert-count">—</span>
+            </div>
+            <div class="stat-pill hidden sm:flex" id="stat-brand-count" style="color:#94a3b8;">—</div>
+            <div class="unit-toggle">
+                <button onclick="setUnit('metric')" id="btn-metric" class="active">MM</button>
+                <button onclick="setUnit('imperial')" id="btn-imperial">IN</button>
+            </div>
+        </div>
+
+        <div id="header-resize-handle"></div>
     </header>
 
-    <div class="max-w-7xl mx-auto px-6 pt-8 pb-16">
+    <!-- ── BODY ── -->
+    <div id="app-body">
 
-        <!-- Hero / Title -->
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
-            <div>
-                <div class="flex items-center gap-x-3 mb-2">
-                    <h1 class="text-5xl font-bold tracking-tighter section-title">CNC TOOL DATABASE</h1>
-                    <div class="px-3 py-1 bg-[#ff00aa]/10 border border-[#ff00aa] text-[#ff00aa] text-xs rounded font-mono tracking-widest">LIVE</div>
+        <!-- ── SIDEBAR ── -->
+        <div id="sidebar">
+            <!-- collapse toggle -->
+            <div id="sidebar-toggle" title="Toggle filters" onclick="toggleSidebar()">
+                <i class="fa-solid fa-sliders" id="sidebar-toggle-icon" style="font-size:13px;"></i>
+            </div>
+
+            <div id="sidebar-inner">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 2px;">
+                    <div style="font-size:10px;letter-spacing:2px;color:#00f9ff;font-weight:600;">FILTERS</div>
+                    <button onclick="clearAllFilters()" style="font-size:10px;color:#ff00aa;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;font-family:'Share Tech Mono',monospace;">
+                        <i class="fa-solid fa-times"></i> CLEAR
+                    </button>
                 </div>
-                <p class="text-[#94a3b8] max-w-md" id="makers-tagline">Precision tooling</p>
+
+                <div style="display:flex;flex-direction:column;gap:14px;">
+                    <div>
+                        <div class="filter-group-title"><i class="fa-solid fa-industry" style="width:12px;"></i> MANUFACTURER</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:4px;" id="filter-manufacturer"></div>
+                    </div>
+                    <div>
+                        <div class="filter-group-title"><i class="fa-solid fa-cogs" style="width:12px;"></i> TYPE</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:4px;" id="filter-type"></div>
+                    </div>
+                    <div>
+                        <div class="filter-group-title"><i class="fa-solid fa-shapes" style="width:12px;"></i> SHAPE</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:4px;" id="filter-shape"></div>
+                    </div>
+                    <div>
+                        <div class="filter-group-title"><i class="fa-solid fa-medal" style="width:12px;"></i> GRADE</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:4px;" id="filter-grade"></div>
+                    </div>
+                    <div>
+                        <div class="filter-group-title"><i class="fa-solid fa-wave-square" style="width:12px;"></i> CHIPBREAKER</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:4px;" id="filter-cb"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top:20px;font-size:10px;color:#334155;padding:0 2px;">
+                    <i class="fa-solid fa-info-circle" style="margin-right:4px;"></i>
+                    Data from db.sqlite
+                </div>
             </div>
 
-            <!-- View Toggle -->
-            <div class="flex items-center gap-x-2 mt-6 md:mt-0 bg-[#111118] border border-[#334155] rounded-xl p-1">
-                <button onclick="switchView('cards')" id="btn-cards"
-                        class="neon-button active px-5 py-2 rounded-lg flex items-center gap-x-2 text-sm">
-                    <i class="fa-solid fa-th-large"></i>
-                    <span>CARDS</span>
-                </button>
-                <button onclick="switchView('table')" id="btn-table"
-                        class="neon-button px-5 py-2 rounded-lg flex items-center gap-x-2 text-sm">
-                    <i class="fa-solid fa-table"></i>
-                    <span>TABLE</span>
-                </button>
-            </div>
+            <div id="sidebar-resize-handle"></div>
         </div>
 
-        <!-- Sticky Search Bar -->
-        <div class="sticky top-[78px] z-40 bg-[#050507] pb-4 -mx-6 px-6 border-b border-[#334155]/50 mb-8">
-            <div class="relative max-w-7xl mx-auto">
-                <div class="absolute left-5 top-1/2 -translate-y-1/2 text-[#00f9ff]">
-                    <i class="fa-solid fa-search text-xl"></i>
+        <!-- ── MAIN CONTENT ── -->
+        <div id="main-content">
+            <!-- Search bar -->
+            <div id="search-bar">
+                <div class="search-wrap">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="search-input" placeholder="SEARCH PART # OR DESCRIPTION...">
                 </div>
-                <input type="text" id="search-input"
-                       class="cyber-input w-full pl-14 pr-6 py-4 rounded-2xl text-lg placeholder-[#64748b]"
-                       placeholder="SEARCH PART NUMBER OR DESCRIPTION... (e.g. CCMT, DCMT, VBGT)">
-                <div class="absolute right-5 top-1/2 -translate-y-1/2 text-xs text-[#64748b] hidden md:block">
-                    PRESS <span class="font-mono bg-[#1a1a22] px-1.5 py-0.5 rounded">ESC</span> TO CLEAR
-                </div>
-            </div>
-        </div>
-
-        <div class="flex flex-col lg:flex-row gap-8 lg:h-[calc(100vh-260px)]">
-
-            <!-- Filters Sidebar -->
-            <div class="lg:w-72 flex-shrink-0 lg:overflow-y-auto lg:pr-2 lg:pb-6">
-                <div>
-                    <div class="flex items-center justify-between mb-4 px-1">
-                        <div class="uppercase text-xs tracking-[1.5px] text-[#00f9ff] font-semibold">FILTERS</div>
-                        <button onclick="clearAllFilters()"
-                                class="text-xs text-[#ff00aa] hover:text-[#ff00aa]/80 flex items-center gap-x-1">
-                            <i class="fa-solid fa-times mr-1"></i> CLEAR ALL
-                        </button>
-                    </div>
-
-                    <!-- Filter Groups -->
-                    <div class="space-y-6">
-
-                        <!-- Manufacturer -->
-                        <div>
-                            <div class="text-[#94a3b8] text-xs mb-2 px-1 flex items-center gap-x-2">
-                                <i class="fa-solid fa-industry w-3"></i>
-                                <span>MANUFACTURER</span>
-                            </div>
-                            <div class="flex flex-wrap gap-2" id="filter-manufacturer">
-                                <!-- Populated by JS -->
-                            </div>
-                        </div>
-
-                        <!-- Component Type -->
-                        <div>
-                            <div class="text-[#94a3b8] text-xs mb-2 px-1 flex items-center gap-x-2">
-                                <i class="fa-solid fa-cogs w-3"></i>
-                                <span>COMPONENT TYPE</span>
-                            </div>
-                            <div class="flex flex-wrap gap-2" id="filter-type">
-                                <!-- Populated by JS -->
-                            </div>
-                        </div>
-
-                        <!-- Insert Shape -->
-                        <div>
-                            <div class="text-[#94a3b8] text-xs mb-2 px-1 flex items-center gap-x-2">
-                                <i class="fa-solid fa-shapes w-3"></i>
-                                <span>INSERT SHAPE</span>
-                            </div>
-                            <div class="flex flex-wrap gap-2" id="filter-shape">
-                                <!-- Populated by JS -->
-                            </div>
-                        </div>
-
-                        <!-- Grade -->
-                        <div>
-                            <div class="text-[#94a3b8] text-xs mb-2 px-1 flex items-center gap-x-2">
-                                <i class="fa-solid fa-medal w-3"></i>
-                                <span>GRADE</span>
-                            </div>
-                            <div class="flex flex-wrap gap-2" id="filter-grade">
-                                <!-- Populated by JS -->
-                            </div>
-                        </div>
-
-                        <!-- Chipbreaker -->
-                        <div>
-                            <div class="text-[#94a3b8] text-xs mb-2 px-1 flex items-center gap-x-2">
-                                <i class="fa-solid fa-waveform-lines w-3"></i>
-                                <span>CHIPBREAKER</span>
-                            </div>
-                            <div class="flex flex-wrap gap-2" id="filter-cb">
-                                <!-- Populated by JS -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 text-[10px] text-[#64748b] px-1">
-                        <i class="fa-solid fa-info-circle mr-1"></i>
-                        Data synced from db.sqlite · Last updated <span id="sidebar-update">today</span>
-                    </div>
+                <div class="results-count">
+                    <span id="results-count">0</span> found
                 </div>
             </div>
 
-            <!-- Results Area -->
-            <div class="flex-1 min-w-0 lg:overflow-y-auto lg:pb-6">
-
-                <!-- Results Count -->
-                <div class="flex items-center justify-between mb-4 px-1">
-                    <div class="text-sm">
-                        <span id="results-count" class="font-mono text-[#00f9ff] text-lg">0</span>
-                        <span class="text-[#94a3b8]" id="results-label">tools found</span>
-                    </div>
-                    <div class="text-xs text-[#64748b] hidden md:block">Sorted by type · manufacturer · part #</div>
-                </div>
-
-                <!-- CARDS VIEW -->
-                <div id="cards-view" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                    <!-- Populated by JS -->
-                </div>
-
-                <!-- TABLE VIEW -->
-                <div id="table-view" class="hidden">
-                    <div class="rounded-2xl border border-[#334155] cyber-table scanlines">
-                        <table class="w-full text-sm">
-                            <thead>
-                                <tr>
-                                    <th class="px-5 py-4 text-left sticky top-0 z-10">PART #</th>
-                                    <th class="px-4 py-4 text-left sticky top-0 z-10">TYPE</th>
-                                    <th class="px-4 py-4 text-left sticky top-0 z-10">MAKER</th>
-                                    <th class="px-5 py-4 text-left sticky top-0 z-10">DESCRIPTION</th>
-                                    <th class="px-4 py-4 text-center sticky top-0 z-10">SIZE</th>
-                                    <th class="px-4 py-4 text-center sticky top-0 z-10">GRADE</th>
-                                    <th class="px-4 py-4 text-center sticky top-0 z-10">SHAPE</th>
-                                    <th class="px-4 py-4 text-center sticky top-0 z-10">CB</th>
-                                    <th class="px-4 py-4 text-center sticky top-0 z-10">CORNER R</th>
-                                    <th class="px-4 py-4 w-10 sticky top-0 z-10"></th>
-                                </tr>
-                            </thead>
-                            <tbody id="table-body" class="divide-y divide-[#334155]">
-                                <!-- Populated by JS -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="no-results" class="hidden py-16 text-center">
-                    <i class="fa-solid fa-search text-6xl text-[#334155] mb-6"></i>
-                    <p class="text-xl text-[#64748b]">No tools match your filters</p>
-                    <button onclick="clearAllFilters()" class="mt-6 neon-button px-8 py-3 text-sm">CLEAR FILTERS</button>
+            <!-- Table -->
+            <div id="table-wrap">
+                <table id="tool-table">
+                    <thead>
+                        <tr>
+                            <th style="width:140px;">PART #</th>
+                            <th style="width:72px;">TYPE</th>
+                            <th style="width:80px;">MAKER</th>
+                            <th>DESCRIPTION</th>
+                            <th class="center" style="width:120px;">SIZE</th>
+                            <th class="center" style="width:64px;">GRADE</th>
+                            <th class="center" style="width:54px;">SHAPE</th>
+                            <th class="center" style="width:48px;">CB</th>
+                            <th class="center" style="width:70px;">CORNER R</th>
+                            <th style="width:72px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+                <div id="no-results" class="hidden">
+                    <i class="fa-solid fa-search"></i>
+                    <p>No tools match your filters</p>
+                    <button onclick="clearAllFilters()" class="neon-button" style="margin-top:12px;">CLEAR FILTERS</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Footer + HUD -->
-    <footer class="border-t border-[#334155] py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-6">
-            <!-- Fake HUD Status -->
-            <div class="flex justify-center mb-6">
-                <div class="inline-flex items-center gap-x-3 bg-[#111118] border border-[#334155] px-6 py-2 rounded-full text-xs">
-                    <div class="flex items-center gap-x-2">
-                        <div class="w-2 h-2 bg-[#39ff14] rounded-full animate-pulse"></div>
-                        <span class="text-[#39ff14]">SYSTEM ONLINE</span>
-                    </div>
-                    <div class="text-[#64748b]">•</div>
-                    <div id="manufacturer-count">— MANUFACTURERS SYNCED</div>
-                    <div class="text-[#64748b]">•</div>
-                    <div>LAST UPDATE: <span id="last-update" class="font-mono">—</span></div>
-                </div>
-            </div>
-
-            <div class="text-center text-xs text-[#64748b]">
-                <p>NEON FORGE CNC TOOL DATABASE · Built for precision machinists · Data from official manufacturer catalogs</p>
-                <p class="mt-1">All data sourced from verifiable catalog pages · All rights reserved to original manufacturers</p>
-            </div>
-        </div>
-    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
     <script>
-        // ── Global state ──────────────────────────────────────────────────────────
-        let tools = []
+    // ── State ─────────────────────────────────────────────────────────────────
+    let tools = []
+    let activeFilters = { maker:[], type:[], shape:[], grade:[], cb:[] }
+    let currentUnit = 'metric'
+    let openDetailRow = null  // currently expanded row id
 
-        let activeFilters = {
-            maker:  [],
-            type:   [],
-            shape:  [],
-            grade:  [],
-            cb:     []
+    // ── Persist header/sidebar sizes ──────────────────────────────────────────
+    const PREFS_KEY = 'nf_prefs'
+    function loadPrefs() {
+        try { return JSON.parse(localStorage.getItem(PREFS_KEY)) || {} } catch { return {} }
+    }
+    function savePrefs(p) {
+        const existing = loadPrefs()
+        localStorage.setItem(PREFS_KEY, JSON.stringify({...existing, ...p}))
+    }
+    function applyPrefs() {
+        const p = loadPrefs()
+        if (p.headerH) document.documentElement.style.setProperty('--header-h', p.headerH + 'px')
+        if (p.sidebarW) document.documentElement.style.setProperty('--sidebar-w', p.sidebarW + 'px')
+        if (p.sidebarCollapsed) {
+            document.getElementById('sidebar').classList.add('collapsed')
         }
+        if (p.unit) { currentUnit = p.unit }
+    }
 
-        let currentView = 'cards'
-        let currentUnit = 'metric'
+    // ── Normalization maps ────────────────────────────────────────────────────
+    const MAKER_MAP = {
+        'Horn': 'PH Horn'
+    }
+    const SHAPE_MAP = {
+        // 35° Diamond
+        '35 deg Diamond':        '35° Diamond',
+        '35 deg Diamond (VBMT)': '35° Diamond',
+        'V':                     '35° Diamond',
+        'V (35° Diamond)':       '35° Diamond',
+        'V (35° Rhombic)':       '35° Diamond',
+        'V (35°) VBGT positive': '35° Diamond',
+        'V (35°) VBMT positive': '35° Diamond',
+        // 55° Diamond
+        '55 deg Diamond':        '55° Diamond',
+        'D':                     '55° Diamond',
+        'D (55° Diamond)':       '55° Diamond',
+        'D (55° Rhombic)':       '55° Diamond',
+        // 80° Diamond
+        '80 deg Diamond':        '80° Diamond',
+        '80° Diamond':           '80° Diamond',
+        'C':                     '80° Diamond',
+        'C (80° Diamond)':       '80° Diamond',
+        'C (80° Rhombic)':       '80° Diamond',
+        // 60° Triangle
+        'T':                     '60° Triangle',
+        'T (60° Triangle)':      '60° Triangle',
+        'Triangle':              '60° Triangle',
+    }
+    function normalizeTool(t) {
+        if (t.maker && MAKER_MAP[t.maker]) t.maker = MAKER_MAP[t.maker]
+        if (t.shape && SHAPE_MAP[t.shape]) t.shape = SHAPE_MAP[t.shape]
+        return t
+    }
 
-        // ── Unit conversion ───────────────────────────────────────────────────────
-        function formatDimension(value, label = '') {
-            if (value == null || value === '') return '—'
-            const num = parseFloat(value)
-            if (isNaN(num)) return '—'
-            if (currentUnit === 'imperial') {
-                return `${(num * 0.0393701).toFixed(3)}"`
-            }
-            return `${num} mm`
-        }
+    // ── Unit ──────────────────────────────────────────────────────────────────
+    function formatDim(v) {
+        if (v == null || v === '') return '—'
+        const n = parseFloat(v)
+        if (isNaN(n)) return '—'
+        return currentUnit === 'imperial' ? `${(n * 0.0393701).toFixed(3)}"` : `${n} mm`
+    }
+    function buildSize(t) {
+        const u = currentUnit === 'imperial' ? '"' : 'mm'
+        const c = v => currentUnit === 'imperial' ? (v * 0.0393701).toFixed(3) : v.toFixed(2)
+        if (t.ic_mm != null && t.s_mm != null) return `IC ${c(t.ic_mm)}${u} · S ${c(t.s_mm)}${u}`
+        if (t.ic_mm != null) return `IC ${c(t.ic_mm)}${u}`
+        return t.fallbackSize || ''
+    }
+    function setUnit(unit) {
+        currentUnit = unit
+        document.getElementById('btn-metric').classList.toggle('active', unit === 'metric')
+        document.getElementById('btn-imperial').classList.toggle('active', unit === 'imperial')
+        savePrefs({unit})
+        applyFilters()
+    }
 
-        // Build a size string that respects the current unit
-        function buildSize(tool) {
-            const unit = currentUnit === 'imperial' ? '"' : 'mm'
-            const conv = v => currentUnit === 'imperial' ? (v * 0.0393701).toFixed(3) : v.toFixed(2)
-            if (tool.ic_mm != null && tool.s_mm != null) {
-                return `IC ${conv(tool.ic_mm)}${unit} · S ${conv(tool.s_mm)}${unit}`
-            }
-            if (tool.ic_mm != null) return `IC ${conv(tool.ic_mm)}${unit}`
-            return tool.fallbackSize || ''
-        }
-
-        function setUnit(unit) {
-            currentUnit = unit
-            const metricBtn   = document.getElementById('btn-metric')
-            const imperialBtn = document.getElementById('btn-imperial')
-            if (unit === 'metric') {
-                metricBtn.classList.add('bg-[#00f9ff]', 'text-[#050507]')
-                metricBtn.classList.remove('text-[#64748b]')
-                imperialBtn.classList.remove('bg-[#00f9ff]', 'text-[#050507]')
-                imperialBtn.classList.add('text-[#64748b]')
-            } else {
-                imperialBtn.classList.add('bg-[#00f9ff]', 'text-[#050507]')
-                imperialBtn.classList.remove('text-[#64748b]')
-                metricBtn.classList.remove('bg-[#00f9ff]', 'text-[#050507]')
-                metricBtn.classList.add('text-[#64748b]')
-            }
-            applyFilters()
-        }
-
-        // ── Filters ───────────────────────────────────────────────────────────────
-        function getUniqueValues(key) {
-            const values = new Set()
-            tools.forEach(tool => { if (tool[key]) values.add(tool[key]) })
-            return Array.from(values).sort()
-        }
-
-        function renderFilters() {
-            const filterContainers = {
-                maker:  document.getElementById('filter-manufacturer'),
-                type:   document.getElementById('filter-type'),
-                shape:  document.getElementById('filter-shape'),
-                grade:  document.getElementById('filter-grade'),
-                cb:     document.getElementById('filter-cb')
-            }
-
-            Object.keys(filterContainers).forEach(key => {
-                const container = filterContainers[key]
-                container.innerHTML = ''
-                const values = getUniqueValues(key)
-                values.forEach(value => {
-                    const chip = document.createElement('div')
-                    chip.className = 'filter-chip px-3 py-1 rounded-full cursor-pointer text-xs flex items-center gap-x-1'
-                    chip.innerHTML = `<span>${value}</span>`
-                    chip.onclick = () => toggleFilter(key, value, chip)
-                    container.appendChild(chip)
-                })
-            })
-        }
-
-        function toggleFilter(key, value, element) {
-            if (!activeFilters[key].includes(value)) {
-                activeFilters[key].push(value)
-                element.classList.add('active')
-            } else {
-                activeFilters[key] = activeFilters[key].filter(v => v !== value)
-                element.classList.remove('active')
-            }
-            applyFilters()
-        }
-
-        function clearAllFilters() {
-            activeFilters = { maker: [], type: [], shape: [], grade: [], cb: [] }
-            document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'))
-            document.getElementById('search-input').value = ''
-            applyFilters()
-        }
-
-        // ── Filter / search logic ─────────────────────────────────────────────────
-        function applyFilters() {
-            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim()
-
-            let filtered = tools.filter(tool => {
-                if (searchTerm) {
-                    const searchString = `${tool.part} ${tool.description} ${tool.maker} ${tool.grade} ${tool.shape} ${tool.cb}`.toLowerCase()
-                    if (!searchString.includes(searchTerm)) return false
-                }
-                if (activeFilters.maker.length  > 0 && !activeFilters.maker.includes(tool.maker))   return false
-                if (activeFilters.type.length   > 0 && !activeFilters.type.includes(tool.type))     return false
-                if (activeFilters.shape.length  > 0 && !activeFilters.shape.includes(tool.shape))   return false
-                if (activeFilters.grade.length  > 0 && !activeFilters.grade.includes(tool.grade))   return false
-                if (activeFilters.cb.length     > 0 && !activeFilters.cb.includes(tool.cb))         return false
-                return true
-            })
-
-            document.getElementById('results-count').textContent = filtered.length.toLocaleString()
-
-            const noResults = document.getElementById('no-results')
-            if (filtered.length === 0) {
-                noResults.classList.remove('hidden')
-                document.getElementById('cards-view').classList.add('hidden')
-                document.getElementById('table-view').classList.add('hidden')
-            } else {
-                noResults.classList.add('hidden')
-                if (currentView === 'cards') renderCards(filtered)
-                else renderTable(filtered)
-            }
-        }
-
-        // ── Card render ───────────────────────────────────────────────────────────
-        function renderCards(filteredTools) {
-            const container = document.getElementById('cards-view')
-            container.innerHTML = ''
-            container.classList.remove('hidden')
-            document.getElementById('table-view').classList.add('hidden')
-
-            filteredTools.forEach(tool => {
-                const card = document.createElement('div')
-                card.className = 'tool-card rounded-2xl p-5 flex flex-col h-full'
-
-                const typeBadgeColor = {
-                    'insert':  'text-[#39ff14] bg-[#39ff14]/10 border-[#39ff14]/30',
-                    'holder':  'text-[#ff9900] bg-[#ff9900]/10 border-[#ff9900]/30',
-                    'module':  'text-[#d890ff] bg-[#7b2cbf]/10 border-[#7b2cbf]/30',
-                    'shank':   'text-[#fff890] bg-[#fff890]/10 border-[#fff890]/30',
-                    'machine': 'text-[#90d8ff] bg-[#90d8ff]/10 border-[#90d8ff]/30',
-                }[tool.type] || 'text-[#94a3b8] bg-[#94a3b8]/10 border-[#94a3b8]/30'
-
-                card.innerHTML = `
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="flex-1 min-w-0 mr-2">
-                            <div class="font-mono text-[#00f9ff] text-base tracking-wider truncate">${tool.part}</div>
-                            <div class="text-xs mt-0.5">
-                                <span class="px-1.5 py-0.5 border rounded text-[10px] ${typeBadgeColor}">${tool.type}</span>
-                            </div>
-                        </div>
-                        <div class="text-right flex-shrink-0">
-                            <div class="px-2.5 py-0.5 bg-[#7b2cbf]/20 text-[#7b2cbf] text-xs rounded font-semibold">${tool.maker}</div>
-                        </div>
-                    </div>
-
-                    <div class="flex-1">
-                        <div class="text-sm leading-snug text-[#e0e0ff] line-clamp-3">${tool.description}</div>
-                    </div>
-
-                    <div class="mt-5 pt-4 border-t border-[#334155] grid grid-cols-2 gap-y-3 text-xs">
-                        ${buildSize(tool) ? `
-                        <div>
-                            <div class="text-[#64748b]">SIZE</div>
-                            <div class="font-mono text-[#e0e0ff]">${buildSize(tool)}</div>
-                        </div>` : ''}
-                        ${tool.grade ? `
-                        <div>
-                            <div class="text-[#64748b]">GRADE</div>
-                            <div class="font-mono text-[#39ff14]">${tool.grade}</div>
-                        </div>` : ''}
-                        ${tool.shape ? `
-                        <div>
-                            <div class="text-[#64748b]">SHAPE</div>
-                            <div class="font-mono">${tool.shape}</div>
-                        </div>` : ''}
-                        ${tool.cb ? `
-                        <div>
-                            <div class="text-[#64748b]">CHIPBREAKER</div>
-                            <div class="font-mono">${tool.cb}</div>
-                        </div>` : ''}
-                        ${tool.cornerRadius != null ? `
-                        <div>
-                            <div class="text-[#64748b]">CORNER R</div>
-                            <div class="font-mono">${formatDimension(tool.cornerRadius)}</div>
-                        </div>` : ''}
-                        ${tool.minBore != null ? `
-                        <div>
-                            <div class="text-[#64748b]">MIN BORE</div>
-                            <div class="font-mono">${formatDimension(tool.minBore)}</div>
-                        </div>` : ''}
-                    </div>
-
-                    <div class="mt-5 flex gap-2">
-                        <button onclick="showToolDetail(${tool.id})"
-                                class="flex-1 neon-button text-xs py-2 rounded-lg">VIEW SPECS</button>
-                        <button onclick="copyPartNumber('${tool.part}')"
-                                class="px-4 neon-button text-xs py-2 rounded-lg border-[#ff00aa] hover:bg-[#ff00aa] hover:text-white">
-                            <i class="fa-solid fa-copy"></i>
-                        </button>
-                    </div>
-                `
-                container.appendChild(card)
-            })
-        }
-
-        // ── Table render ──────────────────────────────────────────────────────────
-        function renderTable(filteredTools) {
-            const tbody = document.getElementById('table-body')
-            tbody.innerHTML = ''
-            document.getElementById('cards-view').classList.add('hidden')
-            document.getElementById('table-view').classList.remove('hidden')
-
-            filteredTools.forEach(tool => {
-                const row = document.createElement('tr')
-                row.className = 'hover:bg-[#111118] group'
-                row.innerHTML = `
-                    <td class="px-5 py-4 font-mono text-[#00f9ff] text-xs">${tool.part}</td>
-                    <td class="px-4 py-4 text-xs">${tool.type}</td>
-                    <td class="px-4 py-4">
-                        <span class="px-2 py-0.5 text-xs rounded bg-[#7b2cbf]/20 text-[#7b2cbf]">${tool.maker}</span>
-                    </td>
-                    <td class="px-5 py-4 text-xs max-w-[280px] text-[#94a3b8]">${tool.description ? tool.description.substring(0,120) + (tool.description.length>120?'…':'') : '—'}</td>
-                    <td class="px-4 py-4 text-center font-mono text-xs">${buildSize(tool) || '—'}</td>
-                    <td class="px-4 py-4 text-center">
-                        <span class="font-mono text-[#39ff14] text-xs">${tool.grade || '—'}</span>
-                    </td>
-                    <td class="px-4 py-4 text-center font-mono text-xs">${tool.shape || '—'}</td>
-                    <td class="px-4 py-4 text-center font-mono text-xs">${tool.cb || '—'}</td>
-                    <td class="px-4 py-4 text-center font-mono text-xs">${tool.cornerRadius != null ? formatDimension(tool.cornerRadius) : '—'}</td>
-                    <td class="px-4 py-4">
-                        <button onclick="showToolDetail(${tool.id})"
-                                class="text-[#00f9ff] opacity-70 group-hover:opacity-100">
-                            <i class="fa-solid fa-info-circle"></i>
-                        </button>
-                    </td>
-                `
-                tbody.appendChild(row)
-            })
-        }
-
-        // ── View switcher ─────────────────────────────────────────────────────────
-        function switchView(view) {
-            currentView = view
-            const cardsBtn = document.getElementById('btn-cards')
-            const tableBtn = document.getElementById('btn-table')
-            if (view === 'cards') {
-                cardsBtn.classList.add('active')
-                tableBtn.classList.remove('active')
-            } else {
-                tableBtn.classList.add('active')
-                cardsBtn.classList.remove('active')
-            }
-            applyFilters()
-        }
-
-        // ── Detail modal ──────────────────────────────────────────────────────────
-        function showToolDetail(id) {
-            const tool = tools.find(t => t.id === id)
-            if (!tool) return
-
-            const modal = document.createElement('div')
-            modal.className = 'fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-6'
-            modal.innerHTML = `
-                <div class="max-w-lg w-full bg-[#0f0f14] border border-[#00f9ff] rounded-3xl overflow-hidden">
-                    <div class="px-8 pt-8 pb-6">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <div class="font-mono text-2xl text-[#00f9ff] break-all">${tool.part}</div>
-                                <div class="text-[#94a3b8] text-sm">${tool.type} · ${tool.maker}</div>
-                            </div>
-                            <button onclick="this.closest('.fixed').remove()" class="text-3xl leading-none text-[#64748b] hover:text-white ml-4">&times;</button>
-                        </div>
-
-                        <div class="my-6 text-sm leading-relaxed text-[#c0c0dd]">${tool.description}</div>
-
-                        <div class="grid grid-cols-2 gap-3 text-sm">
-                            ${buildSize(tool) ? `
-                            <div class="bg-[#111118] p-4 rounded-2xl">
-                                <div class="text-[#64748b] text-xs mb-1">SIZE</div>
-                                <div class="font-mono text-base">${buildSize(tool)}</div>
-                            </div>` : ''}
-                            ${tool.grade ? `
-                            <div class="bg-[#111118] p-4 rounded-2xl">
-                                <div class="text-[#64748b] text-xs mb-1">GRADE</div>
-                                <div class="font-mono text-base text-[#39ff14]">${tool.grade}</div>
-                            </div>` : ''}
-                            ${tool.shape ? `
-                            <div class="bg-[#111118] p-4 rounded-2xl">
-                                <div class="text-[#64748b] text-xs mb-1">SHAPE</div>
-                                <div class="font-mono text-base">${tool.shape}</div>
-                            </div>` : ''}
-                            ${tool.cb ? `
-                            <div class="bg-[#111118] p-4 rounded-2xl">
-                                <div class="text-[#64748b] text-xs mb-1">CHIPBREAKER</div>
-                                <div class="font-mono text-base">${tool.cb}</div>
-                            </div>` : ''}
-                            ${tool.cornerRadius != null ? `
-                            <div class="bg-[#111118] p-4 rounded-2xl">
-                                <div class="text-[#64748b] text-xs mb-1">CORNER RADIUS</div>
-                                <div class="font-mono text-base">${formatDimension(tool.cornerRadius)}</div>
-                            </div>` : ''}
-                            ${tool.minBore != null ? `
-                            <div class="bg-[#111118] p-4 rounded-2xl">
-                                <div class="text-[#64748b] text-xs mb-1">MIN. BORE</div>
-                                <div class="font-mono text-base">${formatDimension(tool.minBore)}</div>
-                            </div>` : ''}
-                        </div>
-                    </div>
-
-                    <div class="bg-[#111118] px-8 py-5 flex items-center justify-between text-xs border-t border-[#334155]">
-                        <div class="text-[#64748b]">Mounts to: <span class="font-mono text-white">${tool.mountsTo || 'Various'}</span></div>
-                        <div class="flex gap-3">
-                            <button onclick="copyPartNumber('${tool.part}'); this.closest('.fixed').remove()"
-                                    class="neon-button px-5 py-2 text-xs">COPY PART #</button>
-                            <button onclick="this.closest('.fixed').remove()"
-                                    class="px-5 py-2 text-xs border border-[#334155] rounded-lg hover:bg-[#1a1a22]">CLOSE</button>
-                        </div>
-                    </div>
-                </div>
-            `
-            document.body.appendChild(modal)
-        }
-
-        // ── Copy to clipboard ─────────────────────────────────────────────────────
-        function copyPartNumber(part) {
-            navigator.clipboard.writeText(part).then(() => {
-                const toast = document.createElement('div')
-                toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#00f9ff] text-[#050507] px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-x-2 shadow-xl z-[200]'
-                toast.innerHTML = `<i class="fa-solid fa-check"></i> <span>Copied ${part}</span>`
-                document.body.appendChild(toast)
-                setTimeout(() => {
-                    toast.style.transition = 'all 0.3s ease'
-                    toast.style.opacity = '0'
-                    toast.style.transform = 'translate(-50%, 20px)'
-                    setTimeout(() => toast.remove(), 300)
-                }, 1800)
-            })
-        }
-
-        // ── HUD / stats ───────────────────────────────────────────────────────────
-        function updateHUD() {
-            const uniqueMakers = new Set(tools.map(t => t.maker).filter(Boolean))
-            const insertCount  = tools.filter(t => t.type === 'insert').length
-
-            const statInserts = document.getElementById('stat-insert-count')
-            if (statInserts) statInserts.textContent = `${insertCount.toLocaleString()} inserts`
-
-            const statBrands = document.getElementById('stat-brand-count')
-            if (statBrands) statBrands.textContent = `${uniqueMakers.size} brands`
-
-            // Dynamic makers tagline
-            const tagline = document.getElementById('makers-tagline')
-            if (tagline) {
-                const sortedMakers = Array.from(uniqueMakers).sort()
-                tagline.textContent = sortedMakers.length
-                    ? `Precision tooling from ${sortedMakers.join(' · ')}`
-                    : 'Precision tooling'
-            }
-
-            const countEl = document.getElementById('manufacturer-count')
-            if (countEl) countEl.textContent = `${uniqueMakers.size} MANUFACTURERS SYNCED`
-
-            const updateEl = document.getElementById('last-update')
-            if (updateEl) {
-                updateEl.textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase()
-            }
-            const sidebarUpdate = document.getElementById('sidebar-update')
-            if (sidebarUpdate) {
-                sidebarUpdate.textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toUpperCase()
-            }
-        }
-
-        // ── Load database ─────────────────────────────────────────────────────────
-        async function loadDB() {
-            const loadStatus = document.getElementById('load-status')
-            try {
-                if (loadStatus) loadStatus.textContent = 'Fetching db.sqlite...'
-                const resp = await fetch('db.sqlite')
-                if (!resp.ok) throw new Error(`Could not fetch db.sqlite (${resp.status})`)
-
-                if (loadStatus) loadStatus.textContent = 'Parsing database...'
-                const buf = await resp.arrayBuffer()
-                const SQL = await initSqlJs({
-                    locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/${f}`
-                })
-                const db = new SQL.Database(new Uint8Array(buf))
-
-                if (loadStatus) loadStatus.textContent = 'Building tool list...'
-                const res = db.exec('SELECT * FROM tools ORDER BY component_type, manufacturer, json_id')
-                if (!res.length) throw new Error('tools table is empty')
-                const { columns, values } = res[0]
-
-                tools = values.map((row, idx) => {
-                    const obj = {}
-                    columns.forEach((c, i) => {
-                        let v = row[i]
-                        if (v && ['specs','compatible_machines','compatible_inserts','sources','tags'].includes(c)) {
-                            try { v = JSON.parse(v) } catch {}
-                        }
-                        obj[c] = v
-                    })
-
-                    const specs = (obj.specs && typeof obj.specs === 'object') ? obj.specs : {}
-
-                    // Corner radius — check multiple possible keys
-                    const re = parseFloat(
-                        specs.re_mm ?? specs.corner_radius_RE ?? specs.corner_radius_mm ?? specs.corner_radius ?? 0
-                    ) || null
-
-                    // Min bore
-                    const bore = parseFloat(
-                        specs.min_bore_diameter ?? specs.minimum_bore_diameter ?? specs.bore_diameter_min ?? 0
-                    ) || null
-
-                    // Raw IC/S in mm so size string can be rebuilt on unit toggle
-                    const ic_mm = (specs.ic_mm != null) ? parseFloat(specs.ic_mm) : null
-                    const s_mm  = (specs.s_mm  != null) ? parseFloat(specs.s_mm)  : null
-                    const fallbackSize = obj.size || ''
-
-                    // mountsTo — first compatible machine or insert if linked
-                    let mountsTo = null
-                    if (Array.isArray(obj.compatible_machines) && obj.compatible_machines.length) {
-                        mountsTo = obj.compatible_machines[0]
-                    } else if (Array.isArray(obj.compatible_inserts) && obj.compatible_inserts.length) {
-                        mountsTo = obj.compatible_inserts[0]
-                    }
-
-                    return {
-                        id:           idx + 1,
-                        part:         obj.json_id          || '',
-                        type:         obj.component_type   || '',
-                        maker:        obj.manufacturer     || '',
-                        description:  obj.description      || '',
-                        ic_mm:        ic_mm,
-                        s_mm:         s_mm,
-                        fallbackSize: fallbackSize,
-                        grade:        obj.grade            || '',
-                        shape:        obj.shape            || '',
-                        cb:           obj.chipbreaker      || '',
-                        cornerRadius: re,
-                        minBore:      bore,
-                        mountsTo:     mountsTo
-                    }
-                })
-
-                db.close()
-                initialize()
-
-            } catch (e) {
-                const overlay = document.getElementById('loading-overlay')
-                if (overlay) overlay.classList.add('hidden')
-                document.getElementById('results-count').innerHTML =
-                    `<span style="color:#ff00aa">DB error: ${e.message}</span>`
-                console.error('[NEON FORGE] DB load error:', e)
-            }
-        }
-
-        // ── Initialize ────────────────────────────────────────────────────────────
-        function initialize() {
-            // Hide loading overlay
-            const overlay = document.getElementById('loading-overlay')
-            if (overlay) overlay.classList.add('hidden')
-
-            renderFilters()
-            updateHUD()
-
-            document.getElementById('results-count').textContent = tools.length.toLocaleString()
-            renderCards(tools)
-
-            // Search input
-            document.getElementById('search-input').addEventListener('input', () => applyFilters())
-
-            // Keyboard shortcuts
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    if (document.getElementById('search-input') === document.activeElement) {
-                        document.getElementById('search-input').value = ''
+    // ── Filters ───────────────────────────────────────────────────────────────
+    function getUnique(key) {
+        const s = new Set()
+        tools.forEach(t => { if (t[key]) s.add(t[key]) })
+        return Array.from(s).sort()
+    }
+    function renderFilters() {
+        const map = { maker:'filter-manufacturer', type:'filter-type', shape:'filter-shape', grade:'filter-grade', cb:'filter-cb' }
+        Object.entries(map).forEach(([key, id]) => {
+            const el = document.getElementById(id)
+            el.innerHTML = ''
+            getUnique(key).forEach(v => {
+                const chip = document.createElement('div')
+                chip.className = 'filter-chip'
+                chip.textContent = v
+                chip.onclick = () => {
+                    const active = activeFilters[key].includes(v)
+                    if (active) {
+                        activeFilters[key] = activeFilters[key].filter(x => x !== v)
+                        chip.classList.remove('active')
                     } else {
-                        clearAllFilters()
+                        activeFilters[key].push(v)
+                        chip.classList.add('active')
                     }
                     applyFilters()
                 }
-                if (e.key === '/' && document.activeElement.tagName === 'BODY') {
-                    e.preventDefault()
-                    document.getElementById('search-input').focus()
-                }
+                el.appendChild(chip)
             })
+        })
+    }
+    function clearAllFilters() {
+        activeFilters = { maker:[], type:[], shape:[], grade:[], cb:[] }
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'))
+        document.getElementById('search-input').value = ''
+        applyFilters()
+    }
 
-            document.getElementById('btn-cards').classList.add('active')
-            setUnit('metric')
+    // ── Filter logic ──────────────────────────────────────────────────────────
+    function applyFilters() {
+        const q = document.getElementById('search-input').value.toLowerCase().trim()
+        let filtered = tools.filter(t => {
+            if (q) {
+                const s = `${t.part} ${t.description} ${t.maker} ${t.grade} ${t.shape} ${t.cb}`.toLowerCase()
+                if (!s.includes(q)) return false
+            }
+            if (activeFilters.maker.length  && !activeFilters.maker.includes(t.maker))  return false
+            if (activeFilters.type.length   && !activeFilters.type.includes(t.type))    return false
+            if (activeFilters.shape.length  && !activeFilters.shape.includes(t.shape))  return false
+            if (activeFilters.grade.length  && !activeFilters.grade.includes(t.grade))  return false
+            if (activeFilters.cb.length     && !activeFilters.cb.includes(t.cb))        return false
+            return true
+        })
+        document.getElementById('results-count').textContent = filtered.length.toLocaleString()
+        renderTable(filtered)
+    }
 
-            // Easter egg: Konami code
-            let konami = ''
-            document.addEventListener('keydown', function(e) {
-                konami += e.key
-                if (konami.length > 10) konami = konami.slice(-10)
-                if (konami.includes('ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba')) {
-                    document.body.style.animation = 'glitch 0.8s'
-                    setTimeout(() => document.body.style.animation = '', 800)
-                    konami = ''
-                }
-            })
+    // ── Type badge class ──────────────────────────────────────────────────────
+    function typeCls(type) {
+        const map = { insert:'type-insert', holder:'type-holder', module:'type-module', shank:'type-shank', machine:'type-machine' }
+        return map[type] || 'type-default'
+    }
 
-            console.log(`%c[NEON FORGE] ${tools.length} tools loaded`, 'color:#00f9ff')
+    // ── Table render ──────────────────────────────────────────────────────────
+    function renderTable(data) {
+        const tbody = document.getElementById('table-body')
+        tbody.innerHTML = ''
+        const noResults = document.getElementById('no-results')
+
+        if (data.length === 0) {
+            noResults.classList.remove('hidden')
+            return
+        }
+        noResults.classList.add('hidden')
+        openDetailRow = null
+
+        data.forEach(t => {
+            // Main row
+            const tr = document.createElement('tr')
+            tr.dataset.id = t.id
+            tr.innerHTML = `
+                <td class="td-part">${t.part}</td>
+                <td><span class="type-badge ${typeCls(t.type)}">${t.type}</span></td>
+                <td class="td-maker"><span>${t.maker}</span></td>
+                <td class="td-desc">${t.description ? t.description.substring(0,100)+(t.description.length>100?'…':'') : '—'}</td>
+                <td class="center" style="font-family:'Share Tech Mono',monospace;white-space:nowrap;">${buildSize(t) || '—'}</td>
+                <td class="center td-grade">${t.grade || '—'}</td>
+                <td class="center" style="font-family:'Share Tech Mono',monospace;">${t.shape || '—'}</td>
+                <td class="center" style="font-family:'Share Tech Mono',monospace;">${t.cb || '—'}</td>
+                <td class="center" style="font-family:'Share Tech Mono',monospace;">${t.cornerRadius != null ? formatDim(t.cornerRadius) : '—'}</td>
+                <td style="text-align:right;padding-right:10px;">
+                    <button class="btn-details" onclick="toggleDetail(${t.id}, this)">DETAILS</button>
+                </td>
+            `
+            tbody.appendChild(tr)
+
+            // Hidden detail row
+            const dr = document.createElement('tr')
+            dr.className = 'detail-row'
+            dr.id = `detail-${t.id}`
+            dr.style.display = 'none'
+            const colspan = 10
+            dr.innerHTML = `<td colspan="${colspan}">
+                <div class="detail-panel">
+                    <div class="detail-panel-wide">${t.description || '—'}</div>
+                    ${buildSize(t) ? `<div class="detail-cell"><div class="detail-cell-label">SIZE</div><div class="detail-cell-value">${buildSize(t)}</div></div>` : ''}
+                    ${t.grade ? `<div class="detail-cell"><div class="detail-cell-label">GRADE</div><div class="detail-cell-value" style="color:#39ff14;">${t.grade}</div></div>` : ''}
+                    ${t.shape ? `<div class="detail-cell"><div class="detail-cell-label">SHAPE</div><div class="detail-cell-value">${t.shape}</div></div>` : ''}
+                    ${t.cb ? `<div class="detail-cell"><div class="detail-cell-label">CHIPBREAKER</div><div class="detail-cell-value">${t.cb}</div></div>` : ''}
+                    ${t.cornerRadius != null ? `<div class="detail-cell"><div class="detail-cell-label">CORNER RADIUS</div><div class="detail-cell-value">${formatDim(t.cornerRadius)}</div></div>` : ''}
+                    ${t.minBore != null ? `<div class="detail-cell"><div class="detail-cell-label">MIN BORE</div><div class="detail-cell-value">${formatDim(t.minBore)}</div></div>` : ''}
+                    ${t.mountsTo ? `<div class="detail-cell"><div class="detail-cell-label">MOUNTS TO</div><div class="detail-cell-value" style="color:#a98ff5;">${t.mountsTo}</div></div>` : ''}
+                    <div class="detail-actions">
+                        <button class="neon-button" onclick="copyPart('${t.part}')">COPY PART #</button>
+                    </div>
+                </div>
+            </td>`
+            tbody.appendChild(dr)
+        })
+    }
+
+    // ── Toggle detail row ─────────────────────────────────────────────────────
+    function toggleDetail(id, btn) {
+        const dr = document.getElementById(`detail-${id}`)
+        if (!dr) return
+
+        const isOpen = dr.style.display !== 'none'
+
+        // Close any open one first
+        if (openDetailRow && openDetailRow !== id) {
+            const prev = document.getElementById(`detail-${openDetailRow}`)
+            if (prev) prev.style.display = 'none'
+            const prevBtn = document.querySelector(`tr[data-id="${openDetailRow}"] .btn-details`)
+            if (prevBtn) prevBtn.classList.remove('open')
         }
 
-        // Boot: load DB first, then initialize
-        window.onload = loadDB
+        if (isOpen) {
+            dr.style.display = 'none'
+            btn.classList.remove('open')
+            openDetailRow = null
+        } else {
+            dr.style.display = ''
+            btn.classList.add('open')
+            openDetailRow = id
+        }
+    }
 
-        // Expose for console debugging
-        window.NEON_TOOLS = () => tools
+    // ── Copy part # ───────────────────────────────────────────────────────────
+    function copyPart(part) {
+        navigator.clipboard.writeText(part).then(() => {
+            const t = document.createElement('div')
+            t.className = 'toast'
+            t.innerHTML = `<i class="fa-solid fa-check"></i> Copied ${part}`
+            document.body.appendChild(t)
+            setTimeout(() => {
+                t.style.opacity = '0'
+                t.style.transform = 'translate(-50%, 16px)'
+                setTimeout(() => t.remove(), 300)
+            }, 1800)
+        })
+    }
+
+    // ── Sidebar toggle ────────────────────────────────────────────────────────
+    function toggleSidebar() {
+        const sb = document.getElementById('sidebar')
+        const collapsed = sb.classList.toggle('collapsed')
+        savePrefs({ sidebarCollapsed: collapsed })
+    }
+
+    // ── HUD stats ─────────────────────────────────────────────────────────────
+    function updateHUD() {
+        const makers = new Set(tools.map(t => t.maker).filter(Boolean))
+        const inserts = tools.filter(t => t.type === 'insert').length
+        const si = document.getElementById('stat-insert-count')
+        const sb = document.getElementById('stat-brand-count')
+        if (si) si.textContent = `${inserts.toLocaleString()} inserts`
+        if (sb) sb.textContent = `${makers.size} brands`
+    }
+
+    // ── Header resize ─────────────────────────────────────────────────────────
+    (function() {
+        const handle = document.getElementById('header-resize-handle')
+        const header = document.getElementById('app-header')
+        let dragging = false, startY, startH
+
+        handle.addEventListener('mousedown', e => {
+            dragging = true
+            startY = e.clientY
+            startH = header.offsetHeight
+            handle.classList.add('dragging')
+            document.body.style.cursor = 'ns-resize'
+            e.preventDefault()
+        })
+        document.addEventListener('mousemove', e => {
+            if (!dragging) return
+            const h = Math.max(40, Math.min(120, startH + (e.clientY - startY)))
+            document.documentElement.style.setProperty('--header-h', h + 'px')
+            savePrefs({ headerH: h })
+        })
+        document.addEventListener('mouseup', () => {
+            if (!dragging) return
+            dragging = false
+            handle.classList.remove('dragging')
+            document.body.style.cursor = ''
+        })
+
+        // Touch support
+        handle.addEventListener('touchstart', e => {
+            dragging = true
+            startY = e.touches[0].clientY
+            startH = header.offsetHeight
+            e.preventDefault()
+        }, {passive: false})
+        document.addEventListener('touchmove', e => {
+            if (!dragging) return
+            const h = Math.max(40, Math.min(120, startH + (e.touches[0].clientY - startY)))
+            document.documentElement.style.setProperty('--header-h', h + 'px')
+            savePrefs({ headerH: h })
+        })
+        document.addEventListener('touchend', () => { dragging = false })
+    }());
+
+    // ── Sidebar resize ────────────────────────────────────────────────────────
+    ;(function() {
+        const handle = document.getElementById('sidebar-resize-handle')
+        const sidebar = document.getElementById('sidebar')
+        let dragging = false, startX, startW
+
+        handle.addEventListener('mousedown', e => {
+            dragging = true
+            startX = e.clientX
+            startW = sidebar.offsetWidth
+            handle.classList.add('dragging')
+            document.body.style.cursor = 'ew-resize'
+            e.preventDefault()
+        })
+        document.addEventListener('mousemove', e => {
+            if (!dragging) return
+            const w = Math.max(140, Math.min(420, startW + (e.clientX - startX)))
+            sidebar.style.width = w + 'px'
+            document.documentElement.style.setProperty('--sidebar-w', w + 'px')
+            savePrefs({ sidebarW: w })
+        })
+        document.addEventListener('mouseup', () => {
+            if (!dragging) return
+            dragging = false
+            handle.classList.remove('dragging')
+            document.body.style.cursor = ''
+        })
+
+        // Touch support
+        handle.addEventListener('touchstart', e => {
+            dragging = true
+            startX = e.touches[0].clientX
+            startW = sidebar.offsetWidth
+            e.preventDefault()
+        }, {passive: false})
+        document.addEventListener('touchmove', e => {
+            if (!dragging) return
+            const w = Math.max(140, Math.min(420, startW + (e.touches[0].clientX - startX)))
+            sidebar.style.width = w + 'px'
+            document.documentElement.style.setProperty('--sidebar-w', w + 'px')
+            savePrefs({ sidebarW: w })
+        })
+        document.addEventListener('touchend', () => { dragging = false })
+    })()
+
+    // ── DB load ───────────────────────────────────────────────────────────────
+    async function loadDB() {
+        const status = document.getElementById('load-status')
+        try {
+            if (status) status.textContent = 'Fetching db.sqlite...'
+            const resp = await fetch('db.sqlite')
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`)
+
+            if (status) status.textContent = 'Parsing...'
+            const buf = await resp.arrayBuffer()
+            const SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/${f}` })
+            const db = new SQL.Database(new Uint8Array(buf))
+
+            const res = db.exec('SELECT * FROM tools ORDER BY component_type, manufacturer, json_id')
+            if (!res.length) throw new Error('tools table empty')
+            const { columns, values } = res[0]
+
+            tools = values.map((row, idx) => {
+                const obj = {}
+                columns.forEach((c, i) => {
+                    let v = row[i]
+                    if (v && ['specs','compatible_machines','compatible_inserts','sources','tags'].includes(c)) {
+                        try { v = JSON.parse(v) } catch {}
+                    }
+                    obj[c] = v
+                })
+                const sp = (obj.specs && typeof obj.specs === 'object') ? obj.specs : {}
+                const re = parseFloat(sp.re_mm ?? sp.corner_radius_RE ?? sp.corner_radius_mm ?? sp.corner_radius ?? 0) || null
+                const bore = parseFloat(sp.min_bore_diameter ?? sp.minimum_bore_diameter ?? sp.bore_diameter_min ?? 0) || null
+                const ic_mm = sp.ic_mm != null ? parseFloat(sp.ic_mm) : null
+                const s_mm  = sp.s_mm  != null ? parseFloat(sp.s_mm)  : null
+                let mountsTo = null
+                if (Array.isArray(obj.compatible_machines) && obj.compatible_machines.length) mountsTo = obj.compatible_machines[0]
+                else if (Array.isArray(obj.compatible_inserts) && obj.compatible_inserts.length) mountsTo = obj.compatible_inserts[0]
+                return normalizeTool({
+                    id: idx+1,
+                    part: obj.json_id || '',
+                    type: obj.component_type || '',
+                    maker: obj.manufacturer || '',
+                    description: obj.description || '',
+                    ic_mm, s_mm,
+                    fallbackSize: obj.size || '',
+                    grade: obj.grade || '',
+                    shape: obj.shape || '',
+                    cb: obj.chipbreaker || '',
+                    cornerRadius: re,
+                    minBore: bore,
+                    mountsTo
+                })
+            })
+            db.close()
+            initialize()
+        } catch(e) {
+            document.getElementById('loading-overlay').classList.add('hidden')
+            document.getElementById('results-count').innerHTML = `<span style="color:#ff00aa">DB ERR: ${e.message}</span>`
+            console.error('[NEON FORGE]', e)
+        }
+    }
+
+    function initialize() {
+        document.getElementById('loading-overlay').classList.add('hidden')
+        applyPrefs()
+        renderFilters()
+        updateHUD()
+        document.getElementById('results-count').textContent = tools.length.toLocaleString()
+        renderTable(tools)
+
+        document.getElementById('search-input').addEventListener('input', applyFilters)
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                document.getElementById('search-input').value = ''
+                clearAllFilters()
+            }
+            if (e.key === '/' && document.activeElement.tagName === 'BODY') {
+                e.preventDefault()
+                document.getElementById('search-input').focus()
+            }
+        })
+
+        // Set unit button state from saved pref
+        const p = loadPrefs()
+        if (p.unit === 'imperial') setUnit('imperial')
+        else setUnit('metric')
+    }
+
+    window.onload = loadDB
+    window.NEON_TOOLS = () => tools
+
+    // ── Tweaks ────────────────────────────────────────────────────────────────
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "headerH": 76,
+      "searchBarH": 38,
+      "fontSize": 12
+    }/*EDITMODE-END*/;
+
+    function applyTweaks(t) {
+        document.documentElement.style.setProperty('--header-h', t.headerH + 'px')
+        document.documentElement.style.setProperty('--search-bar-h', t.searchBarH + 'px')
+        document.documentElement.style.setProperty('--ui-font-size', t.fontSize + 'px')
+        // sync sliders
+        const sh = document.getElementById('tw-headerH')
+        const ss = document.getElementById('tw-searchH')
+        const sf = document.getElementById('tw-fontSize')
+        if (sh) { sh.value = t.headerH; document.getElementById('tw-headerH-val').textContent = t.headerH + 'px' }
+        if (ss) { ss.value = t.searchBarH; document.getElementById('tw-searchH-val').textContent = t.searchBarH + 'px' }
+        if (sf) { sf.value = t.fontSize; document.getElementById('tw-fontSize-val').textContent = t.fontSize + 'px' }
+    }
+
+    // load saved tweaks or use defaults
+    let activeTweaks = Object.assign({}, TWEAK_DEFAULTS)
+    try {
+        const saved = JSON.parse(localStorage.getItem('nf_tweaks') || '{}')
+        Object.assign(activeTweaks, saved)
+    } catch {}
+    applyTweaks(activeTweaks)
+
+    function saveTweaks() {
+        localStorage.setItem('nf_tweaks', JSON.stringify(activeTweaks))
+        window.parent.postMessage({ type: '__edit_mode_set_keys', edits: activeTweaks }, '*')
+    }
+
+    // build tweaks panel (hidden by default)
+    const tweakPanel = document.createElement('div')
+    tweakPanel.id = 'tweaks-panel'
+    tweakPanel.style.cssText = `
+        display:none; position:fixed; bottom:20px; right:20px; z-index:300;
+        background:#0d0d14; border:1px solid #00f9ff;
+        box-shadow:0 0 24px rgba(0,249,255,0.3);
+        border-radius:12px; padding:16px 18px; width:220px;
+        font-family:'Share Tech Mono',monospace; font-size:11px; color:#e0e0ff;
+    `
+    tweakPanel.innerHTML = `
+        <div style="font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:2px;color:#00f9ff;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;">
+            TWEAKS
+            <span style="font-size:9px;color:#334155;letter-spacing:1px;">LIVE EDIT</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+            <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px;color:#94a3b8;letter-spacing:1px;">
+                    HEADER HEIGHT <span id="tw-headerH-val">${activeTweaks.headerH}px</span>
+                </div>
+                <input id="tw-headerH" type="range" min="36" max="120" step="2" value="${activeTweaks.headerH}" style="width:100%;accent-color:#00f9ff;cursor:pointer;">
+            </div>
+            <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px;color:#94a3b8;letter-spacing:1px;">
+                    SEARCH BAR <span id="tw-searchH-val">${activeTweaks.searchBarH}px</span>
+                </div>
+                <input id="tw-searchH" type="range" min="28" max="64" step="2" value="${activeTweaks.searchBarH}" style="width:100%;accent-color:#00f9ff;cursor:pointer;">
+            </div>
+            <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px;color:#94a3b8;letter-spacing:1px;">
+                    FONT SIZE <span id="tw-fontSize-val">${activeTweaks.fontSize}px</span>
+                </div>
+                <input id="tw-fontSize" type="range" min="9" max="18" step="1" value="${activeTweaks.fontSize}" style="width:100%;accent-color:#00f9ff;cursor:pointer;">
+            </div>
+        </div>
+        <button onclick="activeTweaks=Object.assign({},TWEAK_DEFAULTS);applyTweaks(activeTweaks);saveTweaks();"
+            style="margin-top:14px;width:100%;background:transparent;border:1px solid #334155;color:#64748b;
+            padding:5px;border-radius:6px;font-family:'Share Tech Mono',monospace;font-size:10px;
+            letter-spacing:1px;cursor:pointer;transition:all 0.15s;"
+            onmouseover="this.style.borderColor='#ff00aa';this.style.color='#ff00aa'"
+            onmouseout="this.style.borderColor='#334155';this.style.color='#64748b'">
+            RESET DEFAULTS
+        </button>
+    `
+    document.body.appendChild(tweakPanel)
+
+    // wire sliders
+    document.getElementById('tw-headerH').addEventListener('input', function() {
+        activeTweaks.headerH = +this.value
+        applyTweaks(activeTweaks); saveTweaks()
+    })
+    document.getElementById('tw-searchH').addEventListener('input', function() {
+        activeTweaks.searchBarH = +this.value
+        applyTweaks(activeTweaks); saveTweaks()
+    })
+    document.getElementById('tw-fontSize').addEventListener('input', function() {
+        activeTweaks.fontSize = +this.value
+        applyTweaks(activeTweaks); saveTweaks()
+    })
+
+    // host toggle protocol — register listener FIRST
+    window.addEventListener('message', e => {
+        if (e.data?.type === '__activate_edit_mode')   tweakPanel.style.display = 'block'
+        if (e.data?.type === '__deactivate_edit_mode') tweakPanel.style.display = 'none'
+    })
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*')
     </script>
 </body>
 </html>
