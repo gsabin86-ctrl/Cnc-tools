@@ -141,6 +141,7 @@
             flex: 1;
             display: flex;
             overflow: hidden;
+            position: relative;
         }
 
         /* ── Sidebar ── */
@@ -440,10 +441,29 @@
             transition: all 0.3s ease;
         }
 
-        /* mobile collapsed sidebar tweak */
+        /* mobile: sidebar is 36px rail by default, opens as overlay */
         @media (max-width: 600px) {
-            #sidebar { width: 36px !important; }
-            #sidebar.mobile-open { width: 220px !important; }
+            #sidebar {
+                width: 36px !important;
+            }
+            #sidebar.mobile-open {
+                width: 260px !important;
+                position: absolute;
+                top: 0; bottom: 0; left: 0;
+                z-index: 40;
+                box-shadow: 8px 0 24px rgba(0,0,0,0.75);
+            }
+            #sidebar.mobile-open #sidebar-inner {
+                display: block !important;
+            }
+            #sidebar-backdrop {
+                display: none;
+                position: absolute;
+                top: 0; right: 0; bottom: 0; left: 0;
+                background: rgba(0,0,0,0.55);
+                z-index: 39;
+            }
+            #sidebar-backdrop.show { display: block; }
         }
     </style>
 </head>
@@ -486,6 +506,9 @@
 
     <!-- ── BODY ── -->
     <div id="app-body">
+
+        <!-- Mobile-only backdrop behind the filter overlay -->
+        <div id="sidebar-backdrop" onclick="closeSidebarMobile()"></div>
 
         <!-- ── SIDEBAR ── -->
         <div id="sidebar">
@@ -823,8 +846,21 @@
     // ── Sidebar toggle ────────────────────────────────────────────────────────
     function toggleSidebar() {
         const sb = document.getElementById('sidebar')
-        const collapsed = sb.classList.toggle('collapsed')
-        savePrefs({ sidebarCollapsed: collapsed })
+        const bd = document.getElementById('sidebar-backdrop')
+        if (window.matchMedia('(max-width: 600px)').matches) {
+            const open = sb.classList.toggle('mobile-open')
+            if (bd) bd.classList.toggle('show', open)
+        } else {
+            const collapsed = sb.classList.toggle('collapsed')
+            savePrefs({ sidebarCollapsed: collapsed })
+        }
+    }
+
+    function closeSidebarMobile() {
+        const sb = document.getElementById('sidebar')
+        const bd = document.getElementById('sidebar-backdrop')
+        sb.classList.remove('mobile-open')
+        if (bd) bd.classList.remove('show')
     }
 
     // ── HUD stats ─────────────────────────────────────────────────────────────
