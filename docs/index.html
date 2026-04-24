@@ -446,6 +446,10 @@
             #sidebar {
                 width: 36px !important;
             }
+            /* Hide filter content completely when rail is collapsed */
+            #sidebar:not(.mobile-open) #sidebar-inner {
+                display: none !important;
+            }
             #sidebar.mobile-open {
                 width: 260px !important;
                 position: absolute;
