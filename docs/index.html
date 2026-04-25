@@ -441,6 +441,243 @@
             transition: all 0.3s ease;
         }
 
+        /* ── Firebase Setup Overlay ── */
+        .fb-setup-overlay {
+            position: fixed; inset: 0;
+            background: rgba(5,5,7,0.95);
+            backdrop-filter: blur(8px);
+            display: none; align-items: center; justify-content: center;
+            z-index: 700; padding: 20px;
+        }
+        .fb-setup-modal {
+            background: #0d0d14;
+            border: 1px solid #7b2cbf;
+            box-shadow: 0 0 60px rgba(123,44,191,0.25);
+            border-radius: 14px; padding: 30px;
+            width: 580px; max-width: 96vw;
+            max-height: 92vh; overflow-y: auto;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        .fb-setup-step {
+            display: flex; gap: 10px; margin-bottom: 9px;
+            font-size: 11px; color: #94a3b8; align-items: baseline;
+        }
+        .fb-setup-step-num { color: #a98ff5; font-weight: 700; flex-shrink: 0; }
+        .fb-config-textarea {
+            width: 100%; height: 148px;
+            background: #111118; border: 1px solid #334155;
+            color: #e0e0ff; padding: 12px; border-radius: 8px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 11px; resize: vertical; line-height: 1.6;
+            transition: border-color 0.15s;
+        }
+        .fb-config-textarea:focus { border-color: #7b2cbf; outline: none; box-shadow: 0 0 10px rgba(123,44,191,0.2); }
+        .fb-config-textarea::placeholder { color: #2a3040; }
+        .fb-connect-btn {
+            flex: 1; background: #7b2cbf; border: 1px solid #7b2cbf;
+            color: #fff; padding: 10px; border-radius: 6px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 11px; letter-spacing: 1px;
+            cursor: pointer; transition: all 0.15s; font-weight: 600;
+        }
+        .fb-connect-btn:hover { box-shadow: 0 0 20px #7b2cbf; }
+        .fb-status-btn {
+            background: transparent; border: 1px solid #7b2cbf44;
+            color: #7b2cbf; border-radius: 999px;
+            padding: 3px 10px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 10px; letter-spacing: 1px;
+            cursor: pointer; transition: all 0.15s; white-space: nowrap;
+        }
+        .fb-status-btn:hover { border-color: #7b2cbf; box-shadow: 0 0 8px rgba(123,44,191,0.3); }
+        .fb-status-btn.connected { color: #39ff14; border-color: #39ff1444; }
+        .fb-status-btn.connected:hover { border-color: #39ff14; box-shadow: 0 0 8px rgba(57,255,20,0.3); }
+
+        /* ── Replies ── */
+        .replies-container {
+            margin-top: 8px; margin-left: 16px;
+            border-left: 2px solid #1e2030; padding-left: 12px;
+        }
+        .reply-item { margin-bottom: 8px; }
+        .reply-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; flex-wrap: wrap; }
+        .reply-username { color: #a98ff5; font-size: 11px; font-weight: 600; }
+        .reply-comment { color: #94a3b8; font-size: 11px; line-height: 1.5; }
+        .reply-input {
+            flex: 1; background: #111118; border: 1px solid #334155;
+            color: #e0e0ff; padding: 6px 10px; border-radius: 6px;
+            font-family: 'Share Tech Mono', monospace; font-size: 11px;
+            min-width: 0; transition: border-color 0.15s;
+        }
+        .reply-input:focus { border-color: #00f9ff; outline: none; box-shadow: 0 0 8px rgba(0,249,255,0.15); }
+        .reply-input::placeholder { color: #2a3040; }
+        .review-delete-btn {
+            background: none; border: none; color: #334155;
+            cursor: pointer; font-family: 'Share Tech Mono', monospace;
+            font-size: 9px; letter-spacing: 1px; padding: 0;
+            transition: color 0.15s; margin-left: auto;
+        }
+        .review-delete-btn:hover { color: #ff00aa; }
+        .review-reply-btn {
+            background: none; border: none; color: #334155;
+            cursor: pointer; font-family: 'Share Tech Mono', monospace;
+            font-size: 9px; letter-spacing: 1px; padding: 0;
+            transition: color 0.15s;
+        }
+        .review-reply-btn:hover { color: #00f9ff; }
+
+        /* ── Auth Modal ── */
+        .auth-modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(5,5,7,0.88);
+            backdrop-filter: blur(5px);
+            display: none; align-items: center; justify-content: center;
+            z-index: 600;
+        }
+        .auth-modal {
+            background: #0d0d14;
+            border: 1px solid #00f9ff;
+            box-shadow: 0 0 50px rgba(0,249,255,0.2), 0 0 100px rgba(0,249,255,0.05);
+            border-radius: 14px;
+            padding: 28px 32px 24px;
+            width: 360px; max-width: 92vw;
+            font-family: 'Share Tech Mono', monospace;
+            position: relative;
+        }
+        .auth-modal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px; letter-spacing: 2px;
+            color: #00f9ff; text-shadow: 0 0 10px #00f9ff;
+            margin-bottom: 18px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .auth-tabs {
+            display: flex;
+            border: 1px solid #334155;
+            border-radius: 8px; overflow: hidden;
+            margin-bottom: 18px;
+        }
+        .auth-tab {
+            flex: 1; padding: 7px;
+            background: transparent; border: none;
+            color: #64748b;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 11px; letter-spacing: 1px;
+            cursor: pointer; transition: all 0.15s;
+        }
+        .auth-tab.active { background: #00f9ff; color: #050507; font-weight: 700; }
+        .auth-input {
+            width: 100%;
+            background: #111118;
+            border: 1px solid #334155;
+            color: #e0e0ff;
+            padding: 9px 12px;
+            border-radius: 6px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px; margin-bottom: 10px;
+            transition: border-color 0.15s;
+        }
+        .auth-input:focus { border-color: #00f9ff; outline: none; box-shadow: 0 0 10px rgba(0,249,255,0.2); }
+        .auth-input::placeholder { color: #2a3040; }
+        .auth-form { display: flex; flex-direction: column; }
+        .auth-submit {
+            background: #00f9ff; color: #050507;
+            border: none; padding: 10px;
+            border-radius: 6px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px; letter-spacing: 1px;
+            cursor: pointer; font-weight: 700;
+            margin-top: 4px; transition: all 0.15s;
+        }
+        .auth-submit:hover { box-shadow: 0 0 20px #00f9ff; }
+        .auth-error {
+            color: #ff00aa; font-size: 11px;
+            margin-bottom: 8px; min-height: 16px;
+            text-align: center; letter-spacing: 0.5px;
+        }
+        .auth-close {
+            background: none; border: none; color: #334155;
+            cursor: pointer; font-size: 18px; padding: 0;
+            line-height: 1; transition: color 0.15s;
+        }
+        .auth-close:hover { color: #ff00aa; }
+
+        /* ── Stars ── */
+        .stars-display { display: flex; align-items: center; gap: 2px; }
+        .stars-display .star { color: #ffd700; font-size: 15px; }
+        .stars-display .star.empty { color: #2a3040; }
+        .star-picker { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+        .star-picker .star { font-size: 24px; color: #2a3040; transition: color 0.1s, text-shadow 0.1s; user-select: none; }
+        .star-picker .star.filled { color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.6); }
+
+        /* ── Detail rating header ── */
+        .detail-rating-header {
+            display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+            border-bottom: 1px solid #1e2030; padding-bottom: 12px; margin-bottom: 4px;
+        }
+        .rating-avg-num {
+            font-size: 34px; font-family: 'Orbitron', sans-serif;
+            color: #ffd700; text-shadow: 0 0 16px rgba(255,215,0,0.4); line-height: 1;
+        }
+        .rating-count { color: #64748b; font-size: 11px; letter-spacing: 0.5px; }
+        .detail-section-title {
+            color: #00f9ff; font-size: 10px; letter-spacing: 2px;
+            border-bottom: 1px solid #1e2030;
+            padding-bottom: 7px; margin-bottom: 10px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        /* ── Reviews ── */
+        .review-item {
+            background: #0a0a0f;
+            border: 1px solid #1e2030;
+            border-radius: 8px; padding: 10px 14px; margin-bottom: 8px;
+        }
+        .review-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; flex-wrap: wrap; }
+        .review-username { color: #00f9ff; font-size: 12px; font-weight: 600; }
+        .review-date { color: #334155; font-size: 10px; }
+        .review-comment { color: #94a3b8; font-size: 12px; line-height: 1.6; }
+        .review-textarea {
+            width: 100%;
+            background: #111118; border: 1px solid #334155;
+            color: #e0e0ff; padding: 10px 12px;
+            border-radius: 6px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px; resize: vertical; min-height: 80px;
+            transition: border-color 0.15s;
+        }
+        .review-textarea:focus { border-color: #00f9ff; outline: none; box-shadow: 0 0 8px rgba(0,249,255,0.2); }
+        .review-textarea::placeholder { color: #2a3040; }
+        .no-reviews { color: #334155; font-size: 11px; text-align: center; padding: 14px 0; letter-spacing: 1px; }
+
+        /* ── Header auth ── */
+        .auth-header-btn {
+            background: transparent; border: 1px solid #334155;
+            color: #64748b; border-radius: 999px;
+            padding: 3px 12px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 10px; letter-spacing: 1px;
+            cursor: pointer; transition: all 0.15s; white-space: nowrap;
+        }
+        .auth-header-btn:hover { border-color: #00f9ff; color: #00f9ff; box-shadow: 0 0 8px rgba(0,249,255,0.3); }
+        .auth-user-chip {
+            display: none; align-items: center; gap: 8px;
+            background: #111118; border: 1px solid #7b2cbf44;
+            border-radius: 999px; padding: 3px 6px 3px 12px;
+        }
+        .auth-username { color: #a98ff5; font-size: 10px; letter-spacing: 1px; }
+        .auth-logout-btn {
+            background: none; border: none; color: #334155;
+            cursor: pointer; font-family: 'Share Tech Mono', monospace;
+            font-size: 9px; letter-spacing: 1px;
+            padding: 2px 8px; border-radius: 999px;
+            transition: all 0.15s;
+        }
+        .auth-logout-btn:hover { color: #ff00aa; background: rgba(255,0,170,0.08); }
+
+        /* ── Spec badge ── */
+        .spec-value { color: #e0e0ff; }
+        .spec-value.highlight { color: #39ff14; }
+
         /* mobile: sidebar is 36px rail by default, opens as overlay */
         @media (max-width: 600px) {
             #sidebar {
@@ -473,6 +710,76 @@
 </head>
 <body>
 
+    <!-- ── FIREBASE SETUP OVERLAY ── -->
+    <div class="fb-setup-overlay" id="fb-setup-overlay">
+        <div class="fb-setup-modal">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+                <div style="font-family:'Orbitron',sans-serif;font-size:13px;letter-spacing:2px;color:#a98ff5;text-shadow:0 0 10px #7b2cbf;">⚡ FIREBASE SETUP</div>
+                <button onclick="hideFBSetup()" style="background:none;border:none;color:#334155;font-size:18px;cursor:pointer;line-height:1;transition:color 0.15s;" onmouseover="this.style.color='#ff00aa'" onmouseout="this.style.color='#334155'">✕</button>
+            </div>
+            <div style="font-size:11px;color:#64748b;line-height:1.7;margin-bottom:18px;">Connect a free Firebase project to enable <span style="color:#e0e0ff;">cross-device accounts, ratings, reviews, and threaded replies</span>.</div>
+            <div style="margin-bottom:18px;">
+                <div class="fb-setup-step"><span class="fb-setup-step-num">1.</span> Go to <a href="https://console.firebase.google.com" target="_blank" style="color:#00f9ff;text-decoration:none;">console.firebase.google.com</a> and create a project</div>
+                <div class="fb-setup-step"><span class="fb-setup-step-num">2.</span> Click <strong style="color:#e0e0ff;">Add app → Web</strong>, register it, copy the <code style="color:#00f9ff;background:#111118;padding:1px 5px;border-radius:3px;">firebaseConfig</code> object</div>
+                <div class="fb-setup-step"><span class="fb-setup-step-num">3.</span> In the console, enable <strong style="color:#e0e0ff;">Authentication → Email/Password</strong></div>
+                <div class="fb-setup-step"><span class="fb-setup-step-num">4.</span> Enable <strong style="color:#e0e0ff;">Firestore Database</strong> → Start in <em>test mode</em> (30-day open access)</div>
+                <div class="fb-setup-step"><span class="fb-setup-step-num">5.</span> Paste your config JSON below and click Connect:</div>
+            </div>
+            <div id="fb-setup-error" style="color:#ff00aa;font-size:11px;margin-bottom:8px;min-height:16px;letter-spacing:0.5px;"></div>
+            <textarea id="fb-config-input" class="fb-config-textarea"
+                placeholder='{"apiKey":"AIza...","authDomain":"yourapp.firebaseapp.com","projectId":"yourapp","storageBucket":"yourapp.appspot.com","messagingSenderId":"123456","appId":"1:123456:web:abc123"}'></textarea>
+            <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
+                <button class="fb-connect-btn" onclick="saveFBConfig()">⚡ CONNECT FIREBASE</button>
+                <button onclick="hideFBSetup()" style="background:transparent;border:1px solid #334155;color:#64748b;padding:10px 16px;border-radius:6px;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.color='#94a3b8'" onmouseout="this.style.color='#64748b'">SKIP FOR NOW</button>
+                <button onclick="clearFBConfig()" id="fb-clear-btn" style="display:none;background:transparent;border:1px solid #ff00aa44;color:#ff00aa;padding:10px 14px;border-radius:6px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;cursor:pointer;transition:all 0.15s;">DISCONNECT</button>
+            </div>
+            <div style="margin-top:16px;padding-top:14px;border-top:1px solid #1e2030;font-size:10px;color:#334155;line-height:1.7;">
+                Config is stored in this browser's localStorage. For production, update your <a href="https://firebase.google.com/docs/firestore/security/get-started" target="_blank" style="color:#334155;text-decoration:underline;">Firestore Security Rules</a> before going live.
+            </div>
+        </div>
+    </div>
+
+    <!-- ── AUTH MODAL ── -->
+    <div class="auth-modal-overlay" id="auth-modal" onclick="if(event.target===this)hideAuthModal()">
+        <div class="auth-modal">
+            <div class="auth-modal-title">
+                <span>NEON FORGE // ACCESS</span>
+                <button class="auth-close" onclick="hideAuthModal()">✕</button>
+            </div>
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="auth-tab-login" onclick="showAuthTab('login')">LOG IN</button>
+                <button class="auth-tab" id="auth-tab-register" onclick="showAuthTab('register')">CREATE ACCOUNT</button>
+            </div>
+            <div id="auth-error" class="auth-error"></div>
+
+            <!-- Login form -->
+            <div id="auth-login-form" class="auth-form">
+                <input class="auth-input" id="login-username" type="text" placeholder="USERNAME" autocomplete="username"
+                    onkeydown="if(event.key==='Enter')submitLogin()">
+                <input class="auth-input" id="login-password" type="password" placeholder="PASSWORD" autocomplete="current-password"
+                    onkeydown="if(event.key==='Enter')submitLogin()">
+                <button class="auth-submit" onclick="submitLogin()">LOG IN</button>
+                <div style="margin-top:12px;text-align:center;font-size:10px;color:#334155;">
+                    NO ACCOUNT? <button onclick="showAuthTab('register')" style="background:none;border:none;color:#00f9ff;font-family:'Share Tech Mono',monospace;font-size:10px;cursor:pointer;letter-spacing:1px;padding:0;">CREATE ONE →</button>
+                </div>
+            </div>
+
+            <!-- Register form -->
+            <div id="auth-register-form" class="auth-form" style="display:none;">
+                <input class="auth-input" id="reg-username" type="text" placeholder="USERNAME (min 3 chars)" autocomplete="username"
+                    onkeydown="if(event.key==='Enter')submitRegister()">
+                <input class="auth-input" id="reg-email" type="email" placeholder="EMAIL (optional)"
+                    onkeydown="if(event.key==='Enter')submitRegister()">
+                <input class="auth-input" id="reg-password" type="password" placeholder="PASSWORD (min 6 chars)" autocomplete="new-password"
+                    onkeydown="if(event.key==='Enter')submitRegister()">
+                <button class="auth-submit" onclick="submitRegister()">CREATE ACCOUNT</button>
+                <div style="margin-top:12px;text-align:center;font-size:10px;color:#334155;">
+                    HAVE AN ACCOUNT? <button onclick="showAuthTab('login')" style="background:none;border:none;color:#00f9ff;font-family:'Share Tech Mono',monospace;font-size:10px;cursor:pointer;letter-spacing:1px;padding:0;">LOG IN →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Loading overlay -->
     <div class="loading-overlay" id="loading-overlay">
         <div style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:22px;letter-spacing:3px;text-shadow:0 0 10px #00f9ff,0 0 20px #00f9ff;">NEON FORGE</div>
@@ -502,6 +809,19 @@
             <div class="unit-toggle">
                 <button onclick="setUnit('metric')" id="btn-metric" class="active">MM</button>
                 <button onclick="setUnit('imperial')" id="btn-imperial">IN</button>
+            </div>
+        </div>
+
+        <!-- Firebase connect button -->
+        <button class="fb-status-btn" id="fb-status-btn" onclick="showFBSetup()" title="Firebase connection">⚡ CONNECT DB</button>
+
+        <!-- Auth area -->
+        <div style="display:flex;align-items:center;gap:6px;margin-left:8px;flex-shrink:0;">
+            <button class="auth-header-btn" id="auth-login-btn" onclick="showAuthModal()">LOG IN</button>
+            <div class="auth-user-chip" id="auth-user-chip">
+                <i class="fa-solid fa-user" style="color:#a98ff5;font-size:10px;"></i>
+                <span class="auth-username" id="auth-username-label">—</span>
+                <button class="auth-logout-btn" onclick="logout()">SIGN OUT</button>
             </div>
         </div>
 
@@ -602,6 +922,10 @@
         </div>
     </div>
 
+    <!-- Firebase SDK (compat) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
     <script>
     // ── State ─────────────────────────────────────────────────────────────────
@@ -781,54 +1105,60 @@
             `
             tbody.appendChild(tr)
 
-            // Hidden detail row
+            // Hidden detail row — content built on open
             const dr = document.createElement('tr')
             dr.className = 'detail-row'
             dr.id = `detail-${t.id}`
             dr.style.display = 'none'
             const colspan = 10
-            dr.innerHTML = `<td colspan="${colspan}">
-                <div class="detail-panel">
-                    <div class="detail-panel-wide">${t.description || '—'}</div>
-                    ${buildSize(t) ? `<div class="detail-cell"><div class="detail-cell-label">SIZE</div><div class="detail-cell-value">${buildSize(t)}</div></div>` : ''}
-                    ${t.grade ? `<div class="detail-cell"><div class="detail-cell-label">GRADE</div><div class="detail-cell-value" style="color:#39ff14;">${t.grade}</div></div>` : ''}
-                    ${t.shape ? `<div class="detail-cell"><div class="detail-cell-label">SHAPE</div><div class="detail-cell-value">${t.shape}</div></div>` : ''}
-                    ${t.cb ? `<div class="detail-cell"><div class="detail-cell-label">CHIPBREAKER</div><div class="detail-cell-value">${t.cb}</div></div>` : ''}
-                    ${t.cornerRadius != null ? `<div class="detail-cell"><div class="detail-cell-label">CORNER RADIUS</div><div class="detail-cell-value">${formatDim(t.cornerRadius)}</div></div>` : ''}
-                    ${t.minBore != null ? `<div class="detail-cell"><div class="detail-cell-label">MIN BORE</div><div class="detail-cell-value">${formatDim(t.minBore)}</div></div>` : ''}
-                    ${t.mountsTo ? `<div class="detail-cell"><div class="detail-cell-label">MOUNTS TO</div><div class="detail-cell-value" style="color:#a98ff5;">${t.mountsTo}</div></div>` : ''}
-                    <div class="detail-actions">
-                        <button class="neon-button" onclick="copyPart('${t.part}')">COPY PART #</button>
-                    </div>
-                </div>
-            </td>`
+            const dtd = document.createElement('td')
+            dtd.setAttribute('colspan', colspan)
+            dtd.innerHTML = ''
+            dr.appendChild(dtd)
             tbody.appendChild(dr)
         })
     }
 
     // ── Toggle detail row ─────────────────────────────────────────────────────
-    function toggleDetail(id, btn) {
+    async function toggleDetail(id, btn) {
         const dr = document.getElementById(`detail-${id}`)
         if (!dr) return
-
         const isOpen = dr.style.display !== 'none'
 
-        // Close any open one first
+        // Close previously open row
         if (openDetailRow && openDetailRow !== id) {
             const prev = document.getElementById(`detail-${openDetailRow}`)
             if (prev) prev.style.display = 'none'
             const prevBtn = document.querySelector(`tr[data-id="${openDetailRow}"] .btn-details`)
             if (prevBtn) prevBtn.classList.remove('open')
+            if (typeof unsubscribeFromTool === 'function') unsubscribeFromTool(openDetailRow)
         }
 
         if (isOpen) {
             dr.style.display = 'none'
             btn.classList.remove('open')
+            if (typeof unsubscribeFromTool === 'function') unsubscribeFromTool(id)
             openDetailRow = null
         } else {
+            dr.querySelector('td').innerHTML = '<div style="padding:20px;text-align:center;color:#334155;font-size:11px;letter-spacing:2px;font-family:\'Share Tech Mono\',monospace;">LOADING...</div>'
             dr.style.display = ''
             btn.classList.add('open')
             openDetailRow = id
+            const tool = tools.find(t => t.id === id)
+            try {
+                if (tool) dr.querySelector('td').innerHTML = await buildDetailHTML(tool)
+            } catch(e) {
+                console.warn('[NEON FORGE] Detail build failed:', e.message)
+                if (tool) {
+                    // Retry with empty firebase data
+                    fbConfigured = false
+                    dr.querySelector('td').innerHTML = await buildDetailHTML(tool)
+                    fbConfigured = !!fbDb
+                }
+            }
+            if (typeof fbConfigured !== 'undefined' && fbConfigured && typeof fbDb !== 'undefined' && fbDb) {
+                subscribeToTool(id, () => onToolDataUpdate(id))
+            }
         }
     }
 
@@ -1012,7 +1342,12 @@
                     cb: obj.chipbreaker || '',
                     cornerRadius: re,
                     minBore: bore,
-                    mountsTo
+                    mountsTo,
+                    rawSpecs: sp,
+                    tags: Array.isArray(obj.tags) ? obj.tags : (obj.tags ? [obj.tags] : []),
+                    sources: Array.isArray(obj.sources) ? obj.sources : (obj.sources ? [obj.sources] : []),
+                    compatibleMachines: Array.isArray(obj.compatible_machines) ? obj.compatible_machines : [],
+                    compatibleInserts: Array.isArray(obj.compatible_inserts) ? obj.compatible_inserts : []
                 })
             })
             db.close()
@@ -1052,6 +1387,633 @@
 
     window.onload = loadDB
     window.NEON_TOOLS = () => tools
+
+    // ── Helpers ───────────────────────────────────────────────────────────────
+    function escapeHtml(s) {
+        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    }
+    function starsHTML(n, total) {
+        let h = ''
+        for (let i = 1; i <= total; i++) h += `<span class="star${i <= n ? '' : ' empty'}">★</span>`
+        return h
+    }
+    function timeAgo(ts) {
+        if (!ts) return ''
+        const d = ts.toDate ? ts.toDate() : new Date(ts)
+        const s = Math.floor((Date.now() - d) / 1000)
+        if (s < 60) return 'just now'
+        if (s < 3600) return Math.floor(s / 60) + 'm ago'
+        if (s < 86400) return Math.floor(s / 3600) + 'h ago'
+        if (s < 604800) return Math.floor(s / 86400) + 'd ago'
+        return d.toLocaleDateString()
+    }
+    function showToast(msg) {
+        const t = document.createElement('div')
+        t.className = 'toast'
+        t.innerHTML = `<i class="fa-solid fa-check"></i> ${msg}`
+        document.body.appendChild(t)
+        setTimeout(() => {
+            t.style.opacity = '0'; t.style.transform = 'translate(-50%, 16px)'
+            setTimeout(() => t.remove(), 300)
+        }, 2000)
+    }
+
+    // ── Firebase ──────────────────────────────────────────────────────────────
+    let fbAuth = null, fbDb = null, fbConfigured = false, currentFBUser = null
+
+    function getFirebaseConfig() {
+        try {
+            const s = localStorage.getItem('nf_firebase_config')
+            if (s) { const c = JSON.parse(s); if (c.apiKey && c.projectId) return c }
+        } catch {}
+        return null
+    }
+
+    function initFirebase() {
+        const cfg = getFirebaseConfig()
+        if (!cfg) { showFBSetup(); return }
+        try {
+            if (!firebase.apps.length) firebase.initializeApp(cfg)
+            fbAuth = firebase.auth()
+            fbDb   = firebase.firestore()
+            fbConfigured = true
+            hideFBSetup()
+            updateFBStatusBtn(true)
+            document.getElementById('fb-clear-btn').style.display = 'inline-block'
+            fbAuth.onAuthStateChanged(user => {
+                currentFBUser = user
+                updateAuthUI()
+                if (openDetailRow) refreshDetailPanel(openDetailRow)
+            })
+        } catch(e) {
+            console.error('[NEON FORGE] Firebase init:', e)
+            showFBSetup('Init failed: ' + e.message)
+        }
+    }
+
+    function showFBSetup(err) {
+        const o = document.getElementById('fb-setup-overlay'); if (!o) return
+        o.style.display = 'flex'
+        if (err) document.getElementById('fb-setup-error').textContent = err
+        // Pre-fill if config already saved
+        const cfg = getFirebaseConfig()
+        if (cfg) {
+            const ta = document.getElementById('fb-config-input')
+            if (ta && !ta.value) ta.value = JSON.stringify(cfg, null, 2)
+            document.getElementById('fb-clear-btn').style.display = 'inline-block'
+        }
+    }
+    function hideFBSetup() {
+        const o = document.getElementById('fb-setup-overlay'); if (o) o.style.display = 'none'
+    }
+    function saveFBConfig() {
+        const val = document.getElementById('fb-config-input').value.trim()
+        try {
+            const cfg = JSON.parse(val)
+            if (!cfg.apiKey || !cfg.projectId) throw new Error('Missing apiKey or projectId')
+            localStorage.setItem('nf_firebase_config', JSON.stringify(cfg))
+            document.getElementById('fb-setup-error').textContent = ''
+            initFirebase()
+        } catch(e) {
+            document.getElementById('fb-setup-error').textContent = 'Invalid JSON: ' + e.message
+        }
+    }
+    function clearFBConfig() {
+        if (!confirm('Disconnect Firebase? All local session data will be cleared.')) return
+        localStorage.removeItem('nf_firebase_config')
+        location.reload()
+    }
+    function updateFBStatusBtn(connected) {
+        const btn = document.getElementById('fb-status-btn'); if (!btn) return
+        if (connected) {
+            btn.textContent = '⚡ DB CONNECTED'
+            btn.classList.add('connected')
+            btn.title = 'Firebase connected — click to manage'
+        } else {
+            btn.textContent = '⚡ CONNECT DB'
+            btn.classList.remove('connected')
+        }
+    }
+
+    // ── Auth ──────────────────────────────────────────────────────────────────
+    function getCurrentUsername() {
+        if (!currentFBUser) return null
+        return currentFBUser.displayName || currentFBUser.email.split('@')[0]
+    }
+
+    async function loginFB(username, password) {
+        if (!fbConfigured) return { error: 'Firebase not configured' }
+        try {
+            await fbAuth.signInWithEmailAndPassword(username.toLowerCase() + '@neonforge.local', password)
+            return { success: true }
+        } catch(e) {
+            const known = ['auth/user-not-found','auth/wrong-password','auth/invalid-credential','auth/invalid-login-credentials']
+            return { error: known.includes(e.code) ? 'Invalid username or password' : e.message }
+        }
+    }
+
+    async function registerFB(username, password, email) {
+        if (!fbConfigured) return { error: 'Firebase not configured' }
+        if (username.length < 3) return { error: 'Username must be at least 3 characters' }
+        if (password.length < 6) return { error: 'Password must be at least 6 characters' }
+        try {
+            const cred = await fbAuth.createUserWithEmailAndPassword(username.toLowerCase() + '@neonforge.local', password)
+            await cred.user.updateProfile({ displayName: username })
+            await fbDb.collection('users').doc(cred.user.uid).set({
+                username, usernameLower: username.toLowerCase(),
+                recoveryEmail: email || '',
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            return { success: true }
+        } catch(e) {
+            return { error: e.code === 'auth/email-already-in-use' ? 'Username already taken' : e.message }
+        }
+    }
+
+    function logout() {
+        if (fbAuth) fbAuth.signOut()
+        showToast('SIGNED OUT')
+    }
+
+    function updateAuthUI() {
+        const user = currentFBUser
+        const loginBtn  = document.getElementById('auth-login-btn')
+        const userChip  = document.getElementById('auth-user-chip')
+        const userLabel = document.getElementById('auth-username-label')
+        if (user) {
+            if (loginBtn)  loginBtn.style.display = 'none'
+            if (userChip)  userChip.style.display = 'flex'
+            if (userLabel) userLabel.textContent = (getCurrentUsername() || 'USER').toUpperCase()
+        } else {
+            if (loginBtn)  loginBtn.style.display = 'flex'
+            if (userChip)  userChip.style.display = 'none'
+        }
+    }
+
+    // ── Auth Modal ────────────────────────────────────────────────────────────
+    let authCallback = null
+    function showAuthModal(cb) {
+        if (!fbConfigured) { showFBSetup(); return }
+        authCallback = cb || null
+        document.getElementById('auth-modal').style.display = 'flex'
+        showAuthTab('login')
+        setTimeout(() => { const el = document.getElementById('login-username'); if (el) el.focus() }, 60)
+    }
+    function hideAuthModal() {
+        document.getElementById('auth-modal').style.display = 'none'
+        document.getElementById('auth-error').textContent = ''
+    }
+    function showAuthTab(tab) {
+        document.getElementById('auth-login-form').style.display    = tab === 'login'    ? 'flex' : 'none'
+        document.getElementById('auth-register-form').style.display = tab === 'register' ? 'flex' : 'none'
+        document.getElementById('auth-tab-login').classList.toggle('active',    tab === 'login')
+        document.getElementById('auth-tab-register').classList.toggle('active', tab === 'register')
+        document.getElementById('auth-error').textContent = ''
+    }
+
+    async function submitLogin() {
+        const btn = document.querySelector('#auth-login-form .auth-submit')
+        const username = document.getElementById('login-username').value.trim()
+        const password = document.getElementById('login-password').value
+        if (!username || !password) { document.getElementById('auth-error').textContent = 'Please fill all fields'; return }
+        if (btn) { btn.textContent = 'LOGGING IN...'; btn.disabled = true }
+        const result = await loginFB(username, password)
+        if (btn) { btn.textContent = 'LOG IN'; btn.disabled = false }
+        if (result.error) { document.getElementById('auth-error').textContent = result.error; return }
+        hideAuthModal()
+        showToast('WELCOME BACK, ' + username.toUpperCase())
+        if (authCallback) { const cb = authCallback; authCallback = null; cb() }
+    }
+
+    async function submitRegister() {
+        const btn = document.querySelector('#auth-register-form .auth-submit')
+        const username = document.getElementById('reg-username').value.trim()
+        const password = document.getElementById('reg-password').value
+        const email    = document.getElementById('reg-email').value.trim()
+        if (!username || !password) { document.getElementById('auth-error').textContent = 'Username and password required'; return }
+        if (btn) { btn.textContent = 'CREATING...'; btn.disabled = true }
+        const result = await registerFB(username, password, email)
+        if (btn) { btn.textContent = 'CREATE ACCOUNT'; btn.disabled = false }
+        if (result.error) { document.getElementById('auth-error').textContent = result.error; return }
+        hideAuthModal()
+        showToast('WELCOME, ' + username.toUpperCase())
+        if (authCallback) { const cb = authCallback; authCallback = null; cb() }
+    }
+
+    // ── Ratings (Firestore) ───────────────────────────────────────────────────
+    async function setUserToolRating(toolId, stars) {
+        if (!currentFBUser || !fbDb) return
+        const docId = `${toolId}_${currentFBUser.uid}`
+        if (stars === 0) {
+            await fbDb.collection('ratings').doc(docId).delete()
+        } else {
+            await fbDb.collection('ratings').doc(docId).set({
+                toolId: String(toolId), uid: currentFBUser.uid,
+                username: getCurrentUsername(), stars,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+        }
+    }
+
+    async function getToolRatingData(toolId) {
+        if (!fbDb) return { avg: 0, count: 0 }
+        try {
+            const snap = await fbDb.collection('ratings').where('toolId', '==', String(toolId)).get()
+            if (snap.empty) return { avg: 0, count: 0 }
+            const vals = snap.docs.map(d => d.data().stars)
+            return { avg: vals.reduce((a, b) => a + b, 0) / vals.length, count: vals.length }
+        } catch(e) { return { avg: 0, count: 0 } }
+    }
+
+    async function getUserToolRating(toolId) {
+        if (!currentFBUser || !fbDb) return 0
+        try {
+            const snap = await fbDb.collection('ratings').doc(`${toolId}_${currentFBUser.uid}`).get()
+            return snap.exists ? snap.data().stars : 0
+        } catch(e) { return 0 }
+    }
+
+    // ── Real-time Firestore listeners ─────────────────────────────────────────
+    const activeListeners = {}
+    const toolLiveData = {}
+
+    function subscribeToTool(toolId, cb) {
+        if (activeListeners[toolId] || !fbDb) return
+        const tid = String(toolId)
+        const u1 = fbDb.collection('reviews').where('toolId', '==', tid)
+            .onSnapshot(snap => {
+                const reviews = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+                reviews.sort((a, b) => (b.createdAt?.toMillis?.() || 0) - (a.createdAt?.toMillis?.() || 0))
+                if (!toolLiveData[toolId]) toolLiveData[toolId] = { reviews: [], replies: [] }
+                toolLiveData[toolId].reviews = reviews
+                cb()
+            })
+        const u2 = fbDb.collection('replies').where('toolId', '==', tid)
+            .onSnapshot(snap => {
+                const replies = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+                replies.sort((a, b) => (a.createdAt?.toMillis?.() || 0) - (b.createdAt?.toMillis?.() || 0))
+                if (!toolLiveData[toolId]) toolLiveData[toolId] = { reviews: [], replies: [] }
+                toolLiveData[toolId].replies = replies
+                cb()
+            })
+        activeListeners[toolId] = () => { u1(); u2() }
+    }
+
+    function unsubscribeFromTool(toolId) {
+        if (activeListeners[toolId]) { activeListeners[toolId](); delete activeListeners[toolId] }
+    }
+
+    function onToolDataUpdate(toolId) {
+        renderLiveReviewsList(toolId)
+        renderLiveRatingHeader(toolId)
+    }
+
+    // ── Live render helpers ───────────────────────────────────────────────────
+    function renderLiveRatingHeader(toolId) {
+        const header = document.getElementById('rating-header-' + toolId); if (!header) return
+        const rated = (toolLiveData[toolId]?.reviews || []).filter(r => r.stars > 0)
+        if (!rated.length) {
+            header.innerHTML = `<div style="display:flex;flex-direction:column;gap:4px;">
+                <div class="stars-display">${starsHTML(0, 5)}</div>
+                <span class="rating-count" style="color:#334155;">(0 ratings)</span>
+              </div>
+              <span style="color:#64748b;font-size:11px;letter-spacing:0.5px;">BE THE FIRST TO RATE</span>`
+            return
+        }
+        const avg = rated.reduce((a, r) => a + r.stars, 0) / rated.length
+        header.innerHTML = `<div class="rating-avg-num">${avg.toFixed(1)}</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div class="stars-display">${starsHTML(Math.round(avg), 5)}</div>
+              <span class="rating-count">(${rated.length} rating${rated.length !== 1 ? 's' : ''})</span>
+            </div>`
+    }
+
+    function renderLiveReviewsList(toolId) {
+        const list = document.getElementById('reviews-list-' + toolId); if (!list) return
+        const ld = toolLiveData[toolId] || { reviews: [], replies: [] }
+        const reviews = ld.reviews || []
+        const replies = ld.replies || []
+        const uid = currentFBUser?.uid
+
+        const title = document.getElementById('reviews-title-' + toolId)
+        if (title) title.innerHTML = `<i class="fa-solid fa-comments" style="font-size:9px;"></i> COMMUNITY REVIEWS <span style="color:#334155;">(${reviews.length})</span>`
+
+        if (!reviews.length) { list.innerHTML = '<div class="no-reviews">NO REVIEWS YET — BE THE FIRST</div>'; return }
+
+        list.innerHTML = reviews.map(r => {
+            const s = r.stars || 0
+            const starsStr = s > 0 ? `<span style="color:#ffd700;">${'★'.repeat(s)}</span><span style="color:#2a3040;">${'★'.repeat(5-s)}</span>` : ''
+            const canDelete = uid && uid === r.uid
+            const rReplies = replies.filter(p => p.reviewId === r.id)
+            const repliesHTML = rReplies.map(p => {
+                const canDR = uid && uid === p.uid
+                return `<div class="reply-item">
+                    <div class="reply-meta">
+                        <i class="fa-solid fa-reply" style="color:#334155;font-size:9px;transform:scaleX(-1);"></i>
+                        <span class="reply-username">${escapeHtml(p.username)}</span>
+                        <span class="review-date">${timeAgo(p.createdAt)}</span>
+                        ${canDR ? `<button onclick="deleteReply('${p.id}')" class="review-delete-btn">✕</button>` : ''}
+                    </div>
+                    <div class="reply-comment">${escapeHtml(p.comment)}</div>
+                </div>`
+            }).join('')
+            return `<div class="review-item" id="review-item-${r.id}">
+                <div class="review-meta">
+                    <span class="review-username">${escapeHtml(r.username)}</span>
+                    ${starsStr ? `<span style="font-size:13px;line-height:1;">${starsStr}</span>` : ''}
+                    <span class="review-date">${timeAgo(r.createdAt)}</span>
+                    <button onclick="toggleReplyForm('${r.id}','${toolId}')" class="review-reply-btn">↩ REPLY</button>
+                    ${canDelete ? `<button onclick="deleteReview('${toolId}','${r.id}')" class="review-delete-btn">✕ DELETE</button>` : ''}
+                </div>
+                <div class="review-comment">${r.comment ? escapeHtml(r.comment) : '<em style="color:#334155;">No comment</em>'}</div>
+                ${rReplies.length ? `<div class="replies-container">${repliesHTML}</div>` : ''}
+                <div class="reply-form" id="reply-form-${r.id}" style="display:none;">
+                    <div style="display:flex;gap:8px;align-items:center;margin-top:10px;">
+                        <input class="reply-input" id="reply-input-${r.id}" placeholder="WRITE A REPLY..."
+                            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();submitReply('${toolId}','${r.id}')}">
+                        <button class="neon-button" onclick="submitReply('${toolId}','${r.id}')" style="font-size:9px;padding:4px 10px;white-space:nowrap;">POST</button>
+                        <button onclick="toggleReplyForm('${r.id}','${toolId}')" style="background:none;border:none;color:#334155;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:9px;">CANCEL</button>
+                    </div>
+                </div>
+            </div>`
+        }).join('')
+
+        // Refresh review form state
+        const formArea = document.getElementById('review-form-area-' + toolId)
+        if (formArea && currentFBUser) {
+            const existing = reviews.find(r => r.uid === currentFBUser.uid)
+            const btn = formArea.querySelector('.review-submit-btn')
+            if (btn) btn.textContent = existing ? 'UPDATE REVIEW' : 'SUBMIT REVIEW'
+            const ta = formArea.querySelector('.review-textarea')
+            if (ta && existing && !ta.value) ta.value = existing.comment || ''
+        }
+    }
+
+    // ── Review / reply actions ────────────────────────────────────────────────
+    async function submitReview(toolId) {
+        if (!fbConfigured) { showFBSetup(); return }
+        if (!currentFBUser) { showAuthModal(() => submitReview(toolId)); return }
+        const textarea = document.getElementById('review-text-' + toolId)
+        const comment  = textarea ? textarea.value.trim() : ''
+        const picker   = document.getElementById('star-picker-' + toolId)
+        const stars    = picker ? parseInt(picker.dataset.current || '0') : 0
+        const existing = await fbDb.collection('reviews')
+            .where('toolId', '==', String(toolId)).where('uid', '==', currentFBUser.uid).limit(1).get()
+        if (!existing.empty) {
+            await existing.docs[0].ref.update({ comment, stars, updatedAt: firebase.firestore.FieldValue.serverTimestamp() })
+        } else {
+            await fbDb.collection('reviews').add({
+                toolId: String(toolId), uid: currentFBUser.uid,
+                username: getCurrentUsername(), comment, stars,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+        }
+        if (stars > 0) await setUserToolRating(toolId, stars)
+        showToast('REVIEW SUBMITTED')
+    }
+
+    async function deleteReview(toolId, reviewId) {
+        if (!currentFBUser || !fbDb) return
+        if (!confirm('Delete your review and all its replies?')) return
+        await fbDb.collection('reviews').doc(reviewId).delete()
+        const snap = await fbDb.collection('replies').where('reviewId', '==', reviewId).get()
+        if (!snap.empty) {
+            const batch = fbDb.batch(); snap.docs.forEach(d => batch.delete(d.ref)); await batch.commit()
+        }
+        showToast('REVIEW DELETED')
+    }
+
+    function toggleReplyForm(reviewId, toolId) {
+        const form = document.getElementById('reply-form-' + reviewId); if (!form) return
+        if (!currentFBUser) { showAuthModal(() => toggleReplyForm(reviewId, toolId)); return }
+        const open = form.style.display === 'none'
+        form.style.display = open ? 'block' : 'none'
+        if (open) setTimeout(() => document.getElementById('reply-input-' + reviewId)?.focus(), 40)
+    }
+
+    async function submitReply(toolId, reviewId) {
+        if (!currentFBUser) { showAuthModal(() => submitReply(toolId, reviewId)); return }
+        const input = document.getElementById('reply-input-' + reviewId)
+        if (!input || !input.value.trim()) return
+        const comment = input.value.trim(); input.value = ''
+        const form = document.getElementById('reply-form-' + reviewId)
+        if (form) form.style.display = 'none'
+        await fbDb.collection('replies').add({
+            toolId: String(toolId), reviewId, uid: currentFBUser.uid,
+            username: getCurrentUsername(), comment,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        })
+    }
+
+    async function deleteReply(replyId) {
+        if (!currentFBUser || !fbDb) return
+        await fbDb.collection('replies').doc(replyId).delete()
+    }
+
+    // ── Star picker ───────────────────────────────────────────────────────────
+    function starHover(toolId, n) {
+        const p = document.getElementById('star-picker-' + toolId)
+        if (p) p.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('filled', i < n))
+    }
+    function starPickerLeave(toolId) {
+        const p = document.getElementById('star-picker-' + toolId)
+        if (p) { const cur = parseInt(p.dataset.current || '0'); p.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('filled', i < cur)) }
+    }
+    async function starClick(toolId, n) {
+        if (!currentFBUser) { showAuthModal(() => starClick(toolId, n)); return }
+        const picker = document.getElementById('star-picker-' + toolId)
+        const cur = parseInt(picker?.dataset.current || '0')
+        const newVal = cur === n ? 0 : n   // same star = remove rating
+        if (picker) { picker.dataset.current = newVal; picker.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('filled', i < newVal)) }
+        updateStarLabel(toolId, newVal)
+        await setUserToolRating(toolId, newVal)
+        const rd = await getToolRatingData(toolId)
+        const header = document.getElementById('rating-header-' + toolId)
+        if (header) {
+            if (rd.count > 0) header.innerHTML = `<div class="rating-avg-num">${rd.avg.toFixed(1)}</div>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <div class="stars-display">${starsHTML(Math.round(rd.avg), 5)}</div>
+                  <span class="rating-count">(${rd.count} rating${rd.count !== 1 ? 's' : ''})</span>
+                </div>`
+            else header.innerHTML = `<div style="display:flex;flex-direction:column;gap:4px;">
+                <div class="stars-display">${starsHTML(0, 5)}</div>
+                <span class="rating-count" style="color:#334155;">(0 ratings)</span>
+              </div>
+              <span style="color:#64748b;font-size:11px;letter-spacing:0.5px;">BE THE FIRST TO RATE</span>`
+        }
+    }
+    function updateStarLabel(toolId, stars) {
+        const label = document.getElementById('star-label-' + toolId); if (!label) return
+        label.innerHTML = stars > 0
+            ? `YOUR RATING: ${stars}/5 &nbsp;<button onclick="starClick(${toolId},${stars})" style="background:none;border:none;color:#ff00aa;font-family:'Share Tech Mono',monospace;font-size:9px;cursor:pointer;letter-spacing:1px;padding:0;">✕ REMOVE</button>`
+            : 'CLICK TO RATE'
+    }
+
+    // ── Refresh panel ─────────────────────────────────────────────────────────
+    async function refreshDetailPanel(toolId) {
+        const tool = tools.find(t => t.id === toolId); if (!tool) return
+        const dr   = document.getElementById('detail-' + toolId); if (!dr) return
+        dr.querySelector('td').innerHTML = await buildDetailHTML(tool)
+        if (fbConfigured && fbDb) subscribeToTool(toolId, () => onToolDataUpdate(toolId))
+    }
+
+    // ── Build detail HTML (async) ─────────────────────────────────────────────
+    async function buildDetailHTML(t) {
+        const user = currentFBUser
+        let ratingData = { avg: 0, count: 0 }, userRating = 0
+        let reviews = [], replies = []
+
+        if (fbConfigured && fbDb) {
+            try {
+                const ld = toolLiveData[t.id]
+                if (ld) {
+                    reviews = ld.reviews || []; replies = ld.replies || []
+                    const rated = reviews.filter(r => r.stars > 0)
+                    if (rated.length) ratingData = { avg: rated.reduce((a,r) => a+r.stars,0)/rated.length, count: rated.length }
+                } else {
+                    ratingData = await getToolRatingData(t.id)
+                }
+                if (user) userRating = await getUserToolRating(t.id)
+            } catch(e) {
+                console.warn('[NEON FORGE] Firestore read failed, rendering with empty data:', e.message)
+            }
+        }
+
+        // Extra spec cells
+        const SKIP = new Set(['ic_mm','s_mm','re_mm','corner_radius_RE','corner_radius_mm','corner_radius','min_bore_diameter','minimum_bore_diameter','bore_diameter_min'])
+        let specCells = ''
+        if (t.rawSpecs && typeof t.rawSpecs === 'object') {
+            Object.entries(t.rawSpecs).forEach(([k, v]) => {
+                if (SKIP.has(k) || v == null || v === '' || typeof v === 'object') return
+                specCells += `<div class="detail-cell"><div class="detail-cell-label">${k.replace(/_/g,' ').toUpperCase()}</div><div class="detail-cell-value">${escapeHtml(String(v))}</div></div>`
+            })
+        }
+
+        const ratingHeaderHTML = ratingData.count > 0
+            ? `<div class="rating-avg-num">${ratingData.avg.toFixed(1)}</div>
+               <div style="display:flex;flex-direction:column;gap:4px;">
+                 <div class="stars-display">${starsHTML(Math.round(ratingData.avg), 5)}</div>
+                 <span class="rating-count">(${ratingData.count} rating${ratingData.count !== 1 ? 's' : ''})</span>
+               </div>`
+            : `<div style="display:flex;flex-direction:column;gap:4px;">
+                 <div class="stars-display">${starsHTML(0, 5)}</div>
+                 <span class="rating-count" style="color:#334155;">(0 ratings)</span>
+               </div>
+               <span style="color:#64748b;font-size:11px;letter-spacing:0.5px;">BE THE FIRST TO RATE</span>`
+
+        let pickerHTML = `<div class="star-picker" id="star-picker-${t.id}" data-current="${userRating}" onmouseleave="starPickerLeave(${t.id})">`
+        for (let i = 1; i <= 5; i++) pickerHTML += `<span class="star${userRating>=i?' filled':''}" onmouseover="starHover(${t.id},${i})" onclick="starClick(${t.id},${i})">★</span>`
+        pickerHTML += '</div>'
+        const starLabelHTML = userRating > 0
+            ? `YOUR RATING: ${userRating}/5 &nbsp;<button onclick="starClick(${t.id},${userRating})" style="background:none;border:none;color:#ff00aa;font-family:'Share Tech Mono',monospace;font-size:9px;cursor:pointer;letter-spacing:1px;padding:0;">✕ REMOVE</button>`
+            : 'CLICK TO RATE'
+
+        const uid = user?.uid
+        let reviewsHTML = ''
+        if (!fbConfigured) {
+            reviewsHTML = `<div class="no-reviews" style="cursor:pointer;" onclick="showFBSetup()">⚡ CONNECT FIREBASE TO SEE COMMUNITY REVIEWS</div>`
+        } else if (!reviews.length) {
+            reviewsHTML = '<div class="no-reviews">NO REVIEWS YET — BE THE FIRST</div>'
+        } else {
+            reviewsHTML = reviews.map(r => {
+                const s = r.stars || 0
+                const starsStr = s > 0 ? `<span style="color:#ffd700;">${'★'.repeat(s)}</span><span style="color:#2a3040;">${'★'.repeat(5-s)}</span>` : ''
+                const canDelete = uid && uid === r.uid
+                const rReplies = replies.filter(p => p.reviewId === r.id)
+                const repliesHTML = rReplies.map(p => {
+                    const canDR = uid && uid === p.uid
+                    return `<div class="reply-item"><div class="reply-meta"><i class="fa-solid fa-reply" style="color:#334155;font-size:9px;transform:scaleX(-1);"></i><span class="reply-username">${escapeHtml(p.username)}</span><span class="review-date">${timeAgo(p.createdAt)}</span>${canDR?`<button onclick="deleteReply('${p.id}')" class="review-delete-btn">✕</button>`:''}</div><div class="reply-comment">${escapeHtml(p.comment)}</div></div>`
+                }).join('')
+                return `<div class="review-item" id="review-item-${r.id}">
+                    <div class="review-meta">
+                        <span class="review-username">${escapeHtml(r.username)}</span>
+                        ${starsStr?`<span style="font-size:13px;line-height:1;">${starsStr}</span>`:''}
+                        <span class="review-date">${timeAgo(r.createdAt)}</span>
+                        <button onclick="toggleReplyForm('${r.id}','${t.id}')" class="review-reply-btn">↩ REPLY</button>
+                        ${canDelete?`<button onclick="deleteReview('${t.id}','${r.id}')" class="review-delete-btn">✕ DELETE</button>`:''}
+                    </div>
+                    <div class="review-comment">${r.comment?escapeHtml(r.comment):'<em style="color:#334155;">No comment</em>'}</div>
+                    ${rReplies.length?`<div class="replies-container">${repliesHTML}</div>`:''}
+                    <div class="reply-form" id="reply-form-${r.id}" style="display:none;">
+                        <div style="display:flex;gap:8px;align-items:center;margin-top:10px;">
+                            <input class="reply-input" id="reply-input-${r.id}" placeholder="WRITE A REPLY..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();submitReply('${t.id}','${r.id}')}">
+                            <button class="neon-button" onclick="submitReply('${t.id}','${r.id}')" style="font-size:9px;padding:4px 10px;white-space:nowrap;">POST</button>
+                            <button onclick="toggleReplyForm('${r.id}','${t.id}')" style="background:none;border:none;color:#334155;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:9px;">CANCEL</button>
+                        </div>
+                    </div>
+                </div>`
+            }).join('')
+        }
+
+        // Review form — textarea always visible; submission gated by auth/firebase
+        let reviewFormHTML
+        const existingReview = reviews.find(r => r.uid === user?.uid)
+        if (user && fbConfigured) {
+            reviewFormHTML = `
+                <div style="margin-bottom:8px;font-size:10px;color:#64748b;letter-spacing:1px;">POSTING AS: <span style="color:#a98ff5;">${escapeHtml((getCurrentUsername()||'').toUpperCase())}</span></div>
+                <textarea class="review-textarea" id="review-text-${t.id}" placeholder="SHARE YOUR EXPERIENCE WITH THIS TOOL...">${existingReview?.comment?escapeHtml(existingReview.comment):''}</textarea>
+                <div style="display:flex;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap;">
+                    <button class="neon-button review-submit-btn" onclick="submitReview(${t.id})" style="font-size:10px;padding:5px 14px;">${existingReview?'UPDATE REVIEW':'SUBMIT REVIEW'}</button>
+                    <span style="color:#334155;font-size:10px;">STAR RATING SAVED SEPARATELY ABOVE</span>
+                </div>`
+        } else {
+            // Always show textarea — login/firebase prompt on submit
+            const notReadyNote = !fbConfigured
+                ? `<span style="color:#334155;font-size:10px;">⚡ <button onclick="showFBSetup()" style="background:none;border:none;color:#7b2cbf;font-family:'Share Tech Mono',monospace;font-size:10px;cursor:pointer;padding:0;letter-spacing:1px;">CONNECT FIREBASE</button> TO SAVE REVIEWS</span>`
+                : `<span style="color:#334155;font-size:10px;"><button onclick="showAuthModal(()=>refreshDetailPanel(${t.id}))" style="background:none;border:none;color:#00f9ff;font-family:'Share Tech Mono',monospace;font-size:10px;cursor:pointer;padding:0;letter-spacing:1px;">LOG IN</button> OR <button onclick="showAuthModal(()=>refreshDetailPanel(${t.id}))" style="background:none;border:none;color:#00f9ff;font-family:'Share Tech Mono',monospace;font-size:10px;cursor:pointer;padding:0;letter-spacing:1px;">CREATE ACCOUNT</button> TO POST</span>`
+            reviewFormHTML = `
+                <textarea class="review-textarea" id="review-text-${t.id}" placeholder="SHARE YOUR EXPERIENCE WITH THIS TOOL..."></textarea>
+                <div style="display:flex;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap;">
+                    <button class="neon-button review-submit-btn" onclick="submitReview(${t.id})" style="font-size:10px;padding:5px 14px;">SUBMIT REVIEW</button>
+                    ${notReadyNote}
+                </div>`
+        }
+
+        const compatM = t.compatibleMachines?.length ? `<div class="detail-cell" style="grid-column:span 2;"><div class="detail-cell-label">COMPATIBLE MACHINES</div><div class="detail-cell-value" style="font-size:11px;white-space:normal;">${t.compatibleMachines.map(escapeHtml).join(' · ')}</div></div>` : ''
+        const compatI = t.compatibleInserts?.length  ? `<div class="detail-cell" style="grid-column:span 2;"><div class="detail-cell-label">COMPATIBLE INSERTS</div><div class="detail-cell-value" style="font-size:11px;white-space:normal;">${t.compatibleInserts.map(escapeHtml).join(' · ')}</div></div>` : ''
+        const tags    = t.tags?.length    ? `<div class="detail-cell"><div class="detail-cell-label">TAGS</div><div class="detail-cell-value" style="font-size:11px;">${t.tags.map(escapeHtml).join(', ')}</div></div>` : ''
+        const sources = t.sources?.length ? `<div class="detail-panel-wide"><div class="detail-cell-label" style="margin-bottom:6px;">SOURCES</div><div style="font-size:11px;">${t.sources.map(s=>typeof s==='string'&&s.startsWith('http')?`<a href="${escapeHtml(s)}" target="_blank" rel="noopener" style="color:#00f9ff;text-decoration:none;">${escapeHtml(s)}</a>`:escapeHtml(String(s))).join('<br>')}</div></div>` : ''
+
+        return `<div class="detail-panel">
+            <div class="detail-panel-wide detail-rating-header" id="rating-header-${t.id}">${ratingHeaderHTML}</div>
+            ${t.description?`<div class="detail-panel-wide"><div class="detail-cell-label" style="margin-bottom:5px;">DESCRIPTION</div><div style="color:#c0c0dd;font-size:12px;line-height:1.7;">${escapeHtml(t.description)}</div></div>`:''}
+            ${t.maker ?`<div class="detail-cell"><div class="detail-cell-label">MANUFACTURER</div><div class="detail-cell-value" style="color:#a98ff5;">${escapeHtml(t.maker)}</div></div>`:''}
+            ${t.type  ?`<div class="detail-cell"><div class="detail-cell-label">COMPONENT TYPE</div><div class="detail-cell-value"><span class="type-badge ${typeCls(t.type)}">${t.type}</span></div></div>`:''}
+            ${t.part  ?`<div class="detail-cell"><div class="detail-cell-label">PART NUMBER</div><div class="detail-cell-value" style="color:#00f9ff;">${escapeHtml(t.part)}</div></div>`:''}
+            ${buildSize(t)?`<div class="detail-cell"><div class="detail-cell-label">SIZE</div><div class="detail-cell-value">${buildSize(t)}</div></div>`:''}
+            ${t.grade ?`<div class="detail-cell"><div class="detail-cell-label">GRADE</div><div class="detail-cell-value" style="color:#39ff14;">${escapeHtml(t.grade)}</div></div>`:''}
+            ${t.shape ?`<div class="detail-cell"><div class="detail-cell-label">INSERT SHAPE</div><div class="detail-cell-value">${escapeHtml(t.shape)}</div></div>`:''}
+            ${t.cb    ?`<div class="detail-cell"><div class="detail-cell-label">CHIPBREAKER</div><div class="detail-cell-value">${escapeHtml(t.cb)}</div></div>`:''}
+            ${t.cornerRadius!=null?`<div class="detail-cell"><div class="detail-cell-label">CORNER RADIUS</div><div class="detail-cell-value">${formatDim(t.cornerRadius)}</div></div>`:''}
+            ${t.minBore!=null?`<div class="detail-cell"><div class="detail-cell-label">MIN BORE DIAMETER</div><div class="detail-cell-value">${formatDim(t.minBore)}</div></div>`:''}
+            ${t.mountsTo?`<div class="detail-cell"><div class="detail-cell-label">MOUNTS TO</div><div class="detail-cell-value" style="color:#a98ff5;">${escapeHtml(t.mountsTo)}</div></div>`:''}
+            ${specCells}${compatM}${compatI}${tags}${sources}
+            <div class="detail-actions"><button class="neon-button" onclick="copyPart('${escapeHtml(t.part)}')">COPY PART #</button></div>
+            <div class="detail-panel-wide">
+                <div class="detail-section-title"><i class="fa-solid fa-star" style="font-size:9px;"></i> RATE THIS TOOL</div>
+                <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+                    ${fbConfigured?pickerHTML:`<span style="color:#334155;font-size:11px;cursor:pointer;" onclick="showFBSetup()">⚡ CONNECT FIREBASE TO RATE</span>`}
+                    ${fbConfigured?`<span style="color:#64748b;font-size:11px;" id="star-label-${t.id}">${starLabelHTML}</span>`:''}
+                </div>
+            </div>
+            <div class="detail-panel-wide">
+                <div class="detail-section-title" id="reviews-title-${t.id}"><i class="fa-solid fa-comments" style="font-size:9px;"></i> COMMUNITY REVIEWS <span style="color:#334155;">(${reviews.length})</span></div>
+                <div id="reviews-list-${t.id}">${reviewsHTML}</div>
+            </div>
+            <div class="detail-panel-wide">
+                <div class="detail-section-title"><i class="fa-solid fa-pen" style="font-size:9px;"></i> LEAVE A REVIEW</div>
+                <div id="review-form-area-${t.id}">${reviewFormHTML}</div>
+            </div>
+        </div>`
+    }
+
+    // ── Init ──────────────────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+        initFirebase()
+        updateAuthUI()
+    })
+
+
 
     // ── Tweaks ────────────────────────────────────────────────────────────────
     const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
