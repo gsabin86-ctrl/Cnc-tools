@@ -812,8 +812,8 @@
             </div>
         </div>
 
-        <!-- Firebase connect button -->
-        <button class="fb-status-btn" id="fb-status-btn" onclick="showFBSetup()" title="Firebase connection">⚡ CONNECT DB</button>
+        <!-- Firebase connect button (hidden — Firebase disabled for performance) -->
+        <button class="fb-status-btn" id="fb-status-btn" onclick="showFBSetup()" title="Firebase connection" style="display:none;">⚡ CONNECT DB</button>
 
         <!-- Auth area -->
         <div style="display:flex;align-items:center;gap:6px;margin-left:8px;flex-shrink:0;">
@@ -922,10 +922,13 @@
         </div>
     </div>
 
-    <!-- Firebase SDK (compat) -->
+    <!-- Firebase SDK disabled for performance. Re-enable by uncommenting these script tags
+         and unstubbing initFirebase() / showFBSetup() below. -->
+    <!--
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
     <script>
     // ── State ─────────────────────────────────────────────────────────────────
@@ -1429,40 +1432,13 @@
         return null
     }
 
+    // Firebase disabled — initFirebase is a no-op, fbConfigured stays false
     function initFirebase() {
-        const cfg = getFirebaseConfig()
-        if (!cfg) { showFBSetup(); return }
-        try {
-            if (!firebase.apps.length) firebase.initializeApp(cfg)
-            fbAuth = firebase.auth()
-            fbDb   = firebase.firestore()
-            fbConfigured = true
-            hideFBSetup()
-            updateFBStatusBtn(true)
-            document.getElementById('fb-clear-btn').style.display = 'inline-block'
-            fbAuth.onAuthStateChanged(user => {
-                currentFBUser = user
-                updateAuthUI()
-                if (openDetailRow) refreshDetailPanel(openDetailRow)
-            })
-        } catch(e) {
-            console.error('[NEON FORGE] Firebase init:', e)
-            showFBSetup('Init failed: ' + e.message)
-        }
+        fbConfigured = false
     }
 
-    function showFBSetup(err) {
-        const o = document.getElementById('fb-setup-overlay'); if (!o) return
-        o.style.display = 'flex'
-        if (err) document.getElementById('fb-setup-error').textContent = err
-        // Pre-fill if config already saved
-        const cfg = getFirebaseConfig()
-        if (cfg) {
-            const ta = document.getElementById('fb-config-input')
-            if (ta && !ta.value) ta.value = JSON.stringify(cfg, null, 2)
-            document.getElementById('fb-clear-btn').style.display = 'inline-block'
-        }
-    }
+    // Setup popup suppressed — never shown
+    function showFBSetup(err) { return }
     function hideFBSetup() {
         const o = document.getElementById('fb-setup-overlay'); if (o) o.style.display = 'none'
     }
