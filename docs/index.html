@@ -1417,15 +1417,21 @@
         if (s < 604800) return Math.floor(s / 86400) + 'd ago'
         return d.toLocaleDateString()
     }
-    function showToast(msg) {
+    function showToast(msg, isError) {
         const t = document.createElement('div')
         t.className = 'toast'
-        t.innerHTML = `<i class="fa-solid fa-check"></i> ${msg}`
+        if (isError) {
+            t.style.background = '#ff00aa'
+            t.style.color = '#fff'
+            t.style.boxShadow = '0 0 20px rgba(255,0,170,0.6)'
+        }
+        const icon = isError ? 'fa-triangle-exclamation' : 'fa-check'
+        t.innerHTML = `<i class="fa-solid ${icon}"></i> ${msg}`
         document.body.appendChild(t)
         setTimeout(() => {
             t.style.opacity = '0'; t.style.transform = 'translate(-50%, 16px)'
             setTimeout(() => t.remove(), 300)
-        }, 2000)
+        }, isError ? 4000 : 2000)
     }
 
     // ── Firebase (lazy-loaded on first detail-panel open) ─────────────────────
@@ -1782,19 +1788,25 @@
         const comment  = textarea ? textarea.value.trim() : ''
         const picker   = document.getElementById('star-picker-' + toolId)
         const stars    = picker ? parseInt(picker.dataset.current || '0') : 0
-        const existing = await fbDb.collection('reviews')
-            .where('toolId', '==', String(toolId)).where('uid', '==', currentFBUser.uid).limit(1).get()
-        if (!existing.empty) {
-            await existing.docs[0].ref.update({ comment, stars, updatedAt: firebase.firestore.FieldValue.serverTimestamp() })
-        } else {
-            await fbDb.collection('reviews').add({
-                toolId: String(toolId), uid: currentFBUser.uid,
-                username: getCurrentUsername(), comment, stars,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp()
-            })
+        if (!comment && !stars) { showToast('ENTER A RATING OR COMMENT FIRST', true); return }
+        try {
+            const existing = await fbDb.collection('reviews')
+                .where('toolId', '==', String(toolId)).where('uid', '==', currentFBUser.uid).limit(1).get()
+            if (!existing.empty) {
+                await existing.docs[0].ref.update({ comment, stars, updatedAt: firebase.firestore.FieldValue.serverTimestamp() })
+            } else {
+                await fbDb.collection('reviews').add({
+                    toolId: String(toolId), uid: currentFBUser.uid,
+                    username: getCurrentUsername(), comment, stars,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                })
+            }
+            if (stars > 0) await setUserToolRating(toolId, stars)
+            showToast('REVIEW SUBMITTED')
+        } catch(e) {
+            console.error('[NEON FORGE] submitReview failed:', e)
+            showToast('SUBMIT FAILED: ' + (e.message || e.code || 'unknown'), true)
         }
-        if (stars > 0) await setUserToolRating(toolId, stars)
-        showToast('REVIEW SUBMITTED')
     }
 
     async function deleteReview(toolId, reviewId) {
