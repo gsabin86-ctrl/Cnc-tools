@@ -1449,6 +1449,15 @@
         measurementId: "G-QFC16FKMGJ"
     }
 
+    // Admin UIDs — these users can delete any review/reply, not just their own.
+    // To get a UID: Firebase Console → Authentication → Users → User UID column.
+    const ADMIN_UIDS = [
+        "cVadDuMnSORh2CF97OMUFaY6xg93"  // gsabin
+    ]
+    function isAdmin() {
+        return !!(currentFBUser && ADMIN_UIDS.includes(currentFBUser.uid))
+    }
+
     function getFirebaseConfig() { return FIREBASE_CONFIG }
 
     // Lazy-load the Firebase SDK script tags. Runs once; subsequent calls reuse the same promise.
@@ -1734,10 +1743,10 @@
         list.innerHTML = reviews.map(r => {
             const s = r.stars || 0
             const starsStr = s > 0 ? `<span style="color:#ffd700;">${'★'.repeat(s)}</span><span style="color:#2a3040;">${'★'.repeat(5-s)}</span>` : ''
-            const canDelete = uid && uid === r.uid
+            const canDelete = uid && (uid === r.uid || isAdmin())
             const rReplies = replies.filter(p => p.reviewId === r.id)
             const repliesHTML = rReplies.map(p => {
-                const canDR = uid && uid === p.uid
+                const canDR = uid && (uid === p.uid || isAdmin())
                 return `<div class="reply-item">
                     <div class="reply-meta">
                         <i class="fa-solid fa-reply" style="color:#334155;font-size:9px;transform:scaleX(-1);"></i>
@@ -1955,10 +1964,10 @@
             reviewsHTML = reviews.map(r => {
                 const s = r.stars || 0
                 const starsStr = s > 0 ? `<span style="color:#ffd700;">${'★'.repeat(s)}</span><span style="color:#2a3040;">${'★'.repeat(5-s)}</span>` : ''
-                const canDelete = uid && uid === r.uid
+                const canDelete = uid && (uid === r.uid || isAdmin())
                 const rReplies = replies.filter(p => p.reviewId === r.id)
                 const repliesHTML = rReplies.map(p => {
-                    const canDR = uid && uid === p.uid
+                    const canDR = uid && (uid === p.uid || isAdmin())
                     return `<div class="reply-item"><div class="reply-meta"><i class="fa-solid fa-reply" style="color:#334155;font-size:9px;transform:scaleX(-1);"></i><span class="reply-username">${escapeHtml(p.username)}</span><span class="review-date">${timeAgo(p.createdAt)}</span>${canDR?`<button onclick="deleteReply('${p.id}')" class="review-delete-btn">✕</button>`:''}</div><div class="reply-comment">${escapeHtml(p.comment)}</div></div>`
                 }).join('')
                 return `<div class="review-item" id="review-item-${r.id}">
