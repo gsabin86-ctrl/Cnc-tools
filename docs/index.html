@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEON FORGE // CNC TOOL DATABASE</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Preconnect hints — open TCP/TLS to these hosts in parallel during page parse -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&display=swap">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&display=swap');
+        /* Google Fonts loaded via <link> tag in <head> for faster discovery */
 
         :root {
             --neon-cyan: #00f9ff;
@@ -21,6 +27,12 @@
         }
 
         * { box-sizing: border-box; }
+
+        /* Tailwind replacements — only the 3 classes the markup actually uses */
+        .hidden { display: none !important; }
+        @media (min-width: 640px) {
+            .sm\:flex { display: flex !important; }
+        }
 
         body {
             background: #050507;
@@ -929,7 +941,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
     <script>
     // ── State ─────────────────────────────────────────────────────────────────
     let tools = []
