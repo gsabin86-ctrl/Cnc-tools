@@ -1148,12 +1148,19 @@
             btn.classList.add('open')
             openDetailRow = id
             const tool = tools.find(t => t.id === id)
+
+            // Kick off Firebase init in the background — first open pays the cost,
+            // subsequent opens reuse the loaded SDK
+            initFirebase().then(() => {
+                // Refresh once Firebase is ready so reviews populate
+                if (openDetailRow === id) refreshDetailPanel(id)
+            })
+
             try {
                 if (tool) dr.querySelector('td').innerHTML = await buildDetailHTML(tool)
             } catch(e) {
                 console.warn('[NEON FORGE] Detail build failed:', e.message)
                 if (tool) {
-                    // Retry with empty firebase data
                     fbConfigured = false
                     dr.querySelector('td').innerHTML = await buildDetailHTML(tool)
                     fbConfigured = !!fbDb
@@ -1421,23 +1428,63 @@
         }, 2000)
     }
 
-    // ── Firebase ──────────────────────────────────────────────────────────────
+    // ── Firebase (lazy-loaded on first detail-panel open) ─────────────────────
     let fbAuth = null, fbDb = null, fbConfigured = false, currentFBUser = null
+    let fbLoadPromise = null  // cached SDK loader promise
 
-    function getFirebaseConfig() {
+    // Hardcoded config — no popup, no localStorage lookup
+    const FIREBASE_CONFIG = {
+        apiKey: "AIzaSyCvxzRfJlxKp1pCer36dzmmNzWf00dnCck",
+        authDomain: "neon-forge-a44af.firebaseapp.com",
+        projectId: "neon-forge-a44af",
+        storageBucket: "neon-forge-a44af.firebasestorage.app",
+        messagingSenderId: "895413338910",
+        appId: "1:895413338910:web:91bd492a522aab9f23ff0f",
+        measurementId: "G-QFC16FKMGJ"
+    }
+
+    function getFirebaseConfig() { return FIREBASE_CONFIG }
+
+    // Lazy-load the Firebase SDK script tags. Runs once; subsequent calls reuse the same promise.
+    function loadFirebaseSDK() {
+        if (fbLoadPromise) return fbLoadPromise
+        if (typeof firebase !== 'undefined' && firebase.initializeApp) return Promise.resolve()
+        const sources = [
+            'https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js',
+            'https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js',
+            'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js'
+        ]
+        fbLoadPromise = sources.reduce((prev, src) => prev.then(() => new Promise((resolve, reject) => {
+            const s = document.createElement('script')
+            s.src = src
+            s.onload = resolve
+            s.onerror = () => reject(new Error('Failed to load ' + src))
+            document.head.appendChild(s)
+        })), Promise.resolve())
+        return fbLoadPromise
+    }
+
+    // Async init: load SDK, then initialize with hardcoded config. Safe to call multiple times.
+    async function initFirebase() {
+        if (fbConfigured) return
         try {
-            const s = localStorage.getItem('nf_firebase_config')
-            if (s) { const c = JSON.parse(s); if (c.apiKey && c.projectId) return c }
-        } catch {}
-        return null
+            await loadFirebaseSDK()
+            if (!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG)
+            fbAuth = firebase.auth()
+            fbDb   = firebase.firestore()
+            fbConfigured = true
+            fbAuth.onAuthStateChanged(user => {
+                currentFBUser = user
+                updateAuthUI()
+                if (openDetailRow) refreshDetailPanel(openDetailRow)
+            })
+        } catch(e) {
+            console.warn('[NEON FORGE] Firebase init failed:', e.message)
+            fbConfigured = false
+        }
     }
 
-    // Firebase disabled — initFirebase is a no-op, fbConfigured stays false
-    function initFirebase() {
-        fbConfigured = false
-    }
-
-    // Setup popup suppressed — never shown
+    // Popup permanently suppressed — config is hardcoded
     function showFBSetup(err) { return }
     function hideFBSetup() {
         const o = document.getElementById('fb-setup-overlay'); if (o) o.style.display = 'none'
@@ -1528,8 +1575,10 @@
 
     // ── Auth Modal ────────────────────────────────────────────────────────────
     let authCallback = null
-    function showAuthModal(cb) {
-        if (!fbConfigured) { showFBSetup(); return }
+    async function showAuthModal(cb) {
+        // Lazy-load Firebase if needed (e.g. user clicks LOG IN before opening any tool)
+        if (!fbConfigured) await initFirebase()
+        if (!fbConfigured) return  // SDK failed to load — fail silently
         authCallback = cb || null
         document.getElementById('auth-modal').style.display = 'flex'
         showAuthTab('login')
@@ -1984,8 +2033,8 @@
     }
 
     // ── Init ──────────────────────────────────────────────────────────────────
+    // Firebase is now lazy-loaded by toggleDetail() — first detail-panel open pays the cost.
     document.addEventListener('DOMContentLoaded', () => {
-        initFirebase()
         updateAuthUI()
     })
 
