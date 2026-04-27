@@ -1405,6 +1405,15 @@
         const p = loadPrefs()
         if (p.unit === 'imperial') setUnit('imperial')
         else setUnit('metric')
+
+        // Preload Firebase SDK during browser idle time so the first DETAILS click is instant.
+        // Doesn't block anything — runs only when the main thread has spare cycles.
+        const preloadFB = () => { initFirebase().catch(() => {}) }
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(preloadFB, { timeout: 4000 })
+        } else {
+            setTimeout(preloadFB, 1500)
+        }
     }
 
     window.onload = loadDB
@@ -1689,30 +1698,38 @@
     const activeListeners = {}
     const toolLiveData = {}
 
-    function subscribeToTool(toolId, cb) {
-        if (activeListeners[toolId] || !fbDb) return
+    // One-shot fetch instead of persistent .onSnapshot listeners — much faster for opening
+    // a detail panel. Reviews refresh on demand (after submit/delete) via refreshToolData().
+    async function subscribeToTool(toolId, cb) {
+        if (!fbDb) return
         const tid = String(toolId)
-        const u1 = fbDb.collection('reviews').where('toolId', '==', tid)
-            .onSnapshot(snap => {
-                const reviews = snap.docs.map(d => ({ id: d.id, ...d.data() }))
-                reviews.sort((a, b) => (b.createdAt?.toMillis?.() || 0) - (a.createdAt?.toMillis?.() || 0))
-                if (!toolLiveData[toolId]) toolLiveData[toolId] = { reviews: [], replies: [] }
-                toolLiveData[toolId].reviews = reviews
-                cb()
-            })
-        const u2 = fbDb.collection('replies').where('toolId', '==', tid)
-            .onSnapshot(snap => {
-                const replies = snap.docs.map(d => ({ id: d.id, ...d.data() }))
-                replies.sort((a, b) => (a.createdAt?.toMillis?.() || 0) - (b.createdAt?.toMillis?.() || 0))
-                if (!toolLiveData[toolId]) toolLiveData[toolId] = { reviews: [], replies: [] }
-                toolLiveData[toolId].replies = replies
-                cb()
-            })
-        activeListeners[toolId] = () => { u1(); u2() }
+        // Mark this tool as "subscribed" so refreshToolData knows about it
+        activeListeners[toolId] = () => { delete activeListeners[toolId] }
+        try {
+            // Fetch reviews + replies in parallel
+            const [reviewsSnap, repliesSnap] = await Promise.all([
+                fbDb.collection('reviews').where('toolId', '==', tid).get(),
+                fbDb.collection('replies').where('toolId', '==', tid).get()
+            ])
+            const reviews = reviewsSnap.docs.map(d => ({ id: d.id, ...d.data() }))
+            reviews.sort((a, b) => (b.createdAt?.toMillis?.() || 0) - (a.createdAt?.toMillis?.() || 0))
+            const replies = repliesSnap.docs.map(d => ({ id: d.id, ...d.data() }))
+            replies.sort((a, b) => (a.createdAt?.toMillis?.() || 0) - (b.createdAt?.toMillis?.() || 0))
+            toolLiveData[toolId] = { reviews, replies }
+            cb()
+        } catch(e) {
+            console.warn('[NEON FORGE] subscribeToTool failed:', e.message)
+        }
     }
 
     function unsubscribeFromTool(toolId) {
         if (activeListeners[toolId]) { activeListeners[toolId](); delete activeListeners[toolId] }
+    }
+
+    // Manual refresh — call after submit/delete so the UI updates without persistent listeners
+    async function refreshToolData(toolId) {
+        if (!activeListeners[toolId]) return
+        await subscribeToTool(toolId, () => onToolDataUpdate(toolId))
     }
 
     function onToolDataUpdate(toolId) {
@@ -1764,7 +1781,7 @@
                         <i class="fa-solid fa-reply" style="color:#334155;font-size:9px;transform:scaleX(-1);"></i>
                         <span class="reply-username">${escapeHtml(p.username)}</span>
                         <span class="review-date">${timeAgo(p.createdAt)}</span>
-                        ${canDR ? `<button onclick="deleteReply('${p.id}')" class="review-delete-btn">✕</button>` : ''}
+                        ${canDR ? `<button onclick="deleteReply('${p.id}','${toolId}')" class="review-delete-btn">✕</button>` : ''}
                     </div>
                     <div class="reply-comment">${escapeHtml(p.comment)}</div>
                 </div>`
@@ -1824,6 +1841,7 @@
             }
             if (stars > 0) await setUserToolRating(toolId, stars)
             showToast('REVIEW SUBMITTED')
+            await refreshToolData(toolId)
         } catch(e) {
             console.error('[NEON FORGE] submitReview failed:', e)
             showToast('SUBMIT FAILED: ' + (e.message || e.code || 'unknown'), true)
@@ -1833,12 +1851,18 @@
     async function deleteReview(toolId, reviewId) {
         if (!currentFBUser || !fbDb) return
         if (!confirm('Delete your review and all its replies?')) return
-        await fbDb.collection('reviews').doc(reviewId).delete()
-        const snap = await fbDb.collection('replies').where('reviewId', '==', reviewId).get()
-        if (!snap.empty) {
-            const batch = fbDb.batch(); snap.docs.forEach(d => batch.delete(d.ref)); await batch.commit()
+        try {
+            await fbDb.collection('reviews').doc(reviewId).delete()
+            const snap = await fbDb.collection('replies').where('reviewId', '==', reviewId).get()
+            if (!snap.empty) {
+                const batch = fbDb.batch(); snap.docs.forEach(d => batch.delete(d.ref)); await batch.commit()
+            }
+            showToast('REVIEW DELETED')
+            await refreshToolData(toolId)
+        } catch(e) {
+            console.error('[NEON FORGE] deleteReview failed:', e)
+            showToast('DELETE FAILED: ' + (e.message || e.code || 'unknown'), true)
         }
-        showToast('REVIEW DELETED')
     }
 
     function toggleReplyForm(reviewId, toolId) {
@@ -1856,16 +1880,28 @@
         const comment = input.value.trim(); input.value = ''
         const form = document.getElementById('reply-form-' + reviewId)
         if (form) form.style.display = 'none'
-        await fbDb.collection('replies').add({
-            toolId: String(toolId), reviewId, uid: currentFBUser.uid,
-            username: getCurrentUsername(), comment,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        })
+        try {
+            await fbDb.collection('replies').add({
+                toolId: String(toolId), reviewId, uid: currentFBUser.uid,
+                username: getCurrentUsername(), comment,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            await refreshToolData(toolId)
+        } catch(e) {
+            console.error('[NEON FORGE] submitReply failed:', e)
+            showToast('REPLY FAILED: ' + (e.message || e.code || 'unknown'), true)
+        }
     }
 
-    async function deleteReply(replyId) {
+    async function deleteReply(replyId, toolId) {
         if (!currentFBUser || !fbDb) return
-        await fbDb.collection('replies').doc(replyId).delete()
+        try {
+            await fbDb.collection('replies').doc(replyId).delete()
+            if (toolId) await refreshToolData(toolId)
+        } catch(e) {
+            console.error('[NEON FORGE] deleteReply failed:', e)
+            showToast('DELETE FAILED: ' + (e.message || e.code || 'unknown'), true)
+        }
     }
 
     // ── Star picker ───────────────────────────────────────────────────────────
@@ -1980,7 +2016,7 @@
                 const rReplies = replies.filter(p => p.reviewId === r.id)
                 const repliesHTML = rReplies.map(p => {
                     const canDR = uid && (uid === p.uid || isAdmin())
-                    return `<div class="reply-item"><div class="reply-meta"><i class="fa-solid fa-reply" style="color:#334155;font-size:9px;transform:scaleX(-1);"></i><span class="reply-username">${escapeHtml(p.username)}</span><span class="review-date">${timeAgo(p.createdAt)}</span>${canDR?`<button onclick="deleteReply('${p.id}')" class="review-delete-btn">✕</button>`:''}</div><div class="reply-comment">${escapeHtml(p.comment)}</div></div>`
+                    return `<div class="reply-item"><div class="reply-meta"><i class="fa-solid fa-reply" style="color:#334155;font-size:9px;transform:scaleX(-1);"></i><span class="reply-username">${escapeHtml(p.username)}</span><span class="review-date">${timeAgo(p.createdAt)}</span>${canDR?`<button onclick="deleteReply('${p.id}','${t.id}')" class="review-delete-btn">✕</button>`:''}</div><div class="reply-comment">${escapeHtml(p.comment)}</div></div>`
                 }).join('')
                 return `<div class="review-item" id="review-item-${r.id}">
                     <div class="review-meta">
