@@ -1,0 +1,30 @@
+{
+  "name": "cnc-tool-database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "db:clean": "node scripts/clean-db.js --dry-run",
+    "db:clean:apply": "node scripts/clean-db.js --apply",
+    "db:edges": "node scripts/build-compatibility-edges.js --dry-run",
+    "db:edges:apply": "node scripts/build-compatibility-edges.js --apply",
+    "db:normalize": "node scripts/normalize-cells.js --dry-run",
+    "db:normalize:apply": "node scripts/normalize-cells.js --apply",
+    "db:audit": "node scripts/audit-database.js",
+    "db:audit:json": "node scripts/audit-database.js --json",
+    "db:verify": "node scripts/verify-tools.js",
+    "db:verified-fixes": "node scripts/apply-verified-fixes.js --dry-run",
+    "db:verified-fixes:apply": "node scripts/apply-verified-fixes.js --apply",
+    "db:v2": "node scripts/migrate-v2.js --dry-run",
+    "db:v2:apply": "node scripts/migrate-v2.js --apply",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  }
+}
