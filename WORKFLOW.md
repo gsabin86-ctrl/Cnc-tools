@@ -1,116 +1,73 @@
-# CNC Tool Database — Approved Workflow
+# CNC Tool Database Workflow
 
-**Owner:** Greg Sabin  
-**Last updated:** 2026-03-12  
-**Status:** LOCKED — do not change without Greg's explicit approval
+**Owner:** Greg Sabin
+**Last updated:** 2026-05-18
+**Status:** Active project workflow
 
----
+This repo is being cleaned up around one goal: CNC tooling data should be referenceable, auditable, accurate, and true. Missing data is allowed. Invented data is not.
 
-## The Only Way Data Gets Into the Database
+## Current Database Roles
 
+| File | Role | Notes |
+|------|------|-------|
+| `docs/db.sqlite` | Current production UI database | Served by `docs/server.js` and fetched by `docs/index.html`. Keep stable until the UI migrates. |
+| `docs/db_v2.sqlite` | Normalized future database | Generated from `docs/db.sqlite`; better source/spec/compatibility structure. |
+| root `db.sqlite` | Archived legacy copy | Older 629-row database. It is not used by the current app. |
+
+See `docs/DATABASES.md` for the detailed database inventory.
+
+## Data Entry Rule
+
+Do not hand-edit SQLite files.
+
+New catalog data should move through this shape:
+
+```text
+manufacturer source -> structured proposal -> audit -> Greg approval -> scripted apply -> verification
 ```
-Source Data → proposals.json → Greg approves → apply_proposals.py → db.sqlite
-```
 
-Every single insert must pass through this pipeline. No exceptions.
+That applies to tooling records, compatibility records, and cutting-data records.
 
----
-
-## Step-by-Step
-
-### 1. Source
-Pull data from one of:
-- Manufacturer catalog PDFs (pdfplumber — no size limit)
-- Manufacturer websites (fetch_product.py or manual fetch)
-- **Never invent data. Never estimate. Never fill in "typical" values.**
-
-### 2. Propose
-Write structured entries to `proposals.json` with `status: "proposed"`.  
-Each entry must have:
-- `json_id` — exact part number or designation from the source
-- `sources` — catalog page reference or URL (required, no exceptions)
-- All known fields filled; unknown fields set to `null`
-
-### 3. Audit
-Run `python scripts/audit_proposals.py` before presenting to Greg.  
-Zero errors required before asking for approval.
-
-### 4. Greg Approves
-Present a clear summary of what's proposed.  
-**Wait for explicit approval** — "Apply", "Yes", "Approved", or equivalent.  
-**Do NOT apply without approval.**
-
-### 5. Apply
-Run `python scripts/apply_proposals.py` only after approval.
-
-### 6. Verify
-Run `python scripts/audit_db.py` to confirm clean state.
-
-### 7. Backup
-Run `scripts/backup_openclaw.ps1` at end of session or when Greg says "save everything" / "good night".
-
----
-
-## Rules (Non-Negotiable)
+## Safety Rules
 
 | Rule | Detail |
 |------|--------|
-| No direct DB writes | `db.sqlite` is only touched by `apply_proposals.py` |
-| No invented data | Every field must trace to a source document |
-| No auto-apply | Greg must explicitly approve every batch before apply |
-| Sources required | Every entry needs a `sources` field with catalog page or URL |
-| Audit before present | Never show Greg a proposal list that hasn't been audited |
-| Batch size | Keep batches to ~20 entries — easier to review |
-| **Machine connections require physical verification** | Never set `mounts_to` for a machine station without Greg verifying in person. Catalog specs alone are not sufficient — shank fit, pocket depth, orientation, and coolant ports must be confirmed on the actual machine. Unverified holders stay with `mounts_to=NULL`. |
+| No invented data | Every real field must trace to a manufacturer page, catalog page, machine manual, or explicitly labeled shop note. |
+| Missing stays missing | Unknown data should stay `null`, blank, or `needs_review`; do not fill with typical values. |
+| No silent DB writes | Any database-changing script should make a backup or require an explicit `--apply` mode. |
+| Review before apply | Present small reviewable batches before changing production data. |
+| Machine fit needs physical verification | Catalog specs are not enough for machine station fit. Shank shape, station size, pocket depth, orientation, coolant ports, and real shop fit matter. |
+| Shape matters | Round shank and square shank compatibility must be modeled as different physical interfaces. |
+| Cutting data is safety-critical | Speeds, feeds, and DOC ranges must have auditable source rows and verification status before the calculator treats them as usable. |
 
----
+## Current Database State
 
-## Known Acceptable Audit Warnings (Do Not Block Apply)
+Last checked: 2026-05-18.
 
-These warnings are expected and do not indicate bad data:
-
-| Entry type | Warning | Why it's OK |
-|-----------|---------|-------------|
-| Tool holders | `Vague compatible_holders: 'N/A'` | Holders don't go in other holders |
-| Spare parts (77–79) | Missing shape/chipbreaker, no manufacturer | Parked intentionally — different category |
-
----
-
-## Future Automation (Planned — Not Yet Built)
-
-When automation is added (bulk scraping, LM Studio agent loops, etc.), it will:
-- Live in a **separate skill** — not this workflow
-- Still write to `proposals.json` only
-- Still require Greg's approval before apply
-- Never bypass this pipeline
-
-This document governs the **manual/catalog workflow** permanently.  
-Automation is an addition, not a replacement.
-
----
-
-## Current Database State (2026-03-12)
-
-| Category | Count | Notes |
+| Database | Count | Notes |
 |----------|-------|-------|
-| Kennametal KM Micro holders | 8 | IDs 68–76 |
-| Kennametal/Iscar/Horn inserts | 38 | IDs 1–67, 80–83 |
-| KM16 spare parts (parked) | 3 | IDs 77–79 |
-| Iscar Swiss holders | 12 | IDs 84–95 |
-| Iscar CCMT/DCMT/VCMT inserts | 36 | IDs 96–131 |
-| **Total** | **94** | |
+| `docs/db.sqlite` | 1,212 `tools` rows | Current UI database. |
+| `docs/db_v2.sqlite` | 1,212 `catalog_tools` rows | Normalized target with sources, specs, and compatibility edges. |
+| archived root `db.sqlite` | 629 `tools` rows | Stale legacy copy retained only for audit/history. |
 
----
+## Maintained Scripts
 
-## Scripts Quick Reference
+Use scripts under `docs/scripts` for the current project:
 
-| Script | When to use |
-|--------|------------|
-| `scripts/audit_proposals.py` | Before every present-to-Greg |
-| `scripts/apply_proposals.py` | After Greg approves |
-| `scripts/audit_db.py` | After every apply |
-| `scripts/backup_openclaw.ps1` | End of session / "good night" |
-| `scripts/fetch_product.py <material_no>` | Fetch Kennametal product page |
-| `scripts/write_iscar_proposals.py` | Iscar holders batch 1 |
-| `scripts/write_iscar_insert_proposals.py` | Iscar inserts batch 1 |
-| `scripts/write_iscar_insert_proposals_2.py` | Iscar inserts batch 2 |
+| Script | Purpose |
+|--------|---------|
+| `docs/scripts/audit-database.js` | Audit current and v2 databases. |
+| `docs/scripts/migrate-v2.js` | Rebuild normalized v2 database from current production DB. |
+| `docs/scripts/clean-db.js` | Controlled cleanup of current production DB. |
+| `docs/scripts/verify-tools.js` | Verify selected tool records. |
+| `docs/scripts/build-compatibility-edges.js` | Generate compatibility edges for review. |
+
+Older root-level Python scripts are historical helpers unless refreshed and documented for the current `docs/db.sqlite` workflow.
+
+## Near-Term Cleanup Path
+
+1. Keep `docs/db.sqlite` stable while the current UI depends on it.
+2. Use `docs/db_v2.sqlite` as the professional target model.
+3. Add a cutting-data schema and proposal format before importing any speeds/feeds.
+4. Migrate UI reads from the flat `tools` table toward the normalized v2 tables.
+5. Remove or archive stale root-level data/scripts once replacements exist in `docs/scripts`.

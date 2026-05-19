@@ -33,8 +33,10 @@ Older root-level database.
 - Contains fewer rows than `docs/db.sqlite`.
 - Appears to be a previous working database from before the published `docs` database grew.
 - Not served by the current `docs/server.js`.
+- Archived locally at `archive/database-cleanup/legacy-root-db.sqlite` on 2026-05-18.
+- SHA256 at archive time: `750A42085D17B5A033D0AECD14F0CCA0C6E7C98307CA63D72CA4B9D55885A414`.
 
-Treat this as legacy/stale until proven otherwise.
+Treat this as legacy/stale audit history, not active project data.
 
 ## Intended Direction
 
@@ -43,7 +45,7 @@ The cleanup path is:
 1. Keep `docs/db.sqlite` stable while the current UI depends on it.
 2. Use `docs/db_v2.sqlite` as the target model for structured sources, specs, and compatibility.
 3. Migrate the UI to read v2 tables directly.
-4. After migration, archive or remove stale database files so only one canonical database remains in normal use.
+4. Keep stale database files out of the active project root so only one current production database and one migration target remain in normal use.
 
 ## Important Rule
 

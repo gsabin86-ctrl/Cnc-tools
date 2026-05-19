@@ -48,6 +48,7 @@ index.html.txt
 
 # Archive
 archive/
+/db.sqlite
 
 # Agent test
 agent-test/

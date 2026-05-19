@@ -40,6 +40,8 @@ This repo contains both source files and large/generated local artifacts. The go
 - Generated pet/image run output:
   - `docs/dragoon-pet-run/`
 - Large catalog PDFs and extracted catalog artifacts.
+- Archived stale databases:
+  - `archive/database-cleanup/`
 
 ## Current Cleanup Rule
 
