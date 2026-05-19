@@ -18,6 +18,7 @@ This schema is meant to turn the current Swiss tooling archive into a verifiable
 - `tool_specs`: flexible key/value specs for filtering and source-backed verification.
 - `sources`, `tool_sources`, `tool_spec_sources`: provenance.
 - `compatibility_edges`, `compatibility_edge_sources`: verifiable compatibility tree.
+- `cutting_data_profiles`, `cutting_data_profile_sources`: auditable speeds, feeds, and depth-of-cut ranges.
 - `inventory_items`, `listings`, `orders`, `order_items`: commerce.
 - `user_profiles`, `favorite_tools`, `tool_reviews`: customer-facing account features.
 
@@ -42,3 +43,11 @@ npm run db:v2:apply
 ```
 
 Current Swiss tooling rows land in `swiss-tooling`, while `solid-carbide`, `endmills`, and `drills` are seeded for future sessions.
+
+## Cutting Data Notes
+
+Schema version `2.1.0` adds cutting-data tables.
+
+Cutting data is intentionally separate from `catalog_tools` because speed, feed, and depth-of-cut ranges are safety-critical source claims. Rows should stay `proposed`, `source_extracted`, or `needs_review` until they are checked against a manufacturer catalog, manufacturer product page, or explicitly labeled shop default.
+
+The Speeds panel should only use rows with `catalog_verified`, `manufacturer_verified`, or `shop_verified`.

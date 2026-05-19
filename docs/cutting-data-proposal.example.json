@@ -1,0 +1,59 @@
+{
+  "batch": {
+    "name": "example-cutting-data-batch",
+    "manufacturer": "Example Manufacturer",
+    "created_at": "2026-05-18",
+    "notes": "Template only. Do not treat these placeholder values as real cutting data."
+  },
+  "rows": [
+    {
+      "tool_lookup": {
+        "part_number": "EXAMPLE-INSERT",
+        "manufacturer": "Example Manufacturer"
+      },
+      "source": {
+        "source_type": "manufacturer_catalog",
+        "title": "Example catalog title",
+        "url": null,
+        "file_name": "example-catalog.pdf",
+        "page_ref": "page 000",
+        "table_ref": "example table"
+      },
+      "source_match": {
+        "part_number": "EXAMPLE-INSERT",
+        "grade": "EXAMPLE-GRADE",
+        "geometry": "EXAMPLE-GEOMETRY",
+        "chipbreaker": "EXAMPLE-CHIPBREAKER",
+        "material_label": "Example ISO material label"
+      },
+      "cutting_data": {
+        "iso_material_group": "unknown",
+        "material_subgroup": null,
+        "operation_type": "turning",
+        "cut_condition": "unknown",
+        "coolant_condition": "unknown",
+        "surface_speed": {
+          "min": null,
+          "max": null,
+          "unit": "sfm"
+        },
+        "feed": {
+          "min": null,
+          "max": null,
+          "unit": "ipr"
+        },
+        "depth_of_cut": {
+          "min": null,
+          "max": null,
+          "unit": "in"
+        }
+      },
+      "verification": {
+        "status": "proposed",
+        "reviewer": null,
+        "reviewed_at": null,
+        "notes": "Replace every example field with sourced values before review."
+      }
+    }
+  ]
+}

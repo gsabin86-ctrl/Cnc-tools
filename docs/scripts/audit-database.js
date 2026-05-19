@@ -220,6 +220,9 @@ async function auditV2(db, tables) {
   const edgeCount = tables.includes('compatibility_edges')
     ? await get(db, 'SELECT COUNT(*) AS count FROM compatibility_edges')
     : { count: 0 };
+  const cuttingDataCount = tables.includes('cutting_data_profiles')
+    ? await get(db, 'SELECT COUNT(*) AS count FROM cutting_data_profiles')
+    : { count: 0 };
 
   const verification = await all(
     db,
@@ -231,6 +234,9 @@ async function auditV2(db, tables) {
   const sourceUrls = tables.includes('sources')
     ? await get(db, "SELECT SUM(CASE WHEN url IS NOT NULL AND url <> '' THEN 1 ELSE 0 END) AS with_url, COUNT(*) AS total FROM sources")
     : { with_url: 0, total: 0 };
+  const cuttingDataVerification = tables.includes('cutting_data_profiles')
+    ? await all(db, 'SELECT verification_status, COUNT(*) AS count FROM cutting_data_profiles GROUP BY verification_status ORDER BY count DESC')
+    : [];
 
   if (sourceUrls.total && sourceUrls.with_url < sourceUrls.total) {
     addIssue(issues, 'medium', 'sources_without_url', 'Some structured sources do not have URLs.', {
@@ -269,12 +275,16 @@ async function auditV2(db, tables) {
     source_count: sourceCount.count,
     tool_spec_count: specCount.count,
     compatibility_edge_count: edgeCount.count,
+    cutting_data_count: cuttingDataCount.count,
     verification,
     source_types: sourceTypes,
     source_url_coverage: sourceUrls,
     compatibility_edges: {
       summary: edgeSummary,
       unresolved_edges: unresolvedEdges.count,
+    },
+    cutting_data: {
+      verification: cuttingDataVerification,
     },
     issues: summarizeIssues(issues),
   };
@@ -346,9 +356,11 @@ function renderHuman(report) {
       lines.push(`V2 sources: ${v2.source_count} (${v2.source_url_coverage.with_url}/${v2.source_url_coverage.total} with URL)`);
       lines.push(`V2 tool specs: ${v2.tool_spec_count}`);
       lines.push(`V2 compatibility edges: ${v2.compatibility_edge_count} unresolved=${v2.compatibility_edges.unresolved_edges}`);
+      lines.push(`V2 cutting data profiles: ${v2.cutting_data_count}`);
       lines.push(...renderTable('V2 verification:', v2.verification, ['verification_status', 'count']));
       lines.push(...renderTable('V2 source types:', v2.source_types, ['source_type', 'count']));
       lines.push(...renderTable('V2 compatibility edge counts:', v2.compatibility_edges.summary, ['relationship', 'verification_status', 'evidence_kind', 'count']));
+      lines.push(...renderTable('V2 cutting data verification:', v2.cutting_data.verification, ['verification_status', 'count']));
       lines.push(`Issues: total=${v2.issues.total} by_severity=${JSON.stringify(v2.issues.by_severity)}`);
     }
   }

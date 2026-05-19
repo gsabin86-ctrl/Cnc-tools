@@ -7,8 +7,8 @@ CREATE TABLE schema_meta (
 
 INSERT INTO schema_meta (key, value) VALUES
   ('schema_name', 'cnc_toolbase_v2'),
-  ('schema_version', '2.0.0'),
-  ('created_for', 'verifiable CNC tool catalog, compatibility tree, reviews, favorites, and commerce');
+  ('schema_version', '2.1.0'),
+  ('created_for', 'verifiable CNC tool catalog, cutting data, compatibility tree, reviews, favorites, and commerce');
 
 CREATE TABLE manufacturers (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -269,6 +269,108 @@ CREATE TABLE compatibility_edge_sources (
   source_id INTEGER NOT NULL REFERENCES sources(id),
   evidence_note TEXT,
   UNIQUE(edge_id, source_id)
+);
+
+CREATE TABLE cutting_data_profiles (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  tool_id INTEGER NOT NULL REFERENCES catalog_tools(id) ON DELETE CASCADE,
+  source_id INTEGER NOT NULL REFERENCES sources(id),
+  source_part_number TEXT NOT NULL,
+  source_grade TEXT,
+  source_geometry TEXT,
+  source_chipbreaker TEXT,
+  source_material_label TEXT,
+  iso_material_group TEXT NOT NULL CHECK (iso_material_group IN (
+    'P',
+    'M',
+    'K',
+    'N',
+    'S',
+    'H',
+    'O',
+    'unknown'
+  )),
+  material_subgroup TEXT,
+  operation_type TEXT NOT NULL DEFAULT 'turning' CHECK (operation_type IN (
+    'turning',
+    'boring',
+    'grooving',
+    'parting',
+    'threading',
+    'drilling',
+    'milling',
+    'unknown'
+  )),
+  cut_condition TEXT CHECK (cut_condition IN (
+    'finishing',
+    'medium',
+    'roughing',
+    'general',
+    'unknown'
+  )),
+  coolant_condition TEXT CHECK (coolant_condition IN (
+    'dry',
+    'flood',
+    'high_pressure',
+    'mql',
+    'unknown'
+  )),
+  surface_speed_min REAL,
+  surface_speed_max REAL,
+  surface_speed_unit TEXT CHECK (surface_speed_unit IN ('sfm', 'm_per_min')),
+  feed_min REAL,
+  feed_max REAL,
+  feed_unit TEXT CHECK (feed_unit IN ('ipr', 'mm_per_rev', 'ipt', 'mm_per_tooth', 'mm_per_min')),
+  depth_of_cut_min REAL,
+  depth_of_cut_max REAL,
+  depth_of_cut_unit TEXT CHECK (depth_of_cut_unit IN ('in', 'mm')),
+  source_page_ref TEXT,
+  source_table_ref TEXT,
+  extraction_method TEXT NOT NULL DEFAULT 'manual' CHECK (extraction_method IN (
+    'manual',
+    'pdf_table',
+    'manufacturer_page',
+    'scripted_import',
+    'shop_entry'
+  )),
+  verification_status TEXT NOT NULL DEFAULT 'proposed' CHECK (verification_status IN (
+    'proposed',
+    'source_extracted',
+    'needs_review',
+    'catalog_verified',
+    'manufacturer_verified',
+    'shop_verified',
+    'rejected'
+  )),
+  reviewer TEXT,
+  reviewed_at TEXT,
+  notes TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CHECK (surface_speed_min IS NULL OR surface_speed_max IS NULL OR surface_speed_min <= surface_speed_max),
+  CHECK (feed_min IS NULL OR feed_max IS NULL OR feed_min <= feed_max),
+  CHECK (depth_of_cut_min IS NULL OR depth_of_cut_max IS NULL OR depth_of_cut_min <= depth_of_cut_max)
+);
+
+CREATE INDEX idx_cutting_data_tool ON cutting_data_profiles(tool_id);
+CREATE INDEX idx_cutting_data_source ON cutting_data_profiles(source_id);
+CREATE INDEX idx_cutting_data_material ON cutting_data_profiles(iso_material_group, material_subgroup);
+CREATE INDEX idx_cutting_data_operation ON cutting_data_profiles(operation_type);
+CREATE INDEX idx_cutting_data_status ON cutting_data_profiles(verification_status);
+
+CREATE TABLE cutting_data_profile_sources (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  cutting_data_profile_id INTEGER NOT NULL REFERENCES cutting_data_profiles(id) ON DELETE CASCADE,
+  source_id INTEGER NOT NULL REFERENCES sources(id),
+  evidence_role TEXT NOT NULL DEFAULT 'primary_source' CHECK (evidence_role IN (
+    'primary_source',
+    'supporting_source',
+    'conversion_check',
+    'review_source',
+    'rejection_source'
+  )),
+  evidence_note TEXT,
+  UNIQUE(cutting_data_profile_id, source_id, evidence_role)
 );
 
 CREATE TABLE inventory_items (
