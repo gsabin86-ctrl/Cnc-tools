@@ -59,11 +59,27 @@ The Speeds panel should only use rows with `catalog_verified`, `manufacturer_ver
 
 1. Pick a small batch: one manufacturer, one insert family, or 10-25 insert/grade combinations.
 2. Extract proposed rows into a review file.
-3. Audit required fields and units.
+3. Validate required fields and units:
+
+```bash
+node scripts/validate-cutting-data-proposal.js path/to/proposal.json
+```
+
 4. Review source pages against the proposed rows.
-5. Apply only approved rows with a script.
-6. Re-run database audit.
-7. Wire only verified rows into the UI.
+5. Dry-run the apply:
+
+```bash
+node scripts/apply-cutting-data.js path/to/proposal.json
+```
+
+6. Apply only approved rows:
+
+```bash
+node scripts/apply-cutting-data.js path/to/proposal.json --apply
+```
+
+7. Re-run database audit.
+8. Wire only verified rows into the UI.
 
 ## Rules
 
