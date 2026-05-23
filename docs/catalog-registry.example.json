@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "generated_at": "2026-05-22",
+  "notes": "Example only. The real registry is generated from the catalogs folder and then reviewed.",
+  "catalogs": [
+    {
+      "catalog_id": "sandvik-coroturn107-inserts",
+      "manufacturer": "Sandvik",
+      "title": "sandvik_coroturn107_inserts",
+      "file_path": "catalogs/Sandvik/sandvik_coroturn107_inserts.pdf",
+      "source_type": "manufacturer_catalog",
+      "catalog_year": null,
+      "language": null,
+      "file_size_bytes": 620020,
+      "machining_categories": ["turning"],
+      "component_types": ["insert"],
+      "compatibility_targets": ["accepts_insert"],
+      "priority": "high",
+      "extraction_status": "not_started",
+      "review_status": "needs_review",
+      "notes": "Pilot candidate for insert specs and source-backed cutting-data rows."
+    },
+    {
+      "catalog_id": "sandvik-qs-modules",
+      "manufacturer": "Sandvik",
+      "title": "sandvik_qs_modules",
+      "file_path": "catalogs/Sandvik/sandvik_qs_modules.pdf",
+      "source_type": "manufacturer_catalog",
+      "catalog_year": null,
+      "language": null,
+      "file_size_bytes": 590416,
+      "machining_categories": ["swiss_tooling", "turning"],
+      "component_types": ["module", "shank"],
+      "compatibility_targets": ["mounts_to"],
+      "priority": "medium",
+      "extraction_status": "not_started",
+      "review_status": "needs_review",
+      "notes": "Compatibility focus: module-to-shank and physical interface details."
+    }
+  ]
+}

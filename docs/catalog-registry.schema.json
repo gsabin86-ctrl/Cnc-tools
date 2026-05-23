@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CNCToolbase Catalog Registry",
+  "type": "object",
+  "required": ["version", "generated_at", "catalogs"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "catalogs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/catalog"
+      }
+    }
+  },
+  "$defs": {
+    "catalog": {
+      "type": "object",
+      "required": [
+        "catalog_id",
+        "manufacturer",
+        "title",
+        "file_path",
+        "source_type",
+        "machining_categories",
+        "component_types",
+        "compatibility_targets",
+        "extraction_status",
+        "review_status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "catalog_id": {
+          "type": "string"
+        },
+        "manufacturer": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "file_path": {
+          "type": "string"
+        },
+        "source_type": {
+          "enum": ["manufacturer_catalog", "manufacturer_product_page", "machine_manual", "shop_note", "secondary_source", "unknown"]
+        },
+        "catalog_year": {
+          "type": ["string", "null"]
+        },
+        "language": {
+          "type": ["string", "null"]
+        },
+        "file_size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "machining_categories": {
+          "type": "array",
+          "items": {
+            "enum": ["turning", "grooving", "parting", "threading", "boring", "milling", "drilling", "reaming", "swiss_tooling", "miniature_tooling", "cbn_pcd", "spares", "general", "unknown"]
+          }
+        },
+        "component_types": {
+          "type": "array",
+          "items": {
+            "enum": ["insert", "holder", "module", "shank", "adapter", "bushing", "spare", "endmill", "drill", "reamer", "boring_bar", "threadmill", "unknown"]
+          }
+        },
+        "compatibility_targets": {
+          "type": "array",
+          "items": {
+            "enum": ["accepts_insert", "mounts_to", "adapts_to", "compatible_with_machine", "replaces", "similar_to", "none_known", "unknown"]
+          }
+        },
+        "priority": {
+          "enum": ["high", "medium", "low", "defer"]
+        },
+        "extraction_status": {
+          "enum": ["not_started", "mapped", "partially_extracted", "extracted", "reviewed", "retired"]
+        },
+        "review_status": {
+          "enum": ["needs_review", "approved_scope", "blocked", "not_relevant"]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
