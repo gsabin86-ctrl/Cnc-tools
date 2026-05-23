@@ -1,0 +1,135 @@
+{
+  "batch": {
+    "name": "sandvik-qs-modules-p63-64-compatibility",
+    "catalog_id": "sandvik-sandvik-qs-modules",
+    "manufacturer": "Sandvik Coromant",
+    "created_at": "2026-05-22",
+    "notes": "First catalog-backed compatibility proposal from Sandvik QS Micro catalog pages 63-64. Object values are insert seats/styles from the MIID column, not exact insert SKU claims."
+  },
+  "source": {
+    "source_type": "manufacturer_catalog",
+    "file_path": "catalogs/Sandvik/sandvik_qs_modules.pdf",
+    "title": "Sandvik QS Micro modules"
+  },
+  "rows": [
+    {
+      "subject_lookup": { "part_number": "QSM12-SDJCR-11B-Y", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "DCMT 11 T3 02", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 1", "catalog_page_ref": "catalog page 63", "table_ref": "CoroTurn 107, QS Micro cutting head for Y-axis general turning", "field_ref": "MIID", "raw_text": "QSM12-SDJCR-11B-Y ... MIID DCMT 11 T3 02" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists DCMT 11 T3 02." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM16-SDJCR-11B-Y", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "DCMT 11 T3 02", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 1", "catalog_page_ref": "catalog page 63", "table_ref": "CoroTurn 107, QS Micro cutting head for Y-axis general turning", "field_ref": "MIID", "raw_text": "QSM16-SDJCR-11B-Y ... MIID DCMT 11 T3 02" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists DCMT 11 T3 02." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM12-SCLCL-09C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "CCMT 09 T3 04", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 1", "catalog_page_ref": "catalog page 63", "table_ref": "CoroTurn 107, QS Micro cutting head for Y-axis general turning", "field_ref": "MIID", "raw_text": "QSM12-SCLCL-09C ... MIID CCMT 09 T3 04" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists CCMT 09 T3 04." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM12-SCLCR-06C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "CCMT 06 02 04", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 1", "catalog_page_ref": "catalog page 63", "table_ref": "CoroTurn 107, QS Micro cutting head for Y-axis general turning", "field_ref": "MIID", "raw_text": "QSM12-SCLCR-06C ... MIID CCMT 06 02 04" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists CCMT 06 02 04." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM12-SCLCR-09C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "CCMT 09 T3 04", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 1", "catalog_page_ref": "catalog page 63", "table_ref": "CoroTurn 107, QS Micro cutting head for Y-axis general turning", "field_ref": "MIID", "raw_text": "QSM12-SCLCR-09C ... MIID CCMT 09 T3 04" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists CCMT 09 T3 04." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM16-SCLCL-09C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "CCMT 09 T3 04", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 1", "catalog_page_ref": "catalog page 63", "table_ref": "CoroTurn 107, QS Micro cutting head for Y-axis general turning", "field_ref": "MIID", "raw_text": "QSM16-SCLCL-09C ... MIID CCMT 09 T3 04" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists CCMT 09 T3 04." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM16-SCLCR-09C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "CCMT 09 T3 04", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 1", "catalog_page_ref": "catalog page 63", "table_ref": "CoroTurn 107, QS Micro cutting head for Y-axis general turning", "field_ref": "MIID", "raw_text": "QSM16-SCLCR-09C ... MIID CCMT 09 T3 04" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists CCMT 09 T3 04." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM12-SDJCL-07C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "DCMT 07 02 04", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 2", "catalog_page_ref": "catalog page 64", "table_ref": "CoroTurn 107, QS Micro cutting head for general turning", "field_ref": "MIID", "raw_text": "QSM12-SDJCL-07C ... MIID DCMT 07 02 04" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists DCMT 07 02 04." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM12-SDJCL-11C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "DCMT 11 T3 08", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 2", "catalog_page_ref": "catalog page 64", "table_ref": "CoroTurn 107, QS Micro cutting head for general turning", "field_ref": "MIID", "raw_text": "QSM12-SDJCL-11C ... MIID DCMT 11 T3 08" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists DCMT 11 T3 08." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM12-SDJCR-07C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "DCMT 07 02 04", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 2", "catalog_page_ref": "catalog page 64", "table_ref": "CoroTurn 107, QS Micro cutting head for general turning", "field_ref": "MIID", "raw_text": "QSM12-SDJCR-07C ... MIID DCMT 07 02 04" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists DCMT 07 02 04." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM12-SDJCR-11C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "DCMT 11 T3 08", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 2", "catalog_page_ref": "catalog page 64", "table_ref": "CoroTurn 107, QS Micro cutting head for general turning", "field_ref": "MIID", "raw_text": "QSM12-SDJCR-11C ... MIID DCMT 11 T3 08" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists DCMT 11 T3 08." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM16-SDJCL-11C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "DCMT 11 T3 08", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 2", "catalog_page_ref": "catalog page 64", "table_ref": "CoroTurn 107, QS Micro cutting head for general turning", "field_ref": "MIID", "raw_text": "QSM16-SDJCL-11C ... MIID DCMT 11 T3 08" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists DCMT 11 T3 08." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM16-SDJCR-11C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "DCMT 11 T3 08", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 2", "catalog_page_ref": "catalog page 64", "table_ref": "CoroTurn 107, QS Micro cutting head for general turning", "field_ref": "MIID", "raw_text": "QSM16-SDJCR-11C ... MIID DCMT 11 T3 08" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists DCMT 11 T3 08." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM12-SVJCL-11C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "VCMT 11 03 04", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 2", "catalog_page_ref": "catalog page 64", "table_ref": "CoroTurn 107, QS Micro cutting head for general turning", "field_ref": "MIID", "raw_text": "QSM12-SVJCL-11C ... MIID VCMT 11 03 04" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists VCMT 11 03 04." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM12-SVJCR-11C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "VCMT 11 03 04", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 2", "catalog_page_ref": "catalog page 64", "table_ref": "CoroTurn 107, QS Micro cutting head for general turning", "field_ref": "MIID", "raw_text": "QSM12-SVJCR-11C ... MIID VCMT 11 03 04" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists VCMT 11 03 04." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM16-SVJCL-11C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "VCMT 11 03 04", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 2", "catalog_page_ref": "catalog page 64", "table_ref": "CoroTurn 107, QS Micro cutting head for general turning", "field_ref": "MIID", "raw_text": "QSM16-SVJCL-11C ... MIID VCMT 11 03 04" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists VCMT 11 03 04." }
+    },
+    {
+      "subject_lookup": { "part_number": "QSM16-SVJCR-11C", "manufacturer": "Sandvik Coromant", "component_type": "module" },
+      "relationship": "accepts_insert",
+      "object": { "kind": "insert_seat", "value": "VCMT 11 03 04", "component_type": "insert" },
+      "evidence": { "page_ref": "PDF page 2", "catalog_page_ref": "catalog page 64", "table_ref": "CoroTurn 107, QS Micro cutting head for general turning", "field_ref": "MIID", "raw_text": "QSM16-SVJCR-11C ... MIID VCMT 11 03 04" },
+      "verification": { "status": "catalog_claim", "notes": "Manufacturer catalog MIID field lists VCMT 11 03 04." }
+    }
+  ]
+}

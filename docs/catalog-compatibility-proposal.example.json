@@ -1,0 +1,40 @@
+{
+  "batch": {
+    "name": "example-catalog-compatibility-batch",
+    "catalog_id": "example-catalog",
+    "manufacturer": "Example Manufacturer",
+    "created_at": "2026-05-22",
+    "notes": "Template only. Replace every example field with source-backed catalog evidence."
+  },
+  "source": {
+    "source_type": "manufacturer_catalog",
+    "file_path": "catalogs/example/example.pdf",
+    "title": "Example catalog title"
+  },
+  "rows": [
+    {
+      "subject_lookup": {
+        "part_number": "EXAMPLE-HOLDER",
+        "manufacturer": "Example Manufacturer",
+        "component_type": "module"
+      },
+      "relationship": "accepts_insert",
+      "object": {
+        "kind": "insert_seat",
+        "value": "EXAMPLE 00 00 00",
+        "component_type": "insert"
+      },
+      "evidence": {
+        "page_ref": "PDF page 000",
+        "catalog_page_ref": "catalog page 000",
+        "table_ref": "Example table name",
+        "field_ref": "MIID",
+        "raw_text": "EXAMPLE-HOLDER ... EXAMPLE 00 00 00"
+      },
+      "verification": {
+        "status": "catalog_claim",
+        "notes": "Manufacturer catalog table states this holder accepts the listed insert seat."
+      }
+    }
+  ]
+}

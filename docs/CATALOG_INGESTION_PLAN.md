@@ -96,6 +96,8 @@ Recommended batch sizes:
 - Compatibility edges: 25-100 source-backed relationships.
 - Basic catalog tools/specs: 25-100 rows, depending on table clarity.
 
+Compatibility proposals should preserve the exact level of evidence from the source. If a catalog says a module accepts an insert seat such as `DCMT 11 T3 02`, record that as an insert-seat compatibility claim. Do not automatically promote it into every matching insert SKU until the database has a reviewed rule for that expansion.
+
 ## Agentic Task Boundaries
 
 Agents can:
