@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-05-23T02:49:22.595Z",
+  "generated_at": "2026-05-23T02:57:34.595Z",
   "notes": "Draft generated from local catalog filenames. Review manufacturer/category/component-type fields before extraction.",
   "catalogs": [
     {
@@ -501,18 +501,34 @@
       "language": null,
       "file_size_bytes": 27770892,
       "machining_categories": [
-        "unknown"
+        "turning",
+        "grooving",
+        "parting",
+        "threading",
+        "boring",
+        "milling",
+        "drilling",
+        "general"
       ],
       "component_types": [
-        "unknown"
+        "insert",
+        "holder",
+        "module",
+        "shank",
+        "adapter",
+        "endmill",
+        "drill",
+        "boring_bar"
       ],
       "compatibility_targets": [
-        "unknown"
+        "accepts_insert",
+        "mounts_to",
+        "adapts_to"
       ],
-      "priority": "medium",
-      "extraction_status": "not_started",
-      "review_status": "needs_review",
-      "notes": "Auto-generated from filename/path. Needs Greg review before extraction."
+      "priority": "high",
+      "extraction_status": "mapped",
+      "review_status": "approved_scope",
+      "notes": "Broad Sandvik 26-1 catalog. TOC shows turning inserts pages 6-55, external/internal turning tools pages 57-92, parting/grooving pages 98-117, milling pages 119-360, drilling pages 373-394, boring pages 395-450. DNMG 432-PM geometry appears on PDF page 21, but not with GC4425 in this local catalog."
     },
     {
       "catalog_id": "sandvik-original",
@@ -524,18 +540,34 @@
       "language": null,
       "file_size_bytes": 9765384,
       "machining_categories": [
-        "unknown"
+        "swiss_tooling",
+        "turning",
+        "grooving",
+        "parting",
+        "threading",
+        "boring",
+        "milling",
+        "drilling"
       ],
       "component_types": [
-        "unknown"
+        "insert",
+        "holder",
+        "module",
+        "shank",
+        "adapter",
+        "endmill",
+        "drill",
+        "boring_bar"
       ],
       "compatibility_targets": [
-        "unknown"
+        "accepts_insert",
+        "mounts_to",
+        "adapts_to"
       ],
       "priority": "medium",
-      "extraction_status": "not_started",
-      "review_status": "needs_review",
-      "notes": "Auto-generated from filename/path. Needs Greg review before extraction."
+      "extraction_status": "mapped",
+      "review_status": "approved_scope",
+      "notes": "Sliding-head/small-parts Sandvik brochure. Good source candidate for Swiss-machine tooling categories, but not yet confirmed for the two pilot insert cutting-data rows."
     },
     {
       "catalog_id": "sandvik-sandvik-corocut2-inserts",
@@ -547,7 +579,8 @@
       "language": null,
       "file_size_bytes": 1892880,
       "machining_categories": [
-        "grooving"
+        "grooving",
+        "parting"
       ],
       "component_types": [
         "insert"
@@ -556,9 +589,9 @@
         "accepts_insert"
       ],
       "priority": "high",
-      "extraction_status": "not_started",
-      "review_status": "needs_review",
-      "notes": "Auto-generated from filename/path. Needs Greg review before extraction."
+      "extraction_status": "mapped",
+      "review_status": "approved_scope",
+      "notes": "CoroCut 2 insert section. Use for grooving/parting insert records and insert-to-holder seat evidence, not for the DNMG/DCGT turning pilot."
     },
     {
       "catalog_id": "sandvik-sandvik-coroturn107-inserts",
@@ -579,9 +612,9 @@
         "accepts_insert"
       ],
       "priority": "high",
-      "extraction_status": "not_started",
-      "review_status": "needs_review",
-      "notes": "Auto-generated from filename/path. Needs Greg review before extraction."
+      "extraction_status": "mapped",
+      "review_status": "approved_scope",
+      "notes": "CoroTurn 107 turning insert section. Local PDF supports current DCMT/CCMT/TCMT/etc. insert records. Exact calculator row DCGT 3(2.5)1-UM 1205 was not found in this local PDF pass."
     },
     {
       "catalog_id": "sandvik-sandvik-p401-450",
@@ -593,18 +626,23 @@
       "language": null,
       "file_size_bytes": 3169218,
       "machining_categories": [
-        "unknown"
+        "turning",
+        "boring"
       ],
       "component_types": [
-        "unknown"
+        "holder",
+        "adapter",
+        "boring_bar",
+        "shank"
       ],
       "compatibility_targets": [
-        "unknown"
+        "mounts_to",
+        "adapts_to"
       ],
       "priority": "medium",
-      "extraction_status": "not_started",
-      "review_status": "needs_review",
-      "notes": "Auto-generated from filename/path. Needs Greg review before extraction."
+      "extraction_status": "mapped",
+      "review_status": "approved_scope",
+      "notes": "Section extract from pages around Sandvik 401-450. Local text shows holding tools/adaptors, CoroTurn SL/CoroBore-related adapters, cylindrical shanks, HSK/Capto interfaces, and QS Micro shank adaptor content."
     },
     {
       "catalog_id": "sandvik-sandvik-p423-430",
@@ -616,18 +654,21 @@
       "language": null,
       "file_size_bytes": 573094,
       "machining_categories": [
-        "unknown"
+        "turning",
+        "boring"
       ],
       "component_types": [
-        "unknown"
+        "adapter",
+        "shank"
       ],
       "compatibility_targets": [
-        "unknown"
+        "mounts_to",
+        "adapts_to"
       ],
       "priority": "medium",
-      "extraction_status": "not_started",
-      "review_status": "needs_review",
-      "notes": "Auto-generated from filename/path. Needs Greg review before extraction."
+      "extraction_status": "mapped",
+      "review_status": "approved_scope",
+      "notes": "Small Sandvik holding tools/adaptors extract. Local text shows CoroTurn SL adapters, cylindrical shank adapters, HSK adapters, and QS Micro shank adaptors. Compatibility focus is physical interface mapping."
     },
     {
       "catalog_id": "sandvik-sandvik-qs-modules",
@@ -639,19 +680,25 @@
       "language": null,
       "file_size_bytes": 590416,
       "machining_categories": [
-        "swiss_tooling"
+        "swiss_tooling",
+        "turning",
+        "grooving",
+        "parting"
       ],
       "component_types": [
         "module",
-        "shank"
+        "shank",
+        "holder",
+        "boring_bar"
       ],
       "compatibility_targets": [
+        "accepts_insert",
         "mounts_to"
       ],
       "priority": "high",
-      "extraction_status": "not_started",
-      "review_status": "needs_review",
-      "notes": "Auto-generated from filename/path. Needs Greg review before extraction."
+      "extraction_status": "mapped",
+      "review_status": "approved_scope",
+      "notes": "QS Micro cutting heads and shank tools. Local text includes MIID insert compatibility fields such as DCMT 11 T3 02, CCMT 09 T3 04, CoroCut 2 seats, shank size, coolant pressure, and mounting dimensions."
     },
     {
       "catalog_id": "sandvik-sandvik-toc",
@@ -663,18 +710,18 @@
       "language": null,
       "file_size_bytes": 821412,
       "machining_categories": [
-        "unknown"
+        "general"
       ],
       "component_types": [
         "unknown"
       ],
       "compatibility_targets": [
-        "unknown"
+        "none_known"
       ],
-      "priority": "medium",
-      "extraction_status": "not_started",
-      "review_status": "needs_review",
-      "notes": "Auto-generated from filename/path. Needs Greg review before extraction."
+      "priority": "defer",
+      "extraction_status": "mapped",
+      "review_status": "not_relevant",
+      "notes": "Table-of-contents/navigation extract only. Use for page routing, not as a source for tool rows or cutting data."
     },
     {
       "catalog_id": "ph-horn-katalog-horn-supermini-mini-part1",
