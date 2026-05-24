@@ -21,6 +21,7 @@
     "catalogs:registry:apply": "node scripts/generate-catalog-registry.js --apply",
     "catalogs:registry:validate": "node scripts/validate-catalog-registry.js",
     "catalogs:compat:validate": "node scripts/validate-compatibility-proposal.js",
+    "catalogs:compat:apply": "node scripts/apply-compatibility-proposal.js",
     "db:v2": "node scripts/migrate-v2.js --dry-run",
     "db:v2:apply": "node scripts/migrate-v2.js --apply",
     "test": "echo \"Error: no test specified\" && exit 1",

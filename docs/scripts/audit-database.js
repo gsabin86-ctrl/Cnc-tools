@@ -220,6 +220,9 @@ async function auditV2(db, tables) {
   const edgeCount = tables.includes('compatibility_edges')
     ? await get(db, 'SELECT COUNT(*) AS count FROM compatibility_edges')
     : { count: 0 };
+  const compatibilityClaimCount = tables.includes('compatibility_claims')
+    ? await get(db, 'SELECT COUNT(*) AS count FROM compatibility_claims')
+    : { count: 0 };
   const cuttingDataCount = tables.includes('cutting_data_profiles')
     ? await get(db, 'SELECT COUNT(*) AS count FROM cutting_data_profiles')
     : { count: 0 };
@@ -247,6 +250,7 @@ async function auditV2(db, tables) {
 
   let edgeSummary = [];
   let unresolvedEdges = { count: 0 };
+  let claimSummary = [];
   if (tables.includes('compatibility_edges')) {
     edgeSummary = await all(
       db,
@@ -262,6 +266,12 @@ async function auditV2(db, tables) {
       });
     }
   }
+  if (tables.includes('compatibility_claims')) {
+    claimSummary = await all(
+      db,
+      'SELECT relationship, object_kind, verification_status, COUNT(*) AS count FROM compatibility_claims GROUP BY relationship, object_kind, verification_status ORDER BY count DESC',
+    );
+  }
 
   const unverifiedTools = verification.find((row) => row.verification_status === 'unverified');
   if (unverifiedTools?.count) {
@@ -275,6 +285,7 @@ async function auditV2(db, tables) {
     source_count: sourceCount.count,
     tool_spec_count: specCount.count,
     compatibility_edge_count: edgeCount.count,
+    compatibility_claim_count: compatibilityClaimCount.count,
     cutting_data_count: cuttingDataCount.count,
     verification,
     source_types: sourceTypes,
@@ -282,6 +293,9 @@ async function auditV2(db, tables) {
     compatibility_edges: {
       summary: edgeSummary,
       unresolved_edges: unresolvedEdges.count,
+    },
+    compatibility_claims: {
+      summary: claimSummary,
     },
     cutting_data: {
       verification: cuttingDataVerification,
@@ -356,10 +370,12 @@ function renderHuman(report) {
       lines.push(`V2 sources: ${v2.source_count} (${v2.source_url_coverage.with_url}/${v2.source_url_coverage.total} with URL)`);
       lines.push(`V2 tool specs: ${v2.tool_spec_count}`);
       lines.push(`V2 compatibility edges: ${v2.compatibility_edge_count} unresolved=${v2.compatibility_edges.unresolved_edges}`);
+      lines.push(`V2 compatibility claims: ${v2.compatibility_claim_count}`);
       lines.push(`V2 cutting data profiles: ${v2.cutting_data_count}`);
       lines.push(...renderTable('V2 verification:', v2.verification, ['verification_status', 'count']));
       lines.push(...renderTable('V2 source types:', v2.source_types, ['source_type', 'count']));
       lines.push(...renderTable('V2 compatibility edge counts:', v2.compatibility_edges.summary, ['relationship', 'verification_status', 'evidence_kind', 'count']));
+      lines.push(...renderTable('V2 compatibility claim counts:', v2.compatibility_claims.summary, ['relationship', 'object_kind', 'verification_status', 'count']));
       lines.push(...renderTable('V2 cutting data verification:', v2.cutting_data.verification, ['verification_status', 'count']));
       lines.push(`Issues: total=${v2.issues.total} by_severity=${JSON.stringify(v2.issues.by_severity)}`);
     }

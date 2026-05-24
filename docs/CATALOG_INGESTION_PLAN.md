@@ -93,7 +93,7 @@ Critical interface fields:
 Recommended batch sizes:
 
 - Cutting data: 10-25 insert/material/operation rows.
-- Compatibility edges: 25-100 source-backed relationships.
+- Compatibility claims: 25-100 source-backed relationships.
 - Basic catalog tools/specs: 25-100 rows, depending on table clarity.
 
 Compatibility proposals should preserve the exact level of evidence from the source. If a catalog says a module accepts an insert seat such as `DCMT 11 T3 02`, record that as an insert-seat compatibility claim. Do not automatically promote it into every matching insert SKU until the database has a reviewed rule for that expansion.
@@ -110,7 +110,7 @@ Agents can:
 
 Agents should not:
 
-- write directly to SQLite
+- hand-edit SQLite outside the reviewed apply scripts
 - invent missing dimensions
 - infer cutting data from similar tools
 - mark machine compatibility without Greg/shop verification
@@ -119,7 +119,8 @@ Agents should not:
 ## Near-Term Sequence
 
 1. Create and review `docs/catalog-registry.json`.
-2. Select the first reviewed catalog section.
-3. Run a pilot extraction for the two Sandvik calculator inserts.
-4. Add source-backed cutting-data proposal rows.
-5. Validate, review, and apply only approved rows.
+2. Select one reviewed catalog section and one component type.
+3. Extract source-backed compatibility or cutting-data proposal rows.
+4. Validate and review the source pages/tables.
+5. Apply only approved rows with `catalogs:compat:apply` or `cutting-data:apply`.
+6. Audit database counts and source coverage.

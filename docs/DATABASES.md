@@ -19,7 +19,7 @@ Treat this as the legacy production database until the UI is migrated to v2.
 
 Normalized v2 database generated from `docs/db.sqlite`.
 
-- Contains `catalog_tools`, `sources`, `tool_specs`, and `compatibility_edges`.
+- Contains `catalog_tools`, `sources`, `tool_specs`, `compatibility_edges`, `compatibility_claims`, and cutting-data tables.
 - Better matches the long-term goal of auditable tool facts and verified compatibility.
 - Current row count: 1,212 catalog tools.
 - Not yet used by the frontend.

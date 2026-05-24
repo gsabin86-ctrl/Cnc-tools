@@ -7,7 +7,7 @@ CREATE TABLE schema_meta (
 
 INSERT INTO schema_meta (key, value) VALUES
   ('schema_name', 'cnc_toolbase_v2'),
-  ('schema_version', '2.1.0'),
+  ('schema_version', '2.2.0'),
   ('created_for', 'verifiable CNC tool catalog, cutting data, compatibility tree, reviews, favorites, and commerce');
 
 CREATE TABLE manufacturers (
@@ -270,6 +270,95 @@ CREATE TABLE compatibility_edge_sources (
   evidence_note TEXT,
   UNIQUE(edge_id, source_id)
 );
+
+CREATE TABLE compatibility_claims (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  claim_key TEXT NOT NULL UNIQUE,
+  subject_tool_id INTEGER NOT NULL REFERENCES catalog_tools(id) ON DELETE CASCADE,
+  subject_public_id TEXT NOT NULL,
+  subject_part_number TEXT NOT NULL,
+  subject_component_type TEXT NOT NULL CHECK (subject_component_type IN (
+    'machine',
+    'shank',
+    'module',
+    'holder',
+    'insert',
+    'adapter',
+    'spare',
+    'endmill',
+    'drill',
+    'reamer',
+    'boring_bar',
+    'unknown'
+  )),
+  relationship TEXT NOT NULL CHECK (relationship IN (
+    'mounts_to',
+    'accepts_insert',
+    'compatible_with_machine',
+    'adapts_to',
+    'replaces',
+    'similar_to'
+  )),
+  object_kind TEXT NOT NULL CHECK (object_kind IN (
+    'tool',
+    'insert_seat',
+    'interface',
+    'machine_station',
+    'unknown'
+  )),
+  object_tool_id INTEGER REFERENCES catalog_tools(id) ON DELETE CASCADE,
+  object_public_id TEXT,
+  object_value TEXT NOT NULL,
+  object_component_type TEXT NOT NULL CHECK (object_component_type IN (
+    'machine',
+    'shank',
+    'module',
+    'holder',
+    'insert',
+    'adapter',
+    'spare',
+    'endmill',
+    'drill',
+    'reamer',
+    'boring_bar',
+    'unknown'
+  )),
+  source_id INTEGER NOT NULL REFERENCES sources(id),
+  source_page_ref TEXT,
+  source_catalog_page_ref TEXT,
+  source_table_ref TEXT,
+  source_field_ref TEXT,
+  source_raw_text TEXT,
+  catalog_id TEXT,
+  batch_name TEXT,
+  extraction_method TEXT NOT NULL DEFAULT 'manual' CHECK (extraction_method IN (
+    'manual',
+    'pdf_table',
+    'manufacturer_page',
+    'scripted_import',
+    'shop_entry'
+  )),
+  verification_status TEXT NOT NULL DEFAULT 'catalog_claim' CHECK (verification_status IN (
+    'unverified',
+    'inferred',
+    'catalog_claim',
+    'manufacturer_verified',
+    'shop_verified',
+    'rejected'
+  )),
+  reviewer TEXT,
+  reviewed_at TEXT,
+  confidence REAL NOT NULL DEFAULT 0.8 CHECK (confidence >= 0 AND confidence <= 1),
+  notes TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_compat_claim_subject ON compatibility_claims(subject_public_id);
+CREATE INDEX idx_compat_claim_relationship ON compatibility_claims(relationship);
+CREATE INDEX idx_compat_claim_object ON compatibility_claims(object_kind, object_value);
+CREATE INDEX idx_compat_claim_source ON compatibility_claims(source_id);
+CREATE INDEX idx_compat_claim_status ON compatibility_claims(verification_status);
 
 CREATE TABLE cutting_data_profiles (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

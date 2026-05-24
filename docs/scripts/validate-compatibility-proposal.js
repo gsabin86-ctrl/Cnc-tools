@@ -13,8 +13,8 @@ const allowed = {
   verification_status: new Set(['unverified', 'inferred', 'catalog_claim', 'manufacturer_verified', 'shop_verified', 'rejected']),
 };
 
-function openDb(filePath = defaultDbPath) {
-  return new sqlite3.Database(filePath, sqlite3.OPEN_READONLY);
+function openDb(filePath = defaultDbPath, mode = sqlite3.OPEN_READONLY) {
+  return new sqlite3.Database(filePath, mode);
 }
 
 function get(db, sql, params = []) {
@@ -145,11 +145,14 @@ async function validateProposal(proposal, db) {
 
     accepted.push({
       row: rowNumber,
+      subject_tool_id: subject?.id || null,
       subject_public_id: subject?.public_id || null,
       subject_part_number: subject?.part_number || row.subject_lookup?.part_number,
+      subject_component_type: subject?.component_type || row.subject_lookup?.component_type || null,
       relationship: row.relationship,
       object_kind: row.object?.kind,
       object_value: row.object?.value,
+      object_component_type: row.object?.component_type || null,
       status: row.verification?.status,
       evidence: `${row.evidence?.page_ref || ''} ${row.evidence?.catalog_page_ref || ''}`.trim(),
     });
@@ -192,7 +195,23 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exitCode = 1;
-});
+if (require.main === module) {
+  main().catch((err) => {
+    console.error(err);
+    process.exitCode = 1;
+  });
+}
+
+module.exports = {
+  allowed,
+  close,
+  defaultDbPath,
+  findTool,
+  get,
+  isBlank,
+  loadJson,
+  normalizePartNumber,
+  openDb,
+  root,
+  validateProposal,
+};
