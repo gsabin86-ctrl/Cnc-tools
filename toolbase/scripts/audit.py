@@ -46,6 +46,7 @@ def audit(path: Path) -> dict[str, Any]:
         "tools",
         "sources",
         "review_batches",
+        "review_batch_sources",
         "shop_input_batches",
         "reviewed_tool_tags",
         "tool_sources",
@@ -54,7 +55,11 @@ def audit(path: Path) -> dict[str, Any]:
         "work_material_groups",
         "tool_material_recommendations",
         "tool_material_recommendation_sources",
+        "grades",
+        "grade_aliases",
+        "tool_grade_options",
         "cutting_data_profiles",
+        "cutting_data_profile_sources",
         "interfaces",
         "compatibility_claims",
         "compatibility_claim_sources",
@@ -217,7 +222,8 @@ def audit(path: Path) -> dict[str, Any]:
         connection,
         """
         SELECT COUNT(*) FROM facts f
-        WHERE NOT EXISTS (SELECT 1 FROM fact_sources fs WHERE fs.fact_id=f.id)
+        WHERE f.is_current=1
+          AND NOT EXISTS (SELECT 1 FROM fact_sources fs WHERE fs.fact_id=f.id)
         """,
     )
     if facts_without_source:
@@ -233,7 +239,7 @@ def audit(path: Path) -> dict[str, Any]:
         connection,
         """
         SELECT COUNT(*) FROM tool_material_recommendations r
-        WHERE NOT EXISTS (
+        WHERE r.is_current=1 AND NOT EXISTS (
           SELECT 1 FROM tool_material_recommendation_sources rs WHERE rs.recommendation_id=r.id
         )
         """,
@@ -350,16 +356,31 @@ def audit(path: Path) -> dict[str, Any]:
             }
         )
 
-    tools_with_materials = scalar(
+    tools_with_verified_materials = scalar(
         connection,
-        "SELECT COUNT(DISTINCT tool_id) FROM tool_material_recommendations",
+        """
+        SELECT COUNT(DISTINCT tool_id) FROM tool_material_recommendations
+        WHERE is_current=1 AND verification_status IN (
+          'catalog_verified', 'manufacturer_verified', 'shop_verified'
+        )
+        """,
     )
-    if tools_with_materials < counts.get("tools", 0):
+    tools_with_unreviewed_material_claims = scalar(
+        connection,
+        """
+        SELECT COUNT(DISTINCT tool_id) FROM tool_material_recommendations
+        WHERE is_current=1 AND verification_status NOT IN (
+          'catalog_verified', 'manufacturer_verified', 'shop_verified'
+        )
+        """,
+    )
+    if tools_with_verified_materials < counts.get("tools", 0):
         warnings.append(
             {
                 "code": "incomplete_material_coverage",
-                "message": "Only explicit structured material groups were promoted; tags were not treated as evidence",
-                "count": tools_with_materials,
+                "message": "Only exact, human-reviewed manufacturer recommendations are public; legacy claims are retained separately",
+                "count": tools_with_verified_materials,
+                "unreviewed_claim_tools": tools_with_unreviewed_material_claims,
             }
         )
 
@@ -388,7 +409,7 @@ def audit(path: Path) -> dict[str, Any]:
         connection,
         """
         SELECT fact_key, COUNT(*) AS count
-        FROM facts WHERE value_number IS NOT NULL
+        FROM facts WHERE value_number IS NOT NULL AND is_current=1
         GROUP BY fact_key ORDER BY count DESC LIMIT 25
         """,
     )
@@ -428,7 +449,8 @@ def audit(path: Path) -> dict[str, Any]:
         "direct_machine_claims": direct_machine,
         "top_numeric_facts": numeric_fact_counts,
         "verified_cutting_data": verified_cutting_data,
-        "tools_with_material_recommendations": tools_with_materials,
+        "tools_with_verified_material_recommendations": tools_with_verified_materials,
+        "tools_with_unreviewed_material_claims": tools_with_unreviewed_material_claims,
         "facts_without_source": facts_without_source,
         "material_recommendations_without_source": material_recommendations_without_source,
         "claims_without_any_lineage": claims_without_any_lineage,

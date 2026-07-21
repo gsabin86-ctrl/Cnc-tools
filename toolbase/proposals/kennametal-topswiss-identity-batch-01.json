@@ -1,0 +1,4786 @@
+{
+  "schema_version": 2,
+  "proposal_id": "kennametal-topswiss-identity-batch-01-2026-07",
+  "title": "Kennametal TopSwiss identity and grade-option review - batch 01",
+  "created_at": "2026-07-21",
+  "status": "source_extracted",
+  "import_allowed": false,
+  "purpose": "Human review of exact manufacturer catalog identities, metric dimensions, geometry codes, and listed grade options. No speeds, feeds, or work-material recommendation is proposed in this batch.",
+  "sources": [
+    {
+      "catalog_id": "kennametal-topswiss-inserts-metricinch",
+      "source_id": "source-d0bac814365ef9d4",
+      "manufacturer": "Kennametal",
+      "title": "TopSwiss Inserts MetricInch",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/kennametal/TopSwiss Inserts MetricInch.pdf",
+      "url": null,
+      "content_sha256": "f9852eff7ffb273af212776a13f684fa1f64d026af209516e7ad60e4878d2707",
+      "file_size_bytes": 2123587,
+      "page_count": 24,
+      "document_edition": "2024",
+      "edition_evidence": "Year 2024 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 66
+          },
+          {
+            "pdf_page": 3,
+            "characters": 2130
+          },
+          {
+            "pdf_page": 13,
+            "characters": 1360
+          },
+          {
+            "pdf_page": 24,
+            "characters": 147
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": [],
+      "batch_role": "primary_catalog",
+      "page_ref": "PDF pages 3 and 6"
+    }
+  ],
+  "rows": [
+    {
+      "proposal_row_id": "kenna-id-01-001",
+      "tool_lookup": {
+        "tool_id": "CCGT060201MFFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT060201MFFS",
+        "description": "Kennametal TopSwiss CCGT 06 02 01 positive turning insert, MFFS chipbreaker. TopSwiss FFS - fine finishing for stainless and superalloys. Corner radius 0.1 mm, IC 6.350 mm. Grade(s): S52MCK, S52SCK.",
+        "geometry": "CCGT 06 02 01 positive, 7-deg clearance, MFFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT060201MFFS positive insert, ANSI CCGT21502MFFS; 6.35 mm IC, 2.38 mm thick, 0.1 mm corner radius, FFS geometry.",
+          "geometry": "positive FFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT21502MFFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT060201MFFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21502MFFS CCGT060201MFFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21502MFFS CCGT060201MFFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT21502MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21502MFFS CCGT060201MFFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT060201MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21502MFFS CCGT060201MFFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive FFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21502MFFS CCGT060201MFFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21502MFFS CCGT060201MFFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 6.45,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21502MFFS CCGT060201MFFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.1,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21502MFFS CCGT060201MFFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21502MFFS CCGT060201MFFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21502MFFS CCGT060201MFFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "FFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-002",
+      "tool_lookup": {
+        "tool_id": "CCGT060201MLFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT060201MLFS",
+        "description": "Kennametal TopSwiss CCGT 06 02 01 positive turning insert, MLFS chipbreaker. TopSwiss LFS - light finishing for stainless and superalloys. Corner radius 0.1 mm, IC 6.350 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "CCGT 06 02 01 positive, 7-deg clearance, MLFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT060201MLFS positive insert, ANSI CCGT21502MLFS; 6.35 mm IC, 2.38 mm thick, 0.1 mm corner radius, LFS geometry.",
+          "geometry": "positive LFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT21502MLFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT060201MLFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21502MLFS CCGT060201MLFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21502MLFS CCGT060201MLFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21502MLFS CCGT060201MLFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT21502MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21502MLFS CCGT060201MLFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT060201MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21502MLFS CCGT060201MLFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive LFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21502MLFS CCGT060201MLFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21502MLFS CCGT060201MLFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 6.45,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21502MLFS CCGT060201MLFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.1,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21502MLFS CCGT060201MLFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21502MLFS CCGT060201MLFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21502MLFS CCGT060201MLFS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "LFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-003",
+      "tool_lookup": {
+        "tool_id": "CCGT060201MRPPS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT060201MRPPS",
+        "description": "Kennametal TopSwiss CCGT 06 02 01 positive turning insert, MRPPS chipbreaker. TopSwiss PPS Right-Hand - precision positive for steel/stainless/titanium. Corner radius 0.1 mm, IC 6.350 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "CCGT 06 02 01 positive, 7-deg clearance, MRPPS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT060201MRPPS positive insert, ANSI CCGT21502MRPPS; 6.35 mm IC, 2.38 mm thick, 0.1 mm corner radius, PPS geometry.",
+          "geometry": "positive PPS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT21502MRPPS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT060201MRPPS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21502MRPPS CCGT060201MRPPS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21502MRPPS CCGT060201MRPPS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21502MRPPS CCGT060201MRPPS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT21502MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21502MRPPS CCGT060201MRPPS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT060201MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21502MRPPS CCGT060201MRPPS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive PPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21502MRPPS CCGT060201MRPPS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21502MRPPS CCGT060201MRPPS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 6.45,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21502MRPPS CCGT060201MRPPS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.1,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21502MRPPS CCGT060201MRPPS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21502MRPPS CCGT060201MRPPS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21502MRPPS CCGT060201MRPPS D 6.35 mm L10 6.45 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "PPS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-004",
+      "tool_lookup": {
+        "tool_id": "CCGT060202MFFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT060202MFFS",
+        "description": "Kennametal TopSwiss CCGT 06 02 02 positive turning insert, MFFS chipbreaker. TopSwiss FFS - fine finishing for stainless and superalloys. Corner radius 0.2 mm, IC 6.350 mm. Grade(s): S52MCK, S52SCK.",
+        "geometry": "CCGT 06 02 02 positive, 7-deg clearance, MFFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT060202MFFS positive insert, ANSI CCGT21505MFFS; 6.35 mm IC, 2.38 mm thick, 0.2 mm corner radius, FFS geometry.",
+          "geometry": "positive FFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT21505MFFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT060202MFFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21505MFFS CCGT060202MFFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21505MFFS CCGT060202MFFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT21505MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21505MFFS CCGT060202MFFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT060202MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21505MFFS CCGT060202MFFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive FFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21505MFFS CCGT060202MFFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21505MFFS CCGT060202MFFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 6.45,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21505MFFS CCGT060202MFFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.2,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21505MFFS CCGT060202MFFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21505MFFS CCGT060202MFFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT21505MFFS CCGT060202MFFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "FFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-005",
+      "tool_lookup": {
+        "tool_id": "CCGT060202MLFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT060202MLFS",
+        "description": "Kennametal TopSwiss CCGT 06 02 02 positive turning insert, MLFS chipbreaker. TopSwiss LFS - light finishing for stainless and superalloys. Corner radius 0.2 mm, IC 6.350 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "CCGT 06 02 02 positive, 7-deg clearance, MLFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT060202MLFS positive insert, ANSI CCGT21505MLFS; 6.35 mm IC, 2.38 mm thick, 0.2 mm corner radius, LFS geometry.",
+          "geometry": "positive LFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT21505MLFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT060202MLFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21505MLFS CCGT060202MLFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21505MLFS CCGT060202MLFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21505MLFS CCGT060202MLFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT21505MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21505MLFS CCGT060202MLFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT060202MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21505MLFS CCGT060202MLFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive LFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21505MLFS CCGT060202MLFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21505MLFS CCGT060202MLFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 6.45,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21505MLFS CCGT060202MLFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.2,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21505MLFS CCGT060202MLFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21505MLFS CCGT060202MLFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT21505MLFS CCGT060202MLFS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "LFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-006",
+      "tool_lookup": {
+        "tool_id": "CCGT060202MRPPS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT060202MRPPS",
+        "description": "Kennametal TopSwiss CCGT 06 02 02 positive turning insert, MRPPS chipbreaker. TopSwiss PPS Right-Hand - precision positive for steel/stainless/titanium. Corner radius 0.2 mm, IC 6.350 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "CCGT 06 02 02 positive, 7-deg clearance, MRPPS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT060202MRPPS positive insert, ANSI CCGT21505MRPPS; 6.35 mm IC, 2.38 mm thick, 0.2 mm corner radius, PPS geometry.",
+          "geometry": "positive PPS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT21505MRPPS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT060202MRPPS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21505MRPPS CCGT060202MRPPS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21505MRPPS CCGT060202MRPPS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21505MRPPS CCGT060202MRPPS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT21505MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21505MRPPS CCGT060202MRPPS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT060202MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21505MRPPS CCGT060202MRPPS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive PPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21505MRPPS CCGT060202MRPPS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21505MRPPS CCGT060202MRPPS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 6.45,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21505MRPPS CCGT060202MRPPS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.2,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21505MRPPS CCGT060202MRPPS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21505MRPPS CCGT060202MRPPS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT21505MRPPS CCGT060202MRPPS D 6.35 mm L10 6.45 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "PPS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-007",
+      "tool_lookup": {
+        "tool_id": "CCGT09T301MFFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT09T301MFFS",
+        "description": "Kennametal TopSwiss CCGT 09T3 01 positive turning insert, MFFS chipbreaker. TopSwiss FFS - fine finishing for stainless and superalloys. Corner radius 0.1 mm, IC 9.525 mm. Grade(s): S52MCK, S52SCK.",
+        "geometry": "CCGT 09T3 01 positive, 7-deg clearance, MFFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT09T301MFFS positive insert, ANSI CCGT32502MFFS; 9.53 mm IC, 3.97 mm thick, 0.1 mm corner radius, FFS geometry.",
+          "geometry": "positive FFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT32502MFFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT09T301MFFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32502MFFS CCGT09T301MFFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32502MFFS CCGT09T301MFFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT32502MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32502MFFS CCGT09T301MFFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT09T301MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32502MFFS CCGT09T301MFFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive FFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32502MFFS CCGT09T301MFFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 9.53,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32502MFFS CCGT09T301MFFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 9.67,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32502MFFS CCGT09T301MFFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.1,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32502MFFS CCGT09T301MFFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 4.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32502MFFS CCGT09T301MFFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 3.97,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32502MFFS CCGT09T301MFFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "FFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-008",
+      "tool_lookup": {
+        "tool_id": "CCGT09T301MLFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT09T301MLFS",
+        "description": "Kennametal TopSwiss CCGT 09T3 01 positive turning insert, MLFS chipbreaker. TopSwiss LFS - light finishing for stainless and superalloys. Corner radius 0.1 mm, IC 9.525 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "CCGT 09T3 01 positive, 7-deg clearance, MLFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT09T301MLFS positive insert, ANSI CCGT32502MLFS; 9.53 mm IC, 3.97 mm thick, 0.1 mm corner radius, LFS geometry.",
+          "geometry": "positive LFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT32502MLFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT09T301MLFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32502MLFS CCGT09T301MLFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32502MLFS CCGT09T301MLFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32502MLFS CCGT09T301MLFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT32502MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32502MLFS CCGT09T301MLFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT09T301MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32502MLFS CCGT09T301MLFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive LFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32502MLFS CCGT09T301MLFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 9.53,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32502MLFS CCGT09T301MLFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 9.67,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32502MLFS CCGT09T301MLFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.1,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32502MLFS CCGT09T301MLFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 4.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32502MLFS CCGT09T301MLFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 3.97,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32502MLFS CCGT09T301MLFS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "LFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-009",
+      "tool_lookup": {
+        "tool_id": "CCGT09T301MRPPS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT09T301MRPPS",
+        "description": "Kennametal TopSwiss CCGT 09T3 01 positive turning insert, MRPPS chipbreaker. TopSwiss PPS Right-Hand - precision positive for steel/stainless/titanium. Corner radius 0.1 mm, IC 9.525 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "CCGT 09T3 01 positive, 7-deg clearance, MRPPS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT09T301MRPPS positive insert, ANSI CCGT32502MRPPS; 9.53 mm IC, 3.97 mm thick, 0.1 mm corner radius, PPS geometry.",
+          "geometry": "positive PPS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT32502MRPPS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT09T301MRPPS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32502MRPPS CCGT09T301MRPPS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32502MRPPS CCGT09T301MRPPS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32502MRPPS CCGT09T301MRPPS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT32502MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32502MRPPS CCGT09T301MRPPS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT09T301MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32502MRPPS CCGT09T301MRPPS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive PPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32502MRPPS CCGT09T301MRPPS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 9.53,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32502MRPPS CCGT09T301MRPPS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 9.67,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32502MRPPS CCGT09T301MRPPS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.1,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32502MRPPS CCGT09T301MRPPS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 4.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32502MRPPS CCGT09T301MRPPS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 3.97,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32502MRPPS CCGT09T301MRPPS D 9.53 mm L10 9.67 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "PPS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-010",
+      "tool_lookup": {
+        "tool_id": "CCGT09T302MFFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT09T302MFFS",
+        "description": "Kennametal TopSwiss CCGT 09T3 02 positive turning insert, MFFS chipbreaker. TopSwiss FFS - fine finishing for stainless and superalloys. Corner radius 0.2 mm, IC 9.525 mm. Grade(s): S52MCK, S52SCK.",
+        "geometry": "CCGT 09T3 02 positive, 7-deg clearance, MFFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT09T302MFFS positive insert, ANSI CCGT32505MFFS; 9.53 mm IC, 3.97 mm thick, 0.2 mm corner radius, FFS geometry.",
+          "geometry": "positive FFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT32505MFFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT09T302MFFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32505MFFS CCGT09T302MFFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32505MFFS CCGT09T302MFFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT32505MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32505MFFS CCGT09T302MFFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT09T302MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32505MFFS CCGT09T302MFFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive FFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32505MFFS CCGT09T302MFFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 9.53,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32505MFFS CCGT09T302MFFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 9.67,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32505MFFS CCGT09T302MFFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.2,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32505MFFS CCGT09T302MFFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 4.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32505MFFS CCGT09T302MFFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 3.97,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT32505MFFS CCGT09T302MFFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "FFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-011",
+      "tool_lookup": {
+        "tool_id": "CCGT09T302MLFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT09T302MLFS",
+        "description": "Kennametal TopSwiss CCGT 09T3 02 positive turning insert, MLFS chipbreaker. TopSwiss LFS - light finishing for stainless and superalloys. Corner radius 0.2 mm, IC 9.525 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "CCGT 09T3 02 positive, 7-deg clearance, MLFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT09T302MLFS positive insert, ANSI CCGT32505MLFS; 9.53 mm IC, 3.97 mm thick, 0.2 mm corner radius, LFS geometry.",
+          "geometry": "positive LFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT32505MLFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT09T302MLFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32505MLFS CCGT09T302MLFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32505MLFS CCGT09T302MLFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32505MLFS CCGT09T302MLFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT32505MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32505MLFS CCGT09T302MLFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT09T302MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32505MLFS CCGT09T302MLFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive LFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32505MLFS CCGT09T302MLFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 9.53,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32505MLFS CCGT09T302MLFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 9.67,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32505MLFS CCGT09T302MLFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.2,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32505MLFS CCGT09T302MLFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 4.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32505MLFS CCGT09T302MLFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 3.97,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT32505MLFS CCGT09T302MLFS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "LFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-012",
+      "tool_lookup": {
+        "tool_id": "CCGT09T302MRPPS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT09T302MRPPS",
+        "description": "Kennametal TopSwiss CCGT 09T3 02 positive turning insert, MRPPS chipbreaker. TopSwiss PPS Right-Hand - precision positive for steel/stainless/titanium. Corner radius 0.2 mm, IC 9.525 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "CCGT 09T3 02 positive, 7-deg clearance, MRPPS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT09T302MRPPS positive insert, ANSI CCGT32505MRPPS; 9.53 mm IC, 3.97 mm thick, 0.2 mm corner radius, PPS geometry.",
+          "geometry": "positive PPS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT32505MRPPS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT09T302MRPPS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32505MRPPS CCGT09T302MRPPS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32505MRPPS CCGT09T302MRPPS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32505MRPPS CCGT09T302MRPPS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT32505MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32505MRPPS CCGT09T302MRPPS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT09T302MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32505MRPPS CCGT09T302MRPPS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive PPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32505MRPPS CCGT09T302MRPPS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 9.53,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32505MRPPS CCGT09T302MRPPS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 9.67,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32505MRPPS CCGT09T302MRPPS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.2,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32505MRPPS CCGT09T302MRPPS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 4.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32505MRPPS CCGT09T302MRPPS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 3.97,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT32505MRPPS CCGT09T302MRPPS D 9.53 mm L10 9.67 mm Rε 0.2 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "PPS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-013",
+      "tool_lookup": {
+        "tool_id": "CCGT09T304MFFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT09T304MFFS",
+        "description": "Kennametal TopSwiss CCGT 09T3 04 positive turning insert, MFFS chipbreaker. TopSwiss FFS - fine finishing for stainless and superalloys. Corner radius 0.4 mm, IC 9.525 mm. Grade(s): S52MCK, S52SCK.",
+        "geometry": "CCGT 09T3 04 positive, 7-deg clearance, MFFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT09T304MFFS positive insert, ANSI CCGT3251MFFS; 9.53 mm IC, 3.97 mm thick, 0.4 mm corner radius, FFS geometry.",
+          "geometry": "positive FFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT3251MFFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT09T304MFFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT3251MFFS CCGT09T304MFFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT3251MFFS CCGT09T304MFFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT3251MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT3251MFFS CCGT09T304MFFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT09T304MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT3251MFFS CCGT09T304MFFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive FFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT3251MFFS CCGT09T304MFFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 9.53,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT3251MFFS CCGT09T304MFFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 9.67,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT3251MFFS CCGT09T304MFFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT3251MFFS CCGT09T304MFFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 4.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT3251MFFS CCGT09T304MFFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 3.97,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - FFS",
+              "source_raw_text": "CCGT3251MFFS CCGT09T304MFFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "FFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-014",
+      "tool_lookup": {
+        "tool_id": "CCGT09T304MLFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT09T304MLFS",
+        "description": "Kennametal TopSwiss CCGT 09T3 04 positive turning insert, MLFS chipbreaker. TopSwiss LFS - light finishing for stainless and superalloys. Corner radius 0.4 mm, IC 9.525 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "CCGT 09T3 04 positive, 7-deg clearance, MLFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT09T304MLFS positive insert, ANSI CCGT3251MLFS; 9.53 mm IC, 3.97 mm thick, 0.4 mm corner radius, LFS geometry.",
+          "geometry": "positive LFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT3251MLFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT09T304MLFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT3251MLFS CCGT09T304MLFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT3251MLFS CCGT09T304MLFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT3251MLFS CCGT09T304MLFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT3251MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT3251MLFS CCGT09T304MLFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT09T304MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT3251MLFS CCGT09T304MLFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive LFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT3251MLFS CCGT09T304MLFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 9.53,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT3251MLFS CCGT09T304MLFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 9.67,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT3251MLFS CCGT09T304MLFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT3251MLFS CCGT09T304MLFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 4.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT3251MLFS CCGT09T304MLFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 3.97,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - LFS",
+              "source_raw_text": "CCGT3251MLFS CCGT09T304MLFS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "LFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-015",
+      "tool_lookup": {
+        "tool_id": "CCGT09T304MRPPS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "CCGT09T304MRPPS",
+        "description": "Kennametal TopSwiss CCGT 09T3 04 positive turning insert, MRPPS chipbreaker. TopSwiss PPS Right-Hand - precision positive for steel/stainless/titanium. Corner radius 0.4 mm, IC 9.525 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "CCGT 09T3 04 positive, 7-deg clearance, MRPPS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss CCGT09T304MRPPS positive insert, ANSI CCGT3251MRPPS; 9.53 mm IC, 3.97 mm thick, 0.4 mm corner radius, PPS geometry.",
+          "geometry": "positive PPS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "CCGT3251MRPPS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "CCGT09T304MRPPS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT3251MRPPS CCGT09T304MRPPS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT3251MRPPS CCGT09T304MRPPS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT3251MRPPS CCGT09T304MRPPS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "CCGT3251MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT3251MRPPS CCGT09T304MRPPS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "CCGT09T304MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT3251MRPPS CCGT09T304MRPPS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive PPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT3251MRPPS CCGT09T304MRPPS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 9.53,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT3251MRPPS CCGT09T304MRPPS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 9.67,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT3251MRPPS CCGT09T304MRPPS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT3251MRPPS CCGT09T304MRPPS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 4.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT3251MRPPS CCGT09T304MRPPS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 3.97,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 3,
+              "source_table_ref": "CCGT Insert - Positive - PPS",
+              "source_raw_text": "CCGT3251MRPPS CCGT09T304MRPPS D 9.53 mm L10 9.67 mm Rε 0.4 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "CCGT",
+          "PPS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-016",
+      "tool_lookup": {
+        "tool_id": "DCGT070201MFFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "DCGT070201MFFS",
+        "description": "Kennametal TopSwiss DCGT 07 02 01 positive turning insert, MFFS chipbreaker. TopSwiss FFS - fine finishing for stainless and superalloys. Corner radius 0.1 mm, IC 6.350 mm. Grade(s): S52MCK, S52SCK.",
+        "geometry": "DCGT 07 02 01 positive, 7-deg clearance, MFFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss DCGT070201MFFS positive insert, ANSI DCGT21502MFFS; 6.35 mm IC, 2.38 mm thick, 0.1 mm corner radius, FFS geometry.",
+          "geometry": "positive FFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "DCGT21502MFFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "DCGT070201MFFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21502MFFS DCGT070201MFFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21502MFFS DCGT070201MFFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "DCGT21502MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21502MFFS DCGT070201MFFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "DCGT070201MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21502MFFS DCGT070201MFFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive FFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21502MFFS DCGT070201MFFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21502MFFS DCGT070201MFFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 7.75,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21502MFFS DCGT070201MFFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.1,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21502MFFS DCGT070201MFFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21502MFFS DCGT070201MFFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21502MFFS DCGT070201MFFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "DCGT",
+          "FFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-017",
+      "tool_lookup": {
+        "tool_id": "DCGT070201MLFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "DCGT070201MLFS",
+        "description": "Kennametal TopSwiss DCGT 07 02 01 positive turning insert, MLFS chipbreaker. TopSwiss LFS - light finishing for stainless and superalloys. Corner radius 0.1 mm, IC 6.350 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "DCGT 07 02 01 positive, 7-deg clearance, MLFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss DCGT070201MLFS positive insert, ANSI DCGT21502MLFS; 6.35 mm IC, 2.38 mm thick, 0.1 mm corner radius, LFS geometry.",
+          "geometry": "positive LFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "DCGT21502MLFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "DCGT070201MLFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21502MLFS DCGT070201MLFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21502MLFS DCGT070201MLFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21502MLFS DCGT070201MLFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "DCGT21502MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21502MLFS DCGT070201MLFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "DCGT070201MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21502MLFS DCGT070201MLFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive LFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21502MLFS DCGT070201MLFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21502MLFS DCGT070201MLFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 7.75,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21502MLFS DCGT070201MLFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.1,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21502MLFS DCGT070201MLFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21502MLFS DCGT070201MLFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21502MLFS DCGT070201MLFS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "DCGT",
+          "LFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-018",
+      "tool_lookup": {
+        "tool_id": "DCGT070201MRPPS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "DCGT070201MRPPS",
+        "description": "Kennametal TopSwiss DCGT 07 02 01 positive turning insert, MRPPS chipbreaker. TopSwiss PPS Right-Hand - precision positive for steel/stainless/titanium. Corner radius 0.1 mm, IC 6.350 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "DCGT 07 02 01 positive, 7-deg clearance, MRPPS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss DCGT070201MRPPS positive insert, ANSI DCGT21502MRPPS; 6.35 mm IC, 2.38 mm thick, 0.1 mm corner radius, PPS geometry.",
+          "geometry": "positive PPS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "DCGT21502MRPPS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "DCGT070201MRPPS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21502MRPPS DCGT070201MRPPS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21502MRPPS DCGT070201MRPPS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21502MRPPS DCGT070201MRPPS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "DCGT21502MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21502MRPPS DCGT070201MRPPS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "DCGT070201MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21502MRPPS DCGT070201MRPPS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive PPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21502MRPPS DCGT070201MRPPS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21502MRPPS DCGT070201MRPPS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 7.75,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21502MRPPS DCGT070201MRPPS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.1,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21502MRPPS DCGT070201MRPPS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21502MRPPS DCGT070201MRPPS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21502MRPPS DCGT070201MRPPS D 6.35 mm L10 7.75 mm Rε 0.1 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "DCGT",
+          "PPS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-019",
+      "tool_lookup": {
+        "tool_id": "DCGT070202MFFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "DCGT070202MFFS",
+        "description": "Kennametal TopSwiss DCGT 07 02 02 positive turning insert, MFFS chipbreaker. TopSwiss FFS - fine finishing for stainless and superalloys. Corner radius 0.2 mm, IC 6.350 mm. Grade(s): S52MCK, S52SCK.",
+        "geometry": "DCGT 07 02 02 positive, 7-deg clearance, MFFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss DCGT070202MFFS positive insert, ANSI DCGT21505MFFS; 6.35 mm IC, 2.38 mm thick, 0.2 mm corner radius, FFS geometry.",
+          "geometry": "positive FFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "DCGT21505MFFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "DCGT070202MFFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21505MFFS DCGT070202MFFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21505MFFS DCGT070202MFFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "DCGT21505MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21505MFFS DCGT070202MFFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "DCGT070202MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21505MFFS DCGT070202MFFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive FFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21505MFFS DCGT070202MFFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21505MFFS DCGT070202MFFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 7.75,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21505MFFS DCGT070202MFFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.2,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21505MFFS DCGT070202MFFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21505MFFS DCGT070202MFFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT21505MFFS DCGT070202MFFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "DCGT",
+          "FFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-020",
+      "tool_lookup": {
+        "tool_id": "DCGT070202MLFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "DCGT070202MLFS",
+        "description": "Kennametal TopSwiss DCGT 07 02 02 positive turning insert, MLFS chipbreaker. TopSwiss LFS - light finishing for stainless and superalloys. Corner radius 0.2 mm, IC 6.350 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "DCGT 07 02 02 positive, 7-deg clearance, MLFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss DCGT070202MLFS positive insert, ANSI DCGT21505MLFS; 6.35 mm IC, 2.38 mm thick, 0.2 mm corner radius, LFS geometry.",
+          "geometry": "positive LFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "DCGT21505MLFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "DCGT070202MLFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21505MLFS DCGT070202MLFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21505MLFS DCGT070202MLFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21505MLFS DCGT070202MLFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "DCGT21505MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21505MLFS DCGT070202MLFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "DCGT070202MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21505MLFS DCGT070202MLFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive LFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21505MLFS DCGT070202MLFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21505MLFS DCGT070202MLFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 7.75,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21505MLFS DCGT070202MLFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.2,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21505MLFS DCGT070202MLFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21505MLFS DCGT070202MLFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT21505MLFS DCGT070202MLFS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "DCGT",
+          "LFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-021",
+      "tool_lookup": {
+        "tool_id": "DCGT070202MRPPS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "DCGT070202MRPPS",
+        "description": "Kennametal TopSwiss DCGT 07 02 02 positive turning insert, MRPPS chipbreaker. TopSwiss PPS Right-Hand - precision positive for steel/stainless/titanium. Corner radius 0.2 mm, IC 6.350 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "DCGT 07 02 02 positive, 7-deg clearance, MRPPS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss DCGT070202MRPPS positive insert, ANSI DCGT21505MRPPS; 6.35 mm IC, 2.38 mm thick, 0.2 mm corner radius, PPS geometry.",
+          "geometry": "positive PPS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "DCGT21505MRPPS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "DCGT070202MRPPS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21505MRPPS DCGT070202MRPPS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21505MRPPS DCGT070202MRPPS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21505MRPPS DCGT070202MRPPS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "DCGT21505MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21505MRPPS DCGT070202MRPPS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "DCGT070202MRPPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21505MRPPS DCGT070202MRPPS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive PPS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21505MRPPS DCGT070202MRPPS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21505MRPPS DCGT070202MRPPS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 7.75,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21505MRPPS DCGT070202MRPPS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.2,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21505MRPPS DCGT070202MRPPS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21505MRPPS DCGT070202MRPPS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - PPS",
+              "source_raw_text": "DCGT21505MRPPS DCGT070202MRPPS D 6.35 mm L10 7.75 mm Rε 0.2 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "DCGT",
+          "PPS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-022",
+      "tool_lookup": {
+        "tool_id": "DCGT070204MFFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "DCGT070204MFFS",
+        "description": "Kennametal TopSwiss DCGT 07 02 04 positive turning insert, MFFS chipbreaker. TopSwiss FFS - fine finishing for stainless and superalloys. Corner radius 0.4 mm, IC 6.350 mm. Grade(s): S52MCK, S52SCK.",
+        "geometry": "DCGT 07 02 04 positive, 7-deg clearance, MFFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss DCGT070204MFFS positive insert, ANSI DCGT2151MFFS; 6.35 mm IC, 2.38 mm thick, 0.4 mm corner radius, FFS geometry.",
+          "geometry": "positive FFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "DCGT2151MFFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "DCGT070204MFFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT2151MFFS DCGT070204MFFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT2151MFFS DCGT070204MFFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "DCGT2151MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT2151MFFS DCGT070204MFFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "DCGT070204MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT2151MFFS DCGT070204MFFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive FFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT2151MFFS DCGT070204MFFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT2151MFFS DCGT070204MFFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 7.75,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT2151MFFS DCGT070204MFFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT2151MFFS DCGT070204MFFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT2151MFFS DCGT070204MFFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT2151MFFS DCGT070204MFFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "DCGT",
+          "FFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-023",
+      "tool_lookup": {
+        "tool_id": "DCGT070204MLFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "DCGT070204MLFS",
+        "description": "Kennametal TopSwiss DCGT 07 02 04 positive turning insert, MLFS chipbreaker. TopSwiss LFS - light finishing for stainless and superalloys. Corner radius 0.4 mm, IC 6.350 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "DCGT 07 02 04 positive, 7-deg clearance, MLFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss DCGT070204MLFS positive insert, ANSI DCGT2151MLFS; 6.35 mm IC, 2.38 mm thick, 0.4 mm corner radius, LFS geometry.",
+          "geometry": "positive LFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "DCGT2151MLFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "DCGT070204MLFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT2151MLFS DCGT070204MLFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT2151MLFS DCGT070204MLFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT2151MLFS DCGT070204MLFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "DCGT2151MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT2151MLFS DCGT070204MLFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "DCGT070204MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT2151MLFS DCGT070204MLFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive LFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT2151MLFS DCGT070204MLFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 6.35,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT2151MLFS DCGT070204MLFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 7.75,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT2151MLFS DCGT070204MLFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT2151MLFS DCGT070204MLFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 2.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT2151MLFS DCGT070204MLFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 2.38,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT2151MLFS DCGT070204MLFS D 6.35 mm L10 7.75 mm Rε 0.4 mm D1 2.8 mm S 2.38 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "DCGT",
+          "LFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-024",
+      "tool_lookup": {
+        "tool_id": "DCGT11T301MFFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "DCGT11T301MFFS",
+        "description": "Kennametal TopSwiss DCGT 11T3 01 positive turning insert, MFFS chipbreaker. TopSwiss FFS - fine finishing for stainless and superalloys. Corner radius 0.1 mm, IC 9.525 mm. Grade(s): S52MCK, S52SCK.",
+        "geometry": "DCGT 11T3 01 positive, 7-deg clearance, MFFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss DCGT11T301MFFS positive insert, ANSI DCGT32502MFFS; 9.53 mm IC, 3.97 mm thick, 0.1 mm corner radius, FFS geometry.",
+          "geometry": "positive FFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "DCGT32502MFFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "DCGT11T301MFFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT32502MFFS DCGT11T301MFFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT32502MFFS DCGT11T301MFFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "DCGT32502MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT32502MFFS DCGT11T301MFFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "DCGT11T301MFFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT32502MFFS DCGT11T301MFFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive FFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT32502MFFS DCGT11T301MFFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 9.53,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT32502MFFS DCGT11T301MFFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 11.63,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT32502MFFS DCGT11T301MFFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.1,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT32502MFFS DCGT11T301MFFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 4.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT32502MFFS DCGT11T301MFFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 3.97,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - FFS",
+              "source_raw_text": "DCGT32502MFFS DCGT11T301MFFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "DCGT",
+          "FFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    },
+    {
+      "proposal_row_id": "kenna-id-01-025",
+      "tool_lookup": {
+        "tool_id": "DCGT11T301MLFS",
+        "manufacturer": "Kennametal",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "part_number": "DCGT11T301MLFS",
+        "description": "Kennametal TopSwiss DCGT 11T3 01 positive turning insert, MLFS chipbreaker. TopSwiss LFS - light finishing for stainless and superalloys. Corner radius 0.1 mm, IC 9.525 mm. Grade(s): S02PCK, S52MCK, S52SCK.",
+        "geometry": "DCGT 11T3 01 positive, 7-deg clearance, MLFS chipbreaker",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "review_status": "pending"
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Kennametal TopSwiss DCGT11T301MLFS positive insert, ANSI DCGT32502MLFS; 9.53 mm IC, 3.97 mm thick, 0.1 mm corner radius, LFS geometry.",
+          "geometry": "positive LFS",
+          "lifecycle_status": "unknown"
+        },
+        "aliases": [
+          {
+            "alias": "DCGT32502MLFS",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "DCGT11T301MLFS",
+            "alias_type": "iso"
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "KCP20S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": true,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT32502MLFS DCGT11T301MLFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCM25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT32502MLFS DCGT11T301MLFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "KCS25S",
+            "option_kind": "available_grade",
+            "availability_status": "listed",
+            "is_primary": false,
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT32502MLFS DCGT11T301MLFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "ansi_catalog_id",
+          "iso_catalog_id",
+          "geometry",
+          "inscribed_circle",
+          "cutting_edge_length",
+          "corner_radius",
+          "hole_diameter",
+          "thickness"
+        ],
+        "facts": [
+          {
+            "fact_key": "ansi_catalog_id",
+            "value_text": "DCGT32502MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT32502MLFS DCGT11T301MLFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "iso_catalog_id",
+            "value_text": "DCGT11T301MLFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT32502MLFS DCGT11T301MLFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "geometry",
+            "value_text": "positive LFS",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT32502MLFS DCGT11T301MLFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle",
+            "value_number": 9.53,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT32502MLFS DCGT11T301MLFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "value_number": 11.63,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT32502MLFS DCGT11T301MLFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "corner_radius",
+            "value_number": 0.1,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT32502MLFS DCGT11T301MLFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "hole_diameter",
+            "value_number": 4.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT32502MLFS DCGT11T301MLFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "thickness",
+            "value_number": 3.97,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-d0bac814365ef9d4",
+              "pdf_page": 6,
+              "source_table_ref": "DCGT Insert - Positive - LFS",
+              "source_raw_text": "DCGT32502MLFS DCGT11T301MLFS D 9.53 mm L10 11.63 mm Rε 0.1 mm D1 4.4 mm S 3.97 mm",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Kennametal",
+          "TopSwiss",
+          "insert",
+          "DCGT",
+          "LFS"
+        ]
+      },
+      "conflicts": [
+        "Legacy descriptions and grade claims remain untrusted until this row is approved.",
+        "This identity batch does not propose work-material or cutting-data recommendations."
+      ],
+      "notes": "Exact ISO catalog-number match to a manufacturer table row; human visual review is still required."
+    }
+  ]
+}

@@ -22,7 +22,7 @@ The site root now redirects to `docs/v3/`. The previous hosted page is preserved
 ## Data Flow
 
 ```text
-reviewable JSONL seed + approved review ledgers + shop inputs
+reviewable JSONL seed + hash-pinned catalog manifest + approved review ledgers + shop inputs
                               ↓
              deterministic reviewed import + build
                               ↓
@@ -54,5 +54,8 @@ Open `http://127.0.0.1:8000/`.
 - Compatibility is a reviewed claim, not an automatic guarantee of fit.
 - Valid machine fit follows `station → holder → insert` or `station → shank → module → insert`; direct insert-to-machine shortcuts are invalid.
 - Material tags are not promoted into recommendations without explicit source data.
+- Legacy material claims remain searchable as audit history but never power recommendation filters.
+- A proposal cannot change production data. Every row needs a terminal human decision in a separate hash-bound ledger; rejected identities are quarantined.
+- Manufacturer grades are modeled separately from base insert geometry so one insert can carry several catalog-listed grade options without merging them into a fake grade string.
 - Speeds and feeds appear only after exact tool, grade, geometry, material, operation, ranges, units, and source have been reviewed.
 - Only manufacturer/catalog-reviewed cutting profiles are exposed as usable recommendations. Unit conversions and RPM/feed-rate calculations are display-only.

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Toolbase source review</title>
+  <link rel="stylesheet" href="review.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Private source review</p>
+      <h1 id="batch-title">Loading review batch…</h1>
+      <p id="batch-purpose" class="subtitle"></p>
+    </div>
+    <button id="export" class="primary" type="button" disabled>Export decision ledger</button>
+  </header>
+
+  <section class="statusbar" aria-live="polite">
+    <div><strong id="reviewed-count">0</strong><span>decided</span></div>
+    <div><strong id="pending-count">0</strong><span>pending</span></div>
+    <div><strong id="batch-count">0</strong><span>tools</span></div>
+    <label>Show
+      <select id="filter">
+        <option value="pending">Pending first</option>
+        <option value="all">All tools</option>
+        <option value="approved">Approved</option>
+        <option value="quarantined">Quarantined</option>
+      </select>
+    </label>
+  </section>
+
+  <main id="review-list" class="review-list"></main>
+
+  <template id="row-template">
+    <article class="review-card">
+      <div class="card-head">
+        <div>
+          <p class="row-number"></p>
+          <h2 class="tool-id"></h2>
+        </div>
+        <span class="decision-badge pending">Pending</span>
+      </div>
+      <div class="review-grid">
+        <section class="record-panel">
+          <h3>Database now</h3>
+          <dl class="current-data"></dl>
+        </section>
+        <section class="record-panel proposed-panel">
+          <h3>Manufacturer-backed proposal</h3>
+          <p class="proposed-description"></p>
+          <dl class="proposed-facts"></dl>
+          <h4>Listed grade options</h4>
+          <div class="grade-list"></div>
+          <div class="boundary-note">No speeds, feeds, or work-material claim is included in this identity batch.</div>
+        </section>
+        <section class="source-panel">
+          <div class="source-head">
+            <div>
+              <h3>Manufacturer source</h3>
+              <p class="source-ref"></p>
+            </div>
+            <a class="open-page" target="_blank" rel="noopener">Open page</a>
+          </div>
+          <img class="source-image" loading="lazy" alt="Cited manufacturer catalog page">
+          <p class="source-excerpt"></p>
+        </section>
+      </div>
+      <details class="conflicts">
+        <summary>Review cautions</summary>
+        <ul></ul>
+      </details>
+      <div class="decision-controls">
+        <label>Reviewer <input class="reviewer" autocomplete="name" placeholder="Your name"></label>
+        <label class="notes-label">Notes <textarea class="notes" rows="2" placeholder="Required if quarantining; optional when approving"></textarea></label>
+        <div class="decision-buttons">
+          <button class="approve" type="button">Approve exact proposal</button>
+          <button class="quarantine" type="button">Quarantine record</button>
+          <button class="clear" type="button">Clear decision</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="review.js" defer></script>
+</body>
+</html>

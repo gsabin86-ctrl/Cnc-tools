@@ -1,0 +1,1303 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-21",
+  "scope": "Local official catalogs relevant to manufacturers already present in the 1,222-tool seed.",
+  "documents": [
+    {
+      "catalog_id": "iscar-iscar-nonrotating-tools-groove-turn-tools",
+      "source_id": "source-f2f6a3914d104416",
+      "manufacturer": "Iscar",
+      "title": "iscar nonrotating tools groove turn tools",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/iscar/iscar-nonrotating-tools-groove-turn-tools.pdf",
+      "url": null,
+      "content_sha256": "971448dcc25d808b158f056fa6ecf6fa4560e18176e111676884c01667d4773e",
+      "file_size_bytes": 30647676,
+      "page_count": 362,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 47
+          },
+          {
+            "pdf_page": 3,
+            "characters": 2013
+          },
+          {
+            "pdf_page": 182,
+            "characters": 1274
+          },
+          {
+            "pdf_page": 362,
+            "characters": 1753
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "iscar-miniature-parts-catalog-part-1",
+      "source_id": "source-b76f3df9e69150f0",
+      "manufacturer": "Iscar",
+      "title": "Miniature Parts Catalog part 1",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/iscar-miniature-parts/Miniature_Parts_Catalog_part_1.pdf",
+      "url": null,
+      "content_sha256": "c36187d84a0a338c42f49aa8b57f86f8323806fa992f46c80bff789e69eb4b89",
+      "file_size_bytes": 299867249,
+      "page_count": 850,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 151
+          },
+          {
+            "pdf_page": 3,
+            "characters": 152
+          },
+          {
+            "pdf_page": 426,
+            "characters": 1215
+          },
+          {
+            "pdf_page": 850,
+            "characters": 743
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "iscar-miniature-parts-catalog-part-2",
+      "source_id": "source-f395f40deb519fed",
+      "manufacturer": "Iscar",
+      "title": "Miniature Parts Catalog part 2",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/iscar-miniature-parts/Miniature_Parts_Catalog_part_2.pdf",
+      "url": null,
+      "content_sha256": "ae3a04fca2fc3e90c5a5e27b9d407f46ca68a11e68b54bf84b8a00719a164ae0",
+      "file_size_bytes": 144798496,
+      "page_count": 436,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 151
+          },
+          {
+            "pdf_page": 3,
+            "characters": 95
+          },
+          {
+            "pdf_page": 219,
+            "characters": 1873
+          },
+          {
+            "pdf_page": 436,
+            "characters": 213
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "kennametal-master-catalog-2018-vol",
+      "source_id": "source-a42c5bd62272a0ea",
+      "manufacturer": "Kennametal",
+      "title": "Master Catalog 2018 Vol. 1 Turning Tools English Inch",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/kennametal/Master Catalog 2018 Vol. 1 Turning Tools English Inch.pdf",
+      "url": null,
+      "content_sha256": "e9bbf88b79d6772b58eea11bd413c48382dc1e85c9367bc8ca8e0c64b1b0480f",
+      "file_size_bytes": 123629884,
+      "page_count": 1060,
+      "document_edition": "2018",
+      "edition_evidence": "Year 2018 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 1042
+          },
+          {
+            "pdf_page": 3,
+            "characters": 6984
+          },
+          {
+            "pdf_page": 531,
+            "characters": 1790
+          },
+          {
+            "pdf_page": 1060,
+            "characters": 1042
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "kennametal-master-catalog-2018-vol-2",
+      "source_id": "source-1d717910e55d6080",
+      "manufacturer": "Kennametal",
+      "title": "Master Catalog 2018 Vol. 2 Rotating Tools English Inch",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/kennametal/Master Catalog 2018 Vol. 2 Rotating Tools English Inch.pdf",
+      "url": null,
+      "content_sha256": "ec84cbefec9a085d2fa60e4f92645fdacadfe0e9b56b996b169bf07135121745",
+      "file_size_bytes": 271013589,
+      "page_count": 2032,
+      "document_edition": "2018",
+      "edition_evidence": "Year 2018 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 1188
+          },
+          {
+            "pdf_page": 3,
+            "characters": 7486
+          },
+          {
+            "pdf_page": 1017,
+            "characters": 3690
+          },
+          {
+            "pdf_page": 2032,
+            "characters": 1010
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "kennametal-topswiss-inserts-metricinch",
+      "source_id": "source-d0bac814365ef9d4",
+      "manufacturer": "Kennametal",
+      "title": "TopSwiss Inserts MetricInch",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/kennametal/TopSwiss Inserts MetricInch.pdf",
+      "url": null,
+      "content_sha256": "f9852eff7ffb273af212776a13f684fa1f64d026af209516e7ad60e4878d2707",
+      "file_size_bytes": 2123587,
+      "page_count": 24,
+      "document_edition": "2024",
+      "edition_evidence": "Year 2024 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 66
+          },
+          {
+            "pdf_page": 3,
+            "characters": 2130
+          },
+          {
+            "pdf_page": 13,
+            "characters": 1360
+          },
+          {
+            "pdf_page": 24,
+            "characters": 147
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "mitsubishi-catalog-c009a-small-tool",
+      "source_id": "source-08731beedfaa34ee",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "catalog c009a small tool",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Mitsubishi/catalog_c009a_small_tool.pdf",
+      "url": null,
+      "content_sha256": "5cf40b43d1746201cfa457b962e8298db199947e4a4a8ae7d822f18b8ac9f529",
+      "file_size_bytes": 2466557,
+      "page_count": 48,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 5277
+          },
+          {
+            "pdf_page": 3,
+            "characters": 2080
+          },
+          {
+            "pdf_page": 25,
+            "characters": 2850
+          },
+          {
+            "pdf_page": 48,
+            "characters": 1249
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "mitsubishi-catalog-c010a-boring",
+      "source_id": "source-ef20889f63ff0209",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "catalog c010a boring",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Mitsubishi/catalog_c010a_boring.pdf",
+      "url": null,
+      "content_sha256": "8fd0d0ce88f6c3ed67395849f1549dae0c2178828a10b3c5733e476705a16990",
+      "file_size_bytes": 5542851,
+      "page_count": 50,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 6247
+          },
+          {
+            "pdf_page": 3,
+            "characters": 3126
+          },
+          {
+            "pdf_page": 26,
+            "characters": 2973
+          },
+          {
+            "pdf_page": 50,
+            "characters": 9
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "mitsubishi-catalog-c010a-cbn-pcd-inserts",
+      "source_id": "source-039402bb924f1c72",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "catalog c010a cbn pcd inserts",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Mitsubishi/catalog_c010a_cbn_pcd_inserts.pdf",
+      "url": null,
+      "content_sha256": "3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de",
+      "file_size_bytes": 4750596,
+      "page_count": 64,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 6380
+          },
+          {
+            "pdf_page": 3,
+            "characters": 1830
+          },
+          {
+            "pdf_page": 33,
+            "characters": 2516
+          },
+          {
+            "pdf_page": 64,
+            "characters": 9
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": [
+        "catalogs/Mitsubishi/catalog_c010a_cbn_pcd_inserts (1).pdf"
+      ]
+    },
+    {
+      "catalog_id": "mitsubishi-catalog-c010a-external-turning-tools",
+      "source_id": "source-8b8f2358669eca16",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "catalog c010a external turning tools",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Mitsubishi/catalog_c010a_external_turning_tools.pdf",
+      "url": null,
+      "content_sha256": "6baf75ba0a485a007a6ff2c105bd19722aa2de744554b80614da815e9929542d",
+      "file_size_bytes": 4641022,
+      "page_count": 44,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 4567
+          },
+          {
+            "pdf_page": 3,
+            "characters": 1999
+          },
+          {
+            "pdf_page": 23,
+            "characters": 1969
+          },
+          {
+            "pdf_page": 44,
+            "characters": 1655
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "mitsubishi-catalog-c010a-grooving-cuttingoff",
+      "source_id": "source-64c180e26e822b72",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "catalog c010a grooving cuttingoff",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Mitsubishi/catalog_c010a_grooving_cuttingoff.pdf",
+      "url": null,
+      "content_sha256": "f1a53fc29a65f76d7f23d23ecd57c419f5140f9f26aa4a2ab81b19efb60eeb6a",
+      "file_size_bytes": 42739320,
+      "page_count": 240,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 7919
+          },
+          {
+            "pdf_page": 3,
+            "characters": 1315
+          },
+          {
+            "pdf_page": 121,
+            "characters": 3498
+          },
+          {
+            "pdf_page": 240,
+            "characters": 1625
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "mitsubishi-catalog-c010a-index",
+      "source_id": "source-a04a2dc77ebe25f4",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "catalog c010a index",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Mitsubishi/catalog_c010a_index.pdf",
+      "url": null,
+      "content_sha256": "3c8a31bd1e8fec913224c79dce281d8bb5d6e6cf98c7c27481769a354133d700",
+      "file_size_bytes": 581831,
+      "page_count": 15,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 1020
+          },
+          {
+            "pdf_page": 3,
+            "characters": 11253
+          },
+          {
+            "pdf_page": 8,
+            "characters": 11194
+          },
+          {
+            "pdf_page": 15,
+            "characters": 8
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "mitsubishi-catalog-c010a-small-tools",
+      "source_id": "source-9d50c84a035a29b4",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "catalog c010a small tools",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Mitsubishi/catalog_c010a_small_tools.pdf",
+      "url": null,
+      "content_sha256": "21193013f85710f4afbd7e3de6b3e66824372060d217f1011f14da182ca57cd6",
+      "file_size_bytes": 5032815,
+      "page_count": 48,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 5299
+          },
+          {
+            "pdf_page": 3,
+            "characters": 1757
+          },
+          {
+            "pdf_page": 25,
+            "characters": 2160
+          },
+          {
+            "pdf_page": 48,
+            "characters": 9
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "mitsubishi-catalog-c010a-spare-parts",
+      "source_id": "source-7e4aaf5c876ac3eb",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "catalog c010a spare parts",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Mitsubishi/catalog_c010a_spare_parts.pdf",
+      "url": null,
+      "content_sha256": "5fe620993441747c43511b32b4c7a974fc7f3c0e10f06e525f66ceb9d25ab9c9",
+      "file_size_bytes": 1168278,
+      "page_count": 20,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 1304
+          },
+          {
+            "pdf_page": 3,
+            "characters": 707
+          },
+          {
+            "pdf_page": 11,
+            "characters": 324
+          },
+          {
+            "pdf_page": 20,
+            "characters": 9
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "mitsubishi-catalog-c010a-threading",
+      "source_id": "source-407327b0b9f2da8d",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "catalog c010a threading",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Mitsubishi/catalog_c010a_threading.pdf",
+      "url": null,
+      "content_sha256": "f146a82a5ee78729895ef2b7cd33c73761196f7a4a0dadcec1e1660f8064f836",
+      "file_size_bytes": 2652881,
+      "page_count": 38,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 7645
+          },
+          {
+            "pdf_page": 3,
+            "characters": 302
+          },
+          {
+            "pdf_page": 20,
+            "characters": 1474
+          },
+          {
+            "pdf_page": 38,
+            "characters": 9
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "ph-horn-katalog-horn-langdrehtechnik",
+      "source_id": "source-8522e8e234c9c786",
+      "manufacturer": "PH Horn",
+      "title": "Katalog Horn Langdrehtechnik",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/PH Horn/Katalog-Horn-Langdrehtechnik.pdf",
+      "url": null,
+      "content_sha256": "9d13d504b51ef8e243d05bd88bdbcd82e2c5cac13f26f4b9874dcae3c4b71094",
+      "file_size_bytes": 62605923,
+      "page_count": 652,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 0
+          },
+          {
+            "pdf_page": 3,
+            "characters": 29
+          },
+          {
+            "pdf_page": 327,
+            "characters": 987
+          },
+          {
+            "pdf_page": 652,
+            "characters": 0
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "ph-horn-katalog-horn-supermini-mini",
+      "source_id": "source-443d56d73082e274",
+      "manufacturer": "PH Horn",
+      "title": "Katalog Horn Supermini Mini",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/PH Horn/Katalog-Horn-Supermini-Mini.pdf",
+      "url": null,
+      "content_sha256": "47c7a0aa1914ea484fa6dc16c0f8f26e88904a26258dc5f9a03553a87ebe8282",
+      "file_size_bytes": 35723088,
+      "page_count": 392,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "weak",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 0
+          },
+          {
+            "pdf_page": 3,
+            "characters": 29
+          },
+          {
+            "pdf_page": 197,
+            "characters": 111
+          },
+          {
+            "pdf_page": 392,
+            "characters": 0
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "sandvik-latest-cutting-tools-26-1",
+      "source_id": "source-f0de7a549435261b",
+      "manufacturer": "Sandvik Coromant",
+      "title": "Latest cutting tools 26 1",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Sandvik/Latest cutting tools 26-1.pdf",
+      "url": null,
+      "content_sha256": "1d315d27fa583b1584cb6b780ec0b808b59dbbf4d108cac0ba96e2a602c478ef",
+      "file_size_bytes": 27770892,
+      "page_count": 450,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 43
+          },
+          {
+            "pdf_page": 3,
+            "characters": 715
+          },
+          {
+            "pdf_page": 226,
+            "characters": 728
+          },
+          {
+            "pdf_page": 450,
+            "characters": 43
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": [
+        "catalogs/kennametal/Latest cutting tools 26-1.pdf"
+      ]
+    },
+    {
+      "catalog_id": "sandvik-original",
+      "source_id": "source-eb6220db6347990b",
+      "manufacturer": "Sandvik Coromant",
+      "title": "original",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Sandvik/original.pdf",
+      "url": null,
+      "content_sha256": "cb9904a285f55942bb82a200164274293a01d219faad786fceb54e4c7257ab89",
+      "file_size_bytes": 9765384,
+      "page_count": 58,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 138
+          },
+          {
+            "pdf_page": 3,
+            "characters": 396
+          },
+          {
+            "pdf_page": 30,
+            "characters": 600
+          },
+          {
+            "pdf_page": 58,
+            "characters": 2458
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "sandvik-sandvik-corocut2-inserts",
+      "source_id": "source-72ead6aeb60d9b19",
+      "manufacturer": "Sandvik Coromant",
+      "title": "sandvik corocut2 inserts",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Sandvik/sandvik_corocut2_inserts.pdf",
+      "url": null,
+      "content_sha256": "ace42831b9c6126f4a142656003bee12658bb6d147508554f50b190385823992",
+      "file_size_bytes": 1892880,
+      "page_count": 21,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 695
+          },
+          {
+            "pdf_page": 3,
+            "characters": 29
+          },
+          {
+            "pdf_page": 11,
+            "characters": 592
+          },
+          {
+            "pdf_page": 21,
+            "characters": 1322
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "sandvik-sandvik-coroturn107-inserts",
+      "source_id": "source-999e79c360e8101b",
+      "manufacturer": "Sandvik Coromant",
+      "title": "sandvik coroturn107 inserts",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Sandvik/sandvik_coroturn107_inserts.pdf",
+      "url": null,
+      "content_sha256": "b198105f5f6dd265366a9d9bf9e408ab4195d55516905902882e952d7ea280b2",
+      "file_size_bytes": 620020,
+      "page_count": 12,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 645
+          },
+          {
+            "pdf_page": 3,
+            "characters": 580
+          },
+          {
+            "pdf_page": 7,
+            "characters": 1204
+          },
+          {
+            "pdf_page": 12,
+            "characters": 933
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "sandvik-sandvik-p401-450",
+      "source_id": "source-3d6edf820b369bad",
+      "manufacturer": "Sandvik Coromant",
+      "title": "sandvik p401 450",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Sandvik/sandvik_p401-450.pdf",
+      "url": null,
+      "content_sha256": "75e3f2dc3ef0f10538b38dbaba4d782b12039fb048be44ac3c4eb69af2edf6b1",
+      "file_size_bytes": 3169218,
+      "page_count": 50,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 966
+          },
+          {
+            "pdf_page": 3,
+            "characters": 790
+          },
+          {
+            "pdf_page": 26,
+            "characters": 1206
+          },
+          {
+            "pdf_page": 50,
+            "characters": 43
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "sandvik-sandvik-p423-430",
+      "source_id": "source-34b7748525ea813c",
+      "manufacturer": "Sandvik Coromant",
+      "title": "sandvik p423 430",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Sandvik/sandvik_p423-430.pdf",
+      "url": null,
+      "content_sha256": "2d62ed9979a0266918e056dace28513f00080f471cc0387cf8be3026724ac941",
+      "file_size_bytes": 573094,
+      "page_count": 8,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 840
+          },
+          {
+            "pdf_page": 3,
+            "characters": 752
+          },
+          {
+            "pdf_page": 5,
+            "characters": 826
+          },
+          {
+            "pdf_page": 8,
+            "characters": 1918
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "sandvik-sandvik-qs-modules",
+      "source_id": "source-94b9b6d9f96e4759",
+      "manufacturer": "Sandvik Coromant",
+      "title": "sandvik qs modules",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Sandvik/sandvik_qs_modules.pdf",
+      "url": null,
+      "content_sha256": "37337a87eea47d523997f4e5e3b1b05aa26b876c4dd65f45a5b527774aa80e00",
+      "file_size_bytes": 590416,
+      "page_count": 7,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 1204
+          },
+          {
+            "pdf_page": 3,
+            "characters": 1299
+          },
+          {
+            "pdf_page": 4,
+            "characters": 713
+          },
+          {
+            "pdf_page": 7,
+            "characters": 465
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "sandvik-sandvik-toc",
+      "source_id": "source-1ba3c8aec01e2c4f",
+      "manufacturer": "Sandvik Coromant",
+      "title": "sandvik toc",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Sandvik/sandvik_toc.pdf",
+      "url": null,
+      "content_sha256": "f54f9678b5b9943e44f1e597e69e8a64b32c996d70d01dbb36ecdec70b12c616",
+      "file_size_bytes": 821412,
+      "page_count": 6,
+      "document_edition": "edition unknown",
+      "edition_evidence": "No edition text recorded; resolve during family review.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 1843
+          },
+          {
+            "pdf_page": 3,
+            "characters": 2413
+          },
+          {
+            "pdf_page": 4,
+            "characters": 32
+          },
+          {
+            "pdf_page": 6,
+            "characters": 738
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "tungaloy-gc-2023-2024-g-a-grade",
+      "source_id": "source-d4794c37838dfc86",
+      "manufacturer": "Tungaloy",
+      "title": "GC 2023 2024 G A Grade",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Tungaloy/GC_2023-2024_G_A_Grade.pdf",
+      "url": null,
+      "content_sha256": "50c989dd1019d7d22f3ce7fcc53714672535f3f6288037fe4548c795db0f72b3",
+      "file_size_bytes": 380670,
+      "page_count": 23,
+      "document_edition": "2023 2024",
+      "edition_evidence": "Year 2023 2024 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 5
+          },
+          {
+            "pdf_page": 3,
+            "characters": 2071
+          },
+          {
+            "pdf_page": 12,
+            "characters": 1470
+          },
+          {
+            "pdf_page": 23,
+            "characters": 17
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "tungaloy-gc-2023-2024-g-b-insert",
+      "source_id": "source-5b434ff4c464fb43",
+      "manufacturer": "Tungaloy",
+      "title": "GC 2023 2024 G B Insert",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Tungaloy/GC_2023-2024_G_B_Insert.pdf",
+      "url": null,
+      "content_sha256": "94285fb306912e2a9346ca6c565e94fd45c546a254272386631439aaa41b6c11",
+      "file_size_bytes": 23337838,
+      "page_count": 234,
+      "document_edition": "2023 2024",
+      "edition_evidence": "Year 2023 2024 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 6
+          },
+          {
+            "pdf_page": 3,
+            "characters": 229
+          },
+          {
+            "pdf_page": 118,
+            "characters": 1799
+          },
+          {
+            "pdf_page": 234,
+            "characters": 22
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "tungaloy-gc-2023-2024-g-c-externaltoolholder",
+      "source_id": "source-4e36cd83e739f3d5",
+      "manufacturer": "Tungaloy",
+      "title": "GC 2023 2024 G C ExternalToolholder",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Tungaloy/GC_2023-2024_G_C_ExternalToolholder.pdf",
+      "url": null,
+      "content_sha256": "546a315f2cd9ff89d0dbe17c05e0933a07f7407e969496fa7de7178ada583ac5",
+      "file_size_bytes": 14570444,
+      "page_count": 120,
+      "document_edition": "2023 2024",
+      "edition_evidence": "Year 2023 2024 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 19
+          },
+          {
+            "pdf_page": 3,
+            "characters": 1001
+          },
+          {
+            "pdf_page": 61,
+            "characters": 1522
+          },
+          {
+            "pdf_page": 120,
+            "characters": 2603
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "tungaloy-gc-2023-2024-g-d-internaltoolholder",
+      "source_id": "source-305ce2b3395560c7",
+      "manufacturer": "Tungaloy",
+      "title": "GC 2023 2024 G D InternalToolholder",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Tungaloy/GC_2023-2024_G_D_InternalToolholder.pdf",
+      "url": null,
+      "content_sha256": "0a6a88a1442179ee3bbd57b60962065e73d5ee7d1abf6e6f52a9b807efb071f9",
+      "file_size_bytes": 7854548,
+      "page_count": 98,
+      "document_edition": "2023 2024",
+      "edition_evidence": "Year 2023 2024 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 19
+          },
+          {
+            "pdf_page": 3,
+            "characters": 819
+          },
+          {
+            "pdf_page": 50,
+            "characters": 1466
+          },
+          {
+            "pdf_page": 98,
+            "characters": 545
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "tungaloy-gc-2023-2024-g-e-threadingtool",
+      "source_id": "source-3707bd3cdec2c97f",
+      "manufacturer": "Tungaloy",
+      "title": "GC 2023 2024 G E ThreadingTool",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Tungaloy/GC_2023-2024_G_E_ThreadingTool.pdf",
+      "url": null,
+      "content_sha256": "734240e95e8ccb4f0896d519e6673ef25c323767c69e4890e1a8fcf0f3fec5b6",
+      "file_size_bytes": 3206454,
+      "page_count": 70,
+      "document_edition": "2023 2024",
+      "edition_evidence": "Year 2023 2024 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 14
+          },
+          {
+            "pdf_page": 3,
+            "characters": 2157
+          },
+          {
+            "pdf_page": 36,
+            "characters": 2132
+          },
+          {
+            "pdf_page": 70,
+            "characters": 22
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "tungaloy-gc-2023-2024-g-f-parting-grooving",
+      "source_id": "source-0c458683e6e371fe",
+      "manufacturer": "Tungaloy",
+      "title": "GC 2023 2024 G F Parting Grooving",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Tungaloy/GC_2023-2024_G_F_Parting-Grooving.pdf",
+      "url": null,
+      "content_sha256": "35b3d8a4c424bcc00b53d037c5a98dc88d7da01f4a6a4aeb80ce4142f7d9d387",
+      "file_size_bytes": 12191541,
+      "page_count": 266,
+      "document_edition": "2023 2024",
+      "edition_evidence": "Year 2023 2024 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 17
+          },
+          {
+            "pdf_page": 3,
+            "characters": 6939
+          },
+          {
+            "pdf_page": 134,
+            "characters": 993
+          },
+          {
+            "pdf_page": 266,
+            "characters": 985
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "tungaloy-gc-2023-2024-g-g-miniaturemachining",
+      "source_id": "source-606d73acdeb1f0f6",
+      "manufacturer": "Tungaloy",
+      "title": "GC 2023 2024 G G MiniatureMachining",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Tungaloy/GC_2023-2024_G_G_MiniatureMachining.pdf",
+      "url": null,
+      "content_sha256": "43756da38412e7cf6367f7af716aca64e55226c6be339617afc5d72632d8e01b",
+      "file_size_bytes": 12376723,
+      "page_count": 195,
+      "document_edition": "2023 2024",
+      "edition_evidence": "Year 2023 2024 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 19
+          },
+          {
+            "pdf_page": 3,
+            "characters": 1226
+          },
+          {
+            "pdf_page": 98,
+            "characters": 2077
+          },
+          {
+            "pdf_page": 195,
+            "characters": 181
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "tungaloy-gc-2023-2024-g-m-turning-grooving-alphanumericindex",
+      "source_id": "source-7d8a560f79a56595",
+      "manufacturer": "Tungaloy",
+      "title": "GC 2023 2024 G M Turning Grooving AlphanumericIndex",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Tungaloy/GC_2023-2024_G_M_Turning_Grooving_AlphanumericIndex.pdf",
+      "url": null,
+      "content_sha256": "cff2bae3157f5af557e50a25050e041b343c7c23aea6e23f3e4a4c12ed0cbe26",
+      "file_size_bytes": 231769,
+      "page_count": 14,
+      "document_edition": "2023 2024",
+      "edition_evidence": "Year 2023 2024 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 4346
+          },
+          {
+            "pdf_page": 3,
+            "characters": 8794
+          },
+          {
+            "pdf_page": 8,
+            "characters": 7874
+          },
+          {
+            "pdf_page": 14,
+            "characters": 4553
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    },
+    {
+      "catalog_id": "tungaloy-gc-2023-2024-us-turning-grooving",
+      "source_id": "source-c0f932a24b73a490",
+      "manufacturer": "Tungaloy",
+      "title": "GC 2023 2024 US Turning Grooving",
+      "source_type": "manufacturer_catalog",
+      "local_path": "catalogs/Tungaloy/GC_2023-2024_US_Turning-Grooving.pdf",
+      "url": null,
+      "content_sha256": "79d8f907cdaf0c54c17cc84a854c5c62b886621b08da9f806d0ed2fd1ee98554",
+      "file_size_bytes": 50350172,
+      "page_count": 1036,
+      "document_edition": "2023 2024",
+      "edition_evidence": "Year 2023 2024 recorded from registry or filename.",
+      "retrieved_at": "2026-07-21",
+      "text_layer": {
+        "status": "usable",
+        "samples": [
+          {
+            "pdf_page": 1,
+            "characters": 30
+          },
+          {
+            "pdf_page": 3,
+            "characters": 286
+          },
+          {
+            "pdf_page": 519,
+            "characters": 1856
+          },
+          {
+            "pdf_page": 1036,
+            "characters": 711
+          }
+        ]
+      },
+      "review_status": "needs_review",
+      "duplicate_paths": []
+    }
+  ]
+}

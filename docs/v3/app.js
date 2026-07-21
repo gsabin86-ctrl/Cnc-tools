@@ -2,7 +2,7 @@
   'use strict'
 
   const PAGE_SIZE = 100
-  const STATIC_VERSION = '3.3.0-shell-2'
+  const STATIC_VERSION = '3.4.0-shell-1'
   const MATERIAL_NAMES = {
     P: 'Steel', M: 'Stainless steel', K: 'Cast iron', N: 'Non-ferrous',
     S: 'Heat-resistant alloys', H: 'Hardened materials', O: 'Other', unknown: 'Unknown'
@@ -20,7 +20,11 @@
     catalog_claim: 'Catalog claim',
     manufacturer_claim: 'Manufacturer claim',
     unverified: 'Unverified',
-    inferred: 'Inferred'
+    inferred: 'Inferred',
+    pending: 'Pending review',
+    verified: 'Human reviewed',
+    quarantined: 'Quarantined',
+    superseded: 'Superseded'
   }
   const STATUS_RANK = {
     manufacturer_verified: 5, catalog_verified: 4, shop_verified: 3,
@@ -32,6 +36,8 @@
     filtered: [],
     visible: PAGE_SIZE,
     selectedId: null,
+    selectedGrade: null,
+    selectedCondition: null,
     details: null,
     detailsPromise: null,
     toolMap: new Map(),
@@ -131,6 +137,8 @@
     for (const [name, element] of Object.entries(fields)) {
       if (params.has(name)) element.value = params.get(name)
     }
+    state.selectedGrade = params.get('grade') || null
+    state.selectedCondition = params.get('condition') || null
     return decodeURIComponent(location.hash.replace(/^#tool=/, '')) || null
   }
 
@@ -143,6 +151,8 @@
       evidence: elements.evidence.value, cutting: elements.cutting.value
     }
     for (const [name, value] of Object.entries(values)) if (value) params.set(name, value)
+    if (state.selectedGrade) params.set('grade', state.selectedGrade)
+    if (state.selectedCondition) params.set('condition', state.selectedCondition)
     const query = params.toString()
     const hash = selected ? `#tool=${encodeURIComponent(selected)}` : ''
     const url = `${location.pathname}${query ? `?${query}` : ''}${hash}`
@@ -239,10 +249,13 @@
 
   function rowMarkup(tool) {
     const groups = tool.material_groups.slice(0, 4).map(group => `<span class="material-chip" title="${escapeHtml(MATERIAL_NAMES[group] || group)}">${escapeHtml(group)}</span>`).join('')
+    const reviewBadge = tool.review_status === 'quarantined'
+      ? badge('quarantined')
+      : tool.review_status === 'verified' ? badge('verified') : ''
     return `<button class="tool-row${tool.id === state.selectedId ? ' selected' : ''}" type="button" data-tool-id="${escapeHtml(tool.id)}" aria-pressed="${tool.id === state.selectedId}">
       <span class="tool-main"><strong>${escapeHtml(tool.part_number)}</strong><small>${escapeHtml(tool.description)}</small></span>
       <span class="row-maker">${escapeHtml(tool.manufacturer)}</span>
-      <span class="row-meta">${badge(tool.verification_status)}<span class="badge">${escapeHtml(humanize(tool.component_type))}</span>${groups}${tool.has_cutting_data ? '<span class="badge catalog-verified">Cutting data</span>' : ''}</span>
+      <span class="row-meta">${reviewBadge}${badge(tool.verification_status)}<span class="badge">${escapeHtml(humanize(tool.component_type))}</span>${groups}${tool.has_cutting_data ? '<span class="badge catalog-verified">Cutting data</span>' : ''}</span>
     </button>`
   }
 
@@ -284,8 +297,12 @@
     return state.detailsPromise
   }
 
-  async function selectTool(id, { push = true, scroll = true } = {}) {
+  async function selectTool(id, { push = true, scroll = true, preserveDetailFilters = false } = {}) {
     if (!state.tools.some(tool => tool.id === id)) return
+    if (state.selectedId !== id && !preserveDetailFilters) {
+      state.selectedGrade = null
+      state.selectedCondition = null
+    }
     state.selectedId = id
     renderList()
     elements.detail.classList.add('open')
@@ -304,6 +321,8 @@
 
   function closeDetail({ push = true } = {}) {
     state.selectedId = null
+    state.selectedGrade = null
+    state.selectedCondition = null
     elements.detail.classList.remove('open')
     elements.detail.setAttribute('aria-hidden', 'true')
     document.body.classList.remove('detail-open')
@@ -371,13 +390,59 @@
     return [item.source_page_ref, item.source_table_ref, item.reviewer && `reviewed by ${item.reviewer}`, item.reviewed_at].filter(Boolean).join(' · ')
   }
 
+  function gradeOptions(tool) {
+    const bestByCode = new Map()
+    for (const option of tool.grade_options || []) {
+      const current = bestByCode.get(option.code)
+      if (!current || (STATUS_RANK[option.verification_status] || 0) > (STATUS_RANK[current.verification_status] || 0)) {
+        bestByCode.set(option.code, option)
+      }
+    }
+    for (const profile of tool.cutting_data || []) {
+      if (profile.source_grade && !bestByCode.has(profile.source_grade)) {
+        bestByCode.set(profile.source_grade, { code: profile.source_grade, verification_status: profile.verification_status })
+      }
+    }
+    return [...bestByCode.values()].sort((a, b) =>
+      Number(Boolean(b.is_primary)) - Number(Boolean(a.is_primary)) || a.code.localeCompare(b.code))
+  }
+
+  function detailSelectors(tool) {
+    const grades = gradeOptions(tool)
+    const conditions = unique((tool.cutting_data || []).map(profile => profile.cut_condition)).sort()
+    if (state.selectedGrade && !grades.some(option => option.code === state.selectedGrade)) state.selectedGrade = null
+    if (state.selectedCondition && !conditions.includes(state.selectedCondition)) state.selectedCondition = null
+    if (!grades.length && !conditions.length) return ''
+    const gradeSelect = grades.length ? `<label>Grade<select data-detail-grade><option value="">All listed grades</option>${grades.map(option => `<option value="${escapeHtml(option.code)}"${state.selectedGrade === option.code ? ' selected' : ''}>${escapeHtml(option.code)} · ${escapeHtml(statusLabel(option.verification_status))}</option>`).join('')}</select></label>` : ''
+    const conditionSelect = conditions.length ? `<label>Cut condition<select data-detail-condition><option value="">All conditions</option>${conditions.map(condition => `<option value="${escapeHtml(condition)}"${state.selectedCondition === condition ? ' selected' : ''}>${escapeHtml(humanize(condition))}</option>`).join('')}</select></label>` : ''
+    return `<div class="detail-selectors">${gradeSelect}${conditionSelect}</div>`
+  }
+
+  function filteredMaterials(tool) {
+    if (!state.selectedGrade) return tool.materials
+    return tool.materials.filter(item => item.grade_code === state.selectedGrade)
+  }
+
+  function filteredProfiles(tool) {
+    return tool.cutting_data.filter(profile =>
+      (!state.selectedGrade || profile.source_grade === state.selectedGrade) &&
+      (!state.selectedCondition || profile.cut_condition === state.selectedCondition))
+  }
+
   function materialSection(tool) {
-    if (!tool.materials.length) return emptyData('No sourced work-material recommendation', 'Tags and grade descriptions are not promoted to recommendations until the exact manufacturer source is reviewed.')
-    return `<div class="material-list">${tool.materials.map(item => `<article class="material-row">
+    const materials = filteredMaterials(tool)
+    if (!materials.length) return emptyData('No verified work-material recommendation for this selection', 'Tags, legacy material fields, and grade descriptions are never promoted to recommendations without an exact reviewed manufacturer source.')
+    return `<div class="material-list">${materials.map(item => `<article class="material-row">
       <span class="material-chip">ISO ${escapeHtml(item.iso_group)}</span>
-      <p><strong>${escapeHtml(item.name)}</strong><small>${escapeHtml(item.material_subgroup || 'Subgroup not specified')} · ${escapeHtml(humanize(item.suitability))}</small>${auditSummary(item) ? `<small>${escapeHtml(auditSummary(item))}</small>` : ''}${item.notes ? `<small>${escapeHtml(item.notes)}</small>` : ''}</p>
+      <p><strong>${escapeHtml(item.name)}</strong><small>${escapeHtml([item.grade_code, item.material_subgroup || 'Subgroup not specified', humanize(item.suitability)].filter(Boolean).join(' · '))}</small>${auditSummary(item) ? `<small>${escapeHtml(auditSummary(item))}</small>` : ''}${item.notes ? `<small>${escapeHtml(item.notes)}</small>` : ''}</p>
       ${badge(item.verification_status)}
     </article>`).join('')}</div>`
+  }
+
+  function unreviewedMaterialSection(tool) {
+    const claims = tool.unreviewed_material_claims || []
+    if (!claims.length) return ''
+    return `<details class="legacy-claims"><summary>${claims.length} unreviewed legacy material claim${claims.length === 1 ? '' : 's'}</summary><p>These values are retained for audit only. They do not power search filters and are not recommendations.</p><div class="material-list">${claims.map(item => `<article class="material-row"><span class="material-chip">ISO ${escapeHtml(item.iso_group)}</span><p><strong>${escapeHtml(item.name)}</strong><small>${escapeHtml(item.material_subgroup || 'Subgroup not specified')}</small></p>${badge(item.verification_status)}</article>`).join('')}</div></details>`
   }
 
   function convertValue(value, unit, target) {
@@ -412,8 +477,9 @@
   }
 
   function cuttingSection(tool) {
-    if (!tool.cutting_data.length) return emptyData('No manufacturer-verified speeds and feeds', 'Nothing is estimated from a similar insert. Add values only after the exact part, grade, geometry, material subgroup, and source table are reviewed.')
-    return tool.cutting_data.map(profile => `<article class="cutting-profile" data-profile-id="${escapeHtml(profile.id)}">
+    const profiles = filteredProfiles(tool)
+    if (!profiles.length) return emptyData('No manufacturer-verified speeds and feeds for this selection', 'Nothing is estimated from a similar insert. Values appear only after the exact part, grade, geometry, material subgroup, and source table are reviewed.')
+    return profiles.map(profile => `<article class="cutting-profile" data-profile-id="${escapeHtml(profile.id)}">
       <div class="cutting-head"><strong>ISO ${escapeHtml(profile.iso_material_group)}${profile.material_subgroup ? ` · ${escapeHtml(profile.material_subgroup)}` : ''} · ${escapeHtml(humanize(profile.operation_type))}</strong>${badge(profile.verification_status)}</div>
       <p class="cutting-context">${escapeHtml([profile.source_material_label, profile.source_grade, profile.source_chipbreaker, humanize(profile.cut_condition)].filter(Boolean).join(' · '))}</p>
       <div class="cutting-values">
@@ -473,6 +539,8 @@
     const ids = [...tool.source_ids]
     tool.facts.forEach(item => ids.push(...item.source_ids))
     tool.materials.forEach(item => ids.push(...item.source_ids))
+    ;(tool.unreviewed_material_claims || []).forEach(item => ids.push(...item.source_ids))
+    ;(tool.grade_options || []).forEach(item => ids.push(item.source_id))
     tool.cutting_data.forEach(item => ids.push(item.source_id))
     ;[...(state.outgoing.get(tool.id) || []), ...(state.incoming.get(tool.id) || [])].forEach(item => {
       ids.push(item.source_id)
@@ -493,7 +561,9 @@
 
   function factsSection(tool) {
     if (!tool.facts.length) return emptyData('No additional facts', 'No legacy or reviewed fact rows are attached to this tool.')
-    return `<div class="fact-list">${tool.facts.map(fact => `<article class="fact-card"><strong>${escapeHtml(humanize(fact.original_key || fact.key))}</strong><span>${escapeHtml(factValue(fact))}</span>${badge(fact.verification_status)}${auditSummary(fact) ? `<small>${escapeHtml(auditSummary(fact))}</small>` : ''}</article>`).join('')}</div>`
+    const current = `<div class="fact-list">${tool.facts.map(fact => `<article class="fact-card"><strong>${escapeHtml(humanize(fact.original_key || fact.key))}</strong><span>${escapeHtml(factValue(fact))}</span>${badge(fact.verification_status)}${auditSummary(fact) ? `<small>${escapeHtml(auditSummary(fact))}</small>` : ''}</article>`).join('')}</div>`
+    const history = tool.fact_history?.length ? `<details class="audit-history"><summary>${tool.fact_history.length} superseded fact${tool.fact_history.length === 1 ? '' : 's'}</summary><div class="fact-list">${tool.fact_history.map(fact => `<article class="fact-card"><strong>${escapeHtml(humanize(fact.original_key || fact.key))}</strong><span>${escapeHtml(factValue(fact))}</span>${badge(fact.verification_status)}</article>`).join('')}</div></details>` : ''
+    return current + history
   }
 
   function detailSection(title, content, meta = '') {
@@ -504,13 +574,18 @@
     const tool = state.toolMap.get(state.selectedId)
     if (!tool) return
     const relationshipCount = (state.outgoing.get(tool.id)?.length || 0) + (state.incoming.get(tool.id)?.length || 0)
+    const selectors = detailSelectors(tool)
+    const materials = filteredMaterials(tool)
+    const profiles = filteredProfiles(tool)
+    const quarantine = tool.review_status === 'quarantined' ? `<div class="quarantine-banner"><strong>Quarantined record</strong><p>${escapeHtml(tool.quarantine_reason || 'The exact identity or source support was rejected during review. Recommendations are suppressed.')}</p></div>` : ''
     elements.detail.innerHTML = `
       <div class="mobile-detail-bar"><button class="back-button" type="button" data-close-detail>← Results</button></div>
-      <header class="detail-header"><div class="detail-kicker"><span>${escapeHtml(humanize(tool.component_type))}</span>${badge(tool.verification_status)}</div><h2>${escapeHtml(tool.part_number)}</h2><p class="detail-maker">${escapeHtml(tool.manufacturer)}</p><p class="detail-description">${escapeHtml(tool.description)}</p></header>
+      <header class="detail-header"><div class="detail-kicker"><span>${escapeHtml(humanize(tool.component_type))}</span><span>${tool.review_status === 'verified' ? badge('verified') : tool.review_status === 'quarantined' ? badge('quarantined') : badge(tool.verification_status)}</span></div><h2>${escapeHtml(tool.part_number)}</h2><p class="detail-maker">${escapeHtml(tool.manufacturer)}</p><p class="detail-description">${escapeHtml(tool.description)}</p>${selectors}</header>
+      ${quarantine}
       ${detailSection('Core specifications', specGrid(tool))}
       ${detailSection('Geometry', geometrySection(tool))}
-      ${detailSection('Recommended work materials', materialSection(tool), `${tool.materials.length} records`)}
-      ${detailSection('Speeds and feeds', cuttingSection(tool), `${tool.cutting_data.length} verified`)}
+      ${detailSection('Recommended work materials', materialSection(tool) + unreviewedMaterialSection(tool), `${materials.length} verified`)}
+      ${detailSection('Speeds and feeds', cuttingSection(tool), `${profiles.length} verified`)}
       ${detailSection('Compatibility path', compatibilitySection(tool), `${relationshipCount} claims`)}
       ${detailSection('Sources and audit trail', sourceSection(tool), `${sourceIdsFor(tool).length} sources`)}
       ${detailSection('Additional facts', factsSection(tool), `${tool.facts.length} facts`)}
@@ -563,11 +638,26 @@
       const input = event.target.closest('[data-calc-profile]')
       if (input) calculateProfile(input.dataset.calcProfile, input.value)
     })
+    elements.detail.addEventListener('change', event => {
+      if (event.target.matches('[data-detail-grade]')) {
+        state.selectedGrade = event.target.value || null
+        renderDetail()
+        writeUrl()
+      }
+      if (event.target.matches('[data-detail-condition]')) {
+        state.selectedCondition = event.target.value || null
+        renderDetail()
+        writeUrl()
+      }
+    })
     window.addEventListener('online', setOfflineStatus)
     window.addEventListener('offline', setOfflineStatus)
     window.addEventListener('popstate', () => {
+      const params = new URLSearchParams(location.search)
+      state.selectedGrade = params.get('grade') || null
+      state.selectedCondition = params.get('condition') || null
       const selected = decodeURIComponent(location.hash.replace(/^#tool=/, '')) || null
-      if (selected) selectTool(selected, { push: false, scroll: false })
+      if (selected) selectTool(selected, { push: false, scroll: false, preserveDetailFilters: true })
       else closeDetail({ push: false })
     })
   }
@@ -587,7 +677,7 @@
       const selected = readUrlState()
       applyFilters({ sync: false })
       writeUrl({ selected })
-      if (selected) await selectTool(selected, { push: false })
+      if (selected) await selectTool(selected, { push: false, preserveDetailFilters: true })
       if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
         navigator.serviceWorker.register('./sw.js').catch(() => {})
       }

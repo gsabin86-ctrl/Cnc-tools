@@ -19,13 +19,14 @@ The v3 rebuild lives at `docs/v3/`. On 2026-07-21 the previous hosted page was c
 | Modules | 44 | High-priority compatibility area. |
 | Shanks | 10 | High-priority machine-stack area. |
 | Adapters | 3 | Keep, but require shop-note evidence and typed interfaces. |
-| Sources | 176 normalized references | Retain; improve URL/file/page locators. |
-| Imported and reviewed facts | 12,017 | Retain original keys and values; normalize conservatively. |
-| Fact/source lineage links | 12,288 | Retain the row sources behind every sourced imported fact. |
+| Sources | 210 normalized references | Retain; 34 local catalog documents are now content-hash pinned with edition and page-count metadata. |
+| Imported and reviewed facts | 12,105 | Retain superseded facts as audit history and expose only current facts as specifications. |
+| Fact/source lineage links | 12,384 | Retain the row sources behind every sourced imported fact. |
 | Compatibility candidates | 694 | Keep as claims; none should silently become guaranteed fit. |
 | Compatibility lineage links | 1,200 | Distinguish direct proof, record context, and derivation inputs. |
-| Explicit material recommendations | 344 across 203 tools | Publish with evidence labels. Do not infer from tags. |
+| Material records | 344 across 203 tools | Publish only 17 reviewed recommendations across 12 tools; retain 327 legacy claims across 191 tools in an audit-only section. |
 | Verified cutting profiles | 12 | Publish the completed TopSwiss pilot with its source page, table, and reviewer. |
+| Manufacturer grades | 70 grade entities; 1,348 tool/grade options | Keep base geometry separate from manufacturer grade availability and exact order aliases. |
 | Catalog registry | 48 catalogs; 39 not started, 8 mapped, 1 partially extracted | Extract selectively by value, not wholesale. |
 
 Both original SQLite files and the v3 build pass integrity and foreign-key checks.
@@ -109,6 +110,8 @@ The two pilot parts named in the old guide—Sandvik DNMG 432-PM 4425 and DCGT 3
 
 The first completed review covers 12 exact-match Kennametal TopSwiss inserts. The extracted proposal remains immutable and non-importable by itself; the separate decision ledger records 12 human decisions, 9 of them with corrections, and explicitly authorizes import. A deterministic compiler emits the reviewed build input, and the v3 build verifies both file hashes before publishing 12 `catalog_verified` profiles. Each profile preserves Kennametal's MIN/START/MAX speed values, source units, product and parameter pages, exact ANSI/ISO catalog numbers, grade, geometry, reviewer, and the accepted page-18 source ambiguity.
 
+The next packet contains 25 additional Kennametal TopSwiss inserts matched exactly to the 2024 manufacturer catalog on PDF pages 3 and 6. It proposes identity, dimensions, geometry, and catalog-listed grade options only. It intentionally contains no speeds, feeds, or work-material recommendations. The packet remains non-importable until Greg reviews every row in the local source-page review screen and exports a complete decision ledger.
+
 ## Recommended Sequence
 
 ### Phase 1 — Stable foundation (implemented in v3)
@@ -119,9 +122,9 @@ The first completed review covers 12 exact-match Kennametal TopSwiss inserts. Th
 - Audit data loss, foreign keys, aliases, sources, compatibility shortcuts, materials, and cutting-data coverage.
 - Keep the current root page unchanged while v3 is reviewed.
 
-### Phase 2 — Identity and spec cleanup
+### Phase 2 — Identity and spec cleanup (insert-first campaign active)
 
-- Prioritize holders, modules, shanks, and adapters before importing hundreds more inserts.
+- Review the 1,088 existing inserts manufacturer by manufacturer, in 20–25 row batches; then return to the 134 remaining holders, modules, shanks, adapters, spares, and machine records.
 - Review one manufacturer/family at a time.
 - Establish category-specific field dictionaries and units.
 - Convert placeholders such as “not specified” to missing values.
@@ -163,21 +166,25 @@ The first completed review covers 12 exact-match Kennametal TopSwiss inserts. Th
 ```text
 tools:                         1,222 (1,212 legacy + 10 shop-confirmed stations)
 manufacturers:                     9
-sources:                         177
+sources:                         210
 tool/source links:              1,290
-facts:                         12,057
-fact/source lineage links:     12,328
-material recommendations:        344 (203 tools)
+facts:                         12,105 (current plus superseded history)
+fact/source lineage links:     12,384
+material records:                 344 (17 reviewed; 327 legacy audit claims)
 material/source links:            344
+grade entities:                    70
+tool/grade options:             1,348
 interfaces:                       893
 compatibility claims:             736
 compatibility/source links:      1,289
 review batches:                     1
+review-batch/source links:           1
 shop-input batches:                 1
 reviewed tool tags:               164
 verified cutting profiles:         12
+cutting-profile/source links:       36
 database integrity:                 ok
 foreign-key issues:                  0
 ```
 
-Known work remains visible rather than hidden: three legacy tools have no source, four source records lack a usable locator, 694 legacy compatibility claims need review, and material/cutting-data coverage is incomplete. The ten ECAS-20 station-to-machine records and 32 exact-interface station-fit records are accepted and shop-verified. The 16 mm square stations each accept the four currently source-established 16x16 tools (`DGTR 16B-2D25SH`, `KM16NCM10400`, `KM16RCM1616100HPC`, and `QSM16-N1616`); the 22 mm round stations each accept `B105.0022.02` and `B110.0022.02`. The 16 mm round `B110.0016.02` is deliberately excluded from the square stations.
+Known work remains visible rather than hidden: three legacy tools have no source, four source records lack a usable locator, 694 legacy compatibility claims need review, 191 tools have only unreviewed material claims, and only 12 tools currently have approved material/cutting profiles. The ten ECAS-20 station-to-machine records and 32 exact-interface station-fit records are accepted and shop-verified. The 16 mm square stations each accept the four currently source-established 16x16 tools (`DGTR 16B-2D25SH`, `KM16NCM10400`, `KM16RCM1616100HPC`, and `QSM16-N1616`); the 22 mm round stations each accept `B105.0022.02` and `B110.0022.02`. The 16 mm round `B110.0016.02` is deliberately excluded from the square stations.

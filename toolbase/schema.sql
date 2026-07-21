@@ -7,7 +7,7 @@ CREATE TABLE schema_meta (
 
 INSERT INTO schema_meta (key, value) VALUES
   ('schema_name', 'cnc_toolbase'),
-  ('schema_version', '3.3.0'),
+  ('schema_version', '3.4.0'),
   ('purpose', 'source-backed Swiss CNC tooling catalog and compatibility knowledge base');
 
 CREATE TABLE manufacturers (
@@ -46,6 +46,11 @@ CREATE TABLE tools (
   evidence_status TEXT NOT NULL CHECK (evidence_status IN (
     'unverified', 'legacy_source', 'catalog_source', 'manufacturer_source', 'shop_verified'
   )),
+  review_status TEXT NOT NULL DEFAULT 'pending' CHECK (review_status IN (
+    'pending', 'verified', 'quarantined', 'rejected', 'superseded'
+  )),
+  quarantine_reason TEXT,
+  superseded_by_tool_id TEXT REFERENCES tools(id),
   legacy_mounts_to TEXT,
   legacy_record_json TEXT NOT NULL,
   UNIQUE (manufacturer_id, normalized_part_number)
@@ -97,6 +102,86 @@ CREATE TABLE review_batches (
   source_id TEXT NOT NULL REFERENCES sources(id),
   row_count INTEGER NOT NULL CHECK (row_count > 0)
 );
+
+CREATE TABLE review_batch_sources (
+  review_batch_id TEXT NOT NULL REFERENCES review_batches(id) ON DELETE CASCADE,
+  source_id TEXT NOT NULL REFERENCES sources(id),
+  evidence_role TEXT NOT NULL CHECK (evidence_role IN (
+    'primary_catalog', 'identity', 'grade_application', 'geometry_parameters',
+    'cutting_speed', 'verification'
+  )),
+  content_sha256 TEXT,
+  document_edition TEXT,
+  page_ref TEXT,
+  PRIMARY KEY (review_batch_id, source_id, evidence_role)
+);
+
+CREATE TABLE grades (
+  id TEXT PRIMARY KEY,
+  manufacturer_id TEXT NOT NULL REFERENCES manufacturers(id),
+  code TEXT NOT NULL,
+  normalized_code TEXT NOT NULL,
+  material_class TEXT,
+  coating TEXT,
+  description TEXT,
+  lifecycle_status TEXT NOT NULL DEFAULT 'unknown' CHECK (lifecycle_status IN (
+    'active', 'discontinued', 'obsolete', 'unknown'
+  )),
+  evidence_status TEXT NOT NULL DEFAULT 'unverified' CHECK (evidence_status IN (
+    'unverified', 'imported', 'catalog_claim', 'manufacturer_claim', 'rejected'
+  )),
+  verification_status TEXT NOT NULL DEFAULT 'legacy' CHECK (verification_status IN (
+    'legacy', 'source_located', 'catalog_verified', 'manufacturer_verified', 'rejected'
+  )),
+  source_id TEXT REFERENCES sources(id),
+  source_page_ref TEXT,
+  source_table_ref TEXT,
+  review_batch_id TEXT REFERENCES review_batches(id),
+  reviewer TEXT,
+  reviewed_at TEXT,
+  UNIQUE (manufacturer_id, normalized_code)
+);
+
+CREATE TABLE grade_aliases (
+  grade_id TEXT NOT NULL REFERENCES grades(id) ON DELETE CASCADE,
+  alias TEXT NOT NULL,
+  alias_type TEXT NOT NULL CHECK (alias_type IN (
+    'legacy', 'former_code', 'manufacturer_alias', 'search'
+  )),
+  PRIMARY KEY (grade_id, alias, alias_type)
+);
+
+CREATE TABLE tool_grade_options (
+  id TEXT PRIMARY KEY,
+  tool_id TEXT NOT NULL REFERENCES tools(id) ON DELETE CASCADE,
+  grade_id TEXT NOT NULL REFERENCES grades(id),
+  option_kind TEXT NOT NULL CHECK (option_kind IN (
+    'exact_order_grade', 'available_grade', 'legacy_claim'
+  )),
+  full_order_number TEXT,
+  availability_status TEXT NOT NULL DEFAULT 'unknown' CHECK (availability_status IN (
+    'listed', 'unavailable', 'discontinued', 'unknown'
+  )),
+  is_primary INTEGER NOT NULL DEFAULT 0 CHECK (is_primary IN (0, 1)),
+  verification_status TEXT NOT NULL DEFAULT 'legacy' CHECK (verification_status IN (
+    'legacy', 'source_located', 'catalog_verified', 'manufacturer_verified', 'rejected'
+  )),
+  source_id TEXT REFERENCES sources(id),
+  source_page_ref TEXT,
+  source_table_ref TEXT,
+  source_raw_text TEXT,
+  extraction_method TEXT CHECK (extraction_method IN (
+    'legacy_import', 'manual', 'pdf_table', 'manufacturer_page', 'scripted_import'
+  )),
+  review_batch_id TEXT REFERENCES review_batches(id),
+  reviewer TEXT,
+  reviewed_at TEXT,
+  UNIQUE (tool_id, grade_id, option_kind)
+);
+
+CREATE INDEX idx_tool_grade_tool ON tool_grade_options(tool_id);
+CREATE INDEX idx_tool_grade_grade ON tool_grade_options(grade_id);
+CREATE INDEX idx_tool_grade_verification ON tool_grade_options(verification_status);
 
 CREATE TABLE shop_input_batches (
   id TEXT PRIMARY KEY,
@@ -156,6 +241,8 @@ CREATE TABLE facts (
   review_batch_id TEXT REFERENCES review_batches(id),
   reviewer TEXT,
   reviewed_at TEXT,
+  supersedes_fact_id TEXT REFERENCES facts(id),
+  is_current INTEGER NOT NULL DEFAULT 1 CHECK (is_current IN (0, 1)),
   CHECK (
     (value_text IS NOT NULL) + (value_number IS NOT NULL) +
     (value_boolean IS NOT NULL) + (value_json IS NOT NULL) = 1
@@ -173,6 +260,11 @@ CREATE TABLE fact_sources (
   evidence_role TEXT NOT NULL CHECK (evidence_role IN (
     'legacy_row_source', 'direct_source', 'verification_source'
   )),
+  source_page_ref TEXT,
+  source_printed_page_ref TEXT,
+  source_table_ref TEXT,
+  source_raw_text TEXT,
+  extraction_method TEXT,
   PRIMARY KEY (fact_id, source_id, evidence_role)
 );
 
@@ -186,6 +278,7 @@ CREATE TABLE work_material_groups (
 CREATE TABLE tool_material_recommendations (
   id TEXT PRIMARY KEY,
   tool_id TEXT NOT NULL REFERENCES tools(id) ON DELETE CASCADE,
+  grade_id TEXT REFERENCES grades(id),
   iso_group TEXT NOT NULL REFERENCES work_material_groups(iso_group),
   material_subgroup TEXT,
   suitability TEXT NOT NULL DEFAULT 'recommended' CHECK (suitability IN (
@@ -209,13 +302,19 @@ CREATE TABLE tool_material_recommendations (
   review_batch_id TEXT REFERENCES review_batches(id),
   reviewer TEXT,
   reviewed_at TEXT,
+  supersedes_recommendation_id TEXT REFERENCES tool_material_recommendations(id),
+  is_current INTEGER NOT NULL DEFAULT 1 CHECK (is_current IN (0, 1)),
   notes TEXT,
-  UNIQUE (tool_id, iso_group, material_subgroup)
+  CHECK (grade_id IS NULL OR length(grade_id) > 0)
 );
 
 CREATE INDEX idx_tool_material_tool ON tool_material_recommendations(tool_id);
 CREATE INDEX idx_tool_material_group ON tool_material_recommendations(iso_group, suitability);
 CREATE INDEX idx_tool_material_verification ON tool_material_recommendations(verification_status);
+CREATE UNIQUE INDEX idx_tool_material_current_unique
+  ON tool_material_recommendations(
+    tool_id, ifnull(grade_id, ''), iso_group, ifnull(material_subgroup, '')
+  ) WHERE is_current = 1;
 
 CREATE TABLE tool_material_recommendation_sources (
   recommendation_id TEXT NOT NULL REFERENCES tool_material_recommendations(id) ON DELETE CASCADE,
@@ -223,12 +322,18 @@ CREATE TABLE tool_material_recommendation_sources (
   evidence_role TEXT NOT NULL CHECK (evidence_role IN (
     'legacy_row_source', 'direct_source', 'verification_source'
   )),
+  source_page_ref TEXT,
+  source_printed_page_ref TEXT,
+  source_table_ref TEXT,
+  source_raw_text TEXT,
+  extraction_method TEXT,
   PRIMARY KEY (recommendation_id, source_id, evidence_role)
 );
 
 CREATE TABLE cutting_data_profiles (
   id TEXT PRIMARY KEY,
   tool_id TEXT NOT NULL REFERENCES tools(id) ON DELETE CASCADE,
+  grade_id TEXT REFERENCES grades(id),
   source_id TEXT NOT NULL REFERENCES sources(id),
   source_part_number TEXT NOT NULL,
   source_grade TEXT,
@@ -284,6 +389,21 @@ CREATE INDEX idx_cutting_data_tool ON cutting_data_profiles(tool_id);
 CREATE INDEX idx_cutting_data_material ON cutting_data_profiles(iso_material_group, material_subgroup);
 CREATE INDEX idx_cutting_data_operation ON cutting_data_profiles(operation_type);
 CREATE INDEX idx_cutting_data_status ON cutting_data_profiles(verification_status);
+
+CREATE TABLE cutting_data_profile_sources (
+  profile_id TEXT NOT NULL REFERENCES cutting_data_profiles(id) ON DELETE CASCADE,
+  source_id TEXT NOT NULL REFERENCES sources(id),
+  evidence_role TEXT NOT NULL CHECK (evidence_role IN (
+    'identity', 'grade_application', 'geometry_parameters', 'cutting_speed',
+    'verification'
+  )),
+  source_page_ref TEXT,
+  source_printed_page_ref TEXT,
+  source_table_ref TEXT,
+  source_raw_text TEXT,
+  extraction_method TEXT,
+  PRIMARY KEY (profile_id, source_id, evidence_role)
+);
 
 CREATE TABLE interfaces (
   id TEXT PRIMARY KEY,

@@ -75,6 +75,13 @@ def normalize_part_number(value: object) -> str:
     return re.sub(r"[^A-Z0-9]", "", str(value or "").upper())
 
 
+def legacy_grade_codes(value: object) -> list[str]:
+    raw = clean_text(value)
+    if not raw or "see catalog" in raw.casefold():
+        return []
+    return [item.strip() for item in raw.split(",") if item.strip()]
+
+
 def public_key(value: object) -> str:
     return re.sub(r"[^A-Z0-9]", "", str(value or "").upper())
 
@@ -237,19 +244,89 @@ def insert_source(connection: sqlite3.Connection, source: dict[str, Any]) -> Non
     }
     connection.execute(
         """
-        INSERT OR IGNORE INTO sources
+        INSERT INTO sources
           (id, source_type, title, url, local_path, page_ref, manufacturer_id,
            raw_reference, content_sha256, document_edition, retrieved_at, notes)
         VALUES
           (:id, :source_type, :title, :url, :local_path, :page_ref, :manufacturer_id,
            :raw_reference, :content_sha256, :document_edition, :retrieved_at, :notes)
+        ON CONFLICT(id) DO UPDATE SET
+          title=CASE WHEN excluded.content_sha256 IS NOT NULL THEN excluded.title ELSE sources.title END,
+          url=coalesce(excluded.url, sources.url),
+          local_path=coalesce(excluded.local_path, sources.local_path),
+          page_ref=coalesce(excluded.page_ref, sources.page_ref),
+          content_sha256=coalesce(excluded.content_sha256, sources.content_sha256),
+          document_edition=coalesce(excluded.document_edition, sources.document_edition),
+          retrieved_at=coalesce(excluded.retrieved_at, sources.retrieved_at),
+          notes=coalesce(excluded.notes, sources.notes)
         """,
         payload,
     )
 
 
+def insert_legacy_grade_options(
+    connection: sqlite3.Connection,
+    tool_id: str,
+    manufacturer_id: str,
+    raw_grade: object,
+    source_records: list[dict[str, Any]],
+) -> None:
+    codes = legacy_grade_codes(raw_grade)
+    source = source_records[0] if len(source_records) == 1 else None
+    verification = "source_located" if source_records else "legacy"
+    for code in codes:
+        normalized = normalize_part_number(code)
+        if not normalized:
+            continue
+        grade_id = stable_id("grade", manufacturer_id, normalized)
+        connection.execute(
+            """
+            INSERT OR IGNORE INTO grades (
+              id, manufacturer_id, code, normalized_code, evidence_status,
+              verification_status, source_id, source_page_ref
+            ) VALUES (?, ?, ?, ?, 'imported', ?, ?, ?)
+            """,
+            (
+                grade_id,
+                manufacturer_id,
+                code,
+                normalized,
+                verification,
+                source["id"] if source else None,
+                source.get("page_ref") if source else None,
+            ),
+        )
+        connection.execute(
+            """
+            INSERT OR IGNORE INTO tool_grade_options (
+              id, tool_id, grade_id, option_kind, availability_status, is_primary,
+              verification_status, source_id, source_page_ref, extraction_method
+            ) VALUES (?, ?, ?, 'legacy_claim', 'unknown', ?, ?, ?, ?, 'legacy_import')
+            """,
+            (
+                stable_id("tool-grade", tool_id, grade_id, "legacy_claim"),
+                tool_id,
+                grade_id,
+                int(len(codes) == 1),
+                verification,
+                source["id"] if source else None,
+                source.get("page_ref") if source else None,
+            ),
+        )
+
+
 def file_sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def load_source_documents(data_dir: Path) -> list[dict[str, Any]]:
+    path = data_dir / "source_documents.json"
+    if not path.is_file():
+        return []
+    payload = load_json(path)
+    if payload.get("schema_version") != 1 or not isinstance(payload.get("documents"), list):
+        raise ValueError(f"{path}: unsupported source-document manifest")
+    return payload["documents"]
 
 
 def load_reviewed_imports(data_dir: Path) -> list[tuple[Path, dict[str, Any]]]:
@@ -259,9 +336,11 @@ def load_reviewed_imports(data_dir: Path) -> list[tuple[Path, dict[str, Any]]]:
     packets: list[tuple[Path, dict[str, Any]]] = []
     for path in sorted(import_dir.glob("*.json"), key=lambda item: item.name.casefold()):
         packet = load_json(path)
-        if packet.get("schema_version") != 1:
+        packet_version = packet.get("schema_version")
+        if packet_version not in {1, 2}:
             raise ValueError(f"{path}: unsupported reviewed-import schema")
-        if packet.get("row_count") != len(packet.get("rows") or []):
+        expected_rows = len(packet.get("rows") or []) + len(packet.get("quarantined_rows") or [])
+        if packet.get("row_count") != expected_rows:
             raise ValueError(f"{path}: reviewed row count does not match")
         proposal_path = (ROOT.parent / str(packet.get("proposal_path") or "")).resolve()
         ledger_path = (ROOT.parent / str(packet.get("review_ledger_path") or "")).resolve()
@@ -278,11 +357,13 @@ def load_reviewed_imports(data_dir: Path) -> list[tuple[Path, dict[str, Any]]]:
             raise ValueError(f"{path}: ledger proposal id does not match")
         if ledger.get("import_allowed") is not True or ledger.get("status") != "complete":
             raise ValueError(f"{path}: review ledger does not authorize import")
-        if any(
-            item.get("decision") not in {"approved", "approved_with_corrections"}
-            for item in ledger.get("decisions") or []
-        ):
-            raise ValueError(f"{path}: review ledger contains a non-importable decision")
+        allowed_decisions = (
+            {"approved", "approved_with_corrections"}
+            if packet_version == 1
+            else {"approved", "approved_with_corrections", "rejected", "quarantined"}
+        )
+        if any(item.get("decision") not in allowed_decisions for item in ledger.get("decisions") or []):
+            raise ValueError(f"{path}: review ledger contains an incomplete decision")
         packets.append((path, packet))
     return packets
 
@@ -297,10 +378,10 @@ def apply_reviewed_import(
         source = dict(source_record)
         manufacturer = source.pop("manufacturer", None)
         source["manufacturer_id"] = manufacturer_ids.get(manufacturer) if manufacturer else None
-        source["retrieved_at"] = packet["reviewed_at"]
+        source["retrieved_at"] = source.get("retrieved_at") or packet["reviewed_at"]
         if source["id"] == packet["catalog_source_id"]:
             source["content_sha256"] = packet["catalog_sha256"]
-            source["document_edition"] = "2024 copyright edition"
+            source["document_edition"] = source.get("document_edition") or "2024 copyright edition"
         insert_source(connection, source)
 
     batch_id = packet["import_id"]
@@ -325,19 +406,66 @@ def apply_reviewed_import(
             packet["row_count"],
         ),
     )
+    review_sources = packet.get("review_sources") or [
+        {
+            "source_id": packet["catalog_source_id"],
+            "evidence_role": "primary_catalog",
+            "content_sha256": packet["catalog_sha256"],
+            "document_edition": next(
+                (
+                    source.get("document_edition")
+                    for source in packet["sources"]
+                    if source["id"] == packet["catalog_source_id"]
+                ),
+                "2024 copyright edition",
+            ),
+            "page_ref": next(
+                (
+                    source.get("page_ref")
+                    for source in packet["sources"]
+                    if source["id"] == packet["catalog_source_id"]
+                ),
+                None,
+            ),
+        }
+    ]
+    for review_source in review_sources:
+        connection.execute(
+            """
+            INSERT INTO review_batch_sources (
+              review_batch_id, source_id, evidence_role, content_sha256,
+              document_edition, page_ref
+            ) VALUES (?, ?, ?, ?, ?, ?)
+            """,
+            (
+                batch_id,
+                review_source["source_id"],
+                review_source["evidence_role"],
+                review_source.get("content_sha256"),
+                review_source.get("document_edition"),
+                review_source.get("page_ref"),
+            ),
+        )
 
     for row in packet["rows"]:
         tool_id = row["tool_id"]
         primary_profile = (row.get("cutting_profiles") or [{}])[0]
-        row_reviewer = primary_profile.get("reviewer")
-        row_reviewed_at = primary_profile.get("reviewed_at") or packet["reviewed_at"]
-        if connection.execute("SELECT 1 FROM tools WHERE id=?", (tool_id,)).fetchone() is None:
+        row_reviewer = row.get("reviewer") or primary_profile.get("reviewer")
+        row_reviewed_at = (
+            row.get("reviewed_at") or primary_profile.get("reviewed_at") or packet["reviewed_at"]
+        )
+        tool_row = connection.execute(
+            "SELECT manufacturer_id, part_number FROM tools WHERE id=?", (tool_id,)
+        ).fetchone()
+        if tool_row is None:
             raise ValueError(f"{packet_path}: reviewed tool is missing: {tool_id}")
+        tool_manufacturer_id, tool_part_number = tool_row
         updates = row["tool_updates"]
         connection.execute(
             """
             UPDATE tools
-            SET description=coalesce(?, description), geometry=?, lifecycle_status=?, evidence_status=?
+            SET description=coalesce(?, description), geometry=?, lifecycle_status=?,
+                evidence_status=?, review_status='verified', quarantine_reason=NULL
             WHERE id=?
             """,
             (
@@ -348,6 +476,127 @@ def apply_reviewed_import(
                 tool_id,
             ),
         )
+
+        fact_values = {item["fact_key"]: item for item in row.get("facts") or []}
+        grade_ids: dict[str, str] = {}
+        grade_inputs = list(row.get("grade_options") or [])
+        existing_grade_codes = {
+            normalize_part_number(option.get("code")) for option in grade_inputs
+        }
+        for profile in row.get("cutting_profiles") or []:
+            if normalize_part_number(profile.get("source_grade")) in existing_grade_codes:
+                continue
+            grade_inputs.append(
+                {
+                    "code": profile.get("source_grade"),
+                    "option_kind": "exact_order_grade",
+                    "full_order_number": tool_part_number,
+                    "availability_status": "listed",
+                    "is_primary": True,
+                    "verification_status": profile.get("verification_status"),
+                    "source_id": profile.get("source_id"),
+                    "source_page_ref": profile.get("source_page_ref"),
+                    "source_table_ref": profile.get("source_table_ref"),
+                    "source_raw_text": profile.get("source_raw_text"),
+                    "extraction_method": profile.get("extraction_method"),
+                    "reviewer": profile.get("reviewer"),
+                    "reviewed_at": profile.get("reviewed_at"),
+                }
+            )
+        for option in grade_inputs:
+            grade_code = clean_text(option.get("code"))
+            if not grade_code:
+                continue
+            normalized_grade = normalize_part_number(grade_code)
+            grade_id = stable_id("grade", tool_manufacturer_id, normalized_grade)
+            grade_ids[grade_code] = grade_id
+            grade_ids[normalized_grade] = grade_id
+            verified_status = option.get("verification_status") or "catalog_verified"
+            evidence_status = (
+                "manufacturer_claim"
+                if verified_status == "manufacturer_verified"
+                else "catalog_claim"
+            )
+            grade_material = fact_values.get("grade_material") or {}
+            grade_coating = fact_values.get("grade_coating") or {}
+            connection.execute(
+                """
+                INSERT INTO grades (
+                  id, manufacturer_id, code, normalized_code, material_class, coating,
+                  evidence_status, verification_status, source_id, source_page_ref,
+                  source_table_ref, review_batch_id, reviewer, reviewed_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(manufacturer_id, normalized_code) DO UPDATE SET
+                  material_class=coalesce(excluded.material_class, grades.material_class),
+                  coating=coalesce(excluded.coating, grades.coating),
+                  evidence_status=excluded.evidence_status,
+                  verification_status=excluded.verification_status,
+                  source_id=excluded.source_id,
+                  source_page_ref=excluded.source_page_ref,
+                  source_table_ref=excluded.source_table_ref,
+                  review_batch_id=excluded.review_batch_id,
+                  reviewer=excluded.reviewer,
+                  reviewed_at=excluded.reviewed_at
+                """,
+                (
+                    grade_id,
+                    tool_manufacturer_id,
+                    grade_code,
+                    normalized_grade,
+                    option.get("material_class") or grade_material.get("value_text"),
+                    option.get("coating") or grade_coating.get("value_text"),
+                    evidence_status,
+                    verified_status,
+                    option.get("source_id"),
+                    option.get("source_page_ref"),
+                    option.get("source_table_ref"),
+                    batch_id,
+                    option.get("reviewer") or row_reviewer,
+                    option.get("reviewed_at") or row_reviewed_at,
+                ),
+            )
+            option_kind = option.get("option_kind") or "exact_order_grade"
+            connection.execute(
+                f"""
+                INSERT INTO tool_grade_options (
+                  id, tool_id, grade_id, option_kind, full_order_number,
+                  availability_status, is_primary, verification_status, source_id,
+                  source_page_ref, source_table_ref, source_raw_text,
+                  extraction_method, review_batch_id, reviewer, reviewed_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(tool_id, grade_id, option_kind) DO UPDATE SET
+                  full_order_number=excluded.full_order_number,
+                  availability_status=excluded.availability_status,
+                  is_primary=excluded.is_primary,
+                  verification_status=excluded.verification_status,
+                  source_id=excluded.source_id,
+                  source_page_ref=excluded.source_page_ref,
+                  source_table_ref=excluded.source_table_ref,
+                  source_raw_text=excluded.source_raw_text,
+                  extraction_method=excluded.extraction_method,
+                  review_batch_id=excluded.review_batch_id,
+                  reviewer=excluded.reviewer,
+                  reviewed_at=excluded.reviewed_at
+                """,
+                (
+                    stable_id("tool-grade", tool_id, grade_id, option_kind),
+                    tool_id,
+                    grade_id,
+                    option_kind,
+                    option.get("full_order_number") or tool_part_number,
+                    option.get("availability_status") or "listed",
+                    int(bool(option.get("is_primary", True))),
+                    verified_status,
+                    option.get("source_id"),
+                    option.get("source_page_ref"),
+                    option.get("source_table_ref"),
+                    option.get("source_raw_text"),
+                    option.get("extraction_method") or "manual",
+                    batch_id,
+                    option.get("reviewer") or row_reviewer,
+                    option.get("reviewed_at") or row_reviewed_at,
+                ),
+            )
         for alias in row["aliases"]:
             connection.execute(
                 "INSERT OR IGNORE INTO tool_aliases (tool_id, alias, alias_type) VALUES (?, ?, ?)",
@@ -367,8 +616,22 @@ def apply_reviewed_import(
                 (tool_id, tag, packet["catalog_source_id"], batch_id),
             )
 
+        superseded_facts: dict[str, str] = {}
         for fact_key in row["replace_fact_keys"]:
-            connection.execute("DELETE FROM facts WHERE tool_id=? AND fact_key=?", (tool_id, fact_key))
+            existing = connection.execute(
+                """
+                SELECT id FROM facts
+                WHERE tool_id=? AND fact_key=? AND is_current=1
+                ORDER BY verification_status DESC, id LIMIT 1
+                """,
+                (tool_id, fact_key),
+            ).fetchone()
+            if existing:
+                superseded_facts[fact_key] = existing[0]
+                connection.execute(
+                    "UPDATE facts SET is_current=0 WHERE tool_id=? AND fact_key=? AND is_current=1",
+                    (tool_id, fact_key),
+                )
         for item in row["facts"]:
             value_json = item.get("value_json")
             if value_json is not None:
@@ -381,8 +644,9 @@ def apply_reviewed_import(
                   id, tool_id, fact_key, original_key, value_text, value_number,
                   value_boolean, value_json, unit, evidence_status, verification_status,
                   source_id, source_page_ref, source_table_ref, source_raw_text,
-                  extraction_method, review_batch_id, reviewer, reviewed_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                  extraction_method, review_batch_id, reviewer, reviewed_at,
+                  supersedes_fact_id, is_current
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
                 """,
                 (
                     item["id"],
@@ -395,24 +659,16 @@ def apply_reviewed_import(
                     value_json,
                     item.get("unit"),
                     item["evidence_status"],
-                    (
+                    item.get("verification_status") or (
                         "manufacturer_verified"
                         if item["evidence_status"] == "manufacturer_claim"
                         else "catalog_verified"
                     ),
                     item.get("source_id"),
-                    (
-                        primary_profile.get("source_page_ref")
-                        if item.get("source_id") == packet["catalog_source_id"]
-                        else None
-                    ),
-                    (
-                        primary_profile.get("source_table_ref")
-                        if item.get("source_id") == packet["catalog_source_id"]
-                        else None
-                    ),
-                    None,
-                    (
+                    item.get("source_page_ref") or primary_profile.get("source_page_ref"),
+                    item.get("source_table_ref") or primary_profile.get("source_table_ref"),
+                    item.get("source_raw_text"),
+                    item.get("extraction_method") or (
                         "manual"
                         if item.get("source_id") == packet["catalog_source_id"]
                         else "manufacturer_page"
@@ -420,63 +676,71 @@ def apply_reviewed_import(
                     batch_id,
                     row_reviewer,
                     row_reviewed_at,
+                    superseded_facts.get(item["fact_key"]),
                 ),
             )
             for source_id in item["source_ids"]:
                 connection.execute(
                     """
-                    INSERT INTO fact_sources (fact_id, source_id, evidence_role)
-                    VALUES (?, ?, 'direct_source')
+                    INSERT INTO fact_sources (
+                      fact_id, source_id, evidence_role, source_page_ref,
+                      source_table_ref, extraction_method
+                    ) VALUES (?, ?, 'direct_source', ?, ?, ?)
                     """,
-                    (item["id"], source_id),
+                    (
+                        item["id"],
+                        source_id,
+                        item.get("source_page_ref") or primary_profile.get("source_page_ref"),
+                        item.get("source_table_ref") or primary_profile.get("source_table_ref"),
+                        item.get("extraction_method") or primary_profile.get("extraction_method") or "manual",
+                    ),
                 )
 
         if row.get("replace_material_recommendations"):
             connection.execute(
-                "DELETE FROM tool_material_recommendations WHERE tool_id=?", (tool_id,)
+                "UPDATE tool_material_recommendations SET is_current=0 WHERE tool_id=? AND is_current=1",
+                (tool_id,),
             )
         for item in row["material_recommendations"]:
+            recommendation_grade_id = item.get("grade_id") or grade_ids.get(
+                normalize_part_number(item.get("grade_code"))
+            ) or grade_ids.get(primary_profile.get("source_grade"))
             connection.execute(
                 """
                 INSERT INTO tool_material_recommendations (
-                  id, tool_id, iso_group, material_subgroup, suitability,
+                  id, tool_id, grade_id, iso_group, material_subgroup, suitability,
                   evidence_status, verification_status, source_id, source_page_ref,
                   source_table_ref, source_raw_text, extraction_method,
                   review_batch_id, reviewer, reviewed_at, notes
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     item["id"],
                     tool_id,
+                    recommendation_grade_id,
                     item["iso_group"],
                     item.get("material_subgroup"),
                     item["suitability"],
                     item["evidence_status"],
                     (
-                        "manufacturer_verified"
-                        if item["evidence_status"] == "manufacturer_claim"
-                        else "catalog_verified"
+                        item.get("verification_status") or (
+                            "manufacturer_verified"
+                            if item["evidence_status"] == "manufacturer_claim"
+                            else "catalog_verified"
+                        )
                     ),
                     item.get("source_id"),
                     (
-                        primary_profile.get("source_page_ref")
-                        if item.get("source_id") == packet["catalog_source_id"]
-                        else None
+                        item.get("source_page_ref") or primary_profile.get("source_page_ref")
                     ),
                     (
-                        primary_profile.get("source_table_ref")
-                        if item.get("source_id") == packet["catalog_source_id"]
-                        else None
+                        item.get("source_table_ref") or primary_profile.get("source_table_ref")
                     ),
                     (
-                        primary_profile.get("source_raw_text")
-                        if item.get("source_id") == packet["catalog_source_id"]
-                        else None
+                        item.get("source_raw_text") or primary_profile.get("source_raw_text")
                     ),
                     (
-                        primary_profile.get("extraction_method") or "manual"
-                        if item.get("source_id") == packet["catalog_source_id"]
-                        else "manufacturer_page"
+                        item.get("extraction_method") or primary_profile.get("extraction_method") or "manual"
                     ),
                     batch_id,
                     row_reviewer,
@@ -495,10 +759,11 @@ def apply_reviewed_import(
                 )
 
         for profile in row["cutting_profiles"]:
+            profile_grade_id = grade_ids.get(normalize_part_number(profile.get("source_grade")))
             connection.execute(
                 """
                 INSERT INTO cutting_data_profiles (
-                  id, tool_id, source_id, source_part_number, source_grade,
+                  id, tool_id, grade_id, source_id, source_part_number, source_grade,
                   source_geometry, source_chipbreaker, source_material_label,
                   iso_material_group, material_subgroup, operation_type,
                   cut_condition, coolant_condition, surface_speed_min,
@@ -509,12 +774,13 @@ def apply_reviewed_import(
                   verification_status, reviewer, reviewed_at, notes
                 ) VALUES (
                   ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
-                  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+                  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
                 )
                 """,
                 (
                     profile["id"],
                     tool_id,
+                    profile_grade_id,
                     profile["source_id"],
                     profile["source_part_number"],
                     profile.get("source_grade"),
@@ -546,6 +812,46 @@ def apply_reviewed_import(
                     profile.get("notes"),
                 ),
             )
+            evidence_sources = profile.get("evidence_sources") or [
+                {
+                    "source_id": profile["source_id"],
+                    "evidence_role": role,
+                    "source_page_ref": profile.get("source_page_ref"),
+                    "source_table_ref": profile.get("source_table_ref"),
+                    "source_raw_text": profile.get("source_raw_text"),
+                    "extraction_method": profile.get("extraction_method"),
+                }
+                for role in ("identity", "geometry_parameters", "cutting_speed")
+            ]
+            for evidence in evidence_sources:
+                connection.execute(
+                    """
+                    INSERT INTO cutting_data_profile_sources (
+                      profile_id, source_id, evidence_role, source_page_ref,
+                      source_printed_page_ref, source_table_ref, source_raw_text,
+                      extraction_method
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        profile["id"],
+                        evidence["source_id"],
+                        evidence["evidence_role"],
+                        evidence.get("source_page_ref"),
+                        evidence.get("source_printed_page_ref"),
+                        evidence.get("source_table_ref"),
+                        evidence.get("source_raw_text"),
+                        evidence.get("extraction_method"),
+                    ),
+                )
+
+    for quarantined in packet.get("quarantined_rows") or []:
+        connection.execute(
+            """
+            UPDATE tools SET review_status='quarantined', quarantine_reason=?
+            WHERE id=?
+            """,
+            (quarantined["reason"], quarantined["tool_id"]),
+        )
 
 
 def load_shop_inputs(data_dir: Path) -> list[tuple[Path, dict[str, Any]]]:
@@ -1031,6 +1337,7 @@ def build_database(data_dir: Path, db_out: Path) -> dict[str, Any]:
     tools = load_jsonl(data_dir / "tools.jsonl")
     legacy_relationships = load_jsonl(data_dir / "legacy_relationships.jsonl")
     catalog_claims = load_jsonl(data_dir / "catalog_claims.jsonl")
+    source_documents = load_source_documents(data_dir)
     reviewed_imports = load_reviewed_imports(data_dir)
     shop_inputs = load_shop_inputs(data_dir)
 
@@ -1073,6 +1380,9 @@ def build_database(data_dir: Path, db_out: Path) -> dict[str, Any]:
         raw = clean_text(record.get("manufacturer")) or "Unknown"
         canonical_manufacturers.add(manufacturer_aliases.get(raw, raw))
     canonical_manufacturers.add("Unknown")
+    for document in source_documents:
+        raw = clean_text(document.get("manufacturer")) or "Unknown"
+        canonical_manufacturers.add(manufacturer_aliases.get(raw, raw))
 
     manufacturer_ids: dict[str, str] = {}
     used_ids: set[str] = set()
@@ -1094,6 +1404,29 @@ def build_database(data_dir: Path, db_out: Path) -> dict[str, Any]:
         connection.execute(
             "INSERT OR IGNORE INTO manufacturer_aliases (alias, manufacturer_id) VALUES (?, ?)",
             (alias, manufacturer_ids[canonical]),
+        )
+
+    for document in source_documents:
+        manufacturer_raw = clean_text(document.get("manufacturer")) or "Unknown"
+        manufacturer = manufacturer_aliases.get(manufacturer_raw, manufacturer_raw)
+        insert_source(
+            connection,
+            {
+                "id": document["source_id"],
+                "source_type": document.get("source_type") or "manufacturer_catalog",
+                "title": document["title"],
+                "url": document.get("url"),
+                "local_path": document["local_path"],
+                "page_ref": None,
+                "manufacturer_id": manufacturer_ids[manufacturer],
+                "raw_reference": (
+                    f"{document['local_path']} | SHA-256 {document['content_sha256']}"
+                ),
+                "content_sha256": document["content_sha256"],
+                "document_edition": document.get("document_edition"),
+                "retrieved_at": document.get("retrieved_at"),
+                "notes": document.get("edition_evidence"),
+            },
         )
 
     tool_by_public_key: dict[str, str] = {}
@@ -1177,6 +1510,14 @@ def build_database(data_dir: Path, db_out: Path) -> dict[str, Any]:
             )
             source_count_before += 1
         build_source_ids_by_tool[tool_id] = [source["id"] for source in source_records]
+
+        insert_legacy_grade_options(
+            connection,
+            tool_id,
+            manufacturer_id,
+            record.get("grade"),
+            source_records,
+        )
 
         specs = record.get("specs") or {}
         if not isinstance(specs, dict):
@@ -1433,8 +1774,12 @@ def build_database(data_dir: Path, db_out: Path) -> dict[str, Any]:
             "manufacturers",
             "sources",
             "review_batches",
+            "review_batch_sources",
             "shop_input_batches",
             "reviewed_tool_tags",
+            "grades",
+            "grade_aliases",
+            "tool_grade_options",
             "tool_sources",
             "facts",
             "fact_sources",
@@ -1444,19 +1789,21 @@ def build_database(data_dir: Path, db_out: Path) -> dict[str, Any]:
             "tool_material_recommendations",
             "tool_material_recommendation_sources",
             "cutting_data_profiles",
+            "cutting_data_profile_sources",
             "compatibility_claim_sources",
         )
     }
     connection.execute("VACUUM")
     connection.close()
     return {
-        "schema_version": "3.3.0",
+        "schema_version": "3.4.0",
         "seed_manifest_sha256": seed_hash,
         "integrity": integrity,
         "foreign_key_issues": len(foreign_key_issues),
         "counts": counts,
         "source_links_seen": source_count_before,
         "reviewed_imports": len(reviewed_imports),
+        "source_documents": len(source_documents),
         "shop_inputs": len(shop_inputs),
     }
 
@@ -1608,7 +1955,8 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
           t.id, t.part_number, t.normalized_part_number, m.name AS manufacturer,
           t.component_type, t.family, t.tool_type, t.description, t.size,
           t.geometry, t.insert_seat, t.iso_designation, t.grade, t.shape,
-          t.chipbreaker, t.lifecycle_status, t.evidence_status, t.legacy_record_json
+          t.chipbreaker, t.lifecycle_status, t.evidence_status, t.review_status,
+          t.quarantine_reason, t.superseded_by_tool_id, t.legacy_record_json
         FROM tools t
         JOIN manufacturers m ON m.id = t.manufacturer_id
         ORDER BY t.component_type, m.name, t.part_number
@@ -1620,34 +1968,42 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
         "SELECT tool_id, alias FROM tool_aliases ORDER BY tool_id, lower(alias), alias",
     ):
         aliases_by_tool.setdefault(alias_row["tool_id"], []).append(alias_row["alias"])
-    fact_source_ids: dict[str, list[str]] = {}
+    fact_source_refs: dict[str, list[dict[str, Any]]] = {}
     for row in rows_as_dicts(
         connection,
-        "SELECT fact_id, source_id FROM fact_sources ORDER BY fact_id, source_id",
+        """
+        SELECT fact_id, source_id, evidence_role, source_page_ref,
+               source_printed_page_ref, source_table_ref, source_raw_text,
+               extraction_method
+        FROM fact_sources ORDER BY fact_id, evidence_role, source_id
+        """,
     ):
-        fact_source_ids.setdefault(row["fact_id"], []).append(row["source_id"])
+        fact_source_refs.setdefault(row.pop("fact_id"), []).append(row)
 
     facts_by_tool: dict[str, list[dict[str, Any]]] = {}
+    fact_history_by_tool: dict[str, list[dict[str, Any]]] = {}
     for fact in rows_as_dicts(
         connection,
         """
         SELECT id, tool_id, fact_key, original_key, value_text, value_number,
                value_boolean, value_json, unit, evidence_status, verification_status,
                source_id, source_page_ref, source_table_ref, source_raw_text,
-               extraction_method, review_batch_id, reviewer, reviewed_at
+               extraction_method, review_batch_id, reviewer, reviewed_at,
+               supersedes_fact_id, is_current
         FROM facts
         ORDER BY tool_id, fact_key, original_key
         """,
     ):
-        facts_by_tool.setdefault(fact["tool_id"], []).append(
-            {
+        evidence = fact_source_refs.get(fact["id"], [])
+        item = {
                 "key": fact["fact_key"],
                 "original_key": fact["original_key"],
                 "value": fact_display_value(fact),
                 "unit": fact["unit"],
                 "evidence_status": fact["evidence_status"],
                 "verification_status": fact["verification_status"],
-                "source_ids": fact_source_ids.get(fact["id"], []),
+                "source_ids": sorted({ref["source_id"] for ref in evidence}),
+                "evidence": evidence,
                 "source_id": fact["source_id"],
                 "source_page_ref": fact["source_page_ref"],
                 "source_table_ref": fact["source_table_ref"],
@@ -1656,8 +2012,11 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
                 "review_batch_id": fact["review_batch_id"],
                 "reviewer": fact["reviewer"],
                 "reviewed_at": fact["reviewed_at"],
+                "supersedes_fact_id": fact["supersedes_fact_id"],
+                "is_current": bool(fact["is_current"]),
             }
-        )
+        target = facts_by_tool if fact["is_current"] else fact_history_by_tool
+        target.setdefault(fact["tool_id"], []).append(item)
 
     source_ids_by_tool: dict[str, list[str]] = {}
     for row in rows_as_dicts(
@@ -1666,39 +2025,76 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
     ):
         source_ids_by_tool.setdefault(row["tool_id"], []).append(row["source_id"])
 
-    material_source_ids: dict[str, list[str]] = {}
+    material_source_refs: dict[str, list[dict[str, Any]]] = {}
     for row in rows_as_dicts(
         connection,
         """
-        SELECT recommendation_id, source_id
+        SELECT recommendation_id, source_id, evidence_role, source_page_ref,
+               source_printed_page_ref, source_table_ref, source_raw_text,
+               extraction_method
         FROM tool_material_recommendation_sources
         ORDER BY recommendation_id, source_id
         """,
     ):
-        material_source_ids.setdefault(row["recommendation_id"], []).append(row["source_id"])
+        material_source_refs.setdefault(row.pop("recommendation_id"), []).append(row)
 
     materials_by_tool: dict[str, list[dict[str, Any]]] = {}
+    material_history_by_tool: dict[str, list[dict[str, Any]]] = {}
     for row in rows_as_dicts(
         connection,
         """
-        SELECT r.id, r.tool_id, r.iso_group, g.name, r.material_subgroup,
+        SELECT r.id, r.tool_id, r.grade_id, gr.code AS grade_code,
+               r.iso_group, g.name, r.material_subgroup,
                r.suitability, r.evidence_status, r.verification_status,
                r.source_id, r.source_page_ref, r.source_table_ref, r.source_raw_text,
-               r.extraction_method, r.review_batch_id, r.reviewer, r.reviewed_at, r.notes
+               r.extraction_method, r.review_batch_id, r.reviewer, r.reviewed_at,
+               r.supersedes_recommendation_id, r.is_current, r.notes
         FROM tool_material_recommendations r
         JOIN work_material_groups g ON g.iso_group = r.iso_group
+        LEFT JOIN grades gr ON gr.id = r.grade_id
         ORDER BY r.tool_id, g.sort_order, r.material_subgroup
         """,
     ):
         tool_id = row.pop("tool_id")
-        row["source_ids"] = material_source_ids.get(row.pop("id"), [])
-        materials_by_tool.setdefault(tool_id, []).append(row)
+        evidence = material_source_refs.get(row.pop("id"), [])
+        row["source_ids"] = sorted({ref["source_id"] for ref in evidence})
+        row["evidence"] = evidence
+        target = materials_by_tool if row.pop("is_current") else material_history_by_tool
+        target.setdefault(tool_id, []).append(row)
+
+    grade_options_by_tool: dict[str, list[dict[str, Any]]] = {}
+    for row in rows_as_dicts(
+        connection,
+        """
+        SELECT o.id, o.tool_id, o.grade_id, g.code, g.material_class, g.coating,
+               g.description, g.lifecycle_status, o.option_kind, o.full_order_number,
+               o.availability_status, o.is_primary, o.verification_status,
+               o.source_id, o.source_page_ref, o.source_table_ref, o.source_raw_text,
+               o.extraction_method, o.review_batch_id, o.reviewer, o.reviewed_at
+        FROM tool_grade_options o JOIN grades g ON g.id=o.grade_id
+        ORDER BY o.tool_id, lower(g.code), o.option_kind
+        """,
+    ):
+        grade_options_by_tool.setdefault(row.pop("tool_id"), []).append(row)
+
+    cutting_source_refs: dict[str, list[dict[str, Any]]] = {}
+    for row in rows_as_dicts(
+        connection,
+        """
+        SELECT profile_id, source_id, evidence_role, source_page_ref,
+               source_printed_page_ref, source_table_ref, source_raw_text,
+               extraction_method
+        FROM cutting_data_profile_sources
+        ORDER BY profile_id, evidence_role, source_id
+        """,
+    ):
+        cutting_source_refs.setdefault(row.pop("profile_id"), []).append(row)
 
     cutting_data_by_tool: dict[str, list[dict[str, Any]]] = {}
     for row in rows_as_dicts(
         connection,
         """
-        SELECT id, tool_id, source_id, source_part_number, source_grade, source_geometry,
+        SELECT id, tool_id, grade_id, source_id, source_part_number, source_grade, source_geometry,
                source_chipbreaker, source_material_label, iso_material_group,
                material_subgroup, operation_type, cut_condition, coolant_condition,
                surface_speed_min, surface_speed_start, surface_speed_max, surface_speed_unit,
@@ -1711,7 +2107,9 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
         ORDER BY tool_id, iso_material_group, operation_type, id
         """,
     ):
-        cutting_data_by_tool.setdefault(row.pop("tool_id"), []).append(row)
+        tool_id = row.pop("tool_id")
+        row["evidence"] = cutting_source_refs.get(row["id"], [])
+        cutting_data_by_tool.setdefault(tool_id, []).append(row)
 
     reviewed_tags_by_tool: dict[str, list[str]] = {}
     for tag_row in rows_as_dicts(
@@ -1721,14 +2119,35 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
         reviewed_tags_by_tool.setdefault(tag_row["tool_id"], []).append(tag_row["tag"])
 
     tools: list[dict[str, Any]] = []
+    public_verification_statuses = {
+        "catalog_verified",
+        "manufacturer_verified",
+        "shop_verified",
+    }
     for row in tool_rows:
         legacy = json.loads(row.pop("legacy_record_json"))
         row["aliases"] = aliases_by_tool.get(row["id"], [])
         row["tags"] = reviewed_tags_by_tool.get(row["id"], legacy.get("tags") or [])
         row["facts"] = facts_by_tool.get(row["id"], [])
+        row["fact_history"] = fact_history_by_tool.get(row["id"], [])
         row["source_ids"] = source_ids_by_tool.get(row["id"], [])
-        row["materials"] = materials_by_tool.get(row["id"], [])
+        current_materials = materials_by_tool.get(row["id"], [])
+        row["materials"] = [
+            item
+            for item in current_materials
+            if item["verification_status"] in public_verification_statuses
+        ]
+        row["unreviewed_material_claims"] = [
+            item
+            for item in current_materials
+            if item["verification_status"] not in public_verification_statuses
+        ]
+        row["material_history"] = material_history_by_tool.get(row["id"], [])
+        row["grade_options"] = grade_options_by_tool.get(row["id"], [])
         row["cutting_data"] = cutting_data_by_tool.get(row["id"], [])
+        if row["review_status"] in {"quarantined", "rejected", "superseded"}:
+            row["materials"] = []
+            row["cutting_data"] = []
         statuses = [fact["verification_status"] for fact in row["facts"]]
         statuses.extend(item["verification_status"] for item in row["materials"])
         statuses.extend(item["verification_status"] for item in row["cutting_data"])
@@ -1757,6 +2176,19 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
         FROM review_batches ORDER BY reviewed_at, proposal_id
         """,
     )
+    review_batch_source_refs: dict[str, list[dict[str, Any]]] = {}
+    for row in rows_as_dicts(
+        connection,
+        """
+        SELECT review_batch_id, source_id, evidence_role, content_sha256,
+               document_edition, page_ref
+        FROM review_batch_sources
+        ORDER BY review_batch_id, evidence_role, source_id
+        """,
+    ):
+        review_batch_source_refs.setdefault(row.pop("review_batch_id"), []).append(row)
+    for batch in review_batches:
+        batch["sources"] = review_batch_source_refs.get(batch["id"], [])
     shop_input_batches = rows_as_dicts(
         connection,
         """
@@ -1814,7 +2246,13 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
     ).fetchone()[0]
     material_counts = dict(
         connection.execute(
-            "SELECT iso_group, COUNT(*) FROM tool_material_recommendations GROUP BY iso_group ORDER BY iso_group"
+            """
+            SELECT iso_group, COUNT(*) FROM tool_material_recommendations
+            WHERE is_current=1 AND verification_status IN (
+              'catalog_verified', 'manufacturer_verified', 'shop_verified'
+            )
+            GROUP BY iso_group ORDER BY iso_group
+            """
         ).fetchall()
     )
     connection.close()
@@ -1869,6 +2307,7 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
     for tool in tools:
         material_groups = sorted({item["iso_group"] for item in tool["materials"]})
         operations = sorted({item["operation_type"] for item in tool["cutting_data"]})
+        grade_codes = sorted({item["code"] for item in tool["grade_options"] if item.get("code")})
         geometry = tool.get("geometry_display") or {}
         fact_terms = [
             f"{fact['key']} {fact['value']}"
@@ -1887,7 +2326,7 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
                 tool["component_type"], tool["family"], tool["tool_type"],
                 tool["description"], tool["size"], tool["geometry"], tool["insert_seat"],
                 tool["iso_designation"], tool["grade"], tool["shape"], tool["chipbreaker"],
-                *(tool["tags"] or []), *material_groups, *operations, *fact_terms,
+                *(tool["tags"] or []), *material_groups, *operations, *grade_codes, *fact_terms,
             )
             if value
         ).casefold()
@@ -1904,12 +2343,15 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
                 "description": tool["description"],
                 "size": tool["size"],
                 "grade": tool["grade"],
+                "grade_codes": grade_codes,
                 "chipbreaker": tool["chipbreaker"],
                 "geometry": tool["geometry"],
                 "geometry_shape": geometry.get("shape_name"),
                 "material_groups": material_groups,
                 "operation_types": operations,
                 "verification_status": tool["verification_status"],
+                "review_status": tool["review_status"],
+                "quarantine_reason": tool["quarantine_reason"],
                 "has_cutting_data": bool(tool["cutting_data"]),
                 "source_count": len(set(tool["source_ids"])),
                 "search_text": search_text,

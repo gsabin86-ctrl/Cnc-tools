@@ -1,0 +1,238 @@
+{
+  "schema_version": 2,
+  "review_id": "kennametal-topswiss-identity-batch-01-2026-07-review",
+  "proposal_id": "kennametal-topswiss-identity-batch-01-2026-07",
+  "proposal_path": "toolbase/proposals/kennametal-topswiss-identity-batch-01.json",
+  "proposal_sha256": "0c161fca253d054da11f7624115d61edd844ec68195affadfb2116f72f4816cb",
+  "review_started_at": "2026-07-21",
+  "status": "pending",
+  "review_completed_at": null,
+  "import_allowed": false,
+  "decisions": [
+    {
+      "proposal_row_id": "kenna-id-01-001",
+      "tool_id": "CCGT060201MFFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-002",
+      "tool_id": "CCGT060201MLFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-003",
+      "tool_id": "CCGT060201MRPPS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-004",
+      "tool_id": "CCGT060202MFFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-005",
+      "tool_id": "CCGT060202MLFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-006",
+      "tool_id": "CCGT060202MRPPS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-007",
+      "tool_id": "CCGT09T301MFFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-008",
+      "tool_id": "CCGT09T301MLFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-009",
+      "tool_id": "CCGT09T301MRPPS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-010",
+      "tool_id": "CCGT09T302MFFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-011",
+      "tool_id": "CCGT09T302MLFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-012",
+      "tool_id": "CCGT09T302MRPPS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-013",
+      "tool_id": "CCGT09T304MFFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-014",
+      "tool_id": "CCGT09T304MLFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-015",
+      "tool_id": "CCGT09T304MRPPS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-016",
+      "tool_id": "DCGT070201MFFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-017",
+      "tool_id": "DCGT070201MLFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-018",
+      "tool_id": "DCGT070201MRPPS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-019",
+      "tool_id": "DCGT070202MFFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-020",
+      "tool_id": "DCGT070202MLFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-021",
+      "tool_id": "DCGT070202MRPPS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-022",
+      "tool_id": "DCGT070204MFFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-023",
+      "tool_id": "DCGT070204MLFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-024",
+      "tool_id": "DCGT11T301MFFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    },
+    {
+      "proposal_row_id": "kenna-id-01-025",
+      "tool_id": "DCGT11T301MLFS",
+      "decision": "pending",
+      "reviewer": null,
+      "decided_at": null,
+      "capture_method": "local_review_screen",
+      "notes": null
+    }
+  ]
+}
