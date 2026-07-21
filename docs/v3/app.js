@@ -588,7 +588,7 @@
       writeUrl({ selected })
       if (selected) await selectTool(selected, { push: false })
       if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-        navigator.serviceWorker.register(`./sw.js?v=${encodeURIComponent(state.index.meta.build_hash)}`).catch(() => {})
+        navigator.serviceWorker.register('./sw.js').catch(() => {})
       }
     } catch (error) {
       elements.list.setAttribute('aria-busy', 'false')

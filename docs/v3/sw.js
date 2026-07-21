@@ -1,4 +1,6 @@
-const VERSION = new URL(self.location.href).searchParams.get('v') || 'development'
+// Bump this when the cached application contract changes. Shell and JSON
+// requests still refresh from the network whenever it is available.
+const VERSION = '3.3.0-shell-2'
 const CACHE = `cnc-toolbase-${VERSION}`
 const BASE = new URL('./', self.location.href)
 const PRECACHE = [
@@ -20,13 +22,26 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   const request = event.request
-  if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) return
+  const requestUrl = new URL(request.url)
+  if (request.method !== 'GET' || requestUrl.origin !== self.location.origin) return
   if (request.mode === 'navigate') {
     event.respondWith(fetch(request).then(response => {
       const copy = response.clone()
       caches.open(CACHE).then(cache => cache.put(new URL('./index.html', BASE), copy))
       return response
     }).catch(() => caches.match(new URL('./index.html', BASE))))
+    return
+  }
+  const refreshOnline = requestUrl.pathname.startsWith(BASE.pathname + 'data/') || [
+    new URL('./app.css', BASE).pathname,
+    new URL('./app.js', BASE).pathname,
+    new URL('./manifest.webmanifest', BASE).pathname,
+  ].includes(requestUrl.pathname)
+  if (refreshOnline) {
+    event.respondWith(fetch(request).then(response => {
+      if (response.ok) caches.open(CACHE).then(cache => cache.put(request, response.clone()))
+      return response
+    }).catch(() => caches.match(request)))
     return
   }
   event.respondWith(caches.match(request).then(cached => cached || fetch(request).then(response => {
