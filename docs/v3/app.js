@@ -2,6 +2,7 @@
   'use strict'
 
   const PAGE_SIZE = 100
+  const STATIC_VERSION = '3.3.0-shell-2'
   const MATERIAL_NAMES = {
     P: 'Steel', M: 'Stainless steel', K: 'Cast iron', N: 'Non-ferrous',
     S: 'Heat-resistant alloys', H: 'Hardened materials', O: 'Other', unknown: 'Unknown'
@@ -261,7 +262,7 @@
   async function loadDetails() {
     if (state.details) return state.details
     if (!state.detailsPromise) {
-      state.detailsPromise = fetch('./data/catalog-details.json', { cache: 'no-cache' })
+      state.detailsPromise = fetch(`./data/catalog-details.json?v=${STATIC_VERSION}`, { cache: 'no-cache' })
         .then(response => {
           if (!response.ok) throw new Error(`Detail bundle returned HTTP ${response.status}`)
           return response.json()
@@ -577,7 +578,7 @@
     setOfflineStatus()
     wireEvents()
     try {
-      const response = await fetch('./data/catalog-index.json', { cache: 'no-cache' })
+      const response = await fetch(`./data/catalog-index.json?v=${STATIC_VERSION}`, { cache: 'no-cache' })
       if (!response.ok) throw new Error(`Search index returned HTTP ${response.status}`)
       state.index = await response.json()
       state.tools = state.index.tools
