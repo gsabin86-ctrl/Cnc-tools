@@ -1,0 +1,2900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CncToolBase // CNC Tool Database</title>
+
+    <!-- Preconnect hints — open TCP/TLS to these hosts in parallel during page parse -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&display=swap">
+    <style>
+        /* Google Fonts loaded via <link> tag in <head> for faster discovery */
+
+        :root {
+            --neon-cyan: #00f9ff;
+            --neon-pink: #ff00aa;
+            --neon-purple: #7b2cbf;
+            --neon-green: #39ff14;
+            --header-h: 56px;
+            --sidebar-w: 240px;
+            --search-bar-h: 38px;
+            --ui-font-size: 12px;
+        }
+
+        * { box-sizing: border-box; }
+
+        /* Tailwind replacements — only the 3 classes the markup actually uses */
+        .hidden { display: none !important; }
+        @media (min-width: 640px) {
+            .sm\:flex { display: flex !important; }
+        }
+
+        body {
+            background: #050507;
+            color: #e0e0ff;
+            font-family: 'Share Tech Mono', monospace;
+            background-image:
+                linear-gradient(rgba(0,249,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,249,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            overflow: hidden;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes grid-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        @keyframes glitch {
+            0%   { transform: translate(0); }
+            20%  { transform: translate(-2px, 2px); }
+            40%  { transform: translate(-2px, -2px); }
+            60%  { transform: translate(2px, 2px); }
+            80%  { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        /* ── Header ── */
+        #app-header {
+            flex-shrink: 0;
+            height: var(--header-h);
+            min-height: 40px;
+            max-height: 120px;
+            background: linear-gradient(90deg, #0a0a0f 0%, #111118 100%);
+            border-bottom: 1px solid #00f9ff;
+            box-shadow: 0 0 20px rgba(0,249,255,0.3);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 12px;
+            overflow: hidden;
+            position: relative;
+            z-index: 50;
+            user-select: none;
+        }
+
+        #header-resize-handle {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 5px;
+            cursor: ns-resize;
+            background: transparent;
+            transition: background 0.15s;
+        }
+        #header-resize-handle:hover,
+        #header-resize-handle.dragging { background: rgba(0,249,255,0.35); }
+
+        .header-logo {
+            display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+            min-width: 0;
+        }
+        .header-logo-icon {
+            width: 38px; height: 38px;
+            background:
+                radial-gradient(circle at 30% 25%, rgba(255,255,255,0.28), transparent 24px),
+                linear-gradient(135deg, #00f9ff 0%, #1677ff 42%, #ff00aa 100%);
+            border: 1px solid rgba(0,249,255,0.65);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 0 18px rgba(0,249,255,0.35), inset 0 0 14px rgba(5,5,7,0.42);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-logo-icon::after {
+            content: '';
+            position: absolute;
+            inset: 7px;
+            border: 1px solid rgba(5,5,7,0.72);
+            border-radius: 4px;
+        }
+        .header-logo-icon i {
+            color: #050507;
+            font-size: 17px;
+            position: relative;
+            z-index: 1;
+        }
+        .header-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: 1px;
+            line-height: 1;
+            white-space: nowrap;
+        }
+        .brand-cnc { color: #e0e0ff; text-shadow: 0 0 10px rgba(224,224,255,0.45); }
+        .brand-tool { color: #00f9ff; text-shadow: 0 0 10px #00f9ff, 0 0 18px rgba(0,249,255,0.55); }
+        .brand-base { color: #ff00aa; text-shadow: 0 0 10px #ff00aa, 0 0 18px rgba(255,0,170,0.5); }
+        .header-sub {
+            font-size: 10px; color: #00f9ff; letter-spacing: 1.5px;
+            white-space: nowrap;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+        .header-stats {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 11px; margin-left: auto; flex-shrink: 0;
+        }
+        .stat-pill {
+            background: #111118;
+            border: 1px solid #334155;
+            border-radius: 999px;
+            padding: 3px 10px;
+            display: flex; align-items: center; gap: 6px;
+            white-space: nowrap;
+        }
+        .unit-toggle {
+            display: flex; align-items: center;
+            background: #111118;
+            border: 1px solid #334155;
+            border-radius: 999px;
+            padding: 3px;
+            font-size: 11px; font-weight: 600;
+        }
+        .unit-toggle button {
+            padding: 3px 10px; border-radius: 999px;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        .unit-toggle button.active {
+            background: #00f9ff; color: #050507;
+        }
+        .unit-toggle button:not(.active) {
+            color: #64748b;
+        }
+        .unit-toggle button:not(.active):hover { color: #fff; }
+
+        /* ── Body area ── */
+        #app-body {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ── Sidebar ── */
+        #sidebar {
+            width: var(--sidebar-w);
+            min-width: 36px;
+            max-width: 420px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            background: #0a0a0f;
+            border-right: 1px solid #1e2030;
+            position: relative;
+            overflow: hidden;
+            transition: width 0.2s ease;
+        }
+        #sidebar.collapsed { width: 36px !important; }
+
+        #sidebar-resize-handle {
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 5px;
+            cursor: ew-resize;
+            background: transparent;
+            transition: background 0.15s;
+            z-index: 10;
+        }
+        #sidebar-resize-handle:hover,
+        #sidebar-resize-handle.dragging { background: rgba(0,249,255,0.35); }
+
+        #sidebar-toggle {
+            width: 36px; height: 36px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            color: #00f9ff;
+            border-bottom: 1px solid #1e2030;
+            background: #0d0d12;
+            transition: background 0.15s;
+        }
+        #sidebar-toggle:hover { background: #111118; }
+
+        #sidebar-inner {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 12px 10px 16px 10px;
+            min-width: 200px;
+        }
+
+        #sidebar.collapsed #sidebar-inner { display: none; }
+        #sidebar.collapsed #sidebar-resize-handle { display: none; }
+
+        .filter-group-title {
+            color: #94a3b8; font-size: 10px; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 6px;
+            margin-bottom: 6px; padding: 0 2px;
+        }
+
+        .filter-chip {
+            background: #111118;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            transition: all 0.15s;
+            font-size: calc(var(--ui-font-size, 12px) - 1px);
+            padding: 3px 8px;
+            border-radius: 999px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .filter-chip:hover {
+            border-color: #00f9ff; color: #00f9ff;
+            box-shadow: 0 0 6px rgba(0,249,255,0.3);
+        }
+        .filter-chip.active {
+            background: #00f9ff; color: #050507;
+            border-color: #00f9ff;
+            box-shadow: 0 0 10px #00f9ff;
+            font-weight: 600;
+        }
+
+        /* ── Main content ── */
+        #main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        /* ── Search bar ── */
+        #search-bar {
+            flex-shrink: 0;
+            padding: 8px 12px;
+            background: #050507;
+            border-bottom: 1px solid #1e2030;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .search-wrap {
+            position: relative; flex: 1;
+        }
+        .search-wrap i {
+            position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+            color: #00f9ff; font-size: 13px; pointer-events: none;
+        }
+        #search-input {
+            width: 100%;
+            background: #111118;
+            border: 1px solid #334155;
+            color: #e0e0ff;
+            padding: 7px 12px 7px 34px;
+            border-radius: 8px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: var(--ui-font-size, 12px);
+            height: var(--search-bar-h, 38px);
+            transition: all 0.15s;
+        }
+        #search-input:focus {
+            border-color: #00f9ff;
+            box-shadow: 0 0 12px rgba(0,249,255,0.25);
+            outline: none;
+        }
+        #search-input::placeholder { color: #334155; }
+
+        .results-count {
+            font-size: 11px; color: #64748b; white-space: nowrap;
+        }
+        .results-count span { color: #00f9ff; font-size: 13px; }
+
+        /* ── Table wrapper ── */
+        #table-wrap {
+            flex: 1;
+            overflow: auto;
+        }
+
+        /* scrollbars */
+        * { scrollbar-width: thin; scrollbar-color: #1a1a22 #050507; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0f; }
+        ::-webkit-scrollbar-thumb { background: #1a1a22; border: 1px solid #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f9ff; box-shadow: 0 0 6px rgba(0,249,255,0.5); }
+
+        /* ── Table ── */
+        #tool-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--ui-font-size, 12px);
+        }
+        #tool-table thead th {
+            background: #0d0d12;
+            color: #00f9ff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 10px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+            position: sticky; top: 0; z-index: 5;
+            white-space: nowrap;
+        }
+        #tool-table thead th.center { text-align: center; }
+        #tool-table tbody tr { border-bottom: 1px solid #1a1a22; transition: background 0.1s; }
+        #tool-table tbody tr:hover { background: #0f0f14; }
+        #tool-table tbody td { padding: 7px 10px; vertical-align: middle; }
+        #tool-table tbody td.center { text-align: center; }
+
+        .td-part { font-family: 'Share Tech Mono', monospace; color: #00f9ff; white-space: nowrap; }
+        .td-maker span {
+            background: #7b2cbf22; color: #a98ff5;
+            border: 1px solid #7b2cbf44;
+            border-radius: 4px; padding: 1px 6px; font-size: 11px;
+        }
+        .td-grade { color: #39ff14; font-family: 'Share Tech Mono', monospace; }
+        .td-desc { color: #94a3b8; max-width: 260px; }
+        .td-desc-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        /* type badge */
+        .type-badge {
+            font-size: 10px; border-radius: 4px; padding: 1px 5px;
+            border: 1px solid; white-space: nowrap;
+        }
+        .type-insert  { color: #39ff14; background: rgba(57,255,20,.1);  border-color: rgba(57,255,20,.3); }
+        .type-holder  { color: #ff9900; background: rgba(255,153,0,.1);  border-color: rgba(255,153,0,.3); }
+        .type-module  { color: #d890ff; background: rgba(123,44,191,.1); border-color: rgba(123,44,191,.3); }
+        .type-shank   { color: #fff890; background: rgba(255,248,144,.1);border-color: rgba(255,248,144,.3); }
+        .type-machine { color: #90d8ff; background: rgba(144,216,255,.1);border-color: rgba(144,216,255,.3); }
+        .type-default { color: #94a3b8; background: rgba(148,163,184,.1);border-color: rgba(148,163,184,.3); }
+
+        .verification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            width: max-content;
+            max-width: 100%;
+            border: 1px solid;
+            border-radius: 999px;
+            padding: 2px 7px;
+            font-size: 9px;
+            line-height: 1.2;
+            letter-spacing: 0.7px;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+        .verification-badge i { font-size: 8px; }
+        .verify-manufacturer {
+            color: #39ff14;
+            background: rgba(57,255,20,0.08);
+            border-color: rgba(57,255,20,0.35);
+            box-shadow: 0 0 10px rgba(57,255,20,0.08);
+        }
+        .verify-source {
+            color: #00f9ff;
+            background: rgba(0,249,255,0.07);
+            border-color: rgba(0,249,255,0.3);
+        }
+        .verify-unverified {
+            color: #ff00aa;
+            background: rgba(255,0,170,0.06);
+            border-color: rgba(255,0,170,0.3);
+        }
+
+        /* details button */
+        .btn-details {
+            background: transparent;
+            border: 1px solid #334155;
+            color: #64748b;
+            border-radius: 5px;
+            padding: 3px 8px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        .btn-details:hover {
+            border-color: #00f9ff; color: #00f9ff;
+            box-shadow: 0 0 8px rgba(0,249,255,0.3);
+        }
+        .btn-details.open {
+            background: #00f9ff; color: #050507;
+            border-color: #00f9ff;
+            box-shadow: 0 0 10px #00f9ff;
+        }
+
+        /* expanded detail row */
+        .detail-row td {
+            padding: 0 !important;
+            background: #0d0d14;
+            border-bottom: 1px solid #334155 !important;
+        }
+        .detail-panel {
+            padding: 16px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        @media (min-width: 640px) {
+            .detail-panel { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 900px) {
+            .detail-panel { grid-template-columns: repeat(4, 1fr); }
+        }
+        .detail-panel-wide {
+            grid-column: 1 / -1;
+            background: #111118; border-radius: 8px; padding: 10px 14px;
+            font-size: 12px; color: #c0c0dd; line-height: 1.6;
+        }
+        .detail-cell {
+            background: #111118; border-radius: 8px; padding: 8px 12px;
+        }
+        .detail-cell-label { color: #64748b; font-size: 10px; letter-spacing: 1px; margin-bottom: 3px; }
+        .detail-cell-value { font-family: 'Share Tech Mono', monospace; font-size: 13px; }
+        .detail-actions {
+            grid-column: 1 / -1;
+            display: flex; gap: 8px; align-items: center;
+        }
+
+        .mobile-card-list {
+            display: none;
+            padding: 10px;
+            gap: 10px;
+        }
+        .tool-card {
+            background: rgba(13,13,20,0.94);
+            border: 1px solid #1e2030;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.015);
+        }
+        .tool-card.selected {
+            border-color: rgba(0,249,255,0.54);
+            box-shadow: 0 0 16px rgba(0,249,255,0.12), inset 0 0 0 1px rgba(0,249,255,0.08);
+        }
+        .tool-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .tool-card-part {
+            min-width: 0;
+            color: #00f9ff;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 13px;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+        .tool-card-maker {
+            color: #a98ff5;
+            font-size: 10px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+        .tool-card-desc {
+            color: #94a3b8;
+            font-size: 12px;
+            line-height: 1.45;
+            margin: 8px 0;
+        }
+        .tool-card-meta {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 6px;
+            margin: 8px 0 10px;
+        }
+        .tool-card-meta span {
+            min-width: 0;
+            background: #111118;
+            border: 1px solid #1e2030;
+            border-radius: 6px;
+            padding: 5px 7px;
+            color: #c0c0dd;
+            font-size: 10px;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+        .tool-card-meta b {
+            display: block;
+            color: #64748b;
+            font-size: 9px;
+            font-weight: 400;
+            letter-spacing: 0.8px;
+            margin-bottom: 2px;
+        }
+        .tool-card-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .mobile-detail-panel {
+            display: none;
+            margin-top: 10px;
+            border-top: 1px solid #1e2030;
+            padding-top: 10px;
+        }
+        .mobile-detail-panel.open { display: block; }
+        .mobile-workspace {
+            display: none;
+        }
+        .mobile-panel {
+            display: none;
+        }
+        .mobile-panel.active {
+            display: block;
+        }
+        .mobile-panel-inner {
+            padding: 12px;
+            display: grid;
+            gap: 10px;
+        }
+        .mobile-panel-card {
+            background: rgba(13,13,20,0.94);
+            border: 1px solid #1e2030;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .mobile-panel-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            color: #00f9ff;
+            font-size: 11px;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+        }
+        .mobile-panel-kv {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 8px;
+            padding: 8px 0;
+            border-bottom: 1px solid #1e2030;
+            font-size: 11px;
+        }
+        .mobile-panel-kv:last-child { border-bottom: 0; }
+        .mobile-panel-kv span { color: #64748b; }
+        .mobile-panel-kv strong {
+            color: #e0e0ff;
+            text-align: right;
+            overflow-wrap: anywhere;
+        }
+        .mobile-empty {
+            color: #64748b;
+            font-size: 12px;
+            line-height: 1.55;
+            border: 1px dashed #334155;
+            border-radius: 8px;
+            padding: 16px 12px;
+            text-align: center;
+        }
+        .mobile-bottom-nav {
+            display: none;
+        }
+        .neon-button {
+            background: transparent;
+            border: 1px solid #00f9ff;
+            color: #00f9ff;
+            padding: 5px 14px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.15s;
+            text-transform: uppercase;
+        }
+        .neon-button:hover {
+            background: #00f9ff; color: #050507;
+            box-shadow: 0 0 16px #00f9ff;
+        }
+        .neon-button.pink {
+            border-color: #ff00aa; color: #ff00aa;
+        }
+        .neon-button.pink:hover {
+            background: #ff00aa; color: #fff;
+            box-shadow: 0 0 16px #ff00aa;
+        }
+
+        /* no-results */
+        #no-results {
+            padding: 60px 20px; text-align: center;
+        }
+        #no-results i { font-size: 48px; color: #334155; margin-bottom: 16px; }
+        #no-results p { color: #64748b; }
+
+        /* ── Loading overlay ── */
+        .loading-overlay {
+            position: fixed; inset: 0;
+            background: #050507;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            z-index: 999; gap: 16px;
+        }
+        .loading-overlay.hidden { display: none; }
+        .load-bar { width: 220px; height: 3px; background: #111118; border: 1px solid #334155; border-radius: 2px; overflow: hidden; }
+        .load-bar-fill { height: 100%; background: #00f9ff; box-shadow: 0 0 8px #00f9ff; animation: load-pulse 1.4s ease-in-out infinite; }
+        @keyframes load-pulse { 0%{width:0%} 50%{width:70%} 100%{width:100%} }
+
+        /* ── Toast ── */
+        .toast {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            background: #00f9ff; color: #050507;
+            padding: 8px 20px; border-radius: 999px;
+            font-size: 12px; font-weight: 600;
+            display: flex; align-items: center; gap: 8px;
+            box-shadow: 0 0 20px rgba(0,249,255,0.5);
+            z-index: 200;
+            transition: all 0.3s ease;
+        }
+
+        /* ── Firebase Setup Overlay ── */
+        .fb-setup-overlay {
+            position: fixed; inset: 0;
+            background: rgba(5,5,7,0.95);
+            backdrop-filter: blur(8px);
+            display: none; align-items: center; justify-content: center;
+            z-index: 700; padding: 20px;
+        }
+        .fb-setup-modal {
+            background: #0d0d14;
+            border: 1px solid #7b2cbf;
+            box-shadow: 0 0 60px rgba(123,44,191,0.25);
+            border-radius: 14px; padding: 30px;
+            width: 580px; max-width: 96vw;
+            max-height: 92vh; overflow-y: auto;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        .fb-setup-step {
+            display: flex; gap: 10px; margin-bottom: 9px;
+            font-size: 11px; color: #94a3b8; align-items: baseline;
+        }
+        .fb-setup-step-num { color: #a98ff5; font-weight: 700; flex-shrink: 0; }
+        .fb-config-textarea {
+            width: 100%; height: 148px;
+            background: #111118; border: 1px solid #334155;
+            color: #e0e0ff; padding: 12px; border-radius: 8px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 11px; resize: vertical; line-height: 1.6;
+            transition: border-color 0.15s;
+        }
+        .fb-config-textarea:focus { border-color: #7b2cbf; outline: none; box-shadow: 0 0 10px rgba(123,44,191,0.2); }
+        .fb-config-textarea::placeholder { color: #2a3040; }
+        .fb-connect-btn {
+            flex: 1; background: #7b2cbf; border: 1px solid #7b2cbf;
+            color: #fff; padding: 10px; border-radius: 6px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 11px; letter-spacing: 1px;
+            cursor: pointer; transition: all 0.15s; font-weight: 600;
+        }
+        .fb-connect-btn:hover { box-shadow: 0 0 20px #7b2cbf; }
+        .fb-status-btn {
+            background: transparent; border: 1px solid #7b2cbf44;
+            color: #7b2cbf; border-radius: 999px;
+            padding: 3px 10px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 10px; letter-spacing: 1px;
+            cursor: pointer; transition: all 0.15s; white-space: nowrap;
+        }
+        .fb-status-btn:hover { border-color: #7b2cbf; box-shadow: 0 0 8px rgba(123,44,191,0.3); }
+        .fb-status-btn.connected { color: #39ff14; border-color: #39ff1444; }
+        .fb-status-btn.connected:hover { border-color: #39ff14; box-shadow: 0 0 8px rgba(57,255,20,0.3); }
+
+        /* ── Replies ── */
+        .replies-container {
+            margin-top: 8px; margin-left: 16px;
+            border-left: 2px solid #1e2030; padding-left: 12px;
+        }
+        .reply-item { margin-bottom: 8px; }
+        .reply-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; flex-wrap: wrap; }
+        .reply-username { color: #a98ff5; font-size: 11px; font-weight: 600; }
+        .reply-comment { color: #94a3b8; font-size: 11px; line-height: 1.5; }
+        .reply-input {
+            flex: 1; background: #111118; border: 1px solid #334155;
+            color: #e0e0ff; padding: 6px 10px; border-radius: 6px;
+            font-family: 'Share Tech Mono', monospace; font-size: 11px;
+            min-width: 0; transition: border-color 0.15s;
+        }
+        .reply-input:focus { border-color: #00f9ff; outline: none; box-shadow: 0 0 8px rgba(0,249,255,0.15); }
+        .reply-input::placeholder { color: #2a3040; }
+        .review-delete-btn {
+            background: none; border: none; color: #334155;
+            cursor: pointer; font-family: 'Share Tech Mono', monospace;
+            font-size: 9px; letter-spacing: 1px; padding: 0;
+            transition: color 0.15s; margin-left: auto;
+        }
+        .review-delete-btn:hover { color: #ff00aa; }
+        .review-reply-btn {
+            background: none; border: none; color: #334155;
+            cursor: pointer; font-family: 'Share Tech Mono', monospace;
+            font-size: 9px; letter-spacing: 1px; padding: 0;
+            transition: color 0.15s;
+        }
+        .review-reply-btn:hover { color: #00f9ff; }
+
+        /* ── Auth Modal ── */
+        .auth-modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(5,5,7,0.88);
+            backdrop-filter: blur(5px);
+            display: none; align-items: center; justify-content: center;
+            z-index: 600;
+        }
+        .auth-modal {
+            background: #0d0d14;
+            border: 1px solid #00f9ff;
+            box-shadow: 0 0 50px rgba(0,249,255,0.2), 0 0 100px rgba(0,249,255,0.05);
+            border-radius: 14px;
+            padding: 28px 32px 24px;
+            width: 360px; max-width: 92vw;
+            font-family: 'Share Tech Mono', monospace;
+            position: relative;
+        }
+        .auth-modal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px; letter-spacing: 2px;
+            color: #00f9ff; text-shadow: 0 0 10px #00f9ff;
+            margin-bottom: 18px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .auth-tabs {
+            display: flex;
+            border: 1px solid #334155;
+            border-radius: 8px; overflow: hidden;
+            margin-bottom: 18px;
+        }
+        .auth-tab {
+            flex: 1; padding: 7px;
+            background: transparent; border: none;
+            color: #64748b;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 11px; letter-spacing: 1px;
+            cursor: pointer; transition: all 0.15s;
+        }
+        .auth-tab.active { background: #00f9ff; color: #050507; font-weight: 700; }
+        .auth-input {
+            width: 100%;
+            background: #111118;
+            border: 1px solid #334155;
+            color: #e0e0ff;
+            padding: 9px 12px;
+            border-radius: 6px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px; margin-bottom: 10px;
+            transition: border-color 0.15s;
+        }
+        .auth-input:focus { border-color: #00f9ff; outline: none; box-shadow: 0 0 10px rgba(0,249,255,0.2); }
+        .auth-input::placeholder { color: #2a3040; }
+        .auth-form { display: flex; flex-direction: column; }
+        .auth-submit {
+            background: #00f9ff; color: #050507;
+            border: none; padding: 10px;
+            border-radius: 6px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px; letter-spacing: 1px;
+            cursor: pointer; font-weight: 700;
+            margin-top: 4px; transition: all 0.15s;
+        }
+        .auth-submit:hover { box-shadow: 0 0 20px #00f9ff; }
+        .auth-error {
+            color: #ff00aa; font-size: 11px;
+            margin-bottom: 8px; min-height: 16px;
+            text-align: center; letter-spacing: 0.5px;
+        }
+        .auth-close {
+            background: none; border: none; color: #334155;
+            cursor: pointer; font-size: 18px; padding: 0;
+            line-height: 1; transition: color 0.15s;
+        }
+        .auth-close:hover { color: #ff00aa; }
+
+        /* ── Stars ── */
+        .stars-display { display: flex; align-items: center; gap: 2px; }
+        .stars-display .star { color: #ffd700; font-size: 15px; }
+        .stars-display .star.empty { color: #2a3040; }
+        .star-picker { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+        .star-picker .star { font-size: 24px; color: #2a3040; transition: color 0.1s, text-shadow 0.1s; user-select: none; }
+        .star-picker .star.filled { color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.6); }
+
+        /* ── Detail rating header ── */
+        .detail-rating-header {
+            display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+            border-bottom: 1px solid #1e2030; padding-bottom: 12px; margin-bottom: 4px;
+        }
+        .rating-avg-num {
+            font-size: 34px; font-family: 'Orbitron', sans-serif;
+            color: #ffd700; text-shadow: 0 0 16px rgba(255,215,0,0.4); line-height: 1;
+        }
+        .rating-count { color: #64748b; font-size: 11px; letter-spacing: 0.5px; }
+        .detail-section-title {
+            color: #00f9ff; font-size: 10px; letter-spacing: 2px;
+            border-bottom: 1px solid #1e2030;
+            padding-bottom: 7px; margin-bottom: 10px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        /* ── Reviews ── */
+        .review-item {
+            background: #0a0a0f;
+            border: 1px solid #1e2030;
+            border-radius: 8px; padding: 10px 14px; margin-bottom: 8px;
+        }
+        .review-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; flex-wrap: wrap; }
+        .review-username { color: #00f9ff; font-size: 12px; font-weight: 600; }
+        .review-date { color: #334155; font-size: 10px; }
+        .review-comment { color: #94a3b8; font-size: 12px; line-height: 1.6; }
+        .review-textarea {
+            width: 100%;
+            background: #111118; border: 1px solid #334155;
+            color: #e0e0ff; padding: 10px 12px;
+            border-radius: 6px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px; resize: vertical; min-height: 80px;
+            transition: border-color 0.15s;
+        }
+        .review-textarea:focus { border-color: #00f9ff; outline: none; box-shadow: 0 0 8px rgba(0,249,255,0.2); }
+        .review-textarea::placeholder { color: #2a3040; }
+        .no-reviews { color: #334155; font-size: 11px; text-align: center; padding: 14px 0; letter-spacing: 1px; }
+
+        /* ── Header auth ── */
+        .auth-header-btn {
+            background: transparent; border: 1px solid #334155;
+            color: #64748b; border-radius: 999px;
+            padding: 3px 12px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 10px; letter-spacing: 1px;
+            cursor: pointer; transition: all 0.15s; white-space: nowrap;
+        }
+        .auth-header-btn:hover { border-color: #00f9ff; color: #00f9ff; box-shadow: 0 0 8px rgba(0,249,255,0.3); }
+        .auth-user-chip {
+            display: none; align-items: center; gap: 8px;
+            background: #111118; border: 1px solid #7b2cbf44;
+            border-radius: 999px; padding: 3px 6px 3px 12px;
+        }
+        .auth-username { color: #a98ff5; font-size: 10px; letter-spacing: 1px; }
+        .auth-logout-btn {
+            background: none; border: none; color: #334155;
+            cursor: pointer; font-family: 'Share Tech Mono', monospace;
+            font-size: 9px; letter-spacing: 1px;
+            padding: 2px 8px; border-radius: 999px;
+            transition: all 0.15s;
+        }
+        .auth-logout-btn:hover { color: #ff00aa; background: rgba(255,0,170,0.08); }
+
+        /* ── Spec badge ── */
+        .spec-value { color: #e0e0ff; }
+        .spec-value.highlight { color: #39ff14; }
+
+        /* mobile: sidebar is 36px rail by default, opens as overlay */
+        @media (max-width: 600px) {
+            #app-header {
+                padding: 0 10px;
+                gap: 8px;
+            }
+            .header-logo {
+                gap: 8px;
+            }
+            .header-logo-icon {
+                width: 32px;
+                height: 32px;
+            }
+            .header-logo-icon i { font-size: 14px; }
+            .header-title {
+                font-size: 16px;
+                letter-spacing: 0.5px;
+            }
+            .header-sub {
+                font-size: 9px;
+                letter-spacing: 1px;
+            }
+            .header-stats {
+                gap: 4px;
+            }
+            .unit-toggle button {
+                padding: 3px 7px;
+            }
+            .auth-header-btn {
+                padding: 3px 9px;
+            }
+            #sidebar {
+                width: 36px !important;
+            }
+            /* Hide filter content completely when rail is collapsed */
+            #sidebar:not(.mobile-open) #sidebar-inner {
+                display: none !important;
+            }
+            #sidebar.mobile-open {
+                width: 260px !important;
+                position: absolute;
+                top: 0; bottom: 0; left: 0;
+                z-index: 40;
+                box-shadow: 8px 0 24px rgba(0,0,0,0.75);
+            }
+            #sidebar.mobile-open #sidebar-inner {
+                display: block !important;
+            }
+            #sidebar-backdrop {
+                display: none;
+                position: absolute;
+                top: 0; right: 0; bottom: 0; left: 0;
+                background: rgba(0,0,0,0.55);
+                z-index: 39;
+            }
+            #sidebar-backdrop.show { display: block; }
+        }
+        @media (max-width: 720px) {
+            body {
+                padding-bottom: 64px;
+            }
+            #app-body {
+                min-height: 0;
+            }
+            #main-content.mobile-hidden {
+                display: none;
+            }
+            #search-bar {
+                align-items: stretch;
+                flex-direction: column;
+                gap: 6px;
+                padding: 10px;
+            }
+            #search-input {
+                height: 46px;
+                font-size: 14px;
+                padding-left: 38px;
+            }
+            .search-wrap i {
+                left: 14px;
+                font-size: 14px;
+            }
+            .results-count {
+                align-self: flex-start;
+                padding-left: 2px;
+                font-size: 10px;
+                letter-spacing: 0.8px;
+                text-transform: uppercase;
+            }
+            .results-count span {
+                font-size: 12px;
+            }
+            .mobile-workspace {
+                flex: 1;
+                min-width: 0;
+                overflow: auto;
+                background: rgba(5,5,7,0.72);
+            }
+            .mobile-workspace.active {
+                display: block;
+            }
+            #tool-table { display: none; }
+            .mobile-card-list {
+                display: grid;
+            }
+            #table-wrap {
+                background: rgba(5,5,7,0.72);
+            }
+            .detail-panel {
+                padding: 0;
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .detail-panel-wide,
+            .detail-cell {
+                border-radius: 6px;
+            }
+            .mobile-bottom-nav {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 120;
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1px;
+                padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+                background: rgba(5,5,7,0.96);
+                border-top: 1px solid #1e2030;
+                box-shadow: 0 -8px 24px rgba(0,0,0,0.55);
+                backdrop-filter: blur(10px);
+            }
+            .mobile-tab {
+                min-width: 0;
+                min-height: 46px;
+                border: 1px solid transparent;
+                border-radius: 8px;
+                background: transparent;
+                color: #64748b;
+                font-family: 'Share Tech Mono', monospace;
+                font-size: 9px;
+                letter-spacing: 0.8px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+                text-transform: uppercase;
+                cursor: pointer;
+                position: relative;
+            }
+            .mobile-tab i {
+                font-size: 13px;
+            }
+            .mobile-tab.active {
+                color: #00f9ff;
+                background: rgba(0,249,255,0.08);
+                border-color: rgba(0,249,255,0.34);
+                box-shadow: 0 0 14px rgba(0,249,255,0.12);
+            }
+            .mobile-tab[data-mobile-view="search"].has-filters::after {
+                content: '';
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: #ff00aa;
+                box-shadow: 0 0 8px rgba(255,0,170,0.75);
+                position: absolute;
+                transform: translate(17px, -15px);
+            }
+        }
+        @media (max-width: 430px) {
+            .header-sub { display: none; }
+            .header-title { font-size: 15px; }
+            .tool-card-meta { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── FIREBASE SETUP OVERLAY ── -->
+    <div class="fb-setup-overlay" id="fb-setup-overlay">
+        <div class="fb-setup-modal">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+                <div style="font-family:'Orbitron',sans-serif;font-size:13px;letter-spacing:2px;color:#a98ff5;text-shadow:0 0 10px #7b2cbf;">⚡ FIREBASE SETUP</div>
+                <button onclick="hideFBSetup()" style="background:none;border:none;color:#334155;font-size:18px;cursor:pointer;line-height:1;transition:color 0.15s;" onmouseover="this.style.color='#ff00aa'" onmouseout="this.style.color='#334155'">✕</button>
+            </div>
+            <div style="font-size:11px;color:#64748b;line-height:1.7;margin-bottom:18px;">Connect a free Firebase project to enable <span style="color:#e0e0ff;">cross-device accounts, ratings, reviews, and threaded replies</span>.</div>
+            <div style="margin-bottom:18px;">
+                <div class="fb-setup-step"><span class="fb-setup-step-num">1.</span> Go to <a href="https://console.firebase.google.com" target="_blank" style="color:#00f9ff;text-decoration:none;">console.firebase.google.com</a> and create a project</div>
+                <div class="fb-setup-step"><span class="fb-setup-step-num">2.</span> Click <strong style="color:#e0e0ff;">Add app → Web</strong>, register it, copy the <code style="color:#00f9ff;background:#111118;padding:1px 5px;border-radius:3px;">firebaseConfig</code> object</div>
+                <div class="fb-setup-step"><span class="fb-setup-step-num">3.</span> In the console, enable <strong style="color:#e0e0ff;">Authentication → Email/Password</strong></div>
+                <div class="fb-setup-step"><span class="fb-setup-step-num">4.</span> Enable <strong style="color:#e0e0ff;">Firestore Database</strong> → Start in <em>test mode</em> (30-day open access)</div>
+                <div class="fb-setup-step"><span class="fb-setup-step-num">5.</span> Paste your config JSON below and click Connect:</div>
+            </div>
+            <div id="fb-setup-error" style="color:#ff00aa;font-size:11px;margin-bottom:8px;min-height:16px;letter-spacing:0.5px;"></div>
+            <textarea id="fb-config-input" class="fb-config-textarea"
+                placeholder='{"apiKey":"AIza...","authDomain":"yourapp.firebaseapp.com","projectId":"yourapp","storageBucket":"yourapp.appspot.com","messagingSenderId":"123456","appId":"1:123456:web:abc123"}'></textarea>
+            <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
+                <button class="fb-connect-btn" onclick="saveFBConfig()">⚡ CONNECT FIREBASE</button>
+                <button onclick="hideFBSetup()" style="background:transparent;border:1px solid #334155;color:#64748b;padding:10px 16px;border-radius:6px;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.color='#94a3b8'" onmouseout="this.style.color='#64748b'">SKIP FOR NOW</button>
+                <button onclick="clearFBConfig()" id="fb-clear-btn" style="display:none;background:transparent;border:1px solid #ff00aa44;color:#ff00aa;padding:10px 14px;border-radius:6px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;cursor:pointer;transition:all 0.15s;">DISCONNECT</button>
+            </div>
+            <div style="margin-top:16px;padding-top:14px;border-top:1px solid #1e2030;font-size:10px;color:#334155;line-height:1.7;">
+                Config is stored in this browser's localStorage. For production, update your <a href="https://firebase.google.com/docs/firestore/security/get-started" target="_blank" style="color:#334155;text-decoration:underline;">Firestore Security Rules</a> before going live.
+            </div>
+        </div>
+    </div>
+
+    <!-- ── AUTH MODAL ── -->
+    <div class="auth-modal-overlay" id="auth-modal" onclick="if(event.target===this)hideAuthModal()">
+        <div class="auth-modal">
+            <div class="auth-modal-title">
+                <span>CncToolBase // ACCESS</span>
+                <button class="auth-close" onclick="hideAuthModal()">✕</button>
+            </div>
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="auth-tab-login" onclick="showAuthTab('login')">LOG IN</button>
+                <button class="auth-tab" id="auth-tab-register" onclick="showAuthTab('register')">CREATE ACCOUNT</button>
+            </div>
+            <div id="auth-error" class="auth-error"></div>
+
+            <!-- Login form -->
+            <div id="auth-login-form" class="auth-form">
+                <input class="auth-input" id="login-username" type="text" placeholder="USERNAME" autocomplete="username"
+                    onkeydown="if(event.key==='Enter')submitLogin()">
+                <input class="auth-input" id="login-password" type="password" placeholder="PASSWORD" autocomplete="current-password"
+                    onkeydown="if(event.key==='Enter')submitLogin()">
+                <button class="auth-submit" onclick="submitLogin()">LOG IN</button>
+                <div style="margin-top:12px;text-align:center;font-size:10px;color:#334155;">
+                    NO ACCOUNT? <button onclick="showAuthTab('register')" style="background:none;border:none;color:#00f9ff;font-family:'Share Tech Mono',monospace;font-size:10px;cursor:pointer;letter-spacing:1px;padding:0;">CREATE ONE →</button>
+                </div>
+            </div>
+
+            <!-- Register form -->
+            <div id="auth-register-form" class="auth-form" style="display:none;">
+                <input class="auth-input" id="reg-username" type="text" placeholder="USERNAME (min 3 chars)" autocomplete="username"
+                    onkeydown="if(event.key==='Enter')submitRegister()">
+                <input class="auth-input" id="reg-email" type="email" placeholder="EMAIL (optional)"
+                    onkeydown="if(event.key==='Enter')submitRegister()">
+                <input class="auth-input" id="reg-password" type="password" placeholder="PASSWORD (min 6 chars)" autocomplete="new-password"
+                    onkeydown="if(event.key==='Enter')submitRegister()">
+                <button class="auth-submit" onclick="submitRegister()">CREATE ACCOUNT</button>
+                <div style="margin-top:12px;text-align:center;font-size:10px;color:#334155;">
+                    HAVE AN ACCOUNT? <button onclick="showAuthTab('login')" style="background:none;border:none;color:#00f9ff;font-family:'Share Tech Mono',monospace;font-size:10px;cursor:pointer;letter-spacing:1px;padding:0;">LOG IN →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:22px;letter-spacing:1px;">
+            <span style="color:#e0e0ff;text-shadow:0 0 10px rgba(224,224,255,0.45);">Cnc</span><span style="color:#00f9ff;text-shadow:0 0 10px #00f9ff,0 0 20px rgba(0,249,255,0.55);">Tool</span><span style="color:#ff00aa;text-shadow:0 0 10px #ff00aa,0 0 20px rgba(255,0,170,0.45);">Base</span>
+        </div>
+        <div style="font-size:11px;color:#00f9ff;letter-spacing:2px;">LOADING DATABASE...</div>
+        <div class="load-bar"><div class="load-bar-fill"></div></div>
+        <div style="font-size:10px;color:#64748b;" id="load-status">Fetching db.sqlite</div>
+    </div>
+
+    <!-- ── HEADER ── -->
+    <header id="app-header">
+        <div class="header-logo">
+            <div class="header-logo-icon">
+                <i class="fa-solid fa-microchip"></i>
+            </div>
+            <div>
+                <div class="header-title"><span class="brand-cnc">Cnc</span><span class="brand-tool">Tool</span><span class="brand-base">Base</span></div>
+                <div class="header-sub">Verified CNC Tooling</div>
+            </div>
+        </div>
+
+        <div class="header-stats">
+            <div class="stat-pill hidden sm:flex">
+                <div style="width:7px;height:7px;background:#39ff14;border-radius:50%;animation:load-pulse 2s infinite;"></div>
+                <span style="color:#94a3b8;" id="stat-insert-count">—</span>
+            </div>
+            <div class="stat-pill hidden sm:flex" id="stat-brand-count" style="color:#94a3b8;">—</div>
+            <div class="unit-toggle">
+                <button onclick="setUnit('metric')" id="btn-metric" class="active">MM</button>
+                <button onclick="setUnit('imperial')" id="btn-imperial">IN</button>
+            </div>
+        </div>
+
+        <!-- Firebase connect button (hidden — Firebase disabled for performance) -->
+        <button class="fb-status-btn" id="fb-status-btn" onclick="showFBSetup()" title="Firebase connection" style="display:none;">⚡ CONNECT DB</button>
+
+        <!-- Auth area -->
+        <div style="display:flex;align-items:center;gap:6px;margin-left:8px;flex-shrink:0;">
+            <button class="auth-header-btn" id="auth-login-btn" onclick="showAuthModal()">LOG IN</button>
+            <div class="auth-user-chip" id="auth-user-chip">
+                <i class="fa-solid fa-user" style="color:#a98ff5;font-size:10px;"></i>
+                <span class="auth-username" id="auth-username-label">—</span>
+                <button class="auth-logout-btn" onclick="logout()">SIGN OUT</button>
+            </div>
+        </div>
+
+        <div id="header-resize-handle"></div>
+    </header>
+
+    <!-- ── BODY ── -->
+    <div id="app-body">
+
+        <!-- Mobile-only backdrop behind the filter overlay -->
+        <div id="sidebar-backdrop" onclick="closeSidebarMobile()"></div>
+
+        <!-- ── SIDEBAR ── -->
+        <div id="sidebar">
+            <!-- collapse toggle -->
+            <div id="sidebar-toggle" title="Toggle filters" onclick="toggleSidebar()">
+                <i class="fa-solid fa-sliders" id="sidebar-toggle-icon" style="font-size:13px;"></i>
+            </div>
+
+            <div id="sidebar-inner">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 2px;">
+                    <div style="font-size:10px;letter-spacing:2px;color:#00f9ff;font-weight:600;">FILTERS</div>
+                    <button onclick="clearAllFilters()" style="font-size:10px;color:#ff00aa;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;font-family:'Share Tech Mono',monospace;">
+                        <i class="fa-solid fa-times"></i> CLEAR
+                    </button>
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:14px;">
+                    <div>
+                        <div class="filter-group-title"><i class="fa-solid fa-industry" style="width:12px;"></i> MANUFACTURER</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:4px;" id="filter-manufacturer"></div>
+                    </div>
+                    <div>
+                        <div class="filter-group-title"><i class="fa-solid fa-cogs" style="width:12px;"></i> TYPE</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:4px;" id="filter-type"></div>
+                    </div>
+                    <div>
+                        <div class="filter-group-title"><i class="fa-solid fa-shapes" style="width:12px;"></i> SHAPE</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:4px;" id="filter-shape"></div>
+                    </div>
+                    <div>
+                        <div class="filter-group-title"><i class="fa-solid fa-circle-dot" style="width:12px;"></i> RADIUS</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:4px;" id="filter-radius"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top:20px;font-size:10px;color:#334155;padding:0 2px;">
+                    <i class="fa-solid fa-info-circle" style="margin-right:4px;"></i>
+                    Data from db.sqlite
+                </div>
+            </div>
+
+            <div id="sidebar-resize-handle"></div>
+        </div>
+
+        <!-- ── MAIN CONTENT ── -->
+        <div id="main-content">
+            <!-- Search bar -->
+            <div id="search-bar">
+                <div class="search-wrap">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="search-input" placeholder="SEARCH PART # OR DESCRIPTION...">
+                </div>
+                <div class="results-count">
+                    <span id="results-count">0</span> found
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div id="table-wrap">
+                <table id="tool-table">
+                    <thead>
+                        <tr>
+                            <th style="width:140px;">PART #</th>
+                            <th style="width:72px;">TYPE</th>
+                            <th style="width:80px;">MAKER</th>
+                            <th>DESCRIPTION</th>
+                            <th class="center" style="width:120px;">SIZE</th>
+                            <th class="center" style="width:64px;">GRADE</th>
+                            <th class="center" style="width:54px;">SHAPE</th>
+                            <th class="center" style="width:48px;">CB</th>
+                            <th class="center" style="width:70px;">CORNER R</th>
+                            <th style="width:72px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+                <div id="mobile-card-list" class="mobile-card-list"></div>
+                <div id="no-results" class="hidden">
+                    <i class="fa-solid fa-search"></i>
+                    <p>No tools match your filters</p>
+                    <button onclick="clearAllFilters()" class="neon-button" style="margin-top:12px;">CLEAR FILTERS</button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-workspace" class="mobile-workspace" aria-live="polite">
+            <section id="mobile-panel-speeds" class="mobile-panel" data-panel="speeds">
+                <div class="mobile-panel-inner">
+                    <div class="mobile-panel-card">
+                        <div class="mobile-panel-title">
+                            <span><i class="fa-solid fa-gauge-high"></i> SPEEDS</span>
+                            <span id="mobile-speeds-status">pending</span>
+                        </div>
+                        <div id="mobile-speeds-content"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <nav class="mobile-bottom-nav" aria-label="Mobile workflow">
+        <button class="mobile-tab active" type="button" data-mobile-view="search" onclick="setMobileView('search')">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search</span>
+        </button>
+        <button class="mobile-tab" type="button" data-mobile-view="speeds" onclick="setMobileView('speeds')">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Speeds</span>
+        </button>
+    </nav>
+
+    <!-- Firebase SDK disabled for performance. Re-enable by uncommenting these script tags
+         and unstubbing initFirebase() / showFBSetup() below. -->
+    <!--
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
+    <script>
+    // ── State ─────────────────────────────────────────────────────────────────
+    let tools = []
+    let activeFilters = { maker:[], type:[], shape:[], radius:[] }
+    let currentUnit = 'metric'
+    let openDetailRow = null  // currently expanded row id
+    let openMobileDetail = null
+    let selectedMobileToolId = null
+    let filteredTools = []
+    let mobileView = 'search'
+    let lastMobileLayout = false
+    let filterRaf = null
+    const MOBILE_CARD_LIMIT = 160
+
+    // ── Persist header/sidebar sizes ──────────────────────────────────────────
+    const PREFS_KEY = 'nf_prefs'
+    function loadPrefs() {
+        try { return JSON.parse(localStorage.getItem(PREFS_KEY)) || {} } catch { return {} }
+    }
+    function savePrefs(p) {
+        const existing = loadPrefs()
+        localStorage.setItem(PREFS_KEY, JSON.stringify({...existing, ...p}))
+    }
+    function applyPrefs() {
+        const p = loadPrefs()
+        if (p.headerH) document.documentElement.style.setProperty('--header-h', p.headerH + 'px')
+        if (p.sidebarW) document.documentElement.style.setProperty('--sidebar-w', p.sidebarW + 'px')
+        if (p.sidebarCollapsed) {
+            document.getElementById('sidebar').classList.add('collapsed')
+        }
+        if (p.unit) { currentUnit = p.unit }
+    }
+
+    // ── Normalization maps ────────────────────────────────────────────────────
+    const MAKER_MAP = {
+        'Horn': 'PH Horn'
+    }
+    const SHAPE_MAP = {
+        // 35° Diamond
+        '35 deg Diamond':        '35° Diamond',
+        '35 deg Diamond (VBMT)': '35° Diamond',
+        'V':                     '35° Diamond',
+        'V (35° Diamond)':       '35° Diamond',
+        'V (35° Rhombic)':       '35° Diamond',
+        'V (35°) VBGT positive': '35° Diamond',
+        'V (35°) VBMT positive': '35° Diamond',
+        // 55° Diamond
+        '55 deg Diamond':        '55° Diamond',
+        'D':                     '55° Diamond',
+        'D (55° Diamond)':       '55° Diamond',
+        'D (55° Rhombic)':       '55° Diamond',
+        // 80° Diamond
+        '80 deg Diamond':        '80° Diamond',
+        '80° Diamond':           '80° Diamond',
+        'C':                     '80° Diamond',
+        'C (80° Diamond)':       '80° Diamond',
+        'C (80° Rhombic)':       '80° Diamond',
+        // 60° Triangle
+        'T':                     '60° Triangle',
+        'T (60° Triangle)':      '60° Triangle',
+        'Triangle':              '60° Triangle',
+    }
+    function normalizeTool(t) {
+        if (t.maker && MAKER_MAP[t.maker]) t.maker = MAKER_MAP[t.maker]
+        if (t.shape && SHAPE_MAP[t.shape]) t.shape = SHAPE_MAP[t.shape]
+        return t
+    }
+
+    // ── Unit ──────────────────────────────────────────────────────────────────
+    function formatDim(v) {
+        if (v == null || v === '') return '—'
+        const n = parseFloat(v)
+        if (isNaN(n)) return '—'
+        return currentUnit === 'imperial' ? `${(n * 0.0393701).toFixed(3)}"` : `${n} mm`
+    }
+    function buildSize(t) {
+        const u = currentUnit === 'imperial' ? '"' : 'mm'
+        const c = v => currentUnit === 'imperial' ? (v * 0.0393701).toFixed(3) : v.toFixed(2)
+        if (t.ic_mm != null && t.s_mm != null) return `IC ${c(t.ic_mm)}${u} · S ${c(t.s_mm)}${u}`
+        if (t.ic_mm != null) return `IC ${c(t.ic_mm)}${u}`
+        return t.fallbackSize || ''
+    }
+    function setUnit(unit) {
+        currentUnit = unit
+        document.getElementById('btn-metric').classList.toggle('active', unit === 'metric')
+        document.getElementById('btn-imperial').classList.toggle('active', unit === 'imperial')
+        savePrefs({unit})
+        renderFilters()
+        applyFilters()
+    }
+
+    // ── Filters ───────────────────────────────────────────────────────────────
+    function getUnique(key) {
+        const s = new Set()
+        tools.forEach(t => { if (t[key]) s.add(t[key]) })
+        return Array.from(s).sort()
+    }
+    function radiusKey(value) {
+        const n = Number(value)
+        return Number.isFinite(n) ? n.toFixed(4) : ''
+    }
+    function getRadiusOptions() {
+        const map = new Map()
+        tools.forEach(t => {
+            const key = radiusKey(t.cornerRadius)
+            if (key) map.set(key, t.cornerRadius)
+        })
+        return Array.from(map.entries())
+            .sort((a, b) => Number(a[1]) - Number(b[1]))
+            .map(([key, value]) => ({ key, label: formatDim(value) }))
+    }
+    function renderFilters() {
+        const map = { maker:'filter-manufacturer', type:'filter-type', shape:'filter-shape' }
+        Object.entries(map).forEach(([key, id]) => {
+            const el = document.getElementById(id)
+            el.innerHTML = ''
+            getUnique(key).forEach(v => {
+                const chip = document.createElement('div')
+                chip.className = 'filter-chip'
+                chip.textContent = v
+                chip.onclick = () => {
+                    const active = activeFilters[key].includes(v)
+                    if (active) {
+                        activeFilters[key] = activeFilters[key].filter(x => x !== v)
+                        chip.classList.remove('active')
+                    } else {
+                        activeFilters[key].push(v)
+                        chip.classList.add('active')
+                    }
+                    applyFilters()
+                }
+                el.appendChild(chip)
+            })
+        })
+        const radiusEl = document.getElementById('filter-radius')
+        if (radiusEl) {
+            radiusEl.innerHTML = ''
+            getRadiusOptions().forEach(({ key, label }) => {
+                const chip = document.createElement('div')
+                chip.className = 'filter-chip'
+                chip.textContent = label
+                if (activeFilters.radius.includes(key)) chip.classList.add('active')
+                chip.onclick = () => {
+                    const active = activeFilters.radius.includes(key)
+                    if (active) {
+                        activeFilters.radius = activeFilters.radius.filter(x => x !== key)
+                        chip.classList.remove('active')
+                    } else {
+                        activeFilters.radius.push(key)
+                        chip.classList.add('active')
+                    }
+                    applyFilters()
+                }
+                radiusEl.appendChild(chip)
+            })
+        }
+    }
+    function clearAllFilters() {
+        activeFilters = { maker:[], type:[], shape:[], radius:[] }
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'))
+        document.getElementById('search-input').value = ''
+        applyFilters()
+        updateMobileFilterIndicator()
+    }
+
+    // ── Filter logic ──────────────────────────────────────────────────────────
+    function applyFilters() {
+        const q = document.getElementById('search-input').value.toLowerCase().trim()
+        let filtered = tools.filter(t => {
+            if (q) {
+                const s = `${t.part} ${t.description} ${t.maker} ${t.grade} ${t.shape} ${t.cb}`.toLowerCase()
+                if (!s.includes(q)) return false
+            }
+            if (activeFilters.maker.length  && !activeFilters.maker.includes(t.maker))  return false
+            if (activeFilters.type.length   && !activeFilters.type.includes(t.type))    return false
+            if (activeFilters.shape.length  && !activeFilters.shape.includes(t.shape))  return false
+            if (activeFilters.radius.length && !activeFilters.radius.includes(radiusKey(t.cornerRadius))) return false
+            return true
+        })
+        filteredTools = filtered
+        document.getElementById('results-count').textContent = filtered.length.toLocaleString()
+        renderTable(filtered)
+        updateMobileFilterIndicator()
+        renderMobileWorkflowPanels()
+    }
+
+    function scheduleApplyFilters() {
+        if (filterRaf) cancelAnimationFrame(filterRaf)
+        filterRaf = requestAnimationFrame(() => {
+            filterRaf = null
+            applyFilters()
+        })
+    }
+
+    // ── Type badge class ──────────────────────────────────────────────────────
+    function typeCls(type) {
+        const map = { insert:'type-insert', holder:'type-holder', module:'type-module', shank:'type-shank', machine:'type-machine' }
+        return map[type] || 'type-default'
+    }
+
+    function truncateText(value, max) {
+        const s = String(value || '')
+        return s.length > max ? s.slice(0, max - 3) + '...' : s
+    }
+
+    function getVerification(t) {
+        const sources = Array.isArray(t.sources) ? t.sources.filter(Boolean) : []
+        const sourceText = sources.map(s => String(s).toLowerCase()).join(' ')
+        const maker = String(t.maker || '').toLowerCase()
+        const domainHints = {
+            kennametal: ['kennametal.com'],
+            iscar: ['iscar.com'],
+            tungaloy: ['tungaloy.com'],
+            horn: ['hornusa.com', 'phorn.de', 'horn-group.com'],
+            sandvik: ['sandvik.coromant.com', 'sandvik.com'],
+            genswiss: ['genswiss.com'],
+            citizen: ['citizenmachinery.com', 'cmj.citizen.co.jp'],
+            star: ['starcnc.com', 'star-m.jp'],
+            mitsubishi: ['mitsubishicarbide.com', 'mmc-carbide.com']
+        }
+        const manufacturerMatch = Object.entries(domainHints).some(([name, domains]) => {
+            return maker.includes(name) && domains.some(domain => sourceText.includes(domain))
+        })
+
+        if (manufacturerMatch) return { cls: 'verify-manufacturer', icon: 'fa-circle-check', label: 'MFG SOURCE' }
+        if (sources.length) return { cls: 'verify-source', icon: 'fa-link', label: 'SOURCE' }
+        return { cls: 'verify-unverified', icon: 'fa-triangle-exclamation', label: 'NEEDS SOURCE' }
+    }
+
+    function verificationBadgeHTML(t) {
+        const v = getVerification(t)
+        return `<span class="verification-badge ${v.cls}" title="${escapeHtml(v.label)}"><i class="fa-solid ${v.icon}"></i>${escapeHtml(v.label)}</span>`
+    }
+
+    function getSelectedMobileTool() {
+        return tools.find(t => t.id === selectedMobileToolId)
+            || filteredTools.find(Boolean)
+            || tools.find(Boolean)
+            || null
+    }
+
+    function selectMobileTool(id) {
+        selectedMobileToolId = id
+        document.querySelectorAll('.tool-card').forEach(card => {
+            card.classList.toggle('selected', Number(card.dataset.id) === id)
+        })
+        renderMobileWorkflowPanels()
+    }
+
+    function mobileToolSummaryHTML(tool) {
+        if (!tool) return '<div class="mobile-empty">No tool loaded.</div>'
+        return `
+            <div class="mobile-panel-kv"><span>Part</span><strong>${escapeHtml(tool.part || 'N/A')}</strong></div>
+            <div class="mobile-panel-kv"><span>Type</span><strong>${escapeHtml(tool.type || 'N/A')}</strong></div>
+            <div class="mobile-panel-kv"><span>Maker</span><strong>${escapeHtml(tool.maker || 'N/A')}</strong></div>
+            <div class="mobile-panel-kv"><span>Size</span><strong>${escapeHtml(buildSize(tool) || 'N/A')}</strong></div>
+            <div class="mobile-panel-kv"><span>Grade</span><strong>${escapeHtml(tool.grade || 'N/A')}</strong></div>
+            <div class="mobile-panel-kv"><span>Source</span><strong>${verificationBadgeHTML(tool)}</strong></div>
+        `
+    }
+
+    function renderMobileSpeedsPanel() {
+        const tool = getSelectedMobileTool()
+        const content = document.getElementById('mobile-speeds-content')
+        const status = document.getElementById('mobile-speeds-status')
+        if (!content || !status) return
+        if (!tool) {
+            status.textContent = 'pending'
+            content.innerHTML = '<div class="mobile-empty">No tool loaded.</div>'
+            return
+        }
+        const isInsert = tool.type === 'insert'
+        status.textContent = isInsert ? 'no cutting data' : 'insert only'
+        content.innerHTML = `
+            ${mobileToolSummaryHTML(tool)}
+            <div class="mobile-empty">${isInsert ? 'No speeds and feeds data is attached to this insert yet. The next database phase will add verified cutting ranges by material, operation, and source.' : 'Speeds and feeds will be shown for insert records once cutting data is added.'}</div>
+        `
+    }
+
+    function renderMobileWorkflowPanels() {
+        renderMobileSpeedsPanel()
+    }
+
+    function updateMobileFilterIndicator() {
+        const tab = document.querySelector('.mobile-tab[data-mobile-view="search"]')
+        if (!tab) return
+        const activeFilterCount = Object.values(activeFilters).reduce((sum, list) => sum + list.length, 0)
+        const q = document.getElementById('search-input')?.value?.trim()
+        tab.classList.toggle('has-filters', activeFilterCount > 0 || Boolean(q))
+    }
+
+    function setMobileView(view) {
+        mobileView = view
+        document.querySelectorAll('.mobile-tab').forEach(tab => {
+            tab.classList.toggle('active', tab.dataset.mobileView === view)
+        })
+
+        const main = document.getElementById('main-content')
+        const workspace = document.getElementById('mobile-workspace')
+        document.querySelectorAll('.mobile-panel').forEach(panel => panel.classList.remove('active'))
+
+        closeSidebarMobile()
+        if (view === 'search') {
+            if (main) main.classList.remove('mobile-hidden')
+            if (workspace) workspace.classList.remove('active')
+            return
+        }
+
+        if (main) main.classList.add('mobile-hidden')
+        if (workspace) workspace.classList.add('active')
+        const panel = document.getElementById(`mobile-panel-${view}`)
+        if (panel) panel.classList.add('active')
+        renderMobileWorkflowPanels()
+    }
+
+    function renderMobileCards(data) {
+        const list = document.getElementById('mobile-card-list')
+        if (!list) return
+        list.innerHTML = ''
+        openMobileDetail = null
+
+        const visible = data.slice(0, MOBILE_CARD_LIMIT)
+        const fragment = document.createDocumentFragment()
+
+        visible.forEach(t => {
+            const card = document.createElement('article')
+            card.className = `tool-card${selectedMobileToolId === t.id ? ' selected' : ''}`
+            card.dataset.id = t.id
+            const meta = [
+                ['TYPE', `<span class="type-badge ${typeCls(t.type)}">${escapeHtml(t.type || 'N/A')}</span>`],
+                ['SIZE', escapeHtml(buildSize(t) || 'N/A')],
+                ['GRADE', escapeHtml(t.grade || 'N/A')],
+                ['SHAPE', escapeHtml(t.shape || 'N/A')],
+                ['CB', escapeHtml(t.cb || 'N/A')],
+                ['CORNER R', escapeHtml(t.cornerRadius != null ? formatDim(t.cornerRadius) : 'N/A')]
+            ]
+            card.innerHTML = `
+                <div class="tool-card-header">
+                    <div style="min-width:0;">
+                        <div class="tool-card-part">${escapeHtml(t.part || 'N/A')}</div>
+                        <div class="tool-card-maker">${escapeHtml(t.maker || 'Unknown maker')}</div>
+                    </div>
+                    ${verificationBadgeHTML(t)}
+                </div>
+                <div class="tool-card-desc">${escapeHtml(truncateText(t.description || '', 150)) || 'No description available'}</div>
+                <div class="tool-card-meta">
+                    ${meta.map(([label, value]) => `<span><b>${label}</b>${value}</span>`).join('')}
+                </div>
+                <div class="tool-card-actions">
+                    <button class="btn-details" onclick="selectMobileTool(${t.id});toggleMobileDetail(${t.id}, this)">DETAILS</button>
+                    <button class="btn-details" onclick="selectMobileTool(${t.id});setMobileView('speeds')">SPEEDS</button>
+                    <button class="btn-details" onclick="copyPart('${escapeHtml(t.part || '')}')">COPY</button>
+                </div>
+                <div class="mobile-detail-panel" id="mobile-detail-${t.id}"></div>
+            `
+            fragment.appendChild(card)
+        })
+
+        if (data.length > visible.length) {
+            const note = document.createElement('div')
+            note.className = 'mobile-empty'
+            note.textContent = `Showing first ${visible.length.toLocaleString()} of ${data.length.toLocaleString()} matches. Search or filter to narrow the list.`
+            fragment.appendChild(note)
+        }
+
+        list.appendChild(fragment)
+    }
+
+    // ── Table render ──────────────────────────────────────────────────────────
+    function isMobileLayout() {
+        return window.matchMedia('(max-width: 720px)').matches
+    }
+
+    function renderTable(data) {
+        const tbody = document.getElementById('table-body')
+        tbody.innerHTML = ''
+        const noResults = document.getElementById('no-results')
+        const mobile = isMobileLayout()
+
+        if (data.length === 0) {
+            renderMobileCards([])
+            noResults.classList.remove('hidden')
+            openDetailRow = null
+            openMobileDetail = null
+            return
+        }
+        noResults.classList.add('hidden')
+        openDetailRow = null
+
+        if (mobile) {
+            renderMobileCards(data)
+            return
+        }
+
+        renderMobileCards([])
+        const fragment = document.createDocumentFragment()
+
+        data.forEach(t => {
+            // Main row
+            const tr = document.createElement('tr')
+            tr.dataset.id = t.id
+            tr.innerHTML = `
+                <td class="td-part">${escapeHtml(t.part || 'N/A')}</td>
+                <td><span class="type-badge ${typeCls(t.type)}">${escapeHtml(t.type || 'N/A')}</span></td>
+                <td class="td-maker"><span>${escapeHtml(t.maker || 'N/A')}</span></td>
+                <td class="td-desc"><div class="td-desc-inner"><span>${escapeHtml(truncateText(t.description || '', 100)) || '&mdash;'}</span>${verificationBadgeHTML(t)}</div></td>
+                <td class="center" style="font-family:'Share Tech Mono',monospace;white-space:nowrap;">${escapeHtml(buildSize(t) || '') || '&mdash;'}</td>
+                <td class="center td-grade">${escapeHtml(t.grade || '') || '&mdash;'}</td>
+                <td class="center" style="font-family:'Share Tech Mono',monospace;">${escapeHtml(t.shape || '') || '&mdash;'}</td>
+                <td class="center" style="font-family:'Share Tech Mono',monospace;">${escapeHtml(t.cb || '') || '&mdash;'}</td>
+                <td class="center" style="font-family:'Share Tech Mono',monospace;">${t.cornerRadius != null ? escapeHtml(formatDim(t.cornerRadius)) : '&mdash;'}</td>
+                <td style="text-align:right;padding-right:10px;">
+                    <button class="btn-details" onclick="toggleDetail(${t.id}, this)">DETAILS</button>
+                </td>
+            `
+            fragment.appendChild(tr)
+
+            // Hidden detail row — content built on open
+            const dr = document.createElement('tr')
+            dr.className = 'detail-row'
+            dr.id = `detail-${t.id}`
+            dr.style.display = 'none'
+            const colspan = 10
+            const dtd = document.createElement('td')
+            dtd.setAttribute('colspan', colspan)
+            dtd.innerHTML = ''
+            dr.appendChild(dtd)
+            fragment.appendChild(dr)
+        })
+        tbody.appendChild(fragment)
+    }
+
+    // ── Toggle detail row ─────────────────────────────────────────────────────
+    async function toggleDetail(id, btn) {
+        const dr = document.getElementById(`detail-${id}`)
+        if (!dr) return
+        const isOpen = dr.style.display !== 'none'
+
+        // Close previously open row
+        if (openDetailRow && openDetailRow !== id) {
+            const prev = document.getElementById(`detail-${openDetailRow}`)
+            if (prev) prev.style.display = 'none'
+            const prevBtn = document.querySelector(`tr[data-id="${openDetailRow}"] .btn-details`)
+            if (prevBtn) prevBtn.classList.remove('open')
+            if (typeof unsubscribeFromTool === 'function') unsubscribeFromTool(openDetailRow)
+        }
+
+        if (isOpen) {
+            dr.style.display = 'none'
+            btn.classList.remove('open')
+            if (typeof unsubscribeFromTool === 'function') unsubscribeFromTool(id)
+            openDetailRow = null
+        } else {
+            dr.querySelector('td').innerHTML = '<div style="padding:20px;text-align:center;color:#334155;font-size:11px;letter-spacing:2px;font-family:\'Share Tech Mono\',monospace;">LOADING...</div>'
+            dr.style.display = ''
+            btn.classList.add('open')
+            openDetailRow = id
+            const tool = tools.find(t => t.id === id)
+
+            // Kick off Firebase init in the background — first open pays the cost,
+            // subsequent opens reuse the loaded SDK
+            initFirebase().then(() => {
+                // Refresh once Firebase is ready so reviews populate
+                if (openDetailRow === id) refreshDetailPanel(id)
+            })
+
+            try {
+                if (tool) dr.querySelector('td').innerHTML = await buildDetailHTML(tool)
+            } catch(e) {
+                console.warn('[NEON FORGE] Detail build failed:', e.message)
+                if (tool) {
+                    fbConfigured = false
+                    dr.querySelector('td').innerHTML = await buildDetailHTML(tool)
+                    fbConfigured = !!fbDb
+                }
+            }
+            if (typeof fbConfigured !== 'undefined' && fbConfigured && typeof fbDb !== 'undefined' && fbDb) {
+                subscribeToTool(id, () => onToolDataUpdate(id))
+            }
+        }
+    }
+
+    async function toggleMobileDetail(id, btn) {
+        const panel = document.getElementById(`mobile-detail-${id}`)
+        if (!panel) return
+        const isOpen = panel.classList.contains('open')
+
+        if (openMobileDetail && openMobileDetail !== id) {
+            const prev = document.getElementById(`mobile-detail-${openMobileDetail}`)
+            const prevBtn = document.querySelector(`.tool-card[data-id="${openMobileDetail}"] .btn-details`)
+            if (prev) {
+                prev.classList.remove('open')
+                prev.innerHTML = ''
+            }
+            if (prevBtn) prevBtn.classList.remove('open')
+            if (typeof unsubscribeFromTool === 'function') unsubscribeFromTool(openMobileDetail)
+        }
+
+        if (isOpen) {
+            panel.classList.remove('open')
+            panel.innerHTML = ''
+            btn.classList.remove('open')
+            if (typeof unsubscribeFromTool === 'function') unsubscribeFromTool(id)
+            openMobileDetail = null
+            return
+        }
+
+        panel.innerHTML = '<div style="padding:12px;text-align:center;color:#334155;font-size:11px;letter-spacing:2px;font-family:\'Share Tech Mono\',monospace;">LOADING...</div>'
+        panel.classList.add('open')
+        btn.classList.add('open')
+        openMobileDetail = id
+        const tool = tools.find(t => t.id === id)
+
+        initFirebase().then(() => {
+            if (openMobileDetail === id) refreshDetailPanel(id)
+        })
+
+        try {
+            if (tool) panel.innerHTML = await buildDetailHTML(tool)
+        } catch(e) {
+            console.warn('[NEON FORGE] Mobile detail build failed:', e.message)
+            if (tool) {
+                fbConfigured = false
+                panel.innerHTML = await buildDetailHTML(tool)
+                fbConfigured = !!fbDb
+            }
+        }
+        if (typeof fbConfigured !== 'undefined' && fbConfigured && typeof fbDb !== 'undefined' && fbDb) {
+            subscribeToTool(id, () => onToolDataUpdate(id))
+        }
+    }
+
+    // ── Copy part # ───────────────────────────────────────────────────────────
+    function copyPart(part) {
+        navigator.clipboard.writeText(part).then(() => {
+            const t = document.createElement('div')
+            t.className = 'toast'
+            t.innerHTML = `<i class="fa-solid fa-check"></i> Copied ${part}`
+            document.body.appendChild(t)
+            setTimeout(() => {
+                t.style.opacity = '0'
+                t.style.transform = 'translate(-50%, 16px)'
+                setTimeout(() => t.remove(), 300)
+            }, 1800)
+        })
+    }
+
+    // ── Sidebar toggle ────────────────────────────────────────────────────────
+    function toggleSidebar() {
+        const sb = document.getElementById('sidebar')
+        const bd = document.getElementById('sidebar-backdrop')
+        if (window.matchMedia('(max-width: 600px)').matches) {
+            const open = sb.classList.toggle('mobile-open')
+            if (bd) bd.classList.toggle('show', open)
+        } else {
+            const collapsed = sb.classList.toggle('collapsed')
+            savePrefs({ sidebarCollapsed: collapsed })
+        }
+    }
+
+    function closeSidebarMobile() {
+        const sb = document.getElementById('sidebar')
+        const bd = document.getElementById('sidebar-backdrop')
+        sb.classList.remove('mobile-open')
+        if (bd) bd.classList.remove('show')
+        if (mobileView === 'filters') {
+            mobileView = 'search'
+            document.querySelectorAll('.mobile-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.mobileView === 'search')
+            })
+        }
+    }
+
+    // ── HUD stats ─────────────────────────────────────────────────────────────
+    function updateHUD() {
+        const makers = new Set(tools.map(t => t.maker).filter(Boolean))
+        const inserts = tools.filter(t => t.type === 'insert').length
+        const si = document.getElementById('stat-insert-count')
+        const sb = document.getElementById('stat-brand-count')
+        if (si) si.textContent = `${inserts.toLocaleString()} inserts`
+        if (sb) sb.textContent = `${makers.size} brands`
+    }
+
+    // ── Header resize ─────────────────────────────────────────────────────────
+    (function() {
+        const handle = document.getElementById('header-resize-handle')
+        const header = document.getElementById('app-header')
+        let dragging = false, startY, startH
+
+        handle.addEventListener('mousedown', e => {
+            dragging = true
+            startY = e.clientY
+            startH = header.offsetHeight
+            handle.classList.add('dragging')
+            document.body.style.cursor = 'ns-resize'
+            e.preventDefault()
+        })
+        document.addEventListener('mousemove', e => {
+            if (!dragging) return
+            const h = Math.max(40, Math.min(120, startH + (e.clientY - startY)))
+            document.documentElement.style.setProperty('--header-h', h + 'px')
+            savePrefs({ headerH: h })
+        })
+        document.addEventListener('mouseup', () => {
+            if (!dragging) return
+            dragging = false
+            handle.classList.remove('dragging')
+            document.body.style.cursor = ''
+        })
+
+        // Touch support
+        handle.addEventListener('touchstart', e => {
+            dragging = true
+            startY = e.touches[0].clientY
+            startH = header.offsetHeight
+            e.preventDefault()
+        }, {passive: false})
+        document.addEventListener('touchmove', e => {
+            if (!dragging) return
+            const h = Math.max(40, Math.min(120, startH + (e.touches[0].clientY - startY)))
+            document.documentElement.style.setProperty('--header-h', h + 'px')
+            savePrefs({ headerH: h })
+        })
+        document.addEventListener('touchend', () => { dragging = false })
+    }());
+
+    // ── Sidebar resize ────────────────────────────────────────────────────────
+    ;(function() {
+        const handle = document.getElementById('sidebar-resize-handle')
+        const sidebar = document.getElementById('sidebar')
+        let dragging = false, startX, startW
+
+        handle.addEventListener('mousedown', e => {
+            dragging = true
+            startX = e.clientX
+            startW = sidebar.offsetWidth
+            handle.classList.add('dragging')
+            document.body.style.cursor = 'ew-resize'
+            e.preventDefault()
+        })
+        document.addEventListener('mousemove', e => {
+            if (!dragging) return
+            const w = Math.max(140, Math.min(420, startW + (e.clientX - startX)))
+            sidebar.style.width = w + 'px'
+            document.documentElement.style.setProperty('--sidebar-w', w + 'px')
+            savePrefs({ sidebarW: w })
+        })
+        document.addEventListener('mouseup', () => {
+            if (!dragging) return
+            dragging = false
+            handle.classList.remove('dragging')
+            document.body.style.cursor = ''
+        })
+
+        // Touch support
+        handle.addEventListener('touchstart', e => {
+            dragging = true
+            startX = e.touches[0].clientX
+            startW = sidebar.offsetWidth
+            e.preventDefault()
+        }, {passive: false})
+        document.addEventListener('touchmove', e => {
+            if (!dragging) return
+            const w = Math.max(140, Math.min(420, startW + (e.touches[0].clientX - startX)))
+            sidebar.style.width = w + 'px'
+            document.documentElement.style.setProperty('--sidebar-w', w + 'px')
+            savePrefs({ sidebarW: w })
+        })
+        document.addEventListener('touchend', () => { dragging = false })
+    })()
+
+    // ── DB load ───────────────────────────────────────────────────────────────
+    async function loadDB() {
+        const status = document.getElementById('load-status')
+        try {
+            if (status) status.textContent = 'Fetching db.sqlite...'
+            const resp = await fetch('db.sqlite')
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`)
+
+            if (status) status.textContent = 'Parsing...'
+            const buf = await resp.arrayBuffer()
+            const SQL = await initSqlJs({ locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/${f}` })
+            const db = new SQL.Database(new Uint8Array(buf))
+
+            const res = db.exec('SELECT * FROM tools ORDER BY component_type, manufacturer, json_id')
+            if (!res.length) throw new Error('tools table empty')
+            const { columns, values } = res[0]
+
+            tools = values.map((row, idx) => {
+                const obj = {}
+                columns.forEach((c, i) => {
+                    let v = row[i]
+                    if (v && ['specs','compatible_machines','compatible_inserts','sources','tags'].includes(c)) {
+                        try { v = JSON.parse(v) } catch {}
+                    }
+                    obj[c] = v
+                })
+                const sp = (obj.specs && typeof obj.specs === 'object') ? obj.specs : {}
+                const re = parseFloat(sp.re_mm ?? sp.corner_radius_RE ?? sp.corner_radius_mm ?? sp.corner_radius ?? 0) || null
+                const bore = parseFloat(sp.min_bore_diameter ?? sp.minimum_bore_diameter ?? sp.bore_diameter_min ?? 0) || null
+                const ic_mm = sp.ic_mm != null ? parseFloat(sp.ic_mm) : null
+                const s_mm  = sp.s_mm  != null ? parseFloat(sp.s_mm)  : null
+                let mountsTo = null
+                if (Array.isArray(obj.compatible_machines) && obj.compatible_machines.length) mountsTo = obj.compatible_machines[0]
+                else if (Array.isArray(obj.compatible_inserts) && obj.compatible_inserts.length) mountsTo = obj.compatible_inserts[0]
+                return normalizeTool({
+                    id: idx+1,
+                    part: obj.json_id || '',
+                    type: obj.component_type || '',
+                    maker: obj.manufacturer || '',
+                    description: obj.description || '',
+                    ic_mm, s_mm,
+                    fallbackSize: obj.size || '',
+                    grade: obj.grade || '',
+                    shape: obj.shape || '',
+                    cb: obj.chipbreaker || '',
+                    cornerRadius: re,
+                    minBore: bore,
+                    mountsTo,
+                    rawSpecs: sp,
+                    tags: Array.isArray(obj.tags) ? obj.tags : (obj.tags ? [obj.tags] : []),
+                    sources: Array.isArray(obj.sources) ? obj.sources : (obj.sources ? [obj.sources] : []),
+                    compatibleMachines: Array.isArray(obj.compatible_machines) ? obj.compatible_machines : [],
+                    compatibleInserts: Array.isArray(obj.compatible_inserts) ? obj.compatible_inserts : []
+                })
+            })
+            db.close()
+            initialize()
+        } catch(e) {
+            document.getElementById('loading-overlay').classList.add('hidden')
+            document.getElementById('results-count').innerHTML = `<span style="color:#ff00aa">DB ERR: ${e.message}</span>`
+            console.error('[NEON FORGE]', e)
+        }
+    }
+
+    function initialize() {
+        document.getElementById('loading-overlay').classList.add('hidden')
+        applyPrefs()
+        renderFilters()
+        updateHUD()
+        filteredTools = tools
+        lastMobileLayout = isMobileLayout()
+        document.getElementById('results-count').textContent = tools.length.toLocaleString()
+        renderTable(tools)
+        renderMobileWorkflowPanels()
+        updateMobileFilterIndicator()
+
+        document.getElementById('search-input').addEventListener('input', scheduleApplyFilters)
+        window.addEventListener('resize', () => {
+            const mobile = isMobileLayout()
+            if (mobile === lastMobileLayout) return
+            lastMobileLayout = mobile
+            renderTable(filteredTools)
+            renderMobileWorkflowPanels()
+        })
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                document.getElementById('search-input').value = ''
+                clearAllFilters()
+            }
+            if (e.key === '/' && document.activeElement.tagName === 'BODY') {
+                e.preventDefault()
+                document.getElementById('search-input').focus()
+            }
+        })
+
+        // Set unit button state from saved pref
+        const p = loadPrefs()
+        if (p.unit === 'imperial') setUnit('imperial')
+        else setUnit('metric')
+
+        // Preload Firebase SDK during browser idle time so the first DETAILS click is instant.
+        // Doesn't block anything — runs only when the main thread has spare cycles.
+        const preloadFB = () => { initFirebase().catch(() => {}) }
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(preloadFB, { timeout: 4000 })
+        } else {
+            setTimeout(preloadFB, 1500)
+        }
+    }
+
+    window.onload = loadDB
+    window.NEON_TOOLS = () => tools
+
+    // ── Helpers ───────────────────────────────────────────────────────────────
+    function escapeHtml(s) {
+        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    }
+    function starsHTML(n, total) {
+        let h = ''
+        for (let i = 1; i <= total; i++) h += `<span class="star${i <= n ? '' : ' empty'}">★</span>`
+        return h
+    }
+    function timeAgo(ts) {
+        if (!ts) return ''
+        const d = ts.toDate ? ts.toDate() : new Date(ts)
+        const s = Math.floor((Date.now() - d) / 1000)
+        if (s < 60) return 'just now'
+        if (s < 3600) return Math.floor(s / 60) + 'm ago'
+        if (s < 86400) return Math.floor(s / 3600) + 'h ago'
+        if (s < 604800) return Math.floor(s / 86400) + 'd ago'
+        return d.toLocaleDateString()
+    }
+    function showToast(msg, isError) {
+        const t = document.createElement('div')
+        t.className = 'toast'
+        if (isError) {
+            t.style.background = '#ff00aa'
+            t.style.color = '#fff'
+            t.style.boxShadow = '0 0 20px rgba(255,0,170,0.6)'
+        }
+        const icon = isError ? 'fa-triangle-exclamation' : 'fa-check'
+        t.innerHTML = `<i class="fa-solid ${icon}"></i> ${msg}`
+        document.body.appendChild(t)
+        setTimeout(() => {
+            t.style.opacity = '0'; t.style.transform = 'translate(-50%, 16px)'
+            setTimeout(() => t.remove(), 300)
+        }, isError ? 4000 : 2000)
+    }
+
+    // ── Firebase (lazy-loaded on first detail-panel open) ─────────────────────
+    let fbAuth = null, fbDb = null, fbConfigured = false, currentFBUser = null
+    let fbLoadPromise = null  // cached SDK loader promise
+
+    // Hardcoded config — no popup, no localStorage lookup
+    const FIREBASE_CONFIG = {
+        apiKey: "AIzaSyCvxzRfJlxKp1pCer36dzmmNzWf00dnCck",
+        authDomain: "neon-forge-a44af.firebaseapp.com",
+        projectId: "neon-forge-a44af",
+        storageBucket: "neon-forge-a44af.firebasestorage.app",
+        messagingSenderId: "895413338910",
+        appId: "1:895413338910:web:91bd492a522aab9f23ff0f",
+        measurementId: "G-QFC16FKMGJ"
+    }
+
+    // Admin UIDs — these users can delete any review/reply, not just their own.
+    // To get a UID: Firebase Console → Authentication → Users → User UID column.
+    const ADMIN_UIDS = [
+        "cVadDuMnSORh2CF97OMUFaY6xg93"  // gsabin
+    ]
+    function isAdmin() {
+        return !!(currentFBUser && ADMIN_UIDS.includes(currentFBUser.uid))
+    }
+
+    function getFirebaseConfig() { return FIREBASE_CONFIG }
+
+    // Lazy-load the Firebase SDK script tags. Runs once; subsequent calls reuse the same promise.
+    function loadFirebaseSDK() {
+        if (fbLoadPromise) return fbLoadPromise
+        if (typeof firebase !== 'undefined' && firebase.initializeApp) return Promise.resolve()
+        const sources = [
+            'https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js',
+            'https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js',
+            'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js'
+        ]
+        fbLoadPromise = sources.reduce((prev, src) => prev.then(() => new Promise((resolve, reject) => {
+            const s = document.createElement('script')
+            s.src = src
+            s.onload = resolve
+            s.onerror = () => reject(new Error('Failed to load ' + src))
+            document.head.appendChild(s)
+        })), Promise.resolve())
+        return fbLoadPromise
+    }
+
+    // Async init: load SDK, then initialize with hardcoded config. Safe to call multiple times.
+    async function initFirebase() {
+        if (fbConfigured) return
+        try {
+            await loadFirebaseSDK()
+            if (!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG)
+            fbAuth = firebase.auth()
+            fbDb   = firebase.firestore()
+            fbConfigured = true
+            fbAuth.onAuthStateChanged(user => {
+                currentFBUser = user
+                updateAuthUI()
+                if (openDetailRow) refreshDetailPanel(openDetailRow)
+            })
+        } catch(e) {
+            console.warn('[NEON FORGE] Firebase init failed:', e.message)
+            fbConfigured = false
+        }
+    }
+
+    // Popup permanently suppressed — config is hardcoded
+    function showFBSetup(err) { return }
+    function hideFBSetup() {
+        const o = document.getElementById('fb-setup-overlay'); if (o) o.style.display = 'none'
+    }
+    function saveFBConfig() {
+        const val = document.getElementById('fb-config-input').value.trim()
+        try {
+            const cfg = JSON.parse(val)
+            if (!cfg.apiKey || !cfg.projectId) throw new Error('Missing apiKey or projectId')
+            localStorage.setItem('nf_firebase_config', JSON.stringify(cfg))
+            document.getElementById('fb-setup-error').textContent = ''
+            initFirebase()
+        } catch(e) {
+            document.getElementById('fb-setup-error').textContent = 'Invalid JSON: ' + e.message
+        }
+    }
+    function clearFBConfig() {
+        if (!confirm('Disconnect Firebase? All local session data will be cleared.')) return
+        localStorage.removeItem('nf_firebase_config')
+        location.reload()
+    }
+    function updateFBStatusBtn(connected) {
+        const btn = document.getElementById('fb-status-btn'); if (!btn) return
+        if (connected) {
+            btn.textContent = '⚡ DB CONNECTED'
+            btn.classList.add('connected')
+            btn.title = 'Firebase connected — click to manage'
+        } else {
+            btn.textContent = '⚡ CONNECT DB'
+            btn.classList.remove('connected')
+        }
+    }
+
+    // ── Auth ──────────────────────────────────────────────────────────────────
+    function getCurrentUsername() {
+        if (!currentFBUser) return null
+        return currentFBUser.displayName || currentFBUser.email.split('@')[0]
+    }
+
+    async function loginFB(username, password) {
+        if (!fbConfigured) return { error: 'Firebase not configured' }
+        try {
+            await fbAuth.signInWithEmailAndPassword(username.toLowerCase() + '@neonforge.local', password)
+            return { success: true }
+        } catch(e) {
+            const known = ['auth/user-not-found','auth/wrong-password','auth/invalid-credential','auth/invalid-login-credentials']
+            return { error: known.includes(e.code) ? 'Invalid username or password' : e.message }
+        }
+    }
+
+    async function registerFB(username, password, email) {
+        if (!fbConfigured) return { error: 'Firebase not configured' }
+        if (username.length < 3) return { error: 'Username must be at least 3 characters' }
+        if (password.length < 6) return { error: 'Password must be at least 6 characters' }
+        try {
+            const cred = await fbAuth.createUserWithEmailAndPassword(username.toLowerCase() + '@neonforge.local', password)
+            await cred.user.updateProfile({ displayName: username })
+            await fbDb.collection('users').doc(cred.user.uid).set({
+                username, usernameLower: username.toLowerCase(),
+                recoveryEmail: email || '',
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            return { success: true }
+        } catch(e) {
+            return { error: e.code === 'auth/email-already-in-use' ? 'Username already taken' : e.message }
+        }
+    }
+
+    function logout() {
+        if (fbAuth) fbAuth.signOut()
+        showToast('SIGNED OUT')
+    }
+
+    function updateAuthUI() {
+        const user = currentFBUser
+        const loginBtn  = document.getElementById('auth-login-btn')
+        const userChip  = document.getElementById('auth-user-chip')
+        const userLabel = document.getElementById('auth-username-label')
+        if (user) {
+            if (loginBtn)  loginBtn.style.display = 'none'
+            if (userChip)  userChip.style.display = 'flex'
+            if (userLabel) userLabel.textContent = (getCurrentUsername() || 'USER').toUpperCase()
+        } else {
+            if (loginBtn)  loginBtn.style.display = 'flex'
+            if (userChip)  userChip.style.display = 'none'
+        }
+    }
+
+    // ── Auth Modal ────────────────────────────────────────────────────────────
+    let authCallback = null
+    async function showAuthModal(cb) {
+        // Lazy-load Firebase if needed (e.g. user clicks LOG IN before opening any tool)
+        if (!fbConfigured) await initFirebase()
+        if (!fbConfigured) return  // SDK failed to load — fail silently
+        authCallback = cb || null
+        document.getElementById('auth-modal').style.display = 'flex'
+        showAuthTab('login')
+        setTimeout(() => { const el = document.getElementById('login-username'); if (el) el.focus() }, 60)
+    }
+    function hideAuthModal() {
+        document.getElementById('auth-modal').style.display = 'none'
+        document.getElementById('auth-error').textContent = ''
+    }
+    function showAuthTab(tab) {
+        document.getElementById('auth-login-form').style.display    = tab === 'login'    ? 'flex' : 'none'
+        document.getElementById('auth-register-form').style.display = tab === 'register' ? 'flex' : 'none'
+        document.getElementById('auth-tab-login').classList.toggle('active',    tab === 'login')
+        document.getElementById('auth-tab-register').classList.toggle('active', tab === 'register')
+        document.getElementById('auth-error').textContent = ''
+    }
+
+    async function submitLogin() {
+        const btn = document.querySelector('#auth-login-form .auth-submit')
+        const username = document.getElementById('login-username').value.trim()
+        const password = document.getElementById('login-password').value
+        if (!username || !password) { document.getElementById('auth-error').textContent = 'Please fill all fields'; return }
+        if (btn) { btn.textContent = 'LOGGING IN...'; btn.disabled = true }
+        const result = await loginFB(username, password)
+        if (btn) { btn.textContent = 'LOG IN'; btn.disabled = false }
+        if (result.error) { document.getElementById('auth-error').textContent = result.error; return }
+        hideAuthModal()
+        showToast('WELCOME BACK, ' + username.toUpperCase())
+        if (authCallback) { const cb = authCallback; authCallback = null; cb() }
+    }
+
+    async function submitRegister() {
+        const btn = document.querySelector('#auth-register-form .auth-submit')
+        const username = document.getElementById('reg-username').value.trim()
+        const password = document.getElementById('reg-password').value
+        const email    = document.getElementById('reg-email').value.trim()
+        if (!username || !password) { document.getElementById('auth-error').textContent = 'Username and password required'; return }
+        if (btn) { btn.textContent = 'CREATING...'; btn.disabled = true }
+        const result = await registerFB(username, password, email)
+        if (btn) { btn.textContent = 'CREATE ACCOUNT'; btn.disabled = false }
+        if (result.error) { document.getElementById('auth-error').textContent = result.error; return }
+        hideAuthModal()
+        showToast('WELCOME, ' + username.toUpperCase())
+        if (authCallback) { const cb = authCallback; authCallback = null; cb() }
+    }
+
+    // ── Ratings (Firestore) ───────────────────────────────────────────────────
+    async function setUserToolRating(toolId, stars) {
+        if (!currentFBUser || !fbDb) return
+        const docId = `${toolId}_${currentFBUser.uid}`
+        if (stars === 0) {
+            await fbDb.collection('ratings').doc(docId).delete()
+        } else {
+            await fbDb.collection('ratings').doc(docId).set({
+                toolId: String(toolId), uid: currentFBUser.uid,
+                username: getCurrentUsername(), stars,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+        }
+    }
+
+    async function getToolRatingData(toolId) {
+        if (!fbDb) return { avg: 0, count: 0 }
+        try {
+            const snap = await fbDb.collection('ratings').where('toolId', '==', String(toolId)).get()
+            if (snap.empty) return { avg: 0, count: 0 }
+            const vals = snap.docs.map(d => d.data().stars)
+            return { avg: vals.reduce((a, b) => a + b, 0) / vals.length, count: vals.length }
+        } catch(e) { return { avg: 0, count: 0 } }
+    }
+
+    async function getUserToolRating(toolId) {
+        if (!currentFBUser || !fbDb) return 0
+        try {
+            const snap = await fbDb.collection('ratings').doc(`${toolId}_${currentFBUser.uid}`).get()
+            return snap.exists ? snap.data().stars : 0
+        } catch(e) { return 0 }
+    }
+
+    // ── Real-time Firestore listeners ─────────────────────────────────────────
+    const activeListeners = {}
+    const toolLiveData = {}
+
+    // One-shot fetch instead of persistent .onSnapshot listeners — much faster for opening
+    // a detail panel. Reviews refresh on demand (after submit/delete) via refreshToolData().
+    async function subscribeToTool(toolId, cb) {
+        if (!fbDb) return
+        const tid = String(toolId)
+        // Mark this tool as "subscribed" so refreshToolData knows about it
+        activeListeners[toolId] = () => { delete activeListeners[toolId] }
+        try {
+            // Fetch reviews + replies in parallel
+            const [reviewsSnap, repliesSnap] = await Promise.all([
+                fbDb.collection('reviews').where('toolId', '==', tid).get(),
+                fbDb.collection('replies').where('toolId', '==', tid).get()
+            ])
+            const reviews = reviewsSnap.docs.map(d => ({ id: d.id, ...d.data() }))
+            reviews.sort((a, b) => (b.createdAt?.toMillis?.() || 0) - (a.createdAt?.toMillis?.() || 0))
+            const replies = repliesSnap.docs.map(d => ({ id: d.id, ...d.data() }))
+            replies.sort((a, b) => (a.createdAt?.toMillis?.() || 0) - (b.createdAt?.toMillis?.() || 0))
+            toolLiveData[toolId] = { reviews, replies }
+            cb()
+        } catch(e) {
+            console.warn('[NEON FORGE] subscribeToTool failed:', e.message)
+        }
+    }
+
+    function unsubscribeFromTool(toolId) {
+        if (activeListeners[toolId]) { activeListeners[toolId](); delete activeListeners[toolId] }
+    }
+
+    // Manual refresh — call after submit/delete so the UI updates without persistent listeners
+    async function refreshToolData(toolId) {
+        if (!activeListeners[toolId]) return
+        await subscribeToTool(toolId, () => onToolDataUpdate(toolId))
+    }
+
+    function onToolDataUpdate(toolId) {
+        renderLiveReviewsList(toolId)
+        renderLiveRatingHeader(toolId)
+    }
+
+    // ── Live render helpers ───────────────────────────────────────────────────
+    function renderLiveRatingHeader(toolId) {
+        const header = document.getElementById('rating-header-' + toolId); if (!header) return
+        const rated = (toolLiveData[toolId]?.reviews || []).filter(r => r.stars > 0)
+        if (!rated.length) {
+            header.innerHTML = `<div style="display:flex;flex-direction:column;gap:4px;">
+                <div class="stars-display">${starsHTML(0, 5)}</div>
+                <span class="rating-count" style="color:#334155;">(0 ratings)</span>
+              </div>
+              <span style="color:#64748b;font-size:11px;letter-spacing:0.5px;">BE THE FIRST TO RATE</span>`
+            return
+        }
+        const avg = rated.reduce((a, r) => a + r.stars, 0) / rated.length
+        header.innerHTML = `<div class="rating-avg-num">${avg.toFixed(1)}</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div class="stars-display">${starsHTML(Math.round(avg), 5)}</div>
+              <span class="rating-count">(${rated.length} rating${rated.length !== 1 ? 's' : ''})</span>
+            </div>`
+    }
+
+    function renderLiveReviewsList(toolId) {
+        const list = document.getElementById('reviews-list-' + toolId); if (!list) return
+        const ld = toolLiveData[toolId] || { reviews: [], replies: [] }
+        const reviews = ld.reviews || []
+        const replies = ld.replies || []
+        const uid = currentFBUser?.uid
+
+        const title = document.getElementById('reviews-title-' + toolId)
+        if (title) title.innerHTML = `<i class="fa-solid fa-comments" style="font-size:9px;"></i> COMMUNITY REVIEWS <span style="color:#334155;">(${reviews.length})</span>`
+
+        if (!reviews.length) { list.innerHTML = '<div class="no-reviews">NO REVIEWS YET — BE THE FIRST</div>'; return }
+
+        list.innerHTML = reviews.map(r => {
+            const s = r.stars || 0
+            const starsStr = s > 0 ? `<span style="color:#ffd700;">${'★'.repeat(s)}</span><span style="color:#2a3040;">${'★'.repeat(5-s)}</span>` : ''
+            const canDelete = uid && (uid === r.uid || isAdmin())
+            const rReplies = replies.filter(p => p.reviewId === r.id)
+            const repliesHTML = rReplies.map(p => {
+                const canDR = uid && (uid === p.uid || isAdmin())
+                return `<div class="reply-item">
+                    <div class="reply-meta">
+                        <i class="fa-solid fa-reply" style="color:#334155;font-size:9px;transform:scaleX(-1);"></i>
+                        <span class="reply-username">${escapeHtml(p.username)}</span>
+                        <span class="review-date">${timeAgo(p.createdAt)}</span>
+                        ${canDR ? `<button onclick="deleteReply('${p.id}','${toolId}')" class="review-delete-btn">✕</button>` : ''}
+                    </div>
+                    <div class="reply-comment">${escapeHtml(p.comment)}</div>
+                </div>`
+            }).join('')
+            return `<div class="review-item" id="review-item-${r.id}">
+                <div class="review-meta">
+                    <span class="review-username">${escapeHtml(r.username)}</span>
+                    ${starsStr ? `<span style="font-size:13px;line-height:1;">${starsStr}</span>` : ''}
+                    <span class="review-date">${timeAgo(r.createdAt)}</span>
+                    <button onclick="toggleReplyForm('${r.id}','${toolId}')" class="review-reply-btn">↩ REPLY</button>
+                    ${canDelete ? `<button onclick="deleteReview('${toolId}','${r.id}')" class="review-delete-btn">✕ DELETE</button>` : ''}
+                </div>
+                <div class="review-comment">${r.comment ? escapeHtml(r.comment) : '<em style="color:#334155;">No comment</em>'}</div>
+                ${rReplies.length ? `<div class="replies-container">${repliesHTML}</div>` : ''}
+                <div class="reply-form" id="reply-form-${r.id}" style="display:none;">
+                    <div style="display:flex;gap:8px;align-items:center;margin-top:10px;">
+                        <input class="reply-input" id="reply-input-${r.id}" placeholder="WRITE A REPLY..."
+                            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();submitReply('${toolId}','${r.id}')}">
+                        <button class="neon-button" onclick="submitReply('${toolId}','${r.id}')" style="font-size:9px;padding:4px 10px;white-space:nowrap;">POST</button>
+                        <button onclick="toggleReplyForm('${r.id}','${toolId}')" style="background:none;border:none;color:#334155;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:9px;">CANCEL</button>
+                    </div>
+                </div>
+            </div>`
+        }).join('')
+
+        // Refresh review form state
+        const formArea = document.getElementById('review-form-area-' + toolId)
+        if (formArea && currentFBUser) {
+            const existing = reviews.find(r => r.uid === currentFBUser.uid)
+            const btn = formArea.querySelector('.review-submit-btn')
+            if (btn) btn.textContent = existing ? 'UPDATE REVIEW' : 'SUBMIT REVIEW'
+            const ta = formArea.querySelector('.review-textarea')
+            if (ta && existing && !ta.value) ta.value = existing.comment || ''
+        }
+    }
+
+    // ── Review / reply actions ────────────────────────────────────────────────
+    async function submitReview(toolId) {
+        if (!fbConfigured) { showFBSetup(); return }
+        if (!currentFBUser) { showAuthModal(() => submitReview(toolId)); return }
+        const textarea = document.getElementById('review-text-' + toolId)
+        const comment  = textarea ? textarea.value.trim() : ''
+        const picker   = document.getElementById('star-picker-' + toolId)
+        const stars    = picker ? parseInt(picker.dataset.current || '0') : 0
+        if (!comment && !stars) { showToast('ENTER A RATING OR COMMENT FIRST', true); return }
+        try {
+            const existing = await fbDb.collection('reviews')
+                .where('toolId', '==', String(toolId)).where('uid', '==', currentFBUser.uid).limit(1).get()
+            if (!existing.empty) {
+                await existing.docs[0].ref.update({ comment, stars, updatedAt: firebase.firestore.FieldValue.serverTimestamp() })
+            } else {
+                await fbDb.collection('reviews').add({
+                    toolId: String(toolId), uid: currentFBUser.uid,
+                    username: getCurrentUsername(), comment, stars,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                })
+            }
+            if (stars > 0) await setUserToolRating(toolId, stars)
+            showToast('REVIEW SUBMITTED')
+            await refreshToolData(toolId)
+        } catch(e) {
+            console.error('[NEON FORGE] submitReview failed:', e)
+            showToast('SUBMIT FAILED: ' + (e.message || e.code || 'unknown'), true)
+        }
+    }
+
+    async function deleteReview(toolId, reviewId) {
+        if (!currentFBUser || !fbDb) return
+        if (!confirm('Delete your review and all its replies?')) return
+        try {
+            await fbDb.collection('reviews').doc(reviewId).delete()
+            const snap = await fbDb.collection('replies').where('reviewId', '==', reviewId).get()
+            if (!snap.empty) {
+                const batch = fbDb.batch(); snap.docs.forEach(d => batch.delete(d.ref)); await batch.commit()
+            }
+            showToast('REVIEW DELETED')
+            await refreshToolData(toolId)
+        } catch(e) {
+            console.error('[NEON FORGE] deleteReview failed:', e)
+            showToast('DELETE FAILED: ' + (e.message || e.code || 'unknown'), true)
+        }
+    }
+
+    function toggleReplyForm(reviewId, toolId) {
+        const form = document.getElementById('reply-form-' + reviewId); if (!form) return
+        if (!currentFBUser) { showAuthModal(() => toggleReplyForm(reviewId, toolId)); return }
+        const open = form.style.display === 'none'
+        form.style.display = open ? 'block' : 'none'
+        if (open) setTimeout(() => document.getElementById('reply-input-' + reviewId)?.focus(), 40)
+    }
+
+    async function submitReply(toolId, reviewId) {
+        if (!currentFBUser) { showAuthModal(() => submitReply(toolId, reviewId)); return }
+        const input = document.getElementById('reply-input-' + reviewId)
+        if (!input || !input.value.trim()) return
+        const comment = input.value.trim(); input.value = ''
+        const form = document.getElementById('reply-form-' + reviewId)
+        if (form) form.style.display = 'none'
+        try {
+            await fbDb.collection('replies').add({
+                toolId: String(toolId), reviewId, uid: currentFBUser.uid,
+                username: getCurrentUsername(), comment,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            await refreshToolData(toolId)
+        } catch(e) {
+            console.error('[NEON FORGE] submitReply failed:', e)
+            showToast('REPLY FAILED: ' + (e.message || e.code || 'unknown'), true)
+        }
+    }
+
+    async function deleteReply(replyId, toolId) {
+        if (!currentFBUser || !fbDb) return
+        try {
+            await fbDb.collection('replies').doc(replyId).delete()
+            if (toolId) await refreshToolData(toolId)
+        } catch(e) {
+            console.error('[NEON FORGE] deleteReply failed:', e)
+            showToast('DELETE FAILED: ' + (e.message || e.code || 'unknown'), true)
+        }
+    }
+
+    // ── Star picker ───────────────────────────────────────────────────────────
+    function starHover(toolId, n) {
+        const p = document.getElementById('star-picker-' + toolId)
+        if (p) p.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('filled', i < n))
+    }
+    function starPickerLeave(toolId) {
+        const p = document.getElementById('star-picker-' + toolId)
+        if (p) { const cur = parseInt(p.dataset.current || '0'); p.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('filled', i < cur)) }
+    }
+    async function starClick(toolId, n) {
+        if (!currentFBUser) { showAuthModal(() => starClick(toolId, n)); return }
+        const picker = document.getElementById('star-picker-' + toolId)
+        const cur = parseInt(picker?.dataset.current || '0')
+        const newVal = cur === n ? 0 : n   // same star = remove rating
+        if (picker) { picker.dataset.current = newVal; picker.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('filled', i < newVal)) }
+        updateStarLabel(toolId, newVal)
+        await setUserToolRating(toolId, newVal)
+        const rd = await getToolRatingData(toolId)
+        const header = document.getElementById('rating-header-' + toolId)
+        if (header) {
+            if (rd.count > 0) header.innerHTML = `<div class="rating-avg-num">${rd.avg.toFixed(1)}</div>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <div class="stars-display">${starsHTML(Math.round(rd.avg), 5)}</div>
+                  <span class="rating-count">(${rd.count} rating${rd.count !== 1 ? 's' : ''})</span>
+                </div>`
+            else header.innerHTML = `<div style="display:flex;flex-direction:column;gap:4px;">
+                <div class="stars-display">${starsHTML(0, 5)}</div>
+                <span class="rating-count" style="color:#334155;">(0 ratings)</span>
+              </div>
+              <span style="color:#64748b;font-size:11px;letter-spacing:0.5px;">BE THE FIRST TO RATE</span>`
+        }
+    }
+    function updateStarLabel(toolId, stars) {
+        const label = document.getElementById('star-label-' + toolId); if (!label) return
+        label.innerHTML = stars > 0
+            ? `YOUR RATING: ${stars}/5 &nbsp;<button onclick="starClick(${toolId},${stars})" style="background:none;border:none;color:#ff00aa;font-family:'Share Tech Mono',monospace;font-size:9px;cursor:pointer;letter-spacing:1px;padding:0;">✕ REMOVE</button>`
+            : 'CLICK TO RATE'
+    }
+
+    // ── Refresh panel ─────────────────────────────────────────────────────────
+    async function refreshDetailPanel(toolId) {
+        const tool = tools.find(t => t.id === toolId); if (!tool) return
+        const html = await buildDetailHTML(tool)
+        const dr   = document.getElementById('detail-' + toolId)
+        const mobilePanel = document.getElementById('mobile-detail-' + toolId)
+        if (dr) dr.querySelector('td').innerHTML = html
+        if (mobilePanel && mobilePanel.classList.contains('open')) mobilePanel.innerHTML = html
+        if (fbConfigured && fbDb) subscribeToTool(toolId, () => onToolDataUpdate(toolId))
+    }
+
+    // ── Build detail HTML (async) ─────────────────────────────────────────────
+    async function buildDetailHTML(t) {
+        const user = currentFBUser
+        let ratingData = { avg: 0, count: 0 }, userRating = 0
+        let reviews = [], replies = []
+
+        if (fbConfigured && fbDb) {
+            try {
+                const ld = toolLiveData[t.id]
+                if (ld) {
+                    reviews = ld.reviews || []; replies = ld.replies || []
+                    const rated = reviews.filter(r => r.stars > 0)
+                    if (rated.length) ratingData = { avg: rated.reduce((a,r) => a+r.stars,0)/rated.length, count: rated.length }
+                } else {
+                    ratingData = await getToolRatingData(t.id)
+                }
+                if (user) userRating = await getUserToolRating(t.id)
+            } catch(e) {
+                console.warn('[NEON FORGE] Firestore read failed, rendering with empty data:', e.message)
+            }
+        }
+
+        // Extra spec cells
+        const SKIP = new Set(['ic_mm','s_mm','re_mm','corner_radius_RE','corner_radius_mm','corner_radius','min_bore_diameter','minimum_bore_diameter','bore_diameter_min'])
+        let specCells = ''
+        if (t.rawSpecs && typeof t.rawSpecs === 'object') {
+            Object.entries(t.rawSpecs).forEach(([k, v]) => {
+                if (SKIP.has(k) || v == null || v === '' || typeof v === 'object') return
+                specCells += `<div class="detail-cell"><div class="detail-cell-label">${k.replace(/_/g,' ').toUpperCase()}</div><div class="detail-cell-value">${escapeHtml(String(v))}</div></div>`
+            })
+        }
+
+        const ratingHeaderHTML = ratingData.count > 0
+            ? `<div class="rating-avg-num">${ratingData.avg.toFixed(1)}</div>
+               <div style="display:flex;flex-direction:column;gap:4px;">
+                 <div class="stars-display">${starsHTML(Math.round(ratingData.avg), 5)}</div>
+                 <span class="rating-count">(${ratingData.count} rating${ratingData.count !== 1 ? 's' : ''})</span>
+               </div>`
+            : `<div style="display:flex;flex-direction:column;gap:4px;">
+                 <div class="stars-display">${starsHTML(0, 5)}</div>
+                 <span class="rating-count" style="color:#334155;">(0 ratings)</span>
+               </div>
+               <span style="color:#64748b;font-size:11px;letter-spacing:0.5px;">BE THE FIRST TO RATE</span>`
+
+        let pickerHTML = `<div class="star-picker" id="star-picker-${t.id}" data-current="${userRating}" onmouseleave="starPickerLeave(${t.id})">`
+        for (let i = 1; i <= 5; i++) pickerHTML += `<span class="star${userRating>=i?' filled':''}" onmouseover="starHover(${t.id},${i})" onclick="starClick(${t.id},${i})">★</span>`
+        pickerHTML += '</div>'
+        const starLabelHTML = userRating > 0
+            ? `YOUR RATING: ${userRating}/5 &nbsp;<button onclick="starClick(${t.id},${userRating})" style="background:none;border:none;color:#ff00aa;font-family:'Share Tech Mono',monospace;font-size:9px;cursor:pointer;letter-spacing:1px;padding:0;">✕ REMOVE</button>`
+            : 'CLICK TO RATE'
+
+        const uid = user?.uid
+        let reviewsHTML = ''
+        if (!fbConfigured) {
+            reviewsHTML = `<div class="no-reviews" style="cursor:pointer;" onclick="showFBSetup()">⚡ CONNECT FIREBASE TO SEE COMMUNITY REVIEWS</div>`
+        } else if (!reviews.length) {
+            reviewsHTML = '<div class="no-reviews">NO REVIEWS YET — BE THE FIRST</div>'
+        } else {
+            reviewsHTML = reviews.map(r => {
+                const s = r.stars || 0
+                const starsStr = s > 0 ? `<span style="color:#ffd700;">${'★'.repeat(s)}</span><span style="color:#2a3040;">${'★'.repeat(5-s)}</span>` : ''
+                const canDelete = uid && (uid === r.uid || isAdmin())
+                const rReplies = replies.filter(p => p.reviewId === r.id)
+                const repliesHTML = rReplies.map(p => {
+                    const canDR = uid && (uid === p.uid || isAdmin())
+                    return `<div class="reply-item"><div class="reply-meta"><i class="fa-solid fa-reply" style="color:#334155;font-size:9px;transform:scaleX(-1);"></i><span class="reply-username">${escapeHtml(p.username)}</span><span class="review-date">${timeAgo(p.createdAt)}</span>${canDR?`<button onclick="deleteReply('${p.id}','${t.id}')" class="review-delete-btn">✕</button>`:''}</div><div class="reply-comment">${escapeHtml(p.comment)}</div></div>`
+                }).join('')
+                return `<div class="review-item" id="review-item-${r.id}">
+                    <div class="review-meta">
+                        <span class="review-username">${escapeHtml(r.username)}</span>
+                        ${starsStr?`<span style="font-size:13px;line-height:1;">${starsStr}</span>`:''}
+                        <span class="review-date">${timeAgo(r.createdAt)}</span>
+                        <button onclick="toggleReplyForm('${r.id}','${t.id}')" class="review-reply-btn">↩ REPLY</button>
+                        ${canDelete?`<button onclick="deleteReview('${t.id}','${r.id}')" class="review-delete-btn">✕ DELETE</button>`:''}
+                    </div>
+                    <div class="review-comment">${r.comment?escapeHtml(r.comment):'<em style="color:#334155;">No comment</em>'}</div>
+                    ${rReplies.length?`<div class="replies-container">${repliesHTML}</div>`:''}
+                    <div class="reply-form" id="reply-form-${r.id}" style="display:none;">
+                        <div style="display:flex;gap:8px;align-items:center;margin-top:10px;">
+                            <input class="reply-input" id="reply-input-${r.id}" placeholder="WRITE A REPLY..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();submitReply('${t.id}','${r.id}')}">
+                            <button class="neon-button" onclick="submitReply('${t.id}','${r.id}')" style="font-size:9px;padding:4px 10px;white-space:nowrap;">POST</button>
+                            <button onclick="toggleReplyForm('${r.id}','${t.id}')" style="background:none;border:none;color:#334155;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:9px;">CANCEL</button>
+                        </div>
+                    </div>
+                </div>`
+            }).join('')
+        }
+
+        // Review form — textarea always visible; submission gated by auth/firebase
+        let reviewFormHTML
+        const existingReview = reviews.find(r => r.uid === user?.uid)
+        if (user && fbConfigured) {
+            reviewFormHTML = `
+                <div style="margin-bottom:8px;font-size:10px;color:#64748b;letter-spacing:1px;">POSTING AS: <span style="color:#a98ff5;">${escapeHtml((getCurrentUsername()||'').toUpperCase())}</span></div>
+                <textarea class="review-textarea" id="review-text-${t.id}" placeholder="SHARE YOUR EXPERIENCE WITH THIS TOOL...">${existingReview?.comment?escapeHtml(existingReview.comment):''}</textarea>
+                <div style="display:flex;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap;">
+                    <button class="neon-button review-submit-btn" onclick="submitReview(${t.id})" style="font-size:10px;padding:5px 14px;">${existingReview?'UPDATE REVIEW':'SUBMIT REVIEW'}</button>
+                    <span style="color:#334155;font-size:10px;">STAR RATING SAVED SEPARATELY ABOVE</span>
+                </div>`
+        } else {
+            // Always show textarea — login/firebase prompt on submit
+            const notReadyNote = !fbConfigured
+                ? `<span style="color:#334155;font-size:10px;">⚡ <button onclick="showFBSetup()" style="background:none;border:none;color:#7b2cbf;font-family:'Share Tech Mono',monospace;font-size:10px;cursor:pointer;padding:0;letter-spacing:1px;">CONNECT FIREBASE</button> TO SAVE REVIEWS</span>`
+                : `<span style="color:#334155;font-size:10px;"><button onclick="showAuthModal(()=>refreshDetailPanel(${t.id}))" style="background:none;border:none;color:#00f9ff;font-family:'Share Tech Mono',monospace;font-size:10px;cursor:pointer;padding:0;letter-spacing:1px;">LOG IN</button> OR <button onclick="showAuthModal(()=>refreshDetailPanel(${t.id}))" style="background:none;border:none;color:#00f9ff;font-family:'Share Tech Mono',monospace;font-size:10px;cursor:pointer;padding:0;letter-spacing:1px;">CREATE ACCOUNT</button> TO POST</span>`
+            reviewFormHTML = `
+                <textarea class="review-textarea" id="review-text-${t.id}" placeholder="SHARE YOUR EXPERIENCE WITH THIS TOOL..."></textarea>
+                <div style="display:flex;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap;">
+                    <button class="neon-button review-submit-btn" onclick="submitReview(${t.id})" style="font-size:10px;padding:5px 14px;">SUBMIT REVIEW</button>
+                    ${notReadyNote}
+                </div>`
+        }
+
+        const compatM = t.compatibleMachines?.length ? `<div class="detail-cell" style="grid-column:span 2;"><div class="detail-cell-label">COMPATIBLE MACHINES</div><div class="detail-cell-value" style="font-size:11px;white-space:normal;">${t.compatibleMachines.map(escapeHtml).join(' · ')}</div></div>` : ''
+        const compatI = t.compatibleInserts?.length  ? `<div class="detail-cell" style="grid-column:span 2;"><div class="detail-cell-label">COMPATIBLE INSERTS</div><div class="detail-cell-value" style="font-size:11px;white-space:normal;">${t.compatibleInserts.map(escapeHtml).join(' · ')}</div></div>` : ''
+        const tags    = t.tags?.length    ? `<div class="detail-cell"><div class="detail-cell-label">TAGS</div><div class="detail-cell-value" style="font-size:11px;">${t.tags.map(escapeHtml).join(', ')}</div></div>` : ''
+        const sources = t.sources?.length ? `<div class="detail-panel-wide"><div class="detail-cell-label" style="margin-bottom:6px;">SOURCES</div><div style="font-size:11px;">${t.sources.map(s=>typeof s==='string'&&s.startsWith('http')?`<a href="${escapeHtml(s)}" target="_blank" rel="noopener" style="color:#00f9ff;text-decoration:none;">${escapeHtml(s)}</a>`:escapeHtml(String(s))).join('<br>')}</div></div>` : ''
+        const sourceStatus = `<div class="detail-cell"><div class="detail-cell-label">SOURCE STATUS</div><div class="detail-cell-value">${verificationBadgeHTML(t)}</div></div>`
+
+        return `<div class="detail-panel">
+            <div class="detail-panel-wide detail-rating-header" id="rating-header-${t.id}">${ratingHeaderHTML}</div>
+            ${t.description?`<div class="detail-panel-wide"><div class="detail-cell-label" style="margin-bottom:5px;">DESCRIPTION</div><div style="color:#c0c0dd;font-size:12px;line-height:1.7;">${escapeHtml(t.description)}</div></div>`:''}
+            ${t.maker ?`<div class="detail-cell"><div class="detail-cell-label">MANUFACTURER</div><div class="detail-cell-value" style="color:#a98ff5;">${escapeHtml(t.maker)}</div></div>`:''}
+            ${sourceStatus}
+            ${t.type  ?`<div class="detail-cell"><div class="detail-cell-label">COMPONENT TYPE</div><div class="detail-cell-value"><span class="type-badge ${typeCls(t.type)}">${t.type}</span></div></div>`:''}
+            ${t.part  ?`<div class="detail-cell"><div class="detail-cell-label">PART NUMBER</div><div class="detail-cell-value" style="color:#00f9ff;">${escapeHtml(t.part)}</div></div>`:''}
+            ${buildSize(t)?`<div class="detail-cell"><div class="detail-cell-label">SIZE</div><div class="detail-cell-value">${buildSize(t)}</div></div>`:''}
+            ${t.grade ?`<div class="detail-cell"><div class="detail-cell-label">GRADE</div><div class="detail-cell-value" style="color:#39ff14;">${escapeHtml(t.grade)}</div></div>`:''}
+            ${t.shape ?`<div class="detail-cell"><div class="detail-cell-label">INSERT SHAPE</div><div class="detail-cell-value">${escapeHtml(t.shape)}</div></div>`:''}
+            ${t.cb    ?`<div class="detail-cell"><div class="detail-cell-label">CHIPBREAKER</div><div class="detail-cell-value">${escapeHtml(t.cb)}</div></div>`:''}
+            ${t.cornerRadius!=null?`<div class="detail-cell"><div class="detail-cell-label">CORNER RADIUS</div><div class="detail-cell-value">${formatDim(t.cornerRadius)}</div></div>`:''}
+            ${t.minBore!=null?`<div class="detail-cell"><div class="detail-cell-label">MIN BORE DIAMETER</div><div class="detail-cell-value">${formatDim(t.minBore)}</div></div>`:''}
+            ${t.mountsTo?`<div class="detail-cell"><div class="detail-cell-label">MOUNTS TO</div><div class="detail-cell-value" style="color:#a98ff5;">${escapeHtml(t.mountsTo)}</div></div>`:''}
+            ${specCells}${compatM}${compatI}${tags}${sources}
+            <div class="detail-actions"><button class="neon-button" onclick="copyPart('${escapeHtml(t.part)}')">COPY PART #</button></div>
+            <div class="detail-panel-wide">
+                <div class="detail-section-title"><i class="fa-solid fa-star" style="font-size:9px;"></i> RATE THIS TOOL</div>
+                <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+                    ${fbConfigured?pickerHTML:`<span style="color:#334155;font-size:11px;cursor:pointer;" onclick="showFBSetup()">⚡ CONNECT FIREBASE TO RATE</span>`}
+                    ${fbConfigured?`<span style="color:#64748b;font-size:11px;" id="star-label-${t.id}">${starLabelHTML}</span>`:''}
+                </div>
+            </div>
+            <div class="detail-panel-wide">
+                <div class="detail-section-title" id="reviews-title-${t.id}"><i class="fa-solid fa-comments" style="font-size:9px;"></i> COMMUNITY REVIEWS <span style="color:#334155;">(${reviews.length})</span></div>
+                <div id="reviews-list-${t.id}">${reviewsHTML}</div>
+            </div>
+            <div class="detail-panel-wide">
+                <div class="detail-section-title"><i class="fa-solid fa-pen" style="font-size:9px;"></i> LEAVE A REVIEW</div>
+                <div id="review-form-area-${t.id}">${reviewFormHTML}</div>
+            </div>
+        </div>`
+    }
+
+    // ── Init ──────────────────────────────────────────────────────────────────
+    // Firebase is now lazy-loaded by toggleDetail() — first detail-panel open pays the cost.
+    document.addEventListener('DOMContentLoaded', () => {
+        updateAuthUI()
+    })
+
+
+
+    // ── Tweaks ────────────────────────────────────────────────────────────────
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "headerH": 76,
+      "searchBarH": 38,
+      "fontSize": 12
+    }/*EDITMODE-END*/;
+
+    function applyTweaks(t) {
+        document.documentElement.style.setProperty('--header-h', t.headerH + 'px')
+        document.documentElement.style.setProperty('--search-bar-h', t.searchBarH + 'px')
+        document.documentElement.style.setProperty('--ui-font-size', t.fontSize + 'px')
+        // sync sliders
+        const sh = document.getElementById('tw-headerH')
+        const ss = document.getElementById('tw-searchH')
+        const sf = document.getElementById('tw-fontSize')
+        if (sh) { sh.value = t.headerH; document.getElementById('tw-headerH-val').textContent = t.headerH + 'px' }
+        if (ss) { ss.value = t.searchBarH; document.getElementById('tw-searchH-val').textContent = t.searchBarH + 'px' }
+        if (sf) { sf.value = t.fontSize; document.getElementById('tw-fontSize-val').textContent = t.fontSize + 'px' }
+    }
+
+    // load saved tweaks or use defaults
+    let activeTweaks = Object.assign({}, TWEAK_DEFAULTS)
+    try {
+        const saved = JSON.parse(localStorage.getItem('nf_tweaks') || '{}')
+        Object.assign(activeTweaks, saved)
+    } catch {}
+    applyTweaks(activeTweaks)
+
+    function saveTweaks() {
+        localStorage.setItem('nf_tweaks', JSON.stringify(activeTweaks))
+        window.parent.postMessage({ type: '__edit_mode_set_keys', edits: activeTweaks }, '*')
+    }
+
+    // build tweaks panel (hidden by default)
+    const tweakPanel = document.createElement('div')
+    tweakPanel.id = 'tweaks-panel'
+    tweakPanel.style.cssText = `
+        display:none; position:fixed; bottom:20px; right:20px; z-index:300;
+        background:#0d0d14; border:1px solid #00f9ff;
+        box-shadow:0 0 24px rgba(0,249,255,0.3);
+        border-radius:12px; padding:16px 18px; width:220px;
+        font-family:'Share Tech Mono',monospace; font-size:11px; color:#e0e0ff;
+    `
+    tweakPanel.innerHTML = `
+        <div style="font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:2px;color:#00f9ff;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;">
+            TWEAKS
+            <span style="font-size:9px;color:#334155;letter-spacing:1px;">LIVE EDIT</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+            <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px;color:#94a3b8;letter-spacing:1px;">
+                    HEADER HEIGHT <span id="tw-headerH-val">${activeTweaks.headerH}px</span>
+                </div>
+                <input id="tw-headerH" type="range" min="36" max="120" step="2" value="${activeTweaks.headerH}" style="width:100%;accent-color:#00f9ff;cursor:pointer;">
+            </div>
+            <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px;color:#94a3b8;letter-spacing:1px;">
+                    SEARCH BAR <span id="tw-searchH-val">${activeTweaks.searchBarH}px</span>
+                </div>
+                <input id="tw-searchH" type="range" min="28" max="64" step="2" value="${activeTweaks.searchBarH}" style="width:100%;accent-color:#00f9ff;cursor:pointer;">
+            </div>
+            <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px;color:#94a3b8;letter-spacing:1px;">
+                    FONT SIZE <span id="tw-fontSize-val">${activeTweaks.fontSize}px</span>
+                </div>
+                <input id="tw-fontSize" type="range" min="9" max="18" step="1" value="${activeTweaks.fontSize}" style="width:100%;accent-color:#00f9ff;cursor:pointer;">
+            </div>
+        </div>
+        <button onclick="activeTweaks=Object.assign({},TWEAK_DEFAULTS);applyTweaks(activeTweaks);saveTweaks();"
+            style="margin-top:14px;width:100%;background:transparent;border:1px solid #334155;color:#64748b;
+            padding:5px;border-radius:6px;font-family:'Share Tech Mono',monospace;font-size:10px;
+            letter-spacing:1px;cursor:pointer;transition:all 0.15s;"
+            onmouseover="this.style.borderColor='#ff00aa';this.style.color='#ff00aa'"
+            onmouseout="this.style.borderColor='#334155';this.style.color='#64748b'">
+            RESET DEFAULTS
+        </button>
+    `
+    document.body.appendChild(tweakPanel)
+
+    // wire sliders
+    document.getElementById('tw-headerH').addEventListener('input', function() {
+        activeTweaks.headerH = +this.value
+        applyTweaks(activeTweaks); saveTweaks()
+    })
+    document.getElementById('tw-searchH').addEventListener('input', function() {
+        activeTweaks.searchBarH = +this.value
+        applyTweaks(activeTweaks); saveTweaks()
+    })
+    document.getElementById('tw-fontSize').addEventListener('input', function() {
+        activeTweaks.fontSize = +this.value
+        applyTweaks(activeTweaks); saveTweaks()
+    })
+
+    // host toggle protocol — register listener FIRST
+    window.addEventListener('message', e => {
+        if (e.data?.type === '__activate_edit_mode')   tweakPanel.style.display = 'block'
+        if (e.data?.type === '__deactivate_edit_mode') tweakPanel.style.display = 'none'
+    })
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*')
+    </script>
+</body>
+</html>

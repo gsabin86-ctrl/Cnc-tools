@@ -1,0 +1,4 @@
+# Preserve archived and generated binary artifacts exactly.
+archive/database-cleanup/legacy-hosted-index-2026-07-21.html -text -whitespace
+docs/v3/data/toolbase.sqlite binary
+docs/v3/toolbase-card.png binary

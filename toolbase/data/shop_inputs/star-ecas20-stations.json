@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "input_id": "star-ecas20-stations-2026-07-21",
+  "machine_tool_id": "ECAS20_GANG_BLOCK",
+  "machine_model": "Star ECAS-20",
+  "source": {
+    "source_type": "shop_note",
+    "title": "Star ECAS-20 gang-block station interface confirmation",
+    "recorded_by": "Greg",
+    "recorded_at": "2026-07-21",
+    "capture_method": "direct user statement in Codex task",
+    "raw_text": "Stations 1 through 4 and stations 11 and 12 accept 16 mm square shanks. Stations 16, 17, 18, and 19 accept 22 mm round shanks."
+  },
+  "fit_rule": {
+    "recorded_by": "Greg",
+    "recorded_at": "2026-07-21",
+    "capture_method": "direct user statement in Codex task",
+    "raw_text": "Any of the 16 mm square shank holders in the database should fit in those 16 mm pockets, and any of the 22 mm round shank holders should fit in the round shank stations.",
+    "match_method": "exact_source_backed_machine_side_interface",
+    "component_types": ["holder", "shank"]
+  },
+  "station_groups": [
+    {
+      "station_numbers": [1, 2, 3, 4, 11, 12],
+      "accepted_interface_type": "square_shank",
+      "accepted_shape": "square",
+      "accepted_size_mm": 16
+    },
+    {
+      "station_numbers": [16, 17, 18, 19],
+      "accepted_interface_type": "round_shank",
+      "accepted_shape": "round",
+      "accepted_size_mm": 22
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "counts": {
+    "catalog_claims": 17,
+    "legacy_relationships": 677,
+    "tools": 1212
+  },
+  "format_version": 1,
+  "source_databases": {
+    "legacy": {
+      "file": "db.sqlite",
+      "sha256": "9f57770bcc1304a0ecf5a31732ca9e364a7be0878d3b89364ff6a0ed200369dc"
+    },
+    "v2": {
+      "file": "db_v2.sqlite",
+      "sha256": "1ffe545d6b28a16d30a15c3514d9e275104d2374395cc32c4c57fb6c161b1215"
+    }
+  }
+}

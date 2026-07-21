@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#12211d">
+  <meta name="description" content="A mobile-first, source-auditable database of Swiss CNC holders, inserts, modules, shanks, and cutting recommendations.">
+  <meta property="og:title" content="CNC Toolbase">
+  <meta property="og:description" content="Search Swiss tooling, inspect geometry, and trace every reviewed recommendation to its source.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://cnctoolbase.com/v3/toolbase-card.png">
+  <link rel="canonical" href="https://cnctoolbase.com/v3/">
+  <title>CNC Toolbase · Auditable Swiss tooling</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="CNC Toolbase home">
+      <span class="brand-mark" aria-hidden="true">CT</span>
+      <span><strong>CNC Toolbase</strong><small>Swiss tooling reference</small></span>
+    </a>
+    <nav class="top-actions" aria-label="Display options">
+      <button class="icon-button" id="unit-button" type="button" aria-label="Change units">Source units</button>
+      <button class="icon-button" id="theme-button" type="button" aria-label="Change color theme">Theme</button>
+      <a class="icon-button desktop-only" href="./data/toolbase.sqlite" download>SQLite</a>
+    </nav>
+  </header>
+
+  <div class="offline-banner" id="offline-banner" hidden>You are offline. Cached tools remain available.</div>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Manufacturer evidence stays attached</p>
+      <h1 id="page-title">Find the right tool—and see what proves it.</h1>
+      <p>Search holders, shanks, modules, and inserts. Reviewed specifications, materials, and cutting data link back to the exact source location. Unreviewed legacy data stays clearly labeled.</p>
+      <dl class="stats" id="stats" aria-label="Database summary">
+        <div><dt>Tools</dt><dd>—</dd></div>
+        <div><dt>Verified cutting profiles</dt><dd>—</dd></div>
+        <div><dt>Material mapped</dt><dd>—</dd></div>
+        <div><dt>Review status</dt><dd>Loading</dd></div>
+      </dl>
+    </section>
+
+    <section class="catalog" aria-label="Tool catalog">
+      <div class="search-toolbar">
+        <label class="search-field" for="search-input">
+          <span class="sr-only">Search tools</span>
+          <input id="search-input" type="search" autocomplete="off" spellcheck="false" placeholder="Part number, holder, grade, geometry…">
+          <kbd>/</kbd>
+        </label>
+        <button class="filter-button" id="filter-button" type="button" aria-expanded="false" aria-controls="filter-panel">Filters <span id="filter-count">0</span></button>
+      </div>
+
+      <div class="filter-panel" id="filter-panel">
+        <label>Manufacturer<select id="manufacturer-filter"><option value="">All</option></select></label>
+        <label>Component<select id="component-filter"><option value="">All</option></select></label>
+        <label>Work material<select id="material-filter"><option value="">All</option></select></label>
+        <label>Operation<select id="operation-filter"><option value="">All</option></select></label>
+        <label>Geometry<select id="geometry-filter"><option value="">All</option></select></label>
+        <label>Evidence<select id="evidence-filter"><option value="">All</option></select></label>
+        <label>Cutting data<select id="cutting-filter"><option value="">Either</option><option value="yes">Verified available</option><option value="no">Not verified</option></select></label>
+        <button class="text-button" id="clear-filters" type="button">Clear all filters</button>
+      </div>
+
+      <div class="catalog-meta">
+        <p><strong id="result-count">—</strong> matches <span id="query-summary"></span></p>
+        <span class="build-label" id="build-label">Loading index…</span>
+      </div>
+
+      <div class="workspace">
+        <section class="results-panel" aria-label="Search results">
+          <div class="result-list" id="result-list" aria-live="polite" aria-busy="true">
+            <div class="loading"><span></span><p>Loading the searchable index…</p></div>
+          </div>
+          <button class="load-more" id="load-more" type="button" hidden>Show more</button>
+        </section>
+
+        <aside class="detail-panel" id="detail-panel" aria-label="Tool details" aria-hidden="true">
+          <div class="detail-empty">
+            <span aria-hidden="true">⌖</span>
+            <h2>Choose a tool</h2>
+            <p>Geometry, cutting recommendations, compatibility, and the source audit trail appear here.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>

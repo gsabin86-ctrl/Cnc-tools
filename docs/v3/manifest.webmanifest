@@ -1,0 +1,12 @@
+{
+  "name": "CNC Toolbase",
+  "short_name": "Toolbase",
+  "description": "Auditable Swiss CNC tooling reference with sourced geometry, material recommendations, and cutting data.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f5f1",
+  "theme_color": "#12211d",
+  "categories": ["productivity", "utilities"],
+  "lang": "en-US"
+}

@@ -1,0 +1,765 @@
+{
+  "schema_version": 1,
+  "proposal_id": "kennametal-topswiss-pilot-2026-07",
+  "title": "Kennametal TopSwiss exact-match cutting-data pilot",
+  "created_at": "2026-07-20",
+  "status": "source_extracted",
+  "import_allowed": false,
+  "purpose": "Human-review packet for exact database inserts. These rows are not verified cutting recommendations and are not imported by the v3 build.",
+  "source": {
+    "catalog_id": "kennametal-topswiss-inserts-metricinch",
+    "manufacturer": "Kennametal",
+    "title": "TopSwiss Inserts Metric/Inch",
+    "source_type": "manufacturer_catalog",
+    "local_path": "catalogs/kennametal/TopSwiss Inserts MetricInch.pdf",
+    "sha256": "f9852eff7ffb273af212776a13f684fa1f64d026af209516e7ad60e4878d2707",
+    "page_count": 24,
+    "catalog_date_evidence": "Copyright 2024 shown on PDF page 24",
+    "visual_reviewed_pages": [
+      3,
+      4,
+      5,
+      6,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "source_ambiguities": [
+      "PDF page 18 labels the right-hand FFS/LFS/PPS/FPS/MPS table as Negative Insert Geometry even though those columns are the positive geometries used elsewhere in the catalog. This appears to be a catalog heading error, but rows using page 18 still require human acceptance."
+    ]
+  },
+  "review_policy": {
+    "exact_identity_required": [
+      "database tool id",
+      "manufacturer",
+      "ANSI and ISO catalog number",
+      "grade",
+      "geometry/chipbreaker"
+    ],
+    "usable_statuses_after_separate_review": [
+      "catalog_verified",
+      "manufacturer_verified",
+      "shop_verified"
+    ],
+    "current_status_note": "Every row remains source_extracted until a person reviews the identity match, material context, and operating assumptions.",
+    "excluded_identity_note": "Legacy TopSwiss records carrying S02PCK, S52PTK, S52MCK, or S52SCK-style grades were excluded. This catalog lists KCP20S, KCM25S, KCS25S, KN10S, and KTP25S; no grade equivalence was inferred without a manufacturer source."
+  },
+  "rows": [
+    {
+      "proposal_row_id": "topswiss-001",
+      "tool_lookup": {
+        "tool_id": "CCET060200RPPS-KN10S",
+        "manufacturer": "Kennametal"
+      },
+      "source_match": {
+        "product_page": 4,
+        "catalog_section": "CCET Insert - Positive - PPS (Right Hand)",
+        "ansi_catalog_number": "CCET2150RPPS",
+        "iso_catalog_number": "CCET060200RPPS",
+        "grade": "KN10S",
+        "geometry_code": "PPS",
+        "grade_availability": "listed_for_catalog_number"
+      },
+      "work_material": {
+        "iso_group": "N",
+        "subgroup": "N1",
+        "catalog_label": "Wrought Aluminum Alloys"
+      },
+      "operation": {
+        "operation_type": "turning",
+        "catalog_cut_condition": "smooth cut, pre-turned surface",
+        "canonical_cut_condition": "finishing",
+        "coolant_condition": "unknown"
+      },
+      "parameters": {
+        "surface_speed": {
+          "min": 198,
+          "start": 488,
+          "max": 616,
+          "unit": "m_per_min",
+          "source_page": 20,
+          "source_table": "N1 / KN10S"
+        },
+        "feed": {
+          "min": 0.01,
+          "max": 0.1,
+          "unit": "mm_per_rev",
+          "source_page": 20,
+          "source_table": "Positive PPS cutting parameters"
+        },
+        "depth_of_cut": {
+          "min": 0.06,
+          "max": 4.5,
+          "unit": "mm",
+          "source_page": 20,
+          "source_table": "Positive PPS cutting parameters"
+        }
+      },
+      "evidence": {
+        "verification_status": "source_extracted",
+        "extraction_method": "manual",
+        "visual_page_check": "complete",
+        "source_raw_text": "CCET2150RPPS / CCET060200RPPS lists KN10S; N1 KN10S speed is 198 / 488 / 616 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "database_cleanup_note": "The current description says KN10S is for non-ferrous and steels and labels it cermet. This catalog supports N as primary and K as secondary for KN10S, but does not establish steel use or the cermet label."
+    },
+    {
+      "proposal_row_id": "topswiss-002",
+      "tool_lookup": {
+        "tool_id": "CCET060201RPPS-KN10S",
+        "manufacturer": "Kennametal"
+      },
+      "source_match": {
+        "product_page": 4,
+        "catalog_section": "CCET Insert - Positive - PPS (Right Hand)",
+        "ansi_catalog_number": "CCET21502RPPS",
+        "iso_catalog_number": "CCET060201RPPS",
+        "grade": "KN10S",
+        "geometry_code": "PPS",
+        "grade_availability": "listed_for_catalog_number"
+      },
+      "work_material": {
+        "iso_group": "N",
+        "subgroup": "N4",
+        "catalog_label": "Copper, Brass, Zinc-Based; machinability index 70-100"
+      },
+      "operation": {
+        "operation_type": "turning",
+        "catalog_cut_condition": "smooth cut, pre-turned surface",
+        "canonical_cut_condition": "finishing",
+        "coolant_condition": "unknown"
+      },
+      "parameters": {
+        "surface_speed": {
+          "min": 107,
+          "start": 259,
+          "max": 366,
+          "unit": "m_per_min",
+          "source_page": 20,
+          "source_table": "N4 / KN10S"
+        },
+        "feed": {
+          "min": 0.01,
+          "max": 0.1,
+          "unit": "mm_per_rev",
+          "source_page": 20,
+          "source_table": "Positive PPS cutting parameters"
+        },
+        "depth_of_cut": {
+          "min": 0.06,
+          "max": 4.5,
+          "unit": "mm",
+          "source_page": 20,
+          "source_table": "Positive PPS cutting parameters"
+        }
+      },
+      "evidence": {
+        "verification_status": "source_extracted",
+        "extraction_method": "manual",
+        "visual_page_check": "complete",
+        "source_raw_text": "CCET21502RPPS / CCET060201RPPS lists KN10S; N4 KN10S speed is 107 / 259 / 366 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "database_cleanup_note": "The current description includes steels and labels KN10S cermet. This catalog supports N as primary and K as secondary for KN10S, but does not establish steel use or the cermet label."
+    },
+    {
+      "proposal_row_id": "topswiss-003",
+      "tool_lookup": {
+        "tool_id": "CCET09T302LPPS-KTP25S",
+        "manufacturer": "Kennametal"
+      },
+      "source_match": {
+        "product_page": 4,
+        "catalog_section": "CCET Insert - Positive - PPS (Left Hand)",
+        "ansi_catalog_number": "CCET32505LPPS",
+        "iso_catalog_number": "CCET09T302LPPS",
+        "grade": "KTP25S",
+        "geometry_code": "PPS",
+        "grade_availability": "listed_for_catalog_number"
+      },
+      "work_material": {
+        "iso_group": "P",
+        "subgroup": "P2",
+        "catalog_label": "Medium- and High-Carbon Steels (>0.3% C)"
+      },
+      "operation": {
+        "operation_type": "turning",
+        "catalog_cut_condition": "smooth cut, pre-turned surface",
+        "canonical_cut_condition": "finishing",
+        "coolant_condition": "unknown"
+      },
+      "parameters": {
+        "surface_speed": {
+          "min": 122,
+          "start": 204,
+          "max": 312,
+          "unit": "m_per_min",
+          "source_page": 15,
+          "source_table": "P2 / KTP25S"
+        },
+        "feed": {
+          "min": 0.01,
+          "max": 0.1,
+          "unit": "mm_per_rev",
+          "source_page": 14,
+          "source_table": "Positive PPS cutting parameters"
+        },
+        "depth_of_cut": {
+          "min": 0.06,
+          "max": 4.5,
+          "unit": "mm",
+          "source_page": 14,
+          "source_table": "Positive PPS cutting parameters"
+        }
+      },
+      "evidence": {
+        "verification_status": "source_extracted",
+        "extraction_method": "manual",
+        "visual_page_check": "complete",
+        "source_raw_text": "CCET32505LPPS / CCET09T302LPPS lists KTP25S; P2 KTP25S speed is 122 / 204 / 312 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "proposal_row_id": "topswiss-004",
+      "tool_lookup": {
+        "tool_id": "CCGT09T304MFFS-KCS25S",
+        "manufacturer": "Kennametal"
+      },
+      "source_match": {
+        "product_page": 3,
+        "catalog_section": "CCGT Insert - Positive - FFS",
+        "ansi_catalog_number": "CCGT3251MFFS",
+        "iso_catalog_number": "CCGT09T304MFFS",
+        "grade": "KCS25S",
+        "geometry_code": "FFS",
+        "grade_availability": "listed_for_catalog_number"
+      },
+      "work_material": {
+        "iso_group": "M",
+        "subgroup": "M1",
+        "catalog_label": "Austenitic Stainless Steel"
+      },
+      "operation": {
+        "operation_type": "turning",
+        "catalog_cut_condition": "smooth cut, pre-turned surface",
+        "canonical_cut_condition": "finishing",
+        "coolant_condition": "unknown"
+      },
+      "parameters": {
+        "surface_speed": {
+          "min": 59,
+          "start": 101,
+          "max": 149,
+          "unit": "m_per_min",
+          "source_page": 18,
+          "source_table": "M1 / KCS25S"
+        },
+        "feed": {
+          "min": 0.02,
+          "max": 0.12,
+          "unit": "mm_per_rev",
+          "source_page": 18,
+          "source_table": "Positive FFS cutting parameters"
+        },
+        "depth_of_cut": {
+          "min": 0.13,
+          "max": 1.26,
+          "unit": "mm",
+          "source_page": 18,
+          "source_table": "Positive FFS cutting parameters"
+        }
+      },
+      "evidence": {
+        "verification_status": "source_extracted",
+        "extraction_method": "manual",
+        "visual_page_check": "complete",
+        "source_raw_text": "CCGT3251MFFS / CCGT09T304MFFS lists KCS25S; M1 KCS25S speed is 59 / 101 / 149 m/min; FFS feed is 0.02-0.12 mm/rev and DOC is 0.13-1.26 mm.",
+        "reviewer": null,
+        "reviewed_at": null
+      },
+      "database_cleanup_note": "The current description says this KCS25S insert is optimized for stainless and non-ferrous. The catalog's grade/material chart supports KCS25S for M and S, not N; the non-ferrous claim needs removal or another source."
+    },
+    {
+      "proposal_row_id": "topswiss-005",
+      "tool_lookup": {
+        "tool_id": "CCGT21502MRPPS-KCP20S",
+        "manufacturer": "Kennametal"
+      },
+      "source_match": {
+        "product_page": 3,
+        "catalog_section": "CCGT Insert - Positive - PPS",
+        "ansi_catalog_number": "CCGT21502MRPPS",
+        "iso_catalog_number": "CCGT060201MRPPS",
+        "grade": "KCP20S",
+        "geometry_code": "PPS",
+        "grade_availability": "listed_for_catalog_number"
+      },
+      "work_material": {
+        "iso_group": "P",
+        "subgroup": "P0/P1",
+        "catalog_label": "Low-Carbon (<0.3% C) and Free-Machining Steel"
+      },
+      "operation": {
+        "operation_type": "turning",
+        "catalog_cut_condition": "smooth cut, pre-turned surface",
+        "canonical_cut_condition": "finishing",
+        "coolant_condition": "unknown"
+      },
+      "parameters": {
+        "surface_speed": {
+          "min": 50,
+          "start": 165,
+          "max": 274,
+          "unit": "m_per_min",
+          "source_page": 15,
+          "source_table": "P0/P1 / KCP20S"
+        },
+        "feed": {
+          "min": 0.01,
+          "max": 0.1,
+          "unit": "mm_per_rev",
+          "source_page": 14,
+          "source_table": "Positive PPS cutting parameters"
+        },
+        "depth_of_cut": {
+          "min": 0.06,
+          "max": 4.5,
+          "unit": "mm",
+          "source_page": 14,
+          "source_table": "Positive PPS cutting parameters"
+        }
+      },
+      "evidence": {
+        "verification_status": "source_extracted",
+        "extraction_method": "manual",
+        "visual_page_check": "complete",
+        "source_raw_text": "CCGT21502MRPPS / CCGT060201MRPPS lists KCP20S; P0/P1 KCP20S speed is 50 / 165 / 274 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "proposal_row_id": "topswiss-006",
+      "tool_lookup": {
+        "tool_id": "CCGT32505MRPPS-KCM25S",
+        "manufacturer": "Kennametal"
+      },
+      "source_match": {
+        "product_page": 3,
+        "catalog_section": "CCGT Insert - Positive - PPS",
+        "ansi_catalog_number": "CCGT32505MRPPS",
+        "iso_catalog_number": "CCGT09T302MRPPS",
+        "grade": "KCM25S",
+        "geometry_code": "PPS",
+        "grade_availability": "listed_for_catalog_number"
+      },
+      "work_material": {
+        "iso_group": "M",
+        "subgroup": "M1",
+        "catalog_label": "Austenitic Stainless Steel"
+      },
+      "operation": {
+        "operation_type": "turning",
+        "catalog_cut_condition": "smooth cut, pre-turned surface",
+        "canonical_cut_condition": "finishing",
+        "coolant_condition": "unknown"
+      },
+      "parameters": {
+        "surface_speed": {
+          "min": 40,
+          "start": 59,
+          "max": 101,
+          "unit": "m_per_min",
+          "source_page": 18,
+          "source_table": "M1 / KCM25S"
+        },
+        "feed": {
+          "min": 0.01,
+          "max": 0.1,
+          "unit": "mm_per_rev",
+          "source_page": 18,
+          "source_table": "Positive PPS cutting parameters"
+        },
+        "depth_of_cut": {
+          "min": 0.06,
+          "max": 4.5,
+          "unit": "mm",
+          "source_page": 18,
+          "source_table": "Positive PPS cutting parameters"
+        }
+      },
+      "evidence": {
+        "verification_status": "source_extracted",
+        "extraction_method": "manual",
+        "visual_page_check": "complete",
+        "source_raw_text": "CCGT32505MRPPS / CCGT09T302MRPPS lists KCM25S; M1 KCM25S speed is 40 / 59 / 101 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "proposal_row_id": "topswiss-007",
+      "tool_lookup": {
+        "tool_id": "CCMT060202FWS-KTP25S",
+        "manufacturer": "Kennametal"
+      },
+      "source_match": {
+        "product_page": 5,
+        "catalog_section": "CCMT Insert - Positive - FWS",
+        "ansi_catalog_number": "CCMT21505FWS",
+        "iso_catalog_number": "CCMT060202FWS",
+        "grade": "KTP25S",
+        "geometry_code": "FWS",
+        "grade_availability": "listed_for_catalog_number"
+      },
+      "work_material": {
+        "iso_group": "P",
+        "subgroup": "P2",
+        "catalog_label": "Medium- and High-Carbon Steels (>0.3% C)"
+      },
+      "operation": {
+        "operation_type": "turning",
+        "catalog_cut_condition": "smooth cut, pre-turned surface",
+        "canonical_cut_condition": "finishing",
+        "coolant_condition": "unknown"
+      },
+      "parameters": {
+        "surface_speed": {
+          "min": 122,
+          "start": 204,
+          "max": 312,
+          "unit": "m_per_min",
+          "source_page": 17,
+          "source_table": "P2 / KTP25S wiper"
+        },
+        "feed": {
+          "min": 0.05,
+          "max": 0.5,
+          "unit": "mm_per_rev",
+          "source_page": 16,
+          "source_table": "Positive FWS wiper cutting parameters"
+        },
+        "depth_of_cut": {
+          "min": 0.14,
+          "max": 2.5,
+          "unit": "mm",
+          "source_page": 16,
+          "source_table": "Positive FWS wiper cutting parameters"
+        }
+      },
+      "evidence": {
+        "verification_status": "source_extracted",
+        "extraction_method": "manual",
+        "visual_page_check": "complete",
+        "source_raw_text": "CCMT21505FWS / CCMT060202FWS lists KTP25S; P2 KTP25S speed is 122 / 204 / 312 m/min; FWS feed is 0.05-0.5 mm/rev and DOC is 0.14-2.5 mm.",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "proposal_row_id": "topswiss-008",
+      "tool_lookup": {
+        "tool_id": "CCMT060204FPS-KTP25S",
+        "manufacturer": "Kennametal"
+      },
+      "source_match": {
+        "product_page": 5,
+        "catalog_section": "CCMT Insert - Positive - FPS",
+        "ansi_catalog_number": "CCMT2151FPS",
+        "iso_catalog_number": "CCMT060204FPS",
+        "grade": "KTP25S",
+        "geometry_code": "FPS",
+        "grade_availability": "listed_for_catalog_number"
+      },
+      "work_material": {
+        "iso_group": "P",
+        "subgroup": "P0/P1",
+        "catalog_label": "Low-Carbon (<0.3% C) and Free-Machining Steel"
+      },
+      "operation": {
+        "operation_type": "turning",
+        "catalog_cut_condition": "smooth cut, pre-turned surface",
+        "canonical_cut_condition": "finishing",
+        "coolant_condition": "unknown"
+      },
+      "parameters": {
+        "surface_speed": {
+          "min": 122,
+          "start": 216,
+          "max": 351,
+          "unit": "m_per_min",
+          "source_page": 15,
+          "source_table": "P0/P1 / KTP25S"
+        },
+        "feed": {
+          "min": 0.04,
+          "max": 0.25,
+          "unit": "mm_per_rev",
+          "source_page": 14,
+          "source_table": "Positive FPS cutting parameters"
+        },
+        "depth_of_cut": {
+          "min": 0.05,
+          "max": 1.0,
+          "unit": "mm",
+          "source_page": 14,
+          "source_table": "Positive FPS cutting parameters"
+        }
+      },
+      "evidence": {
+        "verification_status": "source_extracted",
+        "extraction_method": "manual",
+        "visual_page_check": "complete",
+        "source_raw_text": "CCMT2151FPS / CCMT060204FPS lists KTP25S; P0/P1 KTP25S speed is 122 / 216 / 351 m/min; FPS feed is 0.04-0.25 mm/rev and DOC is 0.05-1.0 mm.",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "proposal_row_id": "topswiss-009",
+      "tool_lookup": {
+        "tool_id": "CCMT09T304MWS-KTP25S",
+        "manufacturer": "Kennametal"
+      },
+      "source_match": {
+        "product_page": 4,
+        "catalog_section": "CCMT Insert - Positive - MWS",
+        "ansi_catalog_number": "CCMT3251MWS",
+        "iso_catalog_number": "CCMT09T304MWS",
+        "grade": "KTP25S",
+        "geometry_code": "MWS",
+        "grade_availability": "listed_for_catalog_number"
+      },
+      "work_material": {
+        "iso_group": "P",
+        "subgroup": "P3",
+        "catalog_label": "Alloy Steels and Tool Steels; <330 HB; <35 HRC"
+      },
+      "operation": {
+        "operation_type": "turning",
+        "catalog_cut_condition": "smooth cut, pre-turned surface",
+        "canonical_cut_condition": "finishing",
+        "coolant_condition": "unknown"
+      },
+      "parameters": {
+        "surface_speed": {
+          "min": 122,
+          "start": 189,
+          "max": 274,
+          "unit": "m_per_min",
+          "source_page": 17,
+          "source_table": "P3 / KTP25S wiper"
+        },
+        "feed": {
+          "min": 0.14,
+          "max": 0.56,
+          "unit": "mm_per_rev",
+          "source_page": 16,
+          "source_table": "Positive MWS wiper cutting parameters"
+        },
+        "depth_of_cut": {
+          "min": 0.49,
+          "max": 3.2,
+          "unit": "mm",
+          "source_page": 16,
+          "source_table": "Positive MWS wiper cutting parameters"
+        }
+      },
+      "evidence": {
+        "verification_status": "source_extracted",
+        "extraction_method": "manual",
+        "visual_page_check": "complete",
+        "source_raw_text": "CCMT3251MWS / CCMT09T304MWS lists KTP25S; P3 KTP25S speed is 122 / 189 / 274 m/min; MWS feed is 0.14-0.56 mm/rev and DOC is 0.49-3.2 mm.",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "proposal_row_id": "topswiss-010",
+      "tool_lookup": {
+        "tool_id": "DCGT070202MRPPS-KCP20S",
+        "manufacturer": "Kennametal"
+      },
+      "source_match": {
+        "product_page": 6,
+        "catalog_section": "DCGT Insert - Positive - PPS",
+        "ansi_catalog_number": "DCGT21505MRPPS",
+        "iso_catalog_number": "DCGT070202MRPPS",
+        "grade": "KCP20S",
+        "geometry_code": "PPS",
+        "grade_availability": "listed_for_catalog_number"
+      },
+      "work_material": {
+        "iso_group": "P",
+        "subgroup": "P3",
+        "catalog_label": "Alloy Steels and Tool Steels; <330 HB; <35 HRC"
+      },
+      "operation": {
+        "operation_type": "turning",
+        "catalog_cut_condition": "smooth cut, pre-turned surface",
+        "canonical_cut_condition": "finishing",
+        "coolant_condition": "unknown"
+      },
+      "parameters": {
+        "surface_speed": {
+          "min": 50,
+          "start": 110,
+          "max": 165,
+          "unit": "m_per_min",
+          "source_page": 15,
+          "source_table": "P3 / KCP20S"
+        },
+        "feed": {
+          "min": 0.01,
+          "max": 0.1,
+          "unit": "mm_per_rev",
+          "source_page": 14,
+          "source_table": "Positive PPS cutting parameters"
+        },
+        "depth_of_cut": {
+          "min": 0.06,
+          "max": 4.5,
+          "unit": "mm",
+          "source_page": 14,
+          "source_table": "Positive PPS cutting parameters"
+        }
+      },
+      "evidence": {
+        "verification_status": "source_extracted",
+        "extraction_method": "manual",
+        "visual_page_check": "complete",
+        "source_raw_text": "DCGT21505MRPPS / DCGT070202MRPPS lists KCP20S; P3 KCP20S speed is 50 / 110 / 165 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "proposal_row_id": "topswiss-011",
+      "tool_lookup": {
+        "tool_id": "DCGT11T301MRPPS-KCS25S",
+        "manufacturer": "Kennametal"
+      },
+      "source_match": {
+        "product_page": 6,
+        "catalog_section": "DCGT Insert - Positive - PPS",
+        "ansi_catalog_number": "DCGT32502MRPPS",
+        "iso_catalog_number": "DCGT11T301MRPPS",
+        "grade": "KCS25S",
+        "geometry_code": "PPS",
+        "grade_availability": "listed_for_catalog_number"
+      },
+      "work_material": {
+        "iso_group": "M",
+        "subgroup": "M1",
+        "catalog_label": "Austenitic Stainless Steel"
+      },
+      "operation": {
+        "operation_type": "turning",
+        "catalog_cut_condition": "smooth cut, pre-turned surface",
+        "canonical_cut_condition": "finishing",
+        "coolant_condition": "unknown"
+      },
+      "parameters": {
+        "surface_speed": {
+          "min": 59,
+          "start": 101,
+          "max": 149,
+          "unit": "m_per_min",
+          "source_page": 18,
+          "source_table": "M1 / KCS25S"
+        },
+        "feed": {
+          "min": 0.01,
+          "max": 0.1,
+          "unit": "mm_per_rev",
+          "source_page": 18,
+          "source_table": "Positive PPS cutting parameters"
+        },
+        "depth_of_cut": {
+          "min": 0.06,
+          "max": 4.5,
+          "unit": "mm",
+          "source_page": 18,
+          "source_table": "Positive PPS cutting parameters"
+        }
+      },
+      "evidence": {
+        "verification_status": "source_extracted",
+        "extraction_method": "manual",
+        "visual_page_check": "complete",
+        "source_raw_text": "DCGT32502MRPPS / DCGT11T301MRPPS lists KCS25S; M1 KCS25S speed is 59 / 101 / 149 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "proposal_row_id": "topswiss-012",
+      "tool_lookup": {
+        "tool_id": "DCGT11T304MLFS-KCM25S",
+        "manufacturer": "Kennametal"
+      },
+      "source_match": {
+        "product_page": 6,
+        "catalog_section": "DCGT Insert - Positive - LFS",
+        "ansi_catalog_number": "DCGT3251MLFS",
+        "iso_catalog_number": "DCGT11T304MLFS",
+        "grade": "KCM25S",
+        "geometry_code": "LFS",
+        "grade_availability": "listed_for_catalog_number"
+      },
+      "work_material": {
+        "iso_group": "M",
+        "subgroup": "M1",
+        "catalog_label": "Austenitic Stainless Steel"
+      },
+      "operation": {
+        "operation_type": "turning",
+        "catalog_cut_condition": "smooth cut, pre-turned surface",
+        "canonical_cut_condition": "finishing",
+        "coolant_condition": "unknown"
+      },
+      "parameters": {
+        "surface_speed": {
+          "min": 40,
+          "start": 59,
+          "max": 101,
+          "unit": "m_per_min",
+          "source_page": 18,
+          "source_table": "M1 / KCM25S"
+        },
+        "feed": {
+          "min": 0.02,
+          "max": 0.15,
+          "unit": "mm_per_rev",
+          "source_page": 18,
+          "source_table": "Positive LFS cutting parameters"
+        },
+        "depth_of_cut": {
+          "min": 0.19,
+          "max": 2.7,
+          "unit": "mm",
+          "source_page": 18,
+          "source_table": "Positive LFS cutting parameters"
+        }
+      },
+      "evidence": {
+        "verification_status": "source_extracted",
+        "extraction_method": "manual",
+        "visual_page_check": "complete",
+        "source_raw_text": "DCGT3251MLFS / DCGT11T304MLFS lists KCM25S; M1 KCM25S speed is 40 / 59 / 101 m/min; LFS feed is 0.02-0.15 mm/rev and DOC is 0.19-2.7 mm.",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    }
+  ]
+}

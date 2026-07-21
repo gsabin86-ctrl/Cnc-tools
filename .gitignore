@@ -46,8 +46,12 @@ data.json
 /index.html
 index.html.txt
 
-# Archive
-archive/
+# Archive (only the CNC Toolbase preservation record is versioned)
+archive/*
+!archive/database-cleanup/
+archive/database-cleanup/*
+!archive/database-cleanup/README.md
+!archive/database-cleanup/legacy-hosted-index-2026-07-21.html
 /db.sqlite
 
 # Agent test
@@ -62,3 +66,4 @@ temps/
 docs/*.backup-*
 docs/server.*.log
 docs/dragoon-pet-run/
+toolbase/build/

@@ -1,0 +1,32 @@
+{
+  "manufacturer_aliases": {
+    "Horn": "PH Horn",
+    "PH HORN": "PH Horn"
+  },
+  "manufacturer_websites": {
+    "Iscar": "https://www.iscar.com/",
+    "Kennametal": "https://www.kennametal.com/",
+    "Mitsubishi Materials": "https://www.mmc-carbide.com/",
+    "PH Horn": "https://www.horn-group.com/",
+    "Sandvik Coromant": "https://www.sandvik.coromant.com/",
+    "Star Micronics": "https://www.starmicronics.com/",
+    "Tungaloy": "https://tungaloy.com/"
+  },
+  "spec_key_aliases": {
+    "IC_mm": "inscribed_circle_mm",
+    "ic_mm": "inscribed_circle_mm",
+    "RE_mm": "corner_radius_mm",
+    "re_mm": "corner_radius_mm",
+    "S_mm": "thickness_mm",
+    "s_mm": "thickness_mm"
+  },
+  "empty_markers": [
+    "-",
+    "n/a",
+    "na",
+    "none",
+    "not specified",
+    "not specified (to be verified)",
+    "unknown"
+  ]
+}

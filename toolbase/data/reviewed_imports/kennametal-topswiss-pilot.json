@@ -1,0 +1,2978 @@
+{
+  "schema_version": 1,
+  "import_id": "review-batch-f75f87aa8d96e8af",
+  "proposal_id": "kennametal-topswiss-pilot-2026-07",
+  "proposal_path": "toolbase/proposals/kennametal-topswiss-pilot.json",
+  "proposal_sha256": "180127c77e312e272aefb846ae51563851a83214fcc43a2dfd9e5eee13e87931",
+  "review_ledger_path": "toolbase/reviews/kennametal-topswiss-pilot.decisions.json",
+  "review_ledger_sha256": "5ce6fae240c8e7830ecfea727378a51f59ce7e361672be866bded078524d82da",
+  "catalog_sha256": "f9852eff7ffb273af212776a13f684fa1f64d026af209516e7ad60e4878d2707",
+  "reviewed_at": "2026-07-21",
+  "row_count": 12,
+  "catalog_source_id": "source-d0bac814365ef9d4",
+  "sources": [
+    {
+      "id": "source-0459fc1e20095892",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal TopSwiss C-style inserts",
+      "url": "https://www.kennametal.com/co/en/products/metalworking-tools/small-parts-and-swiss-type/swiss-type-turning/od-and-id-turning/topswiss-turning-inserts/positive-swiss-style-inserts-screw-on/c-style-inserts.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/co/en/products/metalworking-tools/small-parts-and-swiss-type/swiss-type-turning/od-and-id-turning/topswiss-turning-inserts/positive-swiss-style-inserts-screw-on/c-style-inserts.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-21e134a6781ea1c2",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal CCMT-FWS material 7161075",
+      "url": "https://www.kennametal.com/eg/en/products/p.topswiss-cermet-insert-positive-ccmt-fws-finish-wiper.7161075.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/eg/en/products/p.topswiss-cermet-insert-positive-ccmt-fws-finish-wiper.7161075.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-33322a7c16f751d4",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal CCMT-FPS material 7161070",
+      "url": "https://www.kennametal.com/us/en/products/p.topswiss-cermet-insert-positive-ccmt-fps-finish-machining.7161070.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/us/en/products/p.topswiss-cermet-insert-positive-ccmt-fps-finish-machining.7161070.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-3b5b99ba282278cd",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal DCGT-R-PPS Medium Machining family",
+      "url": "https://www.kennametal.com/us/en/products/fam.kenswiss-carbide-insert-positive-right-handed-dcgt-r-pps-medium-machining.107798793.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/us/en/products/fam.kenswiss-carbide-insert-positive-right-handed-dcgt-r-pps-medium-machining.107798793.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-3c436433c19554bd",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal CCET-R-PPS material 7153975",
+      "url": "https://www.kennametal.com/qa/en/products/p.topswiss-carbide-insert-positive-right-handed-ccet-r-pps-medium-machining.7153975.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/qa/en/products/p.topswiss-carbide-insert-positive-right-handed-ccet-r-pps-medium-machining.7153975.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-555f77eeb985d662",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal CCET-L-PPS Medium Machining family",
+      "url": "https://www.kennametal.com/ci/en/products/fam.topswiss-carbide-insert-positive-left-handed-ccet-l-pps-medium-machining.109334161.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/ci/en/products/fam.topswiss-carbide-insert-positive-left-handed-ccet-l-pps-medium-machining.109334161.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-576999f5710b62dc",
+      "source_type": "secondary_web",
+      "title": "ISO 1832:2017 - Indexable inserts for cutting tools - Designation",
+      "url": "https://www.iso.org/standard/69202.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": null,
+      "raw_reference": "https://www.iso.org/standard/69202.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-6132a9892bf5dd07",
+      "source_type": "manufacturer_catalog",
+      "title": "Kennametal TopSwiss Turning Inserts Application Data",
+      "url": "https://www.kennametal.com/content/dam/final/kennametal/docs/application-data/topswiss/topswiss-inserts-application-data_en.pdf",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/content/dam/final/kennametal/docs/application-data/topswiss/topswiss-inserts-application-data_en.pdf",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-660d467d2b3dc713",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal DCGT-LFS material 7154820",
+      "url": "https://www.kennametal.com/ar/en/products/p.kenswiss-dcgt-lfs-.7154820.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/ar/en/products/p.kenswiss-dcgt-lfs-.7154820.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-a49487d2ba664c29",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal TopSwiss Turning Inserts",
+      "url": "https://www.kennametal.com/gb/en/products/metalworking-tools/small-parts-and-swiss-type/topswiss-inserts.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/gb/en/products/metalworking-tools/small-parts-and-swiss-type/topswiss-inserts.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-b3fbe811d4e00382",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal DCGT-R-PPS material 7154870",
+      "url": "https://www.kennametal.com/ar/en/products/p.kenswiss-plaquette-carbure-positive-a-droite-dcgt-r-pps-usinage-moyen.7154870.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/ar/en/products/p.kenswiss-plaquette-carbure-positive-a-droite-dcgt-r-pps-usinage-moyen.7154870.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-cfbfc3b01e70a1ed",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal CCGT-FFS material 7154834",
+      "url": "https://www.kennametal.com/us/en/products/p.topswiss-ccgt-ffs-.7154834.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/us/en/products/p.topswiss-ccgt-ffs-.7154834.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-d0bac814365ef9d4",
+      "source_type": "manufacturer_catalog",
+      "title": "TopSwiss Inserts Metric/Inch",
+      "url": null,
+      "local_path": "catalogs/kennametal/TopSwiss Inserts MetricInch.pdf",
+      "page_ref": "PDF pages 3, 4, 5, 6, 14, 15, 16, 17, 18, 19, 20, 21",
+      "manufacturer": "Kennametal",
+      "raw_reference": "catalogs/kennametal/TopSwiss Inserts MetricInch.pdf | SHA-256 f9852eff7ffb273af212776a13f684fa1f64d026af209516e7ad60e4878d2707",
+      "notes": "Copyright 2024 shown on PDF page 24"
+    },
+    {
+      "id": "source-f3e8008c83bd4a42",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal CCGT-PPS material 7154764",
+      "url": "https://www.kennametal.com/co/es/products/p.topswiss-inserto-de-metal-duro-positivo-sentido-direito-ccgt-r-pps-usinagem-media.7154764.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/co/es/products/p.topswiss-inserto-de-metal-duro-positivo-sentido-direito-ccgt-r-pps-usinagem-media.7154764.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    },
+    {
+      "id": "source-f973f10fe14a4cd8",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal CCET-R-PPS Medium Machining family",
+      "url": "https://www.kennametal.com/ar/en/products/fam.topswiss-carbide-insert-positive-right-handed-ccet-r-pps-medium-machining.109334162.html",
+      "local_path": null,
+      "page_ref": null,
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/ar/en/products/fam.topswiss-carbide-insert-positive-right-handed-ccet-r-pps-medium-machining.109334162.html",
+      "notes": "Reviewer verification source; accessed 2026-07-21."
+    }
+  ],
+  "rows": [
+    {
+      "proposal_row_id": "topswiss-001",
+      "tool_id": "CCET060200RPPS-KN10S",
+      "decision": "approved_with_corrections",
+      "tool_updates": {
+        "description": "Kennametal TopSwiss CCET positive right-hand insert, ANSI CCET2150RPPS / ISO CCET060200RPPS, tolerance class E, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and nominally sharp 0.00 mm corner. PPS parallel-positive geometry for low-to-medium-feed machining. KN10S is an uncoated, fine-grain carbide grade primarily for non-ferrous materials.",
+        "geometry": "positive parallel-positive",
+        "lifecycle_status": "unknown",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "CCET2150RPPS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "CCET060200RPPS",
+          "alias_type": "iso"
+        }
+      ],
+      "source_ids": [
+        "source-d0bac814365ef9d4",
+        "source-576999f5710b62dc",
+        "source-a49487d2ba664c29",
+        "source-f973f10fe14a4cd8"
+      ],
+      "tags": [
+        "carbide",
+        "CCET",
+        "fine-grain",
+        "kennametal",
+        "KN10S",
+        "medium-machining",
+        "non-ferrous",
+        "positive",
+        "PPS",
+        "right-hand",
+        "swiss-type",
+        "topswiss",
+        "turning",
+        "uncoated"
+      ],
+      "replace_fact_keys": [
+        "ansi_catalog_id",
+        "catalog_grade_availability",
+        "cutting_direction",
+        "geometry",
+        "grade_coating",
+        "grade_material",
+        "iso_catalog_id"
+      ],
+      "facts": [
+        {
+          "id": "fact-5e1420585223c8c2",
+          "fact_key": "ansi_catalog_id",
+          "original_key": "reviewed_ansi_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCET2150RPPS"
+        },
+        {
+          "id": "fact-6e4b62d0a4d9ba66",
+          "fact_key": "iso_catalog_id",
+          "original_key": "reviewed_iso_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCET060200RPPS"
+        },
+        {
+          "id": "fact-562611e3b5a23d5e",
+          "fact_key": "geometry",
+          "original_key": "reviewed_geometry",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "positive parallel-positive"
+        },
+        {
+          "id": "fact-32a79a3dac29a165",
+          "fact_key": "cutting_direction",
+          "original_key": "reviewed_cutting_direction",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "Right"
+        },
+        {
+          "id": "fact-bafe5aa8f372279c",
+          "fact_key": "grade_material",
+          "original_key": "reviewed_grade_material",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-a49487d2ba664c29",
+          "source_ids": [
+            "source-a49487d2ba664c29"
+          ],
+          "value_text": "uncoated fine-grain carbide"
+        },
+        {
+          "id": "fact-95517f97bba07c1b",
+          "fact_key": "grade_coating",
+          "original_key": "reviewed_grade_coating",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-a49487d2ba664c29",
+          "source_ids": [
+            "source-a49487d2ba664c29"
+          ],
+          "value_text": "none"
+        },
+        {
+          "id": "fact-a3dab800a541de82",
+          "fact_key": "catalog_grade_availability",
+          "original_key": "reviewed_catalog_grade_availability",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "listed for exact catalog number"
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "id": "material-6a1d4ea5b8deb265",
+          "iso_group": "N",
+          "material_subgroup": "N1",
+          "suitability": "recommended",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "notes": "Reviewed catalog profile: Wrought Aluminum Alloys."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "id": "cutting-profile-b9aa803bf315f02e",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_part_number": "CCET060200RPPS",
+          "source_grade": "KN10S",
+          "source_geometry": "CCET Insert - Positive - PPS (Right Hand)",
+          "source_chipbreaker": "PPS",
+          "source_material_label": "Wrought Aluminum Alloys",
+          "iso_material_group": "N",
+          "material_subgroup": "N1",
+          "operation_type": "turning",
+          "cut_condition": "medium",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 198,
+          "surface_speed_start": 488,
+          "surface_speed_max": 616,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.01,
+          "feed_max": 0.1,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.06,
+          "depth_of_cut_max": 4.5,
+          "depth_of_cut_unit": "mm",
+          "source_page_ref": "PDF page 20",
+          "source_table_ref": "N1 / KN10S | Positive PPS cutting parameters",
+          "source_raw_text": "CCET2150RPPS / CCET060200RPPS lists KN10S; N1 KN10S speed is 198 / 488 / 616 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+          "extraction_method": "manual",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-21",
+          "notes": "Review topswiss-001: approved_with_corrections by Greg on 2026-07-21. Approved after reviewing catalog pages 4 and 20 and correcting the user-supplied designation breakdown to the narrower manufacturer-supported wording."
+        }
+      ]
+    },
+    {
+      "proposal_row_id": "topswiss-002",
+      "tool_id": "CCET060201RPPS-KN10S",
+      "decision": "approved_with_corrections",
+      "tool_updates": {
+        "description": "Kennametal TopSwiss CCET positive right-hand insert, ANSI CCET21502RPPS / ISO CCET060201RPPS, tolerance class E, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and 0.1 mm corner radius. PPS parallel-positive geometry for low-to-medium-feed machining. KN10S is an uncoated, fine-grain carbide grade for non-ferrous materials.",
+        "geometry": "positive parallel-positive",
+        "lifecycle_status": "unknown",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "CCET21502RPPS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "CCET060201RPPS",
+          "alias_type": "iso"
+        }
+      ],
+      "source_ids": [
+        "source-d0bac814365ef9d4",
+        "source-3c436433c19554bd",
+        "source-a49487d2ba664c29"
+      ],
+      "tags": [
+        "carbide",
+        "CCET",
+        "fine-grain",
+        "kennametal",
+        "KN10S",
+        "medium-machining",
+        "non-ferrous",
+        "positive",
+        "PPS",
+        "right-hand",
+        "swiss-type",
+        "topswiss",
+        "turning",
+        "uncoated"
+      ],
+      "replace_fact_keys": [
+        "ansi_catalog_id",
+        "catalog_grade_availability",
+        "cutting_direction",
+        "geometry",
+        "grade_coating",
+        "grade_material",
+        "iso_catalog_id"
+      ],
+      "facts": [
+        {
+          "id": "fact-1d6f0d53431df380",
+          "fact_key": "ansi_catalog_id",
+          "original_key": "reviewed_ansi_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCET21502RPPS"
+        },
+        {
+          "id": "fact-1434b00a9a8b54ff",
+          "fact_key": "iso_catalog_id",
+          "original_key": "reviewed_iso_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCET060201RPPS"
+        },
+        {
+          "id": "fact-7675b625f6a9b8f9",
+          "fact_key": "geometry",
+          "original_key": "reviewed_geometry",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "positive parallel-positive"
+        },
+        {
+          "id": "fact-5e3597f565366712",
+          "fact_key": "cutting_direction",
+          "original_key": "reviewed_cutting_direction",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "Right"
+        },
+        {
+          "id": "fact-09134396540a1bde",
+          "fact_key": "grade_material",
+          "original_key": "reviewed_grade_material",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-3c436433c19554bd",
+          "source_ids": [
+            "source-3c436433c19554bd"
+          ],
+          "value_text": "uncoated fine-grain carbide"
+        },
+        {
+          "id": "fact-2fbcec12525d5405",
+          "fact_key": "grade_coating",
+          "original_key": "reviewed_grade_coating",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-3c436433c19554bd",
+          "source_ids": [
+            "source-3c436433c19554bd"
+          ],
+          "value_text": "none"
+        },
+        {
+          "id": "fact-59a9a01de4bdd34e",
+          "fact_key": "catalog_grade_availability",
+          "original_key": "reviewed_catalog_grade_availability",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "listed for exact catalog number"
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "id": "material-61690fa75c6c7b1d",
+          "iso_group": "N",
+          "material_subgroup": "N4",
+          "suitability": "recommended",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "notes": "Reviewed catalog profile: Copper, Brass, Zinc-Based; machinability index 70-100."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "id": "cutting-profile-01c77632f7eff873",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_part_number": "CCET060201RPPS",
+          "source_grade": "KN10S",
+          "source_geometry": "CCET Insert - Positive - PPS (Right Hand)",
+          "source_chipbreaker": "PPS",
+          "source_material_label": "Copper, Brass, Zinc-Based; machinability index 70-100",
+          "iso_material_group": "N",
+          "material_subgroup": "N4",
+          "operation_type": "turning",
+          "cut_condition": "medium",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 107,
+          "surface_speed_start": 259,
+          "surface_speed_max": 366,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.01,
+          "feed_max": 0.1,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.06,
+          "depth_of_cut_max": 4.5,
+          "depth_of_cut_unit": "mm",
+          "source_page_ref": "PDF page 20",
+          "source_table_ref": "N4 / KN10S | Positive PPS cutting parameters",
+          "source_raw_text": "CCET21502RPPS / CCET060201RPPS lists KN10S; N4 KN10S speed is 107 / 259 / 366 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+          "extraction_method": "manual",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-21",
+          "notes": "Review topswiss-002: approved_with_corrections by Greg on 2026-07-21. Approved after visual review of catalog pages 4 and 20. The exact Kennametal product page independently confirms the dimensions, KN10S grade, and non-ferrous application."
+        }
+      ]
+    },
+    {
+      "proposal_row_id": "topswiss-003",
+      "tool_id": "CCET09T302LPPS-KTP25S",
+      "decision": "approved",
+      "tool_updates": {
+        "description": null,
+        "geometry": "positive parallel-positive",
+        "lifecycle_status": "unknown",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "CCET32505LPPS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "CCET09T302LPPS",
+          "alias_type": "iso"
+        }
+      ],
+      "source_ids": [
+        "source-d0bac814365ef9d4",
+        "source-a49487d2ba664c29",
+        "source-555f77eeb985d662"
+      ],
+      "tags": [
+        "CCET",
+        "cermet",
+        "kennametal",
+        "KTP25S",
+        "left-hand",
+        "medium-machining",
+        "positive",
+        "PPS",
+        "PVD-coated",
+        "steel",
+        "swiss-type",
+        "topswiss",
+        "turning"
+      ],
+      "replace_fact_keys": [
+        "ansi_catalog_id",
+        "catalog_grade_availability",
+        "cutting_direction",
+        "first_choice_grade",
+        "geometry",
+        "grade_coating",
+        "grade_material",
+        "grade_selection_priority",
+        "iso_catalog_id"
+      ],
+      "facts": [
+        {
+          "id": "fact-aa9504db2a57c116",
+          "fact_key": "ansi_catalog_id",
+          "original_key": "reviewed_ansi_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCET32505LPPS"
+        },
+        {
+          "id": "fact-5c506ac0fd2ba9df",
+          "fact_key": "iso_catalog_id",
+          "original_key": "reviewed_iso_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCET09T302LPPS"
+        },
+        {
+          "id": "fact-a084c4f4a545eaf9",
+          "fact_key": "geometry",
+          "original_key": "reviewed_geometry",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "positive parallel-positive"
+        },
+        {
+          "id": "fact-e3a5988ebec554c8",
+          "fact_key": "cutting_direction",
+          "original_key": "reviewed_cutting_direction",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "Left"
+        },
+        {
+          "id": "fact-20b43617b7c3cfa8",
+          "fact_key": "grade_material",
+          "original_key": "reviewed_grade_material",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-a49487d2ba664c29",
+          "source_ids": [
+            "source-a49487d2ba664c29"
+          ],
+          "value_text": "cermet"
+        },
+        {
+          "id": "fact-a6795f9abe26697e",
+          "fact_key": "grade_coating",
+          "original_key": "reviewed_grade_coating",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-a49487d2ba664c29",
+          "source_ids": [
+            "source-a49487d2ba664c29"
+          ],
+          "value_text": "multilayer PVD coating"
+        },
+        {
+          "id": "fact-4ab8957d22eeb14a",
+          "fact_key": "catalog_grade_availability",
+          "original_key": "reviewed_catalog_grade_availability",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "listed for exact catalog number"
+        },
+        {
+          "id": "fact-c0e3f6c819240b4f",
+          "fact_key": "grade_selection_priority",
+          "original_key": "reviewed_grade_selection_priority",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "alternate"
+        },
+        {
+          "id": "fact-bb7ccc30fd4bc126",
+          "fact_key": "first_choice_grade",
+          "original_key": "reviewed_first_choice_grade",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "KCP20S"
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "id": "material-3cd2708b4f816dd8",
+          "iso_group": "P",
+          "material_subgroup": "P2",
+          "suitability": "recommended",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "notes": "Reviewed catalog profile: Medium- and High-Carbon Steels (>0.3% C)."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "id": "cutting-profile-578c7aa25f44d7dc",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_part_number": "CCET09T302LPPS",
+          "source_grade": "KTP25S",
+          "source_geometry": "CCET Insert - Positive - PPS (Left Hand)",
+          "source_chipbreaker": "PPS",
+          "source_material_label": "Medium- and High-Carbon Steels (>0.3% C)",
+          "iso_material_group": "P",
+          "material_subgroup": "P2",
+          "operation_type": "turning",
+          "cut_condition": "medium",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 122,
+          "surface_speed_start": 204,
+          "surface_speed_max": 312,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.01,
+          "feed_max": 0.1,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.06,
+          "depth_of_cut_max": 4.5,
+          "depth_of_cut_unit": "mm",
+          "source_page_ref": "PDF pages 14, 15",
+          "source_table_ref": "P2 / KTP25S | Positive PPS cutting parameters",
+          "source_raw_text": "CCET32505LPPS / CCET09T302LPPS lists KTP25S; P2 KTP25S speed is 122 / 204 / 312 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+          "extraction_method": "manual",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-21",
+          "notes": "Review topswiss-003: approved by Greg on 2026-07-21. Approved after visual review of catalog pages 4, 14, and 15. KTP25S is valid for smooth PPS steel cutting but is not bolded as first choice; KCP20S is the first-choice grade shown by Kennametal. Grade selection priority: alternate; first choice: KCP20S."
+        }
+      ]
+    },
+    {
+      "proposal_row_id": "topswiss-004",
+      "tool_id": "CCGT09T304MFFS-KCS25S",
+      "decision": "approved_with_corrections",
+      "tool_updates": {
+        "description": "Kennametal TopSwiss CCGT positive FFS fine-finishing insert, ANSI CCGT3251MFFS / ISO CCGT09T304MFFS, 9.53 mm IC, 3.97 mm thickness, 4.4 mm fixing hole, and nominal 0.4 mm corner radius. Curved, polished, and lapped geometry for precision finish machining at low depths of cut. KCS25S is a coated carbide grade primarily intended for high-temperature alloys and available as an alternate for stainless steel.",
+        "geometry": "positive fine-finishing",
+        "lifecycle_status": "unknown",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "CCGT3251MFFS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "CCGT09T304MFFS",
+          "alias_type": "iso"
+        }
+      ],
+      "source_ids": [
+        "source-d0bac814365ef9d4",
+        "source-cfbfc3b01e70a1ed",
+        "source-a49487d2ba664c29"
+      ],
+      "tags": [
+        "carbide",
+        "CCGT",
+        "FFS",
+        "fine-finishing",
+        "KCS25S",
+        "kennametal",
+        "positive",
+        "PVD-coated",
+        "stainless-steel",
+        "swiss-type",
+        "topswiss",
+        "turning"
+      ],
+      "replace_fact_keys": [
+        "ansi_catalog_id",
+        "catalog_grade_availability",
+        "corner_radius_minus_tolerance",
+        "cutting_direction",
+        "first_choice_grade",
+        "geometry",
+        "grade_coating",
+        "grade_material",
+        "grade_selection_priority",
+        "iso_catalog_id",
+        "source_ambiguities"
+      ],
+      "facts": [
+        {
+          "id": "fact-dd7df4b8267177a5",
+          "fact_key": "ansi_catalog_id",
+          "original_key": "reviewed_ansi_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCGT3251MFFS"
+        },
+        {
+          "id": "fact-14c1d4db4177e2e6",
+          "fact_key": "iso_catalog_id",
+          "original_key": "reviewed_iso_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCGT09T304MFFS"
+        },
+        {
+          "id": "fact-e4a839b77038f7cb",
+          "fact_key": "geometry",
+          "original_key": "reviewed_geometry",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "positive fine-finishing"
+        },
+        {
+          "id": "fact-af5c9593fb54c291",
+          "fact_key": "cutting_direction",
+          "original_key": "reviewed_cutting_direction",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "Neutral"
+        },
+        {
+          "id": "fact-1f5a3871f087fc2f",
+          "fact_key": "grade_material",
+          "original_key": "reviewed_grade_material",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-cfbfc3b01e70a1ed",
+          "source_ids": [
+            "source-cfbfc3b01e70a1ed"
+          ],
+          "value_text": "cemented carbide"
+        },
+        {
+          "id": "fact-56fd6d4b7d010b6a",
+          "fact_key": "grade_coating",
+          "original_key": "reviewed_grade_coating",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-cfbfc3b01e70a1ed",
+          "source_ids": [
+            "source-cfbfc3b01e70a1ed"
+          ],
+          "value_text": "enriched multilayer PVD coating"
+        },
+        {
+          "id": "fact-09ed30662d97c09a",
+          "fact_key": "catalog_grade_availability",
+          "original_key": "reviewed_catalog_grade_availability",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "listed for exact catalog number"
+        },
+        {
+          "id": "fact-a315bbbbd978099a",
+          "fact_key": "grade_selection_priority",
+          "original_key": "reviewed_grade_selection_priority",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "alternate"
+        },
+        {
+          "id": "fact-b93a7c1086b3b7bb",
+          "fact_key": "first_choice_grade",
+          "original_key": "reviewed_first_choice_grade",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "KCM25S"
+        },
+        {
+          "id": "fact-ea35e9c5106b790d",
+          "fact_key": "corner_radius_minus_tolerance",
+          "original_key": "reviewed_corner_radius_minus_tolerance",
+          "unit": "mm",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_number": -0.05
+        },
+        {
+          "id": "fact-2231bbd87cbd63ed",
+          "fact_key": "source_ambiguities",
+          "original_key": "reviewed_source_ambiguities",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_json": [
+            "PDF page 18 labels the right-hand FFS/LFS/PPS/FPS/MPS table as Negative Insert Geometry even though those columns are the positive geometries used elsewhere in the catalog. This appears to be a catalog heading error, but rows using page 18 still require human acceptance."
+          ]
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "id": "material-3ed915ca1892c7d7",
+          "iso_group": "M",
+          "material_subgroup": "M1",
+          "suitability": "recommended",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "notes": "Reviewed catalog profile: Austenitic Stainless Steel."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "id": "cutting-profile-86ad4c07dae5822b",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_part_number": "CCGT09T304MFFS",
+          "source_grade": "KCS25S",
+          "source_geometry": "CCGT Insert - Positive - FFS",
+          "source_chipbreaker": "FFS",
+          "source_material_label": "Austenitic Stainless Steel",
+          "iso_material_group": "M",
+          "material_subgroup": "M1",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 59,
+          "surface_speed_start": 101,
+          "surface_speed_max": 149,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.02,
+          "feed_max": 0.12,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.13,
+          "depth_of_cut_max": 1.26,
+          "depth_of_cut_unit": "mm",
+          "source_page_ref": "PDF page 18",
+          "source_table_ref": "M1 / KCS25S | Positive FFS cutting parameters",
+          "source_raw_text": "CCGT3251MFFS / CCGT09T304MFFS lists KCS25S; M1 KCS25S speed is 59 / 101 / 149 m/min; FFS feed is 0.02-0.12 mm/rev and DOC is 0.13-1.26 mm.",
+          "extraction_method": "manual",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-21",
+          "notes": "Review topswiss-004: approved_with_corrections by Greg on 2026-07-21. Approved after visual review of catalog pages 3 and 18. The exact product page confirms steel, stainless steel, and high-temperature applications and does not list non-ferrous materials. Grade selection priority: alternate; first choice: KCM25S. Source ambiguity: PDF page 18 labels the right-hand FFS/LFS/PPS/FPS/MPS table as Negative Insert Geometry even though those columns are the positive geometries used elsewhere in the catalog. This appears to be a catalog heading error, but rows using page 18 still require human acceptance."
+        }
+      ]
+    },
+    {
+      "proposal_row_id": "topswiss-005",
+      "tool_id": "CCGT21502MRPPS-KCP20S",
+      "decision": "approved_with_corrections",
+      "tool_updates": {
+        "description": "Kennametal TopSwiss CCGT positive right-hand PPS insert, ANSI CCGT21502MRPPS / ISO CCGT060201MRPPS, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and nominal 0.1 mm corner radius. Parallel-positive geometry for low-to-medium-feed machining. KCP20S is a TiCN PVD-coated carbide grade for carbon steels.",
+        "geometry": "positive parallel-positive",
+        "lifecycle_status": "unknown",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "CCGT21502MRPPS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "CCGT060201MRPPS",
+          "alias_type": "iso"
+        }
+      ],
+      "source_ids": [
+        "source-d0bac814365ef9d4",
+        "source-f3e8008c83bd4a42",
+        "source-a49487d2ba664c29"
+      ],
+      "tags": [
+        "carbide",
+        "CCGT",
+        "KCP20S",
+        "kennametal",
+        "medium-machining",
+        "positive",
+        "PPS",
+        "PVD-coated",
+        "right-hand",
+        "steel",
+        "swiss-type",
+        "TiCN",
+        "topswiss",
+        "turning"
+      ],
+      "replace_fact_keys": [
+        "ansi_catalog_id",
+        "catalog_grade_availability",
+        "corner_radius_minus_tolerance",
+        "cutting_direction",
+        "first_choice_grade",
+        "geometry",
+        "grade_coating",
+        "grade_material",
+        "grade_selection_priority",
+        "iso_catalog_id"
+      ],
+      "facts": [
+        {
+          "id": "fact-1bbf90f6fd70ed37",
+          "fact_key": "ansi_catalog_id",
+          "original_key": "reviewed_ansi_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCGT21502MRPPS"
+        },
+        {
+          "id": "fact-121c8e23fdac4cd9",
+          "fact_key": "iso_catalog_id",
+          "original_key": "reviewed_iso_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCGT060201MRPPS"
+        },
+        {
+          "id": "fact-dc4f02afb46f602f",
+          "fact_key": "geometry",
+          "original_key": "reviewed_geometry",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "positive parallel-positive"
+        },
+        {
+          "id": "fact-b6ce83936ac02b7d",
+          "fact_key": "cutting_direction",
+          "original_key": "reviewed_cutting_direction",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "Right"
+        },
+        {
+          "id": "fact-6f3cfd810d3391cc",
+          "fact_key": "grade_material",
+          "original_key": "reviewed_grade_material",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-f3e8008c83bd4a42",
+          "source_ids": [
+            "source-f3e8008c83bd4a42"
+          ],
+          "value_text": "cemented carbide"
+        },
+        {
+          "id": "fact-9abda522d9836a1f",
+          "fact_key": "grade_coating",
+          "original_key": "reviewed_grade_coating",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-f3e8008c83bd4a42",
+          "source_ids": [
+            "source-f3e8008c83bd4a42"
+          ],
+          "value_text": "TiCN multilayer PVD coating"
+        },
+        {
+          "id": "fact-58a56b39abdfdb9a",
+          "fact_key": "catalog_grade_availability",
+          "original_key": "reviewed_catalog_grade_availability",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "listed for exact catalog number"
+        },
+        {
+          "id": "fact-8b016d054456053f",
+          "fact_key": "grade_selection_priority",
+          "original_key": "reviewed_grade_selection_priority",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "first_choice"
+        },
+        {
+          "id": "fact-f66b2225fd7ba07f",
+          "fact_key": "first_choice_grade",
+          "original_key": "reviewed_first_choice_grade",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "KCP20S"
+        },
+        {
+          "id": "fact-ac35fc151c2e6d1c",
+          "fact_key": "corner_radius_minus_tolerance",
+          "original_key": "reviewed_corner_radius_minus_tolerance",
+          "unit": "mm",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_number": -0.05
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "id": "material-315d6d46bd934d3d",
+          "iso_group": "P",
+          "material_subgroup": "P0/P1",
+          "suitability": "primary",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "notes": "Reviewed catalog profile: Low-Carbon (<0.3% C) and Free-Machining Steel."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "id": "cutting-profile-35e36d002b9326f6",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_part_number": "CCGT060201MRPPS",
+          "source_grade": "KCP20S",
+          "source_geometry": "CCGT Insert - Positive - PPS",
+          "source_chipbreaker": "PPS",
+          "source_material_label": "Low-Carbon (<0.3% C) and Free-Machining Steel",
+          "iso_material_group": "P",
+          "material_subgroup": "P0/P1",
+          "operation_type": "turning",
+          "cut_condition": "medium",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 50,
+          "surface_speed_start": 165,
+          "surface_speed_max": 274,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.01,
+          "feed_max": 0.1,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.06,
+          "depth_of_cut_max": 4.5,
+          "depth_of_cut_unit": "mm",
+          "source_page_ref": "PDF pages 14, 15",
+          "source_table_ref": "P0/P1 / KCP20S | Positive PPS cutting parameters",
+          "source_raw_text": "CCGT21502MRPPS / CCGT060201MRPPS lists KCP20S; P0/P1 KCP20S speed is 50 / 165 / 274 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+          "extraction_method": "manual",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-21",
+          "notes": "Review topswiss-005: approved_with_corrections by Greg on 2026-07-21. Approved after visual review of catalog pages 3, 14, and 15. KCP20S is bolded as first choice for smooth PPS cutting. Grade selection priority: first_choice; first choice: KCP20S."
+        }
+      ]
+    },
+    {
+      "proposal_row_id": "topswiss-006",
+      "tool_id": "CCGT32505MRPPS-KCM25S",
+      "decision": "approved",
+      "tool_updates": {
+        "description": null,
+        "geometry": "positive parallel-positive",
+        "lifecycle_status": "unknown",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "CCGT32505MRPPS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "CCGT09T302MRPPS",
+          "alias_type": "iso"
+        }
+      ],
+      "source_ids": [
+        "source-d0bac814365ef9d4",
+        "source-a49487d2ba664c29"
+      ],
+      "tags": [
+        "AlCrN",
+        "AlTiN",
+        "carbide",
+        "CCGT",
+        "KCM25S",
+        "kennametal",
+        "medium-machining",
+        "positive",
+        "PPS",
+        "PVD-coated",
+        "right-hand",
+        "stainless-steel",
+        "swiss-type",
+        "topswiss",
+        "turning"
+      ],
+      "replace_fact_keys": [
+        "ansi_catalog_id",
+        "catalog_grade_availability",
+        "corner_radius_minus_tolerance",
+        "cutting_direction",
+        "first_choice_grade",
+        "geometry",
+        "grade_coating",
+        "grade_material",
+        "grade_selection_priority",
+        "iso_catalog_id",
+        "source_ambiguities"
+      ],
+      "facts": [
+        {
+          "id": "fact-425eea8b7715d1fa",
+          "fact_key": "ansi_catalog_id",
+          "original_key": "reviewed_ansi_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCGT32505MRPPS"
+        },
+        {
+          "id": "fact-decfec01dcc111b9",
+          "fact_key": "iso_catalog_id",
+          "original_key": "reviewed_iso_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCGT09T302MRPPS"
+        },
+        {
+          "id": "fact-11d30c3297eebb0e",
+          "fact_key": "geometry",
+          "original_key": "reviewed_geometry",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "positive parallel-positive"
+        },
+        {
+          "id": "fact-47a5e106f578eeee",
+          "fact_key": "cutting_direction",
+          "original_key": "reviewed_cutting_direction",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "Right"
+        },
+        {
+          "id": "fact-fa5197c5d22b7821",
+          "fact_key": "grade_material",
+          "original_key": "reviewed_grade_material",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-a49487d2ba664c29",
+          "source_ids": [
+            "source-a49487d2ba664c29"
+          ],
+          "value_text": "cemented carbide"
+        },
+        {
+          "id": "fact-a74e12fecada77b4",
+          "fact_key": "grade_coating",
+          "original_key": "reviewed_grade_coating",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-a49487d2ba664c29",
+          "source_ids": [
+            "source-a49487d2ba664c29"
+          ],
+          "value_text": "AlTiN + AlCrN multilayer PVD coating"
+        },
+        {
+          "id": "fact-45b9c2d0924b96e5",
+          "fact_key": "catalog_grade_availability",
+          "original_key": "reviewed_catalog_grade_availability",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "listed for exact catalog number"
+        },
+        {
+          "id": "fact-fd2e0f5fdbad35cb",
+          "fact_key": "grade_selection_priority",
+          "original_key": "reviewed_grade_selection_priority",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "first_choice"
+        },
+        {
+          "id": "fact-b9a0ae5dd2547e3e",
+          "fact_key": "first_choice_grade",
+          "original_key": "reviewed_first_choice_grade",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "KCM25S"
+        },
+        {
+          "id": "fact-71b4a1a49d163ba3",
+          "fact_key": "corner_radius_minus_tolerance",
+          "original_key": "reviewed_corner_radius_minus_tolerance",
+          "unit": "mm",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_number": -0.05
+        },
+        {
+          "id": "fact-b6f834513ef79d71",
+          "fact_key": "source_ambiguities",
+          "original_key": "reviewed_source_ambiguities",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_json": [
+            "PDF page 18 labels the right-hand FFS/LFS/PPS/FPS/MPS table as Negative Insert Geometry even though those columns are the positive geometries used elsewhere in the catalog. This appears to be a catalog heading error, but rows using page 18 still require human acceptance.",
+            "On catalog page 18, the right-hand grade-selection table is headed 'Negative Insert Geometry' even though its columns are the positive geometries FFS, LFS, and PPS. The geometry labels and the separate positive-geometry feed/DOC table establish that the heading is erroneous."
+          ]
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "id": "material-ec708e8739946e20",
+          "iso_group": "M",
+          "material_subgroup": "M1",
+          "suitability": "primary",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "notes": "Reviewed catalog profile: Austenitic Stainless Steel."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "id": "cutting-profile-3584f0cfae71323f",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_part_number": "CCGT09T302MRPPS",
+          "source_grade": "KCM25S",
+          "source_geometry": "CCGT Insert - Positive - PPS",
+          "source_chipbreaker": "PPS",
+          "source_material_label": "Austenitic Stainless Steel",
+          "iso_material_group": "M",
+          "material_subgroup": "M1",
+          "operation_type": "turning",
+          "cut_condition": "medium",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 40,
+          "surface_speed_start": 59,
+          "surface_speed_max": 101,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.01,
+          "feed_max": 0.1,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.06,
+          "depth_of_cut_max": 4.5,
+          "depth_of_cut_unit": "mm",
+          "source_page_ref": "PDF page 18",
+          "source_table_ref": "M1 / KCM25S | Positive PPS cutting parameters",
+          "source_raw_text": "CCGT32505MRPPS / CCGT09T302MRPPS lists KCM25S; M1 KCM25S speed is 40 / 59 / 101 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+          "extraction_method": "manual",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-21",
+          "notes": "Review topswiss-006: approved by Greg on 2026-07-21. Approved after visual review of catalog pages 3 and 18. KCM25S is bolded as first choice for smooth, pre-turned PPS cutting in M1 austenitic stainless steel. The exact part/grade pairing is established by the local Kennametal catalog; no exact public product URL or material number was asserted. Grade selection priority: first_choice; first choice: KCM25S. Source ambiguity: PDF page 18 labels the right-hand FFS/LFS/PPS/FPS/MPS table as Negative Insert Geometry even though those columns are the positive geometries used elsewhere in the catalog. This appears to be a catalog heading error, but rows using page 18 still require human acceptance. On catalog page 18, the right-hand grade-selection table is headed 'Negative Insert Geometry' even though its columns are the positive geometries FFS, LFS, and PPS. The geometry labels and the separate positive-geometry feed/DOC table establish that the heading is erroneous."
+        }
+      ]
+    },
+    {
+      "proposal_row_id": "topswiss-007",
+      "tool_id": "CCMT060202FWS-KTP25S",
+      "decision": "approved_with_corrections",
+      "tool_updates": {
+        "description": "Kennametal TopSwiss positive CCMT Finishing Wiper Swiss insert, ANSI CCMT21505FWS / ISO CCMT060202FWS, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and 0.2 mm corner radius. KTP25S cermet grade with wiper geometry for productive fine finishing of steels. Kennametal marks material number 7161075 as no longer available.",
+        "geometry": "positive finishing wiper Swiss",
+        "lifecycle_status": "discontinued",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "CCMT21505FWS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "CCMT060202FWS",
+          "alias_type": "iso"
+        }
+      ],
+      "source_ids": [
+        "source-d0bac814365ef9d4",
+        "source-21e134a6781ea1c2",
+        "source-6132a9892bf5dd07"
+      ],
+      "tags": [
+        "CCMT",
+        "cermet",
+        "finishing-wiper",
+        "FWS",
+        "kennametal",
+        "KTP25S",
+        "positive",
+        "PVD-coated",
+        "steel",
+        "swiss-type",
+        "topswiss",
+        "turning"
+      ],
+      "replace_fact_keys": [
+        "ansi_catalog_id",
+        "catalog_grade_availability",
+        "cutting_direction",
+        "first_choice_grade",
+        "geometry",
+        "grade_coating",
+        "grade_material",
+        "grade_selection_priority",
+        "iso_catalog_id",
+        "manufacturer_lifecycle",
+        "material_number"
+      ],
+      "facts": [
+        {
+          "id": "fact-d4060afa1f4ea1db",
+          "fact_key": "ansi_catalog_id",
+          "original_key": "reviewed_ansi_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCMT21505FWS"
+        },
+        {
+          "id": "fact-d9b1a8744565ac8c",
+          "fact_key": "iso_catalog_id",
+          "original_key": "reviewed_iso_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCMT060202FWS"
+        },
+        {
+          "id": "fact-18a57c929e7c9e28",
+          "fact_key": "geometry",
+          "original_key": "reviewed_geometry",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "positive finishing wiper Swiss"
+        },
+        {
+          "id": "fact-3452695735bc2288",
+          "fact_key": "cutting_direction",
+          "original_key": "reviewed_cutting_direction",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "Neutral"
+        },
+        {
+          "id": "fact-8a9202695ae2b09b",
+          "fact_key": "grade_material",
+          "original_key": "reviewed_grade_material",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-21e134a6781ea1c2",
+          "source_ids": [
+            "source-21e134a6781ea1c2"
+          ],
+          "value_text": "cermet"
+        },
+        {
+          "id": "fact-5c806a03ae7e14a5",
+          "fact_key": "grade_coating",
+          "original_key": "reviewed_grade_coating",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-21e134a6781ea1c2",
+          "source_ids": [
+            "source-21e134a6781ea1c2"
+          ],
+          "value_text": "multilayer PVD coating"
+        },
+        {
+          "id": "fact-0d0cb9f6b887842d",
+          "fact_key": "catalog_grade_availability",
+          "original_key": "reviewed_catalog_grade_availability",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "listed for exact catalog number"
+        },
+        {
+          "id": "fact-f54bec5f1665ab3f",
+          "fact_key": "grade_selection_priority",
+          "original_key": "reviewed_grade_selection_priority",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "sole_listed_grade"
+        },
+        {
+          "id": "fact-84a1ab18e215b3ab",
+          "fact_key": "first_choice_grade",
+          "original_key": "reviewed_first_choice_grade",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "KTP25S"
+        },
+        {
+          "id": "fact-5537704537d3afce",
+          "fact_key": "material_number",
+          "original_key": "reviewed_material_number",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-21e134a6781ea1c2",
+          "source_ids": [
+            "source-21e134a6781ea1c2"
+          ],
+          "value_text": "7161075"
+        },
+        {
+          "id": "fact-5f30ce94613c84c2",
+          "fact_key": "manufacturer_lifecycle",
+          "original_key": "reviewed_manufacturer_lifecycle",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-21e134a6781ea1c2",
+          "source_ids": [
+            "source-21e134a6781ea1c2"
+          ],
+          "value_text": "no longer available"
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "id": "material-4f6109d68352324d",
+          "iso_group": "P",
+          "material_subgroup": "P2",
+          "suitability": "primary",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "notes": "Reviewed catalog profile: Medium- and High-Carbon Steels (>0.3% C)."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "id": "cutting-profile-441675444241b62e",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_part_number": "CCMT060202FWS",
+          "source_grade": "KTP25S",
+          "source_geometry": "CCMT Insert - Positive - FWS",
+          "source_chipbreaker": "FWS",
+          "source_material_label": "Medium- and High-Carbon Steels (>0.3% C)",
+          "iso_material_group": "P",
+          "material_subgroup": "P2",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 122,
+          "surface_speed_start": 204,
+          "surface_speed_max": 312,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.05,
+          "feed_max": 0.5,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.14,
+          "depth_of_cut_max": 2.5,
+          "depth_of_cut_unit": "mm",
+          "source_page_ref": "PDF pages 16, 17",
+          "source_table_ref": "P2 / KTP25S wiper | Positive FWS wiper cutting parameters",
+          "source_raw_text": "CCMT21505FWS / CCMT060202FWS lists KTP25S; P2 KTP25S speed is 122 / 204 / 312 m/min; FWS feed is 0.05-0.5 mm/rev and DOC is 0.14-2.5 mm.",
+          "extraction_method": "manual",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-21",
+          "notes": "Review topswiss-007: approved_with_corrections by Greg on 2026-07-21. Approved after visual review of catalog pages 5, 16, and 17. The local catalog establishes the exact part/grade pairing and dimensions; Kennametal's current material-number page independently confirms the identity, cermet construction, steel application, and no-longer-available status. Grade selection priority: sole_listed_grade; first choice: KTP25S."
+        }
+      ]
+    },
+    {
+      "proposal_row_id": "topswiss-008",
+      "tool_id": "CCMT060204FPS-KTP25S",
+      "decision": "approved_with_corrections",
+      "tool_updates": {
+        "description": "Kennametal TopSwiss positive CCMT FPS finish-machining insert, ANSI CCMT2151FPS / ISO CCMT060204FPS, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and 0.4 mm corner radius. KTP25S cermet grade for finish machining of steel and stainless steel. Kennametal marks material number 7161070 as no longer available.",
+        "geometry": "positive finish machining",
+        "lifecycle_status": "discontinued",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "CCMT2151FPS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "CCMT060204FPS",
+          "alias_type": "iso"
+        }
+      ],
+      "source_ids": [
+        "source-d0bac814365ef9d4",
+        "source-33322a7c16f751d4",
+        "source-6132a9892bf5dd07"
+      ],
+      "tags": [
+        "CCMT",
+        "cermet",
+        "finish-machining",
+        "FPS",
+        "kennametal",
+        "KTP25S",
+        "positive",
+        "PVD-coated",
+        "stainless-steel",
+        "steel",
+        "swiss-type",
+        "topswiss",
+        "turning"
+      ],
+      "replace_fact_keys": [
+        "ansi_catalog_id",
+        "catalog_grade_availability",
+        "cutting_direction",
+        "first_choice_grade",
+        "geometry",
+        "grade_coating",
+        "grade_material",
+        "grade_selection_priority",
+        "iso_catalog_id",
+        "manufacturer_lifecycle",
+        "material_number"
+      ],
+      "facts": [
+        {
+          "id": "fact-45f66cc664c04ac4",
+          "fact_key": "ansi_catalog_id",
+          "original_key": "reviewed_ansi_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCMT2151FPS"
+        },
+        {
+          "id": "fact-885742c0007e6091",
+          "fact_key": "iso_catalog_id",
+          "original_key": "reviewed_iso_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCMT060204FPS"
+        },
+        {
+          "id": "fact-05bde206f9de6153",
+          "fact_key": "geometry",
+          "original_key": "reviewed_geometry",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "positive finish machining"
+        },
+        {
+          "id": "fact-ad571e46df2bb984",
+          "fact_key": "cutting_direction",
+          "original_key": "reviewed_cutting_direction",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "Neutral"
+        },
+        {
+          "id": "fact-0bd25bd614d69c32",
+          "fact_key": "grade_material",
+          "original_key": "reviewed_grade_material",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-33322a7c16f751d4",
+          "source_ids": [
+            "source-33322a7c16f751d4"
+          ],
+          "value_text": "cermet"
+        },
+        {
+          "id": "fact-71c3df52b0c88838",
+          "fact_key": "grade_coating",
+          "original_key": "reviewed_grade_coating",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-33322a7c16f751d4",
+          "source_ids": [
+            "source-33322a7c16f751d4"
+          ],
+          "value_text": "multilayer PVD coating"
+        },
+        {
+          "id": "fact-45ecf90c4b58bf2b",
+          "fact_key": "catalog_grade_availability",
+          "original_key": "reviewed_catalog_grade_availability",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "listed for exact catalog number"
+        },
+        {
+          "id": "fact-ec66da8bb27c396c",
+          "fact_key": "grade_selection_priority",
+          "original_key": "reviewed_grade_selection_priority",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "sole_listed_grade"
+        },
+        {
+          "id": "fact-aab32f5f3a2c8265",
+          "fact_key": "first_choice_grade",
+          "original_key": "reviewed_first_choice_grade",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "KTP25S"
+        },
+        {
+          "id": "fact-8a8ac8813efccf9e",
+          "fact_key": "material_number",
+          "original_key": "reviewed_material_number",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-33322a7c16f751d4",
+          "source_ids": [
+            "source-33322a7c16f751d4"
+          ],
+          "value_text": "7161070"
+        },
+        {
+          "id": "fact-9faf04f54366bb92",
+          "fact_key": "manufacturer_lifecycle",
+          "original_key": "reviewed_manufacturer_lifecycle",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-33322a7c16f751d4",
+          "source_ids": [
+            "source-33322a7c16f751d4"
+          ],
+          "value_text": "no longer available"
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "id": "material-b52b5d78507136f4",
+          "iso_group": "P",
+          "material_subgroup": "P0/P1",
+          "suitability": "primary",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "notes": "Reviewed catalog profile: Low-Carbon (<0.3% C) and Free-Machining Steel."
+        },
+        {
+          "id": "material-22981f1f2f89528e",
+          "iso_group": "M",
+          "material_subgroup": null,
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-33322a7c16f751d4",
+          "source_ids": [
+            "source-33322a7c16f751d4"
+          ],
+          "notes": "Manufacturer product-page applicability; no speeds and feeds are implied for this group."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "id": "cutting-profile-27c9ce6b15413b94",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_part_number": "CCMT060204FPS",
+          "source_grade": "KTP25S",
+          "source_geometry": "CCMT Insert - Positive - FPS",
+          "source_chipbreaker": "FPS",
+          "source_material_label": "Low-Carbon (<0.3% C) and Free-Machining Steel",
+          "iso_material_group": "P",
+          "material_subgroup": "P0/P1",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 122,
+          "surface_speed_start": 216,
+          "surface_speed_max": 351,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.04,
+          "feed_max": 0.25,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.05,
+          "depth_of_cut_max": 1.0,
+          "depth_of_cut_unit": "mm",
+          "source_page_ref": "PDF pages 14, 15",
+          "source_table_ref": "P0/P1 / KTP25S | Positive FPS cutting parameters",
+          "source_raw_text": "CCMT2151FPS / CCMT060204FPS lists KTP25S; P0/P1 KTP25S speed is 122 / 216 / 351 m/min; FPS feed is 0.04-0.25 mm/rev and DOC is 0.05-1.0 mm.",
+          "extraction_method": "manual",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-21",
+          "notes": "Review topswiss-008: approved_with_corrections by Greg on 2026-07-21. Approved after visual review of catalog pages 5, 14, and 15. The exact product page independently confirms the identity, dimensions, cermet grade, P/M applicability, and no-longer-available status. Only the reviewed P0/P1 steel cutting profile is approved in this row. Grade selection priority: sole_listed_grade; first choice: KTP25S."
+        }
+      ]
+    },
+    {
+      "proposal_row_id": "topswiss-009",
+      "tool_id": "CCMT09T304MWS-KTP25S",
+      "decision": "approved",
+      "tool_updates": {
+        "description": null,
+        "geometry": "positive medium wiper Swiss",
+        "lifecycle_status": "unknown",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "CCMT3251MWS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "CCMT09T304MWS",
+          "alias_type": "iso"
+        }
+      ],
+      "source_ids": [
+        "source-d0bac814365ef9d4",
+        "source-6132a9892bf5dd07",
+        "source-0459fc1e20095892"
+      ],
+      "tags": [
+        "CCMT",
+        "cermet",
+        "kennametal",
+        "KTP25S",
+        "medium-wiper",
+        "MWS",
+        "positive",
+        "PVD-coated",
+        "steel",
+        "swiss-type",
+        "topswiss",
+        "turning"
+      ],
+      "replace_fact_keys": [
+        "ansi_catalog_id",
+        "catalog_grade_availability",
+        "cutting_direction",
+        "first_choice_grade",
+        "geometry",
+        "grade_coating",
+        "grade_material",
+        "grade_selection_priority",
+        "iso_catalog_id"
+      ],
+      "facts": [
+        {
+          "id": "fact-1f70546e797e752f",
+          "fact_key": "ansi_catalog_id",
+          "original_key": "reviewed_ansi_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCMT3251MWS"
+        },
+        {
+          "id": "fact-f53f843e197baa91",
+          "fact_key": "iso_catalog_id",
+          "original_key": "reviewed_iso_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "CCMT09T304MWS"
+        },
+        {
+          "id": "fact-dd9753d61fe877e1",
+          "fact_key": "geometry",
+          "original_key": "reviewed_geometry",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "positive medium wiper Swiss"
+        },
+        {
+          "id": "fact-beeb4fe7e305cd0e",
+          "fact_key": "cutting_direction",
+          "original_key": "reviewed_cutting_direction",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "Neutral"
+        },
+        {
+          "id": "fact-36b86b4aa6c42634",
+          "fact_key": "grade_material",
+          "original_key": "reviewed_grade_material",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-6132a9892bf5dd07",
+          "source_ids": [
+            "source-6132a9892bf5dd07"
+          ],
+          "value_text": "cermet"
+        },
+        {
+          "id": "fact-05e468a7a50d4b0a",
+          "fact_key": "grade_coating",
+          "original_key": "reviewed_grade_coating",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-6132a9892bf5dd07",
+          "source_ids": [
+            "source-6132a9892bf5dd07"
+          ],
+          "value_text": "multilayer PVD coating"
+        },
+        {
+          "id": "fact-2f40859e7b1e4842",
+          "fact_key": "catalog_grade_availability",
+          "original_key": "reviewed_catalog_grade_availability",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "listed for exact catalog number"
+        },
+        {
+          "id": "fact-9b55116be78e4fcf",
+          "fact_key": "grade_selection_priority",
+          "original_key": "reviewed_grade_selection_priority",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "sole_listed_grade"
+        },
+        {
+          "id": "fact-a27f1d156c57e493",
+          "fact_key": "first_choice_grade",
+          "original_key": "reviewed_first_choice_grade",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "KTP25S"
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "id": "material-bbe9ca090484d466",
+          "iso_group": "P",
+          "material_subgroup": "P3",
+          "suitability": "primary",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "notes": "Reviewed catalog profile: Alloy Steels and Tool Steels; <330 HB; <35 HRC."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "id": "cutting-profile-fbf40c07ab884f65",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_part_number": "CCMT09T304MWS",
+          "source_grade": "KTP25S",
+          "source_geometry": "CCMT Insert - Positive - MWS",
+          "source_chipbreaker": "MWS",
+          "source_material_label": "Alloy Steels and Tool Steels; <330 HB; <35 HRC",
+          "iso_material_group": "P",
+          "material_subgroup": "P3",
+          "operation_type": "turning",
+          "cut_condition": "medium",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 122,
+          "surface_speed_start": 189,
+          "surface_speed_max": 274,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.14,
+          "feed_max": 0.56,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.49,
+          "depth_of_cut_max": 3.2,
+          "depth_of_cut_unit": "mm",
+          "source_page_ref": "PDF pages 16, 17",
+          "source_table_ref": "P3 / KTP25S wiper | Positive MWS wiper cutting parameters",
+          "source_raw_text": "CCMT3251MWS / CCMT09T304MWS lists KTP25S; P3 KTP25S speed is 122 / 189 / 274 m/min; MWS feed is 0.14-0.56 mm/rev and DOC is 0.49-3.2 mm.",
+          "extraction_method": "manual",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-21",
+          "notes": "Review topswiss-009: approved by Greg on 2026-07-21. Approved after visual review of catalog pages 4, 16, and 17. The exact part/grade pairing and dimensions are established by the local manufacturer catalog. No exact public product page was found for the larger CCMT09T304MWS variant, so its material number and lifecycle remain unknown rather than being inferred from a smaller sibling. Grade selection priority: sole_listed_grade; first choice: KTP25S."
+        }
+      ]
+    },
+    {
+      "proposal_row_id": "topswiss-010",
+      "tool_id": "DCGT070202MRPPS-KCP20S",
+      "decision": "approved_with_corrections",
+      "tool_updates": {
+        "description": "Kennametal TopSwiss positive right-hand DCGT-R-PPS insert, ANSI DCGT21505MRPPS / ISO DCGT070202MRPPS, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and nominal 0.2 mm corner radius. KCP20S TiCN PVD-coated carbide with parallel-positive geometry for low-to-medium-feed machining of steels at larger depths of cut.",
+        "geometry": "positive parallel-positive",
+        "lifecycle_status": "unknown",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "DCGT21505MRPPS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "DCGT070202MRPPS",
+          "alias_type": "iso"
+        }
+      ],
+      "source_ids": [
+        "source-d0bac814365ef9d4",
+        "source-3b5b99ba282278cd",
+        "source-a49487d2ba664c29",
+        "source-6132a9892bf5dd07"
+      ],
+      "tags": [
+        "carbide",
+        "DCGT",
+        "KCP20S",
+        "kennametal",
+        "medium-machining",
+        "positive",
+        "PPS",
+        "PVD-coated",
+        "right-hand",
+        "steel",
+        "swiss-type",
+        "TiCN",
+        "topswiss",
+        "turning"
+      ],
+      "replace_fact_keys": [
+        "ansi_catalog_id",
+        "catalog_grade_availability",
+        "corner_radius_minus_tolerance",
+        "cutting_direction",
+        "first_choice_grade",
+        "geometry",
+        "grade_coating",
+        "grade_material",
+        "grade_selection_priority",
+        "iso_catalog_id"
+      ],
+      "facts": [
+        {
+          "id": "fact-5761f4db7036f0ec",
+          "fact_key": "ansi_catalog_id",
+          "original_key": "reviewed_ansi_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "DCGT21505MRPPS"
+        },
+        {
+          "id": "fact-6813bf2c783921d4",
+          "fact_key": "iso_catalog_id",
+          "original_key": "reviewed_iso_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "DCGT070202MRPPS"
+        },
+        {
+          "id": "fact-f21da401905072d9",
+          "fact_key": "geometry",
+          "original_key": "reviewed_geometry",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "positive parallel-positive"
+        },
+        {
+          "id": "fact-954d589b7b6bf0cb",
+          "fact_key": "cutting_direction",
+          "original_key": "reviewed_cutting_direction",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "Right"
+        },
+        {
+          "id": "fact-274717a8de0bf3bb",
+          "fact_key": "grade_material",
+          "original_key": "reviewed_grade_material",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-3b5b99ba282278cd",
+          "source_ids": [
+            "source-3b5b99ba282278cd"
+          ],
+          "value_text": "cemented carbide"
+        },
+        {
+          "id": "fact-1edcd554a38c3af3",
+          "fact_key": "grade_coating",
+          "original_key": "reviewed_grade_coating",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-3b5b99ba282278cd",
+          "source_ids": [
+            "source-3b5b99ba282278cd"
+          ],
+          "value_text": "TiCN multilayer PVD coating"
+        },
+        {
+          "id": "fact-01a27c56a75a78ed",
+          "fact_key": "catalog_grade_availability",
+          "original_key": "reviewed_catalog_grade_availability",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "listed for exact catalog number"
+        },
+        {
+          "id": "fact-f1b10c446198ae1c",
+          "fact_key": "grade_selection_priority",
+          "original_key": "reviewed_grade_selection_priority",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "first_choice"
+        },
+        {
+          "id": "fact-1f0ccfd991e7733b",
+          "fact_key": "first_choice_grade",
+          "original_key": "reviewed_first_choice_grade",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "KCP20S"
+        },
+        {
+          "id": "fact-786fa516956520ea",
+          "fact_key": "corner_radius_minus_tolerance",
+          "original_key": "reviewed_corner_radius_minus_tolerance",
+          "unit": "mm",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_number": -0.05
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "id": "material-3bbfc2b98433505c",
+          "iso_group": "P",
+          "material_subgroup": "P3",
+          "suitability": "primary",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "notes": "Reviewed catalog profile: Alloy Steels and Tool Steels; <330 HB; <35 HRC."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "id": "cutting-profile-f877760b6a27429a",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_part_number": "DCGT070202MRPPS",
+          "source_grade": "KCP20S",
+          "source_geometry": "DCGT Insert - Positive - PPS",
+          "source_chipbreaker": "PPS",
+          "source_material_label": "Alloy Steels and Tool Steels; <330 HB; <35 HRC",
+          "iso_material_group": "P",
+          "material_subgroup": "P3",
+          "operation_type": "turning",
+          "cut_condition": "medium",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 50,
+          "surface_speed_start": 110,
+          "surface_speed_max": 165,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.01,
+          "feed_max": 0.1,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.06,
+          "depth_of_cut_max": 4.5,
+          "depth_of_cut_unit": "mm",
+          "source_page_ref": "PDF pages 14, 15",
+          "source_table_ref": "P3 / KCP20S | Positive PPS cutting parameters",
+          "source_raw_text": "DCGT21505MRPPS / DCGT070202MRPPS lists KCP20S; P3 KCP20S speed is 50 / 110 / 165 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+          "extraction_method": "manual",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-21",
+          "notes": "Review topswiss-010: approved_with_corrections by Greg on 2026-07-21. Approved after visual review of catalog pages 6, 14, and 15. The catalog establishes the exact part/grade pairing, dimensions, and radius tolerance. Kennametal's family page establishes right-hand DCGT-R-PPS and medium-machining classification. KCP20S is bolded as first choice for smooth PPS steel cutting. Grade selection priority: first_choice; first choice: KCP20S."
+        }
+      ]
+    },
+    {
+      "proposal_row_id": "topswiss-011",
+      "tool_id": "DCGT11T301MRPPS-KCS25S",
+      "decision": "approved_with_corrections",
+      "tool_updates": {
+        "description": "Kennametal TopSwiss positive right-hand DCGT-R-PPS insert, ANSI DCGT32502MRPPS / ISO DCGT11T301MRPPS, 9.525 mm IC, 3.97 mm thickness, 4.4 mm fixing hole, and nominal 0.1 mm corner radius. KCS25S PVD-coated carbide with medium-machining PPS geometry for steel, stainless steel, and high-temperature alloys. Kennametal marks material number 7154870 as no longer available.",
+        "geometry": "positive parallel-positive",
+        "lifecycle_status": "discontinued",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "DCGT32502MRPPS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "DCGT11T301MRPPS",
+          "alias_type": "iso"
+        }
+      ],
+      "source_ids": [
+        "source-d0bac814365ef9d4",
+        "source-b3fbe811d4e00382",
+        "source-a49487d2ba664c29",
+        "source-6132a9892bf5dd07"
+      ],
+      "tags": [
+        "carbide",
+        "DCGT",
+        "high-temperature-alloys",
+        "KCS25S",
+        "kennametal",
+        "medium-machining",
+        "positive",
+        "PPS",
+        "PVD-coated",
+        "right-hand",
+        "stainless-steel",
+        "steel",
+        "swiss-type",
+        "topswiss",
+        "turning"
+      ],
+      "replace_fact_keys": [
+        "ansi_catalog_id",
+        "catalog_grade_availability",
+        "corner_radius_minus_tolerance",
+        "cutting_direction",
+        "first_choice_grade",
+        "geometry",
+        "grade_coating",
+        "grade_material",
+        "grade_selection_priority",
+        "iso_catalog_id",
+        "manufacturer_lifecycle",
+        "material_number",
+        "source_ambiguities"
+      ],
+      "facts": [
+        {
+          "id": "fact-1b1681257442a51e",
+          "fact_key": "ansi_catalog_id",
+          "original_key": "reviewed_ansi_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "DCGT32502MRPPS"
+        },
+        {
+          "id": "fact-fb453d10a7e887ea",
+          "fact_key": "iso_catalog_id",
+          "original_key": "reviewed_iso_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "DCGT11T301MRPPS"
+        },
+        {
+          "id": "fact-0593e37d1d88e2fb",
+          "fact_key": "geometry",
+          "original_key": "reviewed_geometry",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "positive parallel-positive"
+        },
+        {
+          "id": "fact-19a2907839918217",
+          "fact_key": "cutting_direction",
+          "original_key": "reviewed_cutting_direction",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "Right"
+        },
+        {
+          "id": "fact-8b7d65d81ca61d7c",
+          "fact_key": "grade_material",
+          "original_key": "reviewed_grade_material",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-b3fbe811d4e00382",
+          "source_ids": [
+            "source-b3fbe811d4e00382"
+          ],
+          "value_text": "cemented carbide"
+        },
+        {
+          "id": "fact-444b13cf70c280ff",
+          "fact_key": "grade_coating",
+          "original_key": "reviewed_grade_coating",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-b3fbe811d4e00382",
+          "source_ids": [
+            "source-b3fbe811d4e00382"
+          ],
+          "value_text": "enriched multilayer PVD coating"
+        },
+        {
+          "id": "fact-eaafb28e5051e8c8",
+          "fact_key": "catalog_grade_availability",
+          "original_key": "reviewed_catalog_grade_availability",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "listed for exact catalog number"
+        },
+        {
+          "id": "fact-c2f3a439c6c90b43",
+          "fact_key": "grade_selection_priority",
+          "original_key": "reviewed_grade_selection_priority",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "alternate"
+        },
+        {
+          "id": "fact-d5d2aad8c52da644",
+          "fact_key": "first_choice_grade",
+          "original_key": "reviewed_first_choice_grade",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "KCM25S"
+        },
+        {
+          "id": "fact-5254799c4c14dbfe",
+          "fact_key": "material_number",
+          "original_key": "reviewed_material_number",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-b3fbe811d4e00382",
+          "source_ids": [
+            "source-b3fbe811d4e00382"
+          ],
+          "value_text": "7154870"
+        },
+        {
+          "id": "fact-6871b201cb30614f",
+          "fact_key": "manufacturer_lifecycle",
+          "original_key": "reviewed_manufacturer_lifecycle",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-b3fbe811d4e00382",
+          "source_ids": [
+            "source-b3fbe811d4e00382"
+          ],
+          "value_text": "no longer available"
+        },
+        {
+          "id": "fact-d32486056a34d712",
+          "fact_key": "corner_radius_minus_tolerance",
+          "original_key": "reviewed_corner_radius_minus_tolerance",
+          "unit": "mm",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_number": -0.05
+        },
+        {
+          "id": "fact-521dd51fbc8c6550",
+          "fact_key": "source_ambiguities",
+          "original_key": "reviewed_source_ambiguities",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_json": [
+            "PDF page 18 labels the right-hand FFS/LFS/PPS/FPS/MPS table as Negative Insert Geometry even though those columns are the positive geometries used elsewhere in the catalog. This appears to be a catalog heading error, but rows using page 18 still require human acceptance.",
+            "On catalog page 18, the right-hand grade-selection table is headed 'Negative Insert Geometry' even though its columns are the positive geometries FFS, LFS, and PPS. The geometry labels and separate positive-geometry feed/DOC table establish that the heading is erroneous."
+          ]
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "id": "material-5ab42cc5829676a3",
+          "iso_group": "M",
+          "material_subgroup": "M1",
+          "suitability": "recommended",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "notes": "Reviewed catalog profile: Austenitic Stainless Steel."
+        },
+        {
+          "id": "material-2f1841fdae66a224",
+          "iso_group": "P",
+          "material_subgroup": null,
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-b3fbe811d4e00382",
+          "source_ids": [
+            "source-b3fbe811d4e00382"
+          ],
+          "notes": "Manufacturer product-page applicability; no speeds and feeds are implied for this group."
+        },
+        {
+          "id": "material-6fb996e654cddc2c",
+          "iso_group": "S",
+          "material_subgroup": null,
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-b3fbe811d4e00382",
+          "source_ids": [
+            "source-b3fbe811d4e00382"
+          ],
+          "notes": "Manufacturer product-page applicability; no speeds and feeds are implied for this group."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "id": "cutting-profile-fa146403d5b1f565",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_part_number": "DCGT11T301MRPPS",
+          "source_grade": "KCS25S",
+          "source_geometry": "DCGT Insert - Positive - PPS",
+          "source_chipbreaker": "PPS",
+          "source_material_label": "Austenitic Stainless Steel",
+          "iso_material_group": "M",
+          "material_subgroup": "M1",
+          "operation_type": "turning",
+          "cut_condition": "medium",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 59,
+          "surface_speed_start": 101,
+          "surface_speed_max": 149,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.01,
+          "feed_max": 0.1,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.06,
+          "depth_of_cut_max": 4.5,
+          "depth_of_cut_unit": "mm",
+          "source_page_ref": "PDF page 18",
+          "source_table_ref": "M1 / KCS25S | Positive PPS cutting parameters",
+          "source_raw_text": "DCGT32502MRPPS / DCGT11T301MRPPS lists KCS25S; M1 KCS25S speed is 59 / 101 / 149 m/min; PPS feed is 0.01-0.1 mm/rev and DOC is 0.06-4.5 mm.",
+          "extraction_method": "manual",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-21",
+          "notes": "Review topswiss-011: approved_with_corrections by Greg on 2026-07-21. Approved after visual review of catalog pages 6 and 18. The exact product page independently confirms the identity, material number, dimensions, KCS25S grade, right-hand medium-machining classification, P/M/S applicability, and no-longer-available status. KCS25S is valid for M1 smooth PPS cutting but is not bolded as first choice; KCM25S is first choice. Grade selection priority: alternate; first choice: KCM25S. Source ambiguity: PDF page 18 labels the right-hand FFS/LFS/PPS/FPS/MPS table as Negative Insert Geometry even though those columns are the positive geometries used elsewhere in the catalog. This appears to be a catalog heading error, but rows using page 18 still require human acceptance. On catalog page 18, the right-hand grade-selection table is headed 'Negative Insert Geometry' even though its columns are the positive geometries FFS, LFS, and PPS. The geometry labels and separate positive-geometry feed/DOC table establish that the heading is erroneous."
+        }
+      ]
+    },
+    {
+      "proposal_row_id": "topswiss-012",
+      "tool_id": "DCGT11T304MLFS-KCM25S",
+      "decision": "approved_with_corrections",
+      "tool_updates": {
+        "description": "Kennametal TopSwiss positive DCGT-LFS light-machining insert, ANSI DCGT3251MLFS / ISO DCGT11T304MLFS, 9.525 mm IC, 3.97 mm thickness, 4.4 mm fixing hole, and nominal 0.4 mm corner radius. KCM25S AlTiN/AlCrN PVD-coated carbide with polished LFS geometry for light machining of steel, stainless steel, and high-temperature alloys. Kennametal marks material number 7154820 as no longer available.",
+        "geometry": "positive light-machining",
+        "lifecycle_status": "discontinued",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "DCGT3251MLFS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "DCGT11T304MLFS",
+          "alias_type": "iso"
+        }
+      ],
+      "source_ids": [
+        "source-d0bac814365ef9d4",
+        "source-660d467d2b3dc713",
+        "source-a49487d2ba664c29",
+        "source-6132a9892bf5dd07"
+      ],
+      "tags": [
+        "AlCrN",
+        "AlTiN",
+        "carbide",
+        "DCGT",
+        "high-temperature-alloys",
+        "KCM25S",
+        "kennametal",
+        "LFS",
+        "light-machining",
+        "positive",
+        "PVD-coated",
+        "stainless-steel",
+        "steel",
+        "swiss-type",
+        "topswiss",
+        "turning"
+      ],
+      "replace_fact_keys": [
+        "ansi_catalog_id",
+        "catalog_grade_availability",
+        "corner_radius_minus_tolerance",
+        "cutting_direction",
+        "first_choice_grade",
+        "geometry",
+        "grade_coating",
+        "grade_material",
+        "grade_selection_priority",
+        "iso_catalog_id",
+        "manufacturer_lifecycle",
+        "material_number",
+        "source_ambiguities"
+      ],
+      "facts": [
+        {
+          "id": "fact-fc4f3f27269ee59e",
+          "fact_key": "ansi_catalog_id",
+          "original_key": "reviewed_ansi_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "DCGT3251MLFS"
+        },
+        {
+          "id": "fact-d76115577ec81d5e",
+          "fact_key": "iso_catalog_id",
+          "original_key": "reviewed_iso_catalog_id",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "DCGT11T304MLFS"
+        },
+        {
+          "id": "fact-c943084ac68bd79a",
+          "fact_key": "geometry",
+          "original_key": "reviewed_geometry",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "positive light-machining"
+        },
+        {
+          "id": "fact-eee3dee0c1c4c0c3",
+          "fact_key": "cutting_direction",
+          "original_key": "reviewed_cutting_direction",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "Neutral"
+        },
+        {
+          "id": "fact-cd7cb646723e1031",
+          "fact_key": "grade_material",
+          "original_key": "reviewed_grade_material",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-660d467d2b3dc713",
+          "source_ids": [
+            "source-660d467d2b3dc713"
+          ],
+          "value_text": "cemented carbide"
+        },
+        {
+          "id": "fact-bf3034e833ca8f5e",
+          "fact_key": "grade_coating",
+          "original_key": "reviewed_grade_coating",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-660d467d2b3dc713",
+          "source_ids": [
+            "source-660d467d2b3dc713"
+          ],
+          "value_text": "AlTiN + AlCrN multilayer PVD coating"
+        },
+        {
+          "id": "fact-9f2e3c817d17522b",
+          "fact_key": "catalog_grade_availability",
+          "original_key": "reviewed_catalog_grade_availability",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "listed for exact catalog number"
+        },
+        {
+          "id": "fact-edded4ae8579f4be",
+          "fact_key": "grade_selection_priority",
+          "original_key": "reviewed_grade_selection_priority",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "first_choice"
+        },
+        {
+          "id": "fact-094504b4e5340d28",
+          "fact_key": "first_choice_grade",
+          "original_key": "reviewed_first_choice_grade",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_text": "KCM25S"
+        },
+        {
+          "id": "fact-2d47305d46758d49",
+          "fact_key": "material_number",
+          "original_key": "reviewed_material_number",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-660d467d2b3dc713",
+          "source_ids": [
+            "source-660d467d2b3dc713"
+          ],
+          "value_text": "7154820"
+        },
+        {
+          "id": "fact-e517e0fea8aec7a1",
+          "fact_key": "manufacturer_lifecycle",
+          "original_key": "reviewed_manufacturer_lifecycle",
+          "unit": null,
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-660d467d2b3dc713",
+          "source_ids": [
+            "source-660d467d2b3dc713"
+          ],
+          "value_text": "no longer available"
+        },
+        {
+          "id": "fact-6a8c967995eef39c",
+          "fact_key": "corner_radius_minus_tolerance",
+          "original_key": "reviewed_corner_radius_minus_tolerance",
+          "unit": "mm",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_number": -0.05
+        },
+        {
+          "id": "fact-37403c6b31aaf0cf",
+          "fact_key": "source_ambiguities",
+          "original_key": "reviewed_source_ambiguities",
+          "unit": null,
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "value_json": [
+            "PDF page 18 labels the right-hand FFS/LFS/PPS/FPS/MPS table as Negative Insert Geometry even though those columns are the positive geometries used elsewhere in the catalog. This appears to be a catalog heading error, but rows using page 18 still require human acceptance.",
+            "On catalog page 18, the right-hand grade-selection table is headed 'Negative Insert Geometry' even though its columns are the positive geometries FFS, LFS, and PPS. The geometry labels and separate positive-geometry feed/DOC table establish that the heading is erroneous."
+          ]
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "id": "material-c2402dbeb39a7061",
+          "iso_group": "M",
+          "material_subgroup": "M1",
+          "suitability": "primary",
+          "evidence_status": "catalog_claim",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_ids": [
+            "source-d0bac814365ef9d4"
+          ],
+          "notes": "Reviewed catalog profile: Austenitic Stainless Steel."
+        },
+        {
+          "id": "material-7a2b0f4d98af443c",
+          "iso_group": "P",
+          "material_subgroup": null,
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-660d467d2b3dc713",
+          "source_ids": [
+            "source-660d467d2b3dc713"
+          ],
+          "notes": "Manufacturer product-page applicability; no speeds and feeds are implied for this group."
+        },
+        {
+          "id": "material-4a4b6ca74a325e50",
+          "iso_group": "S",
+          "material_subgroup": null,
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "source_id": "source-660d467d2b3dc713",
+          "source_ids": [
+            "source-660d467d2b3dc713"
+          ],
+          "notes": "Manufacturer product-page applicability; no speeds and feeds are implied for this group."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "id": "cutting-profile-8becc51632e7d0c9",
+          "source_id": "source-d0bac814365ef9d4",
+          "source_part_number": "DCGT11T304MLFS",
+          "source_grade": "KCM25S",
+          "source_geometry": "DCGT Insert - Positive - LFS",
+          "source_chipbreaker": "LFS",
+          "source_material_label": "Austenitic Stainless Steel",
+          "iso_material_group": "M",
+          "material_subgroup": "M1",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 40,
+          "surface_speed_start": 59,
+          "surface_speed_max": 101,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.02,
+          "feed_max": 0.15,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.19,
+          "depth_of_cut_max": 2.7,
+          "depth_of_cut_unit": "mm",
+          "source_page_ref": "PDF page 18",
+          "source_table_ref": "M1 / KCM25S | Positive LFS cutting parameters",
+          "source_raw_text": "DCGT3251MLFS / DCGT11T304MLFS lists KCM25S; M1 KCM25S speed is 40 / 59 / 101 m/min; LFS feed is 0.02-0.15 mm/rev and DOC is 0.19-2.7 mm.",
+          "extraction_method": "manual",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-21",
+          "notes": "Review topswiss-012: approved_with_corrections by Greg on 2026-07-21. Approved after visual review of catalog pages 6 and 18. The exact product page independently confirms the identity, material number, dimensions, KCM25S grade, neutral light-machining family, P/M/S applicability, and no-longer-available status. KCM25S is bolded as first choice for smooth M1 LFS cutting. Grade selection priority: first_choice; first choice: KCM25S. Source ambiguity: PDF page 18 labels the right-hand FFS/LFS/PPS/FPS/MPS table as Negative Insert Geometry even though those columns are the positive geometries used elsewhere in the catalog. This appears to be a catalog heading error, but rows using page 18 still require human acceptance. On catalog page 18, the right-hand grade-selection table is headed 'Negative Insert Geometry' even though its columns are the positive geometries FFS, LFS, and PPS. The geometry labels and separate positive-geometry feed/DOC table establish that the heading is erroneous."
+        }
+      ]
+    }
+  ]
+}

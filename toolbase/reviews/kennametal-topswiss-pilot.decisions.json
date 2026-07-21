@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "review_id": "kennametal-topswiss-pilot-review-2026-07",
+  "proposal_id": "kennametal-topswiss-pilot-2026-07",
+  "proposal_path": "toolbase/proposals/kennametal-topswiss-pilot.json",
+  "proposal_sha256": "180127c77e312e272aefb846ae51563851a83214fcc43a2dfd9e5eee13e87931",
+  "catalog_sha256": "f9852eff7ffb273af212776a13f684fa1f64d026af209516e7ad60e4878d2707",
+  "review_started_at": "2026-07-21",
+  "status": "complete",
+  "review_completed_at": "2026-07-21",
+  "import_allowed": true,
+  "decisions": [
+    {
+      "proposal_row_id": "topswiss-001",
+      "tool_id": "CCET060200RPPS-KN10S",
+      "decision": "approved_with_corrections",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-21",
+      "capture_method": "interactive_user_confirmation_in_codex_task",
+      "approved_scope": [
+        "exact ANSI/ISO identity, grade, and PPS geometry",
+        "N1 wrought-aluminum cutting-speed range",
+        "PPS feed and depth-of-cut ranges",
+        "corrected source-backed description"
+      ],
+      "corrections": [
+        "Describe KN10S as uncoated fine-grain carbide, not cermet.",
+        "Remove the unsupported steel application claim.",
+        "Do not claim that the 0.00 mm corner is interchangeable with 0.05 mm.",
+        "Treat ISO K cast iron as secondary and ISO S high-temperature use as conditional rather than part of this approved N1 row.",
+        "Parse RPPS as right-hand direction R plus PPS geometry."
+      ],
+      "canonical_description": "Kennametal TopSwiss CCET positive right-hand insert, ANSI CCET2150RPPS / ISO CCET060200RPPS, tolerance class E, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and nominally sharp 0.00 mm corner. PPS parallel-positive geometry for low-to-medium-feed machining. KN10S is an uncoated, fine-grain carbide grade primarily for non-ferrous materials.",
+      "additional_sources": [
+        {
+          "title": "ISO 1832:2017 - Indexable inserts for cutting tools - Designation",
+          "url": "https://www.iso.org/standard/69202.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss Turning Inserts",
+          "url": "https://www.kennametal.com/gb/en/products/metalworking-tools/small-parts-and-swiss-type/topswiss-inserts.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal CCET-R-PPS Medium Machining family",
+          "url": "https://www.kennametal.com/ar/en/products/fam.topswiss-carbide-insert-positive-right-handed-ccet-r-pps-medium-machining.109334162.html",
+          "accessed_at": "2026-07-21"
+        }
+      ],
+      "notes": "Approved after reviewing catalog pages 4 and 20 and correcting the user-supplied designation breakdown to the narrower manufacturer-supported wording."
+    },
+    {
+      "proposal_row_id": "topswiss-002",
+      "tool_id": "CCET060201RPPS-KN10S",
+      "decision": "approved_with_corrections",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-21",
+      "capture_method": "interactive_user_confirmation_in_codex_task",
+      "approved_scope": [
+        "exact ANSI/ISO identity, grade, dimensions, and PPS geometry",
+        "N4 copper/brass/zinc cutting-speed range",
+        "PPS feed and depth-of-cut ranges",
+        "corrected source-backed description"
+      ],
+      "corrections": [
+        "Describe KN10S as uncoated fine-grain carbide, not cermet.",
+        "Remove the unsupported steel application claim.",
+        "Parse RPPS as right-hand direction R plus PPS geometry.",
+        "Preserve the catalog's exact 0.1 mm corner radius."
+      ],
+      "canonical_description": "Kennametal TopSwiss CCET positive right-hand insert, ANSI CCET21502RPPS / ISO CCET060201RPPS, tolerance class E, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and 0.1 mm corner radius. PPS parallel-positive geometry for low-to-medium-feed machining. KN10S is an uncoated, fine-grain carbide grade for non-ferrous materials.",
+      "additional_sources": [
+        {
+          "title": "Kennametal CCET-R-PPS material 7153975",
+          "url": "https://www.kennametal.com/qa/en/products/p.topswiss-carbide-insert-positive-right-handed-ccet-r-pps-medium-machining.7153975.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss Turning Inserts",
+          "url": "https://www.kennametal.com/gb/en/products/metalworking-tools/small-parts-and-swiss-type/topswiss-inserts.html",
+          "accessed_at": "2026-07-21"
+        }
+      ],
+      "notes": "Approved after visual review of catalog pages 4 and 20. The exact Kennametal product page independently confirms the dimensions, KN10S grade, and non-ferrous application."
+    },
+    {
+      "proposal_row_id": "topswiss-003",
+      "tool_id": "CCET09T302LPPS-KTP25S",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-21",
+      "capture_method": "interactive_user_confirmation_in_codex_task",
+      "approved_scope": [
+        "exact ANSI/ISO identity, grade, dimensions, and left-hand PPS geometry",
+        "P2 medium- and high-carbon steel cutting-speed range",
+        "PPS feed and depth-of-cut ranges"
+      ],
+      "grade_selection_priority": "alternate",
+      "first_choice_grade_for_condition": "KCP20S",
+      "additional_sources": [
+        {
+          "title": "Kennametal TopSwiss Turning Inserts",
+          "url": "https://www.kennametal.com/gb/en/products/metalworking-tools/small-parts-and-swiss-type/topswiss-inserts.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal CCET-L-PPS Medium Machining family",
+          "url": "https://www.kennametal.com/ci/en/products/fam.topswiss-carbide-insert-positive-left-handed-ccet-l-pps-medium-machining.109334161.html",
+          "accessed_at": "2026-07-21"
+        }
+      ],
+      "notes": "Approved after visual review of catalog pages 4, 14, and 15. KTP25S is valid for smooth PPS steel cutting but is not bolded as first choice; KCP20S is the first-choice grade shown by Kennametal."
+    },
+    {
+      "proposal_row_id": "topswiss-004",
+      "tool_id": "CCGT09T304MFFS-KCS25S",
+      "decision": "approved_with_corrections",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-21",
+      "capture_method": "interactive_user_confirmation_in_codex_task",
+      "approved_scope": [
+        "exact ANSI/ISO identity, material number, grade, dimensions, and FFS geometry",
+        "M1 austenitic-stainless cutting-speed range",
+        "FFS feed and depth-of-cut ranges",
+        "corrected source-backed description"
+      ],
+      "corrections": [
+        "Remove the unsupported non-ferrous application claim.",
+        "Describe KCS25S as the alternate for M1 smooth FFS cutting; KCM25S is first choice.",
+        "Preserve the catalog's nominal 0.4 mm corner radius and -0.05 mm one-sided tolerance.",
+        "Record the page-18 Negative Insert Geometry heading as a source ambiguity; FFS is positive geometry."
+      ],
+      "grade_selection_priority": "alternate",
+      "first_choice_grade_for_condition": "KCM25S",
+      "canonical_description": "Kennametal TopSwiss CCGT positive FFS fine-finishing insert, ANSI CCGT3251MFFS / ISO CCGT09T304MFFS, 9.53 mm IC, 3.97 mm thickness, 4.4 mm fixing hole, and nominal 0.4 mm corner radius. Curved, polished, and lapped geometry for precision finish machining at low depths of cut. KCS25S is a coated carbide grade primarily intended for high-temperature alloys and available as an alternate for stainless steel.",
+      "additional_sources": [
+        {
+          "title": "Kennametal CCGT-FFS material 7154834",
+          "url": "https://www.kennametal.com/us/en/products/p.topswiss-ccgt-ffs-.7154834.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss Turning Inserts",
+          "url": "https://www.kennametal.com/gb/en/products/metalworking-tools/small-parts-and-swiss-type/topswiss-inserts.html",
+          "accessed_at": "2026-07-21"
+        }
+      ],
+      "notes": "Approved after visual review of catalog pages 3 and 18. The exact product page confirms steel, stainless steel, and high-temperature applications and does not list non-ferrous materials."
+    },
+    {
+      "proposal_row_id": "topswiss-005",
+      "tool_id": "CCGT21502MRPPS-KCP20S",
+      "decision": "approved_with_corrections",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-21",
+      "capture_method": "interactive_user_confirmation_in_codex_task",
+      "approved_scope": [
+        "exact ANSI/ISO identity, material number, grade, dimensions, and PPS geometry",
+        "P0/P1 steel cutting-speed range",
+        "PPS feed and depth-of-cut ranges",
+        "corrected source-backed description"
+      ],
+      "corrections": [
+        "Keep the primary description steel-specific because the exact KCP20S product page lists steel only.",
+        "Retain stainless only as a secondary family-matrix association, not as this approved row's work material.",
+        "Record KCP20S as Kennametal's first-choice grade for smooth PPS cutting.",
+        "Preserve the catalog's nominal 0.1 mm corner radius and -0.05 mm one-sided tolerance."
+      ],
+      "grade_selection_priority": "first_choice",
+      "canonical_description": "Kennametal TopSwiss CCGT positive right-hand PPS insert, ANSI CCGT21502MRPPS / ISO CCGT060201MRPPS, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and nominal 0.1 mm corner radius. Parallel-positive geometry for low-to-medium-feed machining. KCP20S is a TiCN PVD-coated carbide grade for carbon steels.",
+      "additional_sources": [
+        {
+          "title": "Kennametal CCGT-PPS material 7154764",
+          "url": "https://www.kennametal.com/co/es/products/p.topswiss-inserto-de-metal-duro-positivo-sentido-direito-ccgt-r-pps-usinagem-media.7154764.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss Turning Inserts",
+          "url": "https://www.kennametal.com/gb/en/products/metalworking-tools/small-parts-and-swiss-type/topswiss-inserts.html",
+          "accessed_at": "2026-07-21"
+        }
+      ],
+      "notes": "Approved after visual review of catalog pages 3, 14, and 15. KCP20S is bolded as first choice for smooth PPS cutting."
+    },
+    {
+      "proposal_row_id": "topswiss-006",
+      "tool_id": "CCGT32505MRPPS-KCM25S",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-21",
+      "capture_method": "interactive_user_confirmation_in_codex_task",
+      "approved_scope": [
+        "exact ANSI/ISO identity, grade, dimensions, and right-hand PPS geometry",
+        "M1 austenitic-stainless cutting-speed range",
+        "PPS feed and depth-of-cut ranges"
+      ],
+      "grade_selection_priority": "first_choice",
+      "first_choice_grade_for_condition": "KCM25S",
+      "source_ambiguities": [
+        "On catalog page 18, the right-hand grade-selection table is headed 'Negative Insert Geometry' even though its columns are the positive geometries FFS, LFS, and PPS. The geometry labels and the separate positive-geometry feed/DOC table establish that the heading is erroneous."
+      ],
+      "additional_sources": [
+        {
+          "title": "Kennametal TopSwiss Turning Inserts",
+          "url": "https://www.kennametal.com/gb/en/products/metalworking-tools/small-parts-and-swiss-type/topswiss-inserts.html",
+          "accessed_at": "2026-07-21"
+        }
+      ],
+      "notes": "Approved after visual review of catalog pages 3 and 18. KCM25S is bolded as first choice for smooth, pre-turned PPS cutting in M1 austenitic stainless steel. The exact part/grade pairing is established by the local Kennametal catalog; no exact public product URL or material number was asserted."
+    },
+    {
+      "proposal_row_id": "topswiss-007",
+      "tool_id": "CCMT060202FWS-KTP25S",
+      "decision": "approved_with_corrections",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-21",
+      "capture_method": "interactive_user_confirmation_in_codex_task",
+      "approved_scope": [
+        "exact ANSI/ISO identity, material number, grade, dimensions, and FWS geometry",
+        "P2 medium- and high-carbon-steel cutting-speed range",
+        "FWS feed and depth-of-cut ranges",
+        "corrected terminology, grade material, lifecycle status, and description"
+      ],
+      "corrections": [
+        "Expand FWS as Kennametal's 'Finishing Wiper Swiss', not 'fine-wiper'.",
+        "Identify KTP25S as a cermet grade.",
+        "Mark material number 7161075 as no longer available rather than active, while retaining the historical tool and its sourced cutting data."
+      ],
+      "manufacturer_material_number": "7161075",
+      "lifecycle_status": "no_longer_available",
+      "grade_selection_priority": "sole_listed_grade",
+      "first_choice_grade_for_condition": "KTP25S",
+      "canonical_description": "Kennametal TopSwiss positive CCMT Finishing Wiper Swiss insert, ANSI CCMT21505FWS / ISO CCMT060202FWS, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and 0.2 mm corner radius. KTP25S cermet grade with wiper geometry for productive fine finishing of steels. Kennametal marks material number 7161075 as no longer available.",
+      "additional_sources": [
+        {
+          "title": "Kennametal CCMT-FWS material 7161075",
+          "url": "https://www.kennametal.com/eg/en/products/p.topswiss-cermet-insert-positive-ccmt-fws-finish-wiper.7161075.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss Turning Inserts Application Data",
+          "url": "https://www.kennametal.com/content/dam/final/kennametal/docs/application-data/topswiss/topswiss-inserts-application-data_en.pdf",
+          "accessed_at": "2026-07-21"
+        }
+      ],
+      "notes": "Approved after visual review of catalog pages 5, 16, and 17. The local catalog establishes the exact part/grade pairing and dimensions; Kennametal's current material-number page independently confirms the identity, cermet construction, steel application, and no-longer-available status."
+    },
+    {
+      "proposal_row_id": "topswiss-008",
+      "tool_id": "CCMT060204FPS-KTP25S",
+      "decision": "approved_with_corrections",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-21",
+      "capture_method": "interactive_user_confirmation_in_codex_task",
+      "approved_scope": [
+        "exact ANSI/ISO identity, material number, grade, dimensions, and FPS geometry",
+        "P0/P1 low-carbon and free-machining-steel cutting-speed range",
+        "FPS feed and depth-of-cut ranges",
+        "manufacturer-supported P and M applicability",
+        "corrected terminology, grade material, lifecycle status, and description"
+      ],
+      "corrections": [
+        "Remove the unsupported 'fine-polish' expansion of FPS and describe it using Kennametal's 'finish machining' wording.",
+        "Identify KTP25S as a cermet grade.",
+        "Record steel and stainless steel as manufacturer-supported applications, while limiting this approved cutting-data profile to P0/P1 steel.",
+        "Mark material number 7161070 as no longer available rather than active, while retaining the historical tool and its sourced cutting data."
+      ],
+      "manufacturer_material_number": "7161070",
+      "lifecycle_status": "no_longer_available",
+      "manufacturer_supported_iso_groups": [
+        "P",
+        "M"
+      ],
+      "approved_cutting_profile_iso_subgroup": "P0/P1",
+      "grade_selection_priority": "sole_listed_grade",
+      "first_choice_grade_for_condition": "KTP25S",
+      "canonical_description": "Kennametal TopSwiss positive CCMT FPS finish-machining insert, ANSI CCMT2151FPS / ISO CCMT060204FPS, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and 0.4 mm corner radius. KTP25S cermet grade for finish machining of steel and stainless steel. Kennametal marks material number 7161070 as no longer available.",
+      "additional_sources": [
+        {
+          "title": "Kennametal CCMT-FPS material 7161070",
+          "url": "https://www.kennametal.com/us/en/products/p.topswiss-cermet-insert-positive-ccmt-fps-finish-machining.7161070.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss Turning Inserts Application Data",
+          "url": "https://www.kennametal.com/content/dam/final/kennametal/docs/application-data/topswiss/topswiss-inserts-application-data_en.pdf",
+          "accessed_at": "2026-07-21"
+        }
+      ],
+      "notes": "Approved after visual review of catalog pages 5, 14, and 15. The exact product page independently confirms the identity, dimensions, cermet grade, P/M applicability, and no-longer-available status. Only the reviewed P0/P1 steel cutting profile is approved in this row."
+    },
+    {
+      "proposal_row_id": "topswiss-009",
+      "tool_id": "CCMT09T304MWS-KTP25S",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-21",
+      "capture_method": "interactive_user_confirmation_in_codex_task",
+      "approved_scope": [
+        "exact ANSI/ISO identity, grade, dimensions, and MWS geometry",
+        "P3 alloy- and tool-steel cutting-speed range",
+        "MWS feed and depth-of-cut ranges",
+        "KTP25S as the sole listed grade for the reviewed condition"
+      ],
+      "grade_selection_priority": "sole_listed_grade",
+      "first_choice_grade_for_condition": "KTP25S",
+      "manufacturer_material_number": null,
+      "lifecycle_status": "unknown",
+      "unverified_fields": [
+        "manufacturer material number",
+        "current lifecycle status"
+      ],
+      "additional_sources": [
+        {
+          "title": "Kennametal TopSwiss Turning Inserts Application Data",
+          "url": "https://www.kennametal.com/content/dam/final/kennametal/docs/application-data/topswiss/topswiss-inserts-application-data_en.pdf",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss C-style inserts",
+          "url": "https://www.kennametal.com/co/en/products/metalworking-tools/small-parts-and-swiss-type/swiss-type-turning/od-and-id-turning/topswiss-turning-inserts/positive-swiss-style-inserts-screw-on/c-style-inserts.html",
+          "accessed_at": "2026-07-21"
+        }
+      ],
+      "notes": "Approved after visual review of catalog pages 4, 16, and 17. The exact part/grade pairing and dimensions are established by the local manufacturer catalog. No exact public product page was found for the larger CCMT09T304MWS variant, so its material number and lifecycle remain unknown rather than being inferred from a smaller sibling."
+    },
+    {
+      "proposal_row_id": "topswiss-010",
+      "tool_id": "DCGT070202MRPPS-KCP20S",
+      "decision": "approved_with_corrections",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-21",
+      "capture_method": "interactive_user_confirmation_in_codex_task",
+      "approved_scope": [
+        "exact ANSI/ISO identity, grade, dimensions, and right-hand PPS geometry",
+        "P3 alloy- and tool-steel cutting-speed range",
+        "PPS feed and depth-of-cut ranges",
+        "KCP20S as first choice for the reviewed condition",
+        "corrected cutting direction, operation classification, radius tolerance, and description"
+      ],
+      "corrections": [
+        "Change the cutting direction from neutral to right-hand.",
+        "Classify DCGT-R-PPS as medium machining rather than only finishing.",
+        "Describe PPS as parallel-positive geometry for low-to-medium feeds and larger depths of cut.",
+        "Preserve the nominal 0.2 mm corner radius with its -0.05 mm one-sided tolerance.",
+        "Leave the material number and lifecycle unknown because no exact public product page was verified."
+      ],
+      "manufacturer_material_number": null,
+      "lifecycle_status": "unknown",
+      "unverified_fields": [
+        "manufacturer material number",
+        "current lifecycle status"
+      ],
+      "grade_selection_priority": "first_choice",
+      "first_choice_grade_for_condition": "KCP20S",
+      "canonical_description": "Kennametal TopSwiss positive right-hand DCGT-R-PPS insert, ANSI DCGT21505MRPPS / ISO DCGT070202MRPPS, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and nominal 0.2 mm corner radius. KCP20S TiCN PVD-coated carbide with parallel-positive geometry for low-to-medium-feed machining of steels at larger depths of cut.",
+      "additional_sources": [
+        {
+          "title": "Kennametal DCGT-R-PPS Medium Machining family",
+          "url": "https://www.kennametal.com/us/en/products/fam.kenswiss-carbide-insert-positive-right-handed-dcgt-r-pps-medium-machining.107798793.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss Turning Inserts",
+          "url": "https://www.kennametal.com/gb/en/products/metalworking-tools/small-parts-and-swiss-type/topswiss-inserts.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss Turning Inserts Application Data",
+          "url": "https://www.kennametal.com/content/dam/final/kennametal/docs/application-data/topswiss/topswiss-inserts-application-data_en.pdf",
+          "accessed_at": "2026-07-21"
+        }
+      ],
+      "notes": "Approved after visual review of catalog pages 6, 14, and 15. The catalog establishes the exact part/grade pairing, dimensions, and radius tolerance. Kennametal's family page establishes right-hand DCGT-R-PPS and medium-machining classification. KCP20S is bolded as first choice for smooth PPS steel cutting."
+    },
+    {
+      "proposal_row_id": "topswiss-011",
+      "tool_id": "DCGT11T301MRPPS-KCS25S",
+      "decision": "approved_with_corrections",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-21",
+      "capture_method": "interactive_user_confirmation_in_codex_task",
+      "approved_scope": [
+        "exact ANSI/ISO identity, material number, grade, dimensions, and right-hand PPS geometry",
+        "M1 austenitic-stainless cutting-speed range",
+        "PPS feed and depth-of-cut ranges",
+        "KCS25S as an alternate for the reviewed M1 condition",
+        "corrected cutting direction, application scope, operation classification, lifecycle status, and description"
+      ],
+      "corrections": [
+        "Change the cutting direction from neutral to right-hand.",
+        "Replace the vague 'difficult materials' claim with the exact product page's P, M, and S work-material groups.",
+        "Classify DCGT-R-PPS as medium machining rather than only finishing.",
+        "Record KCS25S as an alternate for smooth M1 PPS cutting; KCM25S is first choice.",
+        "Preserve the nominal 0.1 mm corner radius with its -0.05 mm one-sided tolerance.",
+        "Add manufacturer material number 7154870 and mark it as no longer available."
+      ],
+      "manufacturer_material_number": "7154870",
+      "lifecycle_status": "no_longer_available",
+      "manufacturer_supported_iso_groups": [
+        "P",
+        "M",
+        "S"
+      ],
+      "grade_selection_priority": "alternate",
+      "first_choice_grade_for_condition": "KCM25S",
+      "source_ambiguities": [
+        "On catalog page 18, the right-hand grade-selection table is headed 'Negative Insert Geometry' even though its columns are the positive geometries FFS, LFS, and PPS. The geometry labels and separate positive-geometry feed/DOC table establish that the heading is erroneous."
+      ],
+      "canonical_description": "Kennametal TopSwiss positive right-hand DCGT-R-PPS insert, ANSI DCGT32502MRPPS / ISO DCGT11T301MRPPS, 9.525 mm IC, 3.97 mm thickness, 4.4 mm fixing hole, and nominal 0.1 mm corner radius. KCS25S PVD-coated carbide with medium-machining PPS geometry for steel, stainless steel, and high-temperature alloys. Kennametal marks material number 7154870 as no longer available.",
+      "additional_sources": [
+        {
+          "title": "Kennametal DCGT-R-PPS material 7154870",
+          "url": "https://www.kennametal.com/ar/en/products/p.kenswiss-plaquette-carbure-positive-a-droite-dcgt-r-pps-usinage-moyen.7154870.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss Turning Inserts",
+          "url": "https://www.kennametal.com/gb/en/products/metalworking-tools/small-parts-and-swiss-type/topswiss-inserts.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss Turning Inserts Application Data",
+          "url": "https://www.kennametal.com/content/dam/final/kennametal/docs/application-data/topswiss/topswiss-inserts-application-data_en.pdf",
+          "accessed_at": "2026-07-21"
+        }
+      ],
+      "notes": "Approved after visual review of catalog pages 6 and 18. The exact product page independently confirms the identity, material number, dimensions, KCS25S grade, right-hand medium-machining classification, P/M/S applicability, and no-longer-available status. KCS25S is valid for M1 smooth PPS cutting but is not bolded as first choice; KCM25S is first choice."
+    },
+    {
+      "proposal_row_id": "topswiss-012",
+      "tool_id": "DCGT11T304MLFS-KCM25S",
+      "decision": "approved_with_corrections",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-21",
+      "capture_method": "interactive_user_confirmation_in_codex_task",
+      "approved_scope": [
+        "exact ANSI/ISO identity, material number, grade, dimensions, and neutral LFS geometry",
+        "M1 austenitic-stainless cutting-speed range",
+        "LFS feed and depth-of-cut ranges",
+        "KCM25S as first choice for the reviewed M1 condition",
+        "corrected operation terminology, application scope, lifecycle status, radius tolerance, and description"
+      ],
+      "corrections": [
+        "Use Kennametal's light-machining classification rather than expanding LFS as 'low-feed'.",
+        "Retain the neutral/non-handed cutting direction because Kennametal does not designate DCGT-LFS as right- or left-hand.",
+        "Record the exact product page's P, M, and S work-material groups.",
+        "Preserve the nominal 0.4 mm corner radius with its -0.05 mm one-sided tolerance.",
+        "Add manufacturer material number 7154820 and mark it as no longer available."
+      ],
+      "manufacturer_material_number": "7154820",
+      "lifecycle_status": "no_longer_available",
+      "manufacturer_supported_iso_groups": [
+        "P",
+        "M",
+        "S"
+      ],
+      "grade_selection_priority": "first_choice",
+      "first_choice_grade_for_condition": "KCM25S",
+      "source_ambiguities": [
+        "On catalog page 18, the right-hand grade-selection table is headed 'Negative Insert Geometry' even though its columns are the positive geometries FFS, LFS, and PPS. The geometry labels and separate positive-geometry feed/DOC table establish that the heading is erroneous."
+      ],
+      "canonical_description": "Kennametal TopSwiss positive DCGT-LFS light-machining insert, ANSI DCGT3251MLFS / ISO DCGT11T304MLFS, 9.525 mm IC, 3.97 mm thickness, 4.4 mm fixing hole, and nominal 0.4 mm corner radius. KCM25S AlTiN/AlCrN PVD-coated carbide with polished LFS geometry for light machining of steel, stainless steel, and high-temperature alloys. Kennametal marks material number 7154820 as no longer available.",
+      "additional_sources": [
+        {
+          "title": "Kennametal DCGT-LFS material 7154820",
+          "url": "https://www.kennametal.com/ar/en/products/p.kenswiss-dcgt-lfs-.7154820.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss Turning Inserts",
+          "url": "https://www.kennametal.com/gb/en/products/metalworking-tools/small-parts-and-swiss-type/topswiss-inserts.html",
+          "accessed_at": "2026-07-21"
+        },
+        {
+          "title": "Kennametal TopSwiss Turning Inserts Application Data",
+          "url": "https://www.kennametal.com/content/dam/final/kennametal/docs/application-data/topswiss/topswiss-inserts-application-data_en.pdf",
+          "accessed_at": "2026-07-21"
+        }
+      ],
+      "notes": "Approved after visual review of catalog pages 6 and 18. The exact product page independently confirms the identity, material number, dimensions, KCM25S grade, neutral light-machining family, P/M/S applicability, and no-longer-available status. KCM25S is bolded as first choice for smooth M1 LFS cutting."
+    }
+  ]
+}
