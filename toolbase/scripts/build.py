@@ -1819,7 +1819,21 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
     )
     connection.close()
 
-    build_hash = file_sha256(db_path)[:16]
+    deployment_digest = hashlib.sha256(db_path.read_bytes())
+    deployment_inputs = [
+        Path(__file__).resolve(),
+        json_out.parent.parent / "index.html",
+        json_out.parent.parent / "app.css",
+        json_out.parent.parent / "app.js",
+        json_out.parent.parent / "manifest.webmanifest",
+        json_out.parent.parent / "sw.js",
+        json_out.parent.parent / "toolbase-card.png",
+    ]
+    for deployment_input in deployment_inputs:
+        if deployment_input.is_file():
+            deployment_digest.update(deployment_input.name.encode("utf-8"))
+            deployment_digest.update(deployment_input.read_bytes())
+    build_hash = deployment_digest.hexdigest()[:16]
     projection = {
         "meta": {
             "schema_version": build_report["schema_version"],

@@ -167,7 +167,7 @@
     state.tools.forEach(tool => {
       bump(buckets.manufacturer, tool.manufacturer)
       bump(buckets.component, tool.component_type)
-      bump(buckets.geometry, tool.geometry_shape || tool.geometry)
+      bump(buckets.geometry, tool.geometry_shape)
       bump(buckets.evidence, tool.verification_status)
       unique(tool.material_groups).forEach(value => bump(buckets.material, value))
       unique(tool.operation_types).forEach(value => bump(buckets.operation, value))
@@ -220,7 +220,7 @@
       .filter(({ tool }) => !elements.component.value || tool.component_type === elements.component.value)
       .filter(({ tool }) => !elements.material.value || tool.material_groups.includes(elements.material.value))
       .filter(({ tool }) => !elements.operation.value || tool.operation_types.includes(elements.operation.value))
-      .filter(({ tool }) => !elements.geometry.value || (tool.geometry_shape || tool.geometry) === elements.geometry.value)
+      .filter(({ tool }) => !elements.geometry.value || tool.geometry_shape === elements.geometry.value)
       .filter(({ tool }) => !elements.evidence.value || tool.verification_status === elements.evidence.value)
       .filter(({ tool }) => elements.cutting.value !== 'yes' || tool.has_cutting_data)
       .filter(({ tool }) => elements.cutting.value !== 'no' || !tool.has_cutting_data)
