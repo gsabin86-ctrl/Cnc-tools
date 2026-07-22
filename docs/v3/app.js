@@ -2,29 +2,10 @@
   'use strict'
 
   const PAGE_SIZE = 100
-  const STATIC_VERSION = '3.4.0-shell-2'
+  const STATIC_VERSION = '3.4.0-shell-3'
   const MATERIAL_NAMES = {
     P: 'Steel', M: 'Stainless steel', K: 'Cast iron', N: 'Non-ferrous',
     S: 'Heat-resistant alloys', H: 'Hardened materials', O: 'Other', unknown: 'Unknown'
-  }
-  const STATUS_LABELS = {
-    manufacturer_verified: 'Manufacturer verified',
-    catalog_verified: 'Catalog verified',
-    shop_verified: 'Shop verified',
-    source_located: 'Source located · not reviewed',
-    legacy: 'Legacy · needs review',
-    rejected: 'Rejected',
-    needs_review: 'Needs review',
-    accepted: 'Accepted',
-    imported: 'Legacy import',
-    catalog_claim: 'Catalog claim',
-    manufacturer_claim: 'Manufacturer claim',
-    unverified: 'Unverified',
-    inferred: 'Inferred',
-    pending: 'Pending review',
-    verified: 'Human reviewed',
-    quarantined: 'Quarantined',
-    superseded: 'Superseded'
   }
   const STATUS_RANK = {
     manufacturer_verified: 5, catalog_verified: 4, shop_verified: 3,
@@ -55,7 +36,6 @@
     material: $('#material-filter'),
     operation: $('#operation-filter'),
     geometry: $('#geometry-filter'),
-    evidence: $('#evidence-filter'),
     cutting: $('#cutting-filter'),
     clear: $('#clear-filters'),
     filterButton: $('#filter-button'),
@@ -79,8 +59,6 @@
     .replaceAll('"', '&quot;').replaceAll("'", '&#039;')
   const humanize = value => String(value || '').replaceAll('_', ' ').replace(/\b\w/g, letter => letter.toUpperCase())
   const normalize = value => String(value || '').toUpperCase().replace(/[^A-Z0-9]/g, '')
-  const statusLabel = value => STATUS_LABELS[value] || humanize(value)
-  const statusClass = value => escapeHtml(String(value || 'legacy').replaceAll('_', '-'))
   const count = value => Number(value || 0).toLocaleString()
   const safeUrl = value => /^https?:\/\//i.test(String(value || '')) ? value : null
   const unique = values => [...new Set(values.filter(Boolean))]
@@ -91,10 +69,6 @@
     elements.toast.hidden = false
     clearTimeout(showToast.timer)
     showToast.timer = setTimeout(() => { elements.toast.hidden = true }, 2400)
-  }
-
-  function badge(status, label = statusLabel(status)) {
-    return `<span class="badge ${statusClass(status)}">${escapeHtml(label)}</span>`
   }
 
   function applyTheme() {
@@ -131,7 +105,6 @@
       material: elements.material,
       operation: elements.operation,
       geometry: elements.geometry,
-      evidence: elements.evidence,
       cutting: elements.cutting
     }
     for (const [name, element] of Object.entries(fields)) {
@@ -148,7 +121,7 @@
       q: elements.search.value.trim(), maker: elements.manufacturer.value,
       type: elements.component.value, material: elements.material.value,
       operation: elements.operation.value, geometry: elements.geometry.value,
-      evidence: elements.evidence.value, cutting: elements.cutting.value
+      cutting: elements.cutting.value
     }
     for (const [name, value] of Object.entries(values)) if (value) params.set(name, value)
     if (state.selectedGrade) params.set('grade', state.selectedGrade)
@@ -172,14 +145,13 @@
   function populateFilters() {
     const buckets = {
       manufacturer: new Map(), component: new Map(), material: new Map(),
-      operation: new Map(), geometry: new Map(), evidence: new Map()
+      operation: new Map(), geometry: new Map()
     }
     const bump = (bucket, value) => { if (value) bucket.set(value, (bucket.get(value) || 0) + 1) }
     state.tools.forEach(tool => {
       bump(buckets.manufacturer, tool.manufacturer)
       bump(buckets.component, tool.component_type)
       bump(buckets.geometry, tool.geometry_shape)
-      bump(buckets.evidence, tool.verification_status)
       unique(tool.material_groups).forEach(value => bump(buckets.material, value))
       unique(tool.operation_types).forEach(value => bump(buckets.operation, value))
     })
@@ -188,16 +160,15 @@
     addOptions(elements.material, buckets.material, value => `${value} · ${MATERIAL_NAMES[value] || value}`)
     addOptions(elements.operation, buckets.operation)
     addOptions(elements.geometry, buckets.geometry, value => value)
-    addOptions(elements.evidence, buckets.evidence, statusLabel)
   }
 
   function renderStats() {
     const mapped = state.tools.filter(tool => tool.material_groups.length).length
-    const verified = state.index.meta.counts.cutting_data_profiles || 0
-    const reviewed = state.tools.filter(tool => ['manufacturer_verified', 'catalog_verified', 'shop_verified'].includes(tool.verification_status)).length
+    const profiles = state.index.meta.counts.cutting_data_profiles || 0
+    const sources = state.index.meta.counts.sources || 0
     const values = [
-      ['Tools', state.tools.length], ['Verified cutting profiles', verified],
-      ['Material mapped', mapped], ['Review status', `${reviewed} reviewed`]
+      ['Tools', state.tools.length], ['Cutting profiles', profiles],
+      ['Material mapped', mapped], ['Manufacturer sources', sources]
     ]
     elements.stats.innerHTML = values.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(count(value) === '0' && typeof value === 'string' ? value : typeof value === 'number' ? count(value) : value)}</dd></div>`).join('')
     elements.build.textContent = `Schema ${state.index.meta.schema_version} · build ${state.index.meta.build_hash}`
@@ -218,7 +189,7 @@
 
   function activeFilterCount() {
     return [elements.manufacturer, elements.component, elements.material, elements.operation,
-      elements.geometry, elements.evidence, elements.cutting].filter(element => element.value).length
+      elements.geometry, elements.cutting].filter(element => element.value).length
   }
 
   function applyFilters({ sync = true } = {}) {
@@ -232,7 +203,6 @@
       .filter(({ tool }) => !elements.material.value || tool.material_groups.includes(elements.material.value))
       .filter(({ tool }) => !elements.operation.value || tool.operation_types.includes(elements.operation.value))
       .filter(({ tool }) => !elements.geometry.value || tool.geometry_shape === elements.geometry.value)
-      .filter(({ tool }) => !elements.evidence.value || tool.verification_status === elements.evidence.value)
       .filter(({ tool }) => elements.cutting.value !== 'yes' || tool.has_cutting_data)
       .filter(({ tool }) => elements.cutting.value !== 'no' || !tool.has_cutting_data)
       .sort((a, b) => b.score - a.score ||
@@ -249,13 +219,10 @@
 
   function rowMarkup(tool) {
     const groups = tool.material_groups.slice(0, 4).map(group => `<span class="material-chip" title="${escapeHtml(MATERIAL_NAMES[group] || group)}">${escapeHtml(group)}</span>`).join('')
-    const reviewBadge = tool.review_status === 'quarantined'
-      ? badge('quarantined')
-      : tool.review_status === 'verified' ? badge('verified') : ''
     return `<button class="tool-row${tool.id === state.selectedId ? ' selected' : ''}" type="button" data-tool-id="${escapeHtml(tool.id)}" aria-pressed="${tool.id === state.selectedId}">
       <span class="tool-main"><strong>${escapeHtml(tool.part_number)}</strong><small>${escapeHtml(tool.description)}</small></span>
       <span class="row-maker">${escapeHtml(tool.manufacturer)}</span>
-      <span class="row-meta">${reviewBadge}${badge(tool.verification_status)}<span class="badge">${escapeHtml(humanize(tool.component_type))}</span>${groups}${tool.has_cutting_data ? '<span class="badge catalog-verified">Cutting data</span>' : ''}</span>
+      <span class="row-meta"><span class="badge">${escapeHtml(humanize(tool.component_type))}</span>${groups}${tool.has_cutting_data ? '<span class="badge cutting-data">Cutting data</span>' : ''}</span>
     </button>`
   }
 
@@ -367,18 +334,28 @@
   function geometrySection(tool) {
     const geometry = tool.geometry_display
     if (!geometry) return emptyData('No normalized geometry yet', 'The database does not contain enough structured geometry to draw this tool without guessing.')
-    const decodeStatus = geometry.designation_verification_status || 'legacy'
-    const lines = [
-      { label: 'ISO designation', value: geometry.designation, status: decodeStatus },
-      { label: 'Shape', value: [geometry.shape_code, geometry.shape_name, geometry.included_angle].filter(Boolean).join(' · '), status: decodeStatus },
-      { label: 'Clearance', value: [geometry.clearance_code, geometry.clearance].filter(Boolean).join(' · '), status: decodeStatus },
-      { label: 'Tolerance code', value: geometry.tolerance_code, status: decodeStatus },
-      { label: 'Insert style code', value: geometry.style_code, status: decodeStatus },
-      ...geometry.dimensions.map(item => ({ label: item.label, value: `${item.value}${item.unit ? ` ${item.unit}` : ''}`, status: item.verification_status }))
-    ].filter(item => item.value)
+    const isIso = geometry.mode === 'iso'
+    const dimensions = geometry.dimensions.map(item => ({ label: item.label, value: `${item.value}${item.unit ? ` ${item.unit}` : ''}` }))
+    const lines = (isIso ? [
+      { label: 'ISO designation', value: geometry.designation },
+      { label: 'Shape', value: [geometry.shape_code, geometry.shape_name, geometry.included_angle].filter(Boolean).join(' · ') },
+      { label: 'Clearance', value: [geometry.clearance_code, geometry.clearance].filter(Boolean).join(' · ') },
+      { label: 'Tolerance code', value: geometry.tolerance_code },
+      { label: 'Insert style code', value: geometry.style_code },
+      ...dimensions
+    ] : [
+      { label: 'Manufacturer designation', value: geometry.designation },
+      { label: 'Geometry description', value: geometry.summary },
+      { label: 'Shape / system', value: geometry.shape_name },
+      { label: 'Size', value: geometry.size },
+      ...dimensions
+    ]).filter(item => item.value)
+    const figure = isIso
+      ? `<div class="geometry-figure"><svg viewBox="0 0 180 170" role="img" aria-label="Normalized ${escapeHtml(geometry.shape_name || 'insert')} schematic">${geometrySvg(geometry)}</svg></div>`
+      : `<div class="geometry-figure"><div class="manufacturer-geometry"><strong>Manufacturer-specific geometry</strong><span>${escapeHtml(geometry.shape_name || geometry.summary || tool.family || tool.part_number)}</span></div></div>`
     return `<div class="geometry-card">
-      <div class="geometry-figure"><svg viewBox="0 0 180 170" role="img" aria-label="Normalized ${escapeHtml(geometry.shape_name || 'insert')} schematic">${geometrySvg(geometry)}</svg></div>
-      <div><div class="geometry-data">${lines.map(item => `<div class="geometry-line"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong>${badge(item.status)}</div>`).join('')}</div><p class="geometry-note">${escapeHtml(geometry.note)} ISO letter meanings are decoded from the designation; dimensional rows keep their own evidence status.</p></div>
+      ${figure}
+      <div><div class="geometry-data">${lines.map(item => `<div class="geometry-line"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.value)}</strong></div>`).join('')}</div><p class="geometry-note">${escapeHtml(geometry.note)}${isIso ? ' ISO letter meanings are decoded from the designation.' : ''}</p></div>
     </div>`
   }
 
@@ -386,8 +363,8 @@
     return `<div class="empty-data"><strong>${escapeHtml(title)}</strong>${escapeHtml(message)}</div>`
   }
 
-  function auditSummary(item) {
-    return [item.source_page_ref, item.source_table_ref, item.reviewer && `reviewed by ${item.reviewer}`, item.reviewed_at].filter(Boolean).join(' · ')
+  function sourceLocation(item) {
+    return [item.source_page_ref, item.source_table_ref].filter(Boolean).join(' · ')
   }
 
   function gradeOptions(tool) {
@@ -413,7 +390,7 @@
     if (state.selectedGrade && !grades.some(option => option.code === state.selectedGrade)) state.selectedGrade = null
     if (state.selectedCondition && !conditions.includes(state.selectedCondition)) state.selectedCondition = null
     if (!grades.length && !conditions.length) return ''
-    const gradeSelect = grades.length ? `<label>Grade<select data-detail-grade><option value="">All listed grades</option>${grades.map(option => `<option value="${escapeHtml(option.code)}"${state.selectedGrade === option.code ? ' selected' : ''}>${escapeHtml(option.code)} · ${escapeHtml(statusLabel(option.verification_status))}</option>`).join('')}</select></label>` : ''
+    const gradeSelect = grades.length ? `<label>Grade<select data-detail-grade><option value="">All listed grades</option>${grades.map(option => `<option value="${escapeHtml(option.code)}"${state.selectedGrade === option.code ? ' selected' : ''}>${escapeHtml(option.code)}</option>`).join('')}</select></label>` : ''
     const conditionSelect = conditions.length ? `<label>Cut condition<select data-detail-condition><option value="">All conditions</option>${conditions.map(condition => `<option value="${escapeHtml(condition)}"${state.selectedCondition === condition ? ' selected' : ''}>${escapeHtml(humanize(condition))}</option>`).join('')}</select></label>` : ''
     return `<div class="detail-selectors">${gradeSelect}${conditionSelect}</div>`
   }
@@ -431,18 +408,11 @@
 
   function materialSection(tool) {
     const materials = filteredMaterials(tool)
-    if (!materials.length) return emptyData('No verified work-material recommendation for this selection', 'Tags, legacy material fields, and grade descriptions are never promoted to recommendations without an exact reviewed manufacturer source.')
+    if (!materials.length) return emptyData('No work-material recommendation available for this selection', 'No recommendation is currently published for this tool and grade selection.')
     return `<div class="material-list">${materials.map(item => `<article class="material-row">
       <span class="material-chip">ISO ${escapeHtml(item.iso_group)}</span>
-      <p><strong>${escapeHtml(item.name)}</strong><small>${escapeHtml([item.grade_code, item.material_subgroup || 'Subgroup not specified', humanize(item.suitability)].filter(Boolean).join(' · '))}</small>${auditSummary(item) ? `<small>${escapeHtml(auditSummary(item))}</small>` : ''}${item.notes ? `<small>${escapeHtml(item.notes)}</small>` : ''}</p>
-      ${badge(item.verification_status)}
+      <p><strong>${escapeHtml(item.name)}</strong><small>${escapeHtml([item.grade_code, item.material_subgroup || 'Subgroup not specified', humanize(item.suitability)].filter(Boolean).join(' · '))}</small>${item.notes ? `<small>${escapeHtml(item.notes)}</small>` : ''}</p>
     </article>`).join('')}</div>`
-  }
-
-  function unreviewedMaterialSection(tool) {
-    const claims = tool.unreviewed_material_claims || []
-    if (!claims.length) return ''
-    return `<details class="legacy-claims"><summary>${claims.length} unreviewed legacy material claim${claims.length === 1 ? '' : 's'}</summary><p>These values are retained for audit only. They do not power search filters and are not recommendations.</p><div class="material-list">${claims.map(item => `<article class="material-row"><span class="material-chip">ISO ${escapeHtml(item.iso_group)}</span><p><strong>${escapeHtml(item.name)}</strong><small>${escapeHtml(item.material_subgroup || 'Subgroup not specified')}</small></p>${badge(item.verification_status)}</article>`).join('')}</div></details>`
   }
 
   function convertValue(value, unit, target) {
@@ -478,9 +448,9 @@
 
   function cuttingSection(tool) {
     const profiles = filteredProfiles(tool)
-    if (!profiles.length) return emptyData('No manufacturer-verified speeds and feeds for this selection', 'Nothing is estimated from a similar insert. Values appear only after the exact part, grade, geometry, material subgroup, and source table are reviewed.')
+    if (!profiles.length) return emptyData('No speeds and feeds available for this selection', 'No cutting recommendation is currently published for this tool, grade, material, and condition selection.')
     return profiles.map(profile => `<article class="cutting-profile" data-profile-id="${escapeHtml(profile.id)}">
-      <div class="cutting-head"><strong>ISO ${escapeHtml(profile.iso_material_group)}${profile.material_subgroup ? ` · ${escapeHtml(profile.material_subgroup)}` : ''} · ${escapeHtml(humanize(profile.operation_type))}</strong>${badge(profile.verification_status)}</div>
+      <div class="cutting-head"><strong>ISO ${escapeHtml(profile.iso_material_group)}${profile.material_subgroup ? ` · ${escapeHtml(profile.material_subgroup)}` : ''} · ${escapeHtml(humanize(profile.operation_type))}</strong></div>
       <p class="cutting-context">${escapeHtml([profile.source_material_label, profile.source_grade, profile.source_chipbreaker, humanize(profile.cut_condition)].filter(Boolean).join(' · '))}</p>
       <div class="cutting-values">
         <div><span>Surface speed</span><b>${escapeHtml(rangeMarkup(profile.surface_speed_min, profile.surface_speed_max, profile.surface_speed_unit))}</b>${speedStart(profile) ? `<small>Start: ${escapeHtml(speedStart(profile))}</small>` : ''}</div>
@@ -488,7 +458,7 @@
         <div><span>Depth of cut</span><b>${escapeHtml(rangeMarkup(profile.depth_of_cut_min, profile.depth_of_cut_max, profile.depth_of_cut_unit))}</b></div>
       </div>
       <div class="calculator"><label>Stock diameter (${calculatorUnit(profile)})<input type="number" inputmode="decimal" min="0" step="any" data-calc-profile="${escapeHtml(profile.id)}" placeholder="Enter diameter"></label><p class="calculator-output" data-calc-output="${escapeHtml(profile.id)}">Uses the manufacturer start speed; the calculated RPM is not stored as source data.</p></div>
-      <p class="audit-line">${escapeHtml(auditSummary(profile) || 'Source location not recorded')}</p>
+      <p class="audit-line">${escapeHtml(sourceLocation(profile) || 'Source location not recorded')}</p>
       <details class="audit-details"><summary>Show source excerpt and review notes</summary>${profile.source_raw_text ? `<p>${escapeHtml(profile.source_raw_text)}</p>` : ''}${profile.notes ? `<p>${escapeHtml(profile.notes)}</p>` : ''}</details>
     </article>`).join('')
   }
@@ -529,8 +499,7 @@
       const target = relationshipTarget(item, incoming)
       const title = target?.part_number || item.object_value || 'External interface'
       const direction = incoming ? `${humanize(item.relationship)} this tool` : humanize(item.relationship)
-      const status = item.review_status === 'accepted' ? item.evidence_status : item.review_status
-      const body = `<span><strong>${escapeHtml(title)}</strong><small>${escapeHtml(direction)} · ${escapeHtml(item.notes || 'No notes')}</small></span>${badge(status)}`
+      const body = `<span><strong>${escapeHtml(title)}</strong><small>${escapeHtml(direction)} · ${escapeHtml(item.notes || 'No notes')}</small></span>`
       return target ? `<button class="relationship" type="button" data-tool-id="${escapeHtml(target.id)}">${body}</button>` : `<div class="relationship">${body}</div>`
     }).join('')}</div>`
   }
@@ -551,7 +520,7 @@
 
   function sourceSection(tool) {
     const sources = sourceIdsFor(tool).map(id => state.details.sources_by_id[id]).filter(Boolean)
-    if (!sources.length) return emptyData('No source linked', 'This legacy record needs a manufacturer source before its specifications can be audited.')
+    if (!sources.length) return emptyData('No source linked', 'No manufacturer catalog or website source is currently attached to this record.')
     return `<div class="source-list">${sources.map(source => {
       const link = safeUrl(source.url)
       const location = [source.page_ref, source.document_edition, source.retrieved_at && `retrieved ${source.retrieved_at}`].filter(Boolean).join(' · ')
@@ -560,10 +529,8 @@
   }
 
   function factsSection(tool) {
-    if (!tool.facts.length) return emptyData('No additional facts', 'No legacy or reviewed fact rows are attached to this tool.')
-    const current = `<div class="fact-list">${tool.facts.map(fact => `<article class="fact-card"><strong>${escapeHtml(humanize(fact.original_key || fact.key))}</strong><span>${escapeHtml(factValue(fact))}</span>${badge(fact.verification_status)}${auditSummary(fact) ? `<small>${escapeHtml(auditSummary(fact))}</small>` : ''}</article>`).join('')}</div>`
-    const history = tool.fact_history?.length ? `<details class="audit-history"><summary>${tool.fact_history.length} superseded fact${tool.fact_history.length === 1 ? '' : 's'}</summary><div class="fact-list">${tool.fact_history.map(fact => `<article class="fact-card"><strong>${escapeHtml(humanize(fact.original_key || fact.key))}</strong><span>${escapeHtml(factValue(fact))}</span>${badge(fact.verification_status)}</article>`).join('')}</div></details>` : ''
-    return current + history
+    if (!tool.facts.length) return emptyData('No additional specifications', 'No additional specification rows are attached to this tool.')
+    return `<div class="fact-list">${tool.facts.map(fact => `<article class="fact-card"><strong>${escapeHtml(humanize(fact.original_key || fact.key))}</strong><span>${escapeHtml(factValue(fact))}</span></article>`).join('')}</div>`
   }
 
   function detailSection(title, content, meta = '') {
@@ -573,20 +540,22 @@
   function renderDetail() {
     const tool = state.toolMap.get(state.selectedId)
     if (!tool) return
-    const relationshipCount = (state.outgoing.get(tool.id)?.length || 0) + (state.incoming.get(tool.id)?.length || 0)
+    const relationshipCount = [
+      ...(state.outgoing.get(tool.id) || []),
+      ...(state.incoming.get(tool.id) || [])
+    ].filter(item => !item.suppressed).length
+    const relationshipLabel = `${relationshipCount} ${relationshipCount === 1 ? 'connection' : 'connections'}`
     const selectors = detailSelectors(tool)
     const materials = filteredMaterials(tool)
     const profiles = filteredProfiles(tool)
-    const quarantine = tool.review_status === 'quarantined' ? `<div class="quarantine-banner"><strong>Quarantined record</strong><p>${escapeHtml(tool.quarantine_reason || 'The exact identity or source support was rejected during review. Recommendations are suppressed.')}</p></div>` : ''
     elements.detail.innerHTML = `
       <div class="mobile-detail-bar"><button class="back-button" type="button" data-close-detail>← Results</button></div>
-      <header class="detail-header"><div class="detail-kicker"><span>${escapeHtml(humanize(tool.component_type))}</span><span>${tool.review_status === 'verified' ? badge('verified') : tool.review_status === 'quarantined' ? badge('quarantined') : badge(tool.verification_status)}</span></div><h2>${escapeHtml(tool.part_number)}</h2><p class="detail-maker">${escapeHtml(tool.manufacturer)}</p><p class="detail-description">${escapeHtml(tool.description)}</p>${selectors}</header>
-      ${quarantine}
+      <header class="detail-header"><div class="detail-kicker"><span>${escapeHtml(humanize(tool.component_type))}</span></div><h2>${escapeHtml(tool.part_number)}</h2><p class="detail-maker">${escapeHtml(tool.manufacturer)}</p><p class="detail-description">${escapeHtml(tool.description)}</p>${selectors}</header>
       ${detailSection('Core specifications', specGrid(tool))}
       ${detailSection('Geometry', geometrySection(tool))}
-      ${detailSection('Recommended work materials', materialSection(tool) + unreviewedMaterialSection(tool), `${materials.length} verified`)}
-      ${detailSection('Speeds and feeds', cuttingSection(tool), `${profiles.length} verified`)}
-      ${detailSection('Compatibility path', compatibilitySection(tool), `${relationshipCount} claims`)}
+      ${detailSection('Recommended work materials', materialSection(tool), `${materials.length} recommendations`)}
+      ${detailSection('Speeds and feeds', cuttingSection(tool), `${profiles.length} profiles`)}
+      ${detailSection('Compatibility path', compatibilitySection(tool), relationshipLabel)}
       ${detailSection('Sources and audit trail', sourceSection(tool), `${sourceIdsFor(tool).length} sources`)}
       ${detailSection('Additional facts', factsSection(tool), `${tool.facts.length} facts`)}
     `
@@ -595,7 +564,7 @@
   function clearFilters() {
     elements.search.value = ''
     ;[elements.manufacturer, elements.component, elements.material, elements.operation,
-      elements.geometry, elements.evidence, elements.cutting].forEach(element => { element.value = '' })
+      elements.geometry, elements.cutting].forEach(element => { element.value = '' })
     applyFilters()
   }
 
@@ -610,7 +579,7 @@
       timer = setTimeout(() => applyFilters(), 90)
     })
     ;[elements.manufacturer, elements.component, elements.material, elements.operation,
-      elements.geometry, elements.evidence, elements.cutting].forEach(element => element.addEventListener('change', () => applyFilters()))
+      elements.geometry, elements.cutting].forEach(element => element.addEventListener('change', () => applyFilters()))
     elements.clear.addEventListener('click', clearFilters)
     elements.more.addEventListener('click', () => { state.visible += PAGE_SIZE; renderList() })
     elements.filterButton.addEventListener('click', () => {

@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#12211d">
   <meta name="description" content="A mobile-first, source-auditable database of Swiss CNC holders, inserts, modules, shanks, and cutting recommendations.">
   <meta property="og:title" content="CNC Toolbase">
-  <meta property="og:description" content="Search Swiss tooling, inspect geometry, and trace every reviewed recommendation to its source.">
+  <meta property="og:description" content="Search Swiss tooling, inspect geometry, and trace recommendations to manufacturer sources.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://cnctoolbase.com/v3/toolbase-card.png">
   <link rel="canonical" href="https://cnctoolbase.com/v3/">
   <title>CNC Toolbase · Auditable Swiss tooling</title>
-  <link rel="manifest" href="./manifest.webmanifest?v=3.4.0-shell-2">
-  <link rel="stylesheet" href="./app.css?v=3.4.0-shell-2">
+  <link rel="manifest" href="./manifest.webmanifest?v=3.4.0-shell-3">
+  <link rel="stylesheet" href="./app.css?v=3.4.0-shell-3">
 </head>
 <body>
   <header class="topbar">
@@ -33,12 +33,12 @@
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">Manufacturer evidence stays attached</p>
       <h1 id="page-title">Find the right tool—and see what proves it.</h1>
-      <p>Search holders, shanks, modules, and inserts. Reviewed specifications, materials, and cutting data link back to the exact source location. Unreviewed legacy data stays clearly labeled.</p>
+      <p>Search holders, shanks, modules, and inserts. Specifications, material recommendations, and cutting data link back to their manufacturer sources.</p>
       <dl class="stats" id="stats" aria-label="Database summary">
         <div><dt>Tools</dt><dd>—</dd></div>
-        <div><dt>Verified cutting profiles</dt><dd>—</dd></div>
+        <div><dt>Cutting profiles</dt><dd>—</dd></div>
         <div><dt>Material mapped</dt><dd>—</dd></div>
-        <div><dt>Review status</dt><dd>Loading</dd></div>
+        <div><dt>Manufacturer sources</dt><dd>—</dd></div>
       </dl>
     </section>
 
@@ -58,8 +58,7 @@
         <label>Work material<select id="material-filter"><option value="">All</option></select></label>
         <label>Operation<select id="operation-filter"><option value="">All</option></select></label>
         <label>Geometry<select id="geometry-filter"><option value="">All</option></select></label>
-        <label>Evidence<select id="evidence-filter"><option value="">All</option></select></label>
-        <label>Cutting data<select id="cutting-filter"><option value="">Either</option><option value="yes">Verified available</option><option value="no">Not verified</option></select></label>
+        <label>Cutting data<select id="cutting-filter"><option value="">Either</option><option value="yes">Available</option><option value="no">Not available</option></select></label>
         <button class="text-button" id="clear-filters" type="button">Clear all filters</button>
       </div>
 
@@ -88,6 +87,6 @@
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-  <script src="./app.js?v=3.4.0-shell-2" defer></script>
+  <script src="./app.js?v=3.4.0-shell-3" defer></script>
 </body>
 </html>

@@ -1,3 +1,17 @@
+# Keep canonical data and hash-bound review inputs byte-for-byte stable.
+toolbase/data/**/*.json -text
+toolbase/data/**/*.jsonl -text
+toolbase/proposals/**/*.json -text
+toolbase/reviews/**/*.json -text
+
+# Normalize maintained code, documentation, and deployment shell files.
+*.py text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.webmanifest text eol=lf
+*.md text eol=lf
+
 # Preserve archived and generated binary artifacts exactly.
 archive/database-cleanup/legacy-hosted-index-2026-07-21.html -text -whitespace
 docs/v3/data/toolbase.sqlite binary

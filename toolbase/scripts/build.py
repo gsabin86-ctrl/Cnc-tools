@@ -1868,23 +1868,96 @@ def strongest_verification(statuses: list[str], fallback: str = "legacy") -> str
     return max(usable, key=lambda item: VERIFICATION_RANK[item]) if usable else fallback
 
 
+def extract_iso_insert_designation(candidate: str | None) -> str | None:
+    """Return the ISO insert code without swallowing a chipbreaker suffix.
+
+    The metric size block is normally six characters. Its thickness pair may
+    contain a letter (for example ``09T304``), so a digits-only expression
+    incorrectly rejects common designations such as ``CCMT 09 T3 04``.
+    Short four- and five-digit legacy designations remain supported because
+    the seed contains a small number of those abbreviated codes.
+    """
+    if not candidate:
+        return None
+    normalized = normalize_part_number(candidate)
+    full_match = re.search(r"([A-Z]{4}\d{2}[A-Z0-9]\d\d{2})", normalized)
+    if full_match:
+        return full_match.group(1)
+    short_match = re.search(r"([A-Z]{4}\d{4,5})(?!\d)", normalized)
+    return short_match.group(1) if short_match else None
+
+
+GEOMETRY_FACT_TERMS = (
+    "angle",
+    "circle",
+    "depth",
+    "diameter",
+    "height",
+    "length",
+    "radius",
+    "thickness",
+    "width",
+)
+
+
+def manufacturer_geometry_dimensions(facts: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    dimensions: list[dict[str, Any]] = []
+    for fact in facts:
+        fact_key = str(fact.get("key") or "")
+        if not any(term in fact_key.casefold() for term in GEOMETRY_FACT_TERMS):
+            continue
+        label_key = str(fact.get("original_key") or fact_key)
+        unit = fact.get("unit")
+        if unit and label_key.casefold().endswith(f"_{str(unit).casefold()}"):
+            label_key = label_key[: -(len(str(unit)) + 1)]
+        dimensions.append(
+            {
+                "label": label_key.replace("_", " ").strip().capitalize(),
+                "value": fact["value"],
+                "unit": unit,
+                "verification_status": fact.get("verification_status", "legacy"),
+                "source_ids": fact.get("source_ids") or [],
+            }
+        )
+    return dimensions
+
+
 def insert_geometry_display(tool: dict[str, Any]) -> dict[str, Any] | None:
     if tool["component_type"] != "insert":
         return None
     aliases = tool.get("aliases") or []
     candidates = [tool.get("iso_designation"), *aliases, tool.get("part_number")]
-    match = next(
+    designation = next(
         (
-            match
+            designation
             for candidate in candidates
-            if candidate
-            and (match := re.search(r"([A-Z]{4}\d{4,6})", normalize_part_number(candidate)))
+            if (designation := extract_iso_insert_designation(candidate))
         ),
         None,
     )
-    designation = match.group(1) if match else None
     if not designation or designation[0] not in INSERT_SHAPES:
-        return None
+        dimensions = manufacturer_geometry_dimensions(tool.get("facts") or [])
+        summary = tool.get("geometry")
+        shape_name = tool.get("shape")
+        size = tool.get("size")
+        manufacturer_designation = tool.get("iso_designation")
+        if not any((summary, shape_name, size, manufacturer_designation, dimensions)):
+            return None
+        return {
+            "mode": "manufacturer",
+            "designation": manufacturer_designation,
+            "shape_code": None,
+            "shape_name": shape_name,
+            "included_angle": None,
+            "clearance_code": None,
+            "clearance": None,
+            "tolerance_code": None,
+            "style_code": None,
+            "summary": summary,
+            "size": size,
+            "dimensions": dimensions,
+            "note": "Manufacturer-specific geometry shown from the specifications stored for this tool; no generic ISO schematic is implied.",
+        }
     shape_code = designation[0] if designation else None
     clearance_code = designation[1] if designation else None
     tolerance_code = designation[2] if designation else None
@@ -1922,6 +1995,7 @@ def insert_geometry_display(tool: dict[str, Any]) -> dict[str, Any] | None:
                 }
             )
     return {
+        "mode": "iso",
         "designation": designation,
         "designation_verification_status": designation_status,
         "designation_source_ids": unique_source_ids if (
@@ -1938,6 +2012,8 @@ def insert_geometry_display(tool: dict[str, Any]) -> dict[str, Any] | None:
         "clearance": INSERT_CLEARANCE.get(clearance_code),
         "tolerance_code": tolerance_code,
         "style_code": style_code,
+        "summary": tool.get("geometry"),
+        "size": tool.get("size"),
         "dimensions": dimensions,
         "note": "Normalized ISO-style schematic; not manufacturer artwork. Dimensions are shown only when present in the database.",
     }

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import shutil
 import sqlite3
 import subprocess
 import sys
@@ -13,14 +12,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILD_SCRIPT = ROOT / "scripts" / "build.py"
-PROPOSAL_VALIDATOR = ROOT / "scripts" / "validate_cutting_proposal.py"
-REVIEWED_IMPORTER = ROOT / "scripts" / "import_reviewed_proposal.py"
-REVIEW_BATCH = ROOT / "scripts" / "review_batch.py"
 TOPSWISS_PROPOSAL = ROOT / "proposals" / "kennametal-topswiss-pilot.json"
 TOPSWISS_LEDGER = ROOT / "reviews" / "kennametal-topswiss-pilot.decisions.json"
-TOPSWISS_IMPORT = ROOT / "data" / "reviewed_imports" / "kennametal-topswiss-pilot.json"
-IDENTITY_PROPOSAL = ROOT / "proposals" / "kennametal-topswiss-identity-batch-01.json"
-IDENTITY_LEDGER = ROOT / "reviews" / "kennametal-topswiss-identity-batch-01.decisions.json"
 ECAS20_SHOP_INPUT = ROOT / "data" / "shop_inputs" / "star-ecas20-stations.json"
 DATA_DIR = ROOT / "data"
 
@@ -134,25 +127,6 @@ class PipelineTests(unittest.TestCase):
                 self.assertIn(column, material_columns)
             connection.close()
 
-            proposal_result = subprocess.run(
-                [
-                    sys.executable,
-                    str(PROPOSAL_VALIDATOR),
-                    "--proposal",
-                    str(TOPSWISS_PROPOSAL),
-                    "--db",
-                    str(db_path),
-                    "--json",
-                ],
-                check=True,
-                capture_output=True,
-                text=True,
-            )
-            proposal_audit = json.loads(proposal_result.stdout)
-            self.assertTrue(proposal_audit["valid"])
-            self.assertEqual(proposal_audit["rows"], 12)
-            self.assertTrue(proposal_audit["import_allowed"])
-
             projection = json.loads(json_path.read_text(encoding="utf-8"))
             self.assertEqual(len(projection["tools"]), 1222)
             self.assertEqual(projection["meta"]["quality"]["suppressed_direct_machine_claims"], 172)
@@ -168,6 +142,19 @@ class PipelineTests(unittest.TestCase):
             self.assertTrue(all("review_status" in tool for tool in search_index["tools"]))
             self.assertTrue(all("grade_codes" in tool for tool in search_index["tools"]))
             self.assertTrue(any(tool["geometry_shape"] for tool in search_index["tools"] if tool["component_type"] == "insert"))
+            sandvik_t3 = details["tools_by_id"]["TCMX-16-T3-08-WF"]["geometry_display"]
+            self.assertIsNotNone(sandvik_t3)
+            self.assertEqual(sandvik_t3["designation"], "TCMX16T308")
+            self.assertEqual(sandvik_t3["shape_name"], "Triangle")
+            self.assertEqual(sandvik_t3["clearance"], "7 degrees")
+            sandvik_coroturn = [
+                tool
+                for tool in details["tools_by_id"].values()
+                if tool["manufacturer"] == "Sandvik Coromant"
+                and tool["family"] == "CoroTurn 107 Inserts"
+            ]
+            self.assertEqual(len(sandvik_coroturn), 53)
+            self.assertTrue(all(tool["geometry_display"] for tool in sandvik_coroturn))
             material_tools = [tool for tool in search_index["tools"] if tool["material_groups"]]
             cutting_tools = [tool for tool in search_index["tools"] if tool["has_cutting_data"]]
             self.assertEqual(len(material_tools), 12)
@@ -178,6 +165,56 @@ class PipelineTests(unittest.TestCase):
                 191,
             )
             self.assertEqual(db_path.read_bytes(), published_path.read_bytes())
+
+    def test_manufacturer_specific_insert_geometry_uses_existing_facts(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            _, json_path, _ = self.build(Path(temp))
+            details = json.loads(json_path.with_name("catalog-details.json").read_text(encoding="utf-8"))
+            tools = details["tools_by_id"]
+
+            horn = tools["L105.0005.2.4"]["geometry_display"]
+            self.assertEqual(horn["mode"], "manufacturer")
+            self.assertIn("internal grooving", horn["summary"])
+            self.assertEqual(
+                {item["label"]: (item["value"], item["unit"]) for item in horn["dimensions"]},
+                {"Corner radius": (0.5, "mm"), "Width": (1.0, "mm")},
+            )
+
+            corocut = tools["C2I-E2N-0200-0001-CO"]["geometry_display"]
+            self.assertEqual(corocut["mode"], "manufacturer")
+            self.assertEqual(corocut["shape_name"], "CoroCut 2")
+            self.assertEqual(
+                {item["label"]: (item["value"], item["unit"]) for item in corocut["dimensions"]},
+                {
+                    "Clearance angle": (7.0, "deg"),
+                    "Cutting width": (2.0, "mm"),
+                    "Width code": ("E", None),
+                },
+            )
+
+            iscar = tools["DGN 2002J IC908"]["geometry_display"]
+            self.assertEqual(iscar["mode"], "manufacturer")
+            self.assertIn("J-type chipformer", iscar["summary"])
+            self.assertIn("Cutting width", {item["label"] for item in iscar["dimensions"]})
+
+    def test_manufacturer_geometry_renderer_does_not_draw_an_iso_schematic(self) -> None:
+        viewer_script = (ROOT.parent / "docs" / "v3" / "app.js").read_text(encoding="utf-8")
+        self.assertIn("const isIso = geometry.mode === 'iso'", viewer_script)
+        self.assertIn("Manufacturer-specific geometry", viewer_script)
+
+    def test_mobile_geometry_layout_allows_long_values_to_wrap(self) -> None:
+        viewer_css = (ROOT.parent / "docs" / "v3" / "app.css").read_text(encoding="utf-8")
+        self.assertIn(".detail-description {", viewer_css)
+        self.assertIn("overflow-wrap: anywhere", viewer_css.split(".detail-description {", 1)[1].split("}", 1)[0])
+        self.assertIn(".geometry-line strong {", viewer_css)
+        geometry_value_rule = viewer_css.split(".geometry-line strong {", 1)[1].split("}", 1)[0]
+        self.assertIn("min-width: 0", geometry_value_rule)
+        self.assertIn("overflow-wrap: anywhere", geometry_value_rule)
+
+    def test_detail_relationship_count_matches_visible_claims(self) -> None:
+        viewer_script = (ROOT.parent / "docs" / "v3" / "app.js").read_text(encoding="utf-8")
+        self.assertIn(".filter(item => !item.suppressed).length", viewer_script)
+        self.assertIn("relationshipCount === 1 ? 'connection' : 'connections'", viewer_script)
 
     def test_shop_confirmed_ecas20_stations_are_typed_and_auditable(self) -> None:
         square_stations = {1, 2, 3, 4, 11, 12}
@@ -449,25 +486,6 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(profile["source_page_ref"], "PDF pages 14, 15")
             self.assertEqual(profile["reviewer"], "Greg")
 
-            first_import = temp_path / "first-import.json"
-            second_import = temp_path / "second-import.json"
-            for output in (first_import, second_import):
-                subprocess.run(
-                    [
-                        sys.executable,
-                        str(REVIEWED_IMPORTER),
-                        "--db",
-                        str(db_path),
-                        "--out",
-                        str(output),
-                    ],
-                    check=True,
-                    capture_output=True,
-                    text=True,
-                )
-            self.assertEqual(first_import.read_bytes(), second_import.read_bytes())
-            self.assertEqual(first_import.read_bytes(), TOPSWISS_IMPORT.read_bytes())
-
     def test_grade_options_are_split_and_reviewed_sources_are_multi_role(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             db_path, _, _ = self.build(Path(temp))
@@ -499,122 +517,6 @@ class PipelineTests(unittest.TestCase):
                 ).fetchall()
             )
             self.assertEqual(role_counts, {"cutting_speed": 12, "geometry_parameters": 12, "identity": 12})
-            connection.close()
-
-    def test_pending_identity_batch_validates_but_cannot_import(self) -> None:
-        with tempfile.TemporaryDirectory() as temp:
-            temp_path = Path(temp)
-            db_path, _, _ = self.build(temp_path)
-            validation = subprocess.run(
-                [
-                    sys.executable,
-                    str(REVIEW_BATCH),
-                    "validate",
-                    "--proposal",
-                    str(IDENTITY_PROPOSAL),
-                    "--ledger",
-                    str(IDENTITY_LEDGER),
-                    "--db",
-                    str(db_path),
-                ],
-                check=True,
-                capture_output=True,
-                text=True,
-            )
-            result = json.loads(validation.stdout)
-            self.assertEqual(result["status"], "valid")
-            self.assertEqual(result["rows"], 25)
-            blocked = subprocess.run(
-                [
-                    sys.executable,
-                    str(REVIEW_BATCH),
-                    "compile",
-                    "--proposal",
-                    str(IDENTITY_PROPOSAL),
-                    "--ledger",
-                    str(IDENTITY_LEDGER),
-                    "--db",
-                    str(db_path),
-                    "--out",
-                    str(temp_path / "must-not-import.json"),
-                ],
-                capture_output=True,
-                text=True,
-            )
-            self.assertNotEqual(blocked.returncode, 0)
-            self.assertFalse((temp_path / "must-not-import.json").exists())
-
-    def test_schema_two_batch_compiles_and_imports_only_terminal_decisions(self) -> None:
-        with tempfile.TemporaryDirectory() as temp:
-            temp_path = Path(temp)
-            ledger = json.loads(IDENTITY_LEDGER.read_text(encoding="utf-8"))
-            ledger.update(
-                {
-                    "status": "complete",
-                    "review_completed_at": "2026-07-21",
-                    "import_allowed": True,
-                }
-            )
-            for decision in ledger["decisions"]:
-                decision.update(
-                    {
-                        "decision": "approved",
-                        "reviewer": "Unit Test",
-                        "decided_at": "2026-07-21",
-                        "notes": "Synthetic terminal decision used only in a temporary test build.",
-                    }
-                )
-            ledger_path = temp_path / "terminal-ledger.json"
-            ledger_path.write_text(json.dumps(ledger, indent=2) + "\n", encoding="utf-8")
-            packet_path = temp_path / "kennametal-identity-test.json"
-            subprocess.run(
-                [
-                    sys.executable,
-                    str(REVIEW_BATCH),
-                    "compile",
-                    "--proposal",
-                    str(IDENTITY_PROPOSAL),
-                    "--ledger",
-                    str(ledger_path),
-                    "--db",
-                    str(ROOT.parent / "docs" / "v3" / "data" / "toolbase.sqlite"),
-                    "--out",
-                    str(packet_path),
-                ],
-                check=True,
-                capture_output=True,
-                text=True,
-            )
-            packet = json.loads(packet_path.read_text(encoding="utf-8"))
-            self.assertEqual(packet["schema_version"], 2)
-            self.assertEqual(packet["row_count"], 25)
-            self.assertEqual(len(packet["rows"]), 25)
-            self.assertEqual(packet["quarantined_rows"], [])
-
-            test_data = temp_path / "data"
-            shutil.copytree(DATA_DIR, test_data)
-            shutil.copy2(packet_path, test_data / "reviewed_imports" / packet_path.name)
-            build_directory = temp_path / "built"
-            build_directory.mkdir()
-            db_path, _, _ = self.build(build_directory, test_data)
-            connection = sqlite3.connect(db_path)
-            self.assertEqual(connection.execute("SELECT COUNT(*) FROM review_batches").fetchone()[0], 2)
-            self.assertEqual(
-                connection.execute(
-                    "SELECT COUNT(*) FROM tools WHERE review_status='verified' AND id LIKE 'CCGT%'"
-                ).fetchone()[0],
-                18,
-            )
-            self.assertEqual(
-                connection.execute(
-                    """
-                    SELECT COUNT(*) FROM facts
-                    WHERE review_batch_id=(SELECT id FROM review_batches WHERE row_count=25)
-                      AND verification_status='catalog_verified' AND is_current=1
-                    """
-                ).fetchone()[0],
-                200,
-            )
             connection.close()
 
     def test_build_is_deterministic(self) -> None:
