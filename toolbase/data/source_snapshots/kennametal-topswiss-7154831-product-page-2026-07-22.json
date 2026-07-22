@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "kennametal-topswiss-7154831-product-page-2026-07-22",
+  "manufacturer": "Kennametal",
+  "retrieved_at": "2026-07-22",
+  "url": "https://www.kennametal.com/us/en/products/p.topswiss-inserto-de-metal-duro-positivo-ccgt-ffs-usinagem-de-acabamento.7154831.html",
+  "page_title": "CCGT-FFS Small Parts & Swiss Type - 7154831 - Kennametal",
+  "product_title": "TopSwiss™ • Carbide Insert • Positive • CCGT-FFS • Finish Machining",
+  "identity": {
+    "material_number": "7154831",
+    "iso_catalog_id": "CCGT060202MFFS",
+    "ansi_catalog_id": "CCGT21505MFFS",
+    "grade": "KCS25S",
+    "geometry_code": "FFS"
+  },
+  "dimensions": {
+    "insert_ic_size_mm": 6.35,
+    "cutting_edge_length_mm": 6.448,
+    "insert_thickness_mm": 2.38,
+    "corner_radius_mm": 0.2,
+    "insert_hole_size_mm": 2.8
+  },
+  "workpiece_materials": [
+    "P Steel",
+    "M Stainless Steel",
+    "S High-Temp Alloys"
+  ],
+  "features": [
+    "Curved cutting edge for superior chip control during low depths of cut.",
+    "Polished & Lapped insert face for superior welding resistance.",
+    "Excellent surface finish and precision."
+  ],
+  "feeds_and_speeds_pdf": {
+    "url": "https://images.kennametal.com/is/content/Kennametal/109435299",
+    "local_path": "toolbase/data/source_snapshots/kennametal-topswiss-application-data-109435299.pdf",
+    "sha256": "363ed1a9be94bfe1c80ccc0c6c1c435f00d6d48a72a9a3410d9da42b863a5dce",
+    "page_count": 8,
+    "link_label": "Download PDF Table with speeds and Feeds Data"
+  },
+  "scope_note": "Reduced immutable snapshot of manufacturer-stated product facts and the linked feeds-and-speeds source. Storefront pricing and templated availability strings were intentionally excluded."
+}

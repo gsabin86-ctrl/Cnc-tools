@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "review_id": "kennametal-topswiss-7154831-review-2026-07",
+  "proposal_id": "kennametal-topswiss-7154831-2026-07",
+  "proposal_path": "toolbase/proposals/kennametal-topswiss-7154831.json",
+  "proposal_sha256": "be70c619ef8e892a47ebc3f93176f8cf79ee7c7878e8c3ae18e94eb766f1fc3d",
+  "review_started_at": "2026-07-22",
+  "status": "complete",
+  "review_completed_at": "2026-07-22",
+  "import_allowed": true,
+  "decisions": [
+    {
+      "proposal_row_id": "kennametal-7154831-001",
+      "tool_id": "CCGT060202MFFS",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_confirmation_in_hermes_chat",
+      "approved_scope": [
+        "exact material 7154831 identity, ISO/ANSI designations, KCS25S grade, dimensions, and FFS geometry",
+        "P5/P6, M1-M3, and S1-S4 KCS25S cutting-speed ranges",
+        "positive FFS feed and depth-of-cut ranges",
+        "preservation of legacy S52MCK grade claim as a separate source-located option"
+      ],
+      "notes": "Greg approved the proposed database and website update after reviewing the exact Kennametal product page and its linked manufacturer feeds-and-speeds PDF in the active Hermes conversation."
+    }
+  ]
+}

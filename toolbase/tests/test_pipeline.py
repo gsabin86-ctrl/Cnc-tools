@@ -20,6 +20,10 @@ SANDVIK_SNAPSHOT = ROOT / "data" / "source_snapshots" / "sandvik-corocut2-cs1225
 SANDVIK_REMAINING_PROPOSAL = ROOT / "proposals" / "sandvik-corocut2-remaining.json"
 SANDVIK_REMAINING_LEDGER = ROOT / "reviews" / "sandvik-corocut2-remaining.decisions.json"
 SANDVIK_REMAINING_SNAPSHOT = ROOT / "data" / "source_snapshots" / "sandvik-corocut2-remaining-2026-07-22.json"
+KENNAMETAL_7154831_PROPOSAL = ROOT / "proposals" / "kennametal-topswiss-7154831.json"
+KENNAMETAL_7154831_LEDGER = ROOT / "reviews" / "kennametal-topswiss-7154831.decisions.json"
+KENNAMETAL_7154831_PDF = ROOT / "data" / "source_snapshots" / "kennametal-topswiss-application-data-109435299.pdf"
+KENNAMETAL_7154831_SNAPSHOT = ROOT / "data" / "source_snapshots" / "kennametal-topswiss-7154831-product-page-2026-07-22.json"
 ECAS20_SHOP_INPUT = ROOT / "data" / "shop_inputs" / "star-ecas20-stations.json"
 DATA_DIR = ROOT / "data"
 
@@ -532,7 +536,11 @@ class PipelineTests(unittest.TestCase):
                     SELECT COUNT(*) FROM tool_material_recommendations
                     WHERE verification_status='catalog_verified'
                       AND source_page_ref IS NOT NULL AND source_table_ref IS NOT NULL
-                      AND source_raw_text IS NOT NULL AND review_batch_id IS NOT NULL
+                      AND source_raw_text IS NOT NULL
+                      AND review_batch_id=(
+                        SELECT id FROM review_batches
+                        WHERE proposal_id='kennametal-topswiss-pilot-2026-07'
+                      )
                     """
                 ).fetchone()[0],
                 12,
@@ -548,6 +556,90 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(profile["source_part_number"], "CCGT060201MRPPS")
             self.assertEqual(profile["source_page_ref"], "PDF pages 14, 15")
             self.assertEqual(profile["reviewer"], "Greg")
+
+    def test_kennametal_7154831_imports_exact_kcs25s_profiles_without_replacing_legacy_grade(self) -> None:
+        expected = {
+            "P5": (53.0, 75.0, 107.0),
+            "P6": (50.0, 70.0, 101.0),
+            "M1": (59.0, 101.0, 149.0),
+            "M2": (59.0, 101.0, 149.0),
+            "M3": (50.0, 101.0, 180.0),
+            "S1": (40.0, 79.0, 140.0),
+            "S2": (40.0, 79.0, 140.0),
+            "S3": (40.0, 79.0, 140.0),
+            "S4": (40.0, 79.0, 140.0),
+        }
+        with tempfile.TemporaryDirectory() as temp:
+            db_path, _, _ = self.build(Path(temp))
+            connection = sqlite3.connect(db_path)
+            try:
+                batch = connection.execute(
+                    """
+                    SELECT proposal_sha256, review_ledger_sha256, catalog_sha256, row_count
+                    FROM review_batches
+                    WHERE proposal_id='kennametal-topswiss-7154831-2026-07'
+                    """
+                ).fetchone()
+                self.assertIsNotNone(batch)
+                self.assertEqual(batch[0], sha256(KENNAMETAL_7154831_PROPOSAL))
+                self.assertEqual(batch[1], sha256(KENNAMETAL_7154831_LEDGER))
+                self.assertEqual(batch[2], sha256(KENNAMETAL_7154831_PDF))
+                self.assertEqual(batch[3], 1)
+
+                tool = connection.execute(
+                    "SELECT grade FROM tools WHERE id='CCGT060202MFFS'"
+                ).fetchone()
+                self.assertEqual(tool[0], "S52MCK")
+                grade_options = connection.execute(
+                    """
+                    SELECT g.code, o.option_kind, o.verification_status
+                    FROM tool_grade_options o JOIN grades g ON g.id=o.grade_id
+                    WHERE o.tool_id='CCGT060202MFFS' ORDER BY g.code
+                    """
+                ).fetchall()
+                self.assertIn(("S52MCK", "legacy_claim", "source_located"), grade_options)
+                self.assertIn(("KCS25S", "available_grade", "manufacturer_verified"), grade_options)
+
+                profiles = connection.execute(
+                    """
+                    SELECT material_subgroup, source_part_number, source_grade, source_chipbreaker,
+                           surface_speed_min, surface_speed_start, surface_speed_max,
+                           feed_min, feed_max, depth_of_cut_min, depth_of_cut_max,
+                           verification_status
+                    FROM cutting_data_profiles
+                    WHERE tool_id='CCGT060202MFFS'
+                    ORDER BY material_subgroup
+                    """
+                ).fetchall()
+                self.assertEqual(len(profiles), 9)
+                self.assertEqual({row[0] for row in profiles}, set(expected))
+                for subgroup, source_part, grade, chipbreaker, speed_min, speed_start, speed_max, feed_min, feed_max, doc_min, doc_max, status in profiles:
+                    self.assertEqual((source_part, grade, chipbreaker), ("CCGT060202MFFS", "KCS25S", "FFS"))
+                    self.assertEqual((speed_min, speed_start, speed_max), expected[subgroup])
+                    self.assertEqual((feed_min, feed_max), (0.02, 0.12))
+                    self.assertEqual((doc_min, doc_max), (0.13, 1.26))
+                    self.assertEqual(status, "catalog_verified")
+
+                recommendations = connection.execute(
+                    """
+                    SELECT r.material_subgroup, g.code, r.verification_status
+                    FROM tool_material_recommendations r
+                    JOIN grades g ON g.id=r.grade_id
+                    WHERE r.tool_id='CCGT060202MFFS' AND r.is_current=1
+                    ORDER BY r.material_subgroup
+                    """
+                ).fetchall()
+                self.assertEqual(len(recommendations), 9)
+                self.assertEqual({row[0] for row in recommendations}, set(expected))
+                self.assertTrue(all(row[1:] == ("KCS25S", "catalog_verified") for row in recommendations))
+
+                product_snapshot = json.loads(KENNAMETAL_7154831_SNAPSHOT.read_text(encoding="utf-8"))
+                self.assertEqual(product_snapshot["identity"]["material_number"], "7154831")
+                self.assertEqual(product_snapshot["identity"]["iso_catalog_id"], "CCGT060202MFFS")
+                self.assertEqual(product_snapshot["identity"]["grade"], "KCS25S")
+                self.assertEqual(product_snapshot["feeds_and_speeds_pdf"]["sha256"], sha256(KENNAMETAL_7154831_PDF))
+            finally:
+                connection.close()
 
     def test_sandvik_corocut2_pilot_matches_exact_manufacturer_snapshot(self) -> None:
         snapshot = json.loads(SANDVIK_SNAPSHOT.read_text(encoding="utf-8"))

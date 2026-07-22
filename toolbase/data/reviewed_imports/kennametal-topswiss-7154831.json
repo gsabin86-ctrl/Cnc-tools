@@ -1,0 +1,1000 @@
+{
+  "schema_version": 2,
+  "import_id": "review-batch-5bef991f343cd921",
+  "proposal_id": "kennametal-topswiss-7154831-2026-07",
+  "proposal_path": "toolbase/proposals/kennametal-topswiss-7154831.json",
+  "proposal_sha256": "be70c619ef8e892a47ebc3f93176f8cf79ee7c7878e8c3ae18e94eb766f1fc3d",
+  "review_ledger_path": "toolbase/reviews/kennametal-topswiss-7154831.decisions.json",
+  "review_ledger_sha256": "f90a8e29e0f30d937e1aa49bcdcdd60d571900cdbaf20a6e396949af265b450d",
+  "catalog_sha256": "363ed1a9be94bfe1c80ccc0c6c1c435f00d6d48a72a9a3410d9da42b863a5dce",
+  "catalog_source_id": "source-780f5d4ed6932e58",
+  "reviewed_at": "2026-07-22",
+  "row_count": 1,
+  "sources": [
+    {
+      "id": "source-780f5d4ed6932e58",
+      "source_type": "manufacturer_catalog",
+      "title": "Kennametal TopSwiss Cutting Parameters",
+      "url": "https://images.kennametal.com/is/content/Kennametal/109435299",
+      "local_path": "toolbase/data/source_snapshots/kennametal-topswiss-application-data-109435299.pdf",
+      "page_ref": "PDF pages 1, 2, 5, 8",
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://images.kennametal.com/is/content/Kennametal/109435299 | toolbase/data/source_snapshots/kennametal-topswiss-application-data-109435299.pdf | SHA-256 363ed1a9be94bfe1c80ccc0c6c1c435f00d6d48a72a9a3410d9da42b863a5dce",
+      "content_sha256": "363ed1a9be94bfe1c80ccc0c6c1c435f00d6d48a72a9a3410d9da42b863a5dce",
+      "document_edition": "Kennametal asset 109435299",
+      "notes": "Direct feeds-and-speeds PDF linked from exact Kennametal material 7154831 product page; retrieved 2026-07-22."
+    },
+    {
+      "id": "source-95d1f29c90a52912",
+      "source_type": "manufacturer_product_page",
+      "title": "Kennametal TopSwiss CCGT-FFS material 7154831",
+      "url": "https://www.kennametal.com/us/en/products/p.topswiss-inserto-de-metal-duro-positivo-ccgt-ffs-usinagem-de-acabamento.7154831.html",
+      "local_path": "toolbase/data/source_snapshots/kennametal-topswiss-7154831-product-page-2026-07-22.json",
+      "page_ref": "Reduced product-page snapshot",
+      "manufacturer": "Kennametal",
+      "raw_reference": "https://www.kennametal.com/us/en/products/p.topswiss-inserto-de-metal-duro-positivo-ccgt-ffs-usinagem-de-acabamento.7154831.html | toolbase/data/source_snapshots/kennametal-topswiss-7154831-product-page-2026-07-22.json | SHA-256 8daae2034f863a7eb75dac38d6f42ba0cb9e13ea0826d1aecaafebbe9f71841c",
+      "content_sha256": "8daae2034f863a7eb75dac38d6f42ba0cb9e13ea0826d1aecaafebbe9f71841c",
+      "document_edition": "Retrieved 2026-07-22",
+      "notes": "Exact product page snapshot containing identity, grade, dimensions, workpiece groups, features, and linked PDF."
+    }
+  ],
+  "review_sources": [
+    {
+      "source_id": "source-780f5d4ed6932e58",
+      "evidence_role": "primary_catalog",
+      "content_sha256": "363ed1a9be94bfe1c80ccc0c6c1c435f00d6d48a72a9a3410d9da42b863a5dce",
+      "document_edition": "Kennametal asset 109435299",
+      "page_ref": "PDF pages 1, 2, 5, 8"
+    },
+    {
+      "source_id": "source-95d1f29c90a52912",
+      "evidence_role": "verification",
+      "content_sha256": "8daae2034f863a7eb75dac38d6f42ba0cb9e13ea0826d1aecaafebbe9f71841c",
+      "document_edition": "Retrieved 2026-07-22",
+      "page_ref": "Reduced product-page snapshot"
+    }
+  ],
+  "rows": [
+    {
+      "proposal_row_id": "kennametal-7154831-001",
+      "tool_id": "CCGT060202MFFS",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": "Kennametal TopSwiss CCGT positive FFS fine-finishing insert geometry, ANSI CCGT21505MFFS / ISO CCGT060202MFFS, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and 0.2 mm corner radius. Reviewed current manufacturer variant material 7154831 uses grade KCS25S; legacy grade claims remain preserved as separate grade options.",
+        "geometry": "positive fine-finishing",
+        "lifecycle_status": "unknown",
+        "evidence_status": "catalog_source"
+      },
+      "aliases": [
+        {
+          "alias": "CCGT21505MFFS",
+          "alias_type": "ansi"
+        },
+        {
+          "alias": "CCGT060202MFFS",
+          "alias_type": "iso"
+        },
+        {
+          "alias": "7154831",
+          "alias_type": "manufacturer_material_number"
+        }
+      ],
+      "source_ids": [
+        "source-780f5d4ed6932e58",
+        "source-95d1f29c90a52912"
+      ],
+      "tags": [
+        "carbide",
+        "CCGT",
+        "FFS",
+        "fine-finishing",
+        "KCS25S",
+        "kennametal",
+        "positive",
+        "stainless-steel",
+        "high-temp-alloys",
+        "swiss-type",
+        "topswiss",
+        "turning"
+      ],
+      "replace_fact_keys": [
+        "manufacturer_material_number",
+        "iso_catalog_id",
+        "ansi_catalog_id",
+        "geometry",
+        "insert_ic_size",
+        "cutting_edge_length",
+        "insert_thickness",
+        "corner_radius",
+        "insert_hole_size",
+        "workpiece_material_groups"
+      ],
+      "facts": [
+        {
+          "fact_key": "manufacturer_material_number",
+          "unit": null,
+          "value_text": "7154831",
+          "id": "fact-be215313399b0f70",
+          "original_key": "reviewed_manufacturer_material_number",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-95d1f29c90a52912",
+          "source_ids": [
+            "source-95d1f29c90a52912"
+          ],
+          "source_page_ref": "PDF page 1",
+          "source_table_ref": "Product identity",
+          "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+          "extraction_method": "manufacturer_page"
+        },
+        {
+          "fact_key": "iso_catalog_id",
+          "unit": null,
+          "value_text": "CCGT060202MFFS",
+          "id": "fact-38e9afad52dfe55e",
+          "original_key": "reviewed_iso_catalog_id",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-95d1f29c90a52912",
+          "source_ids": [
+            "source-95d1f29c90a52912"
+          ],
+          "source_page_ref": "PDF page 1",
+          "source_table_ref": "Product identity",
+          "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+          "extraction_method": "manufacturer_page"
+        },
+        {
+          "fact_key": "ansi_catalog_id",
+          "unit": null,
+          "value_text": "CCGT21505MFFS",
+          "id": "fact-915ba24f24d05e30",
+          "original_key": "reviewed_ansi_catalog_id",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-95d1f29c90a52912",
+          "source_ids": [
+            "source-95d1f29c90a52912"
+          ],
+          "source_page_ref": "PDF page 1",
+          "source_table_ref": "Product identity",
+          "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+          "extraction_method": "manufacturer_page"
+        },
+        {
+          "fact_key": "geometry",
+          "unit": null,
+          "value_text": "positive FFS fine-finishing",
+          "id": "fact-868f8074666532f8",
+          "original_key": "reviewed_geometry",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-95d1f29c90a52912",
+          "source_ids": [
+            "source-95d1f29c90a52912"
+          ],
+          "source_page_ref": "PDF page 1",
+          "source_table_ref": "Product title and identity",
+          "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+          "extraction_method": "manufacturer_page"
+        },
+        {
+          "fact_key": "insert_ic_size",
+          "unit": "mm",
+          "value_number": 6.35,
+          "id": "fact-fc589c4bf956c873",
+          "original_key": "reviewed_insert_ic_size",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-95d1f29c90a52912",
+          "source_ids": [
+            "source-95d1f29c90a52912"
+          ],
+          "source_page_ref": "PDF page 1",
+          "source_table_ref": "Product dimensions",
+          "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+          "extraction_method": "manufacturer_page"
+        },
+        {
+          "fact_key": "cutting_edge_length",
+          "unit": "mm",
+          "value_number": 6.448,
+          "id": "fact-861b9dbd46cd9d68",
+          "original_key": "reviewed_cutting_edge_length",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-95d1f29c90a52912",
+          "source_ids": [
+            "source-95d1f29c90a52912"
+          ],
+          "source_page_ref": "PDF page 1",
+          "source_table_ref": "Product dimensions",
+          "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+          "extraction_method": "manufacturer_page"
+        },
+        {
+          "fact_key": "insert_thickness",
+          "unit": "mm",
+          "value_number": 2.38,
+          "id": "fact-47b786832bd20bcf",
+          "original_key": "reviewed_insert_thickness",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-95d1f29c90a52912",
+          "source_ids": [
+            "source-95d1f29c90a52912"
+          ],
+          "source_page_ref": "PDF page 1",
+          "source_table_ref": "Product dimensions",
+          "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+          "extraction_method": "manufacturer_page"
+        },
+        {
+          "fact_key": "corner_radius",
+          "unit": "mm",
+          "value_number": 0.2,
+          "id": "fact-61f5b01dde8df9fa",
+          "original_key": "reviewed_corner_radius",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-95d1f29c90a52912",
+          "source_ids": [
+            "source-95d1f29c90a52912"
+          ],
+          "source_page_ref": "PDF page 1",
+          "source_table_ref": "Product dimensions",
+          "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+          "extraction_method": "manufacturer_page"
+        },
+        {
+          "fact_key": "insert_hole_size",
+          "unit": "mm",
+          "value_number": 2.8,
+          "id": "fact-c2efe913a6604f55",
+          "original_key": "reviewed_insert_hole_size",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-95d1f29c90a52912",
+          "source_ids": [
+            "source-95d1f29c90a52912"
+          ],
+          "source_page_ref": "PDF page 1",
+          "source_table_ref": "Product dimensions",
+          "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+          "extraction_method": "manufacturer_page"
+        },
+        {
+          "fact_key": "workpiece_material_groups",
+          "value_json": [
+            "P",
+            "M",
+            "S"
+          ],
+          "unit": null,
+          "id": "fact-a4e488ff41f0e0a3",
+          "original_key": "reviewed_workpiece_material_groups",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-95d1f29c90a52912",
+          "source_ids": [
+            "source-95d1f29c90a52912"
+          ],
+          "source_page_ref": "PDF page 1",
+          "source_table_ref": "Workpiece Materials",
+          "source_raw_text": "P Steel; M Stainless Steel; S High-Temp Alloys.",
+          "extraction_method": "manufacturer_page"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "KCS25S",
+          "option_kind": "available_grade",
+          "full_order_number": "7154831",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "carbide",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-95d1f29c90a52912",
+          "source_page_ref": "PDF page 1",
+          "source_table_ref": "Product identity and Grade",
+          "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+          "extraction_method": "manufacturer_page",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "replace_material_recommendations": true,
+      "material_recommendations": [
+        {
+          "grade_code": "KCS25S",
+          "iso_group": "P",
+          "material_subgroup": "P5",
+          "suitability": "recommended",
+          "notes": "Manufacturer technical-guide profile for Ferritic, Martensitic, and PH Stainless Steels; <330 HB; <35 HRC.",
+          "id": "material-0c5bcc72424ff730",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_ids": [
+            "source-780f5d4ed6932e58"
+          ],
+          "source_page_ref": "PDF page 2",
+          "source_table_ref": "P5 / KCS25S",
+          "source_raw_text": "P5 Ferritic, Martensitic, and PH Stainless Steels; <330 HB; <35 HRC; KCS25S speed MIN/START/MAX 53/75/107 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "grade_code": "KCS25S",
+          "iso_group": "P",
+          "material_subgroup": "P6",
+          "suitability": "recommended",
+          "notes": "Manufacturer technical-guide profile for Ferritic, Martensitic, and PH Stainless Steels; 350–450 HB; 35–48 HRC.",
+          "id": "material-36c88cd94663a8ec",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_ids": [
+            "source-780f5d4ed6932e58"
+          ],
+          "source_page_ref": "PDF page 2",
+          "source_table_ref": "P6 / KCS25S",
+          "source_raw_text": "P6 Ferritic, Martensitic, and PH Stainless Steels; 350–450 HB; 35–48 HRC; KCS25S speed MIN/START/MAX 50/70/101 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "grade_code": "KCS25S",
+          "iso_group": "M",
+          "material_subgroup": "M1",
+          "suitability": "recommended",
+          "notes": "Manufacturer technical-guide profile for Austenitic Stainless Steel.",
+          "id": "material-1ff66625c1a4ce77",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_ids": [
+            "source-780f5d4ed6932e58"
+          ],
+          "source_page_ref": "PDF page 5",
+          "source_table_ref": "M1 / KCS25S",
+          "source_raw_text": "M1 Austenitic Stainless Steel; KCS25S speed MIN/START/MAX 59/101/149 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "grade_code": "KCS25S",
+          "iso_group": "M",
+          "material_subgroup": "M2",
+          "suitability": "recommended",
+          "notes": "Manufacturer technical-guide profile for High Strength Austenitic Stainless and Cast Stainless Steels.",
+          "id": "material-453274ce03f67d9a",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_ids": [
+            "source-780f5d4ed6932e58"
+          ],
+          "source_page_ref": "PDF page 5",
+          "source_table_ref": "M2 / KCS25S",
+          "source_raw_text": "M2 High Strength Austenitic Stainless and Cast Stainless Steels; KCS25S speed MIN/START/MAX 59/101/149 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "grade_code": "KCS25S",
+          "iso_group": "M",
+          "material_subgroup": "M3",
+          "suitability": "recommended",
+          "notes": "Manufacturer technical-guide profile for Duplex Stainless Steel (Ferritic and Austenitic Mixture).",
+          "id": "material-382f861a7fb21014",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_ids": [
+            "source-780f5d4ed6932e58"
+          ],
+          "source_page_ref": "PDF page 5",
+          "source_table_ref": "M3 / KCS25S",
+          "source_raw_text": "M3 Duplex Stainless Steel (Ferritic and Austenitic Mixture); KCS25S speed MIN/START/MAX 50/101/180 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "grade_code": "KCS25S",
+          "iso_group": "S",
+          "material_subgroup": "S1",
+          "suitability": "recommended",
+          "notes": "Manufacturer technical-guide profile for Iron-Based, Heat-Resistant Alloys; 160–260 HB; 25–48 HRC; 500–1200 MPa Tensile Strength.",
+          "id": "material-d32cd9f010e6e318",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_ids": [
+            "source-780f5d4ed6932e58"
+          ],
+          "source_page_ref": "PDF page 8",
+          "source_table_ref": "S1 / KCS25S",
+          "source_raw_text": "S1 Iron-Based, Heat-Resistant Alloys; 160–260 HB; 25–48 HRC; 500–1200 MPa Tensile Strength; KCS25S speed MIN/START/MAX 40/79/140 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "grade_code": "KCS25S",
+          "iso_group": "S",
+          "material_subgroup": "S2",
+          "suitability": "recommended",
+          "notes": "Manufacturer technical-guide profile for Cobalt-Based, Heat-Resistant Alloys; 250–450 HB; 25–48 HRC; 1000–1450 MPa Tensile Strength.",
+          "id": "material-4e40d6bc921e6977",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_ids": [
+            "source-780f5d4ed6932e58"
+          ],
+          "source_page_ref": "PDF page 8",
+          "source_table_ref": "S2 / KCS25S",
+          "source_raw_text": "S2 Cobalt-Based, Heat-Resistant Alloys; 250–450 HB; 25–48 HRC; 1000–1450 MPa Tensile Strength; KCS25S speed MIN/START/MAX 40/79/140 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "grade_code": "KCS25S",
+          "iso_group": "S",
+          "material_subgroup": "S3",
+          "suitability": "recommended",
+          "notes": "Manufacturer technical-guide profile for Nickel-Based, Heat-Resistant Alloys; 160–450 HB; <48 HRC; 600–1700 MPa Tensile Strength.",
+          "id": "material-19088c1309fe654d",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_ids": [
+            "source-780f5d4ed6932e58"
+          ],
+          "source_page_ref": "PDF page 8",
+          "source_table_ref": "S3 / KCS25S",
+          "source_raw_text": "S3 Nickel-Based, Heat-Resistant Alloys; 160–450 HB; <48 HRC; 600–1700 MPa Tensile Strength; KCS25S speed MIN/START/MAX 40/79/140 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "grade_code": "KCS25S",
+          "iso_group": "S",
+          "material_subgroup": "S4",
+          "suitability": "recommended",
+          "notes": "Manufacturer technical-guide profile for Titanium and Titanium Alloys; 300–400 HB; 33–48 HRC; 900–1600 MPa Tensile Strength.",
+          "id": "material-f65d0749b954f522",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_ids": [
+            "source-780f5d4ed6932e58"
+          ],
+          "source_page_ref": "PDF page 8",
+          "source_table_ref": "S4 / KCS25S",
+          "source_raw_text": "S4 Titanium and Titanium Alloys; 300–400 HB; 33–48 HRC; 900–1600 MPa Tensile Strength; KCS25S speed MIN/START/MAX 40/79/140 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "source_part_number": "CCGT060202MFFS",
+          "source_grade": "KCS25S",
+          "source_geometry": "TopSwiss Carbide Insert Positive CCGT-FFS Finish Machining",
+          "source_chipbreaker": "FFS",
+          "source_material_label": "Ferritic, Martensitic, and PH Stainless Steels; <330 HB; <35 HRC",
+          "iso_material_group": "P",
+          "material_subgroup": "P5",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 53,
+          "surface_speed_start": 75,
+          "surface_speed_max": 107,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.02,
+          "feed_max": 0.12,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.13,
+          "depth_of_cut_max": 1.26,
+          "depth_of_cut_unit": "mm",
+          "id": "cutting-profile-b9c6d511db9b1dc1",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_page_ref": "PDF page 2",
+          "source_table_ref": "P5 / KCS25S | Positive FFS cutting parameters",
+          "source_raw_text": "P5 Ferritic, Martensitic, and PH Stainless Steels; <330 HB; <35 HRC; KCS25S speed MIN/START/MAX 53/75/107 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22",
+          "notes": "Greg approved the proposed database and website update after reviewing the exact Kennametal product page and its linked manufacturer feeds-and-speeds PDF in the active Hermes conversation.",
+          "evidence_sources": [
+            {
+              "source_id": "source-95d1f29c90a52912",
+              "evidence_role": "identity",
+              "source_page_ref": "Reduced product-page snapshot",
+              "source_table_ref": "Material 7154831 product identity",
+              "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "PDF page 1",
+              "source_table_ref": "Positive FFS cutting parameters",
+              "source_raw_text": "Positive FFS: feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "PDF page 2",
+              "source_table_ref": "P5 / KCS25S",
+              "source_raw_text": "P5 Ferritic, Martensitic, and PH Stainless Steels; <330 HB; <35 HRC; KCS25S speed MIN/START/MAX 53/75/107 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            }
+          ]
+        },
+        {
+          "source_part_number": "CCGT060202MFFS",
+          "source_grade": "KCS25S",
+          "source_geometry": "TopSwiss Carbide Insert Positive CCGT-FFS Finish Machining",
+          "source_chipbreaker": "FFS",
+          "source_material_label": "Ferritic, Martensitic, and PH Stainless Steels; 350–450 HB; 35–48 HRC",
+          "iso_material_group": "P",
+          "material_subgroup": "P6",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 50,
+          "surface_speed_start": 70,
+          "surface_speed_max": 101,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.02,
+          "feed_max": 0.12,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.13,
+          "depth_of_cut_max": 1.26,
+          "depth_of_cut_unit": "mm",
+          "id": "cutting-profile-5398840f0848f41f",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_page_ref": "PDF page 2",
+          "source_table_ref": "P6 / KCS25S | Positive FFS cutting parameters",
+          "source_raw_text": "P6 Ferritic, Martensitic, and PH Stainless Steels; 350–450 HB; 35–48 HRC; KCS25S speed MIN/START/MAX 50/70/101 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22",
+          "notes": "Greg approved the proposed database and website update after reviewing the exact Kennametal product page and its linked manufacturer feeds-and-speeds PDF in the active Hermes conversation.",
+          "evidence_sources": [
+            {
+              "source_id": "source-95d1f29c90a52912",
+              "evidence_role": "identity",
+              "source_page_ref": "Reduced product-page snapshot",
+              "source_table_ref": "Material 7154831 product identity",
+              "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "PDF page 1",
+              "source_table_ref": "Positive FFS cutting parameters",
+              "source_raw_text": "Positive FFS: feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "PDF page 2",
+              "source_table_ref": "P6 / KCS25S",
+              "source_raw_text": "P6 Ferritic, Martensitic, and PH Stainless Steels; 350–450 HB; 35–48 HRC; KCS25S speed MIN/START/MAX 50/70/101 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            }
+          ]
+        },
+        {
+          "source_part_number": "CCGT060202MFFS",
+          "source_grade": "KCS25S",
+          "source_geometry": "TopSwiss Carbide Insert Positive CCGT-FFS Finish Machining",
+          "source_chipbreaker": "FFS",
+          "source_material_label": "Austenitic Stainless Steel",
+          "iso_material_group": "M",
+          "material_subgroup": "M1",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 59,
+          "surface_speed_start": 101,
+          "surface_speed_max": 149,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.02,
+          "feed_max": 0.12,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.13,
+          "depth_of_cut_max": 1.26,
+          "depth_of_cut_unit": "mm",
+          "id": "cutting-profile-b559222d2f9d046f",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_page_ref": "PDF page 5",
+          "source_table_ref": "M1 / KCS25S | Positive FFS cutting parameters",
+          "source_raw_text": "M1 Austenitic Stainless Steel; KCS25S speed MIN/START/MAX 59/101/149 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22",
+          "notes": "Greg approved the proposed database and website update after reviewing the exact Kennametal product page and its linked manufacturer feeds-and-speeds PDF in the active Hermes conversation.",
+          "evidence_sources": [
+            {
+              "source_id": "source-95d1f29c90a52912",
+              "evidence_role": "identity",
+              "source_page_ref": "Reduced product-page snapshot",
+              "source_table_ref": "Material 7154831 product identity",
+              "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "PDF page 5",
+              "source_table_ref": "Positive FFS cutting parameters",
+              "source_raw_text": "Positive FFS: feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "PDF page 5",
+              "source_table_ref": "M1 / KCS25S",
+              "source_raw_text": "M1 Austenitic Stainless Steel; KCS25S speed MIN/START/MAX 59/101/149 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            }
+          ]
+        },
+        {
+          "source_part_number": "CCGT060202MFFS",
+          "source_grade": "KCS25S",
+          "source_geometry": "TopSwiss Carbide Insert Positive CCGT-FFS Finish Machining",
+          "source_chipbreaker": "FFS",
+          "source_material_label": "High Strength Austenitic Stainless and Cast Stainless Steels",
+          "iso_material_group": "M",
+          "material_subgroup": "M2",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 59,
+          "surface_speed_start": 101,
+          "surface_speed_max": 149,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.02,
+          "feed_max": 0.12,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.13,
+          "depth_of_cut_max": 1.26,
+          "depth_of_cut_unit": "mm",
+          "id": "cutting-profile-cbd217e88690b142",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_page_ref": "PDF page 5",
+          "source_table_ref": "M2 / KCS25S | Positive FFS cutting parameters",
+          "source_raw_text": "M2 High Strength Austenitic Stainless and Cast Stainless Steels; KCS25S speed MIN/START/MAX 59/101/149 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22",
+          "notes": "Greg approved the proposed database and website update after reviewing the exact Kennametal product page and its linked manufacturer feeds-and-speeds PDF in the active Hermes conversation.",
+          "evidence_sources": [
+            {
+              "source_id": "source-95d1f29c90a52912",
+              "evidence_role": "identity",
+              "source_page_ref": "Reduced product-page snapshot",
+              "source_table_ref": "Material 7154831 product identity",
+              "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "PDF page 5",
+              "source_table_ref": "Positive FFS cutting parameters",
+              "source_raw_text": "Positive FFS: feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "PDF page 5",
+              "source_table_ref": "M2 / KCS25S",
+              "source_raw_text": "M2 High Strength Austenitic Stainless and Cast Stainless Steels; KCS25S speed MIN/START/MAX 59/101/149 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            }
+          ]
+        },
+        {
+          "source_part_number": "CCGT060202MFFS",
+          "source_grade": "KCS25S",
+          "source_geometry": "TopSwiss Carbide Insert Positive CCGT-FFS Finish Machining",
+          "source_chipbreaker": "FFS",
+          "source_material_label": "Duplex Stainless Steel (Ferritic and Austenitic Mixture)",
+          "iso_material_group": "M",
+          "material_subgroup": "M3",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 50,
+          "surface_speed_start": 101,
+          "surface_speed_max": 180,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.02,
+          "feed_max": 0.12,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.13,
+          "depth_of_cut_max": 1.26,
+          "depth_of_cut_unit": "mm",
+          "id": "cutting-profile-bca2eb107be40b43",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_page_ref": "PDF page 5",
+          "source_table_ref": "M3 / KCS25S | Positive FFS cutting parameters",
+          "source_raw_text": "M3 Duplex Stainless Steel (Ferritic and Austenitic Mixture); KCS25S speed MIN/START/MAX 50/101/180 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22",
+          "notes": "Greg approved the proposed database and website update after reviewing the exact Kennametal product page and its linked manufacturer feeds-and-speeds PDF in the active Hermes conversation.",
+          "evidence_sources": [
+            {
+              "source_id": "source-95d1f29c90a52912",
+              "evidence_role": "identity",
+              "source_page_ref": "Reduced product-page snapshot",
+              "source_table_ref": "Material 7154831 product identity",
+              "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "PDF page 5",
+              "source_table_ref": "Positive FFS cutting parameters",
+              "source_raw_text": "Positive FFS: feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "PDF page 5",
+              "source_table_ref": "M3 / KCS25S",
+              "source_raw_text": "M3 Duplex Stainless Steel (Ferritic and Austenitic Mixture); KCS25S speed MIN/START/MAX 50/101/180 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            }
+          ]
+        },
+        {
+          "source_part_number": "CCGT060202MFFS",
+          "source_grade": "KCS25S",
+          "source_geometry": "TopSwiss Carbide Insert Positive CCGT-FFS Finish Machining",
+          "source_chipbreaker": "FFS",
+          "source_material_label": "Iron-Based, Heat-Resistant Alloys; 160–260 HB; 25–48 HRC; 500–1200 MPa Tensile Strength",
+          "iso_material_group": "S",
+          "material_subgroup": "S1",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 40,
+          "surface_speed_start": 79,
+          "surface_speed_max": 140,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.02,
+          "feed_max": 0.12,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.13,
+          "depth_of_cut_max": 1.26,
+          "depth_of_cut_unit": "mm",
+          "id": "cutting-profile-99f4e1bb6795352e",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_page_ref": "PDF page 8",
+          "source_table_ref": "S1 / KCS25S | Positive FFS cutting parameters",
+          "source_raw_text": "S1 Iron-Based, Heat-Resistant Alloys; 160–260 HB; 25–48 HRC; 500–1200 MPa Tensile Strength; KCS25S speed MIN/START/MAX 40/79/140 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22",
+          "notes": "Greg approved the proposed database and website update after reviewing the exact Kennametal product page and its linked manufacturer feeds-and-speeds PDF in the active Hermes conversation.",
+          "evidence_sources": [
+            {
+              "source_id": "source-95d1f29c90a52912",
+              "evidence_role": "identity",
+              "source_page_ref": "Reduced product-page snapshot",
+              "source_table_ref": "Material 7154831 product identity",
+              "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "PDF page 8",
+              "source_table_ref": "Positive FFS cutting parameters",
+              "source_raw_text": "Positive FFS: feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "PDF page 8",
+              "source_table_ref": "S1 / KCS25S",
+              "source_raw_text": "S1 Iron-Based, Heat-Resistant Alloys; 160–260 HB; 25–48 HRC; 500–1200 MPa Tensile Strength; KCS25S speed MIN/START/MAX 40/79/140 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            }
+          ]
+        },
+        {
+          "source_part_number": "CCGT060202MFFS",
+          "source_grade": "KCS25S",
+          "source_geometry": "TopSwiss Carbide Insert Positive CCGT-FFS Finish Machining",
+          "source_chipbreaker": "FFS",
+          "source_material_label": "Cobalt-Based, Heat-Resistant Alloys; 250–450 HB; 25–48 HRC; 1000–1450 MPa Tensile Strength",
+          "iso_material_group": "S",
+          "material_subgroup": "S2",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 40,
+          "surface_speed_start": 79,
+          "surface_speed_max": 140,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.02,
+          "feed_max": 0.12,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.13,
+          "depth_of_cut_max": 1.26,
+          "depth_of_cut_unit": "mm",
+          "id": "cutting-profile-ba1d6c0a9c69c7f6",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_page_ref": "PDF page 8",
+          "source_table_ref": "S2 / KCS25S | Positive FFS cutting parameters",
+          "source_raw_text": "S2 Cobalt-Based, Heat-Resistant Alloys; 250–450 HB; 25–48 HRC; 1000–1450 MPa Tensile Strength; KCS25S speed MIN/START/MAX 40/79/140 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22",
+          "notes": "Greg approved the proposed database and website update after reviewing the exact Kennametal product page and its linked manufacturer feeds-and-speeds PDF in the active Hermes conversation.",
+          "evidence_sources": [
+            {
+              "source_id": "source-95d1f29c90a52912",
+              "evidence_role": "identity",
+              "source_page_ref": "Reduced product-page snapshot",
+              "source_table_ref": "Material 7154831 product identity",
+              "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "PDF page 8",
+              "source_table_ref": "Positive FFS cutting parameters",
+              "source_raw_text": "Positive FFS: feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "PDF page 8",
+              "source_table_ref": "S2 / KCS25S",
+              "source_raw_text": "S2 Cobalt-Based, Heat-Resistant Alloys; 250–450 HB; 25–48 HRC; 1000–1450 MPa Tensile Strength; KCS25S speed MIN/START/MAX 40/79/140 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            }
+          ]
+        },
+        {
+          "source_part_number": "CCGT060202MFFS",
+          "source_grade": "KCS25S",
+          "source_geometry": "TopSwiss Carbide Insert Positive CCGT-FFS Finish Machining",
+          "source_chipbreaker": "FFS",
+          "source_material_label": "Nickel-Based, Heat-Resistant Alloys; 160–450 HB; <48 HRC; 600–1700 MPa Tensile Strength",
+          "iso_material_group": "S",
+          "material_subgroup": "S3",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 40,
+          "surface_speed_start": 79,
+          "surface_speed_max": 140,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.02,
+          "feed_max": 0.12,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.13,
+          "depth_of_cut_max": 1.26,
+          "depth_of_cut_unit": "mm",
+          "id": "cutting-profile-c8fad5ac0113d938",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_page_ref": "PDF page 8",
+          "source_table_ref": "S3 / KCS25S | Positive FFS cutting parameters",
+          "source_raw_text": "S3 Nickel-Based, Heat-Resistant Alloys; 160–450 HB; <48 HRC; 600–1700 MPa Tensile Strength; KCS25S speed MIN/START/MAX 40/79/140 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22",
+          "notes": "Greg approved the proposed database and website update after reviewing the exact Kennametal product page and its linked manufacturer feeds-and-speeds PDF in the active Hermes conversation.",
+          "evidence_sources": [
+            {
+              "source_id": "source-95d1f29c90a52912",
+              "evidence_role": "identity",
+              "source_page_ref": "Reduced product-page snapshot",
+              "source_table_ref": "Material 7154831 product identity",
+              "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "PDF page 8",
+              "source_table_ref": "Positive FFS cutting parameters",
+              "source_raw_text": "Positive FFS: feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "PDF page 8",
+              "source_table_ref": "S3 / KCS25S",
+              "source_raw_text": "S3 Nickel-Based, Heat-Resistant Alloys; 160–450 HB; <48 HRC; 600–1700 MPa Tensile Strength; KCS25S speed MIN/START/MAX 40/79/140 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            }
+          ]
+        },
+        {
+          "source_part_number": "CCGT060202MFFS",
+          "source_grade": "KCS25S",
+          "source_geometry": "TopSwiss Carbide Insert Positive CCGT-FFS Finish Machining",
+          "source_chipbreaker": "FFS",
+          "source_material_label": "Titanium and Titanium Alloys; 300–400 HB; 33–48 HRC; 900–1600 MPa Tensile Strength",
+          "iso_material_group": "S",
+          "material_subgroup": "S4",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "surface_speed_min": 40,
+          "surface_speed_start": 79,
+          "surface_speed_max": 140,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.02,
+          "feed_max": 0.12,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.13,
+          "depth_of_cut_max": 1.26,
+          "depth_of_cut_unit": "mm",
+          "id": "cutting-profile-531dc9b1e705507c",
+          "source_id": "source-780f5d4ed6932e58",
+          "source_page_ref": "PDF page 8",
+          "source_table_ref": "S4 / KCS25S | Positive FFS cutting parameters",
+          "source_raw_text": "S4 Titanium and Titanium Alloys; 300–400 HB; 33–48 HRC; 900–1600 MPa Tensile Strength; KCS25S speed MIN/START/MAX 40/79/140 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+          "extraction_method": "pdf_table",
+          "verification_status": "catalog_verified",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22",
+          "notes": "Greg approved the proposed database and website update after reviewing the exact Kennametal product page and its linked manufacturer feeds-and-speeds PDF in the active Hermes conversation.",
+          "evidence_sources": [
+            {
+              "source_id": "source-95d1f29c90a52912",
+              "evidence_role": "identity",
+              "source_page_ref": "Reduced product-page snapshot",
+              "source_table_ref": "Material 7154831 product identity",
+              "source_raw_text": "Material Number 7154831; ISO Catalog ID CCGT060202MFFS; ANSI Catalog ID CCGT21505MFFS; Grade KCS25S; TopSwiss carbide insert, positive CCGT-FFS finish machining.",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "PDF page 8",
+              "source_table_ref": "Positive FFS cutting parameters",
+              "source_raw_text": "Positive FFS: feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            },
+            {
+              "source_id": "source-780f5d4ed6932e58",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "PDF page 8",
+              "source_table_ref": "S4 / KCS25S",
+              "source_raw_text": "S4 Titanium and Titanium Alloys; 300–400 HB; 33–48 HRC; 900–1600 MPa Tensile Strength; KCS25S speed MIN/START/MAX 40/79/140 m/min. Positive FFS feed 0.02–0.12 mm/rev; depth of cut 0.13–1.26 mm.",
+              "extraction_method": "pdf_table"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quarantined_rows": []
+}
