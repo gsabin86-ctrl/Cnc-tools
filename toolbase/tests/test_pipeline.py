@@ -14,6 +14,9 @@ ROOT = Path(__file__).resolve().parents[1]
 BUILD_SCRIPT = ROOT / "scripts" / "build.py"
 TOPSWISS_PROPOSAL = ROOT / "proposals" / "kennametal-topswiss-pilot.json"
 TOPSWISS_LEDGER = ROOT / "reviews" / "kennametal-topswiss-pilot.decisions.json"
+SANDVIK_PROPOSAL = ROOT / "proposals" / "sandvik-corocut2-cs1225-pilot.json"
+SANDVIK_LEDGER = ROOT / "reviews" / "sandvik-corocut2-cs1225-pilot.decisions.json"
+SANDVIK_SNAPSHOT = ROOT / "data" / "source_snapshots" / "sandvik-corocut2-cs1225-pilot-2026-07-22.json"
 ECAS20_SHOP_INPUT = ROOT / "data" / "shop_inputs" / "star-ecas20-stations.json"
 DATA_DIR = ROOT / "data"
 
@@ -72,7 +75,7 @@ class PipelineTests(unittest.TestCase):
                 ).fetchone()[0],
                 17,
             )
-            self.assertEqual(
+            self.assertGreaterEqual(
                 connection.execute("SELECT COUNT(DISTINCT tool_id) FROM tool_material_recommendations").fetchone()[0],
                 203,
             )
@@ -105,10 +108,33 @@ class PipelineTests(unittest.TestCase):
                 ).fetchone()[0],
                 59,
             )
-            self.assertEqual(connection.execute("SELECT COUNT(*) FROM usable_cutting_data").fetchone()[0], 12)
-            self.assertEqual(connection.execute("SELECT COUNT(*) FROM review_batches").fetchone()[0], 1)
-            self.assertEqual(connection.execute("SELECT COUNT(*) FROM review_batch_sources").fetchone()[0], 1)
-            self.assertEqual(connection.execute("SELECT COUNT(*) FROM cutting_data_profile_sources").fetchone()[0], 36)
+            self.assertGreaterEqual(connection.execute("SELECT COUNT(*) FROM usable_cutting_data").fetchone()[0], 12)
+            self.assertEqual(
+                connection.execute(
+                    "SELECT COUNT(*) FROM review_batches WHERE proposal_id='kennametal-topswiss-pilot-2026-07'"
+                ).fetchone()[0],
+                1,
+            )
+            self.assertEqual(
+                connection.execute(
+                    """
+                    SELECT COUNT(*) FROM review_batch_sources s
+                    JOIN review_batches b ON b.id=s.review_batch_id
+                    WHERE b.proposal_id='kennametal-topswiss-pilot-2026-07'
+                    """
+                ).fetchone()[0],
+                1,
+            )
+            self.assertEqual(
+                connection.execute(
+                    """
+                    SELECT COUNT(*) FROM cutting_data_profile_sources s
+                    JOIN cutting_data_profiles p ON p.id=s.profile_id
+                    WHERE p.reviewer='Greg' AND p.reviewed_at='2026-07-21'
+                    """
+                ).fetchone()[0],
+                36,
+            )
             self.assertGreaterEqual(connection.execute("SELECT COUNT(*) FROM grades").fetchone()[0], 70)
             self.assertGreaterEqual(connection.execute("SELECT COUNT(*) FROM tool_grade_options").fetchone()[0], 1348)
             cutting_columns = {
@@ -130,7 +156,9 @@ class PipelineTests(unittest.TestCase):
             projection = json.loads(json_path.read_text(encoding="utf-8"))
             self.assertEqual(len(projection["tools"]), 1222)
             self.assertEqual(projection["meta"]["quality"]["suppressed_direct_machine_claims"], 172)
-            self.assertEqual(len(projection["review_batches"]), 1)
+            review_proposals = {batch["proposal_id"] for batch in projection["review_batches"]}
+            self.assertIn("kennametal-topswiss-pilot-2026-07", review_proposals)
+            self.assertIn("sandvik-corocut2-cs1225-pilot-2026-07", review_proposals)
             self.assertTrue(any(fact["source_ids"] for tool in projection["tools"] for fact in tool["facts"]))
             self.assertTrue(all("source_refs" in relationship for relationship in projection["relationships"]))
             search_index = json.loads(json_path.with_name("catalog-index.json").read_text(encoding="utf-8"))
@@ -157,14 +185,20 @@ class PipelineTests(unittest.TestCase):
             self.assertTrue(all(tool["geometry_display"] for tool in sandvik_coroturn))
             material_tools = [tool for tool in search_index["tools"] if tool["material_groups"]]
             cutting_tools = [tool for tool in search_index["tools"] if tool["has_cutting_data"]]
-            self.assertEqual(len(material_tools), 12)
-            self.assertEqual(len(cutting_tools), 12)
+            self.assertGreaterEqual(len(material_tools), 12)
+            self.assertGreaterEqual(len(cutting_tools), 12)
             self.assertTrue(all(tool["review_status"] == "verified" for tool in material_tools + cutting_tools))
             self.assertEqual(
                 sum(bool(tool["unreviewed_material_claims"]) for tool in details["tools_by_id"].values()),
                 191,
             )
             self.assertEqual(db_path.read_bytes(), published_path.read_bytes())
+
+    def test_source_units_are_human_readable(self) -> None:
+        app = (ROOT.parent / "docs" / "v3" / "app.js").read_text(encoding="utf-8")
+        self.assertIn("m_per_min: 'm/min'", app)
+        self.assertIn("mm_per_rev: 'mm/rev'", app)
+        self.assertIn("sourceUnitLabel(unit)", app)
 
     def test_manufacturer_specific_insert_geometry_uses_existing_facts(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -398,7 +432,9 @@ class PipelineTests(unittest.TestCase):
                 """
                 SELECT tool_id, iso_material_group, material_subgroup,
                        surface_speed_min, surface_speed_start, surface_speed_max
-                FROM usable_cutting_data ORDER BY tool_id
+                FROM usable_cutting_data
+                WHERE reviewer='Greg' AND reviewed_at='2026-07-21'
+                ORDER BY tool_id
                 """
             ).fetchall()
             actual_speeds = {
@@ -454,7 +490,10 @@ class PipelineTests(unittest.TestCase):
                 0,
             )
             batch = connection.execute(
-                "SELECT proposal_sha256, review_ledger_sha256, catalog_sha256, row_count FROM review_batches"
+                """
+                SELECT proposal_sha256, review_ledger_sha256, catalog_sha256, row_count
+                FROM review_batches WHERE proposal_id='kennametal-topswiss-pilot-2026-07'
+                """
             ).fetchone()
             self.assertEqual(batch[0], sha256(TOPSWISS_PROPOSAL))
             self.assertEqual(batch[1], sha256(TOPSWISS_LEDGER))
@@ -463,7 +502,10 @@ class PipelineTests(unittest.TestCase):
             catalog_source = connection.execute(
                 """
                 SELECT content_sha256, document_edition, retrieved_at
-                FROM sources WHERE id=(SELECT source_id FROM review_batches LIMIT 1)
+                FROM sources WHERE id=(
+                  SELECT source_id FROM review_batches
+                  WHERE proposal_id='kennametal-topswiss-pilot-2026-07'
+                )
                 """
             ).fetchone()
             self.assertEqual(catalog_source, (batch[2], "2024 copyright edition", "2026-07-21"))
@@ -500,6 +542,71 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(profile["source_page_ref"], "PDF pages 14, 15")
             self.assertEqual(profile["reviewer"], "Greg")
 
+    def test_sandvik_corocut2_pilot_matches_exact_manufacturer_snapshot(self) -> None:
+        snapshot = json.loads(SANDVIK_SNAPSHOT.read_text(encoding="utf-8"))
+        self.assertEqual(len(snapshot["products"]), 10)
+        with tempfile.TemporaryDirectory() as temp:
+            db_path, _, _ = self.build(Path(temp))
+            connection = sqlite3.connect(db_path)
+            try:
+                batch = connection.execute(
+                    """
+                    SELECT proposal_sha256, review_ledger_sha256, catalog_sha256, row_count
+                    FROM review_batches
+                    WHERE proposal_id='sandvik-corocut2-cs1225-pilot-2026-07'
+                    """
+                ).fetchone()
+                self.assertEqual(batch[0], sha256(SANDVIK_PROPOSAL))
+                self.assertEqual(batch[1], sha256(SANDVIK_LEDGER))
+                self.assertEqual(batch[2], sha256(SANDVIK_SNAPSHOT))
+                self.assertEqual(batch[3], 10)
+                for product in snapshot["products"]:
+                    tool_id = product["database_tool_id"]
+                    order_code = product["order_code"]
+                    expected_materials = {
+                        material["material_reference"]: material
+                        for operation in product["cutting_operations"]
+                        for material in operation["materials"]
+                    }
+                    self.assertEqual(len(expected_materials), 5)
+                    profiles = connection.execute(
+                        """
+                        SELECT material_subgroup, source_part_number,
+                               surface_speed_min, surface_speed_start, surface_speed_max,
+                               feed_min, feed_max, depth_of_cut_max, verification_status
+                        FROM cutting_data_profiles WHERE tool_id=?
+                        """,
+                        (tool_id,),
+                    ).fetchall()
+                    recommendations = connection.execute(
+                        """
+                        SELECT material_subgroup, verification_status
+                        FROM tool_material_recommendations
+                        WHERE tool_id=? AND is_current=1
+                        """,
+                        (tool_id,),
+                    ).fetchall()
+                    self.assertEqual(len(profiles), 5)
+                    self.assertEqual(len(recommendations), 5)
+                    self.assertEqual({row[0] for row in profiles}, set(expected_materials))
+                    self.assertEqual({row[0] for row in recommendations}, set(expected_materials))
+                    for subgroup, source_part, speed_min, speed_start, speed_max, feed_min, feed_max, doc_max, status in profiles:
+                        expected = expected_materials[subgroup]
+                        self.assertEqual(source_part, order_code)
+                        self.assertEqual((speed_min, speed_start, speed_max), (
+                            expected["surface_speed"]["min"],
+                            expected["surface_speed"]["nom"],
+                            expected["surface_speed"]["max"],
+                        ))
+                        self.assertEqual((feed_min, feed_max), (
+                            expected["feed"]["min"], expected["feed"]["max"]
+                        ))
+                        self.assertEqual(doc_max, product["specifications"]["CDX"])
+                        self.assertEqual(status, "manufacturer_verified")
+                    self.assertTrue(all(row[1] == "manufacturer_verified" for row in recommendations))
+            finally:
+                connection.close()
+
     def test_grade_options_are_split_and_reviewed_sources_are_multi_role(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             db_path, _, _ = self.build(Path(temp))
@@ -527,7 +634,13 @@ class PipelineTests(unittest.TestCase):
             )
             role_counts = dict(
                 connection.execute(
-                    "SELECT evidence_role, COUNT(*) FROM cutting_data_profile_sources GROUP BY evidence_role"
+                    """
+                    SELECT s.evidence_role, COUNT(*)
+                    FROM cutting_data_profile_sources s
+                    JOIN cutting_data_profiles p ON p.id=s.profile_id
+                    WHERE p.reviewer='Greg' AND p.reviewed_at='2026-07-21'
+                    GROUP BY s.evidence_role
+                    """
                 ).fetchall()
             )
             self.assertEqual(role_counts, {"cutting_speed": 12, "geometry_parameters": 12, "identity": 12})

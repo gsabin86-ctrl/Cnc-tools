@@ -1,0 +1,164 @@
+{
+  "catalog_sha256": "e7d872eea0b2753bfb7e55f38cbfa419490e7ff2523e0f1362529b7eeee12ed7",
+  "decisions": [
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the agreed ten-record pilot in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-cs1225-001",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2L-0200-1001-CS"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the agreed ten-record pilot in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-cs1225-002",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2L-0200-1501-CS"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the agreed ten-record pilot in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-cs1225-003",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2R-0200-1001-CS"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the agreed ten-record pilot in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-cs1225-004",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2R-0200-1501-CS"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the agreed ten-record pilot in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-cs1225-005",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2L-0250-1001-CS"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the agreed ten-record pilot in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-cs1225-006",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2L-0250-1501-CS"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the agreed ten-record pilot in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-cs1225-007",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2R-0250-1001-CS"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the agreed ten-record pilot in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-cs1225-008",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2R-0250-1501-CS"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the agreed ten-record pilot in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-cs1225-009",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2L-0300-1501-CS"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the agreed ten-record pilot in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-cs1225-010",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2R-0300-1501-CS"
+    }
+  ],
+  "import_allowed": true,
+  "proposal_id": "sandvik-corocut2-cs1225-pilot-2026-07",
+  "proposal_path": "toolbase/proposals/sandvik-corocut2-cs1225-pilot.json",
+  "proposal_sha256": "fbd726e6bd29f399ce4b21b888bdea8fffaba7434535ecb2cc5f803f22f03684",
+  "review_completed_at": "2026-07-22",
+  "review_id": "sandvik-corocut2-cs1225-pilot-review-2026-07",
+  "review_started_at": "2026-07-22",
+  "schema_version": 1,
+  "status": "complete"
+}

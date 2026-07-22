@@ -1,0 +1,1851 @@
+{
+  "created_at": "2026-07-22",
+  "import_allowed": false,
+  "proposal_id": "sandvik-corocut2-cs1225-pilot-2026-07",
+  "purpose": "Ten-record source-shaped pilot using exact Sandvik order codes and material IDs. No terminal field assessments are authorized by this schema-1 packet.",
+  "review_policy": {
+    "exact_identity_required": [
+      "database tool id",
+      "exact Sandvik order code",
+      "material ID",
+      "grade",
+      "chipbreaker"
+    ],
+    "no_cross_record_inference": true,
+    "terminal_field_assessments_authorized": false
+  },
+  "rows": [
+    {
+      "evidence": {
+        "exact_identity_check": "complete",
+        "extraction_method": "scripted_import",
+        "snapshot_path": "toolbase/data/source_snapshots/sandvik-corocut2-cs1225-pilot-2026-07-22.json",
+        "snapshot_sha256": "e7d872eea0b2753bfb7e55f38cbfa419490e7ff2523e0f1362529b7eeee12ed7",
+        "verification_status": "source_extracted"
+      },
+      "proposal_row_id": "corocut2-cs1225-001",
+      "source_match": {
+        "api_url": "https://www.sandvik.coromant.com/api/productsearch/product?id=8290211&unitOfMeasurement=Metric&language=en-gb&country=gb",
+        "chipbreaker": "CS",
+        "grade": "1225",
+        "material_id": "8290211",
+        "order_code": "C2I-E2L-0200-1001-CS1225",
+        "product_page_url": "https://www.sandvik.coromant.com/en-gb/product-details?c=C2I-E2L-0200-1001-CS1225&m=8290211"
+      },
+      "specifications": {
+        "AN": 5.0,
+        "BAMS": 0.0,
+        "CDX": 19.19,
+        "CEDC": 2,
+        "COATING": "PVD TiAlN+TiAlSiN+TiSiN",
+        "CUTINT_SIZESHAPE": "CoroCut 1-2 -size E2",
+        "CW": 2.0,
+        "CWTOLL": -0.02,
+        "CWTOLU": 0.02,
+        "IFS": "Concave prismatic section with rail",
+        "LIG": 20.15,
+        "PSIRL": 10.0,
+        "REL": 0.1,
+        "RER": 0.1,
+        "S": 4.3321,
+        "SSC_M": "E",
+        "WT": 0.002303
+      },
+      "tool_lookup": {
+        "manufacturer": "Sandvik Coromant",
+        "tool_id": "C2I-E2L-0200-1001-CS"
+      },
+      "work_material_profiles": [
+        {
+          "calculation": {
+            "method": "Primary (Radial) KAPR",
+            "unit": "deg",
+            "value": 80.0
+          },
+          "materials": [
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 175.0,
+              "hardness_unit": "HB",
+              "iso_group": "P",
+              "material_reference": "P2.1.Z.AN",
+              "sort_order": 1,
+              "surface_speed": {
+                "max": 290.0,
+                "min": 200.0,
+                "nom": 230.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 200.0,
+              "hardness_unit": "HB",
+              "iso_group": "M",
+              "material_reference": "M1.0.Z.AQ",
+              "sort_order": 2,
+              "surface_speed": {
+                "max": 235.0,
+                "min": 160.0,
+                "nom": 185.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 350.0,
+              "hardness_unit": "HB",
+              "iso_group": "S",
+              "material_reference": "S2.0.Z.AG",
+              "sort_order": 3,
+              "surface_speed": {
+                "max": 55.0,
+                "min": 37.0,
+                "nom": 45.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 900.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 245.0,
+              "hardness_unit": "HB",
+              "iso_group": "K",
+              "material_reference": "K2.2.C.UT",
+              "sort_order": 4,
+              "surface_speed": {
+                "max": 185.0,
+                "min": 130.0,
+                "nom": 150.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 90.0,
+              "hardness_unit": "HB",
+              "iso_group": "N",
+              "material_reference": "N1.3.C.AG",
+              "sort_order": 5,
+              "surface_speed": {
+                "max": 1900.0,
+                "min": 190.0,
+                "nom": 1500.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 3600.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence": {
+        "exact_identity_check": "complete",
+        "extraction_method": "scripted_import",
+        "snapshot_path": "toolbase/data/source_snapshots/sandvik-corocut2-cs1225-pilot-2026-07-22.json",
+        "snapshot_sha256": "e7d872eea0b2753bfb7e55f38cbfa419490e7ff2523e0f1362529b7eeee12ed7",
+        "verification_status": "source_extracted"
+      },
+      "proposal_row_id": "corocut2-cs1225-002",
+      "source_match": {
+        "api_url": "https://www.sandvik.coromant.com/api/productsearch/product?id=8290212&unitOfMeasurement=Metric&language=en-gb&country=gb",
+        "chipbreaker": "CS",
+        "grade": "1225",
+        "material_id": "8290212",
+        "order_code": "C2I-E2L-0200-1501-CS1225",
+        "product_page_url": "https://www.sandvik.coromant.com/en-gb/product-details?c=C2I-E2L-0200-1501-CS1225&m=8290212"
+      },
+      "specifications": {
+        "AN": 5.0,
+        "BAMS": 0.0,
+        "CDX": 19.02,
+        "CEDC": 2,
+        "COATING": "PVD TiAlN+TiAlSiN+TiSiN",
+        "CUTINT_SIZESHAPE": "CoroCut 1-2 -size E2",
+        "CW": 2.0,
+        "CWTOLL": -0.02,
+        "CWTOLU": 0.02,
+        "IFS": "Concave prismatic section with rail",
+        "LIG": 20.15,
+        "PSIRL": 15.0,
+        "REL": 0.1,
+        "RER": 0.1,
+        "S": 4.3321,
+        "SSC_M": "E",
+        "WT": 0.002296
+      },
+      "tool_lookup": {
+        "manufacturer": "Sandvik Coromant",
+        "tool_id": "C2I-E2L-0200-1501-CS"
+      },
+      "work_material_profiles": [
+        {
+          "calculation": {
+            "method": "Primary (Radial) KAPR",
+            "unit": "deg",
+            "value": 75.0
+          },
+          "materials": [
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 175.0,
+              "hardness_unit": "HB",
+              "iso_group": "P",
+              "material_reference": "P2.1.Z.AN",
+              "sort_order": 1,
+              "surface_speed": {
+                "max": 290.0,
+                "min": 200.0,
+                "nom": 230.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 200.0,
+              "hardness_unit": "HB",
+              "iso_group": "M",
+              "material_reference": "M1.0.Z.AQ",
+              "sort_order": 2,
+              "surface_speed": {
+                "max": 235.0,
+                "min": 160.0,
+                "nom": 185.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 350.0,
+              "hardness_unit": "HB",
+              "iso_group": "S",
+              "material_reference": "S2.0.Z.AG",
+              "sort_order": 3,
+              "surface_speed": {
+                "max": 55.0,
+                "min": 37.0,
+                "nom": 45.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 900.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 245.0,
+              "hardness_unit": "HB",
+              "iso_group": "K",
+              "material_reference": "K2.2.C.UT",
+              "sort_order": 4,
+              "surface_speed": {
+                "max": 185.0,
+                "min": 130.0,
+                "nom": 150.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 90.0,
+              "hardness_unit": "HB",
+              "iso_group": "N",
+              "material_reference": "N1.3.C.AG",
+              "sort_order": 5,
+              "surface_speed": {
+                "max": 1900.0,
+                "min": 190.0,
+                "nom": 1500.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 3600.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence": {
+        "exact_identity_check": "complete",
+        "extraction_method": "scripted_import",
+        "snapshot_path": "toolbase/data/source_snapshots/sandvik-corocut2-cs1225-pilot-2026-07-22.json",
+        "snapshot_sha256": "e7d872eea0b2753bfb7e55f38cbfa419490e7ff2523e0f1362529b7eeee12ed7",
+        "verification_status": "source_extracted"
+      },
+      "proposal_row_id": "corocut2-cs1225-003",
+      "source_match": {
+        "api_url": "https://www.sandvik.coromant.com/api/productsearch/product?id=8290213&unitOfMeasurement=Metric&language=en-gb&country=gb",
+        "chipbreaker": "CS",
+        "grade": "1225",
+        "material_id": "8290213",
+        "order_code": "C2I-E2R-0200-1001-CS1225",
+        "product_page_url": "https://www.sandvik.coromant.com/en-gb/product-details?c=C2I-E2R-0200-1001-CS1225&m=8290213"
+      },
+      "specifications": {
+        "AN": 5.0,
+        "BAMS": 0.0,
+        "CDX": 19.19,
+        "CEDC": 2,
+        "COATING": "PVD TiAlN+TiAlSiN+TiSiN",
+        "CUTINT_SIZESHAPE": "CoroCut 1-2 -size E2",
+        "CW": 2.0,
+        "CWTOLL": -0.02,
+        "CWTOLU": 0.02,
+        "IFS": "Concave prismatic section with rail",
+        "LIG": 20.15,
+        "PSIRR": 10.0,
+        "REL": 0.1,
+        "RER": 0.1,
+        "S": 4.3321,
+        "SSC_M": "E",
+        "WT": 0.002303
+      },
+      "tool_lookup": {
+        "manufacturer": "Sandvik Coromant",
+        "tool_id": "C2I-E2R-0200-1001-CS"
+      },
+      "work_material_profiles": [
+        {
+          "calculation": {
+            "method": "Primary (Radial) KAPR",
+            "unit": "deg",
+            "value": 80.0
+          },
+          "materials": [
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 175.0,
+              "hardness_unit": "HB",
+              "iso_group": "P",
+              "material_reference": "P2.1.Z.AN",
+              "sort_order": 1,
+              "surface_speed": {
+                "max": 290.0,
+                "min": 200.0,
+                "nom": 230.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 200.0,
+              "hardness_unit": "HB",
+              "iso_group": "M",
+              "material_reference": "M1.0.Z.AQ",
+              "sort_order": 2,
+              "surface_speed": {
+                "max": 235.0,
+                "min": 160.0,
+                "nom": 185.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 350.0,
+              "hardness_unit": "HB",
+              "iso_group": "S",
+              "material_reference": "S2.0.Z.AG",
+              "sort_order": 3,
+              "surface_speed": {
+                "max": 55.0,
+                "min": 37.0,
+                "nom": 45.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 900.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 245.0,
+              "hardness_unit": "HB",
+              "iso_group": "K",
+              "material_reference": "K2.2.C.UT",
+              "sort_order": 4,
+              "surface_speed": {
+                "max": 185.0,
+                "min": 130.0,
+                "nom": 150.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 90.0,
+              "hardness_unit": "HB",
+              "iso_group": "N",
+              "material_reference": "N1.3.C.AG",
+              "sort_order": 5,
+              "surface_speed": {
+                "max": 1900.0,
+                "min": 190.0,
+                "nom": 1500.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 3600.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence": {
+        "exact_identity_check": "complete",
+        "extraction_method": "scripted_import",
+        "snapshot_path": "toolbase/data/source_snapshots/sandvik-corocut2-cs1225-pilot-2026-07-22.json",
+        "snapshot_sha256": "e7d872eea0b2753bfb7e55f38cbfa419490e7ff2523e0f1362529b7eeee12ed7",
+        "verification_status": "source_extracted"
+      },
+      "proposal_row_id": "corocut2-cs1225-004",
+      "source_match": {
+        "api_url": "https://www.sandvik.coromant.com/api/productsearch/product?id=8290214&unitOfMeasurement=Metric&language=en-gb&country=gb",
+        "chipbreaker": "CS",
+        "grade": "1225",
+        "material_id": "8290214",
+        "order_code": "C2I-E2R-0200-1501-CS1225",
+        "product_page_url": "https://www.sandvik.coromant.com/en-gb/product-details?c=C2I-E2R-0200-1501-CS1225&m=8290214"
+      },
+      "specifications": {
+        "AN": 5.0,
+        "BAMS": 0.0,
+        "CDX": 19.02,
+        "CEDC": 2,
+        "COATING": "PVD TiAlN+TiAlSiN+TiSiN",
+        "CUTINT_SIZESHAPE": "CoroCut 1-2 -size E2",
+        "CW": 2.0,
+        "CWTOLL": -0.02,
+        "CWTOLU": 0.02,
+        "IFS": "Concave prismatic section with rail",
+        "LIG": 20.15,
+        "PSIRR": 15.0,
+        "REL": 0.1,
+        "RER": 0.1,
+        "S": 4.3321,
+        "SSC_M": "E",
+        "WT": 0.002296
+      },
+      "tool_lookup": {
+        "manufacturer": "Sandvik Coromant",
+        "tool_id": "C2I-E2R-0200-1501-CS"
+      },
+      "work_material_profiles": [
+        {
+          "calculation": {
+            "method": "Primary (Radial) KAPR",
+            "unit": "deg",
+            "value": 75.0
+          },
+          "materials": [
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 175.0,
+              "hardness_unit": "HB",
+              "iso_group": "P",
+              "material_reference": "P2.1.Z.AN",
+              "sort_order": 1,
+              "surface_speed": {
+                "max": 290.0,
+                "min": 200.0,
+                "nom": 230.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 200.0,
+              "hardness_unit": "HB",
+              "iso_group": "M",
+              "material_reference": "M1.0.Z.AQ",
+              "sort_order": 2,
+              "surface_speed": {
+                "max": 235.0,
+                "min": 160.0,
+                "nom": 185.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 350.0,
+              "hardness_unit": "HB",
+              "iso_group": "S",
+              "material_reference": "S2.0.Z.AG",
+              "sort_order": 3,
+              "surface_speed": {
+                "max": 55.0,
+                "min": 37.0,
+                "nom": 45.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 900.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 245.0,
+              "hardness_unit": "HB",
+              "iso_group": "K",
+              "material_reference": "K2.2.C.UT",
+              "sort_order": 4,
+              "surface_speed": {
+                "max": 185.0,
+                "min": 130.0,
+                "nom": 150.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.1,
+                "min": 0.03,
+                "nom": 0.06,
+                "unit": "mm/r"
+              },
+              "hardness": 90.0,
+              "hardness_unit": "HB",
+              "iso_group": "N",
+              "material_reference": "N1.3.C.AG",
+              "sort_order": 5,
+              "surface_speed": {
+                "max": 1900.0,
+                "min": 190.0,
+                "nom": 1500.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 3600.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence": {
+        "exact_identity_check": "complete",
+        "extraction_method": "scripted_import",
+        "snapshot_path": "toolbase/data/source_snapshots/sandvik-corocut2-cs1225-pilot-2026-07-22.json",
+        "snapshot_sha256": "e7d872eea0b2753bfb7e55f38cbfa419490e7ff2523e0f1362529b7eeee12ed7",
+        "verification_status": "source_extracted"
+      },
+      "proposal_row_id": "corocut2-cs1225-005",
+      "source_match": {
+        "api_url": "https://www.sandvik.coromant.com/api/productsearch/product?id=8290215&unitOfMeasurement=Metric&language=en-gb&country=gb",
+        "chipbreaker": "CS",
+        "grade": "1225",
+        "material_id": "8290215",
+        "order_code": "C2I-F2L-0250-1001-CS1225",
+        "product_page_url": "https://www.sandvik.coromant.com/en-gb/product-details?c=C2I-F2L-0250-1001-CS1225&m=8290215"
+      },
+      "specifications": {
+        "AN": 5.0,
+        "BAMS": 0.0,
+        "CDX": 19.26,
+        "CEDC": 2,
+        "COATING": "PVD TiAlN+TiAlSiN+TiSiN",
+        "CUTINT_SIZESHAPE": "CoroCut 1-2 -size F2",
+        "CW": 2.5,
+        "CWTOLL": -0.02,
+        "CWTOLU": 0.02,
+        "IFS": "Concave prismatic section with rail",
+        "LIG": 20.3,
+        "PSIRL": 10.0,
+        "REL": 0.1,
+        "RER": 0.1,
+        "S": 4.3321,
+        "SSC_M": "F",
+        "WT": 0.002953
+      },
+      "tool_lookup": {
+        "manufacturer": "Sandvik Coromant",
+        "tool_id": "C2I-F2L-0250-1001-CS"
+      },
+      "work_material_profiles": [
+        {
+          "calculation": {
+            "method": "Primary (Radial) KAPR",
+            "unit": "deg",
+            "value": 80.0
+          },
+          "materials": [
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 175.0,
+              "hardness_unit": "HB",
+              "iso_group": "P",
+              "material_reference": "P2.1.Z.AN",
+              "sort_order": 1,
+              "surface_speed": {
+                "max": 290.0,
+                "min": 185.0,
+                "nom": 220.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 200.0,
+              "hardness_unit": "HB",
+              "iso_group": "M",
+              "material_reference": "M1.0.Z.AQ",
+              "sort_order": 2,
+              "surface_speed": {
+                "max": 235.0,
+                "min": 150.0,
+                "nom": 180.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 350.0,
+              "hardness_unit": "HB",
+              "iso_group": "S",
+              "material_reference": "S2.0.Z.AG",
+              "sort_order": 3,
+              "surface_speed": {
+                "max": 55.0,
+                "min": 35.0,
+                "nom": 40.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 900.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 245.0,
+              "hardness_unit": "HB",
+              "iso_group": "K",
+              "material_reference": "K2.2.C.UT",
+              "sort_order": 4,
+              "surface_speed": {
+                "max": 185.0,
+                "min": 125.0,
+                "nom": 145.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 90.0,
+              "hardness_unit": "HB",
+              "iso_group": "N",
+              "material_reference": "N1.3.C.AG",
+              "sort_order": 5,
+              "surface_speed": {
+                "max": 1900.0,
+                "min": 190.0,
+                "nom": 1500.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 3600.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence": {
+        "exact_identity_check": "complete",
+        "extraction_method": "scripted_import",
+        "snapshot_path": "toolbase/data/source_snapshots/sandvik-corocut2-cs1225-pilot-2026-07-22.json",
+        "snapshot_sha256": "e7d872eea0b2753bfb7e55f38cbfa419490e7ff2523e0f1362529b7eeee12ed7",
+        "verification_status": "source_extracted"
+      },
+      "proposal_row_id": "corocut2-cs1225-006",
+      "source_match": {
+        "api_url": "https://www.sandvik.coromant.com/api/productsearch/product?id=8290216&unitOfMeasurement=Metric&language=en-gb&country=gb",
+        "chipbreaker": "CS",
+        "grade": "1225",
+        "material_id": "8290216",
+        "order_code": "C2I-F2L-0250-1501-CS1225",
+        "product_page_url": "https://www.sandvik.coromant.com/en-gb/product-details?c=C2I-F2L-0250-1501-CS1225&m=8290216"
+      },
+      "specifications": {
+        "AN": 5.0,
+        "BAMS": 0.0,
+        "CDX": 19.05,
+        "CEDC": 2,
+        "COATING": "PVD TiAlN+TiAlSiN+TiSiN",
+        "CUTINT_SIZESHAPE": "CoroCut 1-2 -size F2",
+        "CW": 2.5,
+        "CWTOLL": -0.02,
+        "CWTOLU": 0.02,
+        "IFS": "Concave prismatic section with rail",
+        "LIG": 20.3,
+        "PSIRL": 15.0,
+        "REL": 0.1,
+        "RER": 0.1,
+        "S": 4.3321,
+        "SSC_M": "F",
+        "WT": 0.002935
+      },
+      "tool_lookup": {
+        "manufacturer": "Sandvik Coromant",
+        "tool_id": "C2I-F2L-0250-1501-CS"
+      },
+      "work_material_profiles": [
+        {
+          "calculation": {
+            "method": "Primary (Radial) KAPR",
+            "unit": "deg",
+            "value": 75.0
+          },
+          "materials": [
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 175.0,
+              "hardness_unit": "HB",
+              "iso_group": "P",
+              "material_reference": "P2.1.Z.AN",
+              "sort_order": 1,
+              "surface_speed": {
+                "max": 290.0,
+                "min": 185.0,
+                "nom": 220.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 200.0,
+              "hardness_unit": "HB",
+              "iso_group": "M",
+              "material_reference": "M1.0.Z.AQ",
+              "sort_order": 2,
+              "surface_speed": {
+                "max": 235.0,
+                "min": 150.0,
+                "nom": 180.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 350.0,
+              "hardness_unit": "HB",
+              "iso_group": "S",
+              "material_reference": "S2.0.Z.AG",
+              "sort_order": 3,
+              "surface_speed": {
+                "max": 55.0,
+                "min": 35.0,
+                "nom": 40.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 900.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 245.0,
+              "hardness_unit": "HB",
+              "iso_group": "K",
+              "material_reference": "K2.2.C.UT",
+              "sort_order": 4,
+              "surface_speed": {
+                "max": 185.0,
+                "min": 125.0,
+                "nom": 145.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 90.0,
+              "hardness_unit": "HB",
+              "iso_group": "N",
+              "material_reference": "N1.3.C.AG",
+              "sort_order": 5,
+              "surface_speed": {
+                "max": 1900.0,
+                "min": 190.0,
+                "nom": 1500.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 3600.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence": {
+        "exact_identity_check": "complete",
+        "extraction_method": "scripted_import",
+        "snapshot_path": "toolbase/data/source_snapshots/sandvik-corocut2-cs1225-pilot-2026-07-22.json",
+        "snapshot_sha256": "e7d872eea0b2753bfb7e55f38cbfa419490e7ff2523e0f1362529b7eeee12ed7",
+        "verification_status": "source_extracted"
+      },
+      "proposal_row_id": "corocut2-cs1225-007",
+      "source_match": {
+        "api_url": "https://www.sandvik.coromant.com/api/productsearch/product?id=8290217&unitOfMeasurement=Metric&language=en-gb&country=gb",
+        "chipbreaker": "CS",
+        "grade": "1225",
+        "material_id": "8290217",
+        "order_code": "C2I-F2R-0250-1001-CS1225",
+        "product_page_url": "https://www.sandvik.coromant.com/en-gb/product-details?c=C2I-F2R-0250-1001-CS1225&m=8290217"
+      },
+      "specifications": {
+        "AN": 5.0,
+        "BAMS": 0.0,
+        "CDX": 19.26,
+        "CEDC": 2,
+        "COATING": "PVD TiAlN+TiAlSiN+TiSiN",
+        "CUTINT_SIZESHAPE": "CoroCut 1-2 -size F2",
+        "CW": 2.5,
+        "CWTOLL": -0.02,
+        "CWTOLU": 0.02,
+        "IFS": "Concave prismatic section with rail",
+        "LIG": 20.3,
+        "PSIRR": 10.0,
+        "REL": 0.1,
+        "RER": 0.1,
+        "S": 4.3321,
+        "SSC_M": "F",
+        "WT": 0.002953
+      },
+      "tool_lookup": {
+        "manufacturer": "Sandvik Coromant",
+        "tool_id": "C2I-F2R-0250-1001-CS"
+      },
+      "work_material_profiles": [
+        {
+          "calculation": {
+            "method": "Primary (Radial) KAPR",
+            "unit": "deg",
+            "value": 80.0
+          },
+          "materials": [
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 175.0,
+              "hardness_unit": "HB",
+              "iso_group": "P",
+              "material_reference": "P2.1.Z.AN",
+              "sort_order": 1,
+              "surface_speed": {
+                "max": 290.0,
+                "min": 185.0,
+                "nom": 220.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 200.0,
+              "hardness_unit": "HB",
+              "iso_group": "M",
+              "material_reference": "M1.0.Z.AQ",
+              "sort_order": 2,
+              "surface_speed": {
+                "max": 235.0,
+                "min": 150.0,
+                "nom": 180.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 350.0,
+              "hardness_unit": "HB",
+              "iso_group": "S",
+              "material_reference": "S2.0.Z.AG",
+              "sort_order": 3,
+              "surface_speed": {
+                "max": 55.0,
+                "min": 35.0,
+                "nom": 40.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 900.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 245.0,
+              "hardness_unit": "HB",
+              "iso_group": "K",
+              "material_reference": "K2.2.C.UT",
+              "sort_order": 4,
+              "surface_speed": {
+                "max": 185.0,
+                "min": 125.0,
+                "nom": 145.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 90.0,
+              "hardness_unit": "HB",
+              "iso_group": "N",
+              "material_reference": "N1.3.C.AG",
+              "sort_order": 5,
+              "surface_speed": {
+                "max": 1900.0,
+                "min": 190.0,
+                "nom": 1500.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 3600.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence": {
+        "exact_identity_check": "complete",
+        "extraction_method": "scripted_import",
+        "snapshot_path": "toolbase/data/source_snapshots/sandvik-corocut2-cs1225-pilot-2026-07-22.json",
+        "snapshot_sha256": "e7d872eea0b2753bfb7e55f38cbfa419490e7ff2523e0f1362529b7eeee12ed7",
+        "verification_status": "source_extracted"
+      },
+      "proposal_row_id": "corocut2-cs1225-008",
+      "source_match": {
+        "api_url": "https://www.sandvik.coromant.com/api/productsearch/product?id=8290218&unitOfMeasurement=Metric&language=en-gb&country=gb",
+        "chipbreaker": "CS",
+        "grade": "1225",
+        "material_id": "8290218",
+        "order_code": "C2I-F2R-0250-1501-CS1225",
+        "product_page_url": "https://www.sandvik.coromant.com/en-gb/product-details?c=C2I-F2R-0250-1501-CS1225&m=8290218"
+      },
+      "specifications": {
+        "AN": 5.0,
+        "BAMS": 0.0,
+        "CDX": 19.05,
+        "CEDC": 2,
+        "COATING": "PVD TiAlN+TiAlSiN+TiSiN",
+        "CUTINT_SIZESHAPE": "CoroCut 1-2 -size F2",
+        "CW": 2.5,
+        "CWTOLL": -0.02,
+        "CWTOLU": 0.02,
+        "IFS": "Concave prismatic section with rail",
+        "LIG": 20.3,
+        "PSIRR": 15.0,
+        "REL": 0.1,
+        "RER": 0.1,
+        "S": 4.3321,
+        "SSC_M": "F",
+        "WT": 0.002935
+      },
+      "tool_lookup": {
+        "manufacturer": "Sandvik Coromant",
+        "tool_id": "C2I-F2R-0250-1501-CS"
+      },
+      "work_material_profiles": [
+        {
+          "calculation": {
+            "method": "Primary (Radial) KAPR",
+            "unit": "deg",
+            "value": 75.0
+          },
+          "materials": [
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 175.0,
+              "hardness_unit": "HB",
+              "iso_group": "P",
+              "material_reference": "P2.1.Z.AN",
+              "sort_order": 1,
+              "surface_speed": {
+                "max": 290.0,
+                "min": 185.0,
+                "nom": 220.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 200.0,
+              "hardness_unit": "HB",
+              "iso_group": "M",
+              "material_reference": "M1.0.Z.AQ",
+              "sort_order": 2,
+              "surface_speed": {
+                "max": 235.0,
+                "min": 150.0,
+                "nom": 180.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 350.0,
+              "hardness_unit": "HB",
+              "iso_group": "S",
+              "material_reference": "S2.0.Z.AG",
+              "sort_order": 3,
+              "surface_speed": {
+                "max": 55.0,
+                "min": 35.0,
+                "nom": 40.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 900.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 245.0,
+              "hardness_unit": "HB",
+              "iso_group": "K",
+              "material_reference": "K2.2.C.UT",
+              "sort_order": 4,
+              "surface_speed": {
+                "max": 185.0,
+                "min": 125.0,
+                "nom": 145.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.12,
+                "min": 0.03,
+                "nom": 0.08,
+                "unit": "mm/r"
+              },
+              "hardness": 90.0,
+              "hardness_unit": "HB",
+              "iso_group": "N",
+              "material_reference": "N1.3.C.AG",
+              "sort_order": 5,
+              "surface_speed": {
+                "max": 1900.0,
+                "min": 190.0,
+                "nom": 1500.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 3600.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence": {
+        "exact_identity_check": "complete",
+        "extraction_method": "scripted_import",
+        "snapshot_path": "toolbase/data/source_snapshots/sandvik-corocut2-cs1225-pilot-2026-07-22.json",
+        "snapshot_sha256": "e7d872eea0b2753bfb7e55f38cbfa419490e7ff2523e0f1362529b7eeee12ed7",
+        "verification_status": "source_extracted"
+      },
+      "proposal_row_id": "corocut2-cs1225-009",
+      "source_match": {
+        "api_url": "https://www.sandvik.coromant.com/api/productsearch/product?id=8290230&unitOfMeasurement=Metric&language=en-gb&country=gb",
+        "chipbreaker": "CS",
+        "grade": "1225",
+        "material_id": "8290230",
+        "order_code": "C2I-G2L-0300-1501-CS1225",
+        "product_page_url": "https://www.sandvik.coromant.com/en-gb/product-details?c=C2I-G2L-0300-1501-CS1225&m=8290230"
+      },
+      "specifications": {
+        "AN": 5.0,
+        "BAMS": 0.0,
+        "CDX": 18.63,
+        "CEDC": 2,
+        "COATING": "PVD TiAlN+TiAlSiN+TiSiN",
+        "CUTINT_SIZESHAPE": "CoroCut 1-2 -size G2",
+        "CW": 3.0,
+        "CWTOLL": -0.02,
+        "CWTOLU": 0.02,
+        "IFS": "Concave prismatic section with rail",
+        "LIG": 20.03,
+        "PSIRL": 15.0,
+        "REL": 0.1,
+        "RER": 0.1,
+        "S": 4.3321,
+        "SSC_M": "G",
+        "WT": 0.003383
+      },
+      "tool_lookup": {
+        "manufacturer": "Sandvik Coromant",
+        "tool_id": "C2I-G2L-0300-1501-CS"
+      },
+      "work_material_profiles": [
+        {
+          "calculation": {
+            "method": "Primary (Radial) KAPR",
+            "unit": "deg",
+            "value": 75.0
+          },
+          "materials": [
+            {
+              "chip_thickness": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "hardness": 175.0,
+              "hardness_unit": "HB",
+              "iso_group": "P",
+              "material_reference": "P2.1.Z.AN",
+              "sort_order": 1,
+              "surface_speed": {
+                "max": 290.0,
+                "min": 175.0,
+                "nom": 215.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "hardness": 200.0,
+              "hardness_unit": "HB",
+              "iso_group": "M",
+              "material_reference": "M1.0.Z.AQ",
+              "sort_order": 2,
+              "surface_speed": {
+                "max": 235.0,
+                "min": 145.0,
+                "nom": 175.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "hardness": 350.0,
+              "hardness_unit": "HB",
+              "iso_group": "S",
+              "material_reference": "S2.0.Z.AG",
+              "sort_order": 3,
+              "surface_speed": {
+                "max": 55.0,
+                "min": 34.0,
+                "nom": 40.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 900.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "hardness": 245.0,
+              "hardness_unit": "HB",
+              "iso_group": "K",
+              "material_reference": "K2.2.C.UT",
+              "sort_order": 4,
+              "surface_speed": {
+                "max": 185.0,
+                "min": 120.0,
+                "nom": 140.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "hardness": 90.0,
+              "hardness_unit": "HB",
+              "iso_group": "N",
+              "material_reference": "N1.3.C.AG",
+              "sort_order": 5,
+              "surface_speed": {
+                "max": 1900.0,
+                "min": 190.0,
+                "nom": 1500.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 3600.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence": {
+        "exact_identity_check": "complete",
+        "extraction_method": "scripted_import",
+        "snapshot_path": "toolbase/data/source_snapshots/sandvik-corocut2-cs1225-pilot-2026-07-22.json",
+        "snapshot_sha256": "e7d872eea0b2753bfb7e55f38cbfa419490e7ff2523e0f1362529b7eeee12ed7",
+        "verification_status": "source_extracted"
+      },
+      "proposal_row_id": "corocut2-cs1225-010",
+      "source_match": {
+        "api_url": "https://www.sandvik.coromant.com/api/productsearch/product?id=8290232&unitOfMeasurement=Metric&language=en-gb&country=gb",
+        "chipbreaker": "CS",
+        "grade": "1225",
+        "material_id": "8290232",
+        "order_code": "C2I-G2R-0300-1501-CS1225",
+        "product_page_url": "https://www.sandvik.coromant.com/en-gb/product-details?c=C2I-G2R-0300-1501-CS1225&m=8290232"
+      },
+      "specifications": {
+        "AN": 5.0,
+        "BAMS": 0.0,
+        "CDX": 18.63,
+        "CEDC": 2,
+        "COATING": "PVD TiAlN+TiAlSiN+TiSiN",
+        "CUTINT_SIZESHAPE": "CoroCut 1-2 -size G2",
+        "CW": 3.0,
+        "CWTOLL": -0.02,
+        "CWTOLU": 0.02,
+        "IFS": "Concave prismatic section with rail",
+        "LIG": 20.03,
+        "PSIRR": 15.0,
+        "REL": 0.1,
+        "RER": 0.1,
+        "S": 4.3321,
+        "SSC_M": "G",
+        "WT": 0.003383
+      },
+      "tool_lookup": {
+        "manufacturer": "Sandvik Coromant",
+        "tool_id": "C2I-G2R-0300-1501-CS"
+      },
+      "work_material_profiles": [
+        {
+          "calculation": {
+            "method": "Primary (Radial) KAPR",
+            "unit": "deg",
+            "value": 75.0
+          },
+          "materials": [
+            {
+              "chip_thickness": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "hardness": 175.0,
+              "hardness_unit": "HB",
+              "iso_group": "P",
+              "material_reference": "P2.1.Z.AN",
+              "sort_order": 1,
+              "surface_speed": {
+                "max": 290.0,
+                "min": 175.0,
+                "nom": 215.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "hardness": 200.0,
+              "hardness_unit": "HB",
+              "iso_group": "M",
+              "material_reference": "M1.0.Z.AQ",
+              "sort_order": 2,
+              "surface_speed": {
+                "max": 235.0,
+                "min": 145.0,
+                "nom": 175.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "hardness": 350.0,
+              "hardness_unit": "HB",
+              "iso_group": "S",
+              "material_reference": "S2.0.Z.AG",
+              "sort_order": 3,
+              "surface_speed": {
+                "max": 55.0,
+                "min": 34.0,
+                "nom": 40.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 900.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "hardness": 245.0,
+              "hardness_unit": "HB",
+              "iso_group": "K",
+              "material_reference": "K2.2.C.UT",
+              "sort_order": 4,
+              "surface_speed": {
+                "max": 185.0,
+                "min": 120.0,
+                "nom": 140.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 1200.0
+            },
+            {
+              "chip_thickness": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "feed": {
+                "max": 0.14,
+                "min": 0.03,
+                "nom": 0.09,
+                "unit": "mm/r"
+              },
+              "hardness": 90.0,
+              "hardness_unit": "HB",
+              "iso_group": "N",
+              "material_reference": "N1.3.C.AG",
+              "sort_order": 5,
+              "surface_speed": {
+                "max": 1900.0,
+                "min": 190.0,
+                "nom": 1500.0,
+                "unit": "m/min"
+              },
+              "tool_life_seconds": 3600.0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "local_path": "toolbase/data/source_snapshots/sandvik-corocut2-cs1225-pilot-2026-07-22.json",
+    "manufacturer": "Sandvik Coromant",
+    "product_count": 10,
+    "sha256": "e7d872eea0b2753bfb7e55f38cbfa419490e7ff2523e0f1362529b7eeee12ed7",
+    "snapshot_id": "sandvik-corocut2-cs1225-pilot-2026-07-22",
+    "source_type": "local_file",
+    "title": "Sandvik Coromant structured product-data snapshot: CoroCut 2 CS1225 pilot"
+  },
+  "status": "source_extracted",
+  "title": "Sandvik CoroCut 2 CS1225 material and cutting-data pilot"
+}

@@ -2,10 +2,14 @@
   'use strict'
 
   const PAGE_SIZE = 100
-  const STATIC_VERSION = '3.4.0-shell-4'
+  const STATIC_VERSION = '3.4.0-shell-5'
   const MATERIAL_NAMES = {
     P: 'Steel', M: 'Stainless steel', K: 'Cast iron', N: 'Non-ferrous',
     S: 'Heat-resistant alloys', H: 'Hardened materials', O: 'Other', unknown: 'Unknown'
+  }
+  const SOURCE_UNIT_LABELS = {
+    m_per_min: 'm/min', mm_per_rev: 'mm/rev', mm_per_tooth: 'mm/tooth',
+    mm_per_min: 'mm/min', sfm: 'sfm', ipr: 'ipr', ipt: 'ipt', mm: 'mm', in: 'in'
   }
   const STATUS_RANK = {
     manufacturer_verified: 5, catalog_verified: 4, shop_verified: 3,
@@ -62,6 +66,7 @@
   const safeUrl = value => /^https?:\/\//i.test(String(value || '')) ? value : null
   const unique = values => [...new Set(values.filter(Boolean))]
   const rounded = value => Number(Number(value).toPrecision(4)).toLocaleString(undefined, { maximumFractionDigits: 4 })
+  const sourceUnitLabel = unit => SOURCE_UNIT_LABELS[unit] || humanize(unit)
 
   function showToast(message) {
     elements.toast.textContent = message
@@ -408,7 +413,7 @@
 
   function convertValue(value, unit, target) {
     if (value == null) return { value: null, unit, converted: false }
-    if (target === 'source') return { value, unit, converted: false }
+    if (target === 'source') return { value, unit: sourceUnitLabel(unit), converted: false }
     if (unit === 'm_per_min') return target === 'inch' ? { value: value * 3.28084, unit: 'sfm', converted: true } : { value, unit: 'm/min', converted: false }
     if (unit === 'sfm') return target === 'metric' ? { value: value / 3.28084, unit: 'm/min', converted: true } : { value, unit: 'sfm', converted: false }
     if (unit === 'mm_per_rev') return target === 'inch' ? { value: value / 25.4, unit: 'ipr', converted: true } : { value, unit: 'mm/rev', converted: false }
