@@ -2,7 +2,7 @@
   'use strict'
 
   const PAGE_SIZE = 100
-  const STATIC_VERSION = '3.4.0-shell-3'
+  const STATIC_VERSION = '3.4.0-shell-4'
   const MATERIAL_NAMES = {
     P: 'Steel', M: 'Stainless steel', K: 'Cast iron', N: 'Non-ferrous',
     S: 'Heat-resistant alloys', H: 'Hardened materials', O: 'Other', unknown: 'Unknown'
@@ -46,7 +46,6 @@
     list: $('#result-list'),
     more: $('#load-more'),
     detail: $('#detail-panel'),
-    stats: $('#stats'),
     build: $('#build-label'),
     units: $('#unit-button'),
     theme: $('#theme-button'),
@@ -162,15 +161,7 @@
     addOptions(elements.geometry, buckets.geometry, value => value)
   }
 
-  function renderStats() {
-    const mapped = state.tools.filter(tool => tool.material_groups.length).length
-    const profiles = state.index.meta.counts.cutting_data_profiles || 0
-    const sources = state.index.meta.counts.sources || 0
-    const values = [
-      ['Tools', state.tools.length], ['Cutting profiles', profiles],
-      ['Material mapped', mapped], ['Manufacturer sources', sources]
-    ]
-    elements.stats.innerHTML = values.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(count(value) === '0' && typeof value === 'string' ? value : typeof value === 'number' ? count(value) : value)}</dd></div>`).join('')
+  function renderBuildLabel() {
     elements.build.textContent = `Schema ${state.index.meta.schema_version} · build ${state.index.meta.build_hash}`
   }
 
@@ -642,7 +633,7 @@
       state.index = await response.json()
       state.tools = state.index.tools
       populateFilters()
-      renderStats()
+      renderBuildLabel()
       const selected = readUrlState()
       applyFilters({ sync: false })
       writeUrl({ selected })

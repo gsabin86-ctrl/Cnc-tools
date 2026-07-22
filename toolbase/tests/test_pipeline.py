@@ -216,6 +216,20 @@ class PipelineTests(unittest.TestCase):
         self.assertIn(".filter(item => !item.suppressed).length", viewer_script)
         self.assertIn("relationshipCount === 1 ? 'connection' : 'connections'", viewer_script)
 
+    def test_homepage_opens_directly_to_catalog_without_promotional_hero(self) -> None:
+        viewer_root = ROOT.parent / "docs" / "v3"
+        index_html = (viewer_root / "index.html").read_text(encoding="utf-8")
+        viewer_script = (viewer_root / "app.js").read_text(encoding="utf-8")
+        viewer_css = (viewer_root / "app.css").read_text(encoding="utf-8")
+
+        self.assertNotIn('<section class="hero"', index_html)
+        self.assertNotIn('id="stats"', index_html)
+        self.assertNotIn("stats: $('#stats')", viewer_script)
+        self.assertNotIn("function renderStats()", viewer_script)
+        self.assertIn("elements.build.textContent", viewer_script)
+        self.assertNotIn(".hero {", viewer_css)
+        self.assertNotIn(".stats {", viewer_css)
+
     def test_shop_confirmed_ecas20_stations_are_typed_and_auditable(self) -> None:
         square_stations = {1, 2, 3, 4, 11, 12}
         round_stations = {16, 17, 18, 19}
