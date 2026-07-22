@@ -17,6 +17,9 @@ TOPSWISS_LEDGER = ROOT / "reviews" / "kennametal-topswiss-pilot.decisions.json"
 SANDVIK_PROPOSAL = ROOT / "proposals" / "sandvik-corocut2-cs1225-pilot.json"
 SANDVIK_LEDGER = ROOT / "reviews" / "sandvik-corocut2-cs1225-pilot.decisions.json"
 SANDVIK_SNAPSHOT = ROOT / "data" / "source_snapshots" / "sandvik-corocut2-cs1225-pilot-2026-07-22.json"
+SANDVIK_REMAINING_PROPOSAL = ROOT / "proposals" / "sandvik-corocut2-remaining.json"
+SANDVIK_REMAINING_LEDGER = ROOT / "reviews" / "sandvik-corocut2-remaining.decisions.json"
+SANDVIK_REMAINING_SNAPSHOT = ROOT / "data" / "source_snapshots" / "sandvik-corocut2-remaining-2026-07-22.json"
 ECAS20_SHOP_INPUT = ROOT / "data" / "shop_inputs" / "star-ecas20-stations.json"
 DATA_DIR = ROOT / "data"
 
@@ -159,6 +162,7 @@ class PipelineTests(unittest.TestCase):
             review_proposals = {batch["proposal_id"] for batch in projection["review_batches"]}
             self.assertIn("kennametal-topswiss-pilot-2026-07", review_proposals)
             self.assertIn("sandvik-corocut2-cs1225-pilot-2026-07", review_proposals)
+            self.assertIn("sandvik-corocut2-remaining-2026-07", review_proposals)
             self.assertTrue(any(fact["source_ids"] for tool in projection["tools"] for fact in tool["facts"]))
             self.assertTrue(all("source_refs" in relationship for relationship in projection["relationships"]))
             search_index = json.loads(json_path.with_name("catalog-index.json").read_text(encoding="utf-8"))
@@ -222,6 +226,9 @@ class PipelineTests(unittest.TestCase):
                 {
                     "Clearance angle": (7.0, "deg"),
                     "Cutting width": (2.0, "mm"),
+                    "Sandvik cutting depth max": (19.39, "mm"),
+                    "Sandvik insert gauge length": (19.98, "mm"),
+                    "Sandvik insert thickness": (4.3321, "mm"),
                     "Width code": ("E", None),
                 },
             )
@@ -604,6 +611,96 @@ class PipelineTests(unittest.TestCase):
                         self.assertEqual(doc_max, product["specifications"]["CDX"])
                         self.assertEqual(status, "manufacturer_verified")
                     self.assertTrue(all(row[1] == "manufacturer_verified" for row in recommendations))
+            finally:
+                connection.close()
+
+    def test_sandvik_corocut2_remaining_batch_matches_exact_manufacturer_snapshot(self) -> None:
+        snapshot = json.loads(SANDVIK_REMAINING_SNAPSHOT.read_text(encoding="utf-8"))
+        self.assertEqual(len(snapshot["products"]), 48)
+        self.assertEqual(
+            {grade: sum(product["identity"]["grade"] == grade for product in snapshot["products"]) for grade in {"1205", "1225"}},
+            {"1205": 4, "1225": 44},
+        )
+        self.assertEqual(
+            {
+                operation: sum(product["identity"]["application_operation"] == operation for product in snapshot["products"])
+                for operation in {"grooving", "parting", "profiling", "turning"}
+            },
+            {"grooving": 22, "parting": 20, "profiling": 4, "turning": 2},
+        )
+        with tempfile.TemporaryDirectory() as temp:
+            db_path, _, _ = self.build(Path(temp))
+            connection = sqlite3.connect(db_path)
+            try:
+                batch = connection.execute(
+                    """
+                    SELECT proposal_sha256, review_ledger_sha256, catalog_sha256, row_count
+                    FROM review_batches
+                    WHERE proposal_id='sandvik-corocut2-remaining-2026-07'
+                    """
+                ).fetchone()
+                self.assertEqual(batch[0], sha256(SANDVIK_REMAINING_PROPOSAL))
+                self.assertEqual(batch[1], sha256(SANDVIK_REMAINING_LEDGER))
+                self.assertEqual(batch[2], sha256(SANDVIK_REMAINING_SNAPSHOT))
+                self.assertEqual(batch[3], 48)
+                total_profiles = 0
+                for product in snapshot["products"]:
+                    tool_id = product["database_tool_id"]
+                    order_code = product["order_code"]
+                    grade = product["identity"]["grade"]
+                    chipbreaker = product["identity"]["chipbreaker"]
+                    operation_type = {
+                        "parting": "parting",
+                        "grooving": "grooving",
+                        "parting and grooving": "grooving",
+                        "profiling": "turning",
+                        "turning": "turning",
+                    }[product["identity"]["application_operation"]]
+                    self.assertEqual("".join(order_code.split()), tool_id + grade)
+                    expected_materials = {
+                        material["material_reference"]: material
+                        for operation in product["cutting_operations"]
+                        for material in operation["materials"]
+                    }
+                    profiles = connection.execute(
+                        """
+                        SELECT material_subgroup, source_part_number, source_grade, source_chipbreaker,
+                               operation_type, surface_speed_min, surface_speed_start, surface_speed_max,
+                               feed_min, feed_max, depth_of_cut_max, verification_status
+                        FROM cutting_data_profiles WHERE tool_id=?
+                        """,
+                        (tool_id,),
+                    ).fetchall()
+                    recommendations = connection.execute(
+                        """
+                        SELECT r.material_subgroup, r.verification_status, g.code
+                        FROM tool_material_recommendations r
+                        JOIN grades g ON g.id=r.grade_id
+                        WHERE r.tool_id=? AND r.is_current=1
+                        """,
+                        (tool_id,),
+                    ).fetchall()
+                    total_profiles += len(profiles)
+                    self.assertEqual(len(profiles), len(expected_materials))
+                    self.assertEqual(len(recommendations), len(expected_materials))
+                    self.assertEqual({row[0] for row in profiles}, set(expected_materials))
+                    self.assertEqual({row[0] for row in recommendations}, set(expected_materials))
+                    for subgroup, source_part, source_grade, source_chipbreaker, operation, speed_min, speed_start, speed_max, feed_min, feed_max, doc_max, status in profiles:
+                        expected = expected_materials[subgroup]
+                        self.assertEqual((source_part, source_grade, source_chipbreaker), (order_code, grade, chipbreaker))
+                        self.assertEqual(operation, operation_type)
+                        self.assertEqual((speed_min, speed_start, speed_max), (
+                            expected["surface_speed"]["min"],
+                            expected["surface_speed"]["nom"],
+                            expected["surface_speed"]["max"],
+                        ))
+                        self.assertEqual((feed_min, feed_max), (
+                            expected["feed"]["min"], expected["feed"]["max"]
+                        ))
+                        self.assertEqual(doc_max, product["specifications"]["CDX"])
+                        self.assertEqual(status, "manufacturer_verified")
+                    self.assertTrue(all(row[1] == "manufacturer_verified" and row[2] == grade for row in recommendations))
+                self.assertEqual(total_profiles, 227)
             finally:
                 connection.close()
 

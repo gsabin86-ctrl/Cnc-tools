@@ -1,0 +1,734 @@
+{
+  "catalog_sha256": "958a590ddcfd226b8cb658616836229982a7e159c0c0637eb65e60157072feee",
+  "decisions": [
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-001",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2N-0185-0001-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-002",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2N-0200-0001-CO"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-003",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2N-0200-0002-CM"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-004",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2N-0200-0002-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-005",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2N-0200-0002-GM"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-006",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2N-0200-0003-GL"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-007",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2N-0200-0004-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-008",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2N-0200-RO"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-009",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2N-0224-0002-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-010",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2N-0239-0002-GM"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-011",
+      "reviewer": "Probius",
+      "tool_id": "C2I-E2N-0239-RO"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-012",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2L-0250-0501-CF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-013",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2L-0250-0503-CR"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-014",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2N-0239-0002-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-015",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2N-0239-0004-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-016",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2N-0246-0003-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-017",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2N-0250-0001-CF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-018",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2N-0250-0001-CO"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-019",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2N-0250-0002-CM"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-020",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2N-0250-0003-CR"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-021",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2N-0250-0003-GL"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-022",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2N-0279-0003-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-023",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2N-0300-RO"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-024",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2N-0318-RO"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-025",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2R-0250-0501-CF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-026",
+      "reviewer": "Probius",
+      "tool_id": "C2I-F2R-0250-0503-CR"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-027",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2L-0300-0501-CF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-028",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2L-0300-0503-CR"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-029",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2L-0300-1001-CS"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-030",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0300-0001-CF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-031",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0300-0001-CO"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-032",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0300-0002-CM"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-033",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0300-0002-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-034",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0300-0003-CR"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-035",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0300-0003-GL"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-036",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0300-0003-GM"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-037",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0300-0003-TF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-038",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0300-0004-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-039",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0300-0004-TM"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-040",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0300-0008-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-041",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0318-0002-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-042",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0318-0003-GM"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-043",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0318-0004-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-044",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0318-0008-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-045",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2N-0361-0003-GF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-046",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2R-0300-0501-CF"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-047",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2R-0300-0503-CR"
+    },
+    {
+      "approved_scope": [
+        "exact Sandvik order-code and material-ID identity",
+        "manufacturer-stated ISO work-material recommendations",
+        "manufacturer speed min/start/max and feed range",
+        "manufacturer-stated maximum cutting depth and selected product specifications"
+      ],
+      "capture_method": "exact_manufacturer_api_validation_under_user_authorized_batch_execution",
+      "decided_at": "2026-07-22",
+      "decision": "approved",
+      "notes": "Greg Sabin authorized execution of the remaining CoroCut 2 records in Telegram. Probius validated exact API identity and source values; no values were copied between products.",
+      "proposal_row_id": "corocut2-remaining-048",
+      "reviewer": "Probius",
+      "tool_id": "C2I-G2R-0300-1001-CS"
+    }
+  ],
+  "import_allowed": true,
+  "proposal_id": "sandvik-corocut2-remaining-2026-07",
+  "proposal_path": "toolbase/proposals/sandvik-corocut2-remaining.json",
+  "proposal_sha256": "ab2c16b87d573ce8d4652ffd256855415e5c17b1a7e518e78c89d5acd80afc56",
+  "review_completed_at": "2026-07-22",
+  "review_id": "sandvik-corocut2-remaining-review-2026-07",
+  "review_started_at": "2026-07-22",
+  "schema_version": 1,
+  "status": "complete"
+}
