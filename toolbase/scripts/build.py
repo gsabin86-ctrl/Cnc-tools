@@ -465,7 +465,10 @@ def apply_reviewed_import(
             """
             UPDATE tools
             SET description=coalesce(?, description), geometry=?, lifecycle_status=?,
-                evidence_status=?, review_status='verified', quarantine_reason=NULL
+                evidence_status=?,
+                grade=CASE WHEN ? THEN ? ELSE grade END,
+                chipbreaker=CASE WHEN ? THEN ? ELSE chipbreaker END,
+                review_status='verified', quarantine_reason=NULL
             WHERE id=?
             """,
             (
@@ -473,9 +476,33 @@ def apply_reviewed_import(
                 updates["geometry"],
                 updates["lifecycle_status"],
                 updates["evidence_status"],
+                int(bool(updates.get("grade_reviewed"))),
+                clean_text(updates.get("grade")),
+                int(bool(updates.get("chipbreaker_reviewed"))),
+                clean_text(updates.get("chipbreaker")),
                 tool_id,
             ),
         )
+
+        for rejected_grade_code in row.get("reject_grade_codes") or []:
+            connection.execute(
+                """
+                UPDATE tool_grade_options
+                SET verification_status='rejected', review_batch_id=?, reviewer=?, reviewed_at=?
+                WHERE tool_id=? AND grade_id IN (
+                  SELECT id FROM grades
+                  WHERE manufacturer_id=? AND normalized_code=?
+                )
+                """,
+                (
+                    batch_id,
+                    row_reviewer,
+                    row_reviewed_at,
+                    tool_id,
+                    tool_manufacturer_id,
+                    normalize_part_number(rejected_grade_code),
+                ),
+            )
 
         fact_values = {item["fact_key"]: item for item in row.get("facts") or []}
         grade_ids: dict[str, str] = {}
@@ -2148,6 +2175,7 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
                o.source_id, o.source_page_ref, o.source_table_ref, o.source_raw_text,
                o.extraction_method, o.review_batch_id, o.reviewer, o.reviewed_at
         FROM tool_grade_options o JOIN grades g ON g.id=o.grade_id
+        WHERE o.verification_status <> 'rejected'
         ORDER BY o.tool_id, lower(g.code), o.option_kind
         """,
     ):

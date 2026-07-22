@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "review_id": "mitsubishi-bf-ccgt09t304ts2-review-2026-07",
+  "proposal_id": "mitsubishi-bf-ccgt09t304ts2-baselines-2026-07",
+  "proposal_path": "toolbase/proposals/mitsubishi-bf-ccgt09t304ts2-baselines.json",
+  "proposal_sha256": "c4eeb96b0c3db5dbaedc0dc3e1901dd6e1e68824b1c583b2e90a313fd0d7c1da",
+  "review_started_at": "2026-07-22",
+  "status": "complete",
+  "review_completed_at": "2026-07-22",
+  "import_allowed": true,
+  "decisions": [
+    {
+      "proposal_row_id": "mitsubishi-bf-ccgt-001",
+      "tool_id": "BF-CCGT09T304TS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_confirmation_in_hermes_chat",
+      "approved_scope": [
+        "publish Mitsubishi grade- and breaker-level cutting conditions as adjustable starting points",
+        "correct TS2 grade interpretation and set BF breaker",
+        "add exact BC8110 and BC8210 product-grade identities while preserving historical K provenance"
+      ],
+      "notes": "Greg explicitly stated that Mitsubishi breaker-level cutting conditions should be displayed as good starting points because Mitsubishi commonly retains cutting conditions across a breaker family and machinists adjust from the baseline. Greg also stated that his shop never cuts dry; profiles therefore select flood/wet while retaining Mitsubishi source wording that permits Dry or Wet."
+    }
+  ]
+}

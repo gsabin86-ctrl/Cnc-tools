@@ -452,6 +452,7 @@
         <div><span>Surface speed</span><b>${escapeHtml(rangeMarkup(profile.surface_speed_min, profile.surface_speed_max, profile.surface_speed_unit))}</b>${speedStart(profile) ? `<small>Start: ${escapeHtml(speedStart(profile))}</small>` : ''}</div>
         <div><span>Feed per revolution</span><b>${escapeHtml(rangeMarkup(profile.feed_min, profile.feed_max, profile.feed_unit))}</b></div>
         <div><span>Depth of cut</span><b>${escapeHtml(rangeMarkup(profile.depth_of_cut_min, profile.depth_of_cut_max, profile.depth_of_cut_unit))}</b></div>
+        <div><span>Coolant</span><b>${escapeHtml(humanize(profile.coolant_condition || 'unknown'))}</b></div>
       </div>
       <div class="calculator"><label>Stock diameter (${calculatorUnit(profile)})<input type="number" inputmode="decimal" min="0" step="any" data-calc-profile="${escapeHtml(profile.id)}" placeholder="Enter diameter"></label><p class="calculator-output" data-calc-output="${escapeHtml(profile.id)}">Uses the manufacturer start speed; the calculated RPM is not stored as source data.</p></div>
       <p class="audit-line">${escapeHtml(sourceLocation(profile) || 'Source location not recorded')}</p>

@@ -1,0 +1,27 @@
+{
+  "snapshot_schema": 1,
+  "retrieved_at": "2026-07-22",
+  "manufacturer": "Mitsubishi Materials",
+  "source_url": "https://www.mmc-carbide.com/en_jp/webcatalog/product/10644553",
+  "title": "BF-CCGT09T304TS2 BC8210",
+  "edp_number": "10644553",
+  "iso_order_number": "BF-CCGT09T304TS2",
+  "ansi_order_number": "BF-CCGT32.51-TS2",
+  "tool_material": "Coated CBN",
+  "grade": "BC8210",
+  "iso_material_group_display": "H",
+  "hand": "N",
+  "cutting_edges": 2,
+  "dimensions_mm": {
+    "D1": 4.4,
+    "IC": 9.525,
+    "S": 3.97,
+    "RE": 0.4,
+    "LE": 1.8
+  },
+  "angles": {
+    "EPSR": "80 degrees",
+    "AN": "7 degrees"
+  },
+  "breaker_field": "BF"
+}

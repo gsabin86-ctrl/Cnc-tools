@@ -210,12 +210,19 @@ def validate_proposal(proposal_path: Path, database_path: Path) -> tuple[dict[st
                     unit = profile.get(f"{prefix}_unit")
                     if minimum is None and maximum is None:
                         continue
-                    if not isinstance(minimum, (int, float)) or not isinstance(maximum, (int, float)):
-                        errors.append(f"{context_profile}: {prefix} range must be numeric")
-                    elif minimum > maximum:
+                    if minimum is not None and not isinstance(minimum, (int, float)):
+                        errors.append(f"{context_profile}: {prefix} minimum must be numeric when stated")
+                    if maximum is not None and not isinstance(maximum, (int, float)):
+                        errors.append(f"{context_profile}: {prefix} maximum must be numeric when stated")
+                    if (
+                        isinstance(minimum, (int, float))
+                        and isinstance(maximum, (int, float))
+                        and minimum > maximum
+                    ):
                         errors.append(f"{context_profile}: {prefix} minimum exceeds maximum")
                     if not unit:
                         errors.append(f"{context_profile}: {prefix}_unit is required")
+
                 speed_start = profile.get("surface_speed_start")
                 speed_min = profile.get("surface_speed_min")
                 speed_max = profile.get("surface_speed_max")
@@ -328,6 +335,10 @@ def compile_row(
             "geometry": tool_updates.get("geometry") or row.get("current_summary", {}).get("geometry") or "unknown",
             "lifecycle_status": tool_updates.get("lifecycle_status") or "unknown",
             "evidence_status": "catalog_source",
+            "grade": tool_updates.get("grade"),
+            "grade_reviewed": "grade" in tool_updates,
+            "chipbreaker": tool_updates.get("chipbreaker"),
+            "chipbreaker_reviewed": "chipbreaker" in tool_updates,
         },
         "aliases": proposed.get("aliases") or [],
         "source_ids": sorted(
@@ -348,6 +359,7 @@ def compile_row(
         or sorted({item["fact_key"] for item in proposed.get("facts") or []}),
         "facts": [],
         "grade_options": [],
+        "reject_grade_codes": proposed.get("reject_grade_codes") or [],
         "replace_material_recommendations": bool(proposed.get("replace_material_recommendations")),
         "material_recommendations": [],
         "cutting_profiles": [],

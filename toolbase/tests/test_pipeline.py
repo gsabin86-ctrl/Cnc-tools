@@ -835,6 +835,117 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(role_counts, {"cutting_speed": 12, "geometry_parameters": 12, "identity": 12})
             connection.close()
 
+    def test_mitsubishi_bf_ccgt_baselines_are_grade_and_breaker_scoped(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            db_path, json_path, _ = self.build(Path(temp))
+            connection = sqlite3.connect(db_path)
+            try:
+                tool = connection.execute(
+                    "SELECT grade, chipbreaker, description FROM tools WHERE id=?",
+                    ("BF-CCGT09T304TS2",),
+                ).fetchone()
+                self.assertIsNone(tool[0])
+                self.assertEqual(tool[1], "BF")
+                self.assertIn("machinist adjustment", tool[2])
+
+                grades = connection.execute(
+                    """
+                    SELECT g.code, o.full_order_number, o.verification_status
+                    FROM tool_grade_options o JOIN grades g ON g.id=o.grade_id
+                    WHERE o.tool_id=? AND o.option_kind='available_grade'
+                    ORDER BY g.code
+                    """,
+                    ("BF-CCGT09T304TS2",),
+                ).fetchall()
+                self.assertEqual(
+                    grades,
+                    [
+                        ("BC8110", "BF-CCGT09T304TS2 BC8110", "manufacturer_verified"),
+                        ("BC8210", "BF-CCGT09T304TS2 BC8210", "manufacturer_verified"),
+                    ],
+                )
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT o.verification_status
+                        FROM tool_grade_options o JOIN grades g ON g.id=o.grade_id
+                        WHERE o.tool_id=? AND g.code='TS2' AND o.option_kind='legacy_claim'
+                        """,
+                        ("BF-CCGT09T304TS2",),
+                    ).fetchone()[0],
+                    "rejected",
+                )
+                public_tool = next(
+                    item
+                    for item in json.loads(json_path.read_text(encoding="utf-8"))["tools"]
+                    if item["id"] == "BF-CCGT09T304TS2"
+                )
+                self.assertEqual(
+                    [option["code"] for option in public_tool["grade_options"]],
+                    ["BC8110", "BC8210"],
+                )
+
+                recommendations = connection.execute(
+                    """
+                    SELECT r.iso_group, coalesce(g.code, ''), r.verification_status
+                    FROM tool_material_recommendations r
+                    LEFT JOIN grades g ON g.id=r.grade_id
+                    WHERE r.tool_id=? AND r.is_current=1
+                    ORDER BY r.iso_group, g.code
+                    """,
+                    ("BF-CCGT09T304TS2",),
+                ).fetchall()
+                self.assertIn(("K", "", "source_located"), recommendations)
+                self.assertIn(("H", "BC8110", "manufacturer_verified"), recommendations)
+                self.assertIn(("H", "BC8210", "manufacturer_verified"), recommendations)
+
+                profiles = connection.execute(
+                    """
+                    SELECT source_grade, cut_condition, coolant_condition,
+                           surface_speed_min, surface_speed_start, surface_speed_max,
+                           feed_min, feed_max, depth_of_cut_min, depth_of_cut_max,
+                           source_chipbreaker, verification_status, notes
+                    FROM cutting_data_profiles
+                    WHERE tool_id=?
+                    ORDER BY source_grade, cut_condition
+                    """,
+                    ("BF-CCGT09T304TS2",),
+                ).fetchall()
+                self.assertEqual(len(profiles), 3)
+                expected = {
+                    ("BC8110", "general"): (
+                        "flood", 100.584, 199.644, 230.124,
+                        None, 0.3048, None, 0.7874,
+                    ),
+                    ("BC8210", "general"): (
+                        "flood", 100.584, 199.644, 300.228,
+                        None, 0.2032, None, 0.3556,
+                    ),
+                    ("BC8210", "finishing"): (
+                        "flood", 79.248, None, 199.644,
+                        None, 0.3048, 0.1016, 0.3048,
+                    ),
+                }
+                for row in profiles:
+                    key = (row[0], row[1])
+                    self.assertIn(key, expected)
+                    self.assertEqual(row[2:10], expected[key])
+                    self.assertEqual(row[10], "BF")
+                    self.assertEqual(row[11], "catalog_verified")
+                    self.assertIn("starting points", row[12])
+
+                batch = connection.execute(
+                    "SELECT row_count, catalog_sha256 FROM review_batches WHERE proposal_id=?",
+                    ("mitsubishi-bf-ccgt09t304ts2-baselines-2026-07",),
+                ).fetchone()
+                self.assertEqual(batch[0], 1)
+                self.assertEqual(
+                    batch[1],
+                    sha256(ROOT / "data" / "source_snapshots" / "mitsubishi-c010a-cbn-pcd-inserts.pdf"),
+                )
+            finally:
+                connection.close()
+
     def test_build_is_deterministic(self) -> None:
         with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
             first_db, first_json, _ = self.build(Path(first))

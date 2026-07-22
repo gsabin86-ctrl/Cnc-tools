@@ -1,0 +1,381 @@
+{
+  "schema_version": 2,
+  "proposal_id": "mitsubishi-bf-ccgt09t304ts2-baselines-2026-07",
+  "title": "Mitsubishi BF-CCGT09T304TS2 grade identities and manufacturer baseline cutting conditions",
+  "created_at": "2026-07-22",
+  "status": "source_extracted",
+  "import_allowed": false,
+  "purpose": "Correct the legacy TS2 grade interpretation and publish manufacturer grade- and BF-breaker-level cutting conditions as adjustable machinist starting points.",
+  "sources": [
+    {
+      "source_id": "source-140cd7506a42b01f",
+      "batch_role": "primary_catalog",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "Mitsubishi Materials CBN & PCD Inserts Catalog C010A",
+      "source_type": "manufacturer_catalog",
+      "url": "https://data.mmc-carbide.com/5316/9575/0325/catalog_c010a_cbn_pcd_inserts.pdf",
+      "local_path": "toolbase/data/source_snapshots/mitsubishi-c010a-cbn-pcd-inserts.pdf",
+      "content_sha256": "3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de",
+      "page_count": 64,
+      "page_ref": "PDF pages 9, 12, 39 (printed B008, B011, B038)",
+      "document_edition": "C010A",
+      "edition_evidence": "Manufacturer-hosted C010A CBN/PCD catalog retrieved 2026-07-22.",
+      "raw_reference": "https://data.mmc-carbide.com/5316/9575/0325/catalog_c010a_cbn_pcd_inserts.pdf | SHA-256 3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de"
+    },
+    {
+      "source_id": "source-934b453f789a6c91",
+      "batch_role": "verification",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "BF-CCGT09T304TS2 BC8110 EDP 836772",
+      "source_type": "manufacturer_product_page",
+      "url": "https://www.mmc-carbide.com/en_jp/webcatalog/product/836772",
+      "local_path": "toolbase/data/source_snapshots/mitsubishi-bf-ccgt09t304ts2-bc8110-836772-2026-07-22.json",
+      "content_sha256": "62d1596589a8a1363cfcfd1175936560c03d2112d2b598aa9af8e33c060fd3e9",
+      "page_count": 1,
+      "page_ref": "Reduced product-page snapshot",
+      "document_edition": "Retrieved 2026-07-22",
+      "edition_evidence": "Exact manufacturer product identity and dimensions.",
+      "raw_reference": "https://www.mmc-carbide.com/en_jp/webcatalog/product/836772 | SHA-256 62d1596589a8a1363cfcfd1175936560c03d2112d2b598aa9af8e33c060fd3e9"
+    },
+    {
+      "source_id": "source-35cb4d9e8ddf5790",
+      "batch_role": "verification",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "BF-CCGT09T304TS2 BC8210 EDP 10644553",
+      "source_type": "manufacturer_product_page",
+      "url": "https://www.mmc-carbide.com/en_jp/webcatalog/product/10644553",
+      "local_path": "toolbase/data/source_snapshots/mitsubishi-bf-ccgt09t304ts2-bc8210-10644553-2026-07-22.json",
+      "content_sha256": "b1fcc05eb2eeeab6ca70c6b0befc8ac8e3ecfc6e256f928a03f61ac7816f264a",
+      "page_count": 1,
+      "page_ref": "Reduced product-page snapshot",
+      "document_edition": "Retrieved 2026-07-22",
+      "edition_evidence": "Exact manufacturer product identity and dimensions.",
+      "raw_reference": "https://www.mmc-carbide.com/en_jp/webcatalog/product/10644553 | SHA-256 b1fcc05eb2eeeab6ca70c6b0befc8ac8e3ecfc6e256f928a03f61ac7816f264a"
+    }
+  ],
+  "rows": [
+    {
+      "proposal_row_id": "mitsubishi-bf-ccgt-001",
+      "tool_lookup": {
+        "tool_id": "BF-CCGT09T304TS2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "TS2",
+        "geometry": null,
+        "review_note": "Legacy import misclassified TS2 as grade and contains an unbound K recommendation; preserve K provenance while adding current H grade-bound guidance."
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Mitsubishi Materials positive 80-degree rhombic coated-CBN finishing insert, ISO BF-CCGT09T304TS2 / ANSI BF-CCGT32.51-TS2, with BF breaker and TS2 edge preparation. Exact manufacturer variants are EDP 836772 grade BC8110 and EDP 10644553 grade BC8210. Published cutting conditions are manufacturer grade- or breaker-level baselines intended for machinist adjustment.",
+          "geometry": "positive 80-degree rhombic CBN finishing",
+          "lifecycle_status": "active",
+          "grade": null,
+          "chipbreaker": "BF"
+        },
+        "aliases": [
+          {
+            "alias": "BF-CCGT32.51-TS2",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "836772",
+            "alias_type": "manufacturer_edp"
+          },
+          {
+            "alias": "10644553",
+            "alias_type": "manufacturer_edp"
+          }
+        ],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "coated-CBN",
+          "BF",
+          "TS2",
+          "finishing",
+          "hardened-materials",
+          "turning",
+          "baseline-cutting-data"
+        ],
+        "replace_fact_keys": [
+          "chipbreaker",
+          "edge_preparation",
+          "grade_interpretation",
+          "tool_material",
+          "cutting_edges",
+          "inscribed_circle_mm",
+          "thickness_mm",
+          "corner_radius_mm",
+          "le_mm"
+        ],
+        "facts": [
+          {
+            "fact_key": "chipbreaker",
+            "value_text": "BF",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-934b453f789a6c91",
+              "pdf_page": 1,
+              "source_table_ref": "Exact product properties",
+              "source_raw_text": "BF-CCGT09T304TS2 BC8110; EDP No 836772; Tool Material Coated CBN; Grade BC8110; H; HAND N; CNC 2; D1 4.4; IC 9.525; S 3.97; RE 0.4; LE 1.8; EPSR 80 degrees; AN 7 degrees; CBMD_catalog BF.",
+              "extraction_method": "manufacturer_page"
+            }
+          },
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "TS2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 39,
+              "source_table_ref": "Positive CBN insert standards / BF-CCGT row",
+              "source_raw_text": "BF-CCGT32.51-TS2 / BF-CCGT09T304TS2 is listed across actual grade columns; BF is the breaker family and TS2 is part of the edge-preparation/order designation.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "TS2 is not the material grade; exact listed product grades include BC8110 and BC8210.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-934b453f789a6c91",
+              "pdf_page": 1,
+              "source_table_ref": "Exact product title and Grade",
+              "source_raw_text": "BF-CCGT09T304TS2 BC8110; EDP No 836772; Tool Material Coated CBN; Grade BC8110; H; HAND N; CNC 2; D1 4.4; IC 9.525; S 3.97; RE 0.4; LE 1.8; EPSR 80 degrees; AN 7 degrees; CBMD_catalog BF.",
+              "extraction_method": "manufacturer_page"
+            }
+          },
+          {
+            "fact_key": "tool_material",
+            "value_text": "Coated CBN",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-934b453f789a6c91",
+              "pdf_page": 1,
+              "source_table_ref": "Exact product properties",
+              "source_raw_text": "BF-CCGT09T304TS2 BC8110; EDP No 836772; Tool Material Coated CBN; Grade BC8110; H; HAND N; CNC 2; D1 4.4; IC 9.525; S 3.97; RE 0.4; LE 1.8; EPSR 80 degrees; AN 7 degrees; CBMD_catalog BF.",
+              "extraction_method": "manufacturer_page"
+            }
+          },
+          {
+            "fact_key": "cutting_edges",
+            "value_number": 2,
+            "unit": "count",
+            "evidence": {
+              "source_id": "source-934b453f789a6c91",
+              "pdf_page": 1,
+              "source_table_ref": "Exact product dimensions",
+              "source_raw_text": "BF-CCGT09T304TS2 BC8110; EDP No 836772; Tool Material Coated CBN; Grade BC8110; H; HAND N; CNC 2; D1 4.4; IC 9.525; S 3.97; RE 0.4; LE 1.8; EPSR 80 degrees; AN 7 degrees; CBMD_catalog BF.",
+              "extraction_method": "manufacturer_page"
+            }
+          },
+          {
+            "fact_key": "inscribed_circle_mm",
+            "value_number": 9.525,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-934b453f789a6c91",
+              "pdf_page": 1,
+              "source_table_ref": "Exact product dimensions",
+              "source_raw_text": "BF-CCGT09T304TS2 BC8110; EDP No 836772; Tool Material Coated CBN; Grade BC8110; H; HAND N; CNC 2; D1 4.4; IC 9.525; S 3.97; RE 0.4; LE 1.8; EPSR 80 degrees; AN 7 degrees; CBMD_catalog BF.",
+              "extraction_method": "manufacturer_page"
+            }
+          },
+          {
+            "fact_key": "thickness_mm",
+            "value_number": 3.97,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-934b453f789a6c91",
+              "pdf_page": 1,
+              "source_table_ref": "Exact product dimensions",
+              "source_raw_text": "BF-CCGT09T304TS2 BC8110; EDP No 836772; Tool Material Coated CBN; Grade BC8110; H; HAND N; CNC 2; D1 4.4; IC 9.525; S 3.97; RE 0.4; LE 1.8; EPSR 80 degrees; AN 7 degrees; CBMD_catalog BF.",
+              "extraction_method": "manufacturer_page"
+            }
+          },
+          {
+            "fact_key": "corner_radius_mm",
+            "value_number": 0.4,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-934b453f789a6c91",
+              "pdf_page": 1,
+              "source_table_ref": "Exact product dimensions",
+              "source_raw_text": "BF-CCGT09T304TS2 BC8110; EDP No 836772; Tool Material Coated CBN; Grade BC8110; H; HAND N; CNC 2; D1 4.4; IC 9.525; S 3.97; RE 0.4; LE 1.8; EPSR 80 degrees; AN 7 degrees; CBMD_catalog BF.",
+              "extraction_method": "manufacturer_page"
+            }
+          },
+          {
+            "fact_key": "le_mm",
+            "value_number": 1.8,
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-934b453f789a6c91",
+              "pdf_page": 1,
+              "source_table_ref": "Exact product dimensions",
+              "source_raw_text": "BF-CCGT09T304TS2 BC8110; EDP No 836772; Tool Material Coated CBN; Grade BC8110; H; HAND N; CNC 2; D1 4.4; IC 9.525; S 3.97; RE 0.4; LE 1.8; EPSR 80 degrees; AN 7 degrees; CBMD_catalog BF.",
+              "extraction_method": "manufacturer_page"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "TS2"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8110",
+            "option_kind": "available_grade",
+            "full_order_number": "BF-CCGT09T304TS2 BC8110",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-934b453f789a6c91",
+              "pdf_page": 1,
+              "source_table_ref": "Exact product title and Grade",
+              "source_raw_text": "BF-CCGT09T304TS2 BC8110; EDP No 836772; Tool Material Coated CBN; Grade BC8110; H; HAND N; CNC 2; D1 4.4; IC 9.525; S 3.97; RE 0.4; LE 1.8; EPSR 80 degrees; AN 7 degrees; CBMD_catalog BF.",
+              "extraction_method": "manufacturer_page"
+            }
+          },
+          {
+            "code": "BC8210",
+            "option_kind": "available_grade",
+            "full_order_number": "BF-CCGT09T304TS2 BC8210",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-35cb4d9e8ddf5790",
+              "pdf_page": 1,
+              "source_table_ref": "Exact product title and Grade",
+              "source_raw_text": "BF-CCGT09T304TS2 BC8210; EDP No 10644553; Tool Material Coated CBN; Grade BC8210; H; HAND N; CNC 2; D1 4.4; IC 9.525; S 3.97; RE 0.4; LE 1.8; EPSR 80 degrees; AN 7 degrees; CBMD_catalog BF.",
+              "extraction_method": "manufacturer_page"
+            }
+          }
+        ],
+        "replace_material_recommendations": false,
+        "material_recommendations": [
+          {
+            "grade_code": "BC8110",
+            "iso_group": "H",
+            "material_subgroup": "Hardened steel",
+            "suitability": "recommended",
+            "notes": "Current exact product page labels H; grade-level catalog baseline is continuous cutting.",
+            "evidence": {
+              "source_id": "source-934b453f789a6c91",
+              "pdf_page": 1,
+              "source_table_ref": "Exact product H application label",
+              "source_raw_text": "BF-CCGT09T304TS2 BC8110; EDP No 836772; Tool Material Coated CBN; Grade BC8110; H; HAND N; CNC 2; D1 4.4; IC 9.525; S 3.97; RE 0.4; LE 1.8; EPSR 80 degrees; AN 7 degrees; CBMD_catalog BF.",
+              "extraction_method": "manufacturer_page"
+            }
+          },
+          {
+            "grade_code": "BC8210",
+            "iso_group": "H",
+            "material_subgroup": "Hardened steel",
+            "suitability": "recommended",
+            "notes": "Current exact product page labels H; catalog includes continuous and BF-breaker finishing baselines.",
+            "evidence": {
+              "source_id": "source-35cb4d9e8ddf5790",
+              "pdf_page": 1,
+              "source_table_ref": "Exact product H application label",
+              "source_raw_text": "BF-CCGT09T304TS2 BC8210; EDP No 10644553; Tool Material Coated CBN; Grade BC8210; H; HAND N; CNC 2; D1 4.4; IC 9.525; S 3.97; RE 0.4; LE 1.8; EPSR 80 degrees; AN 7 degrees; CBMD_catalog BF.",
+              "extraction_method": "manufacturer_page"
+            }
+          }
+        ],
+        "cutting_profiles": [
+          {
+            "source_part_number": "BF-CCGT09T304TS2",
+            "source_grade": "BC8110",
+            "source_geometry": "positive 80-degree rhombic, TS2 edge preparation",
+            "source_chipbreaker": "BF",
+            "source_material_label": "Hardened Steel",
+            "iso_material_group": "H",
+            "material_subgroup": "Hardened steel",
+            "operation_type": "turning",
+            "cut_condition": "general",
+            "coolant_condition": "flood",
+            "surface_speed_min": 100.584,
+            "surface_speed_start": 199.644,
+            "surface_speed_max": 230.124,
+            "surface_speed_unit": "m_per_min",
+            "feed_min": null,
+            "feed_max": 0.3048,
+            "feed_unit": "mm_per_rev",
+            "depth_of_cut_min": null,
+            "depth_of_cut_max": 0.7874,
+            "depth_of_cut_unit": "mm",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 9,
+              "source_table_ref": "B008 Recommended Cutting Conditions / BC8110",
+              "source_raw_text": "Hardened Steel; Continuous cutting for general purpose; BC8110; Cutting Speed vc 655 (330-755) SFM; Feed f <.012 IPR; Depth of Cut ap <.031 inch; Dry, Wet.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "source_part_number": "BF-CCGT09T304TS2",
+            "source_grade": "BC8210",
+            "source_geometry": "positive 80-degree rhombic, TS2 edge preparation",
+            "source_chipbreaker": "BF",
+            "source_material_label": "Hardened Steel",
+            "iso_material_group": "H",
+            "material_subgroup": "Hardened steel",
+            "operation_type": "turning",
+            "cut_condition": "general",
+            "coolant_condition": "flood",
+            "surface_speed_min": 100.584,
+            "surface_speed_start": 199.644,
+            "surface_speed_max": 300.228,
+            "surface_speed_unit": "m_per_min",
+            "feed_min": null,
+            "feed_max": 0.2032,
+            "feed_unit": "mm_per_rev",
+            "depth_of_cut_min": null,
+            "depth_of_cut_max": 0.3556,
+            "depth_of_cut_unit": "mm",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 9,
+              "source_table_ref": "B008 Recommended Cutting Conditions / BC8210",
+              "source_raw_text": "Hardened Steel; Continuous cutting for general purpose; BC8210; Cutting Speed vc 655 (330-985) SFM; Feed f <.008 IPR; Depth of Cut ap <.014 inch; Dry, Wet.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "source_part_number": "BF-CCGT09T304TS2",
+            "source_grade": "BC8210",
+            "source_geometry": "positive 80-degree rhombic, TS2 edge preparation",
+            "source_chipbreaker": "BF",
+            "source_material_label": "Hardened Steel",
+            "iso_material_group": "H",
+            "material_subgroup": "Hardened steel",
+            "operation_type": "turning",
+            "cut_condition": "finishing",
+            "coolant_condition": "flood",
+            "surface_speed_min": 79.248,
+            "surface_speed_start": null,
+            "surface_speed_max": 199.644,
+            "surface_speed_unit": "m_per_min",
+            "feed_min": null,
+            "feed_max": 0.3048,
+            "feed_unit": "mm_per_rev",
+            "depth_of_cut_min": 0.1016,
+            "depth_of_cut_max": 0.3048,
+            "depth_of_cut_unit": "mm",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 12,
+              "source_table_ref": "B011 BF Breaker Recommended Cutting Conditions",
+              "source_raw_text": "BF Breaker (BC8210, BC8220); finish cutting at depths of .012 inch or less; Recommended Cutting Conditions: vc=260-655 SFM, f<.012 IPR, ap=.004-.012 inch.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
