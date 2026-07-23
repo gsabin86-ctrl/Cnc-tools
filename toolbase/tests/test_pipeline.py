@@ -179,6 +179,11 @@ class PipelineTests(unittest.TestCase):
             self.assertTrue(all("verification_status" in tool for tool in search_index["tools"]))
             self.assertTrue(all("review_status" in tool for tool in search_index["tools"]))
             self.assertTrue(all("grade_codes" in tool for tool in search_index["tools"]))
+            self.assertTrue(all("corner_radius_mm" in tool for tool in search_index["tools"]))
+            index_by_id = {tool["id"]: tool for tool in search_index["tools"]}
+            self.assertEqual(index_by_id["DCGT-11-T3-01-UM-1105"]["corner_radius_mm"], 0.1)
+            self.assertEqual(index_by_id["DGN 2002J IC908"]["corner_radius_mm"], 0.2)
+            self.assertTrue(any(tool["corner_radius_mm"] is None for tool in search_index["tools"]))
             self.assertTrue(any(tool["geometry_shape"] for tool in search_index["tools"] if tool["component_type"] == "insert"))
             sandvik_t3 = details["tools_by_id"]["TCMX-16-T3-08-WF"]["geometry_display"]
             self.assertIsNotNone(sandvik_t3)
@@ -212,6 +217,76 @@ class PipelineTests(unittest.TestCase):
         self.assertIn("const display = a.value != null ? a : b", app)
         self.assertIn("${display.unit}", app)
         self.assertIn("profile.coolant_condition !== 'unknown'", app)
+
+    def test_corner_radius_normalization_rejects_nonfinite_and_malformed_values(self) -> None:
+        scripts_path = str(ROOT / "scripts")
+        sys.path.insert(0, scripts_path)
+        try:
+            spec = importlib.util.spec_from_file_location("toolbase_build_radius_test", BUILD_SCRIPT)
+            self.assertIsNotNone(spec)
+            self.assertIsNotNone(spec.loader)
+            build_module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(build_module)
+        finally:
+            sys.path.remove(scripts_path)
+
+        def geometry(value: object, unit: object) -> dict[str, object]:
+            return {
+                "dimensions": [
+                    {
+                        "label": "Corner radius",
+                        "value": value,
+                        "unit": unit,
+                        "source_ids": ["source-test"],
+                    }
+                ]
+            }
+
+        cases = [
+            (geometry(0.2, "mm"), 0.2),
+            (geometry(0, "mm"), 0.0),
+            (geometry(True, "mm"), None),
+            (geometry(-0.2, "mm"), None),
+            (geometry(float("nan"), "mm"), None),
+            (geometry(float("inf"), "mm"), None),
+            (geometry(float("-inf"), "mm"), None),
+            (geometry(0.2, "in"), None),
+            (geometry(0.2, None), None),
+            (geometry("0.2", "mm"), None),
+            (geometry("0.2 mm", None), 0.2),
+            (geometry(" 0.2 MM ", None), 0.2),
+            (geometry("none", None), None),
+            (geometry("0.2 in", None), None),
+            (geometry("R 0.2 mm", None), None),
+            (geometry("0.2 mm trailing", None), None),
+            (geometry(f"{'9' * 400} mm", None), None),
+            ({"dimensions": [{"label": "Corner radius", "value": 0.2, "unit": "mm"}]}, None),
+            (
+                {
+                    "dimensions": [
+                        {"label": "Corner radius", "value": 0.2, "unit": "mm", "source_ids": []}
+                    ]
+                },
+                None,
+            ),
+            ({"dimensions": []}, None),
+        ]
+        for source_geometry, expected in cases:
+            with self.subTest(source_geometry=source_geometry):
+                self.assertEqual(build_module.corner_radius_mm_from_geometry(source_geometry), expected)
+
+    def test_corner_radius_filter_is_index_backed_and_url_shareable(self) -> None:
+        viewer_root = ROOT.parent / "docs" / "v3"
+        index_html = (viewer_root / "index.html").read_text(encoding="utf-8")
+        viewer_script = (viewer_root / "app.js").read_text(encoding="utf-8")
+
+        self.assertIn('<label>Corner radius<select id="corner-radius-filter">', index_html)
+        self.assertIn("cornerRadius: $('#corner-radius-filter')", viewer_script)
+        self.assertIn("radius: elements.cornerRadius", viewer_script)
+        self.assertIn("bump(buckets.cornerRadius, tool.corner_radius_mm)", viewer_script)
+        self.assertIn("Number(tool.corner_radius_mm) === Number(elements.cornerRadius.value)", viewer_script)
+        self.assertIn("`${rounded(value)} mm`", viewer_script)
+        self.assertGreaterEqual(viewer_script.count("elements.cornerRadius, elements.cutting"), 3)
 
     def test_manufacturer_specific_insert_geometry_uses_existing_facts(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -274,10 +349,13 @@ class PipelineTests(unittest.TestCase):
         viewer_root = ROOT.parent / "docs" / "v3"
         viewer_script = (viewer_root / "app.js").read_text(encoding="utf-8")
         service_worker = (viewer_root / "sw.js").read_text(encoding="utf-8")
+        index_html = (viewer_root / "index.html").read_text(encoding="utf-8")
         app_version = viewer_script.split("const STATIC_VERSION = '", 1)[1].split("'", 1)[0]
         worker_version = service_worker.split("const VERSION = '", 1)[1].split("'", 1)[0]
         self.assertEqual(app_version, worker_version)
-        self.assertEqual(app_version, "3.4.0-shell-8")
+        self.assertEqual(app_version, "3.4.0-shell-9")
+        for asset in ("manifest.webmanifest", "app.css", "app.js"):
+            self.assertIn(f'{asset}?v={app_version}', index_html)
 
     def test_homepage_opens_directly_to_catalog_without_promotional_hero(self) -> None:
         viewer_root = ROOT.parent / "docs" / "v3"

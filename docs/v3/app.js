@@ -2,7 +2,7 @@
   'use strict'
 
   const PAGE_SIZE = 100
-  const STATIC_VERSION = '3.4.0-shell-8'
+  const STATIC_VERSION = '3.4.0-shell-9'
   const MATERIAL_NAMES = {
     P: 'Steel', M: 'Stainless steel', K: 'Cast iron', N: 'Non-ferrous',
     S: 'Heat-resistant alloys', H: 'Hardened materials', O: 'Other', unknown: 'Unknown'
@@ -40,6 +40,7 @@
     material: $('#material-filter'),
     operation: $('#operation-filter'),
     geometry: $('#geometry-filter'),
+    cornerRadius: $('#corner-radius-filter'),
     cutting: $('#cutting-filter'),
     clear: $('#clear-filters'),
     filterButton: $('#filter-button'),
@@ -109,6 +110,7 @@
       material: elements.material,
       operation: elements.operation,
       geometry: elements.geometry,
+      radius: elements.cornerRadius,
       cutting: elements.cutting
     }
     for (const [name, element] of Object.entries(fields)) {
@@ -125,6 +127,7 @@
       q: elements.search.value.trim(), maker: elements.manufacturer.value,
       type: elements.component.value, material: elements.material.value,
       operation: elements.operation.value, geometry: elements.geometry.value,
+      radius: elements.cornerRadius.value,
       cutting: elements.cutting.value
     }
     for (const [name, value] of Object.entries(values)) if (value) params.set(name, value)
@@ -149,13 +152,16 @@
   function populateFilters() {
     const buckets = {
       manufacturer: new Map(), component: new Map(), material: new Map(),
-      operation: new Map(), geometry: new Map()
+      operation: new Map(), geometry: new Map(), cornerRadius: new Map()
     }
-    const bump = (bucket, value) => { if (value) bucket.set(value, (bucket.get(value) || 0) + 1) }
+    const bump = (bucket, value) => {
+      if (value !== null && value !== undefined && value !== '') bucket.set(value, (bucket.get(value) || 0) + 1)
+    }
     state.tools.forEach(tool => {
       bump(buckets.manufacturer, tool.manufacturer)
       bump(buckets.component, tool.component_type)
       bump(buckets.geometry, tool.geometry_shape)
+      bump(buckets.cornerRadius, tool.corner_radius_mm)
       unique(tool.material_groups).forEach(value => bump(buckets.material, value))
       unique(tool.operation_types).forEach(value => bump(buckets.operation, value))
     })
@@ -164,6 +170,9 @@
     addOptions(elements.material, buckets.material, value => `${value} · ${MATERIAL_NAMES[value] || value}`)
     addOptions(elements.operation, buckets.operation)
     addOptions(elements.geometry, buckets.geometry, value => value)
+    elements.cornerRadius.insertAdjacentHTML('beforeend', [...buckets.cornerRadius.entries()]
+      .sort((a, b) => Number(a[0]) - Number(b[0]))
+      .map(([value, itemCount]) => option(value, `${rounded(value)} mm`, itemCount)).join(''))
   }
 
   function renderBuildLabel() {
@@ -185,7 +194,7 @@
 
   function activeFilterCount() {
     return [elements.manufacturer, elements.component, elements.material, elements.operation,
-      elements.geometry, elements.cutting].filter(element => element.value).length
+      elements.geometry, elements.cornerRadius, elements.cutting].filter(element => element.value).length
   }
 
   function applyFilters({ sync = true } = {}) {
@@ -199,6 +208,8 @@
       .filter(({ tool }) => !elements.material.value || tool.material_groups.includes(elements.material.value))
       .filter(({ tool }) => !elements.operation.value || tool.operation_types.includes(elements.operation.value))
       .filter(({ tool }) => !elements.geometry.value || tool.geometry_shape === elements.geometry.value)
+      .filter(({ tool }) => !elements.cornerRadius.value ||
+        (tool.corner_radius_mm != null && Number(tool.corner_radius_mm) === Number(elements.cornerRadius.value)))
       .filter(({ tool }) => elements.cutting.value !== 'yes' || tool.has_cutting_data)
       .filter(({ tool }) => elements.cutting.value !== 'no' || !tool.has_cutting_data)
       .sort((a, b) => b.score - a.score ||
@@ -563,7 +574,7 @@
   function clearFilters() {
     elements.search.value = ''
     ;[elements.manufacturer, elements.component, elements.material, elements.operation,
-      elements.geometry, elements.cutting].forEach(element => { element.value = '' })
+      elements.geometry, elements.cornerRadius, elements.cutting].forEach(element => { element.value = '' })
     applyFilters()
   }
 
@@ -578,7 +589,7 @@
       timer = setTimeout(() => applyFilters(), 90)
     })
     ;[elements.manufacturer, elements.component, elements.material, elements.operation,
-      elements.geometry, elements.cutting].forEach(element => element.addEventListener('change', () => applyFilters()))
+      elements.geometry, elements.cornerRadius, elements.cutting].forEach(element => element.addEventListener('change', () => applyFilters()))
     elements.clear.addEventListener('click', clearFilters)
     elements.more.addEventListener('click', () => { state.visible += PAGE_SIZE; renderList() })
     elements.filterButton.addEventListener('click', () => {

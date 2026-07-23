@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import os
 import re
 import shutil
@@ -2180,6 +2181,42 @@ def insert_geometry_display(tool: dict[str, Any]) -> dict[str, Any] | None:
     }
 
 
+def corner_radius_mm_from_geometry(geometry: dict[str, Any]) -> float | None:
+    dimension = next(
+        (
+            item
+            for item in geometry.get("dimensions") or []
+            if str(item.get("label") or "").casefold() == "corner radius"
+        ),
+        None,
+    )
+    if not dimension:
+        return None
+    source_ids = dimension.get("source_ids")
+    if not isinstance(source_ids, list) or not any(
+        isinstance(source_id, str) and source_id.strip() for source_id in source_ids
+    ):
+        return None
+    value = dimension.get("value")
+    unit = str(dimension.get("unit") or "").casefold()
+    if unit == "mm" and isinstance(value, (int, float)) and not isinstance(value, bool):
+        try:
+            normalized = float(value)
+        except (OverflowError, ValueError):
+            return None
+        return normalized if math.isfinite(normalized) and normalized >= 0 else None
+    if unit:
+        return None
+    match = re.fullmatch(r"\s*(\d+(?:\.\d+)?)\s*mm\s*", str(value or ""), re.IGNORECASE)
+    if not match:
+        return None
+    try:
+        normalized = float(match.group(1))
+    except (OverflowError, ValueError):
+        return None
+    return normalized if math.isfinite(normalized) and normalized >= 0 else None
+
+
 def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, Any]) -> dict[str, Any]:
     uri = f"file:{db_path.as_posix()}?mode=ro"
     connection = sqlite3.connect(uri, uri=True)
@@ -2588,6 +2625,7 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
                 "chipbreaker": tool["chipbreaker"],
                 "geometry": tool["geometry"],
                 "geometry_shape": geometry.get("shape_name"),
+                "corner_radius_mm": corner_radius_mm_from_geometry(geometry),
                 "material_groups": material_groups,
                 "operation_types": operations,
                 "verification_status": tool["verification_status"],
