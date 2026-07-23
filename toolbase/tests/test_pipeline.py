@@ -70,7 +70,7 @@ class PipelineTests(unittest.TestCase):
                 connection.execute("SELECT value FROM schema_meta WHERE key='schema_version'").fetchone()[0],
                 "3.4.0",
             )
-            self.assertEqual(connection.execute("SELECT COUNT(*) FROM tools").fetchone()[0], 1222)
+            self.assertEqual(connection.execute("SELECT COUNT(*) FROM tools").fetchone()[0], 1223)
             self.assertEqual(connection.execute("SELECT COUNT(*) FROM manufacturers WHERE name='Horn'").fetchone()[0], 0)
             self.assertEqual(
                 connection.execute(
@@ -163,7 +163,7 @@ class PipelineTests(unittest.TestCase):
             connection.close()
 
             projection = json.loads(json_path.read_text(encoding="utf-8"))
-            self.assertEqual(len(projection["tools"]), 1222)
+            self.assertEqual(len(projection["tools"]), 1223)
             self.assertEqual(projection["meta"]["quality"]["suppressed_direct_machine_claims"], 172)
             review_proposals = {batch["proposal_id"] for batch in projection["review_batches"]}
             self.assertIn("kennametal-topswiss-pilot-2026-07", review_proposals)
@@ -173,8 +173,8 @@ class PipelineTests(unittest.TestCase):
             self.assertTrue(all("source_refs" in relationship for relationship in projection["relationships"]))
             search_index = json.loads(json_path.with_name("catalog-index.json").read_text(encoding="utf-8"))
             details = json.loads(json_path.with_name("catalog-details.json").read_text(encoding="utf-8"))
-            self.assertEqual(len(search_index["tools"]), 1222)
-            self.assertEqual(len(details["tools_by_id"]), 1222)
+            self.assertEqual(len(search_index["tools"]), 1223)
+            self.assertEqual(len(details["tools_by_id"]), 1223)
             self.assertEqual(search_index["meta"]["build_hash"], details["meta"]["build_hash"])
             self.assertTrue(all("verification_status" in tool for tool in search_index["tools"]))
             self.assertTrue(all("review_status" in tool for tool in search_index["tools"]))
@@ -191,7 +191,7 @@ class PipelineTests(unittest.TestCase):
                 if tool["manufacturer"] == "Sandvik Coromant"
                 and tool["family"] == "CoroTurn 107 Inserts"
             ]
-            self.assertEqual(len(sandvik_coroturn), 53)
+            self.assertEqual(len(sandvik_coroturn), 54)
             self.assertTrue(all(tool["geometry_display"] for tool in sandvik_coroturn))
             material_tools = [tool for tool in search_index["tools"] if tool["material_groups"]]
             cutting_tools = [tool for tool in search_index["tools"] if tool["has_cutting_data"]]
@@ -940,6 +940,273 @@ class PipelineTests(unittest.TestCase):
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("does not match canonical proposal and ledger compilation", result.stderr)
             self.assertTrue(all(path.read_bytes() == b"existing-output" for path in output_paths))
+
+    def test_schema_2_accepts_truthful_non_pdf_source_locator(self) -> None:
+        spec = importlib.util.spec_from_file_location(
+            "review_batch_for_structured_locator", ROOT / "scripts" / "review_batch.py"
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        review_batch = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(review_batch)
+
+        source = {
+            "source_id": "source-structured-api",
+            "source_type": "manufacturer_product_page",
+            "local_path": "toolbase/data/source_snapshots/example.json",
+            "page_count": 1,
+        }
+        proposed = {
+            "facts": [
+                {
+                    "fact_key": "manufacturer_material_number",
+                    "value_text": "5730414",
+                    "evidence": {
+                        "source_id": source["source_id"],
+                        "source_page_ref": "Structured product API snapshot",
+                        "source_table_ref": "Product identity",
+                        "source_raw_text": "MaterialID 5730414",
+                        "extraction_method": "manufacturer_page",
+                    },
+                }
+            ]
+        }
+        self.assertEqual(
+            review_batch.validate_proposed_payload(
+                proposed,
+                "structured locator",
+                {source["source_id"]: source},
+            ),
+            [],
+        )
+        both_locators = json.loads(json.dumps(proposed))
+        both_locators["facts"][0]["evidence"]["pdf_page"] = 1
+        self.assertIn(
+            "structured locator facts[1]: use either pdf_page or source_page_ref, not both",
+            review_batch.validate_proposed_payload(
+                both_locators,
+                "structured locator",
+                {source["source_id"]: source},
+            ),
+        )
+        missing_locator = json.loads(json.dumps(proposed))
+        del missing_locator["facts"][0]["evidence"]["source_page_ref"]
+        self.assertIn(
+            "structured locator facts[1]: pdf_page or source_page_ref is required for a catalog assertion",
+            review_batch.validate_proposed_payload(
+                missing_locator,
+                "structured locator",
+                {source["source_id"]: source},
+            ),
+        )
+
+        compiled = review_batch.compile_row(
+            {
+                "proposal_row_id": "structured-locator-001",
+                "tool_lookup": {"tool_id": "DCGT-11-T3-02-UM"},
+                "current_summary": {},
+                "proposed": proposed,
+            },
+            {
+                "decision": "approved",
+                "reviewer": "Greg",
+                "decided_at": "2026-07-23",
+            },
+            {source["source_id"]: source},
+        )
+        self.assertEqual(
+            compiled["facts"][0]["source_page_ref"],
+            "Structured product API snapshot",
+        )
+        self.assertNotIn("PDF", compiled["facts"][0]["source_page_ref"])
+
+    def test_sandvik_dcgt_11t302_um_1105_is_exact_and_source_scoped(self) -> None:
+        tool_id = "DCGT-11-T3-02-UM"
+        with tempfile.TemporaryDirectory() as temp:
+            db_path, json_path, _ = self.build(Path(temp))
+            connection = sqlite3.connect(db_path)
+            try:
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT t.part_number, m.name, t.component_type, t.family, t.grade,
+                               t.chipbreaker, t.geometry, t.lifecycle_status
+                        FROM tools t JOIN manufacturers m ON m.id=t.manufacturer_id
+                        WHERE t.id=?
+                        """,
+                        (tool_id,),
+                    ).fetchone(),
+                    (
+                        tool_id,
+                        "Sandvik Coromant",
+                        "insert",
+                        "CoroTurn 107 Inserts",
+                        "1105",
+                        "UM",
+                        "positive 55-degree rhombic precision turning insert",
+                        "active",
+                    ),
+                )
+                aliases = set(connection.execute(
+                    "SELECT alias, alias_type FROM tool_aliases WHERE tool_id=?",
+                    (tool_id,),
+                ).fetchall())
+                required_aliases = {
+                    ("DCGT 11 T3 02-UM 1105", "manufacturer_part_number"),
+                    ("DCGT11T302UM1105", "search"),
+                    ("DCGT 3(2.5)0-UM 1105", "ansi"),
+                    ("5730414", "search"),
+                    ("12096976", "search"),
+                }
+                self.assertTrue(required_aliases.issubset(aliases), aliases)
+                facts = dict(connection.execute(
+                    """
+                    SELECT fact_key, COALESCE(value_text, CAST(value_number AS TEXT))
+                    FROM facts WHERE tool_id=? AND is_current=1
+                    """,
+                    (tool_id,),
+                ).fetchall())
+                self.assertEqual(facts["manufacturer_material_number"], "5730414")
+                self.assertEqual(facts["manufacturer_order_code"], "DCGT 11 T3 02-UM 1105")
+                self.assertEqual(facts["operation_classification"], "pre-machining with demand on surface")
+                self.assertEqual(facts["coating"], "PVD TiAlN")
+                self.assertEqual(facts["substrate"], "HC")
+
+                source_id = "source-718d750d3903ffc2"
+                source_sha256 = "718d750d3903ffc22dc75a7f1d4f8a3356f4416aa643ef0b4297c2396a6eaa3e"
+                dimension_keys = (
+                    "inscribed_circle_mm",
+                    "thickness_mm",
+                    "corner_radius_mm",
+                    "hole_size",
+                    "cutting_edge_length",
+                    "clearance_angle_deg",
+                    "cutting_edge_count",
+                )
+                dimension_rows = {
+                    row[0]: row[1:]
+                    for row in connection.execute(
+                        f"""
+                        SELECT f.fact_key, f.value_number, f.unit, f.verification_status,
+                               f.source_id, f.source_page_ref, s.content_sha256
+                        FROM facts f JOIN sources s ON s.id=f.source_id
+                        WHERE f.tool_id=? AND f.is_current=1
+                          AND f.fact_key IN ({','.join('?' for _ in dimension_keys)})
+                        """,
+                        (tool_id, *dimension_keys),
+                    ).fetchall()
+                }
+                self.assertEqual(
+                    dimension_rows,
+                    {
+                        "inscribed_circle_mm": (9.525, "mm", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
+                        "thickness_mm": (3.96875, "mm", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
+                        "corner_radius_mm": (0.2, "mm", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
+                        "hole_size": (4.4, "mm", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
+                        "cutting_edge_length": (11.4279, "mm", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
+                        "clearance_angle_deg": (7.0, "deg", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
+                        "cutting_edge_count": (2.0, "count", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
+                    },
+                )
+                self.assertEqual(
+                    set(connection.execute(
+                        """
+                        SELECT source_page_ref FROM facts
+                        WHERE tool_id=? AND verification_status='manufacturer_verified'
+                        UNION
+                        SELECT source_page_ref FROM tool_grade_options
+                        WHERE tool_id=? AND verification_status='manufacturer_verified'
+                        UNION
+                        SELECT source_page_ref FROM tool_material_recommendations
+                        WHERE tool_id=? AND verification_status='manufacturer_verified'
+                        UNION
+                        SELECT source_page_ref FROM cutting_data_profiles
+                        WHERE tool_id=? AND verification_status='manufacturer_verified'
+                        """,
+                        (tool_id, tool_id, tool_id, tool_id),
+                    ).fetchall()),
+                    {("Structured product API snapshot",)},
+                )
+
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT g.code, o.option_kind, o.full_order_number, o.availability_status,
+                               o.verification_status
+                        FROM tool_grade_options o JOIN grades g ON g.id=o.grade_id
+                        WHERE o.tool_id=? AND o.option_kind='available_grade'
+                        """,
+                        (tool_id,),
+                    ).fetchone(),
+                    ("1105", "available_grade", "DCGT 11 T3 02-UM 1105", "listed", "manufacturer_verified"),
+                )
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT iso_group, material_subgroup FROM tool_material_recommendations
+                        WHERE tool_id=? AND is_current=1 ORDER BY iso_group
+                        """,
+                        (tool_id,),
+                    ).fetchall(),
+                    [("M", "Stainless steel"), ("S", "Heat-resistant superalloys")],
+                )
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT source_part_number, source_grade, source_chipbreaker,
+                               source_material_label, iso_material_group, material_subgroup,
+                               operation_type, cut_condition, coolant_condition,
+                               surface_speed_min, surface_speed_start, surface_speed_max,
+                               feed_min, feed_max, depth_of_cut_min, depth_of_cut_max,
+                               surface_speed_unit, feed_unit, depth_of_cut_unit,
+                               verification_status
+                        FROM cutting_data_profiles WHERE tool_id=?
+                        """,
+                        (tool_id,),
+                    ).fetchall(),
+                    [(
+                        "DCGT 11 T3 02-UM 1105", "1105", "UM",
+                        "S2.0.Z.AG", "S", "S2.0.Z.AG / 350 HB",
+                        "turning", "unknown", "unknown",
+                        70.0, 70.0, 70.0,
+                        0.01, 0.08, 0.1, 1.05,
+                        "m_per_min", "mm_per_rev", "mm",
+                        "manufacturer_verified",
+                    )],
+                )
+                self.assertEqual(
+                    connection.execute(
+                        "SELECT COUNT(*) FROM cutting_data_profiles WHERE tool_id=? AND iso_material_group='M'",
+                        (tool_id,),
+                    ).fetchone()[0],
+                    0,
+                )
+                self.assertEqual(
+                    connection.execute(
+                        "SELECT row_count FROM review_batches WHERE proposal_id='sandvik-dcgt-11t302-um-1105-2026-07'"
+                    ).fetchone(),
+                    (1,),
+                )
+
+                public_tools = {
+                    item["id"]: item for item in json.loads(json_path.read_text(encoding="utf-8"))["tools"]
+                }
+                self.assertIn(tool_id, public_tools)
+                self.assertEqual(public_tools[tool_id]["grade"], "1105")
+                self.assertEqual(public_tools[tool_id]["chipbreaker"], "UM")
+                self.assertEqual(len(public_tools[tool_id]["cutting_data"]), 1)
+                self.assertEqual(
+                    public_tools[tool_id]["geometry_display"]["dimensions"],
+                    [
+                        {"label": "Inscribed circle", "value": 9.525, "unit": "mm", "verification_status": "manufacturer_verified", "source_ids": [source_id]},
+                        {"label": "Thickness", "value": 3.96875, "unit": "mm", "verification_status": "manufacturer_verified", "source_ids": [source_id]},
+                        {"label": "Corner radius", "value": 0.2, "unit": "mm", "verification_status": "manufacturer_verified", "source_ids": [source_id]},
+                        {"label": "Fixing hole", "value": 4.4, "unit": "mm", "verification_status": "manufacturer_verified", "source_ids": [source_id]},
+                        {"label": "Cutting edge", "value": 11.4279, "unit": "mm", "verification_status": "manufacturer_verified", "source_ids": [source_id]},
+                    ],
+                )
+            finally:
+                connection.close()
 
     def test_mitsubishi_insert_identities_and_bf_bm_baselines_are_exact(self) -> None:
         mitsubishi_grade_counts = {

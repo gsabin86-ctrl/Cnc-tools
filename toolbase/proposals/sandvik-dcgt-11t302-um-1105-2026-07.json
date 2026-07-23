@@ -1,0 +1,417 @@
+{
+  "schema_version": 2,
+  "proposal_id": "sandvik-dcgt-11t302-um-1105-2026-07",
+  "title": "Sandvik CoroTurn 107 DCGT 11 T3 02-UM 1105 exact product record",
+  "created_at": "2026-07-23",
+  "status": "source_extracted",
+  "import_allowed": false,
+  "purpose": "Add one personally used Sandvik CoroTurn 107 insert with exact identity, dimensions, grade, material applicability, replacement context, and the one manufacturer-supplied ISO-S cutting profile.",
+  "sources": [
+    {
+      "source_id": "source-718d750d3903ffc2",
+      "batch_role": "primary_catalog",
+      "manufacturer": "Sandvik Coromant",
+      "title": "Sandvik Coromant DCGT 11 T3 02-UM 1105 structured product snapshot",
+      "source_type": "manufacturer_product_page",
+      "url": "https://www.sandvik.coromant.com/en-gb/product-details?c=DCGT%2011%20T3%2002-UM%201105&m=5730414&listName=autocomplete&listIndex=0",
+      "local_path": "toolbase/data/source_snapshots/sandvik-dcgt-11t302-um-1105-5730414-2026-07-23.json",
+      "content_sha256": "718d750d3903ffc22dc75a7f1d4f8a3356f4416aa643ef0b4297c2396a6eaa3e",
+      "page_count": 1,
+      "page_ref": "Reduced exact product API snapshot",
+      "document_edition": "Retrieved 2026-07-23",
+      "edition_evidence": "Exact autocomplete order-code match and structured product payload matched material ID, family, grade, chipbreaker, and geometry before extraction.",
+      "raw_reference": "https://www.sandvik.coromant.com/en-gb/product-details?c=DCGT%2011%20T3%2002-UM%201105&m=5730414&listName=autocomplete&listIndex=0 | https://www.sandvik.coromant.com/api/productsearch/product?id=5730414&unitOfMeasurement=Metric&language=en-gb&country=gb | toolbase/data/source_snapshots/sandvik-dcgt-11t302-um-1105-5730414-2026-07-23.json | SHA-256 718d750d3903ffc22dc75a7f1d4f8a3356f4416aa643ef0b4297c2396a6eaa3e"
+    }
+  ],
+  "rows": [
+    {
+      "proposal_row_id": "sandvik-dcgt-11t302-um-1105-001",
+      "tool_lookup": {
+        "tool_id": "DCGT-11-T3-02-UM",
+        "manufacturer": "Sandvik Coromant",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "1105",
+        "geometry": "positive 55-degree rhombic precision turning insert",
+        "review_note": "New base inventory identity from exact Sandvik order code and material ID; all trusted enrichment is source-bound here."
+      },
+      "proposed": {
+        "tool_updates": {
+          "description": "Sandvik CoroTurn 107 DCGT precision turning insert, exact order code DCGT 11 T3 02-UM 1105, material ID 5730414, UM chipbreaker, grade 1105, for ISO M and S workpiece groups.",
+          "geometry": "positive 55-degree rhombic precision turning insert",
+          "lifecycle_status": "active",
+          "grade": "1105",
+          "chipbreaker": "UM"
+        },
+        "aliases": [
+          {
+            "alias": "DCGT 11 T3 02-UM 1105",
+            "alias_type": "manufacturer_part_number"
+          },
+          {
+            "alias": "DCGT11T302UM1105",
+            "alias_type": "search"
+          },
+          {
+            "alias": "DCGT 3(2.5)0-UM 1105",
+            "alias_type": "ansi"
+          },
+          {
+            "alias": "5730414",
+            "alias_type": "search"
+          },
+          {
+            "alias": "12096976",
+            "alias_type": "search"
+          }
+        ],
+        "tags": [
+          "1105",
+          "carbide",
+          "coroturn-107",
+          "dcgt",
+          "heat-resistant-superalloys",
+          "precision",
+          "sandvik",
+          "stainless-steel",
+          "turning",
+          "um"
+        ],
+        "replace_fact_keys": [
+          "manufacturer_material_number",
+          "manufacturer_order_code",
+          "ansi_catalog_id",
+          "ean",
+          "product_family",
+          "operation_classification",
+          "coating",
+          "substrate",
+          "inscribed_circle_mm",
+          "cutting_edge_length",
+          "thickness_mm",
+          "corner_radius_mm",
+          "hole_size",
+          "clearance_angle_deg",
+          "cutting_edge_count",
+          "replacement_material_number",
+          "replacement_order_code",
+          "not_replenished_after",
+          "workpiece_material_groups"
+        ],
+        "facts": [
+          {
+            "fact_key": "manufacturer_material_number",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product identity",
+              "source_raw_text": "ORDCODE DCGT 11 T3 02-UM 1105; MaterialID 5730414; CoroTurn 107; GRADE 1105; CBMD UM; InsertDesignation DCGT; InsertSizeCode 11T302.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_text": "5730414"
+          },
+          {
+            "fact_key": "manufacturer_order_code",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product identity",
+              "source_raw_text": "ORDCODE DCGT 11 T3 02-UM 1105; MaterialID 5730414; CoroTurn 107; GRADE 1105; CBMD UM; InsertDesignation DCGT; InsertSizeCode 11T302.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_text": "DCGT 11 T3 02-UM 1105"
+          },
+          {
+            "fact_key": "ansi_catalog_id",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product identifiers",
+              "source_raw_text": "ORDCODEUSA DCGT 3(2.5)0-UM 1105; EAN 12096976.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_text": "DCGT 3(2.5)0-UM 1105"
+          },
+          {
+            "fact_key": "ean",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product identifiers",
+              "source_raw_text": "ORDCODEUSA DCGT 3(2.5)0-UM 1105; EAN 12096976.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_text": "12096976"
+          },
+          {
+            "fact_key": "product_family",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product identity",
+              "source_raw_text": "ORDCODE DCGT 11 T3 02-UM 1105; MaterialID 5730414; CoroTurn 107; GRADE 1105; CBMD UM; InsertDesignation DCGT; InsertSizeCode 11T302.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_text": "CoroTurn 107"
+          },
+          {
+            "fact_key": "operation_classification",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product application",
+              "source_raw_text": "CTPT pre-machining with demand on surface; ApplicationArea GeneralTurning.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_text": "pre-machining with demand on surface"
+          },
+          {
+            "fact_key": "coating",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Grade construction",
+              "source_raw_text": "GRADEDescriptive 1105 / HC / PVD TiAlN; SUBSTRATE HC; COATING PVD TiAlN.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_text": "PVD TiAlN"
+          },
+          {
+            "fact_key": "substrate",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Grade construction",
+              "source_raw_text": "GRADEDescriptive 1105 / HC / PVD TiAlN; SUBSTRATE HC; COATING PVD TiAlN.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_text": "HC"
+          },
+          {
+            "fact_key": "inscribed_circle_mm",
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product dimensions",
+              "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_number": 9.525
+          },
+          {
+            "fact_key": "cutting_edge_length",
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product dimensions",
+              "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_number": 11.4279
+          },
+          {
+            "fact_key": "thickness_mm",
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product dimensions",
+              "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_number": 3.96875
+          },
+          {
+            "fact_key": "corner_radius_mm",
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product dimensions",
+              "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_number": 0.2
+          },
+          {
+            "fact_key": "hole_size",
+            "unit": "mm",
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product dimensions",
+              "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_number": 4.4
+          },
+          {
+            "fact_key": "clearance_angle_deg",
+            "unit": "deg",
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product dimensions",
+              "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_number": 7.0
+          },
+          {
+            "fact_key": "cutting_edge_count",
+            "unit": "count",
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product dimensions",
+              "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_number": 2.0
+          },
+          {
+            "fact_key": "replacement_material_number",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Availability and replacement",
+              "source_raw_text": "TIBPAvailability Available; GloballyAvailable true; ReplacementProductId 8432107; replacement order code DCGT 11 T3 02-UM 1205; NotReplenishedAfter 2028-02-29; Different grade vs. the original product – Please check cutting speed.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_text": "8432107"
+          },
+          {
+            "fact_key": "replacement_order_code",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Availability and replacement",
+              "source_raw_text": "TIBPAvailability Available; GloballyAvailable true; ReplacementProductId 8432107; replacement order code DCGT 11 T3 02-UM 1205; NotReplenishedAfter 2028-02-29; Different grade vs. the original product – Please check cutting speed.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_text": "DCGT 11 T3 02-UM 1205"
+          },
+          {
+            "fact_key": "not_replenished_after",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Availability and replacement",
+              "source_raw_text": "TIBPAvailability Available; GloballyAvailable true; ReplacementProductId 8432107; replacement order code DCGT 11 T3 02-UM 1205; NotReplenishedAfter 2028-02-29; Different grade vs. the original product – Please check cutting speed.",
+              "extraction_method": "manufacturer_page"
+            },
+            "value_text": "2028-02-29"
+          },
+          {
+            "fact_key": "workpiece_material_groups",
+            "value_json": [
+              "M",
+              "S"
+            ],
+            "unit": null,
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product workpiece materials",
+              "source_raw_text": "TMC1ISO M, S; MaterialsString MS; exact product applicability includes stainless steel and heat-resistant superalloys.",
+              "extraction_method": "manufacturer_page"
+            }
+          }
+        ],
+        "grade_options": [
+          {
+            "code": "1105",
+            "option_kind": "available_grade",
+            "full_order_number": "DCGT 11 T3 02-UM 1105",
+            "availability_status": "listed",
+            "is_primary": true,
+            "material_class": "carbide",
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product identity and grade",
+              "source_raw_text": "ORDCODE DCGT 11 T3 02-UM 1105; MaterialID 5730414; CoroTurn 107; GRADE 1105; CBMD UM; InsertDesignation DCGT; InsertSizeCode 11T302.",
+              "extraction_method": "manufacturer_page"
+            }
+          }
+        ],
+        "replace_material_recommendations": true,
+        "material_recommendations": [
+          {
+            "grade_code": "1105",
+            "iso_group": "M",
+            "material_subgroup": "Stainless steel",
+            "suitability": "recommended",
+            "notes": "Exact product applicability from TMC1ISO. The source provides no exact M cutting-operation row, so no M speed/feed/depth profile is proposed.",
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product workpiece materials",
+              "source_raw_text": "TMC1ISO M, S; MaterialsString MS; exact product applicability includes stainless steel and heat-resistant superalloys.",
+              "extraction_method": "manufacturer_page"
+            }
+          },
+          {
+            "grade_code": "1105",
+            "iso_group": "S",
+            "material_subgroup": "Heat-resistant superalloys",
+            "suitability": "recommended",
+            "notes": "Exact product applicability from TMC1ISO; the structured response also provides one exact S2.0.Z.AG cutting-operation row.",
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "Product workpiece materials",
+              "source_raw_text": "TMC1ISO M, S; MaterialsString MS; exact product applicability includes stainless steel and heat-resistant superalloys.",
+              "extraction_method": "manufacturer_page"
+            }
+          }
+        ],
+        "cutting_profiles": [
+          {
+            "source_part_number": "DCGT 11 T3 02-UM 1105",
+            "source_grade": "1105",
+            "source_geometry": "DCGT 11 T3 02, 55-degree rhombic, 7-degree positive",
+            "source_chipbreaker": "UM",
+            "source_material_label": "S2.0.Z.AG",
+            "iso_material_group": "S",
+            "material_subgroup": "S2.0.Z.AG / 350 HB",
+            "operation_type": "turning",
+            "cut_condition": "unknown",
+            "coolant_condition": "unknown",
+            "surface_speed_min": 70.0,
+            "surface_speed_start": 70.0,
+            "surface_speed_max": 70.0,
+            "surface_speed_unit": "m_per_min",
+            "feed_min": 0.01,
+            "feed_max": 0.08,
+            "feed_unit": "mm_per_rev",
+            "depth_of_cut_min": 0.1,
+            "depth_of_cut_max": 1.05,
+            "depth_of_cut_unit": "mm",
+            "evidence": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_page_ref": "Structured product API snapshot",
+              "source_table_ref": "CuttingOperations[0] / materials[0]",
+              "source_raw_text": "KAPR 93 deg; S2.0.Z.AG; ISO S; hardness 350 HB; ap 0.1/0.5/1.05 mm min/nom/max; fn 0.01/0.02/0.08 mm/r min/nom/max; vc 70/70/70 m/min min/nom/max; lifeTime 900 s. Coolant is not stated.",
+              "extraction_method": "manufacturer_page"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

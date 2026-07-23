@@ -77,6 +77,13 @@ def evidence_for(item: dict[str, Any]) -> dict[str, Any]:
     return value if isinstance(value, dict) else {}
 
 
+def compiled_source_page_ref(evidence: dict[str, Any]) -> str | None:
+    page = evidence.get("pdf_page")
+    if page is not None:
+        return f"PDF page {page}"
+    return evidence.get("source_page_ref")
+
+
 def validate_proposed_payload(
     proposed: Any,
     context: str,
@@ -103,12 +110,20 @@ def validate_proposed_payload(
                 errors.append(f"{item_context}: evidence source is missing from proposal")
                 continue
             page = evidence.get("pdf_page")
+            page_ref = evidence.get("source_page_ref")
             source = source_by_id[source_id]
             if source.get("local_path"):
-                if not isinstance(page, int):
-                    errors.append(f"{item_context}: pdf_page is required for a catalog assertion")
-                elif not 1 <= page <= int(source.get("page_count") or 0):
-                    errors.append(f"{item_context}: pdf_page is outside the source")
+                has_page = page is not None
+                has_page_ref = isinstance(page_ref, str) and bool(page_ref.strip())
+                if has_page and has_page_ref:
+                    errors.append(f"{item_context}: use either pdf_page or source_page_ref, not both")
+                elif not has_page and not has_page_ref:
+                    errors.append(f"{item_context}: pdf_page or source_page_ref is required for a catalog assertion")
+                elif has_page:
+                    if not isinstance(page, int):
+                        errors.append(f"{item_context}: pdf_page must be an integer")
+                    elif not 1 <= page <= int(source.get("page_count") or 0):
+                        errors.append(f"{item_context}: pdf_page is outside the source")
             if not evidence.get("source_table_ref"):
                 errors.append(f"{item_context}: source_table_ref is required")
             if not evidence.get("source_raw_text"):
@@ -394,7 +409,7 @@ def compile_row(
                 "verification_status": verification,
                 "source_id": evidence["source_id"],
                 "source_ids": evidence.get("source_ids") or [evidence["source_id"]],
-                "source_page_ref": f"PDF page {evidence['pdf_page']}" if evidence.get("pdf_page") else evidence.get("source_page_ref"),
+                "source_page_ref": compiled_source_page_ref(evidence),
                 "source_table_ref": evidence.get("source_table_ref"),
                 "source_raw_text": evidence.get("source_raw_text"),
                 "extraction_method": evidence.get("extraction_method") or "manual",
@@ -409,7 +424,7 @@ def compile_row(
             {
                 "verification_status": verification,
                 "source_id": evidence["source_id"],
-                "source_page_ref": f"PDF page {evidence['pdf_page']}" if evidence.get("pdf_page") else evidence.get("source_page_ref"),
+                "source_page_ref": compiled_source_page_ref(evidence),
                 "source_table_ref": evidence.get("source_table_ref"),
                 "source_raw_text": evidence.get("source_raw_text"),
                 "extraction_method": evidence.get("extraction_method") or "manual",
@@ -429,7 +444,7 @@ def compile_row(
                 "verification_status": verification,
                 "source_id": evidence["source_id"],
                 "source_ids": evidence.get("source_ids") or [evidence["source_id"]],
-                "source_page_ref": f"PDF page {evidence['pdf_page']}" if evidence.get("pdf_page") else evidence.get("source_page_ref"),
+                "source_page_ref": compiled_source_page_ref(evidence),
                 "source_table_ref": evidence.get("source_table_ref"),
                 "source_raw_text": evidence.get("source_raw_text"),
                 "extraction_method": evidence.get("extraction_method") or "manual",
@@ -444,7 +459,7 @@ def compile_row(
             {
                 "id": stable_id("cutting-profile", tool_id, item.get("source_grade"), item.get("material_subgroup"), item.get("cut_condition"), reviewed_at),
                 "source_id": evidence["source_id"],
-                "source_page_ref": f"PDF page {evidence['pdf_page']}" if evidence.get("pdf_page") else evidence.get("source_page_ref"),
+                "source_page_ref": compiled_source_page_ref(evidence),
                 "source_table_ref": evidence.get("source_table_ref"),
                 "source_raw_text": evidence.get("source_raw_text"),
                 "extraction_method": evidence.get("extraction_method") or "manual",

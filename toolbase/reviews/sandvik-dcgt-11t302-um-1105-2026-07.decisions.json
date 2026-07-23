@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "review_id": "sandvik-dcgt-11t302-um-1105-2026-07-review",
+  "proposal_id": "sandvik-dcgt-11t302-um-1105-2026-07",
+  "proposal_path": "toolbase/proposals/sandvik-dcgt-11t302-um-1105-2026-07.json",
+  "proposal_sha256": "7e6db66fafc6fd4fd459f3dbcdbcba7772fc4ab632a45ab9d8c407f24e2c4d4c",
+  "review_started_at": "2026-07-23",
+  "status": "complete",
+  "review_completed_at": "2026-07-23",
+  "import_allowed": true,
+  "decisions": [
+    {
+      "proposal_row_id": "sandvik-dcgt-11t302-um-1105-001",
+      "tool_id": "DCGT-11-T3-02-UM",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "add exact Sandvik order-code and material-ID identity",
+        "publish manufacturer-stated dimensions, grade, chipbreaker, M/S applicability, availability, and replacement context",
+        "publish only the exact ISO-S cutting-operation row; do not infer an ISO-M cutting profile"
+      ],
+      "notes": "Greg requested a quick exact-product spot check and then explicitly said, 'Let's add it.' The mismatched rendered page body is excluded; approval is based on the identity-gated Sandvik autocomplete and structured product response preserved in the immutable snapshot."
+    }
+  ]
+}

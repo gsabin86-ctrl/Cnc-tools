@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "sandvik-dcgt-11t302-um-1105-5730414-2026-07-23",
+  "manufacturer": "Sandvik Coromant",
+  "retrieved_at_utc": "2026-07-23T12:44:41Z",
+  "method": "Exact order code resolved through Sandvik Coromant autocomplete API; structured metric product payload fetched by exact material ID; order code, material ID, family, grade, chipbreaker, and geometry identity checked before extraction.",
+  "autocomplete_url": "https://www.sandvik.coromant.com/api/productsearch/getautocompleteitems?query=DCGT%2011%20T3%2002-UM%201105&queryContext=CoromantGB&autocompleteType=coromantproductsearch&itemsToReturn=10",
+  "api_url": "https://www.sandvik.coromant.com/api/productsearch/product?id=5730414&unitOfMeasurement=Metric&language=en-gb&country=gb",
+  "product_page_url": "https://www.sandvik.coromant.com/en-gb/product-details?c=DCGT%2011%20T3%2002-UM%201105&m=5730414&listName=autocomplete&listIndex=0",
+  "autocomplete_match": {
+    "Title": "DCGT 11 T3 02-UM 1105",
+    "Description": "CoroTurn® 107, insert for turning.",
+    "Type": "ordcode",
+    "ID": "5730414",
+    "LCS": "30",
+    "PackageQuantity": "10",
+    "ItemType": "iso"
+  },
+  "product": {
+    "database_tool_id": "DCGT-11-T3-02-UM",
+    "order_code": "DCGT 11 T3 02-UM 1105",
+    "order_code_ansi": "DCGT 3(2.5)0-UM 1105",
+    "order_code_normalized": "DCGT11T302UM1105",
+    "material_id": "5730414",
+    "ean": "12096976",
+    "identity": {
+      "description": "CoroTurn® 107, insert for turning.",
+      "family": "CoroTurn 107",
+      "grade": "1105",
+      "grade_descriptive": "1105 / HC / PVD TiAlN",
+      "chipbreaker": "UM",
+      "operation_classification": "pre-machining with demand on surface",
+      "hand": "Neutral",
+      "materials": [
+        "M",
+        "S"
+      ],
+      "materials_string": "MS",
+      "availability": "Available",
+      "globally_available": true,
+      "replacement_material_id": "8432107",
+      "replacement_order_code": "DCGT 11 T3 02-UM 1205",
+      "replacement_note": "Different grade vs. the original product – Please check cutting speed.",
+      "not_replenished_after": "2028-02-29T00:00:00+00:00"
+    },
+    "specifications": {
+      "AN": 7.0,
+      "CBMD": "UM",
+      "CEDC": 2,
+      "COATING": "PVD TiAlN",
+      "CUTINT_SIZESHAPE": "DC11T3",
+      "D1": 4.4,
+      "GRADE": "1105",
+      "IC": 9.525,
+      "IFS": "Partly cylindrical, 40-60 deg countersink on one or two sides",
+      "LE": 11.4279,
+      "RE": 0.2,
+      "S": 3.96875,
+      "SC": "Rhombic 55",
+      "SSC_M": "11",
+      "SUBSTRATE": "HC",
+      "WT": 0.00364,
+      "InsertDesignation": "DCGT",
+      "InsertSizeCode": "11T302",
+      "InsertTolerance": "G",
+      "InsertGeometry": "T"
+    },
+    "cutting_operations": [
+      {
+        "calculation": {
+          "method": "KAPR",
+          "value": 93.0,
+          "unit": "deg"
+        },
+        "materials": [
+          {
+            "sortOrder": 1,
+            "material": "S",
+            "materialReference": "S2.0.Z.AG",
+            "hardness": 350.0,
+            "hardnessUnit": "HB",
+            "startValues": {
+              "ap": {
+                "min": 0.1,
+                "nom": 0.5,
+                "max": 1.05,
+                "unit": "mm"
+              },
+              "fn": {
+                "min": 0.01,
+                "nom": 0.02,
+                "max": 0.08,
+                "unit": "mm/r"
+              },
+              "vc": {
+                "min": 70.0,
+                "nom": 70.0,
+                "max": 70.0,
+                "unit": "m/min"
+              },
+              "hex": {
+                "min": 0.01,
+                "nom": 0.02,
+                "max": 0.08,
+                "unit": "mm/r"
+              }
+            },
+            "lifeTime": 900.0
+          }
+        ]
+      }
+    ]
+  }
+}
