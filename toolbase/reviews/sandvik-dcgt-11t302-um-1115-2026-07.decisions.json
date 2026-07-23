@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "review_id": "sandvik-dcgt-11t302-um-1115-2026-07-review",
+  "proposal_id": "sandvik-dcgt-11t302-um-1115-2026-07",
+  "proposal_path": "toolbase/proposals/sandvik-dcgt-11t302-um-1115-2026-07.json",
+  "proposal_sha256": "b114ea70143878407d90ae0950863e08131e1f6bec4ef6688fcb71031bab8f11",
+  "review_started_at": "2026-07-23",
+  "status": "complete",
+  "review_completed_at": "2026-07-23",
+  "import_allowed": true,
+  "decisions": [
+    {
+      "proposal_row_id": "sandvik-dcgt-11t302-um-1115-001",
+      "tool_id": "DCGT-11-T3-02-UM-1115",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "add DCGT 11 T3 02-UM 1115 as a distinct insert product, not a grade option of the 1105 insert",
+        "preserve exact Sandvik order code DCGT 11 T3 02-UM 1115 and material ID 5730415",
+        "structure the ISO designation body, Sandvik chipbreaker, and grade as source-bound facts",
+        "publish exact M/S applicability and both exact 1115 cutting-operation rows"
+      ],
+      "notes": "Greg directed the 1115 trial insert through release and then explicitly corrected the model: 1105 and 1115 are completely different inserts even though their preceding designation segments are shared. He supplied the ISO 1832 and Sandvik suffix framework and asked that manufacturer designation conventions become the primary ingestion starting point. Exact Sandvik product payload values override generic examples where they differ."
+    }
+  ]
+}

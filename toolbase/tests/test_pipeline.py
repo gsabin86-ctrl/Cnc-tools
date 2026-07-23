@@ -70,7 +70,7 @@ class PipelineTests(unittest.TestCase):
                 connection.execute("SELECT value FROM schema_meta WHERE key='schema_version'").fetchone()[0],
                 "3.4.0",
             )
-            self.assertEqual(connection.execute("SELECT COUNT(*) FROM tools").fetchone()[0], 1223)
+            self.assertEqual(connection.execute("SELECT COUNT(*) FROM tools").fetchone()[0], 1224)
             self.assertEqual(connection.execute("SELECT COUNT(*) FROM manufacturers WHERE name='Horn'").fetchone()[0], 0)
             self.assertEqual(
                 connection.execute(
@@ -163,7 +163,7 @@ class PipelineTests(unittest.TestCase):
             connection.close()
 
             projection = json.loads(json_path.read_text(encoding="utf-8"))
-            self.assertEqual(len(projection["tools"]), 1223)
+            self.assertEqual(len(projection["tools"]), 1224)
             self.assertEqual(projection["meta"]["quality"]["suppressed_direct_machine_claims"], 172)
             review_proposals = {batch["proposal_id"] for batch in projection["review_batches"]}
             self.assertIn("kennametal-topswiss-pilot-2026-07", review_proposals)
@@ -173,8 +173,8 @@ class PipelineTests(unittest.TestCase):
             self.assertTrue(all("source_refs" in relationship for relationship in projection["relationships"]))
             search_index = json.loads(json_path.with_name("catalog-index.json").read_text(encoding="utf-8"))
             details = json.loads(json_path.with_name("catalog-details.json").read_text(encoding="utf-8"))
-            self.assertEqual(len(search_index["tools"]), 1223)
-            self.assertEqual(len(details["tools_by_id"]), 1223)
+            self.assertEqual(len(search_index["tools"]), 1224)
+            self.assertEqual(len(details["tools_by_id"]), 1224)
             self.assertEqual(search_index["meta"]["build_hash"], details["meta"]["build_hash"])
             self.assertTrue(all("verification_status" in tool for tool in search_index["tools"]))
             self.assertTrue(all("review_status" in tool for tool in search_index["tools"]))
@@ -191,7 +191,7 @@ class PipelineTests(unittest.TestCase):
                 if tool["manufacturer"] == "Sandvik Coromant"
                 and tool["family"] == "CoroTurn 107 Inserts"
             ]
-            self.assertEqual(len(sandvik_coroturn), 54)
+            self.assertEqual(len(sandvik_coroturn), 55)
             self.assertTrue(all(tool["geometry_display"] for tool in sandvik_coroturn))
             material_tools = [tool for tool in search_index["tools"] if tool["material_groups"]]
             cutting_tools = [tool for tool in search_index["tools"] if tool["has_cutting_data"]]
@@ -264,6 +264,19 @@ class PipelineTests(unittest.TestCase):
         viewer_script = (ROOT.parent / "docs" / "v3" / "app.js").read_text(encoding="utf-8")
         self.assertIn(".filter(item => !item.suppressed).length", viewer_script)
         self.assertIn("relationshipCount === 1 ? 'connection' : 'connections'", viewer_script)
+
+    def test_standalone_exact_product_does_not_synthesize_a_grade_selector(self) -> None:
+        viewer_script = (ROOT.parent / "docs" / "v3" / "app.js").read_text(encoding="utf-8")
+        self.assertIn("if (tool.standalone_exact_product) return []", viewer_script)
+
+    def test_app_and_service_worker_cache_versions_match(self) -> None:
+        viewer_root = ROOT.parent / "docs" / "v3"
+        viewer_script = (viewer_root / "app.js").read_text(encoding="utf-8")
+        service_worker = (viewer_root / "sw.js").read_text(encoding="utf-8")
+        app_version = viewer_script.split("const STATIC_VERSION = '", 1)[1].split("'", 1)[0]
+        worker_version = service_worker.split("const VERSION = '", 1)[1].split("'", 1)[0]
+        self.assertEqual(app_version, worker_version)
+        self.assertEqual(app_version, "3.4.0-shell-8")
 
     def test_homepage_opens_directly_to_catalog_without_promotional_hero(self) -> None:
         viewer_root = ROOT.parent / "docs" / "v3"
@@ -953,6 +966,7 @@ class PipelineTests(unittest.TestCase):
         source = {
             "source_id": "source-structured-api",
             "source_type": "manufacturer_product_page",
+            "artifact_format": "structured_json",
             "local_path": "toolbase/data/source_snapshots/example.json",
             "page_count": 1,
         }
@@ -982,7 +996,7 @@ class PipelineTests(unittest.TestCase):
         both_locators = json.loads(json.dumps(proposed))
         both_locators["facts"][0]["evidence"]["pdf_page"] = 1
         self.assertIn(
-            "structured locator facts[1]: use either pdf_page or source_page_ref, not both",
+            "structured locator facts[1]: structured source must not use pdf_page",
             review_batch.validate_proposed_payload(
                 both_locators,
                 "structured locator",
@@ -992,7 +1006,7 @@ class PipelineTests(unittest.TestCase):
         missing_locator = json.loads(json.dumps(proposed))
         del missing_locator["facts"][0]["evidence"]["source_page_ref"]
         self.assertIn(
-            "structured locator facts[1]: pdf_page or source_page_ref is required for a catalog assertion",
+            "structured locator facts[1]: structured source requires source_page_ref",
             review_batch.validate_proposed_payload(
                 missing_locator,
                 "structured locator",
@@ -1019,6 +1033,370 @@ class PipelineTests(unittest.TestCase):
             "Structured product API snapshot",
         )
         self.assertNotIn("PDF", compiled["facts"][0]["source_page_ref"])
+
+    def test_sandvik_grade_suffixes_are_distinct_seed_tools(self) -> None:
+        records = {
+            row["json_id"]: row
+            for row in (
+                json.loads(line)
+                for line in (ROOT / "data" / "tools.jsonl").read_text(encoding="utf-8").splitlines()
+                if line.strip()
+            )
+        }
+        expected = {
+            "DCGT-11-T3-02-UM": (
+                "DCGT 11 T3 02-UM 1105",
+                "1105",
+                "5730414",
+            ),
+            "DCGT-11-T3-02-UM-1115": (
+                "DCGT 11 T3 02-UM 1115",
+                "1115",
+                "5730415",
+            ),
+        }
+        for tool_id, (order_code, grade, material_id) in expected.items():
+            record = records[tool_id]
+            self.assertEqual(record["specs"]["manufacturer_order_code"], order_code)
+            self.assertEqual(record["grade"], grade)
+            self.assertEqual(record["specs"]["manufacturer_material_id"], material_id)
+        self.assertNotEqual(*expected.keys())
+
+    def test_schema_2_rejects_structured_fact_value_claim_mismatch(self) -> None:
+        spec = importlib.util.spec_from_file_location(
+            "review_batch_for_value_claim", ROOT / "scripts" / "review_batch.py"
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        review_batch = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(review_batch)
+
+        proposal_path = ROOT / "proposals" / "sandvik-dcgt-11t302-um-1115-2026-07.json"
+        proposal = json.loads(proposal_path.read_text(encoding="utf-8"))
+        coating = next(
+            fact
+            for fact in proposal["rows"][0]["proposed"]["facts"]
+            if fact["fact_key"] == "coating"
+        )
+        coating["value_text"] = "SOURCE-INCONSISTENT COATING"
+
+        with tempfile.TemporaryDirectory() as temp:
+            temp_path = Path(temp)
+            db_path, _, _ = self.build(temp_path)
+            mutated_path = temp_path / "proposal.json"
+            mutated_path.write_text(
+                json.dumps(proposal, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            _, errors = review_batch.validate_proposal(mutated_path, db_path)
+            self.assertIn(
+                "row 1 facts[6]: value claim for value_text does not match proposed value",
+                errors,
+            )
+
+    def test_schema_2_requires_complete_structured_value_claims(self) -> None:
+        spec = importlib.util.spec_from_file_location(
+            "review_batch_for_claim_coverage", ROOT / "scripts" / "review_batch.py"
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        review_batch = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(review_batch)
+
+        proposal_path = ROOT / "proposals" / "sandvik-dcgt-11t302-um-1115-2026-07.json"
+        proposal = json.loads(proposal_path.read_text(encoding="utf-8"))
+        coating = next(
+            fact
+            for fact in proposal["rows"][0]["proposed"]["facts"]
+            if fact["fact_key"] == "coating"
+        )
+        del coating["evidence"]["value_claims"]["value_text"]
+        inscribed_circle = next(
+            fact
+            for fact in proposal["rows"][0]["proposed"]["facts"]
+            if fact["fact_key"] == "inscribed_circle_mm"
+        )
+        inscribed_circle["evidence"]["value_claims"].pop("unit", None)
+        tool_updates = proposal["rows"][0]["proposed"]["tool_updates"]
+        tool_updates.setdefault("evidence", {}).setdefault("value_claims", {}).pop(
+            "grade", None
+        )
+
+        with tempfile.TemporaryDirectory() as temp:
+            temp_path = Path(temp)
+            db_path, _, _ = self.build(temp_path)
+            mutated_path = temp_path / "proposal.json"
+            mutated_path.write_text(
+                json.dumps(proposal, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            _, errors = review_batch.validate_proposal(mutated_path, db_path)
+            self.assertIn(
+                "row 1 facts[6]: missing value claim for value_text",
+                errors,
+            )
+            self.assertIn(
+                "row 1 facts[22]: missing value claim for unit",
+                errors,
+            )
+            self.assertIn(
+                "row 1 tool_updates: missing value claim for grade",
+                errors,
+            )
+
+    def test_schema_2_rejects_structured_value_claim_mismatch_in_corrections(self) -> None:
+        spec = importlib.util.spec_from_file_location(
+            "review_batch_for_corrected_claim", ROOT / "scripts" / "review_batch.py"
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        review_batch = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(review_batch)
+
+        proposal_path = ROOT / "proposals" / "sandvik-dcgt-11t302-um-1115-2026-07.json"
+        proposal = json.loads(proposal_path.read_text(encoding="utf-8"))
+        corrected = json.loads(json.dumps(proposal["rows"][0]["proposed"]))
+        coating = next(
+            fact for fact in corrected["facts"] if fact["fact_key"] == "coating"
+        )
+        coating["value_text"] = "SOURCE-INCONSISTENT COATING"
+        inscribed_circle = next(
+            fact
+            for fact in corrected["facts"]
+            if fact["fact_key"] == "inscribed_circle_mm"
+        )
+        inscribed_circle["unit"] = "inch"
+        corrected["tool_updates"]["grade"] = "1105"
+        ledger = {
+            "schema_version": 2,
+            "review_id": "corrected-claim-review",
+            "proposal_id": proposal["proposal_id"],
+            "proposal_path": "toolbase/proposals/sandvik-dcgt-11t302-um-1115-2026-07.json",
+            "proposal_sha256": sha256(proposal_path),
+            "review_started_at": "2026-07-23",
+            "status": "complete",
+            "review_completed_at": "2026-07-23",
+            "import_allowed": True,
+            "decisions": [
+                {
+                    "proposal_row_id": "sandvik-dcgt-11t302-um-1115-001",
+                    "tool_id": "DCGT-11-T3-02-UM-1115",
+                    "decision": "approved_with_corrections",
+                    "reviewer": "test-reviewer",
+                    "decided_at": "2026-07-23",
+                    "corrected_proposed": corrected,
+                }
+            ],
+        }
+        with tempfile.TemporaryDirectory() as temp:
+            ledger_path = Path(temp) / "ledger.json"
+            ledger_path.write_text(
+                json.dumps(ledger, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            _, errors = review_batch.validate_ledger(
+                proposal_path, proposal, ledger_path
+            )
+            self.assertIn(
+                "ledger decision 1 corrected_proposed facts[6]: value claim for value_text does not match proposed value",
+                errors,
+            )
+            self.assertIn(
+                "ledger decision 1 corrected_proposed facts[22]: value claim for unit normalized_value does not match proposed value",
+                errors,
+            )
+            self.assertIn(
+                "ledger decision 1 corrected_proposed tool_updates: value claim for grade does not match proposed value",
+                errors,
+            )
+            db_path, _, _ = self.build(Path(temp) / "build")
+            output_path = Path(temp) / "compiled.json"
+            sentinel = b"do-not-replace-invalid-output"
+            output_path.write_bytes(sentinel)
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(ROOT / "scripts" / "review_batch.py"),
+                    "compile",
+                    "--proposal",
+                    str(proposal_path),
+                    "--ledger",
+                    str(ledger_path),
+                    "--db",
+                    str(db_path),
+                    "--out",
+                    str(output_path),
+                ],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertEqual(output_path.read_bytes(), sentinel)
+
+    def test_schema_2_rejects_correction_publication_shape_changes(self) -> None:
+        spec = importlib.util.spec_from_file_location(
+            "review_batch_for_correction_shape", ROOT / "scripts" / "review_batch.py"
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        review_batch = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(review_batch)
+
+        proposal_path = ROOT / "proposals" / "sandvik-dcgt-11t302-um-1115-2026-07.json"
+        proposal = json.loads(proposal_path.read_text(encoding="utf-8"))
+
+        def ledger_for(corrected: dict[str, object]) -> dict[str, object]:
+            return {
+                "schema_version": 2,
+                "review_id": "corrected-shape-review",
+                "proposal_id": proposal["proposal_id"],
+                "proposal_path": "toolbase/proposals/sandvik-dcgt-11t302-um-1115-2026-07.json",
+                "proposal_sha256": sha256(proposal_path),
+                "review_started_at": "2026-07-23",
+                "status": "complete",
+                "review_completed_at": "2026-07-23",
+                "import_allowed": True,
+                "decisions": [
+                    {
+                        "proposal_row_id": "sandvik-dcgt-11t302-um-1115-001",
+                        "tool_id": "DCGT-11-T3-02-UM-1115",
+                        "decision": "approved_with_corrections",
+                        "reviewer": "test-reviewer",
+                        "decided_at": "2026-07-23",
+                        "corrected_proposed": corrected,
+                    }
+                ],
+            }
+
+        mutations: list[tuple[str, dict[str, object], str]] = []
+        fact_key = json.loads(json.dumps(proposal["rows"][0]["proposed"]))
+        next(fact for fact in fact_key["facts"] if fact["fact_key"] == "coating")[
+            "fact_key"
+        ] = "substrate"
+        mutations.append(("fact_key", fact_key, "immutable field fact_key differs"))
+
+        alias_injection = json.loads(json.dumps(proposal["rows"][0]["proposed"]))
+        alias_injection["aliases"].append(
+            {"alias": "UNREVIEWED-ALIAS", "alias_type": "search"}
+        )
+        mutations.append(("aliases", alias_injection, "immutable field aliases differs"))
+
+        omitted_update = json.loads(json.dumps(proposal["rows"][0]["proposed"]))
+        omitted_update["tool_updates"].pop("grade")
+        omitted_update["tool_updates"]["evidence"]["value_claims"].pop("grade")
+        mutations.append(("tool_update", omitted_update, "tool_updates fields differ"))
+
+        nulled_update = json.loads(json.dumps(proposal["rows"][0]["proposed"]))
+        nulled_update["tool_updates"]["grade"] = None
+        nulled_update["tool_updates"]["evidence"]["value_claims"].pop("grade")
+        mutations.append(
+            (
+                "nulled_tool_update",
+                nulled_update,
+                "tool_updates null/non-null fields differ",
+            )
+        )
+
+        dropped_fact = json.loads(json.dumps(proposal["rows"][0]["proposed"]))
+        dropped_fact["facts"].pop()
+        mutations.append(("fact_count", dropped_fact, "facts length differs"))
+
+        with tempfile.TemporaryDirectory() as temp:
+            temp_path = Path(temp)
+            for label, corrected, expected_error in mutations:
+                with self.subTest(label=label):
+                    ledger_path = temp_path / f"{label}.json"
+                    ledger_path.write_text(
+                        json.dumps(ledger_for(corrected), ensure_ascii=False, indent=2)
+                        + "\n",
+                        encoding="utf-8",
+                    )
+                    _, errors = review_batch.validate_ledger(
+                        proposal_path, proposal, ledger_path
+                    )
+                    self.assertTrue(
+                        any(expected_error in error for error in errors), errors
+                    )
+
+            nulled_ledger_path = temp_path / "nulled-tool-update.json"
+            nulled_ledger_path.write_text(
+                json.dumps(ledger_for(nulled_update), ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            db_path, _, _ = self.build(temp_path / "build")
+            output_path = temp_path / "compiled.json"
+            sentinel = b"do-not-replace-invalid-shape"
+            output_path.write_bytes(sentinel)
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(ROOT / "scripts" / "review_batch.py"),
+                    "compile",
+                    "--proposal",
+                    str(proposal_path),
+                    "--ledger",
+                    str(nulled_ledger_path),
+                    "--db",
+                    str(db_path),
+                    "--out",
+                    str(output_path),
+                ],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertEqual(output_path.read_bytes(), sentinel)
+
+    def test_review_json_writer_uses_explicit_lf_bytes(self) -> None:
+        spec = importlib.util.spec_from_file_location(
+            "review_batch_for_json_bytes", ROOT / "scripts" / "review_batch.py"
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        review_batch = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(review_batch)
+
+        payload = {"label": "1115 µm", "nested": {"value": 1}}
+        expected = (json.dumps(payload, indent=2, ensure_ascii=False) + "\n").encode(
+            "utf-8"
+        )
+        with tempfile.TemporaryDirectory() as temp:
+            output_path = Path(temp) / "packet.json"
+            review_batch.write_json(output_path, payload)
+            written = output_path.read_bytes()
+        self.assertEqual(written, expected)
+        self.assertNotIn(b"\r\n", written)
+
+    def test_compiler_preserves_structured_value_claims(self) -> None:
+        spec = importlib.util.spec_from_file_location(
+            "review_batch_for_compiled_claims", ROOT / "scripts" / "review_batch.py"
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        review_batch = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(review_batch)
+
+        proposal_path = ROOT / "proposals" / "sandvik-dcgt-11t302-um-1115-2026-07.json"
+        proposal = json.loads(proposal_path.read_text(encoding="utf-8"))
+        row = proposal["rows"][0]
+        compiled = review_batch.compile_row(
+            row,
+            {
+                "decision": "approved",
+                "reviewer": "test-reviewer",
+                "decided_at": "2026-07-23",
+            },
+            {source["source_id"]: source for source in proposal["sources"]},
+        )
+        for group in ("facts", "material_recommendations", "cutting_profiles"):
+            self.assertTrue(compiled[group])
+            self.assertTrue(
+                all(item.get("value_claims") for item in compiled[group]),
+                group,
+            )
+        self.assertTrue(compiled["tool_updates"].get("value_claims"))
 
     def test_sandvik_dcgt_11t302_um_1105_is_exact_and_source_scoped(self) -> None:
         tool_id = "DCGT-11-T3-02-UM"
@@ -1208,6 +1586,199 @@ class PipelineTests(unittest.TestCase):
             finally:
                 connection.close()
 
+    def test_sandvik_dcgt_11t302_um_1115_is_a_distinct_exact_product(self) -> None:
+        tool_id = "DCGT-11-T3-02-UM-1115"
+        source_id = "source-ea2b2d84fdbf16f8"
+        source_sha256 = "ea2b2d84fdbf16f83e2410feb85bd189a63a45edc29e73452c17c4ab6cdfb845"
+        with tempfile.TemporaryDirectory() as temp:
+            db_path, json_path, _ = self.build(Path(temp))
+            connection = sqlite3.connect(db_path)
+            try:
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT id, part_number, grade, chipbreaker, lifecycle_status
+                        FROM tools WHERE id IN (?, ?) ORDER BY id
+                        """,
+                        ("DCGT-11-T3-02-UM", tool_id),
+                    ).fetchall(),
+                    [
+                        ("DCGT-11-T3-02-UM", "DCGT-11-T3-02-UM", "1105", "UM", "active"),
+                        (tool_id, tool_id, "1115", "UM", "active"),
+                    ],
+                )
+                aliases = set(
+                    connection.execute(
+                        "SELECT alias, alias_type FROM tool_aliases WHERE tool_id=?",
+                        (tool_id,),
+                    ).fetchall()
+                )
+                self.assertTrue(
+                    {
+                        ("12385284", "search"),
+                        ("5730415", "search"),
+                        ("DCGT 11 T3 02-UM 1115", "manufacturer_part_number"),
+                        ("DCGT11T302UM1115", "search"),
+                    }.issubset(aliases),
+                    aliases,
+                )
+                self.assertFalse(any("1105" in alias for alias, _ in aliases), aliases)
+                fact_rows = {
+                    row[0]: row[1:]
+                    for row in connection.execute(
+                        """
+                        SELECT f.fact_key,
+                               COALESCE(f.value_text, CAST(f.value_number AS TEXT), f.value_json),
+                               f.verification_status, f.source_id, s.content_sha256
+                        FROM facts f JOIN sources s ON s.id=f.source_id
+                        WHERE f.tool_id=? AND f.is_current=1
+                          AND f.fact_key IN (
+                            'manufacturer_material_number', 'manufacturer_order_code',
+                            'coating', 'substrate', 'iso_designation',
+                            'designation_shape_segment', 'designation_clearance_segment',
+                            'designation_tolerance_segment', 'designation_style_segment',
+                            'designation_size_segment', 'designation_thickness_segment',
+                            'designation_radius_segment', 'designation_chipbreaker_segment',
+                            'designation_grade_segment', 'manufacturer_lifecycle_code',
+                            'manufacturer_availability', 'lifecycle_status'
+                          )
+                        """,
+                        (tool_id,),
+                    ).fetchall()
+                }
+                expected_values = {
+                    "manufacturer_material_number": "5730415",
+                    "manufacturer_order_code": "DCGT 11 T3 02-UM 1115",
+                    "coating": "PVD TiAlN+TiAlN",
+                    "substrate": "HC",
+                    "iso_designation": "DCGT 11 T3 02",
+                    "designation_shape_segment": "D",
+                    "designation_clearance_segment": "C",
+                    "designation_tolerance_segment": "G",
+                    "designation_style_segment": "T",
+                    "designation_size_segment": "11",
+                    "designation_thickness_segment": "T3",
+                    "designation_radius_segment": "02",
+                    "designation_chipbreaker_segment": "UM",
+                    "designation_grade_segment": "1115",
+                    "manufacturer_lifecycle_code": "20",
+                    "manufacturer_availability": "Available",
+                    "lifecycle_status": "active",
+                }
+                self.assertEqual(set(fact_rows), set(expected_values))
+                for key, value in expected_values.items():
+                    self.assertEqual(
+                        fact_rows[key],
+                        (value, "manufacturer_verified", source_id, source_sha256),
+                        key,
+                    )
+
+                grade_codes = {}
+                for candidate in ("DCGT-11-T3-02-UM", tool_id):
+                    grade_codes[candidate] = {
+                        row[0]
+                        for row in connection.execute(
+                            """
+                            SELECT g.code FROM tool_grade_options o
+                            JOIN grades g ON g.id=o.grade_id
+                            WHERE o.tool_id=? AND o.verification_status <> 'rejected'
+                            """,
+                            (candidate,),
+                        ).fetchall()
+                    }
+                self.assertEqual(grade_codes["DCGT-11-T3-02-UM"], {"1105"})
+                self.assertEqual(grade_codes[tool_id], set())
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT COUNT(*) FROM tool_grade_options
+                        WHERE tool_id=? AND verification_status <> 'rejected'
+                        """,
+                        (tool_id,),
+                    ).fetchone()[0],
+                    0,
+                )
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT COUNT(*) FROM tool_grade_options
+                        WHERE tool_id=? AND option_kind='legacy_claim'
+                          AND verification_status='rejected'
+                        """,
+                        (tool_id,),
+                    ).fetchone()[0],
+                    1,
+                )
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT option_kind, full_order_number, verification_status
+                        FROM tool_grade_options WHERE tool_id=?
+                        """,
+                        (tool_id,),
+                    ).fetchone(),
+                    ("legacy_claim", "DCGT 11 T3 02-UM 1115", "rejected"),
+                )
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT g.code, r.iso_group, r.material_subgroup, r.suitability
+                        FROM tool_material_recommendations r
+                        LEFT JOIN grades g ON g.id=r.grade_id
+                        WHERE r.tool_id=? AND r.is_current=1 ORDER BY r.iso_group
+                        """,
+                        (tool_id,),
+                    ).fetchall(),
+                    [
+                        ("1115", "M", "Stainless steel", "recommended"),
+                        ("1115", "S", "Heat-resistant superalloys", "recommended"),
+                    ],
+                )
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT source_grade, iso_material_group,
+                               surface_speed_min, surface_speed_start, surface_speed_max,
+                               feed_min, feed_max, depth_of_cut_min, depth_of_cut_max
+                        FROM cutting_data_profiles WHERE tool_id=? ORDER BY iso_material_group
+                        """,
+                        (tool_id,),
+                    ).fetchall(),
+                    [
+                        ("1115", "M", 240.0, 260.0, 260.0, 0.01, 0.06, 0.1, 1.5),
+                        ("1115", "S", 55.0, 55.0, 55.0, 0.01, 0.08, 0.1, 1.05),
+                    ],
+                )
+                self.assertEqual(
+                    connection.execute(
+                        "SELECT row_count FROM review_batches WHERE proposal_id='sandvik-dcgt-11t302-um-1115-2026-07'"
+                    ).fetchone(),
+                    (1,),
+                )
+
+                public = {
+                    item["id"]: item
+                    for item in json.loads(json_path.read_text(encoding="utf-8"))["tools"]
+                }[tool_id]
+                self.assertEqual(public["part_number"], tool_id)
+                self.assertEqual(public["grade"], "1115")
+                self.assertEqual(public["chipbreaker"], "UM")
+                self.assertTrue(public["standalone_exact_product"])
+                self.assertIn("standalone_exact_product", public["tags"])
+                self.assertEqual(public["grade_options"], [])
+                self.assertEqual(len(public["cutting_data"]), 2)
+                self.assertEqual(public["geometry_display"]["designation"], "DCGT11T302")
+                self.assertEqual(
+                    public["geometry_display"]["designation_verification_status"],
+                    "manufacturer_verified",
+                )
+                self.assertEqual(
+                    public["geometry_display"]["designation_source_ids"],
+                    [source_id],
+                )
+            finally:
+                connection.close()
+
     def test_mitsubishi_insert_identities_and_bf_bm_baselines_are_exact(self) -> None:
         mitsubishi_grade_counts = {
             "BC5110": 10,
@@ -1378,6 +1949,35 @@ class PipelineTests(unittest.TestCase):
                 )
             finally:
                 connection.close()
+
+    def test_build_hash_is_independent_of_output_directory(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            directory = Path(temp)
+            shell_output = directory / "with-shell"
+            plain_output = directory / "plain"
+            for output in (shell_output, plain_output):
+                (output / "data").mkdir(parents=True)
+            for name in (
+                "index.html",
+                "app.css",
+                "app.js",
+                "manifest.webmanifest",
+                "sw.js",
+                "toolbase-card.png",
+            ):
+                shutil.copyfile(ROOT.parent / "docs" / "v3" / name, shell_output / name)
+
+            shell_db, shell_json, _ = self.build(shell_output / "data")
+            plain_db, plain_json, _ = self.build(plain_output / "data")
+            self.assertEqual(sha256(shell_db), sha256(plain_db))
+            self.assertEqual(sha256(shell_json), sha256(plain_json))
+            shell_meta = json.loads(
+                shell_json.with_name("build-meta.json").read_text(encoding="utf-8")
+            )
+            plain_meta = json.loads(
+                plain_json.with_name("build-meta.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(shell_meta["build_hash"], plain_meta["build_hash"])
 
     def test_build_is_deterministic(self) -> None:
         with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:

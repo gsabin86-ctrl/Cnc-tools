@@ -565,6 +565,33 @@ def apply_reviewed_import(
             ),
         )
 
+        standalone_exact_product = "standalone_exact_product" in set(row.get("tags") or [])
+        if standalone_exact_product:
+            manufacturer_part_number = next(
+                (
+                    alias.get("alias")
+                    for alias in row.get("aliases") or []
+                    if alias.get("alias_type") == "manufacturer_part_number"
+                ),
+                None,
+            )
+            connection.execute(
+                """
+                UPDATE tool_grade_options
+                SET verification_status='rejected',
+                    full_order_number=coalesce(?, full_order_number),
+                    review_batch_id=?, reviewer=?, reviewed_at=?
+                WHERE tool_id=?
+                """,
+                (
+                    manufacturer_part_number,
+                    batch_id,
+                    row_reviewer,
+                    row_reviewed_at,
+                    tool_id,
+                ),
+            )
+
         for rejected_grade_code in row.get("reject_grade_codes") or []:
             connection.execute(
                 """
@@ -587,30 +614,42 @@ def apply_reviewed_import(
 
         fact_values = {item["fact_key"]: item for item in row.get("facts") or []}
         grade_ids: dict[str, str] = {}
-        grade_inputs = list(row.get("grade_options") or [])
+        if standalone_exact_product:
+            for existing_grade_id, existing_code, existing_normalized_code in connection.execute(
+                """
+                SELECT g.id, g.code, g.normalized_code
+                FROM tool_grade_options o JOIN grades g ON g.id=o.grade_id
+                WHERE o.tool_id=?
+                """,
+                (tool_id,),
+            ):
+                grade_ids[existing_code] = existing_grade_id
+                grade_ids[existing_normalized_code] = existing_grade_id
+        grade_inputs = [] if standalone_exact_product else list(row.get("grade_options") or [])
         existing_grade_codes = {
             normalize_part_number(option.get("code")) for option in grade_inputs
         }
-        for profile in row.get("cutting_profiles") or []:
-            if normalize_part_number(profile.get("source_grade")) in existing_grade_codes:
-                continue
-            grade_inputs.append(
-                {
-                    "code": profile.get("source_grade"),
-                    "option_kind": "exact_order_grade",
-                    "full_order_number": tool_part_number,
-                    "availability_status": "listed",
-                    "is_primary": True,
-                    "verification_status": profile.get("verification_status"),
-                    "source_id": profile.get("source_id"),
-                    "source_page_ref": profile.get("source_page_ref"),
-                    "source_table_ref": profile.get("source_table_ref"),
-                    "source_raw_text": profile.get("source_raw_text"),
-                    "extraction_method": profile.get("extraction_method"),
-                    "reviewer": profile.get("reviewer"),
-                    "reviewed_at": profile.get("reviewed_at"),
-                }
-            )
+        if not standalone_exact_product:
+            for profile in row.get("cutting_profiles") or []:
+                if normalize_part_number(profile.get("source_grade")) in existing_grade_codes:
+                    continue
+                grade_inputs.append(
+                    {
+                        "code": profile.get("source_grade"),
+                        "option_kind": "exact_order_grade",
+                        "full_order_number": tool_part_number,
+                        "availability_status": "listed",
+                        "is_primary": True,
+                        "verification_status": profile.get("verification_status"),
+                        "source_id": profile.get("source_id"),
+                        "source_page_ref": profile.get("source_page_ref"),
+                        "source_table_ref": profile.get("source_table_ref"),
+                        "source_raw_text": profile.get("source_raw_text"),
+                        "extraction_method": profile.get("extraction_method"),
+                        "reviewer": profile.get("reviewer"),
+                        "reviewed_at": profile.get("reviewed_at"),
+                    }
+                )
         for option in grade_inputs:
             grade_code = clean_text(option.get("code"))
             if not grade_code:
@@ -2313,6 +2352,8 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
         legacy = json.loads(row.pop("legacy_record_json"))
         row["aliases"] = aliases_by_tool.get(row["id"], [])
         row["tags"] = reviewed_tags_by_tool.get(row["id"], legacy.get("tags") or [])
+        if "standalone_exact_product" in set(row["tags"]):
+            row["standalone_exact_product"] = True
         row["facts"] = facts_by_tool.get(row["id"], [])
         row["fact_history"] = fact_history_by_tool.get(row["id"], [])
         row["source_ids"] = source_ids_by_tool.get(row["id"], [])
@@ -2443,14 +2484,15 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
     connection.close()
 
     deployment_digest = hashlib.sha256(db_path.read_bytes())
+    deployment_root = ROOT.parent / "docs" / "v3"
     deployment_inputs = [
         Path(__file__).resolve(),
-        json_out.parent.parent / "index.html",
-        json_out.parent.parent / "app.css",
-        json_out.parent.parent / "app.js",
-        json_out.parent.parent / "manifest.webmanifest",
-        json_out.parent.parent / "sw.js",
-        json_out.parent.parent / "toolbase-card.png",
+        deployment_root / "index.html",
+        deployment_root / "app.css",
+        deployment_root / "app.js",
+        deployment_root / "manifest.webmanifest",
+        deployment_root / "sw.js",
+        deployment_root / "toolbase-card.png",
     ]
     for deployment_input in deployment_inputs:
         if deployment_input.is_file():
