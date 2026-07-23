@@ -1,0 +1,988 @@
+{
+  "schema_version": 2,
+  "review_id": "sandvik-coroturn107-dcgt-family-2026-07-review",
+  "proposal_id": "sandvik-coroturn107-dcgt-family-2026-07",
+  "proposal_path": "toolbase/proposals/sandvik-coroturn107-dcgt-family-2026-07.json",
+  "proposal_sha256": "0f409e2b3a1e0f036aae398bc0f74ee99e0f6c5972834499cf181cea3c794198",
+  "review_started_at": "2026-07-23",
+  "status": "complete",
+  "review_completed_at": "2026-07-23",
+  "import_allowed": true,
+  "decisions": [
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730437",
+      "tool_id": "DCGT-07-02-01-UM-1025",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730419",
+      "tool_id": "DCGT-07-02-01-UM-1105",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730420",
+      "tool_id": "DCGT-07-02-01-UM-1115",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730421",
+      "tool_id": "DCGT-07-02-01-UM-1125",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-8432102",
+      "tool_id": "DCGT-07-02-01-UM-1205",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730436",
+      "tool_id": "DCGT-07-02-01-UM-H13A",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730423",
+      "tool_id": "DCGT-07-02-02-UM-1025",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730424",
+      "tool_id": "DCGT-07-02-02-UM-1105",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730425",
+      "tool_id": "DCGT-07-02-02-UM-1115",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730426",
+      "tool_id": "DCGT-07-02-02-UM-1125",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-8432103",
+      "tool_id": "DCGT-07-02-02-UM-1205",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730427",
+      "tool_id": "DCGT-07-02-02-UM-1515",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730422",
+      "tool_id": "DCGT-07-02-02-UM-H13A",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730430",
+      "tool_id": "DCGT-07-02-04-UM-1025",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730438",
+      "tool_id": "DCGT-07-02-04-UM-1105",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730449",
+      "tool_id": "DCGT-07-02-04-UM-1115",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730451",
+      "tool_id": "DCGT-07-02-04-UM-1125",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-8432104",
+      "tool_id": "DCGT-07-02-04-UM-1205",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730452",
+      "tool_id": "DCGT-07-02-04-UM-1515",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730453",
+      "tool_id": "DCGT-07-02-04-UM-2035",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730454",
+      "tool_id": "DCGT-07-02-04-UM-5015",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730428",
+      "tool_id": "DCGT-07-02-04-UM-H13A",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730457",
+      "tool_id": "DCGT-07-02-08-UM-1025",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-6075375",
+      "tool_id": "DCGT-07-02-08-UM-1105",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730439",
+      "tool_id": "DCGT-07-02-08-UM-1125",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-8432105",
+      "tool_id": "DCGT-07-02-08-UM-1205",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730440",
+      "tool_id": "DCGT-07-02-08-UM-1515",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730456",
+      "tool_id": "DCGT-07-02-08-UM-H13A",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730445",
+      "tool_id": "DCGT-11-T3-01-UM-1025",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730446",
+      "tool_id": "DCGT-11-T3-01-UM-1105",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730447",
+      "tool_id": "DCGT-11-T3-01-UM-1115",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730448",
+      "tool_id": "DCGT-11-T3-01-UM-1125",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-8432106",
+      "tool_id": "DCGT-11-T3-01-UM-1205",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730338",
+      "tool_id": "DCGT-11-T3-01-UM-5015",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730444",
+      "tool_id": "DCGT-11-T3-01-UM-H13A",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730413",
+      "tool_id": "DCGT-11-T3-02-UM-1025",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730416",
+      "tool_id": "DCGT-11-T3-02-UM-1125",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-8432107",
+      "tool_id": "DCGT-11-T3-02-UM-1205",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730417",
+      "tool_id": "DCGT-11-T3-02-UM-1515",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730339",
+      "tool_id": "DCGT-11-T3-02-UM-2035",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730400",
+      "tool_id": "DCGT-11-T3-02-UM-5015",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730412",
+      "tool_id": "DCGT-11-T3-02-UM-H13A",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730405",
+      "tool_id": "DCGT-11-T3-04-UM-1005",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730407",
+      "tool_id": "DCGT-11-T3-04-UM-1025",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730408",
+      "tool_id": "DCGT-11-T3-04-UM-1105",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730410",
+      "tool_id": "DCGT-11-T3-04-UM-1115",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730589",
+      "tool_id": "DCGT-11-T3-04-UM-1125",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-8432108",
+      "tool_id": "DCGT-11-T3-04-UM-1205",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730609",
+      "tool_id": "DCGT-11-T3-04-UM-1515",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730612",
+      "tool_id": "DCGT-11-T3-04-UM-2035",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730614",
+      "tool_id": "DCGT-11-T3-04-UM-5015",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730403",
+      "tool_id": "DCGT-11-T3-04-UM-H13A",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730404",
+      "tool_id": "DCGT-11-T3-04-UM-S05F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-8003544",
+      "tool_id": "DCGT-11-T3-04-UM-S205",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730594",
+      "tool_id": "DCGT-11-T3-08-UM-1005",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730596",
+      "tool_id": "DCGT-11-T3-08-UM-1025",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730599",
+      "tool_id": "DCGT-11-T3-08-UM-1105",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730600",
+      "tool_id": "DCGT-11-T3-08-UM-1115",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730602",
+      "tool_id": "DCGT-11-T3-08-UM-1125",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-8432109",
+      "tool_id": "DCGT-11-T3-08-UM-1205",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730605",
+      "tool_id": "DCGT-11-T3-08-UM-1515",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730610",
+      "tool_id": "DCGT-11-T3-08-UM-5015",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730617",
+      "tool_id": "DCGT-11-T3-08-UM-H13A",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-5730592",
+      "tool_id": "DCGT-11-T3-08-UM-S05F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    },
+    {
+      "proposal_row_id": "sandvik-dcgt-family-8003545",
+      "tool_id": "DCGT-11-T3-08-UM-S205",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "interactive_user_direction_in_hermes_chat",
+      "approved_scope": [
+        "use the supplied DCGT 11 T3 01-UM 1105 product as the seed for all manufacturer-listed CoroTurn 107 DCGT inserts",
+        "preserve every complete grade-suffixed Sandvik order code and material ID as a separate exact product",
+        "retain active, being-replaced, and obsolete products with source-backed lifecycle and replacement facts",
+        "publish exact product material applicability and cutting rows without generating hypothetical part-number combinations"
+      ],
+      "notes": "Greg selected all Sandvik CoroTurn 107 DCGT inserts as the standing family scope and supplied material ID 5730446 as the seed. This row is one exact manufacturer product admitted by the adapter's identity and family gates."
+    }
+  ]
+}

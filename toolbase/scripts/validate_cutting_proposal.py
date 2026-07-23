@@ -186,8 +186,8 @@ def validate(proposal_path: Path, db_path: Path, ledger_path: Path) -> dict[str,
     if not isinstance(rows, list):
         errors.append("proposal: rows must be an array")
         rows = []
-    elif not 10 <= len(rows) <= 25:
-        errors.append("proposal: pilot must contain 10 to 25 rows")
+    elif len(rows) < 10:
+        errors.append("rows must contain at least 10 tools")
 
     connection = sqlite3.connect(f"file:{db_path.as_posix()}?mode=ro", uri=True)
     connection.row_factory = sqlite3.Row

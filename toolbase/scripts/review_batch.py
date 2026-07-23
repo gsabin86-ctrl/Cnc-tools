@@ -655,8 +655,8 @@ def validate_proposal(proposal_path: Path, database_path: Path) -> tuple[dict[st
             )
 
     rows = proposal.get("rows")
-    if not isinstance(rows, list) or not 1 <= len(rows) <= 25:
-        errors.append("proposal: rows must contain 1 through 25 tools")
+    if not isinstance(rows, list) or not rows:
+        errors.append("proposal: rows must contain at least 1 tool")
         rows = []
     row_ids: set[str] = set()
     tool_ids: set[str] = set()

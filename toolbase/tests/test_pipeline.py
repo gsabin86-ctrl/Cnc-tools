@@ -70,7 +70,7 @@ class PipelineTests(unittest.TestCase):
                 connection.execute("SELECT value FROM schema_meta WHERE key='schema_version'").fetchone()[0],
                 "3.4.0",
             )
-            self.assertEqual(connection.execute("SELECT COUNT(*) FROM tools").fetchone()[0], 1224)
+            self.assertEqual(connection.execute("SELECT COUNT(*) FROM tools").fetchone()[0], 1289)
             self.assertEqual(connection.execute("SELECT COUNT(*) FROM manufacturers WHERE name='Horn'").fetchone()[0], 0)
             self.assertEqual(
                 connection.execute(
@@ -163,7 +163,7 @@ class PipelineTests(unittest.TestCase):
             connection.close()
 
             projection = json.loads(json_path.read_text(encoding="utf-8"))
-            self.assertEqual(len(projection["tools"]), 1224)
+            self.assertEqual(len(projection["tools"]), 1289)
             self.assertEqual(projection["meta"]["quality"]["suppressed_direct_machine_claims"], 172)
             review_proposals = {batch["proposal_id"] for batch in projection["review_batches"]}
             self.assertIn("kennametal-topswiss-pilot-2026-07", review_proposals)
@@ -173,8 +173,8 @@ class PipelineTests(unittest.TestCase):
             self.assertTrue(all("source_refs" in relationship for relationship in projection["relationships"]))
             search_index = json.loads(json_path.with_name("catalog-index.json").read_text(encoding="utf-8"))
             details = json.loads(json_path.with_name("catalog-details.json").read_text(encoding="utf-8"))
-            self.assertEqual(len(search_index["tools"]), 1224)
-            self.assertEqual(len(details["tools_by_id"]), 1224)
+            self.assertEqual(len(search_index["tools"]), 1289)
+            self.assertEqual(len(details["tools_by_id"]), 1289)
             self.assertEqual(search_index["meta"]["build_hash"], details["meta"]["build_hash"])
             self.assertTrue(all("verification_status" in tool for tool in search_index["tools"]))
             self.assertTrue(all("review_status" in tool for tool in search_index["tools"]))
@@ -191,7 +191,7 @@ class PipelineTests(unittest.TestCase):
                 if tool["manufacturer"] == "Sandvik Coromant"
                 and tool["family"] == "CoroTurn 107 Inserts"
             ]
-            self.assertEqual(len(sandvik_coroturn), 55)
+            self.assertEqual(len(sandvik_coroturn), 120)
             self.assertTrue(all(tool["geometry_display"] for tool in sandvik_coroturn))
             material_tools = [tool for tool in search_index["tools"] if tool["material_groups"]]
             cutting_tools = [tool for tool in search_index["tools"] if tool["has_cutting_data"]]
@@ -211,6 +211,7 @@ class PipelineTests(unittest.TestCase):
         self.assertIn("sourceUnitLabel(unit)", app)
         self.assertIn("const display = a.value != null ? a : b", app)
         self.assertIn("${display.unit}", app)
+        self.assertIn("profile.coolant_condition !== 'unknown'", app)
 
     def test_manufacturer_specific_insert_geometry_uses_existing_facts(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -1061,6 +1062,27 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(record["grade"], grade)
             self.assertEqual(record["specs"]["manufacturer_material_id"], material_id)
         self.assertNotEqual(*expected.keys())
+
+    def test_schema_2_allows_review_batches_larger_than_25_rows(self) -> None:
+        spec = importlib.util.spec_from_file_location(
+            "review_batch_without_row_cap", ROOT / "scripts" / "review_batch.py"
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        review_batch = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(review_batch)
+
+        proposal_path = (
+            ROOT
+            / "proposals"
+            / "sandvik-coroturn107-dcgt-family-2026-07.json"
+        )
+        proposal = json.loads(proposal_path.read_text(encoding="utf-8"))
+        self.assertGreater(len(proposal["rows"]), 25)
+        with tempfile.TemporaryDirectory() as temp:
+            db_path, _, _ = self.build(Path(temp))
+            _, errors = review_batch.validate_proposal(proposal_path, db_path)
+        self.assertEqual(errors, [])
 
     def test_schema_2_rejects_structured_fact_value_claim_mismatch(self) -> None:
         spec = importlib.util.spec_from_file_location(
