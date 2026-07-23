@@ -1,0 +1,2448 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "mitsubishi-c010a-grade-matrix-2026-07-22",
+  "manufacturer": "Mitsubishi Materials",
+  "source_document": "toolbase/data/source_snapshots/mitsubishi-c010a-cbn-pcd-inserts.pdf",
+  "source_document_sha256": "3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de",
+  "document_edition": "C010A",
+  "extraction_method": "PyMuPDF word-coordinate join of exact ISO rows to grade-column stock marks; visually checked on rendered tables",
+  "row_count": 132,
+  "rows": [
+    {
+      "tool_id": "BF-CCGT09T304TS2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "TS2",
+      "edge_preparation_or_order_suffix": "TS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "Japan stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "BF-CCGT09T308TS2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "TS2",
+      "edge_preparation_or_order_suffix": "TS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "Japan stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "BF-DCGT11T304TS2",
+      "catalog_pdf_page": 42,
+      "catalog_printed_page": "B041",
+      "legacy_grade_token": "TS2",
+      "edge_preparation_or_order_suffix": "TS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "Japan stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "BF-DCGT11T308TS2",
+      "catalog_pdf_page": 42,
+      "catalog_printed_page": "B041",
+      "legacy_grade_token": "TS2",
+      "edge_preparation_or_order_suffix": "TS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "Japan stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "BM-CCGT09T304TA2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "TA2",
+      "edge_preparation_or_order_suffix": "TA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "BM-CCGT09T308TA2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "TA2",
+      "edge_preparation_or_order_suffix": "TA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "BM-DCGT11T304TA2",
+      "catalog_pdf_page": 42,
+      "catalog_printed_page": "B041",
+      "legacy_grade_token": "TA2",
+      "edge_preparation_or_order_suffix": "TA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "BM-DCGT11T308TA2",
+      "catalog_pdf_page": 42,
+      "catalog_printed_page": "B041",
+      "legacy_grade_token": "TA2",
+      "edge_preparation_or_order_suffix": "TA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "DCMW070202",
+      "catalog_pdf_page": 55,
+      "catalog_printed_page": "B054",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "DCMW070204",
+      "catalog_pdf_page": 55,
+      "catalog_printed_page": "B054",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "DCMW11T302",
+      "catalog_pdf_page": 55,
+      "catalog_printed_page": "B054",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "DCMW11T304",
+      "catalog_pdf_page": 55,
+      "catalog_printed_page": "B054",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW060202SE2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW060204SE2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW060208SE2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T302SE2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T304FBWL2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "FBWL2",
+      "edge_preparation_or_order_suffix": "FBWL2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T304FSWS2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "FSWS2",
+      "edge_preparation_or_order_suffix": "FSWS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T304GAWS2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "GAWS2",
+      "edge_preparation_or_order_suffix": "GAWS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T304GBWL2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "GBWL2",
+      "edge_preparation_or_order_suffix": "GBWL2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T304GSWS2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "GSWS2",
+      "edge_preparation_or_order_suffix": "GSWS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T304SE2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T308FBWL2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "FBWL2",
+      "edge_preparation_or_order_suffix": "FBWL2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T308FSWS2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "FSWS2",
+      "edge_preparation_or_order_suffix": "FSWS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T308GAWS2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "GAWS2",
+      "edge_preparation_or_order_suffix": "GAWS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T308GBWL2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "GBWL2",
+      "edge_preparation_or_order_suffix": "GBWL2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T308GSWS2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "GSWS2",
+      "edge_preparation_or_order_suffix": "GSWS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-CCGW09T308SE2",
+      "catalog_pdf_page": 39,
+      "catalog_printed_page": "B038",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070202FS2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "FS2",
+      "edge_preparation_or_order_suffix": "FS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070202GA2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GA2",
+      "edge_preparation_or_order_suffix": "GA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070202GS2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GS2",
+      "edge_preparation_or_order_suffix": "GS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070204FS2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "FS2",
+      "edge_preparation_or_order_suffix": "FS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC5110",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070204GA2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GA2",
+      "edge_preparation_or_order_suffix": "GA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070204GS2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GS2",
+      "edge_preparation_or_order_suffix": "GS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC5110",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070204SE2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070204SF2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "SF2",
+      "edge_preparation_or_order_suffix": "SF2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070204TA2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "TA2",
+      "edge_preparation_or_order_suffix": "TA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070208FS2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "FS2",
+      "edge_preparation_or_order_suffix": "FS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070208GA2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GA2",
+      "edge_preparation_or_order_suffix": "GA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070208GS2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GS2",
+      "edge_preparation_or_order_suffix": "GS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070208SE2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070208SF2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "SF2",
+      "edge_preparation_or_order_suffix": "SF2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW070208TA2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "TA2",
+      "edge_preparation_or_order_suffix": "TA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T302FS2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "FS2",
+      "edge_preparation_or_order_suffix": "FS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T302GA2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GA2",
+      "edge_preparation_or_order_suffix": "GA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T302GS2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GS2",
+      "edge_preparation_or_order_suffix": "GS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T302SE2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T302SF2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "SF2",
+      "edge_preparation_or_order_suffix": "SF2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T304FS2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "FS2",
+      "edge_preparation_or_order_suffix": "FS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T304GA2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GA2",
+      "edge_preparation_or_order_suffix": "GA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T304GH2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GH2",
+      "edge_preparation_or_order_suffix": "GH2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T304GS2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GS2",
+      "edge_preparation_or_order_suffix": "GS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC5110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T304SE2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T304SF2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "SF2",
+      "edge_preparation_or_order_suffix": "SF2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T304TA2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "TA2",
+      "edge_preparation_or_order_suffix": "TA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T304TH2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "TH2",
+      "edge_preparation_or_order_suffix": "TH2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T304VA2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "VA2",
+      "edge_preparation_or_order_suffix": "VA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T308FS2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "FS2",
+      "edge_preparation_or_order_suffix": "FS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC5110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T308GA2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GA2",
+      "edge_preparation_or_order_suffix": "GA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T308GH2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GH2",
+      "edge_preparation_or_order_suffix": "GH2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T308GS2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "GS2",
+      "edge_preparation_or_order_suffix": "GS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC5110",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T308SE2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T308SF2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "SF2",
+      "edge_preparation_or_order_suffix": "SF2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T308TA2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "TA2",
+      "edge_preparation_or_order_suffix": "TA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T308TH2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "TH2",
+      "edge_preparation_or_order_suffix": "TH2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCGW11T308VA2",
+      "catalog_pdf_page": 41,
+      "catalog_printed_page": "B040",
+      "legacy_grade_token": "VA2",
+      "edge_preparation_or_order_suffix": "VA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCMT070202L-F",
+      "catalog_pdf_page": 55,
+      "catalog_printed_page": "B054",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCMT070202R-F",
+      "catalog_pdf_page": 55,
+      "catalog_printed_page": "B054",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCMT070204L-F",
+      "catalog_pdf_page": 55,
+      "catalog_printed_page": "B054",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCMT070204R-F",
+      "catalog_pdf_page": 55,
+      "catalog_printed_page": "B054",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCMT11T302L-F",
+      "catalog_pdf_page": 55,
+      "catalog_printed_page": "B054",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCMT11T302R-F",
+      "catalog_pdf_page": 55,
+      "catalog_printed_page": "B054",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCMT11T304L-F",
+      "catalog_pdf_page": 55,
+      "catalog_printed_page": "B054",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-DCMT11T304R-F",
+      "catalog_pdf_page": 55,
+      "catalog_printed_page": "B054",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-TCGW110202GS3",
+      "catalog_pdf_page": 43,
+      "catalog_printed_page": "B042",
+      "legacy_grade_token": "GS3",
+      "edge_preparation_or_order_suffix": "GS3",
+      "actual_grade_options": [
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-TCGW110204FS3",
+      "catalog_pdf_page": 43,
+      "catalog_printed_page": "B042",
+      "legacy_grade_token": "FS3",
+      "edge_preparation_or_order_suffix": "FS3",
+      "actual_grade_options": [
+        {
+          "grade": "BC5110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-TCGW110204GS3",
+      "catalog_pdf_page": 43,
+      "catalog_printed_page": "B042",
+      "legacy_grade_token": "GS3",
+      "edge_preparation_or_order_suffix": "GS3",
+      "actual_grade_options": [
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-TCGW110204SE3",
+      "catalog_pdf_page": 43,
+      "catalog_printed_page": "B042",
+      "legacy_grade_token": "SE3",
+      "edge_preparation_or_order_suffix": "SE3",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-TCGW110204SF3",
+      "catalog_pdf_page": 43,
+      "catalog_printed_page": "B042",
+      "legacy_grade_token": "SF3",
+      "edge_preparation_or_order_suffix": "SF3",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-TCGW110208FS3",
+      "catalog_pdf_page": 43,
+      "catalog_printed_page": "B042",
+      "legacy_grade_token": "FS3",
+      "edge_preparation_or_order_suffix": "FS3",
+      "actual_grade_options": [
+        {
+          "grade": "BC5110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-TCGW110208GS3",
+      "catalog_pdf_page": 43,
+      "catalog_printed_page": "B042",
+      "legacy_grade_token": "GS3",
+      "edge_preparation_or_order_suffix": "GS3",
+      "actual_grade_options": [
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC5110",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-TCGW110208SE3",
+      "catalog_pdf_page": 43,
+      "catalog_printed_page": "B042",
+      "legacy_grade_token": "SE3",
+      "edge_preparation_or_order_suffix": "SE3",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-TCGW110208SF3",
+      "catalog_pdf_page": 43,
+      "catalog_printed_page": "B042",
+      "legacy_grade_token": "SF3",
+      "edge_preparation_or_order_suffix": "SF3",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-TCGW16T304GS3",
+      "catalog_pdf_page": 43,
+      "catalog_printed_page": "B042",
+      "legacy_grade_token": "GS3",
+      "edge_preparation_or_order_suffix": "GS3",
+      "actual_grade_options": [
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-TCGW16T308GS3",
+      "catalog_pdf_page": 43,
+      "catalog_printed_page": "B042",
+      "legacy_grade_token": "GS3",
+      "edge_preparation_or_order_suffix": "GS3",
+      "actual_grade_options": [
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGT110301R-F",
+      "catalog_pdf_page": 59,
+      "catalog_printed_page": "B058",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGT110302R-F",
+      "catalog_pdf_page": 59,
+      "catalog_printed_page": "B058",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGT110304R-F",
+      "catalog_pdf_page": 59,
+      "catalog_printed_page": "B058",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGT1103V5R-F",
+      "catalog_pdf_page": 59,
+      "catalog_printed_page": "B058",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110302FS2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "FS2",
+      "edge_preparation_or_order_suffix": "FS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110302GA2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GA2",
+      "edge_preparation_or_order_suffix": "GA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110302GS2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GS2",
+      "edge_preparation_or_order_suffix": "GS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110304FS2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "FS2",
+      "edge_preparation_or_order_suffix": "FS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110304GA2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GA2",
+      "edge_preparation_or_order_suffix": "GA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110304GS2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GS2",
+      "edge_preparation_or_order_suffix": "GS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110304SE2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110304SF2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "SF2",
+      "edge_preparation_or_order_suffix": "SF2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110304TA2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "TA2",
+      "edge_preparation_or_order_suffix": "TA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110308FS2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "FS2",
+      "edge_preparation_or_order_suffix": "FS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110308GA2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GA2",
+      "edge_preparation_or_order_suffix": "GA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110308GS2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GS2",
+      "edge_preparation_or_order_suffix": "GS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110308SE2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110308SF2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "SF2",
+      "edge_preparation_or_order_suffix": "SF2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW110308TA2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "TA2",
+      "edge_preparation_or_order_suffix": "TA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160402FS2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "FS2",
+      "edge_preparation_or_order_suffix": "FS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160402GA2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GA2",
+      "edge_preparation_or_order_suffix": "GA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160402GS2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GS2",
+      "edge_preparation_or_order_suffix": "GS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160404FS2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "FS2",
+      "edge_preparation_or_order_suffix": "FS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160404GA2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GA2",
+      "edge_preparation_or_order_suffix": "GA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160404GH2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GH2",
+      "edge_preparation_or_order_suffix": "GH2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160404GS2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GS2",
+      "edge_preparation_or_order_suffix": "GS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC5110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160404SE2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160404SF2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "SF2",
+      "edge_preparation_or_order_suffix": "SF2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160404TA2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "TA2",
+      "edge_preparation_or_order_suffix": "TA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160404TH2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "TH2",
+      "edge_preparation_or_order_suffix": "TH2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160404VA2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "VA2",
+      "edge_preparation_or_order_suffix": "VA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160408FS2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "FS2",
+      "edge_preparation_or_order_suffix": "FS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160408GA2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GA2",
+      "edge_preparation_or_order_suffix": "GA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160408GH2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GH2",
+      "edge_preparation_or_order_suffix": "GH2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160408GS2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "GS2",
+      "edge_preparation_or_order_suffix": "GS2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8210",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8105",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC5110",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160408SE2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "SE2",
+      "edge_preparation_or_order_suffix": "SE2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160408SF2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "SF2",
+      "edge_preparation_or_order_suffix": "SF2",
+      "actual_grade_options": [
+        {
+          "grade": "MB4120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160408TA2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "TA2",
+      "edge_preparation_or_order_suffix": "TA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        },
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "MB8120",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160408TH2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "TH2",
+      "edge_preparation_or_order_suffix": "TH2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8120",
+          "stock_mark": "USA stock"
+        },
+        {
+          "grade": "BC8130",
+          "stock_mark": "USA stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VBGW160408VA2",
+      "catalog_pdf_page": 46,
+      "catalog_printed_page": "B045",
+      "legacy_grade_token": "VA2",
+      "edge_preparation_or_order_suffix": "VA2",
+      "actual_grade_options": [
+        {
+          "grade": "BC8220",
+          "stock_mark": "Japan stock"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VCGT110301R-F",
+      "catalog_pdf_page": 59,
+      "catalog_printed_page": "B058",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VCGT110302R-F",
+      "catalog_pdf_page": 59,
+      "catalog_printed_page": "B058",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VCGT110304R-F",
+      "catalog_pdf_page": 59,
+      "catalog_printed_page": "B058",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "NP-VCGT1103V5R-F",
+      "catalog_pdf_page": 59,
+      "catalog_printed_page": "B058",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "VCGW110301",
+      "catalog_pdf_page": 59,
+      "catalog_printed_page": "B058",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "VCGW110302",
+      "catalog_pdf_page": 59,
+      "catalog_printed_page": "B058",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    },
+    {
+      "tool_id": "VCGW110304",
+      "catalog_pdf_page": 59,
+      "catalog_printed_page": "B058",
+      "legacy_grade_token": "MD22",
+      "edge_preparation_or_order_suffix": "",
+      "actual_grade_options": [
+        {
+          "grade": "MD220",
+          "stock_mark": "catalog-listed"
+        }
+      ]
+    }
+  ]
+}

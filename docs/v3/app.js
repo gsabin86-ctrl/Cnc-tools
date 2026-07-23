@@ -2,7 +2,7 @@
   'use strict'
 
   const PAGE_SIZE = 100
-  const STATIC_VERSION = '3.4.0-shell-5'
+  const STATIC_VERSION = '3.4.0-shell-7'
   const MATERIAL_NAMES = {
     P: 'Steel', M: 'Stainless steel', K: 'Cast iron', N: 'Non-ferrous',
     S: 'Heat-resistant alloys', H: 'Hardened materials', O: 'Other', unknown: 'Unknown'
@@ -427,8 +427,9 @@
     const a = convertValue(min, unit, state.units)
     const b = convertValue(max, unit, state.units)
     if (a.value == null && b.value == null) return '—'
+    const display = a.value != null ? a : b
     const values = a.value != null && b.value != null ? `${rounded(a.value)}–${rounded(b.value)}` : rounded(a.value ?? b.value)
-    return `${values} ${a.unit}${a.converted || b.converted ? ' (converted)' : ''}`
+    return `${values} ${display.unit}${a.converted || b.converted ? ' (converted)' : ''}`
   }
 
   function speedStart(profile) {

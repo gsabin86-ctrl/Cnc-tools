@@ -10,10 +10,13 @@ import os
 import re
 import shutil
 import sqlite3
+import tempfile
 from collections import Counter
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
+
+from review_batch import compile_packet, validate_ledger, validate_proposal
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -329,42 +332,120 @@ def load_source_documents(data_dir: Path) -> list[dict[str, Any]]:
     return payload["documents"]
 
 
+def create_review_validation_database(data_dir: Path, database_path: Path) -> None:
+    """Create the minimal seed view required by review_batch proposal validation."""
+    config = load_json(NORMALIZATION_PATH)
+    manufacturer_aliases = config["manufacturer_aliases"]
+    tools = load_jsonl(data_dir / "tools.jsonl")
+    manufacturers = sorted(
+        {
+            manufacturer_aliases.get(raw, raw)
+            for record in tools
+            for raw in [clean_text(record.get("manufacturer")) or "Unknown"]
+        },
+        key=str.casefold,
+    )
+    connection = sqlite3.connect(database_path)
+    try:
+        connection.executescript(
+            """
+            CREATE TABLE manufacturers (id TEXT PRIMARY KEY, name TEXT NOT NULL UNIQUE);
+            CREATE TABLE tools (
+              id TEXT PRIMARY KEY,
+              manufacturer_id TEXT NOT NULL,
+              component_type TEXT NOT NULL
+            );
+            """
+        )
+        manufacturer_ids = {name: stable_id("review-manufacturer", name) for name in manufacturers}
+        connection.executemany(
+            "INSERT INTO manufacturers (id, name) VALUES (?, ?)",
+            ((manufacturer_ids[name], name) for name in manufacturers),
+        )
+        connection.executemany(
+            "INSERT INTO tools (id, manufacturer_id, component_type) VALUES (?, ?, ?)",
+            (
+                (
+                    str(record["json_id"]).strip(),
+                    manufacturer_ids[
+                        manufacturer_aliases.get(
+                            clean_text(record.get("manufacturer")) or "Unknown",
+                            clean_text(record.get("manufacturer")) or "Unknown",
+                        )
+                    ],
+                    str(record.get("component_type") or "").strip().casefold(),
+                )
+                for record in tools
+            ),
+        )
+        connection.commit()
+    finally:
+        connection.close()
+
+
 def load_reviewed_imports(data_dir: Path) -> list[tuple[Path, dict[str, Any]]]:
     import_dir = data_dir / "reviewed_imports"
     if not import_dir.is_dir():
         return []
     packets: list[tuple[Path, dict[str, Any]]] = []
-    for path in sorted(import_dir.glob("*.json"), key=lambda item: item.name.casefold()):
-        packet = load_json(path)
-        packet_version = packet.get("schema_version")
-        if packet_version not in {1, 2}:
-            raise ValueError(f"{path}: unsupported reviewed-import schema")
-        expected_rows = len(packet.get("rows") or []) + len(packet.get("quarantined_rows") or [])
-        if packet.get("row_count") != expected_rows:
-            raise ValueError(f"{path}: reviewed row count does not match")
-        proposal_path = (ROOT.parent / str(packet.get("proposal_path") or "")).resolve()
-        ledger_path = (ROOT.parent / str(packet.get("review_ledger_path") or "")).resolve()
-        for label, checked_path, expected_hash in (
-            ("proposal", proposal_path, packet.get("proposal_sha256")),
-            ("review ledger", ledger_path, packet.get("review_ledger_sha256")),
-        ):
-            if not checked_path.is_file():
-                raise ValueError(f"{path}: {label} file is missing: {checked_path}")
-            if file_sha256(checked_path) != expected_hash:
-                raise ValueError(f"{path}: {label} hash no longer matches")
-        ledger = load_json(ledger_path)
-        if ledger.get("proposal_id") != packet.get("proposal_id"):
-            raise ValueError(f"{path}: ledger proposal id does not match")
-        if ledger.get("import_allowed") is not True or ledger.get("status") != "complete":
-            raise ValueError(f"{path}: review ledger does not authorize import")
-        allowed_decisions = (
-            {"approved", "approved_with_corrections"}
-            if packet_version == 1
-            else {"approved", "approved_with_corrections", "rejected", "quarantined"}
-        )
-        if any(item.get("decision") not in allowed_decisions for item in ledger.get("decisions") or []):
-            raise ValueError(f"{path}: review ledger contains an incomplete decision")
-        packets.append((path, packet))
+    with tempfile.TemporaryDirectory(prefix="toolbase-review-validation-") as temp:
+        validation_database = Path(temp) / "seed.sqlite"
+        canonical_packet_path = Path(temp) / "canonical.json"
+        for path in sorted(import_dir.glob("*.json"), key=lambda item: item.name.casefold()):
+            packet = load_json(path)
+            packet_version = packet.get("schema_version")
+            if packet_version not in {1, 2}:
+                raise ValueError(f"{path}: unsupported reviewed-import schema")
+            expected_rows = len(packet.get("rows") or []) + len(packet.get("quarantined_rows") or [])
+            if packet.get("row_count") != expected_rows:
+                raise ValueError(f"{path}: reviewed row count does not match")
+            proposal_path = (ROOT.parent / str(packet.get("proposal_path") or "")).resolve()
+            ledger_path = (ROOT.parent / str(packet.get("review_ledger_path") or "")).resolve()
+            for label, checked_path, expected_hash in (
+                ("proposal", proposal_path, packet.get("proposal_sha256")),
+                ("review ledger", ledger_path, packet.get("review_ledger_sha256")),
+            ):
+                if not checked_path.is_file():
+                    raise ValueError(f"{path}: {label} file is missing: {checked_path}")
+                if file_sha256(checked_path) != expected_hash:
+                    raise ValueError(f"{path}: {label} hash no longer matches")
+            ledger = load_json(ledger_path)
+            if ledger.get("proposal_id") != packet.get("proposal_id"):
+                raise ValueError(f"{path}: ledger proposal id does not match")
+            if ledger.get("import_allowed") is not True or ledger.get("status") != "complete":
+                raise ValueError(f"{path}: review ledger does not authorize import")
+            allowed_decisions = (
+                {"approved", "approved_with_corrections"}
+                if packet_version == 1
+                else {"approved", "approved_with_corrections", "rejected", "quarantined"}
+            )
+            if any(item.get("decision") not in allowed_decisions for item in ledger.get("decisions") or []):
+                raise ValueError(f"{path}: review ledger contains an incomplete decision")
+            if packet_version == 2:
+                if not validation_database.exists():
+                    create_review_validation_database(data_dir, validation_database)
+                proposal, semantic_errors = validate_proposal(proposal_path, validation_database)
+                validated_ledger, ledger_errors = validate_ledger(
+                    proposal_path, proposal, ledger_path
+                )
+                semantic_errors.extend(ledger_errors)
+                if semantic_errors:
+                    raise ValueError(
+                        f"{path}: proposal or review ledger is invalid: "
+                        + "; ".join(semantic_errors)
+                    )
+                compile_packet(
+                    proposal_path,
+                    proposal,
+                    ledger_path,
+                    validated_ledger,
+                    canonical_packet_path,
+                )
+                if packet != load_json(canonical_packet_path):
+                    raise ValueError(
+                        f"{path}: reviewed import does not match canonical proposal and ledger compilation"
+                    )
+            packets.append((path, packet))
     return packets
 
 

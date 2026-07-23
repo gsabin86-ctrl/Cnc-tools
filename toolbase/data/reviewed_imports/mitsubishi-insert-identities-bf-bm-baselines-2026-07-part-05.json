@@ -1,0 +1,2882 @@
+{
+  "schema_version": 2,
+  "import_id": "review-batch-8dc4a830186f5b15",
+  "proposal_id": "mitsubishi-insert-identities-bf-bm-baselines-2026-07-part-05",
+  "proposal_path": "toolbase/proposals/mitsubishi-insert-identities-bf-bm-baselines-2026-07-part-05.json",
+  "proposal_sha256": "129a169e47ce86c0e94122c0612b12155b2aeffeed80d52d72e906b62634baf6",
+  "review_ledger_path": "toolbase/reviews/mitsubishi-insert-identities-bf-bm-baselines-2026-07-part-05.decisions.json",
+  "review_ledger_sha256": "54e639596b620834e98951bfbe070fbd94249d8c1d39ebc6dbd695464c82bd9e",
+  "catalog_sha256": "3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de",
+  "catalog_source_id": "source-140cd7506a42b01f",
+  "reviewed_at": "2026-07-22",
+  "row_count": 25,
+  "sources": [
+    {
+      "id": "source-140cd7506a42b01f",
+      "source_type": "manufacturer_catalog",
+      "title": "Mitsubishi Materials CBN & PCD Inserts Catalog C010A",
+      "url": "https://data.mmc-carbide.com/5316/9575/0325/catalog_c010a_cbn_pcd_inserts.pdf",
+      "local_path": "toolbase/data/source_snapshots/mitsubishi-c010a-cbn-pcd-inserts.pdf",
+      "page_ref": "PDF pages 9, 12, 39, 41, 42, 43, 46, 55, 59",
+      "manufacturer": "Mitsubishi Materials",
+      "raw_reference": "https://data.mmc-carbide.com/5316/9575/0325/catalog_c010a_cbn_pcd_inserts.pdf | SHA-256 3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de",
+      "content_sha256": "3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de",
+      "document_edition": "C010A",
+      "notes": "Manufacturer-hosted catalog; exact product rows and recommendation tables."
+    }
+  ],
+  "review_sources": [
+    {
+      "source_id": "source-140cd7506a42b01f",
+      "evidence_role": "primary_catalog",
+      "content_sha256": "3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de",
+      "document_edition": "C010A",
+      "page_ref": "PDF pages 9, 12, 39, 41, 42, 43, 46, 55, 59"
+    }
+  ],
+  "rows": [
+    {
+      "proposal_row_id": "mitsubishi-insert-101",
+      "tool_id": "NP-VBGW110308GS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "GS2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "GS2",
+          "unit": null,
+          "id": "fact-1b2e7a0f8a355ec3",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308GS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW110308GS2 carries GS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "GS2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8210, BC8105, BC8110, MB4120.",
+          "unit": null,
+          "id": "fact-521f3a9c30957e0d",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308GS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW110308GS2 carries GS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8210",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW110308GS2 BC8210",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW110308GS2 is listed on PDF page 46 under actual grade column BC8210 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8105",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW110308GS2 BC8105",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW110308GS2 is listed on PDF page 46 under actual grade column BC8105 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8110",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW110308GS2 BC8110",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW110308GS2 is listed on PDF page 46 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "MB4120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW110308GS2 MB4120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW110308GS2 is listed on PDF page 46 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "GS2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-102",
+      "tool_id": "NP-VBGW110308SE2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "SE2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "SE2",
+          "unit": null,
+          "id": "fact-f7f05d2e1d3f6e61",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308SE2 row",
+          "source_raw_text": "Exact order designation NP-VBGW110308SE2 carries SE2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "SE2 is an edge-preparation/order suffix, not the material grade; catalog grade options are MB4120.",
+          "unit": null,
+          "id": "fact-2ea571b6881180f0",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308SE2 row",
+          "source_raw_text": "Exact order designation NP-VBGW110308SE2 carries SE2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MB4120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW110308SE2 MB4120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308SE2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW110308SE2 is listed on PDF page 46 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token SE2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "SE2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-103",
+      "tool_id": "NP-VBGW110308SF2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "SF2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "SF2",
+          "unit": null,
+          "id": "fact-503fa3eb7b32a36f",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308SF2 row",
+          "source_raw_text": "Exact order designation NP-VBGW110308SF2 carries SF2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "SF2 is an edge-preparation/order suffix, not the material grade; catalog grade options are MB4120.",
+          "unit": null,
+          "id": "fact-fdb1d8225ed4ca19",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308SF2 row",
+          "source_raw_text": "Exact order designation NP-VBGW110308SF2 carries SF2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MB4120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW110308SF2 MB4120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308SF2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW110308SF2 is listed on PDF page 46 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token SF2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "SF2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-104",
+      "tool_id": "NP-VBGW110308TA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "TA2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "TA2",
+          "unit": null,
+          "id": "fact-2c2dabbedb641fc0",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308TA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW110308TA2 carries TA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "TA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8130.",
+          "unit": null,
+          "id": "fact-47a186afc0554811",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308TA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW110308TA2 carries TA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8130",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW110308TA2 BC8130",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW110308TA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW110308TA2 is listed on PDF page 46 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "TA2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-105",
+      "tool_id": "NP-VBGW160402FS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "FS2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "FS2",
+          "unit": null,
+          "id": "fact-a190a9a8575405ca",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402FS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160402FS2 carries FS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "FS2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8210, BC8110, MB8110.",
+          "unit": null,
+          "id": "fact-08281979b6fb4788",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402FS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160402FS2 carries FS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8210",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160402FS2 BC8210",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402FS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160402FS2 is listed on PDF page 46 under actual grade column BC8210 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8110",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160402FS2 BC8110",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402FS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160402FS2 is listed on PDF page 46 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "MB8110",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160402FS2 MB8110",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402FS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160402FS2 is listed on PDF page 46 under actual grade column MB8110 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "FS2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-106",
+      "tool_id": "NP-VBGW160402GA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "GA2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "GA2",
+          "unit": null,
+          "id": "fact-86a9df515280b878",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402GA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160402GA2 carries GA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "GA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8220, BC8120, MB8120.",
+          "unit": null,
+          "id": "fact-ccbfe9f12829a31c",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402GA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160402GA2 carries GA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8220",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160402GA2 BC8220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402GA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160402GA2 is listed on PDF page 46 under actual grade column BC8220 with catalog stock mark Japan stock. The order suffix/token GA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160402GA2 BC8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402GA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160402GA2 is listed on PDF page 46 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "MB8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160402GA2 MB8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402GA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160402GA2 is listed on PDF page 46 under actual grade column MB8120 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "GA2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-107",
+      "tool_id": "NP-VBGW160402GS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "GS2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "GS2",
+          "unit": null,
+          "id": "fact-08a183fbe58e3c2a",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402GS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160402GS2 carries GS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "GS2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8210, BC8105, BC8110.",
+          "unit": null,
+          "id": "fact-79701fec29427ad4",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402GS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160402GS2 carries GS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8210",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160402GS2 BC8210",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160402GS2 is listed on PDF page 46 under actual grade column BC8210 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8105",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160402GS2 BC8105",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160402GS2 is listed on PDF page 46 under actual grade column BC8105 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8110",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160402GS2 BC8110",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160402GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160402GS2 is listed on PDF page 46 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "GS2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-108",
+      "tool_id": "NP-VBGW160404FS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "FS2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "FS2",
+          "unit": null,
+          "id": "fact-894c771867f79c59",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404FS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404FS2 carries FS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "FS2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8120, MB4120.",
+          "unit": null,
+          "id": "fact-6cf2c43c1889ea77",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404FS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404FS2 carries FS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404FS2 BC8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404FS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404FS2 is listed on PDF page 46 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "MB4120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404FS2 MB4120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404FS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404FS2 is listed on PDF page 46 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "FS2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-109",
+      "tool_id": "NP-VBGW160404GA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "GA2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "GA2",
+          "unit": null,
+          "id": "fact-95b14af9dfdd2d14",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404GA2 carries GA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "GA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8220, BC8120, BC8130, MB8120.",
+          "unit": null,
+          "id": "fact-80c97137acc97fce",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404GA2 carries GA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8220",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404GA2 BC8220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404GA2 is listed on PDF page 46 under actual grade column BC8220 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404GA2 BC8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404GA2 is listed on PDF page 46 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8130",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404GA2 BC8130",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404GA2 is listed on PDF page 46 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "MB8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404GA2 MB8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404GA2 is listed on PDF page 46 under actual grade column MB8120 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "GA2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-110",
+      "tool_id": "NP-VBGW160404GH2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "GH2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "GH2",
+          "unit": null,
+          "id": "fact-c7fb20fb23e10452",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GH2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404GH2 carries GH2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "GH2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8110, BC8120, BC8130.",
+          "unit": null,
+          "id": "fact-3702951204de3254",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GH2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404GH2 carries GH2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8110",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404GH2 BC8110",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GH2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404GH2 is listed on PDF page 46 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token GH2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404GH2 BC8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GH2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404GH2 is listed on PDF page 46 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token GH2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8130",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404GH2 BC8130",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GH2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404GH2 is listed on PDF page 46 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token GH2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "GH2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-111",
+      "tool_id": "NP-VBGW160404GS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "GS2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "GS2",
+          "unit": null,
+          "id": "fact-f631d16305cb0fbb",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404GS2 carries GS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "GS2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8210, BC8105, BC8110, BC5110, MB4120.",
+          "unit": null,
+          "id": "fact-18ea406094c02d75",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404GS2 carries GS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8210",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404GS2 BC8210",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404GS2 is listed on PDF page 46 under actual grade column BC8210 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8105",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404GS2 BC8105",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404GS2 is listed on PDF page 46 under actual grade column BC8105 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8110",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404GS2 BC8110",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404GS2 is listed on PDF page 46 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC5110",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404GS2 BC5110",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404GS2 is listed on PDF page 46 under actual grade column BC5110 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "MB4120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404GS2 MB4120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404GS2 is listed on PDF page 46 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "GS2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-112",
+      "tool_id": "NP-VBGW160404SE2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "SE2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "SE2",
+          "unit": null,
+          "id": "fact-42e25e5f70946b21",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404SE2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404SE2 carries SE2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "SE2 is an edge-preparation/order suffix, not the material grade; catalog grade options are MB4120.",
+          "unit": null,
+          "id": "fact-818fa9b366611986",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404SE2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404SE2 carries SE2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MB4120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404SE2 MB4120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404SE2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404SE2 is listed on PDF page 46 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token SE2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "SE2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-113",
+      "tool_id": "NP-VBGW160404SF2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "SF2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "SF2",
+          "unit": null,
+          "id": "fact-4ddd02f52e59daa0",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404SF2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404SF2 carries SF2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "SF2 is an edge-preparation/order suffix, not the material grade; catalog grade options are MB4120.",
+          "unit": null,
+          "id": "fact-e08c6b0a1f692732",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404SF2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404SF2 carries SF2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MB4120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404SF2 MB4120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404SF2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404SF2 is listed on PDF page 46 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token SF2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "SF2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-114",
+      "tool_id": "NP-VBGW160404TA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "TA2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "TA2",
+          "unit": null,
+          "id": "fact-89711a16208c2fbc",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404TA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404TA2 carries TA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "TA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8220, BC8120, BC8130, MB8120.",
+          "unit": null,
+          "id": "fact-71a46ffb6993cade",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404TA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404TA2 carries TA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8220",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404TA2 BC8220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404TA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404TA2 is listed on PDF page 46 under actual grade column BC8220 with catalog stock mark Japan stock. The order suffix/token TA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404TA2 BC8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404TA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404TA2 is listed on PDF page 46 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8130",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404TA2 BC8130",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404TA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404TA2 is listed on PDF page 46 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "MB8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404TA2 MB8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404TA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404TA2 is listed on PDF page 46 under actual grade column MB8120 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "TA2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-115",
+      "tool_id": "NP-VBGW160404TH2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "TH2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "TH2",
+          "unit": null,
+          "id": "fact-635008aae9077fb6",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404TH2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404TH2 carries TH2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "TH2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8120, BC8130.",
+          "unit": null,
+          "id": "fact-d0fb7a3960f4481c",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404TH2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404TH2 carries TH2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404TH2 BC8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404TH2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404TH2 is listed on PDF page 46 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token TH2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8130",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404TH2 BC8130",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404TH2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404TH2 is listed on PDF page 46 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token TH2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "TH2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-116",
+      "tool_id": "NP-VBGW160404VA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "VA2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "VA2",
+          "unit": null,
+          "id": "fact-ae70149133348ec8",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404VA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404VA2 carries VA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "VA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8220.",
+          "unit": null,
+          "id": "fact-e6d02af6e4a053a2",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404VA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160404VA2 carries VA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8220",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160404VA2 BC8220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160404VA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160404VA2 is listed on PDF page 46 under actual grade column BC8220 with catalog stock mark Japan stock. The order suffix/token VA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "VA2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-117",
+      "tool_id": "NP-VBGW160408FS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "FS2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "FS2",
+          "unit": null,
+          "id": "fact-8811191f15e7c22c",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408FS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408FS2 carries FS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "FS2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8120, MB4120.",
+          "unit": null,
+          "id": "fact-ea7eaacc740d18dc",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408FS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408FS2 carries FS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408FS2 BC8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408FS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408FS2 is listed on PDF page 46 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "MB4120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408FS2 MB4120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408FS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408FS2 is listed on PDF page 46 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "FS2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-118",
+      "tool_id": "NP-VBGW160408GA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "GA2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "GA2",
+          "unit": null,
+          "id": "fact-4bb6dcf09ef2c620",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408GA2 carries GA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "GA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8220, BC8120, BC8130, MB8120.",
+          "unit": null,
+          "id": "fact-a92f91f9d133ec6e",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408GA2 carries GA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8220",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408GA2 BC8220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408GA2 is listed on PDF page 46 under actual grade column BC8220 with catalog stock mark Japan stock. The order suffix/token GA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408GA2 BC8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408GA2 is listed on PDF page 46 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8130",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408GA2 BC8130",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408GA2 is listed on PDF page 46 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "MB8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408GA2 MB8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408GA2 is listed on PDF page 46 under actual grade column MB8120 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "GA2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-119",
+      "tool_id": "NP-VBGW160408GH2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "GH2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "GH2",
+          "unit": null,
+          "id": "fact-110aa8b77af66582",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GH2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408GH2 carries GH2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "GH2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8110, BC8120, BC8130.",
+          "unit": null,
+          "id": "fact-917214a0256d0b59",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GH2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408GH2 carries GH2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8110",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408GH2 BC8110",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GH2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408GH2 is listed on PDF page 46 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token GH2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408GH2 BC8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GH2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408GH2 is listed on PDF page 46 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token GH2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8130",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408GH2 BC8130",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GH2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408GH2 is listed on PDF page 46 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token GH2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "GH2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-120",
+      "tool_id": "NP-VBGW160408GS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "GS2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "GS2",
+          "unit": null,
+          "id": "fact-605d21b9d4e31911",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408GS2 carries GS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "GS2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8210, BC8105, BC8110, BC5110, MB4120.",
+          "unit": null,
+          "id": "fact-f8b45acf7e89e9e1",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GS2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408GS2 carries GS2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8210",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408GS2 BC8210",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408GS2 is listed on PDF page 46 under actual grade column BC8210 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8105",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408GS2 BC8105",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408GS2 is listed on PDF page 46 under actual grade column BC8105 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8110",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408GS2 BC8110",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408GS2 is listed on PDF page 46 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC5110",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408GS2 BC5110",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408GS2 is listed on PDF page 46 under actual grade column BC5110 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "MB4120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408GS2 MB4120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408GS2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408GS2 is listed on PDF page 46 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "GS2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-121",
+      "tool_id": "NP-VBGW160408SE2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "SE2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "SE2",
+          "unit": null,
+          "id": "fact-bf87ca9438a2c67a",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408SE2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408SE2 carries SE2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "SE2 is an edge-preparation/order suffix, not the material grade; catalog grade options are MB4120.",
+          "unit": null,
+          "id": "fact-c162f0a1b178ccc1",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408SE2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408SE2 carries SE2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MB4120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408SE2 MB4120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408SE2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408SE2 is listed on PDF page 46 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token SE2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "SE2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-122",
+      "tool_id": "NP-VBGW160408SF2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "SF2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "SF2",
+          "unit": null,
+          "id": "fact-9e98520bb4c513cf",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408SF2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408SF2 carries SF2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "SF2 is an edge-preparation/order suffix, not the material grade; catalog grade options are MB4120.",
+          "unit": null,
+          "id": "fact-59f1175e9e22af38",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408SF2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408SF2 carries SF2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MB4120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408SF2 MB4120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408SF2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408SF2 is listed on PDF page 46 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token SF2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "SF2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-123",
+      "tool_id": "NP-VBGW160408TA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "TA2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "TA2",
+          "unit": null,
+          "id": "fact-ccbd07e8507f30bb",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408TA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408TA2 carries TA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "TA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8220, BC8120, BC8130, MB8120.",
+          "unit": null,
+          "id": "fact-ff587cc32c1d3c37",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408TA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408TA2 carries TA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8220",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408TA2 BC8220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408TA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408TA2 is listed on PDF page 46 under actual grade column BC8220 with catalog stock mark Japan stock. The order suffix/token TA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408TA2 BC8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408TA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408TA2 is listed on PDF page 46 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8130",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408TA2 BC8130",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408TA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408TA2 is listed on PDF page 46 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "MB8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408TA2 MB8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "uncoated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408TA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408TA2 is listed on PDF page 46 under actual grade column MB8120 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "TA2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-124",
+      "tool_id": "NP-VBGW160408TH2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "TH2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "TH2",
+          "unit": null,
+          "id": "fact-86abbc17422e3b38",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408TH2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408TH2 carries TH2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "TH2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8120, BC8130.",
+          "unit": null,
+          "id": "fact-4fb4b836c72d3740",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408TH2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408TH2 carries TH2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8120",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408TH2 BC8120",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408TH2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408TH2 is listed on PDF page 46 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token TH2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        },
+        {
+          "code": "BC8130",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408TH2 BC8130",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408TH2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408TH2 is listed on PDF page 46 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token TH2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "TH2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-125",
+      "tool_id": "NP-VBGW160408VA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "CBN",
+        "VA2"
+      ],
+      "replace_fact_keys": [
+        "edge_preparation",
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "edge_preparation",
+          "value_text": "VA2",
+          "unit": null,
+          "id": "fact-f1a176a87271487b",
+          "original_key": "reviewed_edge_preparation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408VA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408VA2 carries VA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        },
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "VA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8220.",
+          "unit": null,
+          "id": "fact-aa631225abb67b8c",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408VA2 row",
+          "source_raw_text": "Exact order designation NP-VBGW160408VA2 carries VA2; available material grades are shown in separate C010A grade columns.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "BC8220",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VBGW160408VA2 BC8220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "coated CBN",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 46",
+          "source_table_ref": "C010A positive CBN insert standards / exact NP-VBGW160408VA2 row",
+          "source_raw_text": "Exact ISO order designation NP-VBGW160408VA2 is listed on PDF page 46 under actual grade column BC8220 with catalog stock mark Japan stock. The order suffix/token VA2 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "VA2"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    }
+  ],
+  "quarantined_rows": []
+}

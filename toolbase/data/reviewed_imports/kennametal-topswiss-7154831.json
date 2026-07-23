@@ -65,7 +65,11 @@
         "description": "Kennametal TopSwiss CCGT positive FFS fine-finishing insert geometry, ANSI CCGT21505MFFS / ISO CCGT060202MFFS, 6.35 mm IC, 2.38 mm thickness, 2.8 mm fixing hole, and 0.2 mm corner radius. Reviewed current manufacturer variant material 7154831 uses grade KCS25S; legacy grade claims remain preserved as separate grade options.",
         "geometry": "positive fine-finishing",
         "lifecycle_status": "unknown",
-        "evidence_status": "catalog_source"
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": false,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
       },
       "aliases": [
         {
@@ -305,6 +309,7 @@
           "reviewed_at": "2026-07-22"
         }
       ],
+      "reject_grade_codes": [],
       "replace_material_recommendations": true,
       "material_recommendations": [
         {

@@ -1,6 +1,6 @@
 // Bump this when the cached application contract changes. Shell and JSON
 // requests still refresh from the network whenever it is available.
-const VERSION = '3.4.0-shell-6'
+const VERSION = '3.4.0-shell-7'
 const CACHE = `cnc-toolbase-${VERSION}`
 const BASE = new URL('./', self.location.href)
 const PRECACHE = [

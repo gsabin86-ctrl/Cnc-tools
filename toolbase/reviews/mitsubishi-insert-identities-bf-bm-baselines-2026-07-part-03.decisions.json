@@ -1,0 +1,363 @@
+{
+  "schema_version": 2,
+  "review_id": "mitsubishi-insert-identities-bf-bm-baselines-2026-07-part-03-review",
+  "proposal_id": "mitsubishi-insert-identities-bf-bm-baselines-2026-07-part-03",
+  "proposal_path": "toolbase/proposals/mitsubishi-insert-identities-bf-bm-baselines-2026-07-part-03.json",
+  "proposal_sha256": "ddbcdc7490bfd94cea6321fd0d4cd820ea1577644bbc8c4d37d85f65266abb4f",
+  "review_started_at": "2026-07-22",
+  "status": "complete",
+  "review_completed_at": "2026-07-22",
+  "import_allowed": true,
+  "decisions": [
+    {
+      "proposal_row_id": "mitsubishi-insert-051",
+      "tool_id": "NP-DCGW11T304GH2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-052",
+      "tool_id": "NP-DCGW11T304GS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-053",
+      "tool_id": "NP-DCGW11T304SE2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-054",
+      "tool_id": "NP-DCGW11T304SF2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-055",
+      "tool_id": "NP-DCGW11T304TA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-056",
+      "tool_id": "NP-DCGW11T304TH2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-057",
+      "tool_id": "NP-DCGW11T304VA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-058",
+      "tool_id": "NP-DCGW11T308FS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-059",
+      "tool_id": "NP-DCGW11T308GA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-060",
+      "tool_id": "NP-DCGW11T308GH2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-061",
+      "tool_id": "NP-DCGW11T308GS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-062",
+      "tool_id": "NP-DCGW11T308SE2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-063",
+      "tool_id": "NP-DCGW11T308SF2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-064",
+      "tool_id": "NP-DCGW11T308TA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-065",
+      "tool_id": "NP-DCGW11T308TH2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-066",
+      "tool_id": "NP-DCGW11T308VA2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-067",
+      "tool_id": "NP-DCMT070202L-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-068",
+      "tool_id": "NP-DCMT070202R-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-069",
+      "tool_id": "NP-DCMT070204L-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-070",
+      "tool_id": "NP-DCMT070204R-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-071",
+      "tool_id": "NP-DCMT11T302L-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-072",
+      "tool_id": "NP-DCMT11T302R-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-073",
+      "tool_id": "NP-DCMT11T304L-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-074",
+      "tool_id": "NP-DCMT11T304R-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-075",
+      "tool_id": "NP-TCGW110202GS3",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-22",
+      "capture_method": "interactive_user_selection_in_hermes_chat",
+      "approved_scope": [
+        "correct all 132 Mitsubishi insert grade identities from exact C010A product-table columns",
+        "publish all eight BF/BM inserts with grade- and breaker-scoped adjustable baselines",
+        "select flood/wet practical mode while retaining manufacturer Dry/Wet source wording"
+      ],
+      "notes": "Greg selected the recommended scope: identity fix plus all BF/BM inserts. C010A limits are preserved as one-sided maxima; flood is the practical shop profile."
+    }
+  ]
+}

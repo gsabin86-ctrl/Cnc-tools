@@ -1,0 +1,544 @@
+{
+  "schema_version": 2,
+  "import_id": "review-batch-9f38649bc2726311",
+  "proposal_id": "mitsubishi-insert-identities-bf-bm-baselines-2026-07-part-06",
+  "proposal_path": "toolbase/proposals/mitsubishi-insert-identities-bf-bm-baselines-2026-07-part-06.json",
+  "proposal_sha256": "b967bb4e30de896c7e88a2913f5fee539557ecbfcf7af138e2d4a54c0a0d795a",
+  "review_ledger_path": "toolbase/reviews/mitsubishi-insert-identities-bf-bm-baselines-2026-07-part-06.decisions.json",
+  "review_ledger_sha256": "a1f31dd238b9315a761f2d5c0d135e49c36ad0bd276e8f747f2dd7a84dd987e3",
+  "catalog_sha256": "3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de",
+  "catalog_source_id": "source-140cd7506a42b01f",
+  "reviewed_at": "2026-07-22",
+  "row_count": 7,
+  "sources": [
+    {
+      "id": "source-140cd7506a42b01f",
+      "source_type": "manufacturer_catalog",
+      "title": "Mitsubishi Materials CBN & PCD Inserts Catalog C010A",
+      "url": "https://data.mmc-carbide.com/5316/9575/0325/catalog_c010a_cbn_pcd_inserts.pdf",
+      "local_path": "toolbase/data/source_snapshots/mitsubishi-c010a-cbn-pcd-inserts.pdf",
+      "page_ref": "PDF pages 9, 12, 39, 41, 42, 43, 46, 55, 59",
+      "manufacturer": "Mitsubishi Materials",
+      "raw_reference": "https://data.mmc-carbide.com/5316/9575/0325/catalog_c010a_cbn_pcd_inserts.pdf | SHA-256 3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de",
+      "content_sha256": "3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de",
+      "document_edition": "C010A",
+      "notes": "Manufacturer-hosted catalog; exact product rows and recommendation tables."
+    }
+  ],
+  "review_sources": [
+    {
+      "source_id": "source-140cd7506a42b01f",
+      "evidence_role": "primary_catalog",
+      "content_sha256": "3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de",
+      "document_edition": "C010A",
+      "page_ref": "PDF pages 9, 12, 39, 41, 42, 43, 46, 55, 59"
+    }
+  ],
+  "rows": [
+    {
+      "proposal_row_id": "mitsubishi-insert-126",
+      "tool_id": "NP-VCGT110301R-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "PCD",
+        "MD22"
+      ],
+      "replace_fact_keys": [
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+          "unit": null,
+          "id": "fact-7d872d9a19ca7fbd",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact NP-VCGT110301R-F row",
+          "source_raw_text": "NP-VCGT110301R-F is listed in the MD220 grade column on PDF page 59; MD22 is not the catalog grade.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MD220",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VCGT110301R-F MD220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "PCD",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact NP-VCGT110301R-F row",
+          "source_raw_text": "Exact ISO order designation NP-VCGT110301R-F is listed on PDF page 59 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "MD22"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-127",
+      "tool_id": "NP-VCGT110302R-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "PCD",
+        "MD22"
+      ],
+      "replace_fact_keys": [
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+          "unit": null,
+          "id": "fact-aa982694213aa8f7",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact NP-VCGT110302R-F row",
+          "source_raw_text": "NP-VCGT110302R-F is listed in the MD220 grade column on PDF page 59; MD22 is not the catalog grade.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MD220",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VCGT110302R-F MD220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "PCD",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact NP-VCGT110302R-F row",
+          "source_raw_text": "Exact ISO order designation NP-VCGT110302R-F is listed on PDF page 59 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "MD22"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-128",
+      "tool_id": "NP-VCGT110304R-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "PCD",
+        "MD22"
+      ],
+      "replace_fact_keys": [
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+          "unit": null,
+          "id": "fact-52be7c4aa08c8e58",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact NP-VCGT110304R-F row",
+          "source_raw_text": "NP-VCGT110304R-F is listed in the MD220 grade column on PDF page 59; MD22 is not the catalog grade.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MD220",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VCGT110304R-F MD220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "PCD",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact NP-VCGT110304R-F row",
+          "source_raw_text": "Exact ISO order designation NP-VCGT110304R-F is listed on PDF page 59 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "MD22"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-129",
+      "tool_id": "NP-VCGT1103V5R-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "PCD",
+        "MD22"
+      ],
+      "replace_fact_keys": [
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+          "unit": null,
+          "id": "fact-b54f75f68a8c1dda",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact NP-VCGT1103V5R-F row",
+          "source_raw_text": "NP-VCGT1103V5R-F is listed in the MD220 grade column on PDF page 59; MD22 is not the catalog grade.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MD220",
+          "option_kind": "available_grade",
+          "full_order_number": "NP-VCGT1103V5R-F MD220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "PCD",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact NP-VCGT1103V5R-F row",
+          "source_raw_text": "Exact ISO order designation NP-VCGT1103V5R-F is listed on PDF page 59 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "MD22"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-130",
+      "tool_id": "VCGW110301",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "PCD",
+        "MD22"
+      ],
+      "replace_fact_keys": [
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+          "unit": null,
+          "id": "fact-f870bbe0f07cd65e",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact VCGW110301 row",
+          "source_raw_text": "VCGW110301 is listed in the MD220 grade column on PDF page 59; MD22 is not the catalog grade.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MD220",
+          "option_kind": "available_grade",
+          "full_order_number": "VCGW110301 MD220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "PCD",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact VCGW110301 row",
+          "source_raw_text": "Exact ISO order designation VCGW110301 is listed on PDF page 59 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "MD22"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-131",
+      "tool_id": "VCGW110302",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "PCD",
+        "MD22"
+      ],
+      "replace_fact_keys": [
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+          "unit": null,
+          "id": "fact-f75a366ac89fe6b1",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact VCGW110302 row",
+          "source_raw_text": "VCGW110302 is listed in the MD220 grade column on PDF page 59; MD22 is not the catalog grade.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MD220",
+          "option_kind": "available_grade",
+          "full_order_number": "VCGW110302 MD220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "PCD",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact VCGW110302 row",
+          "source_raw_text": "Exact ISO order designation VCGW110302 is listed on PDF page 59 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "MD22"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-132",
+      "tool_id": "VCGW110304",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "reviewed_at": "2026-07-22",
+      "tool_updates": {
+        "description": null,
+        "geometry": "unknown",
+        "lifecycle_status": "active",
+        "evidence_status": "catalog_source",
+        "grade": null,
+        "grade_reviewed": true,
+        "chipbreaker": null,
+        "chipbreaker_reviewed": false
+      },
+      "aliases": [],
+      "source_ids": [
+        "source-140cd7506a42b01f"
+      ],
+      "tags": [
+        "Mitsubishi Materials",
+        "PCD",
+        "MD22"
+      ],
+      "replace_fact_keys": [
+        "grade_interpretation"
+      ],
+      "facts": [
+        {
+          "fact_key": "grade_interpretation",
+          "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+          "unit": null,
+          "id": "fact-e8777dec345d640b",
+          "original_key": "reviewed_grade_interpretation",
+          "evidence_status": "catalog_claim",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_ids": [
+            "source-140cd7506a42b01f"
+          ],
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact VCGW110304 row",
+          "source_raw_text": "VCGW110304 is listed in the MD220 grade column on PDF page 59; MD22 is not the catalog grade.",
+          "extraction_method": "pdf_table"
+        }
+      ],
+      "grade_options": [
+        {
+          "code": "MD220",
+          "option_kind": "available_grade",
+          "full_order_number": "VCGW110304 MD220",
+          "availability_status": "listed",
+          "is_primary": false,
+          "material_class": "PCD",
+          "verification_status": "catalog_verified",
+          "source_id": "source-140cd7506a42b01f",
+          "source_page_ref": "PDF page 59",
+          "source_table_ref": "C010A positive PCD insert standards / exact VCGW110304 row",
+          "source_raw_text": "Exact ISO order designation VCGW110304 is listed on PDF page 59 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+          "extraction_method": "pdf_table",
+          "reviewer": "Greg",
+          "reviewed_at": "2026-07-22"
+        }
+      ],
+      "reject_grade_codes": [
+        "MD22"
+      ],
+      "replace_material_recommendations": false,
+      "material_recommendations": [],
+      "cutting_profiles": []
+    }
+  ],
+  "quarantined_rows": []
+}

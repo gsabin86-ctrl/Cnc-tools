@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
+import shutil
 import sqlite3
 import subprocess
 import sys
@@ -207,6 +209,8 @@ class PipelineTests(unittest.TestCase):
         self.assertIn("m_per_min: 'm/min'", app)
         self.assertIn("mm_per_rev: 'mm/rev'", app)
         self.assertIn("sourceUnitLabel(unit)", app)
+        self.assertIn("const display = a.value != null ? a : b", app)
+        self.assertIn("${display.unit}", app)
 
     def test_manufacturer_specific_insert_geometry_uses_existing_facts(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -835,113 +839,275 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(role_counts, {"cutting_speed": 12, "geometry_parameters": 12, "identity": 12})
             connection.close()
 
-    def test_mitsubishi_bf_ccgt_baselines_are_grade_and_breaker_scoped(self) -> None:
+    def test_build_rejects_empty_schema_2_corrected_proposed_before_replacing_outputs(self) -> None:
+        packet_name = "kennametal-topswiss-7154831.json"
+        with tempfile.TemporaryDirectory() as temp:
+            temp_path = Path(temp)
+            data_dir = temp_path / "data"
+            shutil.copytree(DATA_DIR, data_dir)
+            proposal_path = temp_path / KENNAMETAL_7154831_PROPOSAL.name
+            ledger_path = temp_path / KENNAMETAL_7154831_LEDGER.name
+            shutil.copy2(KENNAMETAL_7154831_PROPOSAL, proposal_path)
+            shutil.copy2(KENNAMETAL_7154831_LEDGER, ledger_path)
+
+            proposal = json.loads(proposal_path.read_text(encoding="utf-8"))
+            ledger = json.loads(ledger_path.read_text(encoding="utf-8"))
+            ledger["decisions"][0]["decision"] = "approved_with_corrections"
+            ledger["decisions"][0]["corrected_proposed"] = {}
+            ledger_path.write_text(json.dumps(ledger, indent=2) + "\n", encoding="utf-8")
+
+            spec = importlib.util.spec_from_file_location(
+                "review_batch_for_regression", ROOT / "scripts" / "review_batch.py"
+            )
+            self.assertIsNotNone(spec)
+            self.assertIsNotNone(spec.loader)
+            review_batch = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(review_batch)
+            review_batch.compile_packet(
+                proposal_path,
+                proposal,
+                ledger_path,
+                ledger,
+                data_dir / "reviewed_imports" / packet_name,
+            )
+
+            output_paths = [
+                temp_path / "toolbase.sqlite",
+                temp_path / "catalog.json",
+                temp_path / "published.sqlite",
+            ]
+            for output_path in output_paths:
+                output_path.write_bytes(b"existing-output")
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(BUILD_SCRIPT),
+                    "--data-dir",
+                    str(data_dir),
+                    "--db-out",
+                    str(output_paths[0]),
+                    "--json-out",
+                    str(output_paths[1]),
+                    "--published-db-out",
+                    str(output_paths[2]),
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("no auditable assertions were proposed", result.stderr)
+            self.assertTrue(all(path.read_bytes() == b"existing-output" for path in output_paths))
+
+    def test_build_rejects_tampered_schema_2_reviewed_import_before_replacing_outputs(self) -> None:
+        packet_name = "mitsubishi-insert-identities-bf-bm-baselines-2026-07-part-01.json"
+        with tempfile.TemporaryDirectory() as temp:
+            temp_path = Path(temp)
+            data_dir = temp_path / "data"
+            shutil.copytree(DATA_DIR, data_dir)
+            packet_path = data_dir / "reviewed_imports" / packet_name
+            packet = json.loads(packet_path.read_text(encoding="utf-8"))
+            self.assertEqual(packet["rows"][0]["grade_options"][0]["code"], "BC8210")
+            packet["rows"][0]["grade_options"][0]["code"] = "UNREVIEWED999"
+            packet_path.write_text(json.dumps(packet, indent=2) + "\n", encoding="utf-8")
+
+            output_paths = [
+                temp_path / "toolbase.sqlite",
+                temp_path / "catalog.json",
+                temp_path / "published.sqlite",
+            ]
+            for output_path in output_paths:
+                output_path.write_bytes(b"existing-output")
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(BUILD_SCRIPT),
+                    "--data-dir",
+                    str(data_dir),
+                    "--db-out",
+                    str(output_paths[0]),
+                    "--json-out",
+                    str(output_paths[1]),
+                    "--published-db-out",
+                    str(output_paths[2]),
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("does not match canonical proposal and ledger compilation", result.stderr)
+            self.assertTrue(all(path.read_bytes() == b"existing-output" for path in output_paths))
+
+    def test_mitsubishi_insert_identities_and_bf_bm_baselines_are_exact(self) -> None:
+        mitsubishi_grade_counts = {
+            "BC5110": 10,
+            "BC8105": 23,
+            "BC8110": 43,
+            "BC8120": 41,
+            "BC8130": 26,
+            "BC8210": 30,
+            "BC8220": 26,
+            "MB4120": 50,
+            "MB8110": 14,
+            "MB8120": 20,
+            "MB8130": 6,
+            "MD220": 23,
+        }
+        bf_tools = {
+            "BF-CCGT09T304TS2", "BF-CCGT09T308TS2",
+            "BF-DCGT11T304TS2", "BF-DCGT11T308TS2",
+        }
+        bm_tools = {
+            "BM-CCGT09T304TA2", "BM-CCGT09T308TA2",
+            "BM-DCGT11T304TA2", "BM-DCGT11T308TA2",
+        }
         with tempfile.TemporaryDirectory() as temp:
             db_path, json_path, _ = self.build(Path(temp))
             connection = sqlite3.connect(db_path)
             try:
-                tool = connection.execute(
-                    "SELECT grade, chipbreaker, description FROM tools WHERE id=?",
-                    ("BF-CCGT09T304TS2",),
-                ).fetchone()
-                self.assertIsNone(tool[0])
-                self.assertEqual(tool[1], "BF")
-                self.assertIn("machinist adjustment", tool[2])
-
-                grades = connection.execute(
-                    """
-                    SELECT g.code, o.full_order_number, o.verification_status
-                    FROM tool_grade_options o JOIN grades g ON g.id=o.grade_id
-                    WHERE o.tool_id=? AND o.option_kind='available_grade'
-                    ORDER BY g.code
-                    """,
-                    ("BF-CCGT09T304TS2",),
-                ).fetchall()
-                self.assertEqual(
-                    grades,
-                    [
-                        ("BC8110", "BF-CCGT09T304TS2 BC8110", "manufacturer_verified"),
-                        ("BC8210", "BF-CCGT09T304TS2 BC8210", "manufacturer_verified"),
-                    ],
-                )
                 self.assertEqual(
                     connection.execute(
                         """
-                        SELECT o.verification_status
-                        FROM tool_grade_options o JOIN grades g ON g.id=o.grade_id
-                        WHERE o.tool_id=? AND g.code='TS2' AND o.option_kind='legacy_claim'
-                        """,
-                        ("BF-CCGT09T304TS2",),
+                        SELECT COUNT(*) FROM tools t JOIN manufacturers m ON m.id=t.manufacturer_id
+                        WHERE m.name='Mitsubishi Materials' AND t.component_type='insert' AND t.grade IS NULL
+                        """
                     ).fetchone()[0],
-                    "rejected",
+                    132,
                 )
-                public_tool = next(
-                    item
-                    for item in json.loads(json_path.read_text(encoding="utf-8"))["tools"]
-                    if item["id"] == "BF-CCGT09T304TS2"
+                actual_grade_counts = dict(
+                    connection.execute(
+                        """
+                        SELECT g.code, COUNT(*)
+                        FROM tool_grade_options o
+                        JOIN tools t ON t.id=o.tool_id
+                        JOIN manufacturers m ON m.id=t.manufacturer_id
+                        JOIN grades g ON g.id=o.grade_id
+                        WHERE m.name='Mitsubishi Materials' AND t.component_type='insert'
+                          AND o.option_kind='available_grade'
+                          AND o.verification_status IN ('catalog_verified','manufacturer_verified')
+                        GROUP BY g.code ORDER BY g.code
+                        """
+                    ).fetchall()
+                )
+                self.assertEqual(actual_grade_counts, mitsubishi_grade_counts)
+                self.assertEqual(sum(actual_grade_counts.values()), 312)
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT COUNT(*) FROM tool_grade_options o
+                        JOIN tools t ON t.id=o.tool_id
+                        JOIN manufacturers m ON m.id=t.manufacturer_id
+                        WHERE m.name='Mitsubishi Materials' AND t.component_type='insert'
+                          AND o.option_kind='legacy_claim' AND o.verification_status='rejected'
+                        """
+                    ).fetchone()[0],
+                    132,
+                )
+
+                expected_exact_grades = {
+                    "BF-CCGT09T304TS2": ["BC8110", "BC8210"],
+                    "BM-DCGT11T308TA2": ["BC8120", "BC8220"],
+                    "NP-DCGW11T304FS2": ["BC8105", "BC8110", "BC8120", "BC8210", "MB4120", "MB8110"],
+                    "NP-TCGW110208GS3": ["BC5110", "BC8110", "MB4120"],
+                    "DCMW070204": ["MD220"],
+                }
+                for tool_id, expected in expected_exact_grades.items():
+                    actual = [
+                        row[0] for row in connection.execute(
+                            """
+                            SELECT g.code FROM tool_grade_options o JOIN grades g ON g.id=o.grade_id
+                            WHERE o.tool_id=? AND o.option_kind='available_grade'
+                            ORDER BY g.code
+                            """,
+                            (tool_id,),
+                        )
+                    ]
+                    self.assertEqual(actual, expected)
+
+                tool_rows = connection.execute(
+                    "SELECT id, chipbreaker FROM tools WHERE id IN ({})".format(
+                        ",".join("?" for _ in bf_tools | bm_tools)
+                    ),
+                    tuple(sorted(bf_tools | bm_tools)),
+                ).fetchall()
+                self.assertEqual(
+                    {tool_id: chipbreaker for tool_id, chipbreaker in tool_rows},
+                    {**{tool_id: "BF" for tool_id in bf_tools}, **{tool_id: "BM" for tool_id in bm_tools}},
+                )
+
+                profile_counts = dict(
+                    connection.execute(
+                        """
+                        SELECT tool_id, COUNT(*) FROM cutting_data_profiles
+                        WHERE tool_id IN ({}) GROUP BY tool_id
+                        """.format(",".join("?" for _ in bf_tools | bm_tools)),
+                        tuple(sorted(bf_tools | bm_tools)),
+                    ).fetchall()
                 )
                 self.assertEqual(
-                    [option["code"] for option in public_tool["grade_options"]],
-                    ["BC8110", "BC8210"],
+                    profile_counts,
+                    {**{tool_id: 3 for tool_id in bf_tools}, **{tool_id: 5 for tool_id in bm_tools}},
                 )
+                self.assertEqual(sum(profile_counts.values()), 32)
 
-                recommendations = connection.execute(
-                    """
-                    SELECT r.iso_group, coalesce(g.code, ''), r.verification_status
-                    FROM tool_material_recommendations r
-                    LEFT JOIN grades g ON g.id=r.grade_id
-                    WHERE r.tool_id=? AND r.is_current=1
-                    ORDER BY r.iso_group, g.code
-                    """,
-                    ("BF-CCGT09T304TS2",),
-                ).fetchall()
-                self.assertIn(("K", "", "source_located"), recommendations)
-                self.assertIn(("H", "BC8110", "manufacturer_verified"), recommendations)
-                self.assertIn(("H", "BC8210", "manufacturer_verified"), recommendations)
-
-                profiles = connection.execute(
-                    """
-                    SELECT source_grade, cut_condition, coolant_condition,
-                           surface_speed_min, surface_speed_start, surface_speed_max,
-                           feed_min, feed_max, depth_of_cut_min, depth_of_cut_max,
-                           source_chipbreaker, verification_status, notes
-                    FROM cutting_data_profiles
-                    WHERE tool_id=?
-                    ORDER BY source_grade, cut_condition
-                    """,
-                    ("BF-CCGT09T304TS2",),
-                ).fetchall()
-                self.assertEqual(len(profiles), 3)
-                expected = {
-                    ("BC8110", "general"): (
-                        "flood", 100.584, 199.644, 230.124,
-                        None, 0.3048, None, 0.7874,
+                expected_profiles = {
+                    ("BF-CCGT09T304TS2", "BC8110", "Hardened steel / continuous", "general"): (
+                        "flood", 100.584, 199.644, 300.228, None, 0.2032, None, 0.3556, "BF"
                     ),
-                    ("BC8210", "general"): (
-                        "flood", 100.584, 199.644, 300.228,
-                        None, 0.2032, None, 0.3556,
+                    ("BF-CCGT09T304TS2", "BC8210", "Hardened steel / BF breaker", "finishing"): (
+                        "flood", 79.248, None, 199.644, None, 0.3048, 0.1016, 0.3048, "BF"
                     ),
-                    ("BC8210", "finishing"): (
-                        "flood", 79.248, None, 199.644,
-                        None, 0.3048, 0.1016, 0.3048,
+                    ("BM-DCGT11T304TA2", "BC8120", "Hardened steel / continuous", "general"): (
+                        "flood", 100.584, 199.644, 230.124, None, 0.3048, None, 0.7874, "BM"
+                    ),
+                    ("BM-DCGT11T304TA2", "BC8220", "Hardened steel / medium interrupted", "medium"): (
+                        "flood", 59.436, 149.352, 199.644, None, 0.2032, None, 0.3048, "BM"
+                    ),
+                    ("BM-DCGT11T304TA2", "BC8220", "Hardened steel / BM breaker", "medium"): (
+                        "flood", 79.248, None, 199.644, None, 0.3048, 0.3048, 0.7874, "BM"
                     ),
                 }
-                for row in profiles:
-                    key = (row[0], row[1])
-                    self.assertIn(key, expected)
-                    self.assertEqual(row[2:10], expected[key])
-                    self.assertEqual(row[10], "BF")
-                    self.assertEqual(row[11], "catalog_verified")
-                    self.assertIn("starting points", row[12])
+                for key, expected in expected_profiles.items():
+                    row = connection.execute(
+                        """
+                        SELECT coolant_condition, surface_speed_min, surface_speed_start, surface_speed_max,
+                               feed_min, feed_max, depth_of_cut_min, depth_of_cut_max, source_chipbreaker
+                        FROM cutting_data_profiles
+                        WHERE tool_id=? AND source_grade=? AND material_subgroup=? AND cut_condition=?
+                        """,
+                        key,
+                    ).fetchone()
+                    self.assertEqual(row, expected)
 
-                batch = connection.execute(
-                    "SELECT row_count, catalog_sha256 FROM review_batches WHERE proposal_id=?",
-                    ("mitsubishi-bf-ccgt09t304ts2-baselines-2026-07",),
-                ).fetchone()
-                self.assertEqual(batch[0], 1)
+                public_tools = {
+                    item["id"]: item
+                    for item in json.loads(json_path.read_text(encoding="utf-8"))["tools"]
+                    if item["manufacturer"] == "Mitsubishi Materials" and item["component_type"] == "insert"
+                }
+                self.assertEqual(len(public_tools), 132)
+                self.assertTrue(all(tool["grade"] is None for tool in public_tools.values()))
                 self.assertEqual(
-                    batch[1],
-                    sha256(ROOT / "data" / "source_snapshots" / "mitsubishi-c010a-cbn-pcd-inserts.pdf"),
+                    [option["code"] for option in public_tools["DCMW070204"]["grade_options"]],
+                    ["MD220"],
+                )
+
+                batches = connection.execute(
+                    """
+                    SELECT row_count, catalog_sha256 FROM review_batches
+                    WHERE proposal_id LIKE 'mitsubishi-insert-identities-bf-bm-baselines-2026-07-part-%'
+                    ORDER BY proposal_id
+                    """
+                ).fetchall()
+                self.assertEqual(len(batches), 6)
+                self.assertEqual(sum(row[0] for row in batches), 132)
+                self.assertTrue(
+                    all(
+                        row[1] == sha256(ROOT / "data" / "source_snapshots" / "mitsubishi-c010a-cbn-pcd-inserts.pdf")
+                        for row in batches
+                    )
                 )
             finally:
                 connection.close()

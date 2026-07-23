@@ -1,0 +1,2319 @@
+{
+  "schema_version": 2,
+  "proposal_id": "mitsubishi-insert-identities-bf-bm-baselines-2026-07-part-03",
+  "title": "Mitsubishi C010A insert identity corrections and BF/BM baselines, part 3 of 6",
+  "created_at": "2026-07-22",
+  "status": "source_extracted",
+  "import_allowed": false,
+  "purpose": "Correct legacy edge-preparation/grade interpretation for all Mitsubishi inserts and publish source-backed BF/BM adjustable baselines.",
+  "sources": [
+    {
+      "source_id": "source-140cd7506a42b01f",
+      "batch_role": "primary_catalog",
+      "manufacturer": "Mitsubishi Materials",
+      "title": "Mitsubishi Materials CBN & PCD Inserts Catalog C010A",
+      "source_type": "manufacturer_catalog",
+      "url": "https://data.mmc-carbide.com/5316/9575/0325/catalog_c010a_cbn_pcd_inserts.pdf",
+      "local_path": "toolbase/data/source_snapshots/mitsubishi-c010a-cbn-pcd-inserts.pdf",
+      "content_sha256": "3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de",
+      "page_count": 64,
+      "page_ref": "PDF pages 9, 12, 39, 41, 42, 43, 46, 55, 59",
+      "document_edition": "C010A",
+      "edition_evidence": "Manufacturer-hosted catalog; exact product rows and recommendation tables.",
+      "raw_reference": "https://data.mmc-carbide.com/5316/9575/0325/catalog_c010a_cbn_pcd_inserts.pdf | SHA-256 3c6a4ae166ee9f191ed4d78161a6079dd156c3de2efc37638b60659990f984de"
+    }
+  ],
+  "rows": [
+    {
+      "proposal_row_id": "mitsubishi-insert-051",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T304GH2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "GH2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "GH2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304GH2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304GH2 carries GH2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "GH2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8110, BC8120, BC8130.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304GH2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304GH2 carries GH2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8110",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304GH2 BC8110",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304GH2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304GH2 is listed on PDF page 41 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token GH2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304GH2 BC8120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304GH2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304GH2 is listed on PDF page 41 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token GH2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8130",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304GH2 BC8130",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304GH2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304GH2 is listed on PDF page 41 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token GH2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "GH2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "GH2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-052",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T304GS2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "GS2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "GS2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304GS2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304GS2 carries GS2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "GS2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8210, BC8105, BC8110, BC5110, MB4120.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304GS2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304GS2 carries GS2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8210",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304GS2 BC8210",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304GS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304GS2 is listed on PDF page 41 under actual grade column BC8210 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8105",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304GS2 BC8105",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304GS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304GS2 is listed on PDF page 41 under actual grade column BC8105 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8110",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304GS2 BC8110",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304GS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304GS2 is listed on PDF page 41 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC5110",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304GS2 BC5110",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304GS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304GS2 is listed on PDF page 41 under actual grade column BC5110 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "MB4120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304GS2 MB4120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304GS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304GS2 is listed on PDF page 41 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "GS2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "GS2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-053",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T304SE2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "SE2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "SE2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304SE2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304SE2 carries SE2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "SE2 is an edge-preparation/order suffix, not the material grade; catalog grade options are MB4120.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304SE2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304SE2 carries SE2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "MB4120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304SE2 MB4120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304SE2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304SE2 is listed on PDF page 41 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token SE2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "SE2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "SE2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-054",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T304SF2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "SF2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "SF2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304SF2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304SF2 carries SF2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "SF2 is an edge-preparation/order suffix, not the material grade; catalog grade options are MB4120.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304SF2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304SF2 carries SF2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "MB4120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304SF2 MB4120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304SF2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304SF2 is listed on PDF page 41 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token SF2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "SF2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "SF2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-055",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T304TA2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "TA2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "TA2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304TA2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304TA2 carries TA2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "TA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8220, BC8120, BC8130, MB8120, MB8130.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304TA2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304TA2 carries TA2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304TA2 BC8220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304TA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304TA2 is listed on PDF page 41 under actual grade column BC8220 with catalog stock mark Japan stock. The order suffix/token TA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304TA2 BC8120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304TA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304TA2 is listed on PDF page 41 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8130",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304TA2 BC8130",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304TA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304TA2 is listed on PDF page 41 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "MB8120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304TA2 MB8120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304TA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304TA2 is listed on PDF page 41 under actual grade column MB8120 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "MB8130",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304TA2 MB8130",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304TA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304TA2 is listed on PDF page 41 under actual grade column MB8130 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "TA2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "TA2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-056",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T304TH2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "TH2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "TH2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304TH2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304TH2 carries TH2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "TH2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8120, BC8130, MB8130.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304TH2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304TH2 carries TH2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304TH2 BC8120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304TH2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304TH2 is listed on PDF page 41 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token TH2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8130",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304TH2 BC8130",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304TH2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304TH2 is listed on PDF page 41 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token TH2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "MB8130",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304TH2 MB8130",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304TH2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304TH2 is listed on PDF page 41 under actual grade column MB8130 with catalog stock mark USA stock. The order suffix/token TH2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "TH2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "TH2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-057",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T304VA2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "VA2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "VA2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304VA2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304VA2 carries VA2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "VA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8220.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304VA2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T304VA2 carries VA2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T304VA2 BC8220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T304VA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T304VA2 is listed on PDF page 41 under actual grade column BC8220 with catalog stock mark Japan stock. The order suffix/token VA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "VA2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "VA2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-058",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T308FS2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "FS2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "FS2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308FS2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308FS2 carries FS2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "FS2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8210, BC8105, BC8110, BC8120, BC5110, MB8110, MB4120.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308FS2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308FS2 carries FS2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8210",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308FS2 BC8210",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308FS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308FS2 is listed on PDF page 41 under actual grade column BC8210 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8105",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308FS2 BC8105",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308FS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308FS2 is listed on PDF page 41 under actual grade column BC8105 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8110",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308FS2 BC8110",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308FS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308FS2 is listed on PDF page 41 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308FS2 BC8120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308FS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308FS2 is listed on PDF page 41 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC5110",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308FS2 BC5110",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308FS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308FS2 is listed on PDF page 41 under actual grade column BC5110 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "MB8110",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308FS2 MB8110",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308FS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308FS2 is listed on PDF page 41 under actual grade column MB8110 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "MB4120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308FS2 MB4120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308FS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308FS2 is listed on PDF page 41 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token FS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "FS2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "FS2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-059",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T308GA2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "GA2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "GA2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GA2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308GA2 carries GA2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "GA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8220, BC8120, BC8130, MB8120.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GA2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308GA2 carries GA2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308GA2 BC8220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308GA2 is listed on PDF page 41 under actual grade column BC8220 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308GA2 BC8120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308GA2 is listed on PDF page 41 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8130",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308GA2 BC8130",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308GA2 is listed on PDF page 41 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "MB8120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308GA2 MB8120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308GA2 is listed on PDF page 41 under actual grade column MB8120 with catalog stock mark USA stock. The order suffix/token GA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "GA2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "GA2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-060",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T308GH2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "GH2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "GH2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GH2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308GH2 carries GH2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "GH2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8110, BC8120, BC8130.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GH2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308GH2 carries GH2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8110",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308GH2 BC8110",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GH2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308GH2 is listed on PDF page 41 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token GH2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308GH2 BC8120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GH2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308GH2 is listed on PDF page 41 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token GH2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8130",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308GH2 BC8130",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GH2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308GH2 is listed on PDF page 41 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token GH2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "GH2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "GH2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-061",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T308GS2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "GS2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "GS2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GS2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308GS2 carries GS2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "GS2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8210, BC8105, BC8110, BC5110, MB4120.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GS2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308GS2 carries GS2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8210",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308GS2 BC8210",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308GS2 is listed on PDF page 41 under actual grade column BC8210 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8105",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308GS2 BC8105",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308GS2 is listed on PDF page 41 under actual grade column BC8105 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8110",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308GS2 BC8110",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308GS2 is listed on PDF page 41 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC5110",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308GS2 BC5110",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308GS2 is listed on PDF page 41 under actual grade column BC5110 with catalog stock mark Japan stock. The order suffix/token GS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "MB4120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308GS2 MB4120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308GS2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308GS2 is listed on PDF page 41 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token GS2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "GS2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "GS2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-062",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T308SE2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "SE2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "SE2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308SE2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308SE2 carries SE2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "SE2 is an edge-preparation/order suffix, not the material grade; catalog grade options are MB4120.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308SE2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308SE2 carries SE2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "MB4120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308SE2 MB4120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308SE2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308SE2 is listed on PDF page 41 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token SE2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "SE2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "SE2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-063",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T308SF2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "SF2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "SF2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308SF2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308SF2 carries SF2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "SF2 is an edge-preparation/order suffix, not the material grade; catalog grade options are MB4120.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308SF2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308SF2 carries SF2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "MB4120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308SF2 MB4120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308SF2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308SF2 is listed on PDF page 41 under actual grade column MB4120 with catalog stock mark USA stock. The order suffix/token SF2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "SF2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "SF2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-064",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T308TA2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "TA2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "TA2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308TA2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308TA2 carries TA2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "TA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8220, BC8120, BC8130, MB8120, MB8130.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308TA2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308TA2 carries TA2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308TA2 BC8220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308TA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308TA2 is listed on PDF page 41 under actual grade column BC8220 with catalog stock mark Japan stock. The order suffix/token TA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308TA2 BC8120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308TA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308TA2 is listed on PDF page 41 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8130",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308TA2 BC8130",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308TA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308TA2 is listed on PDF page 41 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "MB8120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308TA2 MB8120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308TA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308TA2 is listed on PDF page 41 under actual grade column MB8120 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "MB8130",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308TA2 MB8130",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308TA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308TA2 is listed on PDF page 41 under actual grade column MB8130 with catalog stock mark USA stock. The order suffix/token TA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "TA2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "TA2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-065",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T308TH2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "TH2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "TH2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308TH2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308TH2 carries TH2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "TH2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8120, BC8130, MB8130.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308TH2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308TH2 carries TH2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8120",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308TH2 BC8120",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308TH2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308TH2 is listed on PDF page 41 under actual grade column BC8120 with catalog stock mark USA stock. The order suffix/token TH2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "BC8130",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308TH2 BC8130",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308TH2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308TH2 is listed on PDF page 41 under actual grade column BC8130 with catalog stock mark USA stock. The order suffix/token TH2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "code": "MB8130",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308TH2 MB8130",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "uncoated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308TH2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308TH2 is listed on PDF page 41 under actual grade column MB8130 with catalog stock mark USA stock. The order suffix/token TH2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "TH2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "TH2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-066",
+      "tool_lookup": {
+        "tool_id": "NP-DCGW11T308VA2",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "VA2",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "VA2",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308VA2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308VA2 carries VA2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "VA2 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8220.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308VA2 row",
+              "source_raw_text": "Exact order designation NP-DCGW11T308VA2 carries VA2; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCGW11T308VA2 BC8220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 41,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-DCGW11T308VA2 row",
+              "source_raw_text": "Exact ISO order designation NP-DCGW11T308VA2 is listed on PDF page 41 under actual grade column BC8220 with catalog stock mark USA stock. The order suffix/token VA2 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "VA2"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "VA2"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-067",
+      "tool_lookup": {
+        "tool_id": "NP-DCMT070202L-F",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "MD22",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT070202L-F row",
+              "source_raw_text": "NP-DCMT070202L-F is listed in the MD220 grade column on PDF page 55; MD22 is not the catalog grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "MD220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCMT070202L-F MD220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "PCD",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT070202L-F row",
+              "source_raw_text": "Exact ISO order designation NP-DCMT070202L-F is listed on PDF page 55 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "MD22"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "PCD",
+          "MD22"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-068",
+      "tool_lookup": {
+        "tool_id": "NP-DCMT070202R-F",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "MD22",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT070202R-F row",
+              "source_raw_text": "NP-DCMT070202R-F is listed in the MD220 grade column on PDF page 55; MD22 is not the catalog grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "MD220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCMT070202R-F MD220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "PCD",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT070202R-F row",
+              "source_raw_text": "Exact ISO order designation NP-DCMT070202R-F is listed on PDF page 55 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "MD22"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "PCD",
+          "MD22"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-069",
+      "tool_lookup": {
+        "tool_id": "NP-DCMT070204L-F",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "MD22",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT070204L-F row",
+              "source_raw_text": "NP-DCMT070204L-F is listed in the MD220 grade column on PDF page 55; MD22 is not the catalog grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "MD220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCMT070204L-F MD220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "PCD",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT070204L-F row",
+              "source_raw_text": "Exact ISO order designation NP-DCMT070204L-F is listed on PDF page 55 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "MD22"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "PCD",
+          "MD22"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-070",
+      "tool_lookup": {
+        "tool_id": "NP-DCMT070204R-F",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "MD22",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT070204R-F row",
+              "source_raw_text": "NP-DCMT070204R-F is listed in the MD220 grade column on PDF page 55; MD22 is not the catalog grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "MD220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCMT070204R-F MD220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "PCD",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT070204R-F row",
+              "source_raw_text": "Exact ISO order designation NP-DCMT070204R-F is listed on PDF page 55 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "MD22"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "PCD",
+          "MD22"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-071",
+      "tool_lookup": {
+        "tool_id": "NP-DCMT11T302L-F",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "MD22",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT11T302L-F row",
+              "source_raw_text": "NP-DCMT11T302L-F is listed in the MD220 grade column on PDF page 55; MD22 is not the catalog grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "MD220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCMT11T302L-F MD220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "PCD",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT11T302L-F row",
+              "source_raw_text": "Exact ISO order designation NP-DCMT11T302L-F is listed on PDF page 55 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "MD22"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "PCD",
+          "MD22"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-072",
+      "tool_lookup": {
+        "tool_id": "NP-DCMT11T302R-F",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "MD22",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT11T302R-F row",
+              "source_raw_text": "NP-DCMT11T302R-F is listed in the MD220 grade column on PDF page 55; MD22 is not the catalog grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "MD220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCMT11T302R-F MD220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "PCD",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT11T302R-F row",
+              "source_raw_text": "Exact ISO order designation NP-DCMT11T302R-F is listed on PDF page 55 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "MD22"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "PCD",
+          "MD22"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-073",
+      "tool_lookup": {
+        "tool_id": "NP-DCMT11T304L-F",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "MD22",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT11T304L-F row",
+              "source_raw_text": "NP-DCMT11T304L-F is listed in the MD220 grade column on PDF page 55; MD22 is not the catalog grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "MD220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCMT11T304L-F MD220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "PCD",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT11T304L-F row",
+              "source_raw_text": "Exact ISO order designation NP-DCMT11T304L-F is listed on PDF page 55 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "MD22"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "PCD",
+          "MD22"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-074",
+      "tool_lookup": {
+        "tool_id": "NP-DCMT11T304R-F",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "MD22",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "Legacy MD22 is a truncated grade token; Mitsubishi C010A lists the actual PCD grade MD220.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT11T304R-F row",
+              "source_raw_text": "NP-DCMT11T304R-F is listed in the MD220 grade column on PDF page 55; MD22 is not the catalog grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "MD220",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-DCMT11T304R-F MD220",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "PCD",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 55,
+              "source_table_ref": "C010A positive PCD insert standards / exact NP-DCMT11T304R-F row",
+              "source_raw_text": "Exact ISO order designation NP-DCMT11T304R-F is listed on PDF page 55 under actual grade column MD220 with catalog stock mark catalog-listed. The order suffix/token MD22 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "MD22"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "PCD",
+          "MD22"
+        ]
+      }
+    },
+    {
+      "proposal_row_id": "mitsubishi-insert-075",
+      "tool_lookup": {
+        "tool_id": "NP-TCGW110202GS3",
+        "manufacturer": "Mitsubishi Materials",
+        "component_type": "insert"
+      },
+      "current_summary": {
+        "grade": "GS3",
+        "geometry": "unknown"
+      },
+      "proposed": {
+        "tool_updates": {
+          "geometry": "unknown",
+          "lifecycle_status": "active",
+          "grade": null
+        },
+        "facts": [
+          {
+            "fact_key": "edge_preparation",
+            "value_text": "GS3",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 43,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-TCGW110202GS3 row",
+              "source_raw_text": "Exact order designation NP-TCGW110202GS3 carries GS3; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          },
+          {
+            "fact_key": "grade_interpretation",
+            "value_text": "GS3 is an edge-preparation/order suffix, not the material grade; catalog grade options are BC8110.",
+            "unit": null,
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 43,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-TCGW110202GS3 row",
+              "source_raw_text": "Exact order designation NP-TCGW110202GS3 carries GS3; available material grades are shown in separate C010A grade columns.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "replace_fact_keys": [
+          "edge_preparation",
+          "grade_interpretation"
+        ],
+        "grade_options": [
+          {
+            "code": "BC8110",
+            "option_kind": "available_grade",
+            "full_order_number": "NP-TCGW110202GS3 BC8110",
+            "availability_status": "listed",
+            "is_primary": false,
+            "material_class": "coated CBN",
+            "evidence": {
+              "source_id": "source-140cd7506a42b01f",
+              "pdf_page": 43,
+              "source_table_ref": "C010A positive CBN insert standards / exact NP-TCGW110202GS3 row",
+              "source_raw_text": "Exact ISO order designation NP-TCGW110202GS3 is listed on PDF page 43 under actual grade column BC8110 with catalog stock mark USA stock. The order suffix/token GS3 is not the material grade.",
+              "extraction_method": "pdf_table"
+            }
+          }
+        ],
+        "reject_grade_codes": [
+          "GS3"
+        ],
+        "material_recommendations": [],
+        "cutting_profiles": [],
+        "tags": [
+          "Mitsubishi Materials",
+          "CBN",
+          "GS3"
+        ]
+      }
+    }
+  ]
+}

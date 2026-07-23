@@ -77,6 +77,88 @@ def evidence_for(item: dict[str, Any]) -> dict[str, Any]:
     return value if isinstance(value, dict) else {}
 
 
+def validate_proposed_payload(
+    proposed: Any,
+    context: str,
+    source_by_id: dict[str, dict[str, Any]],
+) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(proposed, dict):
+        return [f"{context}: proposed object is required"]
+
+    assertion_groups = (
+        "facts",
+        "grade_options",
+        "material_recommendations",
+        "cutting_profiles",
+    )
+    if not any(proposed.get(group) for group in assertion_groups):
+        errors.append(f"{context}: no auditable assertions were proposed")
+    for group in assertion_groups:
+        for item_index, item in enumerate(proposed.get(group) or [], 1):
+            item_context = f"{context} {group}[{item_index}]"
+            evidence = evidence_for(item)
+            source_id = evidence.get("source_id") or item.get("source_id")
+            if source_id not in source_by_id:
+                errors.append(f"{item_context}: evidence source is missing from proposal")
+                continue
+            page = evidence.get("pdf_page")
+            source = source_by_id[source_id]
+            if source.get("local_path"):
+                if not isinstance(page, int):
+                    errors.append(f"{item_context}: pdf_page is required for a catalog assertion")
+                elif not 1 <= page <= int(source.get("page_count") or 0):
+                    errors.append(f"{item_context}: pdf_page is outside the source")
+            if not evidence.get("source_table_ref"):
+                errors.append(f"{item_context}: source_table_ref is required")
+            if not evidence.get("source_raw_text"):
+                errors.append(f"{item_context}: source_raw_text is required")
+
+    for profile_index, profile in enumerate(proposed.get("cutting_profiles") or [], 1):
+        context_profile = f"{context} cutting_profiles[{profile_index}]"
+        for key in (
+            "source_part_number",
+            "source_grade",
+            "source_geometry",
+            "source_chipbreaker",
+            "source_material_label",
+            "iso_material_group",
+            "operation_type",
+            "cut_condition",
+        ):
+            if not profile.get(key):
+                errors.append(f"{context_profile}: missing {key}")
+        for prefix in ("surface_speed", "feed", "depth_of_cut"):
+            minimum = profile.get(f"{prefix}_min")
+            maximum = profile.get(f"{prefix}_max")
+            unit = profile.get(f"{prefix}_unit")
+            if minimum is None and maximum is None:
+                continue
+            if minimum is not None and not isinstance(minimum, (int, float)):
+                errors.append(f"{context_profile}: {prefix} minimum must be numeric when stated")
+            if maximum is not None and not isinstance(maximum, (int, float)):
+                errors.append(f"{context_profile}: {prefix} maximum must be numeric when stated")
+            if (
+                isinstance(minimum, (int, float))
+                and isinstance(maximum, (int, float))
+                and minimum > maximum
+            ):
+                errors.append(f"{context_profile}: {prefix} minimum exceeds maximum")
+            if not unit:
+                errors.append(f"{context_profile}: {prefix}_unit is required")
+
+        speed_start = profile.get("surface_speed_start")
+        speed_min = profile.get("surface_speed_min")
+        speed_max = profile.get("surface_speed_max")
+        if speed_start is not None and not (
+            isinstance(speed_min, (int, float))
+            and isinstance(speed_max, (int, float))
+            and speed_min <= speed_start <= speed_max
+        ):
+            errors.append(f"{context_profile}: surface speed start is outside the range")
+    return errors
+
+
 def validate_proposal(proposal_path: Path, database_path: Path) -> tuple[dict[str, Any], list[str]]:
     proposal = read_json(proposal_path)
     errors: list[str] = []
@@ -158,80 +240,7 @@ def validate_proposal(proposal_path: Path, database_path: Path) -> tuple[dict[st
             if lookup.get("component_type") and lookup["component_type"] != db_row[2]:
                 errors.append(f"{context}: component_type does not match database")
 
-            proposed = row.get("proposed")
-            if not isinstance(proposed, dict):
-                errors.append(f"{context}: proposed object is required")
-                continue
-            assertion_groups = (
-                "facts",
-                "grade_options",
-                "material_recommendations",
-                "cutting_profiles",
-            )
-            if not any(proposed.get(group) for group in assertion_groups):
-                errors.append(f"{context}: no auditable assertions were proposed")
-            for group in assertion_groups:
-                for item_index, item in enumerate(proposed.get(group) or [], 1):
-                    item_context = f"{context} {group}[{item_index}]"
-                    evidence = evidence_for(item)
-                    source_id = evidence.get("source_id") or item.get("source_id")
-                    if source_id not in source_by_id:
-                        errors.append(f"{item_context}: evidence source is missing from proposal")
-                        continue
-                    page = evidence.get("pdf_page")
-                    source = source_by_id[source_id]
-                    if source.get("local_path"):
-                        if not isinstance(page, int):
-                            errors.append(f"{item_context}: pdf_page is required for a catalog assertion")
-                        elif not 1 <= page <= int(source.get("page_count") or 0):
-                            errors.append(f"{item_context}: pdf_page is outside the source")
-                    if not evidence.get("source_table_ref"):
-                        errors.append(f"{item_context}: source_table_ref is required")
-                    if not evidence.get("source_raw_text"):
-                        errors.append(f"{item_context}: source_raw_text is required")
-
-            for profile_index, profile in enumerate(proposed.get("cutting_profiles") or [], 1):
-                context_profile = f"{context} cutting_profiles[{profile_index}]"
-                for key in (
-                    "source_part_number",
-                    "source_grade",
-                    "source_geometry",
-                    "source_chipbreaker",
-                    "source_material_label",
-                    "iso_material_group",
-                    "operation_type",
-                    "cut_condition",
-                ):
-                    if not profile.get(key):
-                        errors.append(f"{context_profile}: missing {key}")
-                for prefix in ("surface_speed", "feed", "depth_of_cut"):
-                    minimum = profile.get(f"{prefix}_min")
-                    maximum = profile.get(f"{prefix}_max")
-                    unit = profile.get(f"{prefix}_unit")
-                    if minimum is None and maximum is None:
-                        continue
-                    if minimum is not None and not isinstance(minimum, (int, float)):
-                        errors.append(f"{context_profile}: {prefix} minimum must be numeric when stated")
-                    if maximum is not None and not isinstance(maximum, (int, float)):
-                        errors.append(f"{context_profile}: {prefix} maximum must be numeric when stated")
-                    if (
-                        isinstance(minimum, (int, float))
-                        and isinstance(maximum, (int, float))
-                        and minimum > maximum
-                    ):
-                        errors.append(f"{context_profile}: {prefix} minimum exceeds maximum")
-                    if not unit:
-                        errors.append(f"{context_profile}: {prefix}_unit is required")
-
-                speed_start = profile.get("surface_speed_start")
-                speed_min = profile.get("surface_speed_min")
-                speed_max = profile.get("surface_speed_max")
-                if speed_start is not None and not (
-                    isinstance(speed_min, (int, float))
-                    and isinstance(speed_max, (int, float))
-                    and speed_min <= speed_start <= speed_max
-                ):
-                    errors.append(f"{context_profile}: surface speed start is outside the range")
+            errors.extend(validate_proposed_payload(row.get("proposed"), context, source_by_id))
     finally:
         connection.close()
     return proposal, errors
@@ -257,6 +266,7 @@ def validate_ledger(
         errors.append("ledger: decisions must be a list")
         decisions = []
     expected_rows = {row["proposal_row_id"]: row for row in proposal.get("rows") or []}
+    source_by_id = {source["source_id"]: source for source in proposal.get("sources") or []}
     seen: set[str] = set()
     for index, decision in enumerate(decisions, 1):
         context = f"ledger decision {index}"
@@ -276,10 +286,18 @@ def validate_ledger(
             for key in ("reviewer", "decided_at"):
                 if not decision.get(key):
                     errors.append(f"{context}: terminal decision requires {key}")
-        if decision.get("decision") == "approved_with_corrections" and not isinstance(
-            decision.get("corrected_proposed"), dict
-        ):
-            errors.append(f"{context}: corrected_proposed is required")
+        if decision.get("decision") == "approved_with_corrections":
+            corrected = decision.get("corrected_proposed")
+            if not isinstance(corrected, dict):
+                errors.append(f"{context}: corrected_proposed is required")
+            else:
+                errors.extend(
+                    validate_proposed_payload(
+                        corrected,
+                        f"{context} corrected_proposed",
+                        source_by_id,
+                    )
+                )
         if decision.get("decision") in {"rejected", "quarantined"} and not decision.get("notes"):
             errors.append(f"{context}: rejection/quarantine reason is required")
     missing = sorted(set(expected_rows) - seen)
