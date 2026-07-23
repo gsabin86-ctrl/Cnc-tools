@@ -1415,14 +1415,14 @@ class PipelineTests(unittest.TestCase):
                         (tool_id,),
                     ).fetchone(),
                     (
-                        tool_id,
+                        "DCGT 11 T3 02-UM 1105",
                         "Sandvik Coromant",
                         "insert",
                         "CoroTurn 107 Inserts",
                         "1105",
                         "UM",
                         "positive 55-degree rhombic precision turning insert",
-                        "active",
+                        "discontinued",
                     ),
                 )
                 aliases = set(connection.execute(
@@ -1449,6 +1449,13 @@ class PipelineTests(unittest.TestCase):
                 self.assertEqual(facts["operation_classification"], "pre-machining with demand on surface")
                 self.assertEqual(facts["coating"], "PVD TiAlN")
                 self.assertEqual(facts["substrate"], "HC")
+                self.assertEqual(facts["manufacturer_lifecycle_code"], "30")
+                self.assertEqual(facts["manufacturer_availability"], "Available")
+                self.assertEqual(facts["lifecycle_status"], "being_replaced")
+                self.assertEqual(
+                    facts["replacement_note"],
+                    "Different grade vs. the original product – Please check cutting speed.",
+                )
 
                 source_id = "source-718d750d3903ffc2"
                 source_sha256 = "718d750d3903ffc22dc75a7f1d4f8a3356f4416aa643ef0b4297c2396a6eaa3e"
@@ -1477,13 +1484,13 @@ class PipelineTests(unittest.TestCase):
                 self.assertEqual(
                     dimension_rows,
                     {
-                        "inscribed_circle_mm": (9.525, "mm", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
-                        "thickness_mm": (3.96875, "mm", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
-                        "corner_radius_mm": (0.2, "mm", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
-                        "hole_size": (4.4, "mm", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
-                        "cutting_edge_length": (11.4279, "mm", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
-                        "clearance_angle_deg": (7.0, "deg", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
-                        "cutting_edge_count": (2.0, "count", "manufacturer_verified", source_id, "Structured product API snapshot", source_sha256),
+                        "inscribed_circle_mm": (9.525, "mm", "manufacturer_verified", source_id, "/product/specifications", source_sha256),
+                        "thickness_mm": (3.96875, "mm", "manufacturer_verified", source_id, "/product/specifications", source_sha256),
+                        "corner_radius_mm": (0.2, "mm", "manufacturer_verified", source_id, "/product/specifications", source_sha256),
+                        "hole_size": (4.4, "mm", "manufacturer_verified", source_id, "/product/specifications", source_sha256),
+                        "cutting_edge_length": (11.4279, "mm", "manufacturer_verified", source_id, "/product/specifications", source_sha256),
+                        "clearance_angle_deg": (7.0, "deg", "manufacturer_verified", source_id, "/product/specifications", source_sha256),
+                        "cutting_edge_count": (2.0, "count", "manufacturer_verified", source_id, "/product/specifications", source_sha256),
                     },
                 )
                 self.assertEqual(
@@ -1503,20 +1510,24 @@ class PipelineTests(unittest.TestCase):
                         """,
                         (tool_id, tool_id, tool_id, tool_id),
                     ).fetchall()),
-                    {("Structured product API snapshot",)},
+                    {
+                        ("/autocomplete_match",),
+                        ("/product",),
+                        ("/product/identity",),
+                        ("/product/specifications",),
+                        ("/product/cutting_operations/0/materials/0",),
+                    },
                 )
 
                 self.assertEqual(
                     connection.execute(
                         """
-                        SELECT g.code, o.option_kind, o.full_order_number, o.availability_status,
-                               o.verification_status
-                        FROM tool_grade_options o JOIN grades g ON g.id=o.grade_id
-                        WHERE o.tool_id=? AND o.option_kind='available_grade'
+                        SELECT COUNT(*) FROM tool_grade_options
+                        WHERE tool_id=? AND verification_status <> 'rejected'
                         """,
                         (tool_id,),
-                    ).fetchone(),
-                    ("1105", "available_grade", "DCGT 11 T3 02-UM 1105", "listed", "manufacturer_verified"),
+                    ).fetchone()[0],
+                    0,
                 )
                 self.assertEqual(
                     connection.execute(
@@ -1570,8 +1581,12 @@ class PipelineTests(unittest.TestCase):
                     item["id"]: item for item in json.loads(json_path.read_text(encoding="utf-8"))["tools"]
                 }
                 self.assertIn(tool_id, public_tools)
+                self.assertEqual(public_tools[tool_id]["part_number"], "DCGT 11 T3 02-UM 1105")
                 self.assertEqual(public_tools[tool_id]["grade"], "1105")
                 self.assertEqual(public_tools[tool_id]["chipbreaker"], "UM")
+                self.assertEqual(public_tools[tool_id]["lifecycle_status"], "discontinued")
+                self.assertTrue(public_tools[tool_id]["standalone_exact_product"])
+                self.assertEqual(public_tools[tool_id]["grade_options"], [])
                 self.assertEqual(len(public_tools[tool_id]["cutting_data"]), 1)
                 self.assertEqual(
                     public_tools[tool_id]["geometry_display"]["dimensions"],
@@ -1603,8 +1618,8 @@ class PipelineTests(unittest.TestCase):
                         ("DCGT-11-T3-02-UM", tool_id),
                     ).fetchall(),
                     [
-                        ("DCGT-11-T3-02-UM", "DCGT-11-T3-02-UM", "1105", "UM", "active"),
-                        (tool_id, tool_id, "1115", "UM", "active"),
+                        ("DCGT-11-T3-02-UM", "DCGT 11 T3 02-UM 1105", "1105", "UM", "discontinued"),
+                        (tool_id, "DCGT 11 T3 02-UM 1115", "1115", "UM", "active"),
                     ],
                 )
                 aliases = set(
@@ -1686,7 +1701,7 @@ class PipelineTests(unittest.TestCase):
                             (candidate,),
                         ).fetchall()
                     }
-                self.assertEqual(grade_codes["DCGT-11-T3-02-UM"], {"1105"})
+                self.assertEqual(grade_codes["DCGT-11-T3-02-UM"], set())
                 self.assertEqual(grade_codes[tool_id], set())
                 self.assertEqual(
                     connection.execute(
@@ -1760,7 +1775,7 @@ class PipelineTests(unittest.TestCase):
                     item["id"]: item
                     for item in json.loads(json_path.read_text(encoding="utf-8"))["tools"]
                 }[tool_id]
-                self.assertEqual(public["part_number"], tool_id)
+                self.assertEqual(public["part_number"], "DCGT 11 T3 02-UM 1115")
                 self.assertEqual(public["grade"], "1115")
                 self.assertEqual(public["chipbreaker"], "UM")
                 self.assertTrue(public["standalone_exact_product"])

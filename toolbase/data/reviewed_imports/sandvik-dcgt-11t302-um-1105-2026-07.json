@@ -1,11 +1,11 @@
 {
   "schema_version": 2,
-  "import_id": "review-batch-c7979730c61897b6",
+  "import_id": "review-batch-9fa18c1b0adc298f",
   "proposal_id": "sandvik-dcgt-11t302-um-1105-2026-07",
   "proposal_path": "toolbase/proposals/sandvik-dcgt-11t302-um-1105-2026-07.json",
-  "proposal_sha256": "7e6db66fafc6fd4fd459f3dbcdbcba7772fc4ab632a45ab9d8c407f24e2c4d4c",
+  "proposal_sha256": "90811b2fc64d7f66907ef3d6bd25ced77fdf3e2c8329fe4e28b83fb920e01137",
   "review_ledger_path": "toolbase/reviews/sandvik-dcgt-11t302-um-1105-2026-07.decisions.json",
-  "review_ledger_sha256": "865025bf865eaba84b4cfb17c8d7ab361934093840860dba1a491e71fc0509a7",
+  "review_ledger_sha256": "52ec9e375e7c63008dba201e8a017cf4c9e310a5474194327e65d58e2ccdbc65",
   "catalog_sha256": "718d750d3903ffc22dc75a7f1d4f8a3356f4416aa643ef0b4297c2396a6eaa3e",
   "catalog_source_id": "source-718d750d3903ffc2",
   "reviewed_at": "2026-07-23",
@@ -42,14 +42,58 @@
       "reviewer": "Greg",
       "reviewed_at": "2026-07-23",
       "tool_updates": {
-        "description": "Sandvik CoroTurn 107 DCGT precision turning insert, exact order code DCGT 11 T3 02-UM 1105, material ID 5730414, UM chipbreaker, grade 1105, for ISO M and S workpiece groups.",
+        "description": "Sandvik CoroTurn 107 precision turning insert DCGT 11 T3 02-UM 1105, material ID 5730414, available while being replaced by DCGT 11 T3 02-UM 1205; Sandvik says to check cutting speed because the replacement uses a different grade.",
         "geometry": "positive 55-degree rhombic precision turning insert",
-        "lifecycle_status": "active",
+        "lifecycle_status": "discontinued",
         "evidence_status": "catalog_source",
         "grade": "1105",
         "grade_reviewed": true,
         "chipbreaker": "UM",
-        "chipbreaker_reviewed": true
+        "chipbreaker_reviewed": true,
+        "source_id": "source-718d750d3903ffc2",
+        "source_page_ref": "/product",
+        "source_table_ref": "Exact product identity and commercial state",
+        "source_raw_text": "{\"order_code\":\"DCGT 11 T3 02-UM 1105\",\"material_id\":\"5730414\",\"identity\":{\"grade\":\"1105\",\"chipbreaker\":\"UM\",\"availability\":\"Available\",\"replacement_material_id\":\"8432107\",\"replacement_order_code\":\"DCGT 11 T3 02-UM 1205\"},\"specifications\":{\"SC\":\"Rhombic 55\",\"AN\":7.0}}",
+        "extraction_method": "manufacturer_page",
+        "value_claims": {
+          "description": {
+            "source_id": "source-718d750d3903ffc2",
+            "source_values": {
+              "/product/order_code": "DCGT 11 T3 02-UM 1105",
+              "/product/material_id": "5730414",
+              "/product/identity/replacement_order_code": "DCGT 11 T3 02-UM 1205"
+            },
+            "normalization": "Compose a concise product description from the exact order code, material ID, availability, and replacement identity.",
+            "normalized_value": "Sandvik CoroTurn 107 precision turning insert DCGT 11 T3 02-UM 1105, material ID 5730414, available while being replaced by DCGT 11 T3 02-UM 1205; Sandvik says to check cutting speed because the replacement uses a different grade."
+          },
+          "geometry": {
+            "source_id": "source-718d750d3903ffc2",
+            "source_values": {
+              "/product/specifications/SC": "Rhombic 55",
+              "/product/specifications/AN": 7.0
+            },
+            "normalization": "Normalize Sandvik shape and clearance fields into the catalog geometry label.",
+            "normalized_value": "positive 55-degree rhombic precision turning insert"
+          },
+          "lifecycle_status": {
+            "source_id": "source-718d750d3903ffc2",
+            "source_values": {
+              "/autocomplete_match/LCS": "30",
+              "/product/identity/availability": "Available",
+              "/product/identity/replacement_material_id": "8432107"
+            },
+            "normalization": "Map Sandvik lifecycle code 30 with an explicit replacement to the catalog lifecycle discontinued; keep remaining stock availability as a separate fact.",
+            "normalized_value": "discontinued"
+          },
+          "grade": {
+            "source_id": "source-718d750d3903ffc2",
+            "source_pointer": "/product/identity/grade"
+          },
+          "chipbreaker": {
+            "source_id": "source-718d750d3903ffc2",
+            "source_pointer": "/product/identity/chipbreaker"
+          }
+        }
       },
       "aliases": [
         {
@@ -85,6 +129,7 @@
         "precision",
         "sandvik",
         "stainless-steel",
+        "standalone_exact_product",
         "turning",
         "um"
       ],
@@ -107,7 +152,11 @@
         "replacement_material_number",
         "replacement_order_code",
         "not_replenished_after",
-        "workpiece_material_groups"
+        "workpiece_material_groups",
+        "manufacturer_lifecycle_code",
+        "manufacturer_availability",
+        "lifecycle_status",
+        "replacement_note"
       ],
       "facts": [
         {
@@ -122,10 +171,16 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product",
           "source_table_ref": "Product identity",
-          "source_raw_text": "ORDCODE DCGT 11 T3 02-UM 1105; MaterialID 5730414; CoroTurn 107; GRADE 1105; CBMD UM; InsertDesignation DCGT; InsertSizeCode 11T302.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"material_id\":\"5730414\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/material_id"
+            }
+          }
         },
         {
           "fact_key": "manufacturer_order_code",
@@ -139,10 +194,16 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product",
           "source_table_ref": "Product identity",
-          "source_raw_text": "ORDCODE DCGT 11 T3 02-UM 1105; MaterialID 5730414; CoroTurn 107; GRADE 1105; CBMD UM; InsertDesignation DCGT; InsertSizeCode 11T302.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"order_code\":\"DCGT 11 T3 02-UM 1105\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/order_code"
+            }
+          }
         },
         {
           "fact_key": "ansi_catalog_id",
@@ -156,10 +217,16 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product",
           "source_table_ref": "Product identifiers",
-          "source_raw_text": "ORDCODEUSA DCGT 3(2.5)0-UM 1105; EAN 12096976.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"order_code_ansi\":\"DCGT 3(2.5)0-UM 1105\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/order_code_ansi"
+            }
+          }
         },
         {
           "fact_key": "ean",
@@ -173,10 +240,16 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product",
           "source_table_ref": "Product identifiers",
-          "source_raw_text": "ORDCODEUSA DCGT 3(2.5)0-UM 1105; EAN 12096976.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"ean\":\"12096976\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/ean"
+            }
+          }
         },
         {
           "fact_key": "product_family",
@@ -190,10 +263,16 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/identity",
           "source_table_ref": "Product identity",
-          "source_raw_text": "ORDCODE DCGT 11 T3 02-UM 1105; MaterialID 5730414; CoroTurn 107; GRADE 1105; CBMD UM; InsertDesignation DCGT; InsertSizeCode 11T302.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"family\":\"CoroTurn 107\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/family"
+            }
+          }
         },
         {
           "fact_key": "operation_classification",
@@ -207,10 +286,16 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/identity",
           "source_table_ref": "Product application",
-          "source_raw_text": "CTPT pre-machining with demand on surface; ApplicationArea GeneralTurning.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"operation_classification\":\"pre-machining with demand on surface\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/operation_classification"
+            }
+          }
         },
         {
           "fact_key": "coating",
@@ -224,10 +309,16 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/specifications",
           "source_table_ref": "Grade construction",
-          "source_raw_text": "GRADEDescriptive 1105 / HC / PVD TiAlN; SUBSTRATE HC; COATING PVD TiAlN.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"COATING\":\"PVD TiAlN\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/specifications/COATING"
+            }
+          }
         },
         {
           "fact_key": "substrate",
@@ -241,10 +332,16 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/specifications",
           "source_table_ref": "Grade construction",
-          "source_raw_text": "GRADEDescriptive 1105 / HC / PVD TiAlN; SUBSTRATE HC; COATING PVD TiAlN.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"SUBSTRATE\":\"HC\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/specifications/SUBSTRATE"
+            }
+          }
         },
         {
           "fact_key": "inscribed_circle_mm",
@@ -258,10 +355,24 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/specifications",
           "source_table_ref": "Product dimensions",
-          "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"IC\":9.525}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_number": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/specifications/IC"
+            },
+            "unit": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/specifications/IC": 9.525
+              },
+              "normalization": "Assign the catalog unit from the metric Sandvik endpoint and the manufacturer field definition.",
+              "normalized_value": "mm"
+            }
+          }
         },
         {
           "fact_key": "cutting_edge_length",
@@ -275,10 +386,24 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/specifications",
           "source_table_ref": "Product dimensions",
-          "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"LE\":11.4279}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_number": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/specifications/LE"
+            },
+            "unit": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/specifications/LE": 11.4279
+              },
+              "normalization": "Assign the catalog unit from the metric Sandvik endpoint and the manufacturer field definition.",
+              "normalized_value": "mm"
+            }
+          }
         },
         {
           "fact_key": "thickness_mm",
@@ -292,10 +417,24 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/specifications",
           "source_table_ref": "Product dimensions",
-          "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"S\":3.96875}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_number": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/specifications/S"
+            },
+            "unit": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/specifications/S": 3.96875
+              },
+              "normalization": "Assign the catalog unit from the metric Sandvik endpoint and the manufacturer field definition.",
+              "normalized_value": "mm"
+            }
+          }
         },
         {
           "fact_key": "corner_radius_mm",
@@ -309,10 +448,24 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/specifications",
           "source_table_ref": "Product dimensions",
-          "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"RE\":0.2}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_number": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/specifications/RE"
+            },
+            "unit": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/specifications/RE": 0.2
+              },
+              "normalization": "Assign the catalog unit from the metric Sandvik endpoint and the manufacturer field definition.",
+              "normalized_value": "mm"
+            }
+          }
         },
         {
           "fact_key": "hole_size",
@@ -326,10 +479,24 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/specifications",
           "source_table_ref": "Product dimensions",
-          "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"D1\":4.4}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_number": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/specifications/D1"
+            },
+            "unit": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/specifications/D1": 4.4
+              },
+              "normalization": "Assign the catalog unit from the metric Sandvik endpoint and the manufacturer field definition.",
+              "normalized_value": "mm"
+            }
+          }
         },
         {
           "fact_key": "clearance_angle_deg",
@@ -343,10 +510,24 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/specifications",
           "source_table_ref": "Product dimensions",
-          "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"AN\":7.0}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_number": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/specifications/AN"
+            },
+            "unit": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/specifications/AN": 7.0
+              },
+              "normalization": "Assign the catalog unit from the metric Sandvik endpoint and the manufacturer field definition.",
+              "normalized_value": "deg"
+            }
+          }
         },
         {
           "fact_key": "cutting_edge_count",
@@ -360,10 +541,126 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/specifications",
           "source_table_ref": "Product dimensions",
-          "source_raw_text": "SC Rhombic 55; AN 7 deg; IC 9.525 mm; S 3.96875 mm; RE 0.2 mm; LE 11.4279 mm; D1 4.4 mm; CEDC 2; HAND Neutral.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"CEDC\":2}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_number": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/specifications/CEDC": 2
+              },
+              "normalization": "Convert the integer cutting-edge count to the catalog numeric fact representation.",
+              "normalized_value": 2.0
+            },
+            "unit": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/specifications/CEDC": 2
+              },
+              "normalization": "Label Sandvik CEDC as a count rather than a dimensional measurement.",
+              "normalized_value": "count"
+            }
+          }
+        },
+        {
+          "fact_key": "manufacturer_lifecycle_code",
+          "unit": null,
+          "value_text": "30",
+          "id": "fact-490355600eda6dd3",
+          "original_key": "reviewed_manufacturer_lifecycle_code",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-718d750d3903ffc2",
+          "source_ids": [
+            "source-718d750d3903ffc2"
+          ],
+          "source_page_ref": "/autocomplete_match",
+          "source_table_ref": "Availability and replacement",
+          "source_raw_text": "{\"LCS\":\"30\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/autocomplete_match/LCS"
+            }
+          }
+        },
+        {
+          "fact_key": "manufacturer_availability",
+          "unit": null,
+          "value_text": "Available",
+          "id": "fact-03a4e64946808146",
+          "original_key": "reviewed_manufacturer_availability",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-718d750d3903ffc2",
+          "source_ids": [
+            "source-718d750d3903ffc2"
+          ],
+          "source_page_ref": "/product/identity",
+          "source_table_ref": "Availability and replacement",
+          "source_raw_text": "{\"availability\":\"Available\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/availability"
+            }
+          }
+        },
+        {
+          "fact_key": "lifecycle_status",
+          "unit": null,
+          "value_text": "being_replaced",
+          "id": "fact-30929994bed3daaf",
+          "original_key": "reviewed_lifecycle_status",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-718d750d3903ffc2",
+          "source_ids": [
+            "source-718d750d3903ffc2"
+          ],
+          "source_page_ref": "/product/identity",
+          "source_table_ref": "Availability and replacement",
+          "source_raw_text": "{\"availability\":\"Available\",\"replacement_material_id\":\"8432107\",\"replacement_order_code\":\"DCGT 11 T3 02-UM 1205\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/autocomplete_match/LCS": "30",
+                "/product/identity/replacement_material_id": "8432107",
+                "/product/identity/replacement_order_code": "DCGT 11 T3 02-UM 1205"
+              },
+              "normalization": "Represent Sandvik lifecycle code 30 with an explicit successor as being_replaced in the detailed manufacturer-state fact.",
+              "normalized_value": "being_replaced"
+            }
+          }
+        },
+        {
+          "fact_key": "replacement_note",
+          "unit": null,
+          "value_text": "Different grade vs. the original product – Please check cutting speed.",
+          "id": "fact-28c8b8dc567b36c4",
+          "original_key": "reviewed_replacement_note",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-718d750d3903ffc2",
+          "source_ids": [
+            "source-718d750d3903ffc2"
+          ],
+          "source_page_ref": "/product/identity",
+          "source_table_ref": "Availability and replacement",
+          "source_raw_text": "{\"replacement_note\":\"Different grade vs. the original product – Please check cutting speed.\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/replacement_note"
+            }
+          }
         },
         {
           "fact_key": "replacement_material_number",
@@ -377,10 +674,16 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/identity",
           "source_table_ref": "Availability and replacement",
-          "source_raw_text": "TIBPAvailability Available; GloballyAvailable true; ReplacementProductId 8432107; replacement order code DCGT 11 T3 02-UM 1205; NotReplenishedAfter 2028-02-29; Different grade vs. the original product – Please check cutting speed.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"replacement_material_id\":\"8432107\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/replacement_material_id"
+            }
+          }
         },
         {
           "fact_key": "replacement_order_code",
@@ -394,10 +697,16 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/identity",
           "source_table_ref": "Availability and replacement",
-          "source_raw_text": "TIBPAvailability Available; GloballyAvailable true; ReplacementProductId 8432107; replacement order code DCGT 11 T3 02-UM 1205; NotReplenishedAfter 2028-02-29; Different grade vs. the original product – Please check cutting speed.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"replacement_order_code\":\"DCGT 11 T3 02-UM 1205\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/replacement_order_code"
+            }
+          }
         },
         {
           "fact_key": "not_replenished_after",
@@ -411,10 +720,20 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/identity",
           "source_table_ref": "Availability and replacement",
-          "source_raw_text": "TIBPAvailability Available; GloballyAvailable true; ReplacementProductId 8432107; replacement order code DCGT 11 T3 02-UM 1205; NotReplenishedAfter 2028-02-29; Different grade vs. the original product – Please check cutting speed.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"not_replenished_after\":\"2028-02-29T00:00:00+00:00\"}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_text": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/identity/not_replenished_after": "2028-02-29T00:00:00+00:00"
+              },
+              "normalization": "Normalize the Sandvik timestamp to its calendar date.",
+              "normalized_value": "2028-02-29"
+            }
+          }
         },
         {
           "fact_key": "workpiece_material_groups",
@@ -431,28 +750,61 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/identity",
           "source_table_ref": "Product workpiece materials",
-          "source_raw_text": "TMC1ISO M, S; MaterialsString MS; exact product applicability includes stainless steel and heat-resistant superalloys.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"materials\":[\"M\",\"S\"]}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "value_json": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/materials"
+            }
+          }
         }
       ],
       "grade_options": [
         {
           "code": "1105",
-          "option_kind": "available_grade",
+          "option_kind": "exact_order_grade",
           "full_order_number": "DCGT 11 T3 02-UM 1105",
           "availability_status": "listed",
           "is_primary": true,
           "material_class": "carbide",
           "verification_status": "manufacturer_verified",
           "source_id": "source-718d750d3903ffc2",
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product",
           "source_table_ref": "Product identity and grade",
-          "source_raw_text": "ORDCODE DCGT 11 T3 02-UM 1105; MaterialID 5730414; CoroTurn 107; GRADE 1105; CBMD UM; InsertDesignation DCGT; InsertSizeCode 11T302.",
+          "source_raw_text": "{\"order_code\":\"DCGT 11 T3 02-UM 1105\",\"identity\":{\"grade\":\"1105\",\"chipbreaker\":\"UM\",\"availability\":\"Available\"}}",
           "extraction_method": "manufacturer_page",
           "reviewer": "Greg",
-          "reviewed_at": "2026-07-23"
+          "reviewed_at": "2026-07-23",
+          "value_claims": {
+            "code": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/grade"
+            },
+            "full_order_number": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/order_code"
+            },
+            "availability_status": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/identity/availability": "Available"
+              },
+              "normalization": "Map manufacturer availability Available to the catalog availability value listed.",
+              "normalized_value": "listed"
+            },
+            "material_class": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/identity/grade_descriptive": "1105 / HC / PVD TiAlN",
+                "/product/specifications/SUBSTRATE": "HC"
+              },
+              "normalization": "Map the Sandvik hard-carbide substrate and grade description to the catalog material class carbide.",
+              "normalized_value": "carbide"
+            }
+          }
         }
       ],
       "reject_grade_codes": [],
@@ -471,10 +823,36 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/identity",
           "source_table_ref": "Product workpiece materials",
-          "source_raw_text": "TMC1ISO M, S; MaterialsString MS; exact product applicability includes stainless steel and heat-resistant superalloys.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"grade\":\"1105\",\"materials\":[\"M\",\"S\"]}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "grade_code": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/grade"
+            },
+            "iso_group": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/materials/0"
+            },
+            "material_subgroup": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/identity/materials/0": "M"
+              },
+              "normalization": "Expand the manufacturer ISO material group to the catalog display subgroup.",
+              "normalized_value": "Stainless steel"
+            },
+            "suitability": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/identity/materials/0": "M"
+              },
+              "normalization": "Presence in Sandvik TMC1ISO marks this exact product as recommended for the material group.",
+              "normalized_value": "recommended"
+            }
+          }
         },
         {
           "grade_code": "1105",
@@ -489,10 +867,36 @@
           "source_ids": [
             "source-718d750d3903ffc2"
           ],
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/identity",
           "source_table_ref": "Product workpiece materials",
-          "source_raw_text": "TMC1ISO M, S; MaterialsString MS; exact product applicability includes stainless steel and heat-resistant superalloys.",
-          "extraction_method": "manufacturer_page"
+          "source_raw_text": "{\"grade\":\"1105\",\"materials\":[\"M\",\"S\"]}",
+          "extraction_method": "manufacturer_page",
+          "value_claims": {
+            "grade_code": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/grade"
+            },
+            "iso_group": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/materials/1"
+            },
+            "material_subgroup": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/identity/materials/1": "S"
+              },
+              "normalization": "Expand the manufacturer ISO material group to the catalog display subgroup.",
+              "normalized_value": "Heat-resistant superalloys"
+            },
+            "suitability": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/identity/materials/1": "S"
+              },
+              "normalization": "Presence in Sandvik TMC1ISO marks this exact product as recommended for the material group.",
+              "normalized_value": "recommended"
+            }
+          }
         }
       ],
       "cutting_profiles": [
@@ -519,37 +923,151 @@
           "depth_of_cut_unit": "mm",
           "id": "cutting-profile-9e24a7cbcfc3cda8",
           "source_id": "source-718d750d3903ffc2",
-          "source_page_ref": "Structured product API snapshot",
+          "source_page_ref": "/product/cutting_operations/0/materials/0",
           "source_table_ref": "CuttingOperations[0] / materials[0]",
-          "source_raw_text": "KAPR 93 deg; S2.0.Z.AG; ISO S; hardness 350 HB; ap 0.1/0.5/1.05 mm min/nom/max; fn 0.01/0.02/0.08 mm/r min/nom/max; vc 70/70/70 m/min min/nom/max; lifeTime 900 s. Coolant is not stated.",
+          "source_raw_text": "{\"material\":\"S\",\"materialReference\":\"S2.0.Z.AG\",\"hardness\":350.0,\"hardnessUnit\":\"HB\",\"startValues\":{\"ap\":{\"min\":0.1,\"nom\":0.5,\"max\":1.05,\"unit\":\"mm\"},\"fn\":{\"min\":0.01,\"nom\":0.02,\"max\":0.08,\"unit\":\"mm/r\"},\"vc\":{\"min\":70.0,\"nom\":70.0,\"max\":70.0,\"unit\":\"m/min\"}}}",
           "extraction_method": "manufacturer_page",
           "verification_status": "manufacturer_verified",
           "reviewer": "Greg",
           "reviewed_at": "2026-07-23",
-          "notes": "Greg requested a quick exact-product spot check and then explicitly said, 'Let's add it.' The mismatched rendered page body is excluded; approval is based on the identity-gated Sandvik autocomplete and structured product response preserved in the immutable snapshot.",
+          "notes": "Greg asked on 2026-07-23 to fix this exact Sandvik product. The correction uses the identity-gated structured product snapshot for material 5730414 and keeps availability separate from lifecycle.",
+          "value_claims": {
+            "source_part_number": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/order_code"
+            },
+            "source_grade": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/grade"
+            },
+            "source_chipbreaker": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/identity/chipbreaker"
+            },
+            "source_material_label": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/cutting_operations/0/materials/0/materialReference"
+            },
+            "iso_material_group": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/cutting_operations/0/materials/0/material"
+            },
+            "surface_speed_min": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/cutting_operations/0/materials/0/startValues/vc/min"
+            },
+            "surface_speed_start": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/cutting_operations/0/materials/0/startValues/vc/nom"
+            },
+            "surface_speed_max": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/cutting_operations/0/materials/0/startValues/vc/max"
+            },
+            "feed_min": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/cutting_operations/0/materials/0/startValues/fn/min"
+            },
+            "feed_max": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/cutting_operations/0/materials/0/startValues/fn/max"
+            },
+            "depth_of_cut_min": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/cutting_operations/0/materials/0/startValues/ap/min"
+            },
+            "depth_of_cut_max": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/cutting_operations/0/materials/0/startValues/ap/max"
+            },
+            "depth_of_cut_unit": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_pointer": "/product/cutting_operations/0/materials/0/startValues/ap/unit"
+            },
+            "source_geometry": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/order_code": "DCGT 11 T3 02-UM 1105",
+                "/product/specifications/SC": "Rhombic 55",
+                "/product/specifications/AN": 7.0
+              },
+              "normalization": "Compose the source geometry label from the exact order code, insert shape, and clearance angle.",
+              "normalized_value": "DCGT 11 T3 02, 55-degree rhombic, 7-degree positive"
+            },
+            "material_subgroup": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/cutting_operations/0/materials/0/materialReference": "S2.0.Z.AG",
+                "/product/cutting_operations/0/materials/0/hardness": 350.0,
+                "/product/cutting_operations/0/materials/0/hardnessUnit": "HB"
+              },
+              "normalization": "Combine the exact Sandvik material reference and hardness into the catalog subgroup label.",
+              "normalized_value": "S2.0.Z.AG / 350 HB"
+            },
+            "operation_type": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/identity/operation_classification": "pre-machining with demand on surface"
+              },
+              "normalization": "Map Sandvik turning application wording to the catalog operation enum turning.",
+              "normalized_value": "turning"
+            },
+            "cut_condition": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_absence": [
+                "/product/cutting_operations/0/materials/0/cutCondition"
+              ],
+              "normalization": "The exact Sandvik cutting row does not state a catalog cut-condition class, so retain unknown.",
+              "normalized_value": "unknown"
+            },
+            "coolant_condition": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_absence": [
+                "/product/cutting_operations/0/materials/0/coolantCondition"
+              ],
+              "normalization": "The exact Sandvik cutting row does not state coolant condition, so retain unknown.",
+              "normalized_value": "unknown"
+            },
+            "surface_speed_unit": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/cutting_operations/0/materials/0/startValues/vc/unit": "m/min"
+              },
+              "normalization": "Normalize Sandvik m/min to the catalog enum m_per_min.",
+              "normalized_value": "m_per_min"
+            },
+            "feed_unit": {
+              "source_id": "source-718d750d3903ffc2",
+              "source_values": {
+                "/product/cutting_operations/0/materials/0/startValues/fn/unit": "mm/r"
+              },
+              "normalization": "Normalize Sandvik mm/r to the catalog enum mm_per_rev.",
+              "normalized_value": "mm_per_rev"
+            }
+          },
           "evidence_sources": [
             {
               "source_id": "source-718d750d3903ffc2",
               "evidence_role": "identity",
-              "source_page_ref": "Structured product API snapshot",
+              "source_page_ref": "/product/cutting_operations/0/materials/0",
               "source_table_ref": "CuttingOperations[0] / materials[0]",
-              "source_raw_text": "KAPR 93 deg; S2.0.Z.AG; ISO S; hardness 350 HB; ap 0.1/0.5/1.05 mm min/nom/max; fn 0.01/0.02/0.08 mm/r min/nom/max; vc 70/70/70 m/min min/nom/max; lifeTime 900 s. Coolant is not stated.",
+              "source_raw_text": "{\"material\":\"S\",\"materialReference\":\"S2.0.Z.AG\",\"hardness\":350.0,\"hardnessUnit\":\"HB\",\"startValues\":{\"ap\":{\"min\":0.1,\"nom\":0.5,\"max\":1.05,\"unit\":\"mm\"},\"fn\":{\"min\":0.01,\"nom\":0.02,\"max\":0.08,\"unit\":\"mm/r\"},\"vc\":{\"min\":70.0,\"nom\":70.0,\"max\":70.0,\"unit\":\"m/min\"}}}",
               "extraction_method": "manufacturer_page"
             },
             {
               "source_id": "source-718d750d3903ffc2",
               "evidence_role": "geometry_parameters",
-              "source_page_ref": "Structured product API snapshot",
+              "source_page_ref": "/product/cutting_operations/0/materials/0",
               "source_table_ref": "CuttingOperations[0] / materials[0]",
-              "source_raw_text": "KAPR 93 deg; S2.0.Z.AG; ISO S; hardness 350 HB; ap 0.1/0.5/1.05 mm min/nom/max; fn 0.01/0.02/0.08 mm/r min/nom/max; vc 70/70/70 m/min min/nom/max; lifeTime 900 s. Coolant is not stated.",
+              "source_raw_text": "{\"material\":\"S\",\"materialReference\":\"S2.0.Z.AG\",\"hardness\":350.0,\"hardnessUnit\":\"HB\",\"startValues\":{\"ap\":{\"min\":0.1,\"nom\":0.5,\"max\":1.05,\"unit\":\"mm\"},\"fn\":{\"min\":0.01,\"nom\":0.02,\"max\":0.08,\"unit\":\"mm/r\"},\"vc\":{\"min\":70.0,\"nom\":70.0,\"max\":70.0,\"unit\":\"m/min\"}}}",
               "extraction_method": "manufacturer_page"
             },
             {
               "source_id": "source-718d750d3903ffc2",
               "evidence_role": "cutting_speed",
-              "source_page_ref": "Structured product API snapshot",
+              "source_page_ref": "/product/cutting_operations/0/materials/0",
               "source_table_ref": "CuttingOperations[0] / materials[0]",
-              "source_raw_text": "KAPR 93 deg; S2.0.Z.AG; ISO S; hardness 350 HB; ap 0.1/0.5/1.05 mm min/nom/max; fn 0.01/0.02/0.08 mm/r min/nom/max; vc 70/70/70 m/min min/nom/max; lifeTime 900 s. Coolant is not stated.",
+              "source_raw_text": "{\"material\":\"S\",\"materialReference\":\"S2.0.Z.AG\",\"hardness\":350.0,\"hardnessUnit\":\"HB\",\"startValues\":{\"ap\":{\"min\":0.1,\"nom\":0.5,\"max\":1.05,\"unit\":\"mm\"},\"fn\":{\"min\":0.01,\"nom\":0.02,\"max\":0.08,\"unit\":\"mm/r\"},\"vc\":{\"min\":70.0,\"nom\":70.0,\"max\":70.0,\"unit\":\"m/min\"}}}",
               "extraction_method": "manufacturer_page"
             }
           ]

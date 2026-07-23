@@ -575,6 +575,20 @@ def apply_reviewed_import(
                 ),
                 None,
             )
+            if manufacturer_part_number:
+                connection.execute(
+                    """
+                    UPDATE tools
+                    SET part_number=?, normalized_part_number=?
+                    WHERE id=?
+                    """,
+                    (
+                        manufacturer_part_number,
+                        normalize_part_number(manufacturer_part_number),
+                        tool_id,
+                    ),
+                )
+                tool_part_number = manufacturer_part_number
             connection.execute(
                 """
                 UPDATE tool_grade_options
