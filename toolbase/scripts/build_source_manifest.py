@@ -15,7 +15,7 @@ from pypdf import PdfReader
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_REGISTRY = REPO_ROOT / "docs" / "catalog-registry.json"
+DEFAULT_REGISTRY = REPO_ROOT / "toolbase" / "catalogs" / "registry.json"
 DEFAULT_OUTPUT = REPO_ROOT / "toolbase" / "data" / "source_documents.json"
 MANUFACTURER_ALIASES = {
     "Mitsubishi": "Mitsubishi Materials",

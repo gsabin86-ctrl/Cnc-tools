@@ -4,15 +4,12 @@ toolbase/data/**/*.jsonl -text
 toolbase/proposals/**/*.json -text
 toolbase/reviews/**/*.json -text
 
-# Normalize maintained code, documentation, and deployment shell files.
+# Normalize maintained code and documentation.
 *.py text eol=lf
 *.js text eol=lf
-*.css text eol=lf
-*.html text eol=lf
-*.webmanifest text eol=lf
 *.md text eol=lf
 
 # Preserve archived and generated binary artifacts exactly.
-archive/database-cleanup/legacy-hosted-index-2026-07-21.html -text -whitespace
+legacy/v1-v2/preserved-hosted/legacy-hosted-index-2026-07-21.html -text -whitespace
 docs/v3/data/toolbase.sqlite binary
 docs/v3/toolbase-card.png binary

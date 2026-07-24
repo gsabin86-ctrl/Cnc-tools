@@ -1,34 +1,42 @@
 # CNC Toolbase
 
-CNC Toolbase is a source-aware reference for Swiss CNC inserts, holders, modules, shanks, adapters, specifications, work-material recommendations, compatibility evidence, and reviewed cutting data.
+CNC Toolbase is a source-aware reference for Swiss CNC inserts, holders, modules, shanks, adapters, specifications, work-material recommendations, compatibility evidence, and cutting data.
 
-## Current Project
+## Repository Layout
 
-The clean system has two deliberate parts:
+The repository has four deliberate parts:
 
 | Path | Purpose |
 |---|---|
-| `toolbase/` | Reviewable data seed, canonical schema, review queue, build scripts, audits, and tests. |
-| `docs/v3/` | Mobile-first offline GitHub Pages application and generated publish data. |
+| `toolbase/` | Owner-approved data seed, canonical schema, provenance records, build scripts, audits, and tests. |
+| `docs/` | GitHub Pages deployment only: redirect, domain file, and the current `/v3` application. |
+| `catalogs/` | Local manufacturer-document library. PDFs are intentionally not tracked by normal Git; schema maps are tracked. |
+| `legacy/` | Preserved v1/v2 databases, experiments, scripts, and historical planning documents. Nothing here is canonical. |
 
 Start here:
 
-- `docs/FIRST_PRINCIPLES_REVIEW.md` — diagnosis, decisions, accuracy rules, and roadmap.
-- `toolbase/README.md` — build, review, and audit commands.
-- `docs/v3/index.html` — the active catalog interface.
+- `toolbase/docs/ARCHITECTURE.md` - current source-of-truth and directory rules.
+- `toolbase/README.md` - build, source, and audit commands.
+- `docs/v3/index.html` - active catalog interface.
 
-The site root now redirects to `docs/v3/`. The previous hosted page is preserved byte-for-byte at `archive/database-cleanup/legacy-hosted-index-2026-07-21.html`; older databases and helpers remain legacy/history and are not the canonical workflow.
+The site root redirects to `docs/v3/`. The previous hosted page and all earlier database workflows are preserved under `legacy/`.
 
 ## Data Flow
 
 ```text
-reviewable JSONL seed + hash-pinned catalog manifest + approved review ledgers + shop inputs
-                              ↓
-             deterministic reviewed import + build
-                              ↓
-    canonical SQLite + search/detail JSON + review queue
-                              ↓
-                    audits, tests, GitHub Pages
+owner-approved JSONL seed + manufacturer-source manifest + approved imports + shop inputs
+                                   |
+                                   v
+                       deterministic v3 build
+                                   |
+                   +---------------+---------------+
+                   |                               |
+                   v                               v
+           canonical SQLite               search/detail JSON
+                   |                               |
+                   +---------------+---------------+
+                                   v
+                         audits and GitHub Pages
 ```
 
 SQLite and published JSON files are generated outputs. Do not hand-edit them.
@@ -46,16 +54,13 @@ python -m http.server 8000 --directory docs
 
 Open `http://127.0.0.1:8000/`.
 
-## Accuracy Rules
+## Data Rules
 
+- Existing canonical records are owner-approved.
 - Missing is better than invented.
-- Every published fact retains source lineage; a located source is not the same as a reviewed fact.
-- Legacy row context is traceable but is not direct proof.
-- Compatibility is a reviewed claim, not an automatic guarantee of fit.
-- Valid machine fit follows `station → holder → insert` or `station → shank → module → insert`; direct insert-to-machine shortcuts are invalid.
-- Material tags are not promoted into recommendations without explicit source data.
-- Legacy material claims remain searchable as audit history but never power recommendation filters.
-- A proposal cannot change production data. Every row needs a terminal human decision in a separate hash-bound ledger; rejected identities are quarantined.
-- Manufacturer grades are modeled separately from base insert geometry so one insert can carry several catalog-listed grade options without merging them into a fake grade string.
-- Speeds and feeds appear only after exact tool, grade, geometry, material, operation, ranges, units, and source have been reviewed.
-- Only manufacturer/catalog-reviewed cutting profiles are exposed as usable recommendations. Unit conversions and RPM/feed-rate calculations are display-only.
+- Manufacturer catalog and website provenance stays attached to the published record.
+- Approval is separate from citation precision; a broad catalog range can later be refined to an exact page without invalidating the record.
+- Compatibility follows `station -> holder -> insert` or `station -> shank -> module -> insert`.
+- Work-material recommendations, not manufacturer grades, are the primary public organization for inserts.
+- Internal workflow states remain available for maintenance but are not public-facing badges.
+- Unit conversions and RPM/feed-rate calculations are display-only.

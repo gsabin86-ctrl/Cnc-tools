@@ -28,7 +28,7 @@ catalogs/split_parts/
 logs/
 *.log
 
-# Temp/scratch scripts
+# Temp/scratch files
 add_batch*.py
 add_*.py
 fetch_*.py
@@ -36,23 +36,8 @@ find_*.py
 parse_catalog*.py
 export_json.py
 inspect.py
-migrate_db.*
-migration.js
-/server.js
-/start-viewer.bat
-!docs/server.js
-!docs/start-viewer.bat
 data.json
-/index.html
 index.html.txt
-
-# Archive (only the CNC Toolbase preservation record is versioned)
-archive/*
-!archive/database-cleanup/
-archive/database-cleanup/*
-!archive/database-cleanup/README.md
-!archive/database-cleanup/legacy-hosted-index-2026-07-21.html
-/db.sqlite
 
 # Agent test
 agent-test/

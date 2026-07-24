@@ -118,7 +118,7 @@ Agents should not:
 
 ## Near-Term Sequence
 
-1. Create and review `docs/catalog-registry.json`.
+1. Create and maintain `toolbase/catalogs/registry.json`.
 2. Select one reviewed catalog section and one component type.
 3. Extract source-backed compatibility or cutting-data proposal rows.
 4. Validate and review the source pages/tables.
