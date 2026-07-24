@@ -353,7 +353,7 @@ class PipelineTests(unittest.TestCase):
         app_version = viewer_script.split("const STATIC_VERSION = '", 1)[1].split("'", 1)[0]
         worker_version = service_worker.split("const VERSION = '", 1)[1].split("'", 1)[0]
         self.assertEqual(app_version, worker_version)
-        self.assertEqual(app_version, "3.4.0-shell-9")
+        self.assertEqual(app_version, "3.4.0-shell-10")
         for asset in ("manifest.webmanifest", "app.css", "app.js"):
             self.assertIn(f'{asset}?v={app_version}', index_html)
 

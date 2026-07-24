@@ -16,44 +16,72 @@
   --shadow: 0 14px 42px rgba(25, 45, 36, .11);
   --radius: 14px;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+  /* Neon HUD tokens. Neutral in light (glow off, field hidden, emphasis = brand);
+     the dark theme redefines these to switch on the cyberpunk treatment. */
+  --emphasis: var(--brand);
+  --grade-ink: var(--ink);
+  --profile-top: color-mix(in srgb, var(--verified) 45%, var(--line));
+  --accent-soft: var(--accent);
+  --amber: var(--accent);
+  --glow: 0 0 0 transparent;
+  --glow-accent: 0 0 0 transparent;
+  --field-opacity: 0;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0d1411;
-  --surface: #141d19;
-  --surface-2: #1b2721;
-  --surface-3: #24332b;
-  --ink: #edf4ef;
-  --muted: #a5b4ac;
-  --line: #304038;
-  --line-strong: #52645a;
-  --brand: #64c5a4;
-  --brand-dark: #92dcc1;
-  --accent: #f2aa4c;
-  --danger: #ff9a91;
-  --verified: #7bd1af;
-  --shadow: 0 18px 48px rgba(0, 0, 0, .28);
+  --bg: #05070d;
+  --surface: #0b111c;
+  --surface-2: #101a2b;
+  --surface-3: #16233a;
+  --ink: #dbe8f5;
+  --muted: #6f89a8;
+  --line: #1b2c44;
+  --line-strong: #2a415f;
+  --brand: #2be6f2;
+  --brand-dark: #05d9e8;
+  --accent: #a12bff;
+  --accent-soft: #c98bff;
+  --amber: #ffd200;
+  --danger: #ff5c8a;
+  --verified: #37e6bf;
+  --shadow: 0 18px 48px rgba(0, 0, 0, .55);
+  --emphasis: var(--accent);
+  --grade-ink: var(--accent);
+  --profile-top: color-mix(in srgb, var(--accent) 60%, var(--line));
+  --glow: 0 0 12px color-mix(in srgb, var(--brand-dark) 55%, transparent);
+  --glow-accent: 0 0 13px color-mix(in srgb, var(--accent) 55%, transparent);
+  --field-opacity: 1;
+  --radius: 10px;
 }
 
 @media (prefers-color-scheme: dark) {
   html[data-theme="system"] {
     color-scheme: dark;
-    --bg: #0d1411;
-    --surface: #141d19;
-    --surface-2: #1b2721;
-    --surface-3: #24332b;
-    --ink: #edf4ef;
-    --muted: #a5b4ac;
-    --line: #304038;
-    --line-strong: #52645a;
-    --brand: #64c5a4;
-    --brand-dark: #92dcc1;
-    --accent: #f2aa4c;
-    --danger: #ff9a91;
-    --verified: #7bd1af;
-    --shadow: 0 18px 48px rgba(0, 0, 0, .28);
+    --bg: #05070d;
+    --surface: #0b111c;
+    --surface-2: #101a2b;
+    --surface-3: #16233a;
+    --ink: #dbe8f5;
+    --muted: #6f89a8;
+    --line: #1b2c44;
+    --line-strong: #2a415f;
+    --brand: #2be6f2;
+    --brand-dark: #05d9e8;
+    --accent: #a12bff;
+    --accent-soft: #c98bff;
+    --amber: #ffd200;
+    --danger: #ff5c8a;
+    --verified: #37e6bf;
+    --shadow: 0 18px 48px rgba(0, 0, 0, .55);
+    --emphasis: var(--accent);
+    --grade-ink: var(--accent);
+    --profile-top: color-mix(in srgb, var(--accent) 60%, var(--line));
+    --glow: 0 0 12px color-mix(in srgb, var(--brand-dark) 55%, transparent);
+    --glow-accent: 0 0 13px color-mix(in srgb, var(--accent) 55%, transparent);
+    --field-opacity: 1;
+    --radius: 10px;
   }
 }
 
@@ -213,6 +241,49 @@ button.relationship:hover { border-color: var(--line-strong); }
 .fact-card strong { color: var(--muted); font-size: 10px; }
 .fact-card > span { overflow-wrap: anywhere; font-size: 11px; }
 .toast { position: fixed; left: 50%; bottom: calc(18px + var(--safe-bottom)); z-index: 100; max-width: calc(100% - 30px); padding: 11px 15px; transform: translateX(-50%); border-radius: 9px; background: var(--ink); color: var(--surface); box-shadow: var(--shadow); font-size: 12px; }
+
+/* ---- Neon HUD treatment ---------------------------------------------------
+   Every rule below is token-gated: in the light theme --glow/--glow-accent are
+   transparent, --field-opacity is 0, and --emphasis/--grade-ink/--profile-top
+   resolve to the existing light values, so light mode renders unchanged. The
+   dark theme flips the tokens and the cyberpunk skin switches on. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--field-opacity);
+  background:
+    radial-gradient(1100px 520px at 82% -6%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 60%),
+    radial-gradient(900px 480px at 6% 0%, color-mix(in srgb, var(--brand-dark) 12%, transparent), transparent 62%),
+    repeating-linear-gradient(0deg, transparent 0 3px, rgba(0, 0, 0, .26) 3px 4px);
+}
+main { position: relative; z-index: 1; }
+.brand-mark { box-shadow: var(--glow); }
+.search-field input:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 18%, transparent), var(--glow); }
+.badge.cutting-data { box-shadow: var(--glow); }
+.tool-row.selected {
+  box-shadow: inset 4px 0 var(--emphasis), var(--glow-accent);
+  background: color-mix(in srgb, var(--emphasis) 10%, var(--surface));
+}
+.detail-header { position: relative; }
+.detail-header::before, .detail-header::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  opacity: var(--field-opacity);
+  border-color: var(--brand-dark);
+  pointer-events: none;
+}
+.detail-header::before { top: 10px; left: 10px; border-top: 2px solid var(--brand-dark); border-left: 2px solid var(--brand-dark); }
+.detail-header::after { bottom: 10px; right: 10px; border-bottom: 2px solid var(--brand-dark); border-right: 2px solid var(--brand-dark); }
+.detail-header h2 { text-shadow: var(--glow); }
+.detail-maker { text-shadow: var(--glow); }
+.cutting-profile { border-top-color: var(--profile-top); }
+.cutting-head strong { color: var(--grade-ink); text-shadow: var(--glow-accent); }
+.cutting-values b, .cutting-values span, .spec-grid dd, .geometry-line strong { font-variant-numeric: tabular-nums; }
 
 @media (max-width: 1120px) {
   .filter-panel { grid-template-columns: repeat(4, minmax(120px, 1fr)); }
