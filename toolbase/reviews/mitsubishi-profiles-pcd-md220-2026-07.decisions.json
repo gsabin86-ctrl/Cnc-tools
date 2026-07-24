@@ -1,0 +1,220 @@
+{
+  "schema_version": 2,
+  "review_id": "mitsubishi-profiles-pcd-md220-2026-07-review",
+  "proposal_id": "mitsubishi-profiles-pcd-md220-2026-07",
+  "proposal_path": "toolbase/proposals/mitsubishi-profiles-pcd-md220-2026-07.json",
+  "proposal_sha256": "9d1068c7a1d5352fbeed223c21cd3a0560fc7a346f17b091caa03a767402af5d",
+  "review_started_at": "2026-07-23",
+  "status": "complete",
+  "review_completed_at": "2026-07-23",
+  "import_allowed": true,
+  "decisions": [
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-001",
+      "tool_id": "DCMW070202",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-002",
+      "tool_id": "DCMW070204",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-003",
+      "tool_id": "DCMW11T302",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-004",
+      "tool_id": "DCMW11T304",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-005",
+      "tool_id": "NP-DCMT070202L-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-006",
+      "tool_id": "NP-DCMT070202R-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-007",
+      "tool_id": "NP-DCMT070204L-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-008",
+      "tool_id": "NP-DCMT070204R-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-009",
+      "tool_id": "NP-DCMT11T302L-F",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-010",
+      "tool_id": "NP-DCMT11T302R-F",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-011",
+      "tool_id": "NP-DCMT11T304L-F",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-012",
+      "tool_id": "NP-DCMT11T304R-F",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-013",
+      "tool_id": "NP-VBGT110301R-F",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-014",
+      "tool_id": "NP-VBGT110302R-F",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-015",
+      "tool_id": "NP-VBGT110304R-F",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-016",
+      "tool_id": "NP-VBGT1103V5R-F",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-017",
+      "tool_id": "NP-VCGT110301R-F",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-018",
+      "tool_id": "NP-VCGT110302R-F",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-019",
+      "tool_id": "NP-VCGT110304R-F",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-020",
+      "tool_id": "NP-VCGT1103V5R-F",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-021",
+      "tool_id": "VCGW110301",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-022",
+      "tool_id": "VCGW110302",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-pcd-md220-2026-07-row-023",
+      "tool_id": "VCGW110304",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "C010A B015 material-level MD220 baselines; limits preserved as one-sided maxima; the catalog states no cutting mode, so coolant remains unknown."
+    }
+  ]
+}

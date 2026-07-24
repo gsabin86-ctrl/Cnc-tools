@@ -2065,6 +2065,185 @@ class PipelineTests(unittest.TestCase):
             finally:
                 connection.close()
 
+    def test_mitsubishi_c010a_profile_batches_are_exact(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            db_path, _json_path, _published_path = self.build(Path(temp))
+            connection = sqlite3.connect(db_path)
+            try:
+                mitsubishi = "SELECT id FROM manufacturers WHERE name='Mitsubishi Materials'"
+
+                self.assertEqual(
+                    connection.execute(
+                        f"SELECT COUNT(*) FROM tools WHERE manufacturer_id IN ({mitsubishi}) AND geometry='unknown'"
+                    ).fetchone()[0],
+                    0,
+                )
+                self.assertEqual(
+                    connection.execute(
+                        f"SELECT COUNT(*) FROM tools WHERE manufacturer_id IN ({mitsubishi}) AND description LIKE '%Grade:%'"
+                    ).fetchone()[0],
+                    0,
+                )
+                self.assertEqual(
+                    connection.execute(
+                        f"""
+                        SELECT COUNT(DISTINCT p.tool_id) FROM cutting_data_profiles p
+                        JOIN tools t ON t.id=p.tool_id
+                        WHERE t.manufacturer_id IN ({mitsubishi})
+                        """
+                    ).fetchone()[0],
+                    132,
+                )
+
+                # Every materialized row must stay unique per (tool, grade, class).
+                self.assertEqual(
+                    connection.execute(
+                        f"""
+                        SELECT COUNT(*) FROM (
+                          SELECT tool_id, source_grade, material_subgroup, cut_condition, COUNT(*) AS n
+                          FROM cutting_data_profiles p JOIN tools t ON t.id=p.tool_id
+                          WHERE t.manufacturer_id IN ({mitsubishi})
+                          GROUP BY 1, 2, 3, 4 HAVING n > 1
+                        )
+                        """
+                    ).fetchone()[0],
+                    0,
+                )
+
+                # Batch totals: B008 hardened steel (292 new + 32 shipped BF/BM rows),
+                # B015 PCD MD220 (207 profiles; wood inorganic board is rec-only),
+                # B008 sintered alloy (150).
+                subgroup_counts = {
+                    "Hardened steel%": 324,
+                    "General Sintered Alloy": 50,
+                    "High Density Sintered Alloy": 50,
+                    "Sintered Alloy": 50,
+                    "Wood Inorganic Board": 0,
+                }
+                for pattern, expected in subgroup_counts.items():
+                    self.assertEqual(
+                        connection.execute(
+                            f"""
+                            SELECT COUNT(*) FROM cutting_data_profiles p
+                            JOIN tools t ON t.id=p.tool_id
+                            WHERE t.manufacturer_id IN ({mitsubishi})
+                              AND p.material_subgroup LIKE ?
+                            """,
+                            (pattern,),
+                        ).fetchone()[0],
+                        expected,
+                        pattern,
+                    )
+                self.assertEqual(
+                    connection.execute(
+                        f"""
+                        SELECT COUNT(*) FROM cutting_data_profiles p
+                        JOIN tools t ON t.id=p.tool_id
+                        WHERE t.manufacturer_id IN ({mitsubishi}) AND p.source_grade='MD220'
+                        """
+                    ).fetchone()[0],
+                    207,
+                )
+
+                # One spot value per condition-class row, in exact source units.
+                spot_checks = [
+                    ("BC8105", "Hardened steel / high-speed finishing", "finishing",
+                     330.0, 820.0, 1150.0, "sfm", 0.006, "ipr", 0.008, "in", "flood"),
+                    ("BC8210", "Hardened steel / continuous", "general",
+                     330.0, 655.0, 985.0, "sfm", 0.008, "ipr", 0.014, "in", "flood"),
+                    ("BC8120", "Hardened steel / medium interrupted", "medium",
+                     195.0, 490.0, 655.0, "sfm", 0.008, "ipr", 0.012, "in", "flood"),
+                    ("BC8130", "Hardened steel / interrupted", "medium",
+                     195.0, 390.0, 490.0, "sfm", 0.008, "ipr", 0.012, "in", "flood"),
+                    ("MB8110", "Hardened steel / continuous", "general",
+                     330.0, 655.0, 820.0, "sfm", 0.008, "ipr", 0.012, "in", "flood"),
+                    ("MB8130", "Hardened steel / interrupted", "medium",
+                     195.0, 330.0, 490.0, "sfm", 0.008, "ipr", 0.012, "in", "flood"),
+                    ("MD220", "Aluminum Alloy (Si < 12%)", "general",
+                     655.0, 2625.0, 3935.0, "sfm", 0.008, "ipr", 0.039, "in", "unknown"),
+                    ("MD220", "Cemented Carbide", "general",
+                     15.0, 50.0, 65.0, "sfm", 0.008, "ipr", 0.020, "in", "unknown"),
+                    ("MB4120", "General Sintered Alloy", "general",
+                     260.0, 590.0, 985.0, "sfm", 0.008, "ipr", 0.012, "in", "unknown"),
+                ]
+                for (grade, subgroup, cut_condition, vc_min, vc_start, vc_max,
+                     vc_unit, feed_max, feed_unit, doc_max, doc_unit, coolant) in spot_checks:
+                    rows = connection.execute(
+                        f"""
+                        SELECT DISTINCT p.surface_speed_min, p.surface_speed_start,
+                          p.surface_speed_max, p.surface_speed_unit, p.feed_min, p.feed_max,
+                          p.feed_unit, p.depth_of_cut_min, p.depth_of_cut_max,
+                          p.depth_of_cut_unit, p.coolant_condition, p.cut_condition,
+                          p.verification_status
+                        FROM cutting_data_profiles p JOIN tools t ON t.id=p.tool_id
+                        WHERE t.manufacturer_id IN ({mitsubishi})
+                          AND p.source_grade=? AND p.material_subgroup=?
+                          AND p.reviewed_at='2026-07-23'
+                        """,
+                        (grade, subgroup),
+                    ).fetchall()
+                    self.assertEqual(
+                        rows,
+                        [(vc_min, vc_start, vc_max, vc_unit, None, feed_max, feed_unit,
+                          None, doc_max, doc_unit, coolant, cut_condition, "catalog_verified")],
+                        f"{grade} / {subgroup}",
+                    )
+
+                # Wood inorganic board keeps its missing depth-of-cut bound as a
+                # recommendation-only entry on all 23 PCD inserts.
+                wood = connection.execute(
+                    f"""
+                    SELECT COUNT(*), SUM(r.notes LIKE '%no depth-of-cut bound%')
+                    FROM tool_material_recommendations r JOIN tools t ON t.id=r.tool_id
+                    WHERE t.manufacturer_id IN ({mitsubishi})
+                      AND r.material_subgroup='Wood Inorganic Board'
+                    """
+                ).fetchone()
+                self.assertEqual(wood, (23, 23))
+
+                # B015 first/second recommendation ranks for MD220.
+                ranks = dict(
+                    connection.execute(
+                        f"""
+                        SELECT r.material_subgroup, COUNT(DISTINCT r.suitability) || ':' || MAX(r.suitability)
+                        FROM tool_material_recommendations r JOIN tools t ON t.id=r.tool_id
+                        JOIN grades g ON g.id=r.grade_id
+                        WHERE t.manufacturer_id IN ({mitsubishi}) AND g.code='MD220'
+                          AND r.material_subgroup IN ('Ceramics', 'Copper Alloy')
+                        GROUP BY r.material_subgroup
+                        """
+                    ).fetchall()
+                )
+                self.assertEqual(
+                    ranks, {"Ceramics": "1:recommended", "Copper Alloy": "1:primary"}
+                )
+
+                # The reviewed BF/BM identity work stays intact: breakers preserved,
+                # no duplicate baselines added by the profile batches.
+                self.assertEqual(
+                    connection.execute(
+                        """
+                        SELECT COUNT(*) FROM cutting_data_profiles p
+                        JOIN tools t ON t.id=p.tool_id
+                        WHERE (t.part_number LIKE 'BF-%' OR t.part_number LIKE 'BM-%')
+                          AND p.reviewed_at='2026-07-23'
+                        """
+                    ).fetchone()[0],
+                    0,
+                )
+                self.assertEqual(
+                    connection.execute(
+                        f"""
+                        SELECT COUNT(*) FROM tools
+                        WHERE manufacturer_id IN ({mitsubishi})
+                          AND part_number LIKE 'BF-%' AND chipbreaker != 'BF'
+                        """
+                    ).fetchone()[0],
+                    0,
+                )
+            finally:
+                connection.close()
+
     def test_build_hash_is_independent_of_output_directory(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             directory = Path(temp)
