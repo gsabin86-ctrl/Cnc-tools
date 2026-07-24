@@ -2248,6 +2248,70 @@ class PipelineTests(unittest.TestCase):
             finally:
                 connection.close()
 
+    def test_tungaloy_sh7025_grade_baselines_are_exact(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            db_path, _json_path, _published_path = self.build(Path(temp))
+            connection = sqlite3.connect(db_path)
+            try:
+                tungaloy = "SELECT id FROM manufacturers WHERE name='Tungaloy'"
+
+                # Every SH7025 insert carries P and M baselines, manufacturer-verified, flood.
+                self.assertEqual(
+                    connection.execute(
+                        f"""
+                        SELECT COUNT(DISTINCT p.tool_id) FROM cutting_data_profiles p
+                        JOIN tools t ON t.id=p.tool_id
+                        WHERE t.manufacturer_id IN ({tungaloy}) AND p.source_grade='SH7025'
+                        """
+                    ).fetchone()[0],
+                    34,
+                )
+                self.assertEqual(
+                    connection.execute(
+                        f"""
+                        SELECT COUNT(*) FROM cutting_data_profiles p JOIN tools t ON t.id=p.tool_id
+                        WHERE t.manufacturer_id IN ({tungaloy}) AND p.source_grade='SH7025'
+                          AND (p.verification_status != 'manufacturer_verified'
+                               OR p.coolant_condition != 'flood'
+                               OR p.surface_speed_min != 10 OR p.surface_speed_max != 200
+                               OR p.surface_speed_unit != 'm_per_min')
+                        """
+                    ).fetchone()[0],
+                    0,
+                )
+
+                # Feed keyed to corner radius, depth of cut keyed to chipbreaker.
+                cases = {
+                    "CCGT060204FN-JS": (0.05, 0.2, 0.5, 3.0),   # RE0.4, JS
+                    "DCGT11T302FN-JP": (0.02, 0.1, 0.05, 2.5),  # RE0.2, JP
+                    "CCGT060204F-01": (0.05, 0.2, 0.05, 3.0),   # RE0.4, other -> grade DOC span
+                    "TCGT16T308-01": (0.02, 0.2, 0.05, 3.0),    # RE0.8 untabulated -> grade feed span
+                }
+                for part_number, (fmin, fmax, dmin, dmax) in cases.items():
+                    row = connection.execute(
+                        f"""
+                        SELECT DISTINCT p.feed_min, p.feed_max, p.depth_of_cut_min, p.depth_of_cut_max
+                        FROM cutting_data_profiles p JOIN tools t ON t.id=p.tool_id
+                        WHERE t.manufacturer_id IN ({tungaloy}) AND t.part_number=?
+                        """,
+                        (part_number,),
+                    ).fetchall()
+                    self.assertEqual(row, [(fmin, fmax, dmin, dmax)], part_number)
+
+                # Baselines are traceable to the captured Tungaloy grade page.
+                self.assertEqual(
+                    connection.execute(
+                        f"""
+                        SELECT COUNT(*) FROM cutting_data_profiles p JOIN tools t ON t.id=p.tool_id
+                        WHERE t.manufacturer_id IN ({tungaloy}) AND p.source_grade='SH7025'
+                          AND p.source_raw_text != '10 &#8211; 200'
+                        """
+                    ).fetchone()[0],
+                    0,
+                )
+            finally:
+                connection.close()
+
     def test_build_hash_is_independent_of_output_directory(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             directory = Path(temp)

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "tungaloy-sh7025-grade-2026-07-24",
+  "manufacturer": "Tungaloy",
+  "grade": "SH7025",
+  "source_url": "https://tungaloy.com/product/turning/sh7025/",
+  "retrieved_at": "2026-07-24",
+  "raw_page_snapshot": "toolbase/data/source_snapshots/tungaloy-sh7025-grade-page-2026-07-24.html",
+  "raw_page_sha256": "2d8fab864903ceda122b62d2eb7d0bfda4fa69dfd8996ab926cf88758718a2b6",
+  "raw_page_locator": "#post-393473",
+  "application_verbatim": {"P": "P20 &#8211; P30", "M": "M20 &#8211; M30"},
+  "grade_class": "PVD-coated carbide",
+  "application_iso": {
+    "P": "P20-P30",
+    "M": "M20-M30",
+    "summary": "P20 - P30 / M20 - M30"
+  },
+  "coolant": "Wet",
+  "standard_cutting_conditions": {
+    "P": {
+      "iso_group": "P",
+      "materials": "Carbon steel, Alloy steel",
+      "vc_m_min": {"min": 10, "max": 200},
+      "depth_of_cut_mm_by_chipbreaker": {
+        "JP": {"min": 0.05, "max": 2.5},
+        "JS": {"min": 0.5, "max": 3}
+      },
+      "feed_mm_rev_by_corner_radius": {
+        "0.03": {"min": 0.02, "max": 0.03},
+        "0.1": {"min": 0.02, "max": 0.05},
+        "0.2": {"min": 0.02, "max": 0.1},
+        "0.4": {"min": 0.05, "max": 0.2}
+      }
+    },
+    "M": {
+      "iso_group": "M",
+      "materials": "Stainless steel",
+      "vc_m_min": {"min": 10, "max": 200},
+      "depth_of_cut_mm_by_chipbreaker": {
+        "JP": {"min": 0.05, "max": 2.5},
+        "JS": {"min": 0.5, "max": 3}
+      },
+      "feed_mm_rev_by_corner_radius": {
+        "0.03": {"min": 0.02, "max": 0.03},
+        "0.1": {"min": 0.02, "max": 0.05},
+        "0.2": {"min": 0.02, "max": 0.1},
+        "0.4": {"min": 0.05, "max": 0.2}
+      }
+    }
+  },
+  "verbatim": "Standard cutting conditions. ISO / Workpiece material / Chipbreaker / Grade / Cutting speed Vc (m/min) / Depth of cut ap (mm) / Feed f (mm/rev) at RE 0.03, RE 0.1, RE 0.2, RE 0.4. Carbon steel, Alloy steel: JP SH7025 10-200 / 0.05-2.5 / 0.02-0.03 / 0.02-0.05 / 0.02-0.1 / -. JS SH7025 10-200 / 0.5-3 / 0.02-0.03 / 0.02-0.05 / 0.02-0.1 / 0.05-0.2. Stainless steel: JP SH7025 10-200 / 0.05-2.5 / 0.02-0.03 / 0.02-0.05 / 0.02-0.1 / -. JS SH7025 10-200 / 0.5-3 / 0.02-0.03 / 0.02-0.05 / 0.02-0.1 / 0.05-0.2. Coolant: Wet. Application P20-P30 / M20-M30."
+}
