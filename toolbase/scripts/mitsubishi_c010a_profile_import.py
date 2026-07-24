@@ -128,9 +128,9 @@ CAST_IRON_ROWS = {
         "speed_unit": "m_per_min",
         "feed_max": 0.5, "feed_unit": "mm_per_rev",
         "doc_max": 0.5, "doc_unit": "mm",
-        "raw_text": "Recommended Cutting Conditions; Work material: gray cast irons "
-                    "(FC250, FC300 etc.); Cutting speed vc 100-600 m/min; Feed f <=0.5 "
-                    "mm/rev; Depth of cut ap <=0.5 mm; Dry or wet.",
+        "raw_text": "Recommended Cutting Conditions; K Gray Cast Irons FC250, FC300 "
+                    "etc.; plotted cutting speed vc 100-600 m/min; f < 0.5 mm/rev; "
+                    "ap < 0.5 mm; Dry, Wet.",
         "table_ref": "Tool News B234G final-page Recommended Cutting Conditions / BC5110",
     },
     "MB4120": {
@@ -140,9 +140,10 @@ CAST_IRON_ROWS = {
         "speed_unit": "sfm",
         "feed_max": 0.016, "feed_unit": "ipr",
         "doc_max": 0.020, "doc_unit": "in",
-        "raw_text": "Recommended Cutting Conditions; Work material: gray cast irons; "
-                    "Cutting speed vc 3280 (2625-4100) SFM; Feed f <=.016 IPR; Depth of "
-                    "cut ap <=.020 inch; Dry or wet.",
+        "raw_text": "Recommended Cutting Conditions; Work Material Gray Cast Irons; "
+                    "Grade MB4120; Machining Turning; plotted cutting speed vc "
+                    "2625-4100 SFM centered near 3280 on the 820-4100 chart; "
+                    "f <.016 IPR; ap <.020 inch; Dry, Wet.",
         "table_ref": "Tool News B246A final-page Recommended Cutting Conditions / MB4120",
     },
 }
@@ -261,7 +262,7 @@ def brochure_source(source_id: str, title: str, edition: str, url: str, local: s
         page_count = len(pypdf.PdfReader(stream).pages)
     return {
         "source_id": source_id,
-        "batch_role": "grade_brochure",
+        "batch_role": "cutting_speed",
         "manufacturer": "Mitsubishi Materials",
         "title": title,
         "source_type": "manufacturer_catalog",

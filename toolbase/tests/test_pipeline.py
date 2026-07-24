@@ -2165,6 +2165,10 @@ class PipelineTests(unittest.TestCase):
                      15.0, 50.0, 65.0, "sfm", 0.008, "ipr", 0.020, "in", "unknown"),
                     ("MB4120", "General Sintered Alloy", "general",
                      260.0, 590.0, 985.0, "sfm", 0.008, "ipr", 0.012, "in", "unknown"),
+                    ("BC5110", "Gray cast iron", "general",
+                     100.0, None, 600.0, "m_per_min", 0.5, "mm_per_rev", 0.5, "mm", "flood"),
+                    ("MB4120", "Gray cast iron", "general",
+                     2625.0, 3280.0, 4100.0, "sfm", 0.016, "ipr", 0.020, "in", "flood"),
                 ]
                 for (grade, subgroup, cut_condition, vc_min, vc_start, vc_max,
                      vc_unit, feed_max, feed_unit, doc_max, doc_unit, coolant) in spot_checks:

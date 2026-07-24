@@ -1,0 +1,463 @@
+{
+  "schema_version": 2,
+  "review_id": "mitsubishi-profiles-castiron-2026-07-review",
+  "proposal_id": "mitsubishi-profiles-castiron-2026-07",
+  "proposal_path": "toolbase/proposals/mitsubishi-profiles-castiron-2026-07.json",
+  "proposal_sha256": "bfd952c32610adf94bcb3d5adef06bde1254721065cd8a5bcb26d00399ddbdd2",
+  "review_started_at": "2026-07-23",
+  "status": "complete",
+  "review_completed_at": "2026-07-23",
+  "import_allowed": true,
+  "decisions": [
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-001",
+      "tool_id": "NP-CCGW060202SE2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-002",
+      "tool_id": "NP-CCGW060204SE2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-003",
+      "tool_id": "NP-CCGW060208SE2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-004",
+      "tool_id": "NP-CCGW09T302SE2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-005",
+      "tool_id": "NP-CCGW09T304SE2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-006",
+      "tool_id": "NP-CCGW09T308SE2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-007",
+      "tool_id": "NP-DCGW070204FS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-008",
+      "tool_id": "NP-DCGW070204GS2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-009",
+      "tool_id": "NP-DCGW070204SE2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-010",
+      "tool_id": "NP-DCGW070204SF2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-011",
+      "tool_id": "NP-DCGW070208FS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-012",
+      "tool_id": "NP-DCGW070208GS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-013",
+      "tool_id": "NP-DCGW070208SE2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-014",
+      "tool_id": "NP-DCGW070208SF2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-015",
+      "tool_id": "NP-DCGW11T302FS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-016",
+      "tool_id": "NP-DCGW11T302GS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-017",
+      "tool_id": "NP-DCGW11T302SE2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-018",
+      "tool_id": "NP-DCGW11T302SF2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-019",
+      "tool_id": "NP-DCGW11T304FS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-020",
+      "tool_id": "NP-DCGW11T304GS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-021",
+      "tool_id": "NP-DCGW11T304SE2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-022",
+      "tool_id": "NP-DCGW11T304SF2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-023",
+      "tool_id": "NP-DCGW11T308FS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-024",
+      "tool_id": "NP-DCGW11T308GS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-025",
+      "tool_id": "NP-DCGW11T308SE2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-026",
+      "tool_id": "NP-DCGW11T308SF2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-027",
+      "tool_id": "NP-TCGW110204FS3",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-028",
+      "tool_id": "NP-TCGW110204GS3",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-029",
+      "tool_id": "NP-TCGW110204SE3",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-030",
+      "tool_id": "NP-TCGW110204SF3",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-031",
+      "tool_id": "NP-TCGW110208FS3",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-032",
+      "tool_id": "NP-TCGW110208GS3",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-033",
+      "tool_id": "NP-TCGW110208SE3",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-034",
+      "tool_id": "NP-TCGW110208SF3",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-035",
+      "tool_id": "NP-VBGW110304FS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-036",
+      "tool_id": "NP-VBGW110304GS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-037",
+      "tool_id": "NP-VBGW110304SE2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-038",
+      "tool_id": "NP-VBGW110304SF2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-039",
+      "tool_id": "NP-VBGW110308FS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-040",
+      "tool_id": "NP-VBGW110308GS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-041",
+      "tool_id": "NP-VBGW110308SE2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-042",
+      "tool_id": "NP-VBGW110308SF2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-043",
+      "tool_id": "NP-VBGW160404FS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-044",
+      "tool_id": "NP-VBGW160404GS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-045",
+      "tool_id": "NP-VBGW160404SE2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-046",
+      "tool_id": "NP-VBGW160404SF2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-047",
+      "tool_id": "NP-VBGW160408FS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-048",
+      "tool_id": "NP-VBGW160408GS2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-049",
+      "tool_id": "NP-VBGW160408SE2",
+      "decision": "approved",
+      "reviewer": "scripted:mitsubishi_c010a_profile_import v1; batch rules approved by Greg 2026-07-23",
+      "decided_at": "2026-07-23",
+      "capture_method": "scripted_batch_generation",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    },
+    {
+      "proposal_row_id": "mitsubishi-profiles-castiron-2026-07-row-050",
+      "tool_id": "NP-VBGW160408SF2",
+      "decision": "approved",
+      "reviewer": "Greg",
+      "decided_at": "2026-07-23",
+      "capture_method": "owner_spot_check",
+      "notes": "Tool News B234G/B246A grade-level gray-cast-iron baselines in exact source units; flood selected as the shop practical mode from manufacturer dry/wet wording."
+    }
+  ]
+}
