@@ -1,0 +1,1433 @@
+{
+  "schema_version": 1,
+  "import_id": "iscar-scirl22-family-2026-07",
+  "title": "Iscar SCIR/L-22 exact family applicability",
+  "generated_at": "2026-07-24",
+  "manufacturer": "Iscar",
+  "sources": [
+    {
+      "id": "source-4ee7ad86c90cd19c",
+      "manufacturer": "Iscar",
+      "title": "Iscar SCIR/L-22-BR/BL/BRA/BLA exact family response",
+      "source_type": "manufacturer_product_page",
+      "url": "https://webshop.iscarusa.com/api/solr?q=%2A%3A%2A&fq%5B%5D=%7B%21term%20f%3DFamilyName_s%7DSCIR%2FL-22-BR%2FBL%2FBRA%2FBLA&fl=%2A&rows=500&sort=ManufacturerNo_s%20asc",
+      "local_path": "toolbase/data/source_snapshots/iscar-scir-l-22-br-bl-bra-bla-family-2026-07-24.json",
+      "content_sha256": "4b7bb949f1b38a30bf0917919a061293a7c1cb6cfc65bc8be0b7330f239a067b",
+      "page_ref": "/response/docs/0 through /response/docs/15",
+      "raw_reference": "toolbase/data/source_snapshots/iscar-scir-l-22-br-bl-bra-bla-family-2026-07-24.json | SHA-256 4b7bb949f1b38a30bf0917919a061293a7c1cb6cfc65bc8be0b7330f239a067b",
+      "document_edition": "Live Iscar USA family response retrieved 2026-07-24",
+      "retrieved_at": "2026-07-24",
+      "notes": "Exact 16-product manufacturer family response."
+    }
+  ],
+  "rows": [
+    {
+      "tool_id": "SCIR-22-BRA00-05K8-IC1007",
+      "grade_code": "IC1007",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-22f8caf81945263d",
+          "grade_code": "IC1007",
+          "iso_group": "P",
+          "material_subgroup": "Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/0",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA00-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-0b47ba1637414ba5",
+          "grade_code": "IC1007",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/0",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA00-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-5f7c0375b9f3e017",
+          "grade_code": "IC1007",
+          "iso_group": "K",
+          "material_subgroup": "Cast Iron",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/0",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA00-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-7f8f47d676070b54",
+          "grade_code": "IC1007",
+          "iso_group": "H",
+          "material_subgroup": "Hard Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/0",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA00-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-dcb4df9fc53e81e2",
+          "grade_code": "IC1007",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/0",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA00-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIR-22-BRA08-05K8-IC1007",
+      "grade_code": "IC1007",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-451b5ee29e2d03a2",
+          "grade_code": "IC1007",
+          "iso_group": "P",
+          "material_subgroup": "Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/1",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA08-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-edbb53ba5465751c",
+          "grade_code": "IC1007",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/1",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA08-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-9f8977df8aed73a1",
+          "grade_code": "IC1007",
+          "iso_group": "K",
+          "material_subgroup": "Cast Iron",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/1",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA08-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-fd30384f6c622849",
+          "grade_code": "IC1007",
+          "iso_group": "H",
+          "material_subgroup": "Hard Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/1",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA08-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-ceb01e3137846844",
+          "grade_code": "IC1007",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/1",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA08-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIR-22-BRA00-05K8-IC07",
+      "grade_code": "IC07",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-49e826a646b232a5",
+          "grade_code": "IC07",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/2",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC07\",\"F_SIG_19_ss\":[\" Stainless Steel \",\" Aluminum / Non-Ferrous Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA00-05K8 IC07\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-223f23a7b29768ea",
+          "grade_code": "IC07",
+          "iso_group": "N",
+          "material_subgroup": "Aluminum / Non-Ferrous Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/2",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC07\",\"F_SIG_19_ss\":[\" Stainless Steel \",\" Aluminum / Non-Ferrous Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA00-05K8 IC07\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-aaabf6bffcbfcf28",
+          "grade_code": "IC07",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/2",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC07\",\"F_SIG_19_ss\":[\" Stainless Steel \",\" Aluminum / Non-Ferrous Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA00-05K8 IC07\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIR-22-BRA08-05K8-IC07",
+      "grade_code": "IC07",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-e40b326dc0066726",
+          "grade_code": "IC07",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/3",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC07\",\"F_SIG_19_ss\":[\" Stainless Steel \",\" Aluminum / Non-Ferrous Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA08-05K8 IC07\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-72c1aeba51e55de3",
+          "grade_code": "IC07",
+          "iso_group": "N",
+          "material_subgroup": "Aluminum / Non-Ferrous Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/3",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC07\",\"F_SIG_19_ss\":[\" Stainless Steel \",\" Aluminum / Non-Ferrous Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA08-05K8 IC07\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-389ca7b73534f407",
+          "grade_code": "IC07",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/3",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC07\",\"F_SIG_19_ss\":[\" Stainless Steel \",\" Aluminum / Non-Ferrous Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BRA08-05K8 IC07\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIL-22-BLA00-05K8-IC1007",
+      "grade_code": "IC1007",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-e7e1552676411529",
+          "grade_code": "IC1007",
+          "iso_group": "P",
+          "material_subgroup": "Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/4",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA00-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-b20a3fac8a2585df",
+          "grade_code": "IC1007",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/4",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA00-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-b2f2e067d4590c98",
+          "grade_code": "IC1007",
+          "iso_group": "K",
+          "material_subgroup": "Cast Iron",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/4",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA00-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-c7f0f28ffa5be387",
+          "grade_code": "IC1007",
+          "iso_group": "H",
+          "material_subgroup": "Hard Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/4",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA00-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-cde50aecd3fb81cf",
+          "grade_code": "IC1007",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/4",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA00-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIL-22-BLA08-05K8-IC1007",
+      "grade_code": "IC1007",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-d78ebaca06b7cde8",
+          "grade_code": "IC1007",
+          "iso_group": "P",
+          "material_subgroup": "Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/5",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA08-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-940f5a3c1a69c69c",
+          "grade_code": "IC1007",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/5",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA08-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-db2f00db4c7c952e",
+          "grade_code": "IC1007",
+          "iso_group": "K",
+          "material_subgroup": "Cast Iron",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/5",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA08-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-d2903c56a98ed968",
+          "grade_code": "IC1007",
+          "iso_group": "H",
+          "material_subgroup": "Hard Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/5",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA08-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-19ac3fc622d268ff",
+          "grade_code": "IC1007",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/5",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1007\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA08-05K8 IC1007\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIL-22-BLA00-05K8-IC07",
+      "grade_code": "IC07",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-eb71a19940d403e8",
+          "grade_code": "IC07",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/6",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC07\",\"F_SIG_19_ss\":[\" Stainless Steel \",\" Aluminum / Non-Ferrous Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA00-05K8 IC07\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-27efe38f92b33568",
+          "grade_code": "IC07",
+          "iso_group": "N",
+          "material_subgroup": "Aluminum / Non-Ferrous Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/6",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC07\",\"F_SIG_19_ss\":[\" Stainless Steel \",\" Aluminum / Non-Ferrous Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA00-05K8 IC07\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-1e44750ef51fcb7b",
+          "grade_code": "IC07",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/6",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC07\",\"F_SIG_19_ss\":[\" Stainless Steel \",\" Aluminum / Non-Ferrous Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA00-05K8 IC07\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIL-22-BLA08-05K8-IC07",
+      "grade_code": "IC07",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-dbd37df3dda5f818",
+          "grade_code": "IC07",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/7",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC07\",\"F_SIG_19_ss\":[\" Stainless Steel \",\" Aluminum / Non-Ferrous Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA08-05K8 IC07\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-ec77089e8da271bb",
+          "grade_code": "IC07",
+          "iso_group": "N",
+          "material_subgroup": "Aluminum / Non-Ferrous Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/7",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC07\",\"F_SIG_19_ss\":[\" Stainless Steel \",\" Aluminum / Non-Ferrous Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA08-05K8 IC07\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-9d62bd5c76d59369",
+          "grade_code": "IC07",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/7",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC07\",\"F_SIG_19_ss\":[\" Stainless Steel \",\" Aluminum / Non-Ferrous Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BLA08-05K8 IC07\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIR-22-BR10-05K7-IC1008",
+      "grade_code": "IC1008",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-a071a8a13136df9a",
+          "grade_code": "IC1008",
+          "iso_group": "P",
+          "material_subgroup": "Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/8",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR10-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-9080c2a69146ceaf",
+          "grade_code": "IC1008",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/8",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR10-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-8fcb08c507c0d078",
+          "grade_code": "IC1008",
+          "iso_group": "K",
+          "material_subgroup": "Cast Iron",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/8",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR10-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-751d4e4ac9f7e52e",
+          "grade_code": "IC1008",
+          "iso_group": "H",
+          "material_subgroup": "Hard Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/8",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR10-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-7cd221c0dc6797e6",
+          "grade_code": "IC1008",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/8",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR10-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIR-22-BR00-05K7-IC1008",
+      "grade_code": "IC1008",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-06d5cef371e8e37f",
+          "grade_code": "IC1008",
+          "iso_group": "P",
+          "material_subgroup": "Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/9",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR00-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-2eeb9e6b38507e47",
+          "grade_code": "IC1008",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/9",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR00-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-24d5a73edd2d2f99",
+          "grade_code": "IC1008",
+          "iso_group": "K",
+          "material_subgroup": "Cast Iron",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/9",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR00-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-cfa0c63e0df990ae",
+          "grade_code": "IC1008",
+          "iso_group": "H",
+          "material_subgroup": "Hard Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/9",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR00-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-b59bbf231a134c63",
+          "grade_code": "IC1008",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/9",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR00-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIL-22-BL00-05K7-IC1008",
+      "grade_code": "IC1008",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-9e81cc66d1cb77a7",
+          "grade_code": "IC1008",
+          "iso_group": "P",
+          "material_subgroup": "Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/10",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL00-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-7e8d795f57bbeb0e",
+          "grade_code": "IC1008",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/10",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL00-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-3018993ea818a41a",
+          "grade_code": "IC1008",
+          "iso_group": "K",
+          "material_subgroup": "Cast Iron",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/10",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL00-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-de4fcdcb6ba64bfd",
+          "grade_code": "IC1008",
+          "iso_group": "H",
+          "material_subgroup": "Hard Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/10",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL00-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-9e158a0f31de0ac1",
+          "grade_code": "IC1008",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/10",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL00-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIL-22-BL10-05K7-IC1008",
+      "grade_code": "IC1008",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-4546d7317c090dcb",
+          "grade_code": "IC1008",
+          "iso_group": "P",
+          "material_subgroup": "Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/11",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL10-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-56254a08d6e211c8",
+          "grade_code": "IC1008",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/11",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL10-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-d171b225b03ea2cc",
+          "grade_code": "IC1008",
+          "iso_group": "K",
+          "material_subgroup": "Cast Iron",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/11",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL10-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-e0d5314390ec4a81",
+          "grade_code": "IC1008",
+          "iso_group": "H",
+          "material_subgroup": "Hard Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/11",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL10-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-1032de108e80c749",
+          "grade_code": "IC1008",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/11",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL10-05K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIR-22-BR08-10K7-IC1008",
+      "grade_code": "IC1008",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-21a4a600a77c5404",
+          "grade_code": "IC1008",
+          "iso_group": "P",
+          "material_subgroup": "Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/12",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR08-10K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-47c6e32be189d85c",
+          "grade_code": "IC1008",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/12",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR08-10K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-7b96f8ccbcc61d7f",
+          "grade_code": "IC1008",
+          "iso_group": "K",
+          "material_subgroup": "Cast Iron",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/12",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR08-10K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-72d17be83b6d8ed1",
+          "grade_code": "IC1008",
+          "iso_group": "H",
+          "material_subgroup": "Hard Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/12",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR08-10K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-7fbb242a55deb95f",
+          "grade_code": "IC1008",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/12",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR08-10K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIL-22-BL08-10K7-IC1008",
+      "grade_code": "IC1008",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-630afab02463db33",
+          "grade_code": "IC1008",
+          "iso_group": "P",
+          "material_subgroup": "Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/13",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL08-10K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-be973e074179a900",
+          "grade_code": "IC1008",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/13",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL08-10K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-78434b14dc0237c7",
+          "grade_code": "IC1008",
+          "iso_group": "K",
+          "material_subgroup": "Cast Iron",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/13",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL08-10K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-ae4cb13c425363ae",
+          "grade_code": "IC1008",
+          "iso_group": "H",
+          "material_subgroup": "Hard Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/13",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL08-10K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-15a22c903764e8ce",
+          "grade_code": "IC1008",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/13",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIL 22-BL08-10K7 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIR-22-BR10-05K15-IC1008",
+      "grade_code": "IC1008",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-603d54faa64cdf85",
+          "grade_code": "IC1008",
+          "iso_group": "P",
+          "material_subgroup": "Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/14",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR10-05K15 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-757323bce0b4f425",
+          "grade_code": "IC1008",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/14",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR10-05K15 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-f42af04909a4bd13",
+          "grade_code": "IC1008",
+          "iso_group": "K",
+          "material_subgroup": "Cast Iron",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/14",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR10-05K15 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-6457437f354ea079",
+          "grade_code": "IC1008",
+          "iso_group": "H",
+          "material_subgroup": "Hard Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/14",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR10-05K15 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-b8852a86e1aa05c6",
+          "grade_code": "IC1008",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/14",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR10-05K15 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "SCIR-22-BR08-10K15-IC1008",
+      "grade_code": "IC1008",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-d80e25ccd3e0f432",
+          "grade_code": "IC1008",
+          "iso_group": "P",
+          "material_subgroup": "Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/15",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR08-10K15 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-d91cc80afab946b0",
+          "grade_code": "IC1008",
+          "iso_group": "M",
+          "material_subgroup": "Stainless Steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/15",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR08-10K15 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-4931ab8693152629",
+          "grade_code": "IC1008",
+          "iso_group": "K",
+          "material_subgroup": "Cast Iron",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/15",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR08-10K15 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-1cbd659e40861231",
+          "grade_code": "IC1008",
+          "iso_group": "H",
+          "material_subgroup": "Hard Materials",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/15",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR08-10K15 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        },
+        {
+          "id": "material-recommendation-9c71a88caa01bdc0",
+          "grade_code": "IC1008",
+          "iso_group": "S",
+          "material_subgroup": "Super-Alloys / Titanium",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-4ee7ad86c90cd19c",
+          "source_ids": [
+            "source-4ee7ad86c90cd19c"
+          ],
+          "source_page_ref": "/response/docs/15",
+          "source_table_ref": "F_SIG_19_ss",
+          "source_raw_text": "{\"F_SIG_15_s\":\"IC1008\",\"F_SIG_19_ss\":[\" Steel \",\" Stainless Steel \",\" Cast Iron \",\" Hard Materials \",\" Super-Alloys / Titanium \"],\"ProductName_s\":\"SCIR 22-BR08-10K15 IC1008\"}",
+          "extraction_method": "manufacturer_page",
+          "notes": "Manufacturer applicability list; the source does not publish a preference ranking."
+        }
+      ],
+      "cutting_profiles": []
+    }
+  ]
+}

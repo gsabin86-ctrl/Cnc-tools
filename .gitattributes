@@ -1,6 +1,8 @@
 # Keep canonical data and hash-bound review inputs byte-for-byte stable.
+/.gitattributes text eol=lf
 toolbase/data/**/*.json -text
 toolbase/data/**/*.jsonl -text
+toolbase/data/source_snapshots/tungaloy-sh7025-grade-page-2026-07-24.html -text
 toolbase/proposals/**/*.json -text
 toolbase/reviews/**/*.json -text
 

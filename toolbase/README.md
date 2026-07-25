@@ -6,10 +6,11 @@ This directory is the canonical, data-first CNC tooling system. It preserves the
 
 The seed files under `toolbase/data` are the preserved starting point:
 
-- `tools.jsonl`: all 1,212 legacy tool records, one tool per line.
-- `legacy_relationships.jsonl`: all 677 legacy or inferred relationship candidates.
-- `catalog_claims.jsonl`: 17 source-backed Sandvik compatibility claims that only existed in v2.
-- `reviewed_imports/*.json`: deterministic structured imports compiled from completed owner decisions.
+- `tools.jsonl`: canonical tool identities and normalized seed fields, one tool per line.
+- `legacy_relationships.jsonl`: preserved legacy or inferred relationship candidates.
+- `catalog_claims.jsonl`: source-backed compatibility claims retained from v2.
+- `manufacturer_imports/*.json`: parser-generated manufacturer rows applied directly during the deterministic build; these carry source paths and SHA-256 hashes but no synthetic reviewer or approval packet.
+- `reviewed_imports/*.json`: deterministic structured imports compiled from completed owner decisions for workflows that still require explicit review.
 - `source_documents.json`: deduplicated manufacturer catalogs with edition evidence, page count, local audit path, and SHA-256 content hash.
 - `shop_inputs/*.json`: direct shop confirmations, including machine-station interfaces.
 - `manifest.json`: row counts and SHA-256 hashes of the two legacy source databases used for the original export.
@@ -40,6 +41,14 @@ python toolbase/scripts/validate_cutting_proposal.py
 python toolbase/scripts/import_reviewed_proposal.py --check
 python -m unittest discover -s toolbase/tests -v
 python -m http.server 8000 --directory docs
+```
+
+The routine manufacturer-backfill lane is intentionally simple: save the manufacturer response, run its parser to upsert `tools.jsonl` and/or a clean `manufacturer_imports` row file, then rebuild. For the current Iscar and Tungaloy adapters:
+
+```powershell
+python toolbase/scripts/iscar_scirl22_family_import.py
+python toolbase/scripts/tungaloy_grade_import.py --batch sh7025 --created-at 2026-07-24
+python toolbase/scripts/build.py
 ```
 
 Use extraction only when deliberately reconstructing the canonical seed from the preserved legacy databases:

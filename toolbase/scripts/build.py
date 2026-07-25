@@ -450,6 +450,41 @@ def load_reviewed_imports(data_dir: Path) -> list[tuple[Path, dict[str, Any]]]:
     return packets
 
 
+def load_manufacturer_imports(data_dir: Path) -> list[tuple[Path, dict[str, Any]]]:
+    import_dir = data_dir / "manufacturer_imports"
+    if not import_dir.is_dir():
+        return []
+    imports: list[tuple[Path, dict[str, Any]]] = []
+    for path in sorted(import_dir.glob("*.json"), key=lambda item: item.name.casefold()):
+        payload = load_json(path)
+        if payload.get("schema_version") != 1:
+            raise ValueError(f"{path}: unsupported manufacturer-import schema")
+        if not clean_text(payload.get("import_id")) or not clean_text(payload.get("manufacturer")):
+            raise ValueError(f"{path}: import_id and manufacturer are required")
+        sources = payload.get("sources")
+        rows = payload.get("rows")
+        if not isinstance(sources, list) or not sources:
+            raise ValueError(f"{path}: sources must be a nonempty list")
+        if not isinstance(rows, list) or not rows:
+            raise ValueError(f"{path}: rows must be a nonempty list")
+        source_ids: set[str] = set()
+        for source in sources:
+            source_id = clean_text(source.get("id"))
+            if not source_id or source_id in source_ids:
+                raise ValueError(f"{path}: source IDs must be unique and nonblank")
+            source_ids.add(source_id)
+            local_path = ROOT.parent / str(source.get("local_path") or "")
+            if not local_path.is_file():
+                raise ValueError(f"{path}: source is missing: {local_path}")
+            if source.get("content_sha256") != file_sha256(local_path):
+                raise ValueError(f"{path}: source hash does not match: {local_path}")
+        tool_ids = [clean_text(row.get("tool_id")) for row in rows]
+        if any(not tool_id for tool_id in tool_ids) or len(set(tool_ids)) != len(tool_ids):
+            raise ValueError(f"{path}: tool IDs must be unique and nonblank")
+        imports.append((path, payload))
+    return imports
+
+
 def apply_reviewed_import(
     connection: sqlite3.Connection,
     packet_path: Path,
@@ -1016,6 +1051,175 @@ def apply_reviewed_import(
         )
 
 
+def apply_manufacturer_import(
+    connection: sqlite3.Connection,
+    import_path: Path,
+    payload: dict[str, Any],
+    manufacturer_ids: dict[str, str],
+) -> None:
+    manufacturer = payload["manufacturer"]
+    manufacturer_id = manufacturer_ids.get(manufacturer)
+    if not manufacturer_id:
+        raise ValueError(f"{import_path}: unknown manufacturer {manufacturer!r}")
+    source_ids = {source["id"] for source in payload["sources"]}
+    for source_record in payload["sources"]:
+        source = dict(source_record)
+        source.pop("manufacturer", None)
+        source["manufacturer_id"] = manufacturer_id
+        insert_source(connection, source)
+
+    for row in payload["rows"]:
+        tool_id = row["tool_id"]
+        tool = connection.execute(
+            "SELECT manufacturer_id FROM tools WHERE id=?", (tool_id,)
+        ).fetchone()
+        if tool is None:
+            raise ValueError(f"{import_path}: tool is missing: {tool_id}")
+        if tool[0] != manufacturer_id:
+            raise ValueError(f"{import_path}: tool manufacturer does not match: {tool_id}")
+        grade_code = normalize_part_number(row.get("grade_code"))
+        grade_rows = connection.execute(
+            """
+            SELECT DISTINCT g.id
+            FROM tool_grade_options o JOIN grades g ON g.id=o.grade_id
+            WHERE o.tool_id=? AND g.normalized_code=?
+              AND o.verification_status != 'rejected'
+            """,
+            (tool_id, grade_code),
+        ).fetchall()
+        if len(grade_rows) != 1:
+            raise ValueError(
+                f"{import_path}: {tool_id} must have exactly one active grade {row.get('grade_code')}"
+            )
+        grade_id = grade_rows[0][0]
+
+        for item in row.get("material_recommendations") or []:
+            if item.get("source_id") not in source_ids:
+                raise ValueError(f"{import_path}: unknown recommendation source")
+            connection.execute(
+                """
+                INSERT INTO tool_material_recommendations (
+                  id, tool_id, grade_id, iso_group, material_subgroup, suitability,
+                  evidence_status, verification_status, source_id, source_page_ref,
+                  source_table_ref, source_raw_text, extraction_method, notes
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    item["id"],
+                    tool_id,
+                    grade_id,
+                    item["iso_group"],
+                    item.get("material_subgroup"),
+                    item["suitability"],
+                    item.get("evidence_status") or "manufacturer_claim",
+                    item.get("verification_status") or "manufacturer_verified",
+                    item["source_id"],
+                    item.get("source_page_ref"),
+                    item.get("source_table_ref"),
+                    item.get("source_raw_text"),
+                    item.get("extraction_method") or "manufacturer_page",
+                    item.get("notes"),
+                ),
+            )
+            for source_id in item.get("source_ids") or [item["source_id"]]:
+                if source_id not in source_ids:
+                    raise ValueError(f"{import_path}: unknown recommendation source")
+                connection.execute(
+                    """
+                    INSERT INTO tool_material_recommendation_sources
+                      (recommendation_id, source_id, evidence_role)
+                    VALUES (?, ?, 'direct_source')
+                    """,
+                    (item["id"], source_id),
+                )
+
+        for profile in row.get("cutting_profiles") or []:
+            if profile.get("source_id") not in source_ids:
+                raise ValueError(f"{import_path}: unknown cutting-profile source")
+            connection.execute(
+                """
+                INSERT INTO cutting_data_profiles (
+                  id, tool_id, grade_id, source_id, source_part_number, source_grade,
+                  source_geometry, source_chipbreaker, source_material_label,
+                  iso_material_group, material_subgroup, operation_type,
+                  cut_condition, coolant_condition, surface_speed_min,
+                  surface_speed_start, surface_speed_max, surface_speed_unit,
+                  feed_min, feed_max, feed_unit, depth_of_cut_min,
+                  depth_of_cut_max, depth_of_cut_unit, source_page_ref,
+                  source_table_ref, source_raw_text, extraction_method,
+                  verification_status, reviewer, reviewed_at, notes
+                ) VALUES (
+                  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                  ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, ?
+                )
+                """,
+                (
+                    profile["id"],
+                    tool_id,
+                    grade_id,
+                    profile["source_id"],
+                    profile["source_part_number"],
+                    profile.get("source_grade"),
+                    profile.get("source_geometry"),
+                    profile.get("source_chipbreaker"),
+                    profile.get("source_material_label"),
+                    profile["iso_material_group"],
+                    profile.get("material_subgroup"),
+                    profile["operation_type"],
+                    profile["cut_condition"],
+                    profile["coolant_condition"],
+                    profile.get("surface_speed_min"),
+                    profile.get("surface_speed_start"),
+                    profile.get("surface_speed_max"),
+                    profile.get("surface_speed_unit"),
+                    profile.get("feed_min"),
+                    profile.get("feed_max"),
+                    profile.get("feed_unit"),
+                    profile.get("depth_of_cut_min"),
+                    profile.get("depth_of_cut_max"),
+                    profile.get("depth_of_cut_unit"),
+                    profile.get("source_page_ref"),
+                    profile.get("source_table_ref"),
+                    profile.get("source_raw_text"),
+                    profile.get("extraction_method") or "manufacturer_page",
+                    profile.get("verification_status") or "manufacturer_verified",
+                    profile.get("notes"),
+                ),
+            )
+            evidence_sources = profile.get("evidence_sources") or [
+                {
+                    "source_id": profile["source_id"],
+                    "evidence_role": "cutting_speed",
+                    "source_page_ref": profile.get("source_page_ref"),
+                    "source_table_ref": profile.get("source_table_ref"),
+                    "source_raw_text": profile.get("source_raw_text"),
+                    "extraction_method": profile.get("extraction_method"),
+                }
+            ]
+            for evidence in evidence_sources:
+                if evidence.get("source_id") not in source_ids:
+                    raise ValueError(f"{import_path}: unknown profile evidence source")
+                connection.execute(
+                    """
+                    INSERT INTO cutting_data_profile_sources (
+                      profile_id, source_id, evidence_role, source_page_ref,
+                      source_printed_page_ref, source_table_ref, source_raw_text,
+                      extraction_method
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        profile["id"],
+                        evidence["source_id"],
+                        evidence["evidence_role"],
+                        evidence.get("source_page_ref"),
+                        evidence.get("source_printed_page_ref"),
+                        evidence.get("source_table_ref"),
+                        evidence.get("source_raw_text"),
+                        evidence.get("extraction_method"),
+                    ),
+                )
+
+
 def load_shop_inputs(data_dir: Path) -> list[tuple[Path, dict[str, Any]]]:
     input_dir = data_dir / "shop_inputs"
     if not input_dir.is_dir():
@@ -1501,6 +1705,7 @@ def build_database(data_dir: Path, db_out: Path) -> dict[str, Any]:
     catalog_claims = load_jsonl(data_dir / "catalog_claims.jsonl")
     source_documents = load_source_documents(data_dir)
     reviewed_imports = load_reviewed_imports(data_dir)
+    manufacturer_imports = load_manufacturer_imports(data_dir)
     shop_inputs = load_shop_inputs(data_dir)
 
     expected_tools = int(manifest["counts"]["tools"])
@@ -1544,6 +1749,9 @@ def build_database(data_dir: Path, db_out: Path) -> dict[str, Any]:
     canonical_manufacturers.add("Unknown")
     for document in source_documents:
         raw = clean_text(document.get("manufacturer")) or "Unknown"
+        canonical_manufacturers.add(manufacturer_aliases.get(raw, raw))
+    for _path, manufacturer_import in manufacturer_imports:
+        raw = clean_text(manufacturer_import.get("manufacturer")) or "Unknown"
         canonical_manufacturers.add(manufacturer_aliases.get(raw, raw))
 
     manufacturer_ids: dict[str, str] = {}
@@ -1659,6 +1867,19 @@ def build_database(data_dir: Path, db_out: Path) -> dict[str, Any]:
                 "INSERT OR IGNORE INTO tool_aliases (tool_id, alias, alias_type) VALUES (?, ?, 'iso')",
                 (tool_id, clean_text(record.get("iso_designation"))),
             )
+        specs_for_aliases = record.get("specs") or {}
+        for spec_key, alias_type in (
+            ("manufacturer_order_code", "manufacturer_part_number"),
+            ("manufacturer_material_number", "search"),
+            ("webshop_item_number", "search"),
+            ("webshop_product_id", "search"),
+        ):
+            alias = clean_text(specs_for_aliases.get(spec_key))
+            if alias:
+                connection.execute(
+                    "INSERT OR IGNORE INTO tool_aliases (tool_id, alias, alias_type) VALUES (?, ?, ?)",
+                    (tool_id, alias, alias_type),
+                )
 
         tool_by_public_key[public_key(tool_id)] = tool_id
         tool_by_normalized_part[normalized_part] = tool_id
@@ -1925,6 +2146,10 @@ def build_database(data_dir: Path, db_out: Path) -> dict[str, Any]:
 
     for packet_path, packet in reviewed_imports:
         apply_reviewed_import(connection, packet_path, packet, manufacturer_ids)
+    for import_path, manufacturer_import in manufacturer_imports:
+        apply_manufacturer_import(
+            connection, import_path, manufacturer_import, manufacturer_ids
+        )
 
     connection.commit()
     integrity = connection.execute("PRAGMA integrity_check").fetchone()[0]
@@ -1965,6 +2190,7 @@ def build_database(data_dir: Path, db_out: Path) -> dict[str, Any]:
         "counts": counts,
         "source_links_seen": source_count_before,
         "reviewed_imports": len(reviewed_imports),
+        "manufacturer_imports": len(manufacturer_imports),
         "source_documents": len(source_documents),
         "shop_inputs": len(shop_inputs),
     }

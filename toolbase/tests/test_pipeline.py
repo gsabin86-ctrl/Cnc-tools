@@ -70,7 +70,48 @@ class PipelineTests(unittest.TestCase):
                 connection.execute("SELECT value FROM schema_meta WHERE key='schema_version'").fetchone()[0],
                 "3.4.0",
             )
-            self.assertEqual(connection.execute("SELECT COUNT(*) FROM tools").fetchone()[0], 1289)
+            self.assertEqual(
+                connection.execute("SELECT COUNT(*) FROM tools").fetchone()[0],
+                1305,
+            )
+            self.assertEqual(
+                connection.execute(
+                    """
+                    SELECT COUNT(*) FROM tools t JOIN manufacturers m ON m.id=t.manufacturer_id
+                    WHERE m.name='Iscar' AND (t.id LIKE 'SCIR-22-%' OR t.id LIKE 'SCIL-22-%')
+                    """
+                ).fetchone()[0],
+                16,
+            )
+            self.assertEqual(
+                connection.execute(
+                    """
+                    SELECT COUNT(DISTINCT r.tool_id), COUNT(*), SUM(r.grade_id IS NULL),
+                           SUM(r.reviewer IS NOT NULL), SUM(r.review_batch_id IS NOT NULL)
+                    FROM tool_material_recommendations r
+                    JOIN tools t ON t.id=r.tool_id JOIN manufacturers m ON m.id=t.manufacturer_id
+                    WHERE m.name='Iscar' AND (t.id LIKE 'SCIR-22-%' OR t.id LIKE 'SCIL-22-%')
+                      AND r.verification_status='manufacturer_verified'
+                    """
+                ).fetchone(),
+                (16, 72, 0, 0, 0),
+            )
+            self.assertEqual(
+                connection.execute(
+                    """
+                    SELECT COUNT(*) FROM cutting_data_profiles p JOIN tools t ON t.id=p.tool_id
+                    JOIN manufacturers m ON m.id=t.manufacturer_id
+                    WHERE m.name='Iscar' AND (t.id LIKE 'SCIR-22-%' OR t.id LIKE 'SCIL-22-%')
+                    """
+                ).fetchone()[0],
+                0,
+            )
+            self.assertEqual(
+                connection.execute(
+                    "SELECT COUNT(*) FROM tool_aliases WHERE alias='1953152' AND alias_type='search'"
+                ).fetchone()[0],
+                1,
+            )
             self.assertEqual(connection.execute("SELECT COUNT(*) FROM manufacturers WHERE name='Horn'").fetchone()[0], 0)
             self.assertEqual(
                 connection.execute(
@@ -163,7 +204,7 @@ class PipelineTests(unittest.TestCase):
             connection.close()
 
             projection = json.loads(json_path.read_text(encoding="utf-8"))
-            self.assertEqual(len(projection["tools"]), 1289)
+            self.assertEqual(len(projection["tools"]), 1305)
             self.assertEqual(projection["meta"]["quality"]["suppressed_direct_machine_claims"], 172)
             review_proposals = {batch["proposal_id"] for batch in projection["review_batches"]}
             self.assertIn("kennametal-topswiss-pilot-2026-07", review_proposals)
@@ -173,8 +214,8 @@ class PipelineTests(unittest.TestCase):
             self.assertTrue(all("source_refs" in relationship for relationship in projection["relationships"]))
             search_index = json.loads(json_path.with_name("catalog-index.json").read_text(encoding="utf-8"))
             details = json.loads(json_path.with_name("catalog-details.json").read_text(encoding="utf-8"))
-            self.assertEqual(len(search_index["tools"]), 1289)
-            self.assertEqual(len(details["tools_by_id"]), 1289)
+            self.assertEqual(len(search_index["tools"]), 1305)
+            self.assertEqual(len(details["tools_by_id"]), 1305)
             self.assertEqual(search_index["meta"]["build_hash"], details["meta"]["build_hash"])
             self.assertTrue(all("verification_status" in tool for tool in search_index["tools"]))
             self.assertTrue(all("review_status" in tool for tool in search_index["tools"]))
@@ -202,7 +243,13 @@ class PipelineTests(unittest.TestCase):
             cutting_tools = [tool for tool in search_index["tools"] if tool["has_cutting_data"]]
             self.assertGreaterEqual(len(material_tools), 12)
             self.assertGreaterEqual(len(cutting_tools), 12)
-            self.assertTrue(all(tool["review_status"] == "verified" for tool in material_tools + cutting_tools))
+            self.assertTrue(
+                all(
+                    tool["review_status"] == "verified"
+                    or tool["verification_status"] == "manufacturer_verified"
+                    for tool in material_tools + cutting_tools
+                )
+            )
             self.assertEqual(
                 sum(bool(tool["unreviewed_material_claims"]) for tool in details["tools_by_id"].values()),
                 191,
@@ -2255,16 +2302,52 @@ class PipelineTests(unittest.TestCase):
             try:
                 tungaloy = "SELECT id FROM manufacturers WHERE name='Tungaloy'"
 
-                # Every SH7025 insert carries P and M baselines, manufacturer-verified, flood.
                 self.assertEqual(
                     connection.execute(
                         f"""
-                        SELECT COUNT(DISTINCT p.tool_id) FROM cutting_data_profiles p
-                        JOIN tools t ON t.id=p.tool_id
+                        SELECT COUNT(DISTINCT r.tool_id), COUNT(*),
+                               SUM(r.grade_id IS NULL), SUM(r.review_batch_id IS NOT NULL),
+                               SUM(r.reviewer IS NOT NULL)
+                        FROM tool_material_recommendations r
+                        JOIN tools t ON t.id=r.tool_id
+                        JOIN grades g ON g.id=r.grade_id
+                        WHERE t.manufacturer_id IN ({tungaloy})
+                          AND g.code='SH7025'
+                          AND r.verification_status='manufacturer_verified'
+                        """
+                    ).fetchone(),
+                    (34, 68, 0, 0, 0),
+                )
+
+                self.assertEqual(
+                    connection.execute(
+                        f"""
+                        SELECT COUNT(DISTINCT p.tool_id), COUNT(*),
+                               SUM(p.grade_id IS NULL), SUM(p.reviewer IS NOT NULL),
+                               SUM(p.reviewed_at IS NOT NULL)
+                        FROM cutting_data_profiles p JOIN tools t ON t.id=p.tool_id
                         WHERE t.manufacturer_id IN ({tungaloy}) AND p.source_grade='SH7025'
                         """
-                    ).fetchone()[0],
-                    34,
+                    ).fetchone(),
+                    (4, 8, 0, 0, 0),
+                )
+                self.assertEqual(
+                    {
+                        row[0]
+                        for row in connection.execute(
+                            f"""
+                            SELECT DISTINCT t.part_number
+                            FROM cutting_data_profiles p JOIN tools t ON t.id=p.tool_id
+                            WHERE t.manufacturer_id IN ({tungaloy}) AND p.source_grade='SH7025'
+                            """
+                        )
+                    },
+                    {
+                        "DCGT11T302FN-JS",
+                        "DCGT11T302M-JS",
+                        "DCGT11T302MF-JS",
+                        "DCGT11T302N-JS",
+                    },
                 )
                 self.assertEqual(
                     connection.execute(
@@ -2272,42 +2355,28 @@ class PipelineTests(unittest.TestCase):
                         SELECT COUNT(*) FROM cutting_data_profiles p JOIN tools t ON t.id=p.tool_id
                         WHERE t.manufacturer_id IN ({tungaloy}) AND p.source_grade='SH7025'
                           AND (p.verification_status != 'manufacturer_verified'
-                               OR p.coolant_condition != 'flood'
+                               OR p.coolant_condition != 'unknown'
                                OR p.surface_speed_min != 10 OR p.surface_speed_max != 200
-                               OR p.surface_speed_unit != 'm_per_min')
+                               OR p.surface_speed_unit != 'm_per_min'
+                               OR p.feed_min != 0.05 OR p.feed_max != 0.2
+                               OR p.depth_of_cut_min != 0.5 OR p.depth_of_cut_max != 3.0)
                         """
                     ).fetchone()[0],
                     0,
                 )
-
-                # Feed keyed to corner radius, depth of cut keyed to chipbreaker.
-                cases = {
-                    "CCGT060204FN-JS": (0.05, 0.2, 0.5, 3.0),   # RE0.4, JS
-                    "DCGT11T302FN-JP": (0.02, 0.1, 0.05, 2.5),  # RE0.2, JP
-                    "CCGT060204F-01": (0.05, 0.2, 0.05, 3.0),   # RE0.4, other -> grade DOC span
-                    "TCGT16T308-01": (0.02, 0.2, 0.05, 3.0),    # RE0.8 untabulated -> grade feed span
-                }
-                for part_number, (fmin, fmax, dmin, dmax) in cases.items():
-                    row = connection.execute(
-                        f"""
-                        SELECT DISTINCT p.feed_min, p.feed_max, p.depth_of_cut_min, p.depth_of_cut_max
-                        FROM cutting_data_profiles p JOIN tools t ON t.id=p.tool_id
-                        WHERE t.manufacturer_id IN ({tungaloy}) AND t.part_number=?
-                        """,
-                        (part_number,),
-                    ).fetchall()
-                    self.assertEqual(row, [(fmin, fmax, dmin, dmax)], part_number)
-
-                # Baselines are traceable to the captured Tungaloy grade page.
                 self.assertEqual(
                     connection.execute(
                         f"""
-                        SELECT COUNT(*) FROM cutting_data_profiles p JOIN tools t ON t.id=p.tool_id
+                        SELECT COUNT(DISTINCT p.id) FROM cutting_data_profiles p
+                        JOIN tools t ON t.id=p.tool_id
+                        JOIN cutting_data_profile_sources ps ON ps.profile_id=p.id
+                        JOIN sources s ON s.id=ps.source_id
                         WHERE t.manufacturer_id IN ({tungaloy}) AND p.source_grade='SH7025'
-                          AND p.source_raw_text != '10 &#8211; 200'
+                          AND s.local_path='toolbase/data/source_snapshots/tungaloy-sh7025-grade-page-2026-07-24.html'
+                          AND p.source_raw_text LIKE '%10 &#8211; 200%'
                         """
                     ).fetchone()[0],
-                    0,
+                    8,
                 )
             finally:
                 connection.close()

@@ -1,0 +1,1945 @@
+{
+  "schema_version": 1,
+  "import_id": "tungaloy-sh7025-grade-baselines-2026-07",
+  "title": "Tungaloy SH7025 grade baselines",
+  "generated_at": "2026-07-24",
+  "manufacturer": "Tungaloy",
+  "sources": [
+    {
+      "id": "source-ae22b2758f8739f0",
+      "manufacturer": "Tungaloy",
+      "title": "Tungaloy SH7025 grade page (standard cutting conditions and application)",
+      "source_type": "manufacturer_product_page",
+      "url": "https://tungaloy.com/product/turning/sh7025/",
+      "local_path": "toolbase/data/source_snapshots/tungaloy-sh7025-grade-page-2026-07-24.html",
+      "content_sha256": "3ea88d80289961a991061d9e806b4f2292339f9da306410470a46bc5a677f61b",
+      "page_ref": "#post-393473",
+      "raw_reference": "toolbase/data/source_snapshots/tungaloy-sh7025-grade-page-2026-07-24.html | SHA-256 3ea88d80289961a991061d9e806b4f2292339f9da306410470a46bc5a677f61b",
+      "document_edition": "Captured 2026-07-24",
+      "retrieved_at": "2026-07-24",
+      "notes": null
+    },
+    {
+      "id": "source-2207a1acbd668efa",
+      "manufacturer": "Tungaloy",
+      "title": "Tungaloy SH7025 normalized standard cutting conditions",
+      "source_type": "local_file",
+      "url": "https://tungaloy.com/product/turning/sh7025/",
+      "local_path": "toolbase/data/source_snapshots/tungaloy-sh7025-grade-2026-07-24.json",
+      "content_sha256": "ba8c7ddff5afe0587e6a920015b490acc5e4077bb27cbc21e765c659e85a46e4",
+      "page_ref": "/standard_cutting_conditions",
+      "raw_reference": "toolbase/data/source_snapshots/tungaloy-sh7025-grade-2026-07-24.json | SHA-256 ba8c7ddff5afe0587e6a920015b490acc5e4077bb27cbc21e765c659e85a46e4",
+      "document_edition": "Parsed from Tungaloy HTML captured 2026-07-24",
+      "retrieved_at": "2026-07-24",
+      "notes": "Deterministic normalized rows used by the manufacturer import."
+    }
+  ],
+  "rows": [
+    {
+      "tool_id": "CCGT060204F-01",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-92831650229939a0",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-ae0ba92d73e22ae3",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "CCGT060204FN-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-3c0e4402624ce48e",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-1f907e6c5f3de6ba",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "CCGT060204M-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-eec510cdebf8bbaa",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-94e58fd48dcd01f0",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "CCGT060204N-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-16ee825245547053",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-b6f14be407a9e9d3",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "CCGT09T304F-01",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-9c184a107f1de191",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-df31f96c7f1daa50",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "CCGT09T304FN-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-72781669c88045fc",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-5bdc840d3ed10b26",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "CCGT09T304M-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-ec1392d464614029",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-93d97f6492fc64f7",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "CCGT09T304MF-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-0b8d9f656f5e1b9a",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-d1b51b1c94ed429c",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "CCGT09T304N-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-9093ab0e5100e870",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-2a076729a632e9e4",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "DCGT070204F-01",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-6e76a0b1bd315881",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-b9738ac6c9ccd023",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "DCGT11T302-01",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-6e36a96635547f9e",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-64ba90baff336404",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "DCGT11T302F-01",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-726cde77136a8cb0",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-47ddabb7297acfe7",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "DCGT11T302FN-JP",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-f1a1336f8e044e72",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-0cf525d8655fc97d",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "DCGT11T302FN-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-9cdb329c7e3b99d4",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-02158adabde9171e",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "source_part_number": "DCGT11T302FN-JS",
+          "source_grade": "SH7025",
+          "source_geometry": "DCGT 11T3 02 positive, 7-deg clearance, JS chipbreaker",
+          "source_chipbreaker": "JS",
+          "source_material_label": "Carbon steel, Alloy steel",
+          "iso_material_group": "P",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "material_subgroup": "Carbon / alloy steel",
+          "surface_speed_min": 10,
+          "surface_speed_max": 200,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.05,
+          "feed_max": 0.2,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.5,
+          "depth_of_cut_max": 3,
+          "depth_of_cut_unit": "mm",
+          "notes": "Coolant remains unknown; the standard-condition table does not state it.",
+          "id": "cutting-profile-eb5e206179e22cbe",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 standard cutting conditions, ISO P (Carbon steel, Alloy steel); cutting speed Vc m/min; depth of cut by chipbreaker; feed by strict corner-radius upper bound and chipbreaker row; coolant is not stated in this standard-condition table.",
+          "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+          "extraction_method": "manufacturer_page",
+          "verification_status": "manufacturer_verified",
+          "evidence_sources": [
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-2207a1acbd668efa",
+              "evidence_role": "verification",
+              "source_page_ref": "/standard_cutting_conditions/P",
+              "source_table_ref": "Hash-verified normalized standard cutting conditions",
+              "source_raw_text": "{\"depth_of_cut_mm_by_chipbreaker\":{\"JP\":{\"max\":2.5,\"min\":0.05},\"JS\":{\"max\":3,\"min\":0.5}},\"feed_mm_rev_by_chipbreaker_and_strict_radius_band\":{\"JP\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":null,\"max_corner_radius_exclusive_mm\":0.4,\"min\":null}],\"JS\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":0.2,\"max_corner_radius_exclusive_mm\":0.4,\"min\":0.05}]},\"iso_group\":\"P\",\"materials\":\"Carbon steel, Alloy steel\",\"vc_m_min\":{\"max\":200,\"min\":10}}",
+              "extraction_method": "normalized_from_manufacturer_page"
+            }
+          ]
+        },
+        {
+          "source_part_number": "DCGT11T302FN-JS",
+          "source_grade": "SH7025",
+          "source_geometry": "DCGT 11T3 02 positive, 7-deg clearance, JS chipbreaker",
+          "source_chipbreaker": "JS",
+          "source_material_label": "Stainless steel",
+          "iso_material_group": "M",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "material_subgroup": "Stainless steel",
+          "surface_speed_min": 10,
+          "surface_speed_max": 200,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.05,
+          "feed_max": 0.2,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.5,
+          "depth_of_cut_max": 3,
+          "depth_of_cut_unit": "mm",
+          "notes": "Coolant remains unknown; the standard-condition table does not state it.",
+          "id": "cutting-profile-cb5c56b07ae01b08",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 standard cutting conditions, ISO M (Stainless steel); cutting speed Vc m/min; depth of cut by chipbreaker; feed by strict corner-radius upper bound and chipbreaker row; coolant is not stated in this standard-condition table.",
+          "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+          "extraction_method": "manufacturer_page",
+          "verification_status": "manufacturer_verified",
+          "evidence_sources": [
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-2207a1acbd668efa",
+              "evidence_role": "verification",
+              "source_page_ref": "/standard_cutting_conditions/M",
+              "source_table_ref": "Hash-verified normalized standard cutting conditions",
+              "source_raw_text": "{\"depth_of_cut_mm_by_chipbreaker\":{\"JP\":{\"max\":2.5,\"min\":0.05},\"JS\":{\"max\":3,\"min\":0.5}},\"feed_mm_rev_by_chipbreaker_and_strict_radius_band\":{\"JP\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":null,\"max_corner_radius_exclusive_mm\":0.4,\"min\":null}],\"JS\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":0.2,\"max_corner_radius_exclusive_mm\":0.4,\"min\":0.05}]},\"iso_group\":\"M\",\"materials\":\"Stainless steel\",\"vc_m_min\":{\"max\":200,\"min\":10}}",
+              "extraction_method": "normalized_from_manufacturer_page"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tool_id": "DCGT11T302M-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-a8b12e124b9c6eaf",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-fe16e080cfc2b78e",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "source_part_number": "DCGT11T302M-JS",
+          "source_grade": "SH7025",
+          "source_geometry": "DCGT 11T3 02 positive, 7-deg clearance, JS chipbreaker",
+          "source_chipbreaker": "JS",
+          "source_material_label": "Carbon steel, Alloy steel",
+          "iso_material_group": "P",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "material_subgroup": "Carbon / alloy steel",
+          "surface_speed_min": 10,
+          "surface_speed_max": 200,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.05,
+          "feed_max": 0.2,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.5,
+          "depth_of_cut_max": 3,
+          "depth_of_cut_unit": "mm",
+          "notes": "Coolant remains unknown; the standard-condition table does not state it.",
+          "id": "cutting-profile-d403da0c7c5e2879",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 standard cutting conditions, ISO P (Carbon steel, Alloy steel); cutting speed Vc m/min; depth of cut by chipbreaker; feed by strict corner-radius upper bound and chipbreaker row; coolant is not stated in this standard-condition table.",
+          "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+          "extraction_method": "manufacturer_page",
+          "verification_status": "manufacturer_verified",
+          "evidence_sources": [
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-2207a1acbd668efa",
+              "evidence_role": "verification",
+              "source_page_ref": "/standard_cutting_conditions/P",
+              "source_table_ref": "Hash-verified normalized standard cutting conditions",
+              "source_raw_text": "{\"depth_of_cut_mm_by_chipbreaker\":{\"JP\":{\"max\":2.5,\"min\":0.05},\"JS\":{\"max\":3,\"min\":0.5}},\"feed_mm_rev_by_chipbreaker_and_strict_radius_band\":{\"JP\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":null,\"max_corner_radius_exclusive_mm\":0.4,\"min\":null}],\"JS\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":0.2,\"max_corner_radius_exclusive_mm\":0.4,\"min\":0.05}]},\"iso_group\":\"P\",\"materials\":\"Carbon steel, Alloy steel\",\"vc_m_min\":{\"max\":200,\"min\":10}}",
+              "extraction_method": "normalized_from_manufacturer_page"
+            }
+          ]
+        },
+        {
+          "source_part_number": "DCGT11T302M-JS",
+          "source_grade": "SH7025",
+          "source_geometry": "DCGT 11T3 02 positive, 7-deg clearance, JS chipbreaker",
+          "source_chipbreaker": "JS",
+          "source_material_label": "Stainless steel",
+          "iso_material_group": "M",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "material_subgroup": "Stainless steel",
+          "surface_speed_min": 10,
+          "surface_speed_max": 200,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.05,
+          "feed_max": 0.2,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.5,
+          "depth_of_cut_max": 3,
+          "depth_of_cut_unit": "mm",
+          "notes": "Coolant remains unknown; the standard-condition table does not state it.",
+          "id": "cutting-profile-a77e44adc98dab05",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 standard cutting conditions, ISO M (Stainless steel); cutting speed Vc m/min; depth of cut by chipbreaker; feed by strict corner-radius upper bound and chipbreaker row; coolant is not stated in this standard-condition table.",
+          "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+          "extraction_method": "manufacturer_page",
+          "verification_status": "manufacturer_verified",
+          "evidence_sources": [
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-2207a1acbd668efa",
+              "evidence_role": "verification",
+              "source_page_ref": "/standard_cutting_conditions/M",
+              "source_table_ref": "Hash-verified normalized standard cutting conditions",
+              "source_raw_text": "{\"depth_of_cut_mm_by_chipbreaker\":{\"JP\":{\"max\":2.5,\"min\":0.05},\"JS\":{\"max\":3,\"min\":0.5}},\"feed_mm_rev_by_chipbreaker_and_strict_radius_band\":{\"JP\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":null,\"max_corner_radius_exclusive_mm\":0.4,\"min\":null}],\"JS\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":0.2,\"max_corner_radius_exclusive_mm\":0.4,\"min\":0.05}]},\"iso_group\":\"M\",\"materials\":\"Stainless steel\",\"vc_m_min\":{\"max\":200,\"min\":10}}",
+              "extraction_method": "normalized_from_manufacturer_page"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tool_id": "DCGT11T302MF-JP",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-064a6faf70b5adf6",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-8b7f102bd0ed20df",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "DCGT11T302MF-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-2b38ea6a0456f1d3",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-2c14e3571ff05f5b",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "source_part_number": "DCGT11T302MF-JS",
+          "source_grade": "SH7025",
+          "source_geometry": "DCGT 11T3 02 positive, 7-deg clearance, JS chipbreaker",
+          "source_chipbreaker": "JS",
+          "source_material_label": "Carbon steel, Alloy steel",
+          "iso_material_group": "P",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "material_subgroup": "Carbon / alloy steel",
+          "surface_speed_min": 10,
+          "surface_speed_max": 200,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.05,
+          "feed_max": 0.2,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.5,
+          "depth_of_cut_max": 3,
+          "depth_of_cut_unit": "mm",
+          "notes": "Coolant remains unknown; the standard-condition table does not state it.",
+          "id": "cutting-profile-aa209aa0ef85b96e",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 standard cutting conditions, ISO P (Carbon steel, Alloy steel); cutting speed Vc m/min; depth of cut by chipbreaker; feed by strict corner-radius upper bound and chipbreaker row; coolant is not stated in this standard-condition table.",
+          "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+          "extraction_method": "manufacturer_page",
+          "verification_status": "manufacturer_verified",
+          "evidence_sources": [
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-2207a1acbd668efa",
+              "evidence_role": "verification",
+              "source_page_ref": "/standard_cutting_conditions/P",
+              "source_table_ref": "Hash-verified normalized standard cutting conditions",
+              "source_raw_text": "{\"depth_of_cut_mm_by_chipbreaker\":{\"JP\":{\"max\":2.5,\"min\":0.05},\"JS\":{\"max\":3,\"min\":0.5}},\"feed_mm_rev_by_chipbreaker_and_strict_radius_band\":{\"JP\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":null,\"max_corner_radius_exclusive_mm\":0.4,\"min\":null}],\"JS\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":0.2,\"max_corner_radius_exclusive_mm\":0.4,\"min\":0.05}]},\"iso_group\":\"P\",\"materials\":\"Carbon steel, Alloy steel\",\"vc_m_min\":{\"max\":200,\"min\":10}}",
+              "extraction_method": "normalized_from_manufacturer_page"
+            }
+          ]
+        },
+        {
+          "source_part_number": "DCGT11T302MF-JS",
+          "source_grade": "SH7025",
+          "source_geometry": "DCGT 11T3 02 positive, 7-deg clearance, JS chipbreaker",
+          "source_chipbreaker": "JS",
+          "source_material_label": "Stainless steel",
+          "iso_material_group": "M",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "material_subgroup": "Stainless steel",
+          "surface_speed_min": 10,
+          "surface_speed_max": 200,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.05,
+          "feed_max": 0.2,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.5,
+          "depth_of_cut_max": 3,
+          "depth_of_cut_unit": "mm",
+          "notes": "Coolant remains unknown; the standard-condition table does not state it.",
+          "id": "cutting-profile-ac7f5104a2bf1864",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 standard cutting conditions, ISO M (Stainless steel); cutting speed Vc m/min; depth of cut by chipbreaker; feed by strict corner-radius upper bound and chipbreaker row; coolant is not stated in this standard-condition table.",
+          "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+          "extraction_method": "manufacturer_page",
+          "verification_status": "manufacturer_verified",
+          "evidence_sources": [
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-2207a1acbd668efa",
+              "evidence_role": "verification",
+              "source_page_ref": "/standard_cutting_conditions/M",
+              "source_table_ref": "Hash-verified normalized standard cutting conditions",
+              "source_raw_text": "{\"depth_of_cut_mm_by_chipbreaker\":{\"JP\":{\"max\":2.5,\"min\":0.05},\"JS\":{\"max\":3,\"min\":0.5}},\"feed_mm_rev_by_chipbreaker_and_strict_radius_band\":{\"JP\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":null,\"max_corner_radius_exclusive_mm\":0.4,\"min\":null}],\"JS\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":0.2,\"max_corner_radius_exclusive_mm\":0.4,\"min\":0.05}]},\"iso_group\":\"M\",\"materials\":\"Stainless steel\",\"vc_m_min\":{\"max\":200,\"min\":10}}",
+              "extraction_method": "normalized_from_manufacturer_page"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tool_id": "DCGT11T302N-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-24336dba9bdc663f",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-11e5236fc47586ca",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": [
+        {
+          "source_part_number": "DCGT11T302N-JS",
+          "source_grade": "SH7025",
+          "source_geometry": "DCGT 11T3 02 positive, 7-deg clearance, JS chipbreaker",
+          "source_chipbreaker": "JS",
+          "source_material_label": "Carbon steel, Alloy steel",
+          "iso_material_group": "P",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "material_subgroup": "Carbon / alloy steel",
+          "surface_speed_min": 10,
+          "surface_speed_max": 200,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.05,
+          "feed_max": 0.2,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.5,
+          "depth_of_cut_max": 3,
+          "depth_of_cut_unit": "mm",
+          "notes": "Coolant remains unknown; the standard-condition table does not state it.",
+          "id": "cutting-profile-74fbaee29ab12e4e",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 standard cutting conditions, ISO P (Carbon steel, Alloy steel); cutting speed Vc m/min; depth of cut by chipbreaker; feed by strict corner-radius upper bound and chipbreaker row; coolant is not stated in this standard-condition table.",
+          "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+          "extraction_method": "manufacturer_page",
+          "verification_status": "manufacturer_verified",
+          "evidence_sources": [
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-2207a1acbd668efa",
+              "evidence_role": "verification",
+              "source_page_ref": "/standard_cutting_conditions/P",
+              "source_table_ref": "Hash-verified normalized standard cutting conditions",
+              "source_raw_text": "{\"depth_of_cut_mm_by_chipbreaker\":{\"JP\":{\"max\":2.5,\"min\":0.05},\"JS\":{\"max\":3,\"min\":0.5}},\"feed_mm_rev_by_chipbreaker_and_strict_radius_band\":{\"JP\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":null,\"max_corner_radius_exclusive_mm\":0.4,\"min\":null}],\"JS\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":0.2,\"max_corner_radius_exclusive_mm\":0.4,\"min\":0.05}]},\"iso_group\":\"P\",\"materials\":\"Carbon steel, Alloy steel\",\"vc_m_min\":{\"max\":200,\"min\":10}}",
+              "extraction_method": "normalized_from_manufacturer_page"
+            }
+          ]
+        },
+        {
+          "source_part_number": "DCGT11T302N-JS",
+          "source_grade": "SH7025",
+          "source_geometry": "DCGT 11T3 02 positive, 7-deg clearance, JS chipbreaker",
+          "source_chipbreaker": "JS",
+          "source_material_label": "Stainless steel",
+          "iso_material_group": "M",
+          "operation_type": "turning",
+          "cut_condition": "finishing",
+          "coolant_condition": "unknown",
+          "material_subgroup": "Stainless steel",
+          "surface_speed_min": 10,
+          "surface_speed_max": 200,
+          "surface_speed_unit": "m_per_min",
+          "feed_min": 0.05,
+          "feed_max": 0.2,
+          "feed_unit": "mm_per_rev",
+          "depth_of_cut_min": 0.5,
+          "depth_of_cut_max": 3,
+          "depth_of_cut_unit": "mm",
+          "notes": "Coolant remains unknown; the standard-condition table does not state it.",
+          "id": "cutting-profile-5495a40483b13230",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 standard cutting conditions, ISO M (Stainless steel); cutting speed Vc m/min; depth of cut by chipbreaker; feed by strict corner-radius upper bound and chipbreaker row; coolant is not stated in this standard-condition table.",
+          "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+          "extraction_method": "manufacturer_page",
+          "verification_status": "manufacturer_verified",
+          "evidence_sources": [
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "cutting_speed",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-ae22b2758f8739f0",
+              "evidence_role": "geometry_parameters",
+              "source_page_ref": "#post-393473",
+              "source_table_ref": "Standard cutting conditions table",
+              "source_raw_text": "<table>\n<thead>\n<tr>\n<th rowspan=\"2\">ISO</th>\n<th rowspan=\"2\">Workpiece material</th>\n<th rowspan=\"2\">Chipbreaker</th>\n<th rowspan=\"2\">Grade</th>\n<th rowspan=\"2\">Cutting speed<br />\n<em>V</em>c (m/min)</th>\n<th rowspan=\"2\">Depth of cut<br />\n<em>a</em>p (mm)</th>\n<th colspan=\"4\">Feed: <em>f</em> (mm/rev)</th>\n</tr>\n<tr>\n<th>RE &lt; 0.03</th>\n<th>RE &lt; 0.1</th>\n<th>RE &lt; 0.2</th>\n<th>RE &lt; 0.4</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td class=\"p50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_P.png\" alt=\"\" /></td>\n<td class=\"p40\" rowspan=\"2\">Carbon steel<br />\nAlloy steel</td>\n<td class=\"p20\">JP</td>\n<td class=\"p20\">SH7025</td>\n<td class=\"p20\">10 &#8211; 200</td>\n<td class=\"p20\">0.05 &#8211; 2.5</td>\n<td class=\"p20\">0.02 &#8211; 0.03</td>\n<td class=\"p20\">0.02 &#8211; 0.05</td>\n<td class=\"p20\">0.02 &#8211; 0.1</td>\n<td class=\"p20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"p10\">JS</td>\n<td class=\"p10\">SH7025</td>\n<td class=\"p10\">10 &#8211; 200</td>\n<td class=\"p10\">0.5 &#8211; 3</td>\n<td class=\"p10\">0.02 &#8211; 0.03</td>\n<td class=\"p10\">0.02 &#8211; 0.05</td>\n<td class=\"p10\">0.02 &#8211; 0.1</td>\n<td class=\"p10\">0.05 &#8211; 0.2</td>\n</tr>\n<tr>\n<td class=\"m50\" rowspan=\"2\"><img decoding=\"async\" src=\"https://tungaloy.com/wpdata/wp-content/uploads/ISO_M.png\" alt=\"\" /></td>\n<td class=\"m40\" rowspan=\"2\">Stainless steel</td>\n<td class=\"m20\">JP</td>\n<td class=\"m20\">SH7025</td>\n<td class=\"m20\">10 &#8211; 200</td>\n<td class=\"m20\">0.05 &#8211; 2.5</td>\n<td class=\"m20\">0.02 &#8211; 0.03</td>\n<td class=\"m20\">0.02 &#8211; 0.05</td>\n<td class=\"m20\">0.02 &#8211; 0.1</td>\n<td class=\"m20\">&#8211;</td>\n</tr>\n<tr>\n<td class=\"m10\">JS</td>\n<td class=\"m10\">SH7025</td>\n<td class=\"m10\">10 &#8211; 200</td>\n<td class=\"m10\">0.5 &#8211; 3</td>\n<td class=\"m10\">0.02 &#8211; 0.03</td>\n<td class=\"m10\">0.02 &#8211; 0.05</td>\n<td class=\"m10\">0.02 &#8211; 0.1</td>\n<td class=\"m10\">0.05 &#8211; 0.2</td>\n</tr>\n</tbody>\n</table>",
+              "extraction_method": "manufacturer_page"
+            },
+            {
+              "source_id": "source-2207a1acbd668efa",
+              "evidence_role": "verification",
+              "source_page_ref": "/standard_cutting_conditions/M",
+              "source_table_ref": "Hash-verified normalized standard cutting conditions",
+              "source_raw_text": "{\"depth_of_cut_mm_by_chipbreaker\":{\"JP\":{\"max\":2.5,\"min\":0.05},\"JS\":{\"max\":3,\"min\":0.5}},\"feed_mm_rev_by_chipbreaker_and_strict_radius_band\":{\"JP\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":null,\"max_corner_radius_exclusive_mm\":0.4,\"min\":null}],\"JS\":[{\"max\":0.03,\"max_corner_radius_exclusive_mm\":0.03,\"min\":0.02},{\"max\":0.05,\"max_corner_radius_exclusive_mm\":0.1,\"min\":0.02},{\"max\":0.1,\"max_corner_radius_exclusive_mm\":0.2,\"min\":0.02},{\"max\":0.2,\"max_corner_radius_exclusive_mm\":0.4,\"min\":0.05}]},\"iso_group\":\"M\",\"materials\":\"Stainless steel\",\"vc_m_min\":{\"max\":200,\"min\":10}}",
+              "extraction_method": "normalized_from_manufacturer_page"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tool_id": "DCGT11T304F-01",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-2df768021f677f5e",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-40f7ede13e070d88",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "DCGT11T304FN-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-207c1f978d9af83f",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-8fc030f55ea1fbbf",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "DCGT11T304M-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-22be5dabfa018698",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-5e83f1725c4ec159",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "DCGT11T304MF-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-49009f61eb6cb498",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-826424019d79f8b8",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "DCGT11T304N-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-c8870526465e41dd",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-902970cec63b24a1",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "TCGT110204-01",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-ee06eaa4e7d749fb",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-379a644b22387be8",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "TCGT110204F-01",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-8f8fb01087f4cb89",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-f832327283556dfc",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "TCGT110204FN-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-4675f15c7d5d1e8a",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-1e2d97a9fc055634",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "TCGT110204M-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-0505abc427349713",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-3e9eae7f3377fdf8",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "TCGT110204N-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-bbfedb494310b172",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-b68c48edb405df20",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "TCGT16T304-01",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-89e72e343f73fde0",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-e20583867621ef7d",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "TCGT16T308-01",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-51c6c27891e27a27",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-5a770e918f1b04cd",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "VBGT110304FN-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-827c8e4bdb8256a1",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-333e28d05fc8afbe",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "VBGT110304M-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-35d6976f21d9bcb0",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-b1a11b7908d87a57",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "VBGT110304MF-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-19b185d9ec6c62d6",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-51624d62a1baa47a",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    },
+    {
+      "tool_id": "VBGT110304N-JS",
+      "grade_code": "SH7025",
+      "material_recommendations": [
+        {
+          "id": "material-recommendation-cc13df23ba298b6e",
+          "grade_code": "SH7025",
+          "iso_group": "P",
+          "material_subgroup": "Carbon / alloy steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO P (Carbon steel, Alloy steel)",
+          "source_raw_text": "P20 &#8211; P30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        },
+        {
+          "id": "material-recommendation-ba91185719aae22d",
+          "grade_code": "SH7025",
+          "iso_group": "M",
+          "material_subgroup": "Stainless steel",
+          "suitability": "recommended",
+          "evidence_status": "manufacturer_claim",
+          "verification_status": "manufacturer_verified",
+          "source_id": "source-ae22b2758f8739f0",
+          "source_ids": [
+            "source-ae22b2758f8739f0"
+          ],
+          "source_page_ref": "#post-393473",
+          "source_table_ref": "Tungaloy SH7025 application range, ISO M (Stainless steel)",
+          "source_raw_text": "M20 &#8211; M30",
+          "extraction_method": "manufacturer_page",
+          "notes": "Tungaloy SH7025 application P20 - P30 / M20 - M30; grade-level baseline conditions."
+        }
+      ],
+      "cutting_profiles": []
+    }
+  ]
+}
