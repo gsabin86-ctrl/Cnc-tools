@@ -2381,6 +2381,30 @@ class PipelineTests(unittest.TestCase):
             finally:
                 connection.close()
 
+    def test_deployment_hash_normalizes_text_line_endings(self) -> None:
+        scripts_path = str(ROOT / "scripts")
+        sys.path.insert(0, scripts_path)
+        try:
+            spec = importlib.util.spec_from_file_location("toolbase_build_hash_test", BUILD_SCRIPT)
+            self.assertIsNotNone(spec)
+            self.assertIsNotNone(spec.loader)
+            build_module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(build_module)
+        finally:
+            sys.path.remove(scripts_path)
+
+        self.assertTrue(hasattr(build_module, "deployment_input_bytes"))
+        with tempfile.TemporaryDirectory() as temp:
+            directory = Path(temp)
+            lf_path = directory / "lf.js"
+            crlf_path = directory / "crlf.js"
+            lf_path.write_bytes(b"const a = 1;\nconst b = 2;\n")
+            crlf_path.write_bytes(b"const a = 1;\r\nconst b = 2;\r\n")
+            self.assertEqual(
+                build_module.deployment_input_bytes(lf_path),
+                build_module.deployment_input_bytes(crlf_path),
+            )
+
     def test_build_hash_is_independent_of_output_directory(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             directory = Path(temp)

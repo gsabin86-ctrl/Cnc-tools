@@ -65,6 +65,13 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
     return records
 
 
+def deployment_input_bytes(path: Path) -> bytes:
+    payload = path.read_bytes()
+    if path.suffix.casefold() in {".py", ".html", ".css", ".js", ".webmanifest"}:
+        return payload.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return payload
+
+
 def stable_id(prefix: str, *parts: object) -> str:
     raw = "\x1f".join(str(part or "").strip().casefold() for part in parts)
     return f"{prefix}-{hashlib.sha256(raw.encode('utf-8')).hexdigest()[:16]}"
@@ -2774,7 +2781,7 @@ def build_web_projection(db_path: Path, json_out: Path, build_report: dict[str, 
     for deployment_input in deployment_inputs:
         if deployment_input.is_file():
             deployment_digest.update(deployment_input.name.encode("utf-8"))
-            deployment_digest.update(deployment_input.read_bytes())
+            deployment_digest.update(deployment_input_bytes(deployment_input))
     build_hash = deployment_digest.hexdigest()[:16]
     projection = {
         "meta": {
